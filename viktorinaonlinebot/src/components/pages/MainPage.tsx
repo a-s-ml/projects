@@ -1,5 +1,4 @@
 import { useValidateQuery } from "../store/vik/vik.api";
-import MainListItem from "../MainListItem";
 import SlidePage from "./SlidePage";
 import { SetStateAction, useState } from "react";
 import ErrorPage from "../ErrorPage";
