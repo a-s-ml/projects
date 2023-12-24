@@ -1,19 +1,24 @@
 import { useValidateQuery } from "../store/vik/vik.api";
 import SlidePage from "./SlidePage";
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import ErrorPage from "../ErrorPage";
 import Logo from "../img/Logo.png";
+import axios from "axios";
 
 export function MainPage() {
   const tg = window.Telegram.WebApp;
 
-  console.log(tg.initData)
+  useEffect(() => {
+    axios.post("https://api80q.ru/viktorinaonlinebot/validate", { initData: tg.initData })
+        .then((res) => console.log(res.data))
+        .catch(() => console.log('error'))
+}, [])
 
-  const {
-    isLoading: loadUser,
-    isError: errorUser,
-    data: dataUser,
-  } = useValidateQuery(tg.initData);
+//   const {
+//     isLoading: loadUser,
+//     isError: errorUser,
+//     data: dataUser,
+//   } = useValidateQuery(tg.initData);
 
   const [slideState, setSlideState] = useState(false);
 
@@ -45,13 +50,13 @@ export function MainPage() {
           </div>
           <div className="mt-10">
             <ul className="mt-4">
-              {errorUser && <ErrorPage />}
+              {/* {errorUser && <ErrorPage />}
               {loadUser && (
                 <b className="text-center text-[var(--tg-theme-text-color)]">
                   Loading...
                 </b>
               )}
-              {dataUser && <p>!</p>}
+              {dataUser && <p>!</p>} */}
               {/* {menuitems?.map((item) => (
                 <MainListItem key={item.id} item={item} toggleS={openSlide} />
               ))} */}
