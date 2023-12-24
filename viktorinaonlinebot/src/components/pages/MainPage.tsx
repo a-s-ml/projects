@@ -8,17 +8,17 @@ import axios from "axios";
 export function MainPage() {
   const tg = window.Telegram.WebApp;
 
-  useEffect(() => {
-    axios.post("https://api80q.ru/viktorinaonlinebot/chat/validateUser", { initData: tg.initData })
-        .then((res) => console.log(res.data))
-        .catch(() => console.log('error'))
-}, [])
+//   useEffect(() => {
+//     axios.post("https://api80q.ru/viktorinaonlinebot/chat/validateUser", { initData: tg.initData })
+//         .then((res) => console.log(res.data))
+//         .catch(() => console.log('error'))
+// }, [])
 
-//   const {
-//     isLoading: loadUser,
-//     isError: errorUser,
-//     data: dataUser,
-//   } = useValidateQuery(tg.initData);
+  const {
+    isLoading: loadUser,
+    isError: errorUser,
+    data: dataUser,
+  } = useValidateQuery(tg.initData);
 
   const [slideState, setSlideState] = useState(false);
 
@@ -50,16 +50,15 @@ export function MainPage() {
           </div>
           <div className="mt-10">
             <ul className="mt-4">
-              {/* {errorUser && <ErrorPage />}
+              {errorUser && <ErrorPage />}
               {loadUser && (
                 <b className="text-center text-[var(--tg-theme-text-color)]">
                   Loading...
                 </b>
               )}
-              {dataUser && <p>!</p>} */}
-              {/* {menuitems?.map((item) => (
-                <MainListItem key={item.id} item={item} toggleS={openSlide} />
-              ))} */}
+              {dataUser?.map((item) => (
+                <p>{item.user.id}</p>
+              ))}
             </ul>
           </div>
         </div>
