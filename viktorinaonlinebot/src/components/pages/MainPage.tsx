@@ -7,6 +7,8 @@ import Logo from "../img/Logo.png";
 export function MainPage() {
   const tg = window.Telegram.WebApp;
 
+  console.log(tg.initData)
+
   const {
     isLoading: loadUser,
     isError: errorUser,
