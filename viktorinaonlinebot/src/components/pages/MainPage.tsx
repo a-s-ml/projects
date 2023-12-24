@@ -9,7 +9,7 @@ export function MainPage() {
   const tg = window.Telegram.WebApp;
 
   useEffect(() => {
-    axios.post("https://api80q.ru/viktorinaonlinebot/validateUser", { initData: tg.initData })
+    axios.post("https://api80q.ru/viktorinaonlinebot/chat/validateUser", { initData: tg.initData })
         .then((res) => console.log(res.data))
         .catch(() => console.log('error'))
 }, [])
