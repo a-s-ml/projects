@@ -25,7 +25,7 @@ export default function MainListItem({ item, toggleS }: MenuItemsProps) {
             {item.text}
           </b>
         </div>
-        <p className="text-sm text-[var(--tg-theme-hint-color)]">{item.name}</p>
+        <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего найдено: {item.count}</p>
       </div>
       <div className="flex-shrink-0 self-center">
         <ChevronRightIcon className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]" aria-hidden="true" />

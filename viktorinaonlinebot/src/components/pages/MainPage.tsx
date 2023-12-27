@@ -6,20 +6,23 @@ import ErrorPage from "../ErrorPage";
 import MainListItem from "../MainListItem";
 import { IMenu } from "../../models/IMenu";
 
-
 const menuitems: IMenu[] = [
   {
     id:   1,
-    name: "dggsdf1",
-    text: "dghgd1"
+    name: "groups",
+    text: "Мои группы"
   },
   {
     id:   2,
-    name: "dggsdf2",
-    text: "dghgd2"
+    name: "questions",
+    text: "Мои вопросы"
+  },
+  {
+    id:   3,
+    name: "answers",
+    text: "Мои ответы"
   }
 ]
-
 
 export function MainPage() {
   const tg = window.Telegram.WebApp;
@@ -32,6 +35,9 @@ export function MainPage() {
 
   if(dataUser) {
     console.log(dataUser)
+    menuitems[1].count = dataUser.groups
+    menuitems[2].count = dataUser.questions
+    menuitems[3].count = dataUser.answers
   }
 
   const [slideState, setSlideState] = useState(false);
