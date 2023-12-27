@@ -63,7 +63,6 @@ export function MainPage() {
           <div>
             <div className="text-center">
               <img className="mx-auto h-12 w-12" src={Logo} />
-
               <h2 className="mt-2 text-base font-semibold leading-6 text-[var(--tg-theme-accent-text-color)]">
                 ViktorinaOnlineBot
               </h2>
@@ -81,7 +80,7 @@ export function MainPage() {
                   Loading...
                 </b>
               )}
-              {menuitems?.map((item) => (
+              {menuitems && menuitems.map(item => (
                 <MainListItem key={item.id} item={item} toggleS={openSlide} />
               ))}
             </ul>
