@@ -1,18 +1,11 @@
 import SlidePage from "./SlidePage";
 import { SetStateAction, useEffect, useState } from "react";
-import ErrorPage from "../ErrorPage";
 import Logo from "../img/Logo.png";
-import axios from "axios";
 import { useValidateQuery } from "../store/vik/vik.api";
+import ErrorPage from "../ErrorPage";
 
 export function MainPage() {
   const tg = window.Telegram.WebApp;
-
-  useEffect(() => {
-    axios.post("https://api80q.ru/viktorinaonlinebot/chat/validateUser", { initData: tg.initData })
-        .then((res) => console.log(res.data))
-        .catch(() => console.log('error'))
-}, [])
 
   const {
     isLoading: loadUser,
@@ -44,25 +37,25 @@ export function MainPage() {
               <img className="mx-auto h-12 w-12" src={Logo} />
 
               <h2 className="mt-2 text-base font-semibold leading-6 text-[var(--tg-theme-accent-text-color)]">
-                Илюндель молодец!!!
+                ViktorinaOnlineBot
               </h2>
               <p className="mt-1 text-sm text-[var(--tg-theme-hint-color)]">
-                Бот проводит викторины в ваших группах/каналах используя
-                огромную базу вопросов
+                Бот проводит викторины в группах/каналах используя
+                собственную базу вопросов или вопросы, заданные участниками викторины
               </p>
             </div>
           </div>
           <div className="mt-10">
             <ul className="mt-4">
-              {/* {errorUser && <ErrorPage />}
+              {errorUser && <ErrorPage />}
               {loadUser && (
                 <b className="text-center text-[var(--tg-theme-text-color)]">
                   Loading...
                 </b>
               )}
-              {dataUser?.map((item) => (
-                <p>{item.user.id}</p>
-              ))} */}
+              {dataUser && (
+                <p>{dataUser.user.id}</p>
+              )}
             </ul>
           </div>
         </div>
