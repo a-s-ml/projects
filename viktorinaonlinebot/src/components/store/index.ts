@@ -5,5 +5,6 @@ export const store = configureStore({
   reducer: {
     [vikApi.reducerPath]: vikApi.reducer
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(vikApi.middleware)
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(vikApi.middleware),
+  devTools: true
 })

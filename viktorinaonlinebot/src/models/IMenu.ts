@@ -1,6 +1,0 @@
-export interface IMenu {
-    id:   number;
-    name: string;
-    text: string;
-    sort: number;
-}
