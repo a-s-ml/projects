@@ -4,9 +4,8 @@ import Logo from "../img/Logo.png";
 import { useValidateQuery } from "../store/vik/vik.api";
 import ErrorPage from "../ErrorPage";
 import { useGetGroupsQuery } from "../store/vik/groupsSlise";
-import { IUserData } from "../../models/IUser";
 
-let userData: IUserData;
+let idUser: number = 521884639
 
 export function MainPage() {
   const tg = window.Telegram.WebApp;
@@ -24,16 +23,16 @@ export function MainPage() {
   } = useValidateQuery(tg.initData);
 
   if (!dataUser) {
-    userData.user.id = 23423234;
+    idUser = 23423234;
   } else {
-    userData = dataUser;
+    idUser = dataUser.user.id;
   }
 
   const {
     isLoading: loadGroups,
     isError: errorGroup,
     data: dataGroup,
-  } = useGetGroupsQuery(userData.user.id);
+  } = useGetGroupsQuery(idUser);
 
   const [slideState, setSlideState] = useState(false);
 
