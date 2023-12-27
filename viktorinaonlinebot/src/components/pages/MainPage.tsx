@@ -22,9 +22,7 @@ export function MainPage() {
     data: dataUser,
   } = useValidateQuery(tg.initData);
 
-  if (!dataUser) {
-    idUser = 23423234;
-  } else {
+  if (dataUser) {
     idUser = dataUser.user.id;
   }
 
