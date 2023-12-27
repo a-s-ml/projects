@@ -10,17 +10,20 @@ const menuitems: IMenu[] = [
   {
     id:   1,
     name: "groups",
-    text: "Мои группы"
+    text: "Мои группы",
+    count: 0
   },
   {
     id:   2,
     name: "questions",
-    text: "Мои вопросы"
+    text: "Мои вопросы",
+    count: 0
   },
   {
     id:   3,
     name: "answers",
-    text: "Мои ответы"
+    text: "Мои ответы",
+    count: 0
   }
 ]
 
