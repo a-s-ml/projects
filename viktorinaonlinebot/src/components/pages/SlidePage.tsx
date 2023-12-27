@@ -1,17 +1,26 @@
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-// import { useGetMenuQuery } from '../store/vik/vik.api'
+import { useGetGroupsQuery } from "../store/vik/groupsSlise";
 
 interface SlideItemsProps {
     slideData: string
     toggleStateS: boolean
     toggleS(n: string): void
+    chat: number
 }
 
-export default function Example({ toggleStateS, toggleS, slideData }: SlideItemsProps) {
+export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: SlideItemsProps) {
     
-    // const { isLoading, isSuccess, isError, data } = useGetMenuQuery(slideData, {skip: !slideData})
+    const {
+        isLoading: loadGroups,
+        isError: errorGroup,
+        data: dataGroup,
+      } = useGetGroupsQuery(chat);
 
+
+      if(dataGroup) {
+        console.log(dataGroup)
+      }
     return (
         <Transition.Root show={toggleStateS} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={() => toggleS('')}>
