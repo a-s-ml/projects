@@ -9,7 +9,7 @@ export const vikApi = createApi({
   endpoints: build => ({
     validate: build.query<IUserData, string>({
       query: (initData: string) => ({
-        url: `chat/${initData}`
+        url: `validateUser/chat/${initData}`
       })
     })
   })
