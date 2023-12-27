@@ -54,7 +54,12 @@ export function MainPage() {
                 </b>
               )}
               {dataUser && (
-                <p>{dataUser?.user.id}</p>
+                <>
+                  <p>{dataUser.validate}</p>
+                  <p>{dataUser.auth_date}</p>
+                  <p>{dataUser.toString()}</p>
+                  <p>{dataUser.query_id}</p>
+                </>
               )}
             </ul>
           </div>
