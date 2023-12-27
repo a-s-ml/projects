@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IUserData } from "../../../models/IUser";
 
+
 export const vikApi = createApi({
   reducerPath: "vikApi",
   baseQuery: fetchBaseQuery({

@@ -13,4 +13,17 @@ export interface IUserData {
   query_id: string;
   user: IUser;
   validate: boolean;
+  group: IGroup;
 }
+
+export interface IGroup {
+  id: number;
+  chat: bigint;
+  type: string;
+  bot: number;
+  date: Date;
+  referral: bigint;
+  question_type: number;
+  time: number;
+}
+
