@@ -3,6 +3,7 @@ import { SetStateAction, useEffect, useState } from "react";
 import ErrorPage from "../ErrorPage";
 import Logo from "../img/Logo.png";
 import axios from "axios";
+import { useValidateQuery } from "../store/vik/vik.api";
 
 export function MainPage() {
   const tg = window.Telegram.WebApp;
@@ -13,11 +14,15 @@ export function MainPage() {
         .catch(() => console.log('error'))
 }, [])
 
-//   const {
-//     isLoading: loadUser,
-//     isError: errorUser,
-//     data: dataUser,
-//   } = useValidateQuery(tg.initData);
+  const {
+    isLoading: loadUser,
+    isError: errorUser,
+    data: dataUser,
+  } = useValidateQuery(tg.initData);
+
+  if(dataUser) {
+    console.log(dataUser)
+  }
 
   const [slideState, setSlideState] = useState(false);
 
