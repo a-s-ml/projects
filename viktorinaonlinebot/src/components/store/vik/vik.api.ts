@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IUserData } from "../../../models/IUser";
+import { IValidate } from "../../../models/IUser";
 
 export const vikApi = createApi({
   reducerPath: "vikApi",
@@ -7,7 +7,7 @@ export const vikApi = createApi({
     baseUrl: "https://api80q.ru/viktorinaonlinebot/",
   }),
   endpoints: build => ({
-    validate: build.query<IUserData, string>({
+    validate: build.query<IValidate, string>({
       query: (initData: string) => ({
         url: `chat/validateUser/${initData}`,
       }),

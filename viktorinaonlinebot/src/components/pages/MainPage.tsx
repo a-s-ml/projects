@@ -82,7 +82,7 @@ export function MainPage() {
           toggleStateS={slideState}
           toggleS={openSlide}
           slideData={slideData}
-          chat={dataUser.user.id}
+          chat={dataUser.UserData.user.id}
         />
       )}
     </>

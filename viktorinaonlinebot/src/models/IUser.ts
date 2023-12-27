@@ -1,5 +1,4 @@
 export interface IUser {
-  validate: boolean;
   id: number;
   first_name?: string;
   last_name?: string;
@@ -12,7 +11,11 @@ export interface IUserData {
   auth_date: number;
   query_id: string;
   user: IUser;
+}
+
+export interface IValidate {
   validate: boolean;
+  UserData: IUserData;
   groups: number;
   answers: number;
   questions: number;
