@@ -36,15 +36,6 @@ export function MainPage() {
     data: dataUser,
   } = useValidateQuery(tg.initData);
 
-  if(dataUser) {
-    console.log(dataUser)
-    menuitems[1].count = dataUser.groups
-    menuitems[2].count = dataUser.questions
-    menuitems[3].count = dataUser.answers
-    console.log(menuitems)
-  }
-
-
   const [slideState, setSlideState] = useState(false);
 
   const [slideData, setSlideData] = useState("");
