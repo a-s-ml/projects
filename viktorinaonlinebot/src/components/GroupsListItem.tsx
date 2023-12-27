@@ -38,7 +38,7 @@ export default function GroipsListItem({ chat }: GroipsListItemProps) {
                   </b>
                 </div>
                 <p className="text-sm text-[var(--tg-theme-hint-color)]">
-                  Группа: {group.date.toISOString()}
+                  Группа: {group.date.toString()}
                 </p>
               </div>
               <div className="flex-shrink-0 self-center">
