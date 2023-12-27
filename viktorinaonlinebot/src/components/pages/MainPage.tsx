@@ -30,6 +30,10 @@ export function MainPage() {
     data: dataUser,
   } = useValidateQuery(tg.initData);
 
+  if(dataUser) {
+    console.log(dataUser)
+  }
+
   const [slideState, setSlideState] = useState(false);
 
   const [slideData, setSlideData] = useState("");
