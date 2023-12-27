@@ -1,6 +1,8 @@
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { useGetGroupsQuery } from "../store/vik/groupsSlise";
+import ErrorPage from '../ErrorPage';
+import GroipsListItem from '../GroupsListItem';
+import QuestionsListItem from '../QuestionsListItem';
 
 interface SlideItemsProps {
     slideData: string
@@ -11,16 +13,6 @@ interface SlideItemsProps {
 
 export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: SlideItemsProps) {
     
-    const {
-        isLoading: loadGroups,
-        isError: errorGroup,
-        data: dataGroup,
-      } = useGetGroupsQuery(chat);
-
-
-      if(dataGroup) {
-        console.log(dataGroup)
-      }
     return (
         <Transition.Root show={toggleStateS} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={() => toggleS('')}>
@@ -38,11 +30,10 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
                             >
                                 <Dialog.Panel className="pointer-events-auto relative w-screen">
                                     <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                                        {/* {isError && <b className="text-center text-[var(--tg-theme-destructive-text-color)]">Error</b>}
-                                        {isLoading && <b className="text-center text-[var(--tg-theme-hint-color)]">Loading...</b>}
-                                        {isSuccess && data?.map(item =>
-                                            <p className="text-red-60" key={item.id} >{item.name}</p>
-                                        )} */}
+                                        {slideData === "groups" && <GroipsListItem chat={chat}/>}
+                                        {slideData === "questions" && <QuestionsListItem chat={chat}/>}
+                                        {slideData === "answers" && <ErrorPage/>}
+  
                                         <div className="space-y-6 pb-16">
                                             <div className="flex">
                                                 <button type="button" className="flex-1 rounded-md bg-[var(--tg-theme-button-color)] px-3 py-2 text-sm font-semibold text-[var(--tg-theme-button-text-color)] shadow-sm hover:bg-[var(--tg-theme-secondary-bg-color)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
