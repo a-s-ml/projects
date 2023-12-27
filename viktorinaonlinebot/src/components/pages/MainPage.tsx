@@ -6,7 +6,7 @@ import ErrorPage from "../ErrorPage";
 import MainListItem from "../MainListItem";
 import { IMenu } from "../../models/IMenu";
 
-const menuitems: IMenu[] = [
+let menuitems: IMenu[] = [
   {
     id:   1,
     name: "groups",
@@ -38,9 +38,9 @@ export function MainPage() {
 
   if(dataUser) {
     console.log(dataUser)
-    menuitems[1].count = dataUser.groups
-    menuitems[2].count = dataUser.questions
-    menuitems[3].count = dataUser.answers
+    // menuitems[1].count = dataUser.groups
+    // menuitems[2].count = dataUser.questions
+    // menuitems[3].count = dataUser.answers
     console.log(menuitems)
   }
 
