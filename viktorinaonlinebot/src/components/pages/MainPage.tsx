@@ -38,7 +38,9 @@ export function MainPage() {
     menuitems[1].count = dataUser.groups
     menuitems[2].count = dataUser.questions
     menuitems[3].count = dataUser.answers
+    console.log(menuitems)
   }
+
 
   const [slideState, setSlideState] = useState(false);
 
