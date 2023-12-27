@@ -53,14 +53,7 @@ export function MainPage() {
                   Loading...
                 </b>
               )}
-              {dataUser && (
-                <>
-                  <p>{dataUser.validate}</p>
-                  <p>{dataUser.auth_date}</p>
-                  <p>{dataUser.toString()}</p>
-                  <p>{dataUser.query_id}</p>
-                </>
-              )}
+              {dataUser && dataUser.group?.map(gr => <li className="mt-2">{gr.chat}</li>)}
             </ul>
           </div>
         </div>
