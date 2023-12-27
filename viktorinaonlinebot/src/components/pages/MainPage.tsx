@@ -54,7 +54,7 @@ export function MainPage() {
                 </b>
               )}
               {dataUser && (
-                <p>{dataUser.user.id}</p>
+                <p>{dataUser?.user.id}</p>
               )}
             </ul>
           </div>
