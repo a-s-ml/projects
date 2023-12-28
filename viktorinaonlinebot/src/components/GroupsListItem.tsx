@@ -2,6 +2,7 @@ import { ChevronRightIcon, HomeIcon } from "@heroicons/react/20/solid";
 import {
   useGetInfoGroupsQuery
 } from "./store/api/groupsSlise";
+import GroupAvatar from "./GroupAvatar";
 
 interface GroupsListItemProps {
   group: number;
@@ -21,10 +22,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
           <div className="group relative flex items-start space-x-3 py-4">
             <div className="flex-shrink-0">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
-                <HomeIcon
-                  className="h-6 w-6 text-[var(--tg-theme-accent-text-color)]"
-                  aria-hidden="true"
-                />
+                <GroupAvatar />
               </span>
             </div>
             <div className="min-w-0 flex-1">
