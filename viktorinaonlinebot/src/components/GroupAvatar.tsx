@@ -3,7 +3,7 @@ export default function GroupAvatar() {
     <img
       className="inline-block h-14 w-14 rounded-full"
       src="https://api80q.ru/viktorinaonlinebot/chat/tgGetFilePhoto/AgACAgIAAxUAAWWNquxlSXsUGiwQ-TyWspUmYYfRAAKqpzEb31MbH_Whf4N3K1nbAQADAgADYwADMwQ"
-      alt=""
+      alt="Проверка фото"
     />
   );
 }
