@@ -44,7 +44,6 @@ export function MainPage() {
     setSlideState(!slideState);
     if (!slideState) {
       tg.BackButton.show();
-      tg.onEvent('backButtonClicked', setSlideState(false))
       setSlideData(s);
     }
     if (slideState) {

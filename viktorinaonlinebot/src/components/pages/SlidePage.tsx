@@ -12,6 +12,9 @@ interface SlideItemsProps {
 }
 
 export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: SlideItemsProps) {
+
+    const tg = window.Telegram.WebApp;
+    tg.onEvent('backButtonClicked', toggleS(''))
     
     return (
         <Transition.Root show={toggleStateS} as={Fragment}>
