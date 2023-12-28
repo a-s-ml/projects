@@ -76,7 +76,7 @@ export interface ITelegramWebApp {
   MainButton: IMainButton;
   BackButton: IBackButton;
   onEvent: (eventType: string, callback) => void;
-  offEvent: WebAppEventHandlerFunction;
+  offEvent: (eventType: string, callback) => void;
   sendData: (data: string) => void;
   ready: () => void;
   expand: () => void;
