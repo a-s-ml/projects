@@ -1,18 +1,28 @@
 import { ChevronRightIcon, HomeIcon } from "@heroicons/react/20/solid";
-import { useGetInfoGroupsQuery } from "./store/vik/groupsSlise";
+import { useGetInfoGroupsQuery, useGetMemberCountGroupsQuery } from "./store/vik/groupsSlise";
 
 interface GroupsListItemProps {
   group: number;
 }
 export default function GroupsListItem({ group }: GroupsListItemProps) {
   const {
-    isLoading: loadGroups,
-    isError: errorGroup,
-    data: dataGroup,
+    isLoading: loadGroupsInfo,
+    isError: errorGroupInfo,
+    data: dataGroupInfo,
   } = useGetInfoGroupsQuery(group);
 
-  if (dataGroup) {
-    console.log(dataGroup);
+  if (dataGroupInfo) {
+    console.log(dataGroupInfo);
+  }
+
+  const {
+    isLoading: loadGroupsMemberCount,
+    isError: errorGroupMemberCount,
+    data: dataGroupMemberCount,
+  } = useGetMemberCountGroupsQuery(group);
+
+  if (dataGroupMemberCount) {
+    console.log(dataGroupMemberCount);
   }
 
   return (
