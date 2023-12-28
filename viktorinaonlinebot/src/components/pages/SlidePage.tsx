@@ -32,7 +32,7 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
                                 leaveTo="translate-x-full"
                             >
                                 <Dialog.Panel className="pointer-events-auto relative w-screen">
-                                    <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                                    <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)]">
                                         {slideData === "groups" && <GroupsList chat={chat}/>}
                                         {slideData === "questions" && <QuestionsList chat={chat}/>}
                                         {slideData === "answers" && <ErrorPage/>}
