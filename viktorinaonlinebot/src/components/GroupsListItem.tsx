@@ -40,11 +40,14 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
           <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
             <b>
               <span className="absolute inset-0" aria-hidden="true" />
-              {/* {dataGroup.} */}
+              {dataGroupInfo?.title}
             </b>
           </div>
           <p className="text-sm text-[var(--tg-theme-hint-color)]">
-            {/* Группа: {group.date.toString()} */}
+            {dataGroupInfo?.username}
+          </p>
+          <p className="text-sm text-[var(--tg-theme-hint-color)]">
+          {dataGroupMemberCount}
           </p>
         </div>
         <div className="flex-shrink-0 self-center">
