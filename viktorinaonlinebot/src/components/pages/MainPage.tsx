@@ -43,11 +43,11 @@ export function MainPage() {
   function openSlide(s: SetStateAction<string>) {
     setSlideState(!slideState);
     if (!slideState) {
-      tg.BackButton.hide();
+      tg.BackButton.show();
       setSlideData(s);
     }
     if (slideState) {
-      tg.BackButton.show();
+      tg.BackButton.hide();
       tg.onEvent('backButtonClicked', setSlideState(false))
     }
   }
