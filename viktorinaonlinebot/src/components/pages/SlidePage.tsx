@@ -36,19 +36,6 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
                                         {slideData === "groups" && <GroupsList chat={chat}/>}
                                         {slideData === "questions" && <QuestionsList chat={chat}/>}
                                         {slideData === "answers" && <ErrorPage/>}
-  
-                                        <div className="space-y-6 pb-16">
-                                            <div className="flex">
-                                                <button type="button" className="flex-1 rounded-md bg-[var(--tg-theme-button-color)] px-3 py-2 text-sm font-semibold text-[var(--tg-theme-button-text-color)] shadow-sm hover:bg-[var(--tg-theme-secondary-bg-color)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-                                                    onClick={() => toggleS('')}
-                                                >Download
-                                                </button>
-                                                <button type="button" className="ml-3 flex-1 rounded-md bg-[var(--tg-theme-button-color)] px-3 py-2 text-sm font-semibold text-[var(--tg-theme-button-text-color)] shadow-sm ring-1 ring-inset hover:bg-[var(--tg-theme-secondary-bg-color)]"
-                                                    onClick={() => toggleS('')}
-                                                >Back
-                                                </button>
-                                            </div>
-                                        </div>
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>
