@@ -5,7 +5,11 @@ import ErrorPage from "./ErrorPage";
 interface GroupsListProps {
   chat: number;
 }
+
 export default function GroupsList({ chat }: GroupsListProps) {
+  const tg = window.Telegram.WebApp;
+  tg.BackButton.show();
+
   const {
     isLoading: loadGroups,
     isError: errorGroups,

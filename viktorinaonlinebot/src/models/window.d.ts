@@ -12,6 +12,7 @@ type WebAppEventHandlerFunction =
   | BaseWebAppEventHandlerFunction
   | BaseWebAppEventHandlerFunction<'themeChanged'>
   | BaseWebAppEventHandlerFunction<'viewportChanged', (isStateStable: boolean) => void>
+  | BaseWebAppEventHandlerFunction<'backButtonClicked'>
   | BaseWebAppEventHandlerFunction<'mainButtonClicked'>;
 
 export interface ITelegramWebAppUser {
@@ -58,6 +59,14 @@ export interface IMainButton {
   setParams: (params: Partial<IMainButtonParams>) => void;
 }
 
+export interface IBackButton {
+  isVisible: string;
+  isActive: boolean;
+  onClick: (callback: () => void) => void;
+  show: () => void;
+  hide: () => void;
+}
+
 export interface ITelegramWebApp {
   initData: string;
   initDataUnsafe: ITelegramWebAppInitData;
@@ -65,7 +74,8 @@ export interface ITelegramWebApp {
   viewportHeight: number;
   viewportStableHeight: number;
   MainButton: IMainButton;
-  onEvent: WebAppEventHandlerFunction;
+  BackButton: IBackButton;
+  onEvent: (eventType: string, callback) => void;
   offEvent: WebAppEventHandlerFunction;
   sendData: (data: string) => void;
   ready: () => void;
