@@ -14,19 +14,11 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
     data: dataGroupInfo,
   } = useGetInfoGroupsQuery(group);
 
-  if (dataGroupInfo) {
-    console.log(dataGroupInfo);
-  }
-
   const {
     isLoading: loadGroupsMemberCount,
     isError: errorGroupMemberCount,
     data: dataGroupMemberCount,
   } = useGetMemberCountGroupsQuery(group);
-
-  if (dataGroupMemberCount) {
-    console.log(dataGroupMemberCount);
-  }
 
   return (
     <>
@@ -52,7 +44,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
               <p className="text-sm text-[var(--tg-theme-hint-color)]">
                 {dataGroupInfo.username}
               </p>
-              {errorGroupMemberCount && <p>error</p>}
+              {errorGroupMemberCount && <p className="text-sm text-[var(--tg-theme-hint-color)]">error</p>}
               {dataGroupMemberCount && (
                 <p className="text-sm text-[var(--tg-theme-hint-color)]">
                   {dataGroupMemberCount}
