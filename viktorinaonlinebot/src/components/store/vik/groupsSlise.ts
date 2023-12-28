@@ -1,5 +1,6 @@
+import { IGroup } from "../../../models/chats/IGroup";
+import { IGroupInfo } from "../../../models/chats/IGroupInfo";
 import { vikApi } from "./vik.api";
-import { IGroup } from "../../../models/IGroup";
 
 export const extendedApiSlice = vikApi.injectEndpoints({
   endpoints: (build) => ({
@@ -8,7 +9,12 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         url: `chat/findByReferal/${chat}`,
       }),
     }),
+    getInfoGroups: build.query<IGroupInfo[], number>({
+      query: (chat: number) => ({
+        url: `chat/groupInfoById/${chat}`,
+      }),
+    }),
   }),
 });
 
-export const { useGetGroupsQuery } = extendedApiSlice;
+export const { useGetGroupsQuery, useGetInfoGroupsQuery } = extendedApiSlice;

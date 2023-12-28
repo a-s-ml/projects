@@ -1,8 +1,8 @@
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import ErrorPage from '../ErrorPage';
-import GroipsListItem from '../GroupsListItem';
-import QuestionsListItem from '../QuestionsListItem';
+import GroupsList from '../GroupsList';
+import QuestionsList from '../QuestionsList';
 
 interface SlideItemsProps {
     slideData: string
@@ -30,8 +30,8 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
                             >
                                 <Dialog.Panel className="pointer-events-auto relative w-screen">
                                     <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                                        {slideData === "groups" && <GroipsListItem chat={chat}/>}
-                                        {slideData === "questions" && <QuestionsListItem chat={chat}/>}
+                                        {slideData === "groups" && <GroupsList chat={chat}/>}
+                                        {slideData === "questions" && <QuestionsList chat={chat}/>}
                                         {slideData === "answers" && <ErrorPage/>}
   
                                         <div className="space-y-6 pb-16">

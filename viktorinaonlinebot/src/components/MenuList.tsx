@@ -1,24 +1,15 @@
 import { ChevronRightIcon, HomeIcon } from '@heroicons/react/20/solid'
-import { useGetGroupsQuery } from './store/vik/groupsSlise';
+import { IMenu } from '../models/IMenu'
 
-interface GroipsListItemProps {
-  chat: number
+interface MenuItemsProps {
+  toggleS(n: string): void
+  item: IMenu
 }
-export default function QuestionsListItem({ chat }: GroipsListItemProps) {
 
-    const {
-        isLoading: loadGroups,
-        isError: errorGroup,
-        data: dataGroup,
-      } = useGetGroupsQuery(chat);
-
-
-      if(dataGroup) {
-        console.log(dataGroup)
-      }
+export default function MenuList({ item, toggleS }: MenuItemsProps) {
 
   return (
-    <li>
+    <li key={item.id} onClick={() => toggleS(item.name)}>
     <div className="group relative flex items-start space-x-3 py-4">
       <div className="flex-shrink-0">
         <span
@@ -31,10 +22,10 @@ export default function QuestionsListItem({ chat }: GroipsListItemProps) {
         <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
           <b>
             <span className="absolute inset-0" aria-hidden="true" />
-            {/* {item.text} */}
+            {item.text}
           </b>
         </div>
-        {/* <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего найдено: {item.count}</p> */}
+        <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего найдено: {item.count}</p>
       </div>
       <div className="flex-shrink-0 self-center">
         <ChevronRightIcon className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]" aria-hidden="true" />

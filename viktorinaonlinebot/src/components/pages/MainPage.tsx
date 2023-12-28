@@ -3,7 +3,7 @@ import { SetStateAction, useState } from "react";
 import Logo from "../img/Logo.png";
 import { useValidateQuery } from "../store/vik/vik.api";
 import ErrorPage from "../ErrorPage";
-import MainListItem from "../MainListItem";
+import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
 
 let menuitems: IMenu[] = [
@@ -72,7 +72,7 @@ export function MainPage() {
                 </b>
               )}
               {menuitems && menuitems.map(item => (
-                <MainListItem key={item.id} item={item} toggleS={openSlide} />
+                <MenuList key={item.id} item={item} toggleS={openSlide} />
               ))}
             </ul>
           </div>
