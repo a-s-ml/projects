@@ -1,7 +1,6 @@
 import { ChevronRightIcon, HomeIcon } from "@heroicons/react/20/solid";
 import {
-  useGetInfoGroupsQuery,
-  useGetMemberCountGroupsQuery,
+  useGetInfoGroupsQuery
 } from "./store/api/groupsSlise";
 
 interface GroupsListItemProps {
@@ -13,12 +12,6 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
     isError: errorGroupInfo,
     data: dataGroupInfo,
   } = useGetInfoGroupsQuery(group);
-
-  const {
-    isLoading: loadGroupsMemberCount,
-    isError: errorGroupMemberCount,
-    data: dataGroupMemberCount,
-  } = useGetMemberCountGroupsQuery(group);
 
   return (
     <>
@@ -44,12 +37,9 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
               <p className="text-sm text-[var(--tg-theme-hint-color)]">
                 {dataGroupInfo.username}
               </p>
-              {errorGroupMemberCount && <p className="text-sm text-[var(--tg-theme-hint-color)]">error</p>}
-              {dataGroupMemberCount && (
                 <p className="text-sm text-[var(--tg-theme-hint-color)]">
-                  {dataGroupMemberCount}
+                  {dataGroupInfo.bio}
                 </p>
-              )}
             </div>
             <div className="flex-shrink-0 self-center">
               <ChevronRightIcon
