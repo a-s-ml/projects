@@ -4,7 +4,7 @@ import { IValidate } from "../../../models/IUser";
 export const vikApi = createApi({
   reducerPath: "vikApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api80q.ru/viktorinaonlinebot/",
+    baseUrl: process.env.REACT_APP_APIURL,
   }),
   endpoints: build => ({
     validate: build.query<IValidate, string>({
