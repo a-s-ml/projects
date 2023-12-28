@@ -41,13 +41,13 @@ export function MainPage() {
   const [slideData, setSlideData] = useState("");
 
   function openSlide(s: SetStateAction<string>) {
-    setSlideState(!slideState);
+    setSlideState(!slideState)
     if (!slideState) {
-      tg.BackButton.show();
-      setSlideData(s);
+      tg.BackButton.hide()
+      setSlideData(s)
     }
     if (slideState) {
-      tg.BackButton.hide();
+      tg.BackButton.show()
     }
   }
 
