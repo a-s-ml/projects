@@ -1,4 +1,4 @@
-import { useGetGroupsQuery } from "./store/vik/groupsSlise";
+import { useGetGroupsQuery } from "./store/api/groupsSlise";
 import GroupsListItem from "./GroupsListItem";
 import ErrorPage from "./ErrorPage";
 

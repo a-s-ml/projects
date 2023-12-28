@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { vikApi } from "./vik/vik.api";
+import { vikApi } from "./api/vik.api";
 
 export const store = configureStore({
   reducer: {

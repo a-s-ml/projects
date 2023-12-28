@@ -1,7 +1,7 @@
 import SlidePage from "./SlidePage";
 import { SetStateAction, useState } from "react";
 import Logo from "../img/Logo.png";
-import { useValidateQuery } from "../store/vik/vik.api";
+import { useValidateQuery } from "../store/api/vik.api";
 import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";

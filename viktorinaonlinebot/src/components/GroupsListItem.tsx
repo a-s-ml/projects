@@ -1,5 +1,5 @@
 import { ChevronRightIcon, HomeIcon } from "@heroicons/react/20/solid";
-import { useGetInfoGroupsQuery, useGetMemberCountGroupsQuery } from "./store/vik/groupsSlise";
+import { useGetInfoGroupsQuery, useGetMemberCountGroupsQuery } from "./store/api/tg.api";
 
 interface GroupsListItemProps {
   group: number;
