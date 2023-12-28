@@ -22,7 +22,7 @@ export default function GroupsList({ chat }: GroupsListProps) {
       {errorGroups && <ErrorPage />}
       {dataGroups &&
         dataGroups.map((group) => (
-          <GroupsListItem key={group.id} group={group.id} />
+          <GroupsListItem key={group.id} group={+group.chat} />
         ))}
     </>
   );
