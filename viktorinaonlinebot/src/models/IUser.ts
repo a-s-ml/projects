@@ -16,7 +16,26 @@ export interface IUserData {
 export interface IValidate {
   validate: boolean;
   UserData: IUserData;
-  groups: number;
-  answers: number;
-  questions: number;
+  ProgressData: IProgressData;
+}
+
+export interface IProgressData {
+  groupsProgress: IGroupsProgress;
+  answersProgress: IAnswersProgress;
+  questionsProgress: IQuestionsProgress;
+}
+
+export interface IGroupsProgress {
+  all: number;
+  active: number;
+}
+
+export interface IAnswersProgress {
+  all: number;
+  right: number;
+}
+
+export interface IQuestionsProgress {
+  all: number;
+  moderate: number;
 }

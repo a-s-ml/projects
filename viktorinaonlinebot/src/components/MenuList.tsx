@@ -4,6 +4,7 @@ import { IMenu } from '../models/IMenu'
 interface MenuItemsProps {
   toggleS(n: string): void
   item: IMenu
+  // count: number
 }
 
 export default function MenuList({ item, toggleS }: MenuItemsProps) {
@@ -25,7 +26,7 @@ export default function MenuList({ item, toggleS }: MenuItemsProps) {
             {item.text}
           </b>
         </div>
-        <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего найдено: {item.count}</p>
+        <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего найдено: </p>
       </div>
       <div className="flex-shrink-0 self-center">
         <ChevronRightIcon className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]" aria-hidden="true" />

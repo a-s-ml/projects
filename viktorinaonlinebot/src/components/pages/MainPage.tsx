@@ -5,27 +5,28 @@ import { useValidateQuery } from "../store/api/vik.api";
 import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
+import { IValidate } from "../../models/IUser";
 
 let menuitems: IMenu[] = [
   {
-    id:   1,
+    id: 1,
     name: "groups",
     text: "Мои группы",
-    count: 0
   },
   {
-    id:   2,
+    id: 2,
     name: "questions",
     text: "Мои вопросы",
-    count: 0
   },
   {
-    id:   3,
+    id: 3,
     name: "answers",
     text: "Мои ответы",
-    count: 0
-  }
-]
+  },
+];
+
+type KeyIMenu = keyof IMenu
+type KeyIValidate = keyof IValidate
 
 export function MainPage() {
   const tg = window.Telegram.WebApp;
@@ -41,13 +42,13 @@ export function MainPage() {
   const [slideData, setSlideData] = useState("");
 
   function openSlide(s: SetStateAction<string>) {
-    setSlideState(!slideState)
+    setSlideState(!slideState);
     if (!slideState) {
-      tg.BackButton.show()
-      setSlideData(s)
+      tg.BackButton.show();
+      setSlideData(s);
     }
     if (slideState) {
-      tg.BackButton.hide()
+      tg.BackButton.hide();
     }
   }
 
@@ -68,17 +69,25 @@ export function MainPage() {
             </div>
           </div>
           <div className="mt-10">
-            <ul className="mt-4">
-              {errorUser && <ErrorPage />}
-              {loadUser && (
-                <b className="text-center text-[var(--tg-theme-text-color)]">
-                  Loading...
-                </b>
-              )}
-              {menuitems && menuitems.map(item => (
-                <MenuList key={item.id} item={item} toggleS={openSlide} />
-              ))}
-            </ul>
+            {errorUser && <ErrorPage />}
+            {loadUser && (
+              <b className="text-center text-[var(--tg-theme-text-color)]">
+                Loading...
+              </b>
+            )}
+            {dataUser && (
+              <ul className="mt-4">
+                {menuitems &&
+                  menuitems.map((item) => (
+                    <MenuList
+                      key={item.id}
+                      item={item}
+                      // count={dataUser[item.name as KeyIValidate]}
+                      toggleS={openSlide}
+                    />
+                  ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>
