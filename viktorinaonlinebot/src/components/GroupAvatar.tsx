@@ -17,11 +17,11 @@ export default function GroupAvatar({ id }: GroupAvatarProps) {
 
   return (
     <>
+      {loadPhoto && <p>sdfsf</p>}
       {dataPhoto && (
         <img
           className="inline-block h-14 w-14 rounded-full"
-          src="data:image/png;base64,https://api80q.ru/viktorinaonlinebot/chat/tgGetFilePhoto/"
-          alt="Проверка фото"
+          src={`"data:image/png;base64," + ${dataPhoto}`}
         />
       )}
     </>

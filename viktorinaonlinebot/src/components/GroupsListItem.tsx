@@ -18,7 +18,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
 
   if(dataGroupInfo){
     if(dataGroupInfo.photo) {
-      strId = dataGroupInfo.photo.big_file_id
+      strId = dataGroupInfo.photo.small_file_id
     }
   }
 
