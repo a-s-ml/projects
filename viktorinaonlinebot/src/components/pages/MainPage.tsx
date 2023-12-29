@@ -5,7 +5,7 @@ import { useValidateQuery } from "../store/api/vik.api";
 import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
-import { IValidate } from "../../models/IUser";
+import { IProgressData } from "../../models/IUser";
 
 let menuitems: IMenu[] = [
   {
@@ -25,9 +25,6 @@ let menuitems: IMenu[] = [
   },
 ];
 
-type KeyIMenu = keyof IMenu
-type KeyIValidate = keyof IValidate
-
 export function MainPage() {
   const tg = window.Telegram.WebApp;
 
@@ -37,8 +34,8 @@ export function MainPage() {
     data: dataUser,
   } = useValidateQuery(tg.initData);
 
-  if(dataUser) {
-    console.log(dataUser)
+  if (dataUser) {
+    console.log(dataUser);
   }
 
   const [slideState, setSlideState] = useState(false);
@@ -72,27 +69,29 @@ export function MainPage() {
               </p>
             </div>
           </div>
-          <div className="mt-10">
-            {errorUser && <ErrorPage />}
-            {loadUser && (
-              <b className="text-center text-[var(--tg-theme-text-color)]">
-                Loading...
-              </b>
-            )}
-            {dataUser && (
-              <ul className="mt-4">
-                {menuitems &&
-                  menuitems.map((item) => (
-                    <MenuList
-                      key={item.id}
-                      item={item}
-                      // count={dataUser[item.name as KeyIValidate]}
-                      toggleS={openSlide}
-                    />
-                  ))}
-              </ul>
-            )}
-          </div>
+          {dataUser && (
+            <div className="mt-10">
+              {errorUser && <ErrorPage />}
+              {loadUser && (
+                <b className="text-center text-[var(--tg-theme-text-color)]">
+                  Loading...
+                </b>
+              )}
+              {dataUser.validate && (
+                <ul className="mt-4">
+                  {menuitems &&
+                    menuitems.map((item) => (
+                      <MenuList
+                        key={item.id}
+                        item={item}
+                        progress={dataUser.ProgressData}
+                        toggleS={openSlide}
+                      />
+                    ))}
+                </ul>
+              )}
+            </div>
+          )}
         </div>
       </div>
       {dataUser && (
