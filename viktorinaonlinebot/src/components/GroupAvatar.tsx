@@ -4,8 +4,9 @@ interface GroupAvatarProps {
     id: string;
   }
 
-
 export default function GroupAvatar( {id}: GroupAvatarProps) {
+
+    console.log(id)
 
     const {
         isLoading: loadPhoto,
