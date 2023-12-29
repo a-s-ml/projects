@@ -2,13 +2,11 @@ import { ChevronRightIcon, HomeIcon } from '@heroicons/react/20/solid'
 import { useGetGroupsQuery } from './store/api/groupsSlise';
 
 interface QuestionsListProps {
-  chat: number
+  chat: number 
 }
 export default function QuestionsList({ chat }: QuestionsListProps) {
 
     const {
-        isLoading: loadGroups,
-        isError: errorGroup,
         data: dataGroup,
       } = useGetGroupsQuery(chat);
 
@@ -34,7 +32,7 @@ export default function QuestionsList({ chat }: QuestionsListProps) {
             {/* {item.text} */}
           </b>
         </div>
-        {/* <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего найдено: {item.count}</p> */}
+        <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего найдено: </p>
       </div>
       <div className="flex-shrink-0 self-center">
         <ChevronRightIcon className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]" aria-hidden="true" />
