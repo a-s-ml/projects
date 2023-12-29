@@ -19,10 +19,16 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         url: `chat/groupMemberCountById/${chat}`,
       }),
     }),
+    getFilePhoto: build.query<string, string>({
+      query: (id: string) => ({
+        url: `chat/tgGetFilePhoto/${id}`,
+      }),
+    }),
   }),
 });
 
 export const {
+  useGetFilePhotoQuery,
   useGetGroupsQuery,
   useGetInfoGroupsQuery,
   useGetMemberCountGroupsQuery,
