@@ -20,10 +20,12 @@ export default function GroupsList({ chat }: GroupsListProps) {
     <>
       {loadGroups && <p>Loading...</p>}
       {errorGroups && <ErrorPage />}
-      {dataGroups &&
-        dataGroups.map((group) => (
-          <GroupsListItem key={group.id} group={+group.chat} />
-        ))}
+      <ul className="mt-4">
+        {dataGroups &&
+          dataGroups.map((group) => (
+            <GroupsListItem key={group.id} group={+group.chat} />
+          ))}
+      </ul>
     </>
   );
 }
