@@ -12,10 +12,6 @@ export default function GroupsList({ chat }: GroupsListProps) {
     data: dataGroups,
   } = useGetGroupsQuery(chat);
 
-  if (dataGroups) {
-    console.log(dataGroups);
-  }
-
   return (
     <>
       {loadGroups && <p>Loading...</p>}

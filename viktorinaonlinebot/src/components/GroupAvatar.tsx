@@ -11,10 +11,6 @@ export default function GroupAvatar({ id }: GroupAvatarProps) {
     data: dataPhoto,
   } = useGetFilePhotoQuery(id);
 
-  if (dataPhoto) {
-    console.log(dataPhoto);
-  }
-
   return (
     <>
       {loadPhoto && <p>sdfsf</p>}
