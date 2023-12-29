@@ -21,7 +21,7 @@ export default function GroupAvatar( {id}: GroupAvatarProps) {
   return (
     <img
       className="inline-block h-14 w-14 rounded-full"
-      src={`data:image/png;base64,https://api80q.ru/viktorinaonlinebot/chat/tgGetFilePhoto/${id}`}
+      src="data:image/png;base64,https://api80q.ru/viktorinaonlinebot/chat/tgGetFilePhoto/AQADAgADO8MxG1DlIEsACAMAA4qo_sIW____hHpcgxmvTlU0BA"
       alt="Проверка фото"
     />
   );
