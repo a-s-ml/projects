@@ -7,7 +7,6 @@ import GroupAvatar from "./GroupAvatar";
 interface GroupsListItemProps {
   group: number;
 }
-let strId: string = "";
 
 export default function GroupsListItem({ group }: GroupsListItemProps) {
   const {
@@ -24,7 +23,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
           <div className="group relative flex items-start space-x-3 py-4">
             <div className="flex-shrink-0">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
-                {dataGroupInfo.photo?.small_file_id && <GroupAvatar id={strId}/>}
+                {dataGroupInfo.photo?.small_file_id && <GroupAvatar id={dataGroupInfo.photo?.small_file_id}/>}
               </span>
             </div>
             <div className="min-w-0 flex-1">
