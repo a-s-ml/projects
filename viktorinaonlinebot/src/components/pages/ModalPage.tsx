@@ -6,16 +6,18 @@ interface ModalProps {
   modalData: number;
   toggleStateM: boolean;
   toggleM(n: number): void;
+  toggleS(n: string): void
 }
 
 export default function ModalPage({
   toggleStateM,
   toggleM,
+  toggleS,
   modalData,
 }: ModalProps) {
 
   const tg = window.Telegram.WebApp;
-  tg.offEvent("backButtonClicked", () => console.log());
+  tg.offEvent("backButtonClicked", () => toggleS(''));
   tg.onEvent("backButtonClicked", () => toggleM(0));
 
   return (

@@ -5,7 +5,6 @@ import { useValidateQuery } from "../store/api/vik.api";
 import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
-import { IProgressData } from "../../models/IUser";
 
 let menuitems: IMenu[] = [
   {

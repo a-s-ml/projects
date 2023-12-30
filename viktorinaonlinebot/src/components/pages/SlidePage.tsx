@@ -63,6 +63,7 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
         <ModalPage
           toggleStateM={modalState}
           toggleM={openModal}
+          toggleS={toggleS}
           modalData={modalData}
         />
         </>
