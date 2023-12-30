@@ -1,8 +1,9 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import ErrorPage from '../ErrorPage';
 import GroupsList from '../GroupsList';
 import QuestionsList from '../QuestionsList';
+import ModalPage from './ModalPage';
 
 interface SlideItemsProps {
     slideData: string
@@ -15,8 +16,21 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
 
     const tg = window.Telegram.WebApp;
     tg.onEvent('backButtonClicked', () => toggleS(''))
-    
+
+    const [modalState, setModalState] = useState(false);
+  
+    function openModal() {
+      setModalState(!modalState);
+      if (!modalState) {
+        tg.BackButton.show();
+      }
+      if (modalState) {
+        tg.BackButton.hide();
+      }
+    }
+
     return (
+        <>
         <Transition.Root show={toggleStateS} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={() => toggleS('')}>
                 <div className="fixed inset-0 overflow-hidden">
@@ -33,7 +47,7 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
                             >
                                 <Dialog.Panel className="pointer-events-auto relative w-screen">
                                     <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                                        {slideData === "groups" && <GroupsList chat={chat}/>}
+                                        {slideData === "groups" && <GroupsList chat={chat} toggleM={openModal}/>}
                                         {slideData === "questions" && <QuestionsList chat={chat}/>}
                                         {slideData === "answers" && <ErrorPage/>}
                                     </div>
@@ -44,5 +58,10 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
                 </div>
             </Dialog>
         </Transition.Root>
+        <ModalPage
+          toggleStateM={modalState}
+          toggleM={openModal}
+        />
+        </>
     )
 }

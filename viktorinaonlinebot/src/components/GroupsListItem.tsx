@@ -3,10 +3,11 @@ import { useGetInfoGroupsQuery } from "./store/api/groupsSlise";
 import GroupAvatar from "./GroupAvatar";
 
 interface GroupsListItemProps {
+  toggleM(): void;
   group: number;
 }
 
-export default function GroupsListItem({ group }: GroupsListItemProps) {
+export default function GroupsListItem({ group, toggleM }: GroupsListItemProps) {
   const {
     isLoading: loadGroupsInfo,
     isError: errorGroupInfo,
@@ -14,7 +15,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
   } = useGetInfoGroupsQuery(group);
 
   return (
-    <li>
+    <li onClick={() => toggleM()}>
       {errorGroupInfo && <li>error</li>}
       {dataGroupInfo && (
         <div className="group relative flex items-start space-x-3 py-4">
