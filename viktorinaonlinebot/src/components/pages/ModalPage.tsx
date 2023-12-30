@@ -13,6 +13,11 @@ export default function ModalPage({
   toggleM,
   modalData,
 }: ModalProps) {
+
+  const tg = window.Telegram.WebApp;
+  tg.offEvent("backButtonClicked", () => console.log());
+  tg.onEvent("backButtonClicked", () => toggleM(0));
+
   return (
     <Transition.Root show={toggleStateM} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={() => toggleM(0)}>

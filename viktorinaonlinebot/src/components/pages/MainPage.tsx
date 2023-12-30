@@ -27,6 +27,7 @@ let menuitems: IMenu[] = [
 
 export function MainPage() {
   const tg = window.Telegram.WebApp;
+  tg.expand()
 
   const {
     isLoading: loadUser,
