@@ -1,31 +1,21 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { CheckCircleIcon, CheckIcon } from "@heroicons/react/24/outline";
+import { CheckIcon } from "@heroicons/react/24/outline";
 
 interface ModalProps {
+  modalData: bigint;
   toggleStateM: boolean;
-  toggleM(n: string): void;
+  toggleM(n: bigint): void;
 }
 
-export default function ModalPage({ toggleStateM, toggleM }: ModalProps) {
-  const tg = window.Telegram.WebApp;
-  tg.onEvent("backButtonClicked", () => toggleM(''));
-
+export default function ModalPage({
+  toggleStateM,
+  toggleM,
+  modalData,
+}: ModalProps) {
   return (
     <Transition.Root show={toggleStateM} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={() => toggleM('')}>
-        <Transition.Child
-          as={Fragment}
-          enter="ease-out duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-        </Transition.Child>
-
+      <Dialog as="div" className="relative z-10" onClose={() => toggleM(0n)}>
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child
@@ -50,7 +40,7 @@ export default function ModalPage({ toggleStateM, toggleM }: ModalProps) {
                       as="h3"
                       className="text-base font-semibold leading-6 text-gray-900"
                     >
-                      Payment successful
+                      {modalData.toString()}
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
@@ -61,15 +51,6 @@ export default function ModalPage({ toggleStateM, toggleM }: ModalProps) {
                       </p>
                     </div>
                   </div>
-                </div>
-                <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
-                  <button
-                    type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:col-start-2"
-                    onClick={() => toggleM('')}
-                  >
-                    Deactivate
-                  </button>
                 </div>
               </Dialog.Panel>
             </Transition.Child>

@@ -28,13 +28,6 @@ export default function MenuList({ item, progress, toggleS }: MenuItemsProps) {
           </b>
         </div>
         <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего:</p>
-        <p className="text-sm text-[var(--tg-theme-header-bg-color)]">Всего:</p>
-        <p className="text-sm text-[var(--tg-theme-accent-text-color)]">Всего:</p>
-        <p className="text-sm text-[var(--tg-theme-section-bg-color)]">Всего:</p>
-        <p className="text-sm text-[var(--tg-theme-section-header-text-color)]">Всего:</p>
-        <p className="text-sm text-[var(--tg-theme-subtitle-text-color)]">Всего:</p>
-        <p className="text-sm text-[var(--tg-theme-destructive-text-color)]">Всего:</p>
-        {/* <p className="text-sm text-[var(--tg-theme-hint-color)]">Активных: {groupsProgress.active}</p> */}
       </div>
       <div className="flex-shrink-0 self-center">
         <ChevronRightIcon className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]" aria-hidden="true" />

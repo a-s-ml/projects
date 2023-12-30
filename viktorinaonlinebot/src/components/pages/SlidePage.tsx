@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, SetStateAction, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import ErrorPage from '../ErrorPage';
 import GroupsList from '../GroupsList';
@@ -17,9 +17,10 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
     const tg = window.Telegram.WebApp;
     tg.onEvent('backButtonClicked', () => toggleS(''))
 
+    const [modalData, setModalData] = useState(0n);
     const [modalState, setModalState] = useState(false);
   
-    function openModal() {
+    function openModal(s: SetStateAction<bigint>) {
       setModalState(!modalState);
       if (!modalState) {
         tg.BackButton.show();
@@ -61,6 +62,7 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
         <ModalPage
           toggleStateM={modalState}
           toggleM={openModal}
+          modalData={modalData}
         />
         </>
     )
