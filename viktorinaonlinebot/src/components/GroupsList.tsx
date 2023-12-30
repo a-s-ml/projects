@@ -4,7 +4,7 @@ import ErrorPage from "./ErrorPage";
 
 interface GroupsListProps {
   chat: number;
-  toggleM(n: bigint): void;
+  toggleM(n: number): void;
 }
 export default function GroupsList({ chat, toggleM }: GroupsListProps) {
   const {

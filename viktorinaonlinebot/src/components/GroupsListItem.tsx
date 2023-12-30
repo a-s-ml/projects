@@ -3,7 +3,7 @@ import { useGetInfoGroupsQuery } from "./store/api/groupsSlise";
 import GroupAvatar from "./GroupAvatar";
 
 interface GroupsListItemProps {
-  toggleM(n: bigint): void;
+  toggleM(n: number): void;
   group: number;
 }
 
@@ -21,7 +21,7 @@ export default function GroupsListItem({
     <>
       {errorGroupInfo && <li>error</li>}
       {dataGroupInfo && (
-        <li onClick={() => toggleM(dataGroupInfo.id)}>
+        <li onClick={() => toggleM(group)}>
           <div className="group relative flex items-start space-x-3 py-4">
             <div className="flex-shrink-0">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">

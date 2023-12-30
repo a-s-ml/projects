@@ -3,9 +3,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
 interface ModalProps {
-  modalData: bigint;
+  modalData: number;
   toggleStateM: boolean;
-  toggleM(n: bigint): void;
+  toggleM(n: number): void;
 }
 
 export default function ModalPage({
@@ -15,7 +15,7 @@ export default function ModalPage({
 }: ModalProps) {
   return (
     <Transition.Root show={toggleStateM} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={() => toggleM(0n)}>
+      <Dialog as="div" className="relative z-10" onClose={() => toggleM(0)}>
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child
@@ -40,7 +40,7 @@ export default function ModalPage({
                       as="h3"
                       className="text-base font-semibold leading-6 text-gray-900"
                     >
-                      {modalData.toString()}
+                      {modalData}
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
