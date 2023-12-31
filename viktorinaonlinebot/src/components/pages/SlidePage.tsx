@@ -32,14 +32,6 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
     //     tg.BackButton.hide();
     //   }
     // }
-    const { isOpen } = useModalSelector((store) => store.modal)
-    const dispatch = useModalDispatch()
-
-    const openModal = () => {
-        isOpen && dispatch(closeModal)
-     }
-
-    console.log(store.getState())
 
     return (
         <>
@@ -70,9 +62,7 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
                 </div>
             </Dialog>
         </Transition.Root>
-        <ModalPage
-          toggleM={openModal}
-        />
+        <ModalPage />
         </>
     )
 }
