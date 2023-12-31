@@ -4,9 +4,8 @@ import ErrorPage from "./ErrorPage";
 
 interface GroupsListProps {
   chat: number;
-  toggleM(n: number): void;
 }
-export default function GroupsList({ chat, toggleM }: GroupsListProps) {
+export default function GroupsList({ chat }: GroupsListProps) {
   const {
     isLoading: loadGroups,
     isError: errorGroups,
@@ -20,7 +19,7 @@ export default function GroupsList({ chat, toggleM }: GroupsListProps) {
       <ul className="mt-4">
         {dataGroups &&
           dataGroups.map((group) => (
-            <GroupsListItem key={group.id} group={+group.chat} toggleM={toggleM}/>
+            <GroupsListItem key={group.id} group={+group.chat}/>
           ))}
       </ul>
     </>

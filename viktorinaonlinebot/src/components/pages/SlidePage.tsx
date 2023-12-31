@@ -59,7 +59,7 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
                             >
                                 <Dialog.Panel className="pointer-events-auto relative w-screen">
                                     <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                                        {slideData === "groups" && <GroupsList chat={chat} toggleM={openModal}/>}
+                                        {slideData === "groups" && <GroupsList chat={chat}/>}
                                         {slideData === "questions" && <QuestionsList chat={chat}/>}
                                         {slideData === "answers" && <ErrorPage/>}
                                     </div>
