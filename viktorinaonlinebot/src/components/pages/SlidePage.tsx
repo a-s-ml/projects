@@ -4,8 +4,6 @@ import ErrorPage from '../ErrorPage';
 import GroupsList from '../GroupsList';
 import QuestionsList from '../QuestionsList';
 import ModalPage from './ModalPage';
-import store, { useModalDispatch, useModalSelector } from '../store';
-import { closeModal } from '../store/modal.slice';
 
 interface SlideItemsProps {
     slideData: string

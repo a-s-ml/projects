@@ -5,6 +5,8 @@ import { useValidateQuery } from "../store/api/vik.api";
 import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
+import { openModal } from "../store/modal.slice";
+import { useDispatch } from "react-redux";
 
 let menuitems: IMenu[] = [
   {
@@ -53,6 +55,8 @@ export function MainPage() {
     }
   }
 
+  const dispatch = useDispatch()
+
   return (
     <>
       <div className="container p-6 mx-auto">
@@ -92,6 +96,9 @@ export function MainPage() {
               )}
             </div>
           )}
+          <button onClick={() =>
+            dispatch(openModal)
+          }>Modal</button>
         </div>
       </div>
       {dataUser && (

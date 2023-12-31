@@ -2,7 +2,7 @@ import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import { useGetInfoGroupsQuery } from "./store/api/groups.slice";
 import GroupAvatar from "./GroupAvatar";
 import { openModal } from "./store/modal.slice";
-import { useModalDispatch } from "./store";
+import { useDispatch } from "react-redux";
 
 interface GroupsListItemProps {
   group: number;
@@ -15,7 +15,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
     data: dataGroupInfo,
   } = useGetInfoGroupsQuery(group);
 
-  const dispatch = useModalDispatch();
+  const dispatch = useDispatch();
 
   return (
     <>

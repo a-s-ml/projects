@@ -1,14 +1,15 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { useModalSelector, useModalDispatch } from "../store";
 import { closeModal } from "../store/modal.slice";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 interface ModalProps {}
 
 export default function ModalPage({}: ModalProps) {
-  const { isOpen } = useModalSelector((store) => store.modal);
-  const dispatch = useModalDispatch();
+  const { isOpen } = useSelector((store: { modal: any; }) => store.modal);
+  const dispatch = useDispatch();
 
   const tg = window.Telegram.WebApp;
   tg.onEvent("backButtonClicked", () => dispatch(closeModal));
