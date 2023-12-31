@@ -1,5 +1,5 @@
 import { ChevronRightIcon, HomeIcon } from '@heroicons/react/20/solid'
-import { useGetGroupsQuery } from './store/api/groupsSlise';
+import { useGetGroupsQuery } from './store/api/groups.slice';
 
 interface QuestionsListProps {
   chat: number 

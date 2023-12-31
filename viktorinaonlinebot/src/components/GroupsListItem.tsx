@@ -1,5 +1,5 @@
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
-import { useGetInfoGroupsQuery } from "./store/api/groupsSlise";
+import { useGetInfoGroupsQuery } from "./store/api/groups.slice";
 import GroupAvatar from "./GroupAvatar";
 
 interface GroupsListItemProps {

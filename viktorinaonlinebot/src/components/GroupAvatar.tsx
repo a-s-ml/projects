@@ -1,4 +1,4 @@
-import { useGetFilePhotoQuery } from "./store/api/groupsSlise";
+import { useGetFilePhotoQuery } from "./store/api/groups.slice";
 
 interface GroupAvatarProps {
   id: string;
