@@ -1,28 +1,26 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
+import { useModalSelector, useModalDispatch } from "../store";
+import { closeModal } from "../store/modal.slice";
 
 interface ModalProps {
-  modalData: number;
-  toggleStateM: boolean;
-  toggleM(n: number): void;
-  toggleS(n: string): void
+  toggleM(): void;
 }
 
 export default function ModalPage({
-  toggleStateM,
-  toggleM,
-  toggleS,
-  modalData,
+  toggleM
 }: ModalProps) {
 
-  const tg = window.Telegram.WebApp;
-  tg.offEvent("backButtonClicked", () => toggleS(''));
-  tg.onEvent("backButtonClicked", () => toggleM(0));
+  const { isOpen } = useModalSelector((store) => store.modal)
+  const dispatch = useModalDispatch()
 
+  const tg = window.Telegram.WebApp;
+  tg.onEvent('backButtonClicked', () => dispatch(closeModal))
+  
   return (
-    <Transition.Root show={toggleStateM} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={() => toggleM(0)}>
+    <Transition.Root show={isOpen} as={Fragment}>
+      <Dialog as="div" className="relative z-10" onClose={() => dispatch(closeModal)}>
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child
@@ -47,7 +45,7 @@ export default function ModalPage({
                       as="h3"
                       className="text-base font-semibold leading-6 text-gray-900"
                     >
-                      {modalData}
+                      {/* {modalData} */}
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">

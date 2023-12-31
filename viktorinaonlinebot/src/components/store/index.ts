@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { vikApi } from "./api/vik.api";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { modalSlice } from "./app.slice";
+import { modalSlice } from "./modal.slice";
+import { useDispatch, TypedUseSelectorHook, useSelector } from "react-redux";
 
 const store = configureStore({
   reducer: {
     [vikApi.reducerPath]: vikApi.reducer,
-    modalReducer: modalSlice.reducer
+    modal: modalSlice.reducer
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(vikApi.middleware),
   devTools: true

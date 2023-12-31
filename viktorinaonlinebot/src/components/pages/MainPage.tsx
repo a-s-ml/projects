@@ -5,7 +5,6 @@ import { useValidateQuery } from "../store/api/vik.api";
 import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
-import store from "../store";
 
 let menuitems: IMenu[] = [
   {
@@ -53,8 +52,7 @@ export function MainPage() {
       tg.BackButton.hide();
     }
   }
-  console.log(store.getState())
-  
+
   return (
     <>
       <div className="container p-6 mx-auto">

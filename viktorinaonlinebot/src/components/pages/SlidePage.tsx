@@ -4,6 +4,8 @@ import ErrorPage from '../ErrorPage';
 import GroupsList from '../GroupsList';
 import QuestionsList from '../QuestionsList';
 import ModalPage from './ModalPage';
+import store, { useModalDispatch, useModalSelector } from '../store';
+import { closeModal } from '../store/modal.slice';
 
 interface SlideItemsProps {
     slideData: string
@@ -17,19 +19,27 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
     const tg = window.Telegram.WebApp;
     tg.onEvent('backButtonClicked', () => toggleS(''))
 
-    const [modalData, setModalData] = useState(0);
-    const [modalState, setModalState] = useState(false);
+    // const [modalData, setModalData] = useState(0);
+    // const [modalState, setModalState] = useState(false);
   
-    function openModal(s: SetStateAction<number>) {
-      setModalState(!modalState);
-      if (!modalState) {
-        tg.BackButton.show();
-        setModalData(s);
-      }
-      if (modalState) {
-        tg.BackButton.hide();
-      }
-    }
+    // function openModal(s: SetStateAction<number>) {
+    //   setModalState(!modalState);
+    //   if (!modalState) {
+    //     tg.BackButton.show();
+    //     setModalData(s);
+    //   }
+    //   if (modalState) {
+    //     tg.BackButton.hide();
+    //   }
+    // }
+    const { isOpen } = useModalSelector((store) => store.modal)
+    const dispatch = useModalDispatch()
+
+    const openModal = () => {
+        isOpen && dispatch(closeModal)
+     }
+
+    console.log(store.getState())
 
     return (
         <>
@@ -61,10 +71,7 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
             </Dialog>
         </Transition.Root>
         <ModalPage
-          toggleStateM={modalState}
           toggleM={openModal}
-          toggleS={toggleS}
-          modalData={modalData}
         />
         </>
     )
