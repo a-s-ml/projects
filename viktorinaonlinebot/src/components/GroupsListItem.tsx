@@ -8,22 +8,24 @@ interface GroupsListItemProps {
   group: number;
 }
 
-export default function GroupsListItem({
-  group
-}: GroupsListItemProps) {
+export default function GroupsListItem({ group }: GroupsListItemProps) {
   const {
     isLoading: loadGroupsInfo,
     isError: errorGroupInfo,
     data: dataGroupInfo,
   } = useGetInfoGroupsQuery(group);
 
-  const dispatch = useModalDispatch()
+  const dispatch = useModalDispatch();
 
   return (
     <>
       {errorGroupInfo && <li>error</li>}
       {dataGroupInfo && (
-        <li onClick={() => dispatch(openModal)}>
+        <li
+          onClick={() => {
+            dispatch(openModal)
+          }}
+        >
           <div className="group relative flex items-start space-x-3 py-4">
             <div className="flex-shrink-0">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
