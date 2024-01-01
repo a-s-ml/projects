@@ -21,10 +21,11 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
       {errorGroupInfo && <li>error</li>}
       {dataGroupInfo && (
         <li
-        onClick={() => {
-          dispatch(showModal(true))
-          dispatch(dataModal(group))
-        }}
+          className="px-1 py-1 sm:px-0"
+          onClick={() => {
+            dispatch(showModal(true));
+            dispatch(dataModal(group));
+          }}
         >
           <div className="group relative flex items-start space-x-3 py-4">
             <div className="flex-shrink-0">
