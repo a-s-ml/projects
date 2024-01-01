@@ -63,7 +63,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
                 className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
                 aria-hidden="true"
               />
-            </div>
+            </div> 
           </div>
           <div className="group relative flex items-start space-x-3 py-1">
             <div className="min-w-0 flex-1">
