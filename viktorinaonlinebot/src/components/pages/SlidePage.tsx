@@ -17,10 +17,16 @@ export default function SlidePage({
   const slide = useAppSelector(selectSlide);
   const slideData = useAppSelector(selectSlideData);
   const dispatch = useAppDispatch();
-
   const tg = window.Telegram.WebApp;
-  tg.BackButton.show();
-  tg.onEvent("backButtonClicked", () => dispatch(showSlide(false)));
+
+  if(slide) {
+    tg.BackButton.show();
+    tg.onEvent("backButtonClicked", () => dispatch(showSlide(false)));
+  }
+  if(!slide) {
+    tg.BackButton.show();
+    tg.offEvent("backButtonClicked", () => dispatch(showSlide(false)));
+  }
 
   return (
     <>
