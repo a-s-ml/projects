@@ -94,7 +94,7 @@ export function MainPage() {
         className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
         onClick={() => dispatch(isVisible)}
       >
-        Add Amount
+        Visible
       </button><br></br>
       <button
         type="button"
