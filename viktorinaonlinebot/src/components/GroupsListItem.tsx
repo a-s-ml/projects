@@ -1,12 +1,12 @@
+import { Cog8ToothIcon } from "@heroicons/react/24/outline";
 import {
-  CogIcon,
-  Cog6ToothIcon,
-  Cog8ToothIcon
-} from "@heroicons/react/24/outline";
-import { useGetInfoGroupsQuery } from "./store/api/groups.slice";
+  useGetInfoActiveGroupsQuery,
+  useGetInfoGroupsQuery,
+} from "./store/api/groups.slice";
 import GroupAvatar from "./GroupAvatar";
 import { useAppDispatch } from "./store";
 import { showModal, dataModal } from "./store/api/modal.slice";
+import Active from "./Active";
 
 interface GroupsListItemProps {
   group: number;
@@ -18,6 +18,8 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
     isError: errorGroupInfo,
     data: dataGroupInfo,
   } = useGetInfoGroupsQuery(group);
+  const { data: dataGroupActive } = useGetInfoActiveGroupsQuery(group);
+
   const dispatch = useAppDispatch();
 
   return (
@@ -61,13 +63,13 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
             <div className="flex-shrink-0 self-center">
               <Cog8ToothIcon
                 className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
-                aria-hidden="true" 
+                aria-hidden="true"
               />
-            </div> 
+            </div>
           </div>
           <div className="group relative flex items-start space-x-3">
             <div className="min-w-0 flex">
-              <p className="text-sm text-[var(--tg-theme-hint-color)]">dfgdf</p>
+              {dataGroupActive && <Active />}
             </div>
             <div className="min-w-0 flex">
               <p className="text-sm text-[var(--tg-theme-hint-color)]">dssfs</p>

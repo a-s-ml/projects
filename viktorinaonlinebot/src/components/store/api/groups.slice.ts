@@ -14,6 +14,11 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         url: `chat/groupInfoById/${chat}`,
       }),
     }),
+    getInfoActiveGroups: build.query<boolean, number>({
+      query: (chat: number) => ({
+        url: `chat-active/${chat}`,
+      }),
+    }),
     getMemberCountGroups: build.query<number, number>({
       query: (chat: number) => ({
         url: `chat/groupMemberCountById/${chat}`,
@@ -32,4 +37,5 @@ export const {
   useGetGroupsQuery,
   useGetInfoGroupsQuery,
   useGetMemberCountGroupsQuery,
+  useGetInfoActiveGroupsQuery
 } = extendedApiSlice;
