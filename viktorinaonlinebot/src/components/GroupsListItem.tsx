@@ -1,14 +1,6 @@
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import { useGetInfoGroupsQuery } from "./store/api/groups.slice";
 import GroupAvatar from "./GroupAvatar";
-import { useAppSelector, useAppDispatch } from "../components/store/hooks";
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-  selectCount,
-} from "../components/store/features/counter/counterSlice";
-import { useState } from "react";
 
 interface GroupsListItemProps {
   group: number;
@@ -21,34 +13,8 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
     data: dataGroupInfo,
   } = useGetInfoGroupsQuery(group);
 
-  const count = useAppSelector(selectCount);
-  const dispatch = useAppDispatch();
-  const [incrementAmount, setIncrementAmount] = useState("2");
-  const incrementValue = Number(incrementAmount) || 0;
-
   return (
     <>
-    <span>{count}</span>
-      <input
-        aria-label="Set increment amount"
-        value={incrementAmount}
-        onChange={(e) => setIncrementAmount(e.target.value)}
-      />
-      <button onClick={() => dispatch(incrementByAmount(incrementValue))}>
-        Add Amount
-      </button>
-      <button
-        aria-label="Increment value"
-        onClick={() => dispatch(increment())}
-      >
-        -
-      </button>
-      <button
-        aria-label="Decrement value"
-        onClick={() => dispatch(decrement())}
-      >
-        -
-      </button>
       {errorGroupInfo && <li>error</li>}
       {dataGroupInfo && (
         <li>
