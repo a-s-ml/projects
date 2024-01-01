@@ -48,11 +48,13 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
                   {dataGroupInfo.title}
                 </b>
               </div>
+              {dataGroupInfo.username && (
+                <p className="text-sm text-[var(--tg-theme-hint-color)]">
+                  @{dataGroupInfo.username}
+                </p>
+              )}
               <p className="text-sm text-[var(--tg-theme-hint-color)]">
-                {dataGroupInfo.username}
-              </p>
-              <p className="text-sm text-[var(--tg-theme-hint-color)]">
-                {dataGroupInfo.bio}
+                sfgsfgsgfsfgs dghdgdghdxghdg hdhdfhdhdfh
               </p>
             </div>
             <div className="flex-shrink-0 self-center">
