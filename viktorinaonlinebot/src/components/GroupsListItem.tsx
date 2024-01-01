@@ -58,7 +58,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
               <ChevronRightIcon
                 className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
                 aria-hidden="true"
-              />
+              /> 
             </div>
             <p className="text-sm text-[var(--tg-theme-hint-color)]">
               sfgsfgsgfsfgs dghdgdghdxghdg hdhdfhdhdfh
