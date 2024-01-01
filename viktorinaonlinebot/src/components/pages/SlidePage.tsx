@@ -3,27 +3,29 @@ import { Dialog, Transition } from "@headlessui/react";
 import ErrorPage from "../ErrorPage";
 import GroupsList from "../GroupsList";
 import QuestionsList from "../QuestionsList";
+import { selectSlide, showSlide } from "../store/api/slide.slice";
+import { useAppDispatch, useAppSelector } from "../store";
 
 interface SlideItemsProps {
   slideData: string;
-  toggleStateS: boolean;
-  toggleS(n: string): void;
   chat: number;
 }
 
 export default function SlidePage({
-  toggleStateS,
-  toggleS,
   slideData,
   chat,
 }: SlideItemsProps) {
+
+  const slide = useAppSelector(selectSlide);
+  const dispatch = useAppDispatch();
+
   const tg = window.Telegram.WebApp;
-  tg.onEvent("backButtonClicked", () => toggleS(""));
+  tg.onEvent("backButtonClicked", () => dispatch(showSlide(false)));
 
   return (
     <>
-      <Transition.Root show={toggleStateS} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={() => toggleS("")}>
+      <Transition.Root show={slide} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={() => dispatch(showSlide(false))}>
           <div className="fixed inset-0 overflow-hidden">
             <div className="absolute inset-0 overflow-hidden">
               <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full">

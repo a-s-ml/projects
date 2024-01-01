@@ -111,7 +111,6 @@ export function MainPage() {
                         key={item.id}
                         item={item}
                         progress={dataUser.ProgressData}
-                        toggleS={openSlide}
                       />
                     ))}
                 </ul>
@@ -122,8 +121,6 @@ export function MainPage() {
       </div>
       {dataUser && (
         <SlidePage
-          toggleStateS={slideState}
-          toggleS={openSlide}
           slideData={slideData}
           chat={dataUser.UserData.user.id}
         />

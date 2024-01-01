@@ -1,19 +1,23 @@
 import { ChevronRightIcon, HomeIcon } from "@heroicons/react/20/solid";
 import { IMenu } from "../models/IMenu";
 import { IProgressData } from "../models/IUser";
+import { useAppDispatch } from "./store";
+import { showSlide } from "./store/api/slide.slice";
 
 interface MenuItemsProps {
-  toggleS(n: string): void;
   item: IMenu;
   progress: IProgressData;
 }
 
-export default function MenuList({ item, progress, toggleS }: MenuItemsProps) {
+export default function MenuList({ item }: MenuItemsProps) {
+  
+  const dispatch = useAppDispatch();
+
   return (
     <li
       key={item.id}
       onClick={() => {
-        toggleS(item.name);
+        dispatch(showSlide(true));
       }}
     >
       <div className="group relative flex items-start space-x-3 py-4">
