@@ -10,15 +10,15 @@ interface MenuItemsProps {
 }
 
 export default function MenuList({ item }: MenuItemsProps) {
-  
   const dispatch = useAppDispatch();
 
   return (
     <li
+      className="px-4 py-4 sm:px-0"
       key={item.id}
       onClick={() => {
-        dispatch(showSlide(true))
-        dispatch(dataSlide(item.name))
+        dispatch(showSlide(true));
+        dispatch(dataSlide(item.name));
       }}
     >
       <div className="group relative flex items-start space-x-3 py-4">
