@@ -1,8 +1,14 @@
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import { useGetInfoGroupsQuery } from "./store/api/groups.slice";
 import GroupAvatar from "./GroupAvatar";
-import { openModal } from "./store/modal.slice";
-import { useModalSelector, useModalDispatch } from "./store";
+import { useAppSelector, useAppDispatch } from "../components/store/hooks";
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+  selectCount,
+} from "../components/store/features/counter/counterSlice";
+import { useState } from "react";
 
 interface GroupsListItemProps {
   group: number;
@@ -15,18 +21,37 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
     data: dataGroupInfo,
   } = useGetInfoGroupsQuery(group);
 
-  const modal = useModalSelector(state => state.modal.isOpen)
-  const dispatch = useModalDispatch()
+  const count = useAppSelector(selectCount);
+  const dispatch = useAppDispatch();
+  const [incrementAmount, setIncrementAmount] = useState("2");
+  const incrementValue = Number(incrementAmount) || 0;
 
   return (
     <>
+    <span>{count}</span>
+      <input
+        aria-label="Set increment amount"
+        value={incrementAmount}
+        onChange={(e) => setIncrementAmount(e.target.value)}
+      />
+      <button onClick={() => dispatch(incrementByAmount(incrementValue))}>
+        Add Amount
+      </button>
+      <button
+        aria-label="Increment value"
+        onClick={() => dispatch(increment())}
+      >
+        -
+      </button>
+      <button
+        aria-label="Decrement value"
+        onClick={() => dispatch(decrement())}
+      >
+        -
+      </button>
       {errorGroupInfo && <li>error</li>}
       {dataGroupInfo && (
-        <li
-          onClick={() => {
-            dispatch(openModal);
-          }}
-        >
+        <li>
           <div className="group relative flex items-start space-x-3 py-4">
             <div className="flex-shrink-0">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">

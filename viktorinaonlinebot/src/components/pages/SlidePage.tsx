@@ -3,7 +3,6 @@ import { Dialog, Transition } from '@headlessui/react'
 import ErrorPage from '../ErrorPage';
 import GroupsList from '../GroupsList';
 import QuestionsList from '../QuestionsList';
-import ModalPage from './ModalPage';
 
 interface SlideItemsProps {
     slideData: string
@@ -46,7 +45,7 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
                 </div>
             </Dialog>
         </Transition.Root>
-        <ModalPage />
+        {/* <ModalPage /> */}
         </>
     )
 }
