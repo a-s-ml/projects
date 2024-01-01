@@ -17,20 +17,6 @@ export default function SlidePage({ toggleStateS, toggleS, slideData, chat }: Sl
     const tg = window.Telegram.WebApp;
     tg.onEvent('backButtonClicked', () => toggleS(''))
 
-    // const [modalData, setModalData] = useState(0);
-    // const [modalState, setModalState] = useState(false);
-  
-    // function openModal(s: SetStateAction<number>) {
-    //   setModalState(!modalState);
-    //   if (!modalState) {
-    //     tg.BackButton.show();
-    //     setModalData(s);
-    //   }
-    //   if (modalState) {
-    //     tg.BackButton.hide();
-    //   }
-    // }
-
     return (
         <>
         <Transition.Root show={toggleStateS} as={Fragment}>

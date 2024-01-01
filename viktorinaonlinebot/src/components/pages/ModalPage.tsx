@@ -1,26 +1,23 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
+import { useModalSelector, useModalDispatch } from "../store";
 import { closeModal } from "../store/modal.slice";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 
-interface ModalProps {}
+interface ModalProps {
+}
 
 export default function ModalPage({}: ModalProps) {
-  const { isOpen } = useSelector((store: { modal: any; }) => store.modal);
-  const dispatch = useDispatch();
+
+  const { isOpen } = useModalSelector((store) => store.modal)
+  const dispatch = useModalDispatch()
 
   const tg = window.Telegram.WebApp;
-  tg.onEvent("backButtonClicked", () => dispatch(closeModal));
-
+  tg.onEvent('backButtonClicked', () => dispatch(closeModal))
+  
   return (
     <Transition.Root show={isOpen} as={Fragment}>
-      <Dialog
-        as="div"
-        className="relative z-10"
-        onClose={() => dispatch(closeModal)}
-      >
+      <Dialog as="div" className="relative z-10" onClose={() => dispatch(closeModal)}>
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child

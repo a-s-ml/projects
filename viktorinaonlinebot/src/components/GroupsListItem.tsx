@@ -2,7 +2,7 @@ import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import { useGetInfoGroupsQuery } from "./store/api/groups.slice";
 import GroupAvatar from "./GroupAvatar";
 import { openModal } from "./store/modal.slice";
-import { useDispatch } from "react-redux";
+import { useModalSelector, useModalDispatch } from "./store";
 
 interface GroupsListItemProps {
   group: number;
@@ -15,7 +15,8 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
     data: dataGroupInfo,
   } = useGetInfoGroupsQuery(group);
 
-  const dispatch = useDispatch();
+  const modal = useModalSelector(state => state.modal.isOpen)
+  const dispatch = useModalDispatch()
 
   return (
     <>
@@ -23,7 +24,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
       {dataGroupInfo && (
         <li
           onClick={() => {
-            dispatch(openModal)
+            dispatch(openModal);
           }}
         >
           <div className="group relative flex items-start space-x-3 py-4">
