@@ -1,28 +1,30 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '..';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "..";
 
 export interface slideState {
   show: boolean;
-  value: number;
+  data: string;
 }
 
 const initialState: slideState = {
   show: false,
-  value: 0
-}
-
+  data: "",
+};
 
 export const slideSlice = createSlice({
-  name: 'slide',
+  name: "slide",
   initialState,
   reducers: {
     showSlide: (state, action: PayloadAction<boolean>) => {
       state.show = action.payload;
-    }
-  }
+    },
+    dataSlide: (state, action: PayloadAction<string>) => {
+      state.data = action.payload;
+    },
+  },
 });
 
-export const { showSlide } = slideSlice.actions;
+export const { showSlide, dataSlide } = slideSlice.actions;
 
 export const selectSlide = (state: RootState) => state.slide.show;
 

@@ -2,7 +2,7 @@ import { ChevronRightIcon, HomeIcon } from "@heroicons/react/20/solid";
 import { IMenu } from "../models/IMenu";
 import { IProgressData } from "../models/IUser";
 import { useAppDispatch } from "./store";
-import { showSlide } from "./store/api/slide.slice";
+import { showSlide, dataSlide } from "./store/api/slide.slice";
 
 interface MenuItemsProps {
   item: IMenu;
@@ -17,7 +17,8 @@ export default function MenuList({ item }: MenuItemsProps) {
     <li
       key={item.id}
       onClick={() => {
-        dispatch(showSlide(true));
+        dispatch(showSlide(true))
+        dispatch(dataSlide(item.name))
       }}
     >
       <div className="group relative flex items-start space-x-3 py-4">
