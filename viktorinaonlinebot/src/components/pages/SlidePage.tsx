@@ -15,6 +15,7 @@ interface SlideItemsProps {
 }
 
 export default function SlidePage({ chat }: SlideItemsProps) {
+  
   const slide = useAppSelector(selectSlide);
   const slideData = useAppSelector(selectSlideData);
   const dispatch = useAppDispatch();

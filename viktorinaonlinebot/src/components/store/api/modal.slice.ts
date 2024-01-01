@@ -3,12 +3,12 @@ import { RootState } from '..';
 
 export interface modalState {
   show: boolean;
-  value: number;
+  data: number;
 }
 
 const initialState: modalState = {
   show: false,
-  value: 0
+  data: 0
 }
 
 
@@ -18,12 +18,16 @@ export const modalSlice = createSlice({
   reducers: {
     showModal: (state, action: PayloadAction<boolean>) => {
       state.show = action.payload;
-    }
+    },
+    dataModal: (state, action: PayloadAction<number>) => {
+      state.data = action.payload;
+    },
   }
 });
 
-export const { showModal } = modalSlice.actions;
+export const { showModal, dataModal } = modalSlice.actions;
 
 export const selectModal = (state: RootState) => state.modal.show;
+export const selectModalData = (state: RootState) => state.modal.data;
 
 export default modalSlice.reducer;

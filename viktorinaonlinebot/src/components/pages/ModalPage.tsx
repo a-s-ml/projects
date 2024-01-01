@@ -3,7 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
 import { useAppSelector, useAppDispatch } from "../store";
-import { selectModal, showModal } from "../store/api/modal.slice";
+import { selectModal, selectModalData, showModal } from "../store/api/modal.slice";
 
 interface ModalProps {
 }
@@ -11,6 +11,7 @@ interface ModalProps {
 export default function ModalPage({}: ModalProps) {
 
   const modal = useAppSelector(selectModal);
+  const modalData = useAppSelector(selectModalData);
   const dispatch = useAppDispatch();
 
   return (
@@ -40,7 +41,7 @@ export default function ModalPage({}: ModalProps) {
                       as="h3"
                       className="text-base font-semibold leading-6 text-gray-900"
                     >
-                      {/* {modalData} */}
+                      {modalData}
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">

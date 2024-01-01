@@ -1,12 +1,9 @@
 import SlidePage from "./SlidePage";
-import { SetStateAction, useState } from "react";
 import Logo from "../img/Logo.png";
 import { useValidateQuery } from "../store/api/vik.api";
 import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
-import { useAppSelector, useAppDispatch } from "../store";
-import { selectModal, showModal } from "../store/api/modal.slice";
 import ModalPage from "./ModalPage";
 
 let menuitems: IMenu[] = [
@@ -41,9 +38,6 @@ export function MainPage() {
     console.log(dataUser);
   }
 
-  const modal = useAppSelector(selectModal);
-  const dispatch = useAppDispatch();
-
   return (
     <>
       <div className="container p-6 mx-auto">
@@ -58,30 +52,6 @@ export function MainPage() {
                 Бот проводит викторины в группах/каналах используя собственную
                 базу вопросов и вопросы, заданные участниками викторины
               </p>
-              <span className="text-sm font-medium text-[var(--tg-theme-text-color)]">
-                {String(modal)}
-              </span>
-              <br></br>
-              <br></br>
-              <br></br>
-              <button
-                type="button"
-                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
-                onClick={() => dispatch(showModal(false))}
-              >
-                false
-              </button>
-              <br></br>
-              <br></br>
-              <br></br>
-              <button
-                type="button"
-                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
-                onClick={() => dispatch(showModal(true))}
-              >
-                true
-              </button>
-              <br></br>
             </div>
           </div>
           {dataUser && (

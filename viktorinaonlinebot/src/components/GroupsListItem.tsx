@@ -1,6 +1,8 @@
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
 import { useGetInfoGroupsQuery } from "./store/api/groups.slice";
 import GroupAvatar from "./GroupAvatar";
+import { useAppDispatch } from "./store";
+import { showModal, dataModal } from "./store/api/modal.slice";
 
 interface GroupsListItemProps {
   group: number;
@@ -12,12 +14,18 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
     isError: errorGroupInfo,
     data: dataGroupInfo,
   } = useGetInfoGroupsQuery(group);
+  const dispatch = useAppDispatch();
 
   return (
     <>
       {errorGroupInfo && <li>error</li>}
       {dataGroupInfo && (
-        <li>
+        <li
+        onClick={() => {
+          dispatch(showModal(true))
+          dispatch(dataModal(group))
+        }}
+        >
           <div className="group relative flex items-start space-x-3 py-4">
             <div className="flex-shrink-0">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
