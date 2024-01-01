@@ -20,11 +20,11 @@ export default function SlidePage({ chat }: SlideItemsProps) {
   const dispatch = useAppDispatch();
   const tg = window.Telegram.WebApp;
 
-  if (slide === false) {
+  if (slide) {
     tg.BackButton.show();
     tg.onEvent("backButtonClicked", () => dispatch(showSlide(false)));
   }
-  if (slide === true) {
+  if (!slide) {
     tg.BackButton.hide();
     tg.offEvent("backButtonClicked", () => dispatch(showSlide(false)));
   }
