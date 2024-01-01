@@ -12,7 +12,7 @@ const initialState: modalState = {
 }
 
 
-export const counterSlice = createSlice({
+export const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
@@ -22,8 +22,8 @@ export const counterSlice = createSlice({
   }
 });
 
-export const { showModal } = counterSlice.actions;
+export const { showModal } = modalSlice.actions;
 
 export const selectModal = (state: RootState) => state.modal.show;
 
-export default counterSlice.reducer;
+export default modalSlice.reducer;
