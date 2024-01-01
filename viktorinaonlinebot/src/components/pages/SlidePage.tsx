@@ -3,13 +3,6 @@ import { Dialog, Transition } from "@headlessui/react";
 import ErrorPage from "../ErrorPage";
 import GroupsList from "../GroupsList";
 import QuestionsList from "../QuestionsList";
-import { useAppSelector, useAppDispatch } from "../store/hooks";
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-  selectCount,
-} from "../store/features/counter/counterSlice";
 
 interface SlideItemsProps {
   slideData: string;
@@ -27,42 +20,8 @@ export default function SlidePage({
   const tg = window.Telegram.WebApp;
   tg.onEvent("backButtonClicked", () => toggleS(""));
 
-  const count = useAppSelector(selectCount);
-  const dispatch = useAppDispatch();
-  const [incrementAmount, setIncrementAmount] = useState("2");
-  const incrementValue = Number(incrementAmount) || 0;
-
   return (
     <>
-      <span>{count}</span>
-      <input
-        aria-label="Set increment amount"
-        value={incrementAmount}
-        onChange={(e) => setIncrementAmount(e.target.value)}
-      />
-      <button
-        type="button"
-        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-        onClick={() => dispatch(incrementByAmount(incrementValue))}
-      >
-        Add Amount
-      </button>
-      <button
-        type="button"
-        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-        aria-label="Increment value"
-        onClick={() => dispatch(increment())}
-      >
-        -
-      </button>
-      <button
-        type="button"
-        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-        aria-label="Decrement value"
-        onClick={() => dispatch(decrement())}
-      >
-        -
-      </button>
       <Transition.Root show={toggleStateS} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={() => toggleS("")}>
           <div className="fixed inset-0 overflow-hidden">

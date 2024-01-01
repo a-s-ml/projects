@@ -5,6 +5,13 @@ import { useValidateQuery } from "../store/api/vik.api";
 import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
+import { useAppSelector, useAppDispatch } from "../store/hooks";
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+  selectCount,
+} from "../store/features/counter/counterSlice";
 
 let menuitems: IMenu[] = [
   {
@@ -53,6 +60,11 @@ export function MainPage() {
     }
   }
 
+  const count = useAppSelector(selectCount);
+  const dispatch = useAppDispatch();
+  const [incrementAmount, setIncrementAmount] = useState("2");
+  const incrementValue = Number(incrementAmount) || 0;
+
   return (
     <>
       <div className="container p-6 mx-auto">
@@ -67,6 +79,35 @@ export function MainPage() {
                 Бот проводит викторины в группах/каналах используя собственную
                 базу вопросов и вопросы, заданные участниками викторины
               </p>
+              <span>{count}</span>
+      <input
+        aria-label="Set increment amount"
+        value={incrementAmount}
+        onChange={(e) => setIncrementAmount(e.target.value)}
+      />
+      <button
+        type="button"
+        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+        onClick={() => dispatch(incrementByAmount(incrementValue))}
+      >
+        Add Amount
+      </button>
+      <button
+        type="button"
+        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+        aria-label="Increment value"
+        onClick={() => dispatch(increment())}
+      >
+        -
+      </button>
+      <button
+        type="button"
+        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+        aria-label="Decrement value"
+        onClick={() => dispatch(decrement())}
+      >
+        -
+      </button>
             </div>
           </div>
           {dataUser && (
