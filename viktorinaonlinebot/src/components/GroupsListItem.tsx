@@ -1,4 +1,8 @@
-import { ChevronRightIcon, PhotoIcon, CogIcon } from "@heroicons/react/24/outline";
+import {
+  ChevronRightIcon,
+  PhotoIcon,
+  CogIcon,
+} from "@heroicons/react/24/outline";
 import { useGetInfoGroupsQuery } from "./store/api/groups.slice";
 import GroupAvatar from "./GroupAvatar";
 import { useAppDispatch } from "./store";
@@ -27,7 +31,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
             dispatch(dataModal(group));
           }}
         >
-          <div className="group relative flex items-start space-x-3 py-4">
+          <div className="group relative flex items-start space-x-3 py-1">
             <div className="flex-shrink-0">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
                 {dataGroupInfo.photo?.small_file_id && (
@@ -59,11 +63,20 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
                 className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
                 aria-hidden="true"
               />
-            </div> 
+            </div>
           </div>
-          <p className="text-sm text-[var(--tg-theme-hint-color)]">
-            sfgsfgsgfsfgs dghdgdghdxghdg hdhdfhdhdfh
-          </p>
+          <div className="group relative flex items-start space-x-3 py-1">
+            <div className="min-w-0 flex-1">
+              <p className="text-sm text-[var(--tg-theme-hint-color)]">
+                dfgdf
+              </p>
+            </div>
+            <div className="min-w-0 flex-2">
+              <p className="text-sm text-[var(--tg-theme-hint-color)]">
+                dssfs
+              </p>
+            </div>
+          </div>
         </li>
       )}
     </>
