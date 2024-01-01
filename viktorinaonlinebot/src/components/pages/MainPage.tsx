@@ -9,8 +9,10 @@ import { useAppSelector, useAppDispatch } from "../store";
 import {
   decrement,
   increment,
+  isVisible,
   incrementByAmount,
   selectCount,
+  selectVisible,
 } from "../store/features/counter/counterSlice";
 
 let menuitems: IMenu[] = [
@@ -61,6 +63,7 @@ export function MainPage() {
   }
 
   const count = useAppSelector(selectCount);
+  const visible = useAppSelector(selectVisible);
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState("2");
   const incrementValue = Number(incrementAmount) || 0;
@@ -79,12 +82,20 @@ export function MainPage() {
                 Бот проводит викторины в группах/каналах используя собственную
                 базу вопросов и вопросы, заданные участниками викторины
               </p>
+              <span className="text-sm font-medium text-[var(--tg-theme-text-color)]">{String(visible)}</span><br></br>
               <span className="text-sm font-medium text-[var(--tg-theme-text-color)]">{count}</span><br></br>
       <input
         aria-label="Set increment amount"
         value={incrementAmount}
         onChange={(e) => setIncrementAmount(e.target.value)}
       /><br></br>
+      <button
+        type="button"
+        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
+        onClick={() => dispatch(isVisible)}
+      >
+        Add Amount
+      </button><br></br>
       <button
         type="button"
         className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
