@@ -19,6 +19,9 @@ export const counterSlice = createSlice({
     isVisible: (state) => {
       state.visible = !state.visible;
     },
+    isVisByAmount: (state, action: PayloadAction<boolean>) => {
+      state.visible = action.payload;
+    },
     isVis: (state) => {
       state.visible = true;
     },
@@ -37,7 +40,7 @@ export const counterSlice = createSlice({
   }
 });
 
-export const { increment, decrement, incrementByAmount, isVisible, isVis, isnotVis } = counterSlice.actions;
+export const { increment, decrement, incrementByAmount, isVisible, isVis, isnotVis, isVisByAmount } = counterSlice.actions;
 
 export const selectCount = (state: RootState) => state.counter.value;
 export const selectVisible = (state: RootState) => state.counter.visible;
