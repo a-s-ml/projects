@@ -1,14 +1,14 @@
 export default function AddNewGroup() {
   return (
     <li
-    className="border-2 border-dashed border-[var(--tg-theme-hint-color)] p-12 text-center hover:border-[var(--tg-theme-text-color)]"
+    className="border-2 border-dashed border-[var(--tg-theme-hint-color)] hover:border-[var(--tg-theme-text-color)] hover:text-[var(--tg-theme-text-color)]"
     >
       <div className="group relative flex items-start space-x-3 py-4">
         <div className="flex-shrink-0">
           <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
             <div className="inline-block h-10 w-14 rounded-full">
               <svg
-                className="mx-auto h-12 w-12 text-[var(--tg-theme-hint-color)]"
+                className="mx-auto h-12 w-12"
                 stroke="currentColor"
                 fill="none"
                 viewBox="0 0 50 50"
@@ -25,7 +25,7 @@ export default function AddNewGroup() {
           </span>
         </div>
         <div className="min-w-0 flex-1">
-          <div className="text-sm font-medium text-[var(--tg-theme-hint-color)]">
+          <div className="text-sm font-medium">
             <b>
               <span className="absolute inset-0" aria-hidden="true" />
               Добавить группу/канал
