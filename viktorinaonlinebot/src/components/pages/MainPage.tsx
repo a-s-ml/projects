@@ -41,21 +41,6 @@ export function MainPage() {
     console.log(dataUser);
   }
 
-  const [slideState, setSlideState] = useState(false);
-
-  const [slideData, setSlideData] = useState("");
-
-  function openSlide(s: SetStateAction<string>) {
-    setSlideState(!slideState);
-    if (!slideState) {
-      tg.BackButton.show();
-      setSlideData(s);
-    }
-    if (slideState) {
-      tg.BackButton.hide();
-    }
-  }
-
   const modal = useAppSelector(selectModal);
   const dispatch = useAppDispatch();
 
@@ -121,7 +106,6 @@ export function MainPage() {
       </div>
       {dataUser && (
         <SlidePage
-          slideData={slideData}
           chat={dataUser.UserData.user.id}
         />
       )}

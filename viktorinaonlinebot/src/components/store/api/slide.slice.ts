@@ -27,5 +27,6 @@ export const slideSlice = createSlice({
 export const { showSlide, dataSlide } = slideSlice.actions;
 
 export const selectSlide = (state: RootState) => state.slide.show;
+export const selectSlideData = (state: RootState) => state.slide.data;
 
 export default slideSlice.reducer;
