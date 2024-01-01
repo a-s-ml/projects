@@ -62,6 +62,8 @@ export function MainPage() {
                 {String(modal)}
               </span>
               <br></br>
+              <br></br>
+              <br></br>
               <button
                 type="button"
                 className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
@@ -69,6 +71,8 @@ export function MainPage() {
               >
                 false
               </button>
+              <br></br>
+              <br></br>
               <br></br>
               <button
                 type="button"
