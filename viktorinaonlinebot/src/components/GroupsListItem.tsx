@@ -7,6 +7,7 @@ import GroupAvatar from "./GroupAvatar";
 import { useAppDispatch } from "./store";
 import { showModal, dataModal } from "./store/api/modal.slice";
 import Active from "./Active";
+import NotActive from "./notActive";
 
 interface GroupsListItemProps {
   group: number;
@@ -69,7 +70,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
           </div>
           <div className="group relative flex items-start space-x-3">
             <div className="min-w-0 flex">
-              {dataGroupActive && <Active />}
+              {dataGroupActive ? <Active /> : <NotActive />}
             </div>
             <div className="min-w-0 flex">
               <p className="text-sm text-[var(--tg-theme-hint-color)]">dssfs</p>
