@@ -63,7 +63,7 @@ export function MainPage() {
                 </b>
               )}
               {dataUser.validate && (
-                <ul role="list" className="mt-4 divide-y divide-[var(--tg-theme-accent-text-color)]">
+                <ul role="list" className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]">
                   {menuitems &&
                     menuitems.map((item) => (
                       <MenuList

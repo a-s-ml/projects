@@ -14,7 +14,7 @@ export default function MenuList({ item }: MenuItemsProps) {
 
   return (
     <li
-      className="px-4 py-4 sm:px-0"
+      className="px-1 py-1 sm:px-0"
       key={item.id}
       onClick={() => {
         dispatch(showSlide(true));
