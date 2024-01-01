@@ -1,6 +1,4 @@
 import {
-  ChevronRightIcon,
-  PhotoIcon,
   CogIcon,
   Cog6ToothIcon
 } from "@heroicons/react/24/outline";
@@ -62,7 +60,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
             <div className="flex-shrink-0 self-center">
               <Cog6ToothIcon
                 className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
-                aria-hidden="true"
+                aria-hidden="true" 
               />
             </div> 
           </div>
