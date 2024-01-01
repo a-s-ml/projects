@@ -1,4 +1,4 @@
-import { ChevronRightIcon } from "@heroicons/react/20/solid";
+import { ChevronRightIcon, PhotoIcon, CogIcon } from "@heroicons/react/24/outline";
 import { useGetInfoGroupsQuery } from "./store/api/groups.slice";
 import GroupAvatar from "./GroupAvatar";
 import { useAppDispatch } from "./store";
@@ -55,7 +55,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
               )}
             </div>
             <div className="flex-shrink-0 self-center">
-              <ChevronRightIcon
+              <CogIcon
                 className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
                 aria-hidden="true"
               />

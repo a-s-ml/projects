@@ -1,7 +1,7 @@
 import { useGetGroupsQuery } from "./store/api/groups.slice";
 import GroupsListItem from "./GroupsListItem";
 import ErrorPage from "./ErrorPage";
-import AddNewGroup from "./addNewGroup";
+import AddNewGroup from "./AddNewGroup";
 
 interface GroupsListProps {
   chat: number;
