@@ -7,6 +7,7 @@ import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
 import { useAppSelector, useAppDispatch } from "../store";
 import { selectModal, showModal } from "../store/api/modal.slice";
+import ModalPage from "./ModalPage";
 
 let menuitems: IMenu[] = [
   {
@@ -127,6 +128,7 @@ export function MainPage() {
           chat={dataUser.UserData.user.id}
         />
       )}
+      <ModalPage />
     </>
   );
 }

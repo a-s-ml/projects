@@ -2,14 +2,20 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
+import { useAppSelector, useAppDispatch } from "../store";
+import { selectModal, showModal } from "../store/api/modal.slice";
+
 interface ModalProps {
 }
 
 export default function ModalPage({}: ModalProps) {
 
+  const modal = useAppSelector(selectModal);
+  const dispatch = useAppDispatch();
+
   return (
-    <Transition.Root show={false} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={()=>false}>
+    <Transition.Root show={modal} as={Fragment}>
+      <Dialog as="div" className="relative z-10" onClose={()=>dispatch(showModal(false))}>
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child
