@@ -79,19 +79,19 @@ export function MainPage() {
                 Бот проводит викторины в группах/каналах используя собственную
                 базу вопросов и вопросы, заданные участниками викторины
               </p>
-              <span className="text-sm font-medium text-[var(--tg-theme-text-color)]">{count}</span>
+              <span className="text-sm font-medium text-[var(--tg-theme-text-color)]">{count}</span><br></br>
       <input
         aria-label="Set increment amount"
         value={incrementAmount}
         onChange={(e) => setIncrementAmount(e.target.value)}
-      />
+      /><br></br>
       <button
         type="button"
         className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
         onClick={() => dispatch(incrementByAmount(incrementValue))}
       >
         Add Amount
-      </button>
+      </button><br></br>
       <button
         type="button"
         className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
@@ -99,7 +99,7 @@ export function MainPage() {
         onClick={() => dispatch(increment())}
       >
         - Add
-      </button>
+      </button><br></br>
       <button
         type="button"
         className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
