@@ -6,17 +6,7 @@ import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
 import { useAppSelector, useAppDispatch } from "../store";
-import {
-  decrement,
-  increment,
-  isVisible,
-  incrementByAmount,
-  selectCount,
-  selectVisible,
-  isVis,
-  isnotVis,
-  isVisByAmount,
-} from "../store/features/counter/counterSlice";
+import { selectModal, showModal } from "../store/api/modal.slice";
 
 let menuitems: IMenu[] = [
   {
@@ -38,7 +28,7 @@ let menuitems: IMenu[] = [
 
 export function MainPage() {
   const tg = window.Telegram.WebApp;
-  tg.expand()
+  tg.expand();
 
   const {
     isLoading: loadUser,
@@ -65,11 +55,8 @@ export function MainPage() {
     }
   }
 
-  const count = useAppSelector(selectCount);
-  const visible = useAppSelector(selectVisible);
+  const modal = useAppSelector(selectModal);
   const dispatch = useAppDispatch();
-  const [incrementAmount, setIncrementAmount] = useState("2");
-  const incrementValue = Number(incrementAmount) || 0;
 
   return (
     <>
@@ -85,71 +72,26 @@ export function MainPage() {
                 Бот проводит викторины в группах/каналах используя собственную
                 базу вопросов и вопросы, заданные участниками викторины
               </p>
-              <span className="text-sm font-medium text-[var(--tg-theme-text-color)]">{String(visible)}</span><br></br>
-              <span className="text-sm font-medium text-[var(--tg-theme-text-color)]">{count}</span><br></br>
-      <input
-        aria-label="Set increment amount"
-        value={incrementAmount}
-        onChange={(e) => setIncrementAmount(e.target.value)}
-      /><br></br>
-      <button
-        type="button"
-        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
-        onClick={() => dispatch(isVisByAmount(false))}
-      >
-        false
-      </button><br></br>      
-      <button
-        type="button"
-        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
-        onClick={() => dispatch(isVisByAmount(true))}
-      >
-        true
-      </button><br></br>      
-      <button
-        type="button"
-        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
-        onClick={() => dispatch(isVisible)}
-      >
-        Visible
-      </button><br></br>
-      <button
-        type="button"
-        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
-        onClick={() => dispatch(isVis)}
-      >
-        isVis
-      </button><br></br>
-      <button
-        type="button" 
-        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
-        onClick={() => dispatch(isnotVis)}
-      >
-        isNotVis
-      </button><br></br>
-      <button
-        type="button"
-        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
-        onClick={() => dispatch(incrementByAmount(incrementValue))}
-      >
-        Add Amount
-      </button><br></br>
-      <button
-        type="button"
-        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
-        aria-label="Increment value"
-        onClick={() => dispatch(increment())}
-      >
-        - Add
-      </button><br></br>
-      <button
-        type="button"
-        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
-        aria-label="Decrement value"
-        onClick={() => dispatch(decrement())}
-      >
-        + Add
-      </button>
+              <span className="text-sm font-medium text-[var(--tg-theme-text-color)]">
+                {String(modal)}
+              </span>
+              <br></br>
+              <button
+                type="button"
+                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
+                onClick={() => dispatch(showModal(false))}
+              >
+                false
+              </button>
+              <br></br>
+              <button
+                type="button"
+                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--tg-theme-text-color)]"
+                onClick={() => dispatch(showModal(true))}
+              >
+                true
+              </button>
+              <br></br>
             </div>
           </div>
           {dataUser && (

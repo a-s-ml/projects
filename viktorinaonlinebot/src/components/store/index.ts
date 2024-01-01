@@ -1,12 +1,12 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from './features/counter/counterSlice';
+import modalReducer from './api/modal.slice';
 import { vikApi } from './api/vik.api';
 
 export const store = configureStore({
   reducer: {
     [vikApi.reducerPath]: vikApi.reducer,
-    counter: counterReducer,
+    modal: modalReducer,
   },
 });
 
