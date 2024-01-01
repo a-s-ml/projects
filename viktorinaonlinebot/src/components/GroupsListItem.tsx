@@ -25,13 +25,13 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
       {errorGroupInfo && <li>error</li>}
       {dataGroupInfo && (
         <li
-          className="px-1 py-1 sm:px-0"
+          className="py-4 sm:px-0"
           onClick={() => {
             dispatch(showModal(true));
             dispatch(dataModal(group));
           }}
         >
-          <div className="group relative flex items-start space-x-3 py-1">
+          <div className="group relative flex items-start space-x-3">
             <div className="flex-shrink-0">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
                 {dataGroupInfo.photo?.small_file_id && (
@@ -65,7 +65,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
               />
             </div> 
           </div>
-          <div className="group relative flex items-start space-x-3 py-1">
+          <div className="group relative flex items-start space-x-3">
             <div className="min-w-0 flex">
               <p className="text-sm text-[var(--tg-theme-hint-color)]">dfgdf</p>
             </div>
