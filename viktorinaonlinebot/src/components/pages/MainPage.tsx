@@ -5,7 +5,7 @@ import { useValidateQuery } from "../store/api/vik.api";
 import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
-import { useAppSelector, useAppDispatch } from "../store/hooks";
+import { useAppSelector, useAppDispatch } from "../store";
 import {
   decrement,
   increment,
