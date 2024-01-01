@@ -4,7 +4,7 @@ export default function NotActive() {
         <div className="flex-none rounded-full bg-emerald-500/20 p-1">
           <div className="h-1.5 w-1.5 rounded-full bg-red-500" />
         </div>
-        <p className="text-xs leading-5 text-red-500">Нактивн</p>
+        <p className="text-xs leading-5 text-red-500">Нактивна</p>
       </div>
     );
   }

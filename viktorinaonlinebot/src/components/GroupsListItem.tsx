@@ -8,6 +8,7 @@ import { useAppDispatch } from "./store";
 import { showModal, dataModal } from "./store/api/modal.slice";
 import Active from "./Active";
 import NotActive from "./notActive";
+import Type from "./Type";
 
 interface GroupsListItemProps {
   group: number;
@@ -73,7 +74,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
               {dataGroupActive ? <Active /> : <NotActive />}
             </div>
             <div className="min-w-0 flex">
-              <p className="text-sm text-[var(--tg-theme-hint-color)]">dssfs</p>
+              <Type />
             </div>
           </div>
         </li>
