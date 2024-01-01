@@ -67,14 +67,12 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
           </div>
           <div className="group relative flex items-start space-x-3 py-1">
             <div className="min-w-0 flex-1">
-              <p className="text-sm text-[var(--tg-theme-hint-color)]">
-                dfgdf
-              </p>
+              <p className="text-sm text-[var(--tg-theme-hint-color)]">dfgdf</p>
             </div>
+          </div>
+          <div className="group relative flex items-start space-x-3 py-1">
             <div className="min-w-0 flex-2">
-              <p className="text-sm text-[var(--tg-theme-hint-color)]">
-                dssfs
-              </p>
+              <p className="text-sm text-[var(--tg-theme-hint-color)]">dssfs</p>
             </div>
           </div>
         </li>
