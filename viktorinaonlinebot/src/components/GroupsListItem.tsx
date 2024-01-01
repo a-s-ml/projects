@@ -53,9 +53,6 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
                   @{dataGroupInfo.username}
                 </p>
               )}
-              <p className="text-sm text-[var(--tg-theme-hint-color)]">
-                sfgsfgsgfsfgs dghdgdghdxghdg hdhdfhdhdfh
-              </p>
             </div>
             <div className="flex-shrink-0 self-center">
               <ChevronRightIcon
@@ -63,6 +60,9 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
                 aria-hidden="true"
               />
             </div>
+            <p className="text-sm text-[var(--tg-theme-hint-color)]">
+              sfgsfgsgfsfgs dghdgdghdxghdg hdhdfhdhdfh
+            </p>
           </div>
         </li>
       )}
