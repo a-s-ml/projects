@@ -1,4 +1,4 @@
-import { Fragment, SetStateAction, useState } from "react";
+import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import ErrorPage from "../ErrorPage";
 import GroupsList from "../GroupsList";
@@ -65,7 +65,6 @@ export default function SlidePage({ chat }: SlideItemsProps) {
           </div>
         </Dialog>
       </Transition.Root>
-      {/* <ModalPage /> */}
     </>
   );
 }
