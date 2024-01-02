@@ -3,20 +3,27 @@ import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
 import { useAppSelector, useAppDispatch } from "../store";
-import { selectModal, selectModalData, showModal } from "../store/api/modal.slice";
+import {
+  selectModal,
+  selectModalData,
+  showModal,
+} from "../store/api/modal.slice";
+import SettingsGroupForm from "../SettingsGroupForm";
 
-interface ModalProps {
-}
+interface ModalProps {}
 
 export default function ModalPage({}: ModalProps) {
-
   const modal = useAppSelector(selectModal);
   const modalData = useAppSelector(selectModalData);
   const dispatch = useAppDispatch();
 
   return (
     <Transition.Root show={modal} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={()=>dispatch(showModal(false))}>
+      <Dialog
+        as="div"
+        className="relative z-10"
+        onClose={() => dispatch(showModal(false))}
+      >
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child
@@ -44,12 +51,7 @@ export default function ModalPage({}: ModalProps) {
                       {modalData}
                     </Dialog.Title>
                     <div className="mt-2">
-                      <p className="text-sm text-gray-500">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Eius aliquam laudantium explicabo pariatur iste
-                        dolorem animi vitae error totam. At sapiente aliquam
-                        accusamus facere veritatis.
-                      </p>
+                      <SettingsGroupForm />
                     </div>
                   </div>
                 </div>
