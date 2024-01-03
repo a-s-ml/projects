@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
 import { useAppSelector, useAppDispatch } from "../store";
@@ -16,11 +16,13 @@ export default function ModalPage({}: ModalProps) {
   const modalData = useAppSelector(selectModalData);
   const dispatch = useAppDispatch();
 
+  const cancelButtonRef = useRef(null)
   return (
     <>
-      <Transition.Root show={modal} as={Fragment}>
+      <Transition.Root show={modal}   as={Fragment}>
         <Dialog
           as="div"
+          initialFocus={cancelButtonRef}
           className="relative z-10"
           onClose={() => dispatch(showModal(false))}
         >
@@ -64,6 +66,7 @@ export default function ModalPage({}: ModalProps) {
                       type="button"
                       className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       onClick={() => dispatch(showModal(false))}
+                      ref={cancelButtonRef}
                     >
                       Go back to dashboard
                     </button>
