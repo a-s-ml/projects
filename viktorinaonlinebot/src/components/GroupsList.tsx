@@ -17,7 +17,10 @@ export default function GroupsList({ chat }: GroupsListProps) {
     <>
       {loadGroups && <p>Loading...</p>}
       {errorGroups && <ErrorPage />}
-      <ul role="list" className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]">
+      <ul
+        role="list"
+        className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
+      >
         <AddNewGroup />
         {dataGroups &&
           dataGroups.map((group) => (
