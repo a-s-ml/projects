@@ -16,67 +16,44 @@ export default function ModalPage({}: ModalProps) {
   const modalData = useAppSelector(selectModalData);
   const dispatch = useAppDispatch();
 
-  const cancelButtonRef = useRef(null) 
+  const cancelButtonRef = useRef(null);
   return (
     <>
-      <Transition.Root show={modal}   as={Fragment}>
-        <Dialog
-          as="div"
-          initialFocus={cancelButtonRef}
-          className="relative z-10"
-          onClose={() => dispatch(showModal(false))}
-        >
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-          </Transition.Child>
+      <div className="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+        <div className="modal-overlay absolute w-full h-full bg-white opacity-95"></div>
 
-          <div className="fixed inset-0 z-10 overflow-y-auto">
-            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                enterTo="opacity-100 translate-y-0 sm:scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-[var(--tg-theme-bg-color)] px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
-                  <div>
-                    <div className="mt-3 text-center sm:mt-5">
-                      <Dialog.Title
-                        as="h3"
-                        className="text-base font-semibold leading-6 text-gray-900"
-                      >
-                        {modalData}
-                      </Dialog.Title>
-                      <SettingsGroupForm />
-                    </div>
-                  </div>
-                  <div className="mt-5 sm:mt-6">
-                    <button
-                      type="button"
-                      className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                      onClick={() => dispatch(showModal(false))}
-                      ref={cancelButtonRef}
-                    >
-                      Go back to dashboard
-                    </button>
-                  </div>
-                </Dialog.Panel>
-              </Transition.Child>
+        <div className="modal-container fixed w-full h-full z-50 overflow-y-auto ">
+          <div className="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-black text-sm z-50">
+            <svg
+              className="fill-current text-black"
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+            >
+              <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+            </svg>
+            (Esc)
+          </div>
+
+          <div className="modal-content container mx-auto h-auto text-left p-4">
+            <div className="flex justify-between items-center pb-2">
+              <p className="text-2xl font-bold">Full Screen Modal!</p>
+            </div>
+
+            <p>Modal content can go here</p>
+
+            <div className="flex justify-end pt-2">
+              <button className="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">
+                Action
+              </button>
+              <button className="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">
+                Close
+              </button>
             </div>
           </div>
-        </Dialog>
-      </Transition.Root>
+        </div>
+      </div>
     </>
   );
 }
