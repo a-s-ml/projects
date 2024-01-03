@@ -16,7 +16,7 @@ export default function ModalPage({}: ModalProps) {
   const modalData = useAppSelector(selectModalData);
   const dispatch = useAppDispatch();
 
-  const cancelButtonRef = useRef(null)
+  const cancelButtonRef = useRef(null) 
   return (
     <>
       <Transition.Root show={modal}   as={Fragment}>
