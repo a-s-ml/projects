@@ -40,6 +40,7 @@ export function MainPage() {
 
   return (
     <>
+    <ModalPage />
       <div className="container p-6 mx-auto">
         <div className="mx-auto max-w-lg">
           <div>
@@ -83,7 +84,6 @@ export function MainPage() {
           chat={dataUser.UserData.user.id}
         />
       )}
-      <ModalPage />
     </>
   );
 }
