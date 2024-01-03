@@ -29,21 +29,20 @@ export default function SettingsGroupForm() {
             </div>
           </div>
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div className="sm:col-span-3">
+            <div>
               <label
-                htmlFor="steps-range"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="customRange3"
+                className="mb-2 inline-block text-neutral-700 dark:text-neutral-200"
               >
-                Range steps
+                Example range
               </label>
               <input
-                id="steps-range"
                 type="range"
+                className="transparent h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-neutral-200"
                 min="0"
                 max="5"
-                value="2.5"
                 step="0.5"
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+                id="customRange3"
               />
             </div>
           </div>
