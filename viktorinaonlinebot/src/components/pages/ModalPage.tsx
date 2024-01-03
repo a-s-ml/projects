@@ -68,9 +68,6 @@ export default function ModalPage({}: ModalProps) {
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
                           <SettingsGroupForm />
-                          Are you sure you want to deactivate your account? All
-                          of your data will be permanently removed from our
-                          servers forever. This action cannot be undone.
                         </p>
                       </div>
                     </div>
