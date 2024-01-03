@@ -44,7 +44,7 @@ export default function SettingsGroupForm() {
                 step="0.5"
                 id="customRange3"
               />
-            </div>
+            </div> 
           </div>
         </div>
 
