@@ -18,8 +18,7 @@ const options = [
 ];
 
 export default function SettingsGroupForm() {
-
-  const [selectedOption, setSelectedOption] = useState(null)
+  const [selectedOption, setSelectedOption] = useState(null);
 
   return (
     <form>
@@ -43,12 +42,6 @@ export default function SettingsGroupForm() {
           </div>
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div>
-              <label
-                htmlFor="customRange3"
-                className="mb-2 inline-block text-neutral-700 dark:text-neutral-200"
-              >
-                Example range
-              </label>
               <input
                 type="range"
                 className="transparent h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-neutral-200"
