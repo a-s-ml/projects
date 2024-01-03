@@ -17,11 +17,11 @@ export default function GroupsList({ chat }: GroupsListProps) {
     <>
       {loadGroups && <p>Loading...</p>}
       {errorGroups && <ErrorPage />}
+      <AddNewGroup />
       <ul
         role="list"
         className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
       >
-        <AddNewGroup />
         {dataGroups &&
           dataGroups.map((group) => (
             <GroupsListItem key={group.id} group={+group.chat} />
