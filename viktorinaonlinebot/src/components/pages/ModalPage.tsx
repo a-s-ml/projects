@@ -17,32 +17,37 @@ export default function ModalPage({}: ModalProps) {
   const dispatch = useAppDispatch();
 
   return (
-    <Transition.Root show={modal} as={Fragment}>
-      <Dialog
-        as="div"
-        className="relative z-10"
-        onClose={() => dispatch(showModal(false))}
-      >
-        <div className="fixed inset-0 z-10 overflow-y-auto">
-          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-[var(--tg-theme-bg-color)] px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
-                <div>
-                  <div className="mt-3 text-center sm:mt-5">
-                    <Dialog.Title
-                      as="h3"
-                      className="text-base font-semibold leading-6 text-[var(--tg-theme-text-color)]"
-                    >
-                      {modalData}
-                    </Dialog.Title>
-                    <div className="mt-2">
-                      <SettingsGroupForm />
+    <>
+      <Transition.Root show={modal} as={Fragment}>
+        <Dialog
+          as="div"
+          className="relative z-10"
+          onClose={() => dispatch(showModal(false))}
+        >
+          <div className="fixed inset-0 overflow-hidden">
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full">
+                <Transition.Child
+                  as={Fragment}
+                  enter="transform transition ease-in-out duration-500 sm:duration-700"
+                  enterFrom="translate-x-full"
+                  enterTo="translate-x-0"
+                  leave="transform transition ease-in-out duration-500 sm:duration-700"
+                  leaveFrom="translate-x-0"
+                  leaveTo="translate-x-full"
+                >
+                  <Dialog.Panel className="pointer-events-auto relative w-screen">
+                    <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                    {modalData}
+                    <SettingsGroupForm />
                     </div>
-                  </div>
-                </div>
-              </Dialog.Panel>
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
+            </div>
           </div>
-        </div>
-      </Dialog>
-    </Transition.Root>
+        </Dialog>
+      </Transition.Root>
+    </>
   );
 }
