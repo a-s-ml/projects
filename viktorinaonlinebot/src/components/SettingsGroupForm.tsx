@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import Select from "react-select";
 
 const options = [
@@ -18,7 +18,13 @@ const options = [
 ];
 
 export default function SettingsGroupForm() {
-  const [selectedOption, setSelectedOption] = useState(null);
+
+  const [selectedOption, setSelectedOption] = useState("")
+
+  const handleChange = (selectedOption: { value: SetStateAction<string> }) => {
+    console.log(selectedOption)
+    setSelectedOption(selectedOption.value)
+  }
 
   return (
     <form>
@@ -36,7 +42,7 @@ export default function SettingsGroupForm() {
                 Country
               </label>
               <div className="mt-2">
-                <Select defaultValue={selectedOption} options={options} />
+                {/* <Select isMulti onChange={handleChange} options={options} /> */}
               </div>
             </div>
           </div>

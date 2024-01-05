@@ -24,7 +24,7 @@ export default function GroupsList({ chat }: GroupsListProps) {
         <AddNewGroup />
         {dataGroups &&
           dataGroups.map((group) => (
-            <GroupsListItem key={group.id} group={+group.chat} />
+            <GroupsListItem key={group.id} group={+group.chat} questionType={group.question_type} time={group.time}/>
           ))}
       </ul>
     </>

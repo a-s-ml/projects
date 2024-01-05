@@ -8,13 +8,19 @@ import { useAppDispatch } from "./store";
 import { showModal, dataModal } from "./store/api/modal.slice";
 import Active from "./Active";
 import NotActive from "./notActive";
-import Type from "./Type";
+import TypeQuestion from "./TypeQuestion";
 
 interface GroupsListItemProps {
   group: number;
+  questionType: number;
+  time: number;
 }
 
-export default function GroupsListItem({ group }: GroupsListItemProps) {
+export default function GroupsListItem({
+  group,
+  questionType,
+  time,
+}: GroupsListItemProps) {
   const {
     isLoading: loadGroupsInfo,
     isError: errorGroupInfo,
@@ -70,12 +76,8 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
             </div>
           </div>
           <div className="group relative flex items-start space-x-3">
-            <div className="min-w-0 flex">
-              {dataGroupActive ? <Active /> : <NotActive />}
-            </div>
-            <div className="min-w-0 flex">
-              <Type />
-            </div>
+            {dataGroupActive ? <Active /> : <NotActive />}
+            <TypeQuestion />
           </div>
         </li>
       )}
