@@ -1,4 +1,9 @@
-import { PhotoIcon } from "@heroicons/react/24/outline";
+import {
+  PhotoIcon,
+  ListBulletIcon,
+  ArrowPathIcon,
+  LanguageIcon,
+} from "@heroicons/react/24/outline";
 
 interface TypeQuestionProps {
   questionType: number;
@@ -9,17 +14,56 @@ export default function TypeQuestion({ questionType }: TypeQuestionProps) {
       <div className="min-w-0 flex">
         <div className="mt-1 flex items-center gap-x-1.5">
           <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-            Вид вопросов:
+            Вид:
           </span>
           {questionType === 1 && (
-            <PhotoIcon
-              className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
-              aria-hidden="true"
-            />
+            <>
+              <PhotoIcon
+                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+                aria-hidden="true"
+              />
+              <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
+                {" "}
+                фото
+              </span>
+            </>
           )}
-          {questionType === 2 && <p>2</p>}
-          {questionType === 3 && <p>3</p>}
-          {questionType === 4 && <p>4</p>}
+          {questionType === 2 && (
+            <>
+              <ListBulletIcon
+                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+                aria-hidden="true"
+              />
+              <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
+                {" "}
+                текст
+              </span>
+            </>
+          )}
+          {questionType === 3 && (
+            <>
+              <LanguageIcon
+                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+                aria-hidden="true"
+              />
+              <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
+                {" "}
+                опрос
+              </span>
+            </>
+          )}
+          {questionType === 4 && (
+            <>
+              <ArrowPathIcon
+                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+                aria-hidden="true"
+              />
+              <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
+                {" "}
+                микс
+              </span>
+            </>
+          )}
         </div>
       </div>
     </div>

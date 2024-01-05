@@ -16,7 +16,7 @@ export default function TimeQuestion({ time }: TimeQuestionProps) {
       <div className="min-w-0 flex">
         <div className="mt-1 flex items-center gap-x-1.5">
           <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-            Вид вопросов:
+            Период:
           </span>
           {dataTime && (
             <ClockIcon
