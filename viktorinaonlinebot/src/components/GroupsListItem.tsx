@@ -75,10 +75,8 @@ export default function GroupsListItem({
               />
             </div>
           </div>
-          <div className="group relative flex items-start space-x-3">
-            {dataGroupActive ? <Active /> : <NotActive />}
-            <TypeQuestion />
-          </div>
+          {dataGroupActive ? <Active /> : <NotActive />}
+          <TypeQuestion questionType={questionType}/>
         </li>
       )}
     </>
