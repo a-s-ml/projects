@@ -9,6 +9,7 @@ import { showModal, dataModal } from "./store/api/modal.slice";
 import Active from "./Active";
 import NotActive from "./notActive";
 import TypeQuestion from "./TypeQuestion";
+import TimeQuestion from "./TimeQuestion";
 
 interface GroupsListItemProps {
   group: number;
@@ -77,6 +78,7 @@ export default function GroupsListItem({
           </div>
           {dataGroupActive ? <Active /> : <NotActive />}
           <TypeQuestion questionType={questionType}/>
+          <TimeQuestion time={time}/>
         </li>
       )}
     </>
