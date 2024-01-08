@@ -10,6 +10,7 @@ import Active from "./Active";
 import NotActive from "./notActive";
 import TypeQuestion from "./TypeQuestion";
 import TimeQuestion from "./TimeQuestion";
+import ToggleButton from "./ToggleButton";
 
 interface GroupsListItemProps {
   group: number;
@@ -89,10 +90,7 @@ export default function GroupsListItem({
               <TimeQuestion time={time} />
             </div>
             <div className="flex-shrink-0 self-center">
-              <Cog8ToothIcon
-                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
-                aria-hidden="true"
-              />
+              <ToggleButton />
             </div>
           </div>
         </li>
