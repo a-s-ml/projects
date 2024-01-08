@@ -65,14 +65,15 @@ export default function GroupsListItem({
             </div>
             <div
               className="flex-shrink-0 self-center"
-              onClick={() => {
-                dispatch(showModal(true));
-                dispatch(dataModal(group));
-              }}
+
             >
               <Cog8ToothIcon
                 className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
                 aria-hidden="true"
+                onClick={() => {
+                  dispatch(showModal(true));
+                  dispatch(dataModal(group));
+                }}
               />
             </div>
           </div>
