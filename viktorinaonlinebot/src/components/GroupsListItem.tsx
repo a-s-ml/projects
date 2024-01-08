@@ -76,9 +76,25 @@ export default function GroupsListItem({
               />
             </div>
           </div>
-          {dataGroupActive ? <Active /> : <NotActive />}
-          <TypeQuestion questionType={questionType} />
-          <TimeQuestion time={time} />
+          <div
+            className="group relative flex items-start space-x-3"
+            onClick={() => {
+              dispatch(showModal(true));
+              dispatch(dataModal(group));
+            }}
+          >
+            <div className="min-w-0 flex-1">
+              {dataGroupActive ? <Active /> : <NotActive />}
+              <TypeQuestion questionType={questionType} />
+              <TimeQuestion time={time} />
+            </div>
+            <div className="flex-shrink-0 self-center">
+              <Cog8ToothIcon
+                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
+                aria-hidden="true"
+              />
+            </div>
+          </div>
         </li>
       )}
     </>
