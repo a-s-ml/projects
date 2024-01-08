@@ -35,16 +35,13 @@ export default function GroupsListItem({
     <>
       {errorGroupInfo && <li>error</li>}
       {dataGroupInfo && (
-        <li
-          className="py-4 sm:px-0"
-          onClick={() => {
-            dispatch(showModal(true));
-            dispatch(dataModal(group));
-          }}
-        >
-          <div className="group relative flex items-start space-x-3">
-            <div className="flex-shrink-0">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
+          <li>
+          <div className="relative pb-8">
+              <span className="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true" />
+
+            <div className="relative flex space-x-3">
+              <div>
+                <span>
                 {dataGroupInfo.photo?.small_file_id && (
                   <GroupAvatar id={dataGroupInfo.photo?.small_file_id} />
                 )}
@@ -54,31 +51,20 @@ export default function GroupsListItem({
                     src="https://images.unsplash.com/photo-1545972154-9bb223aac798?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3050&q=80&exp=8&con=-15&sat=-75"
                   />
                 )}
-              </span>
-            </div>
-            <div className="min-w-0 flex-1">
-              <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
-                <b>
-                  <span className="absolute inset-0" aria-hidden="true" />
-                  {dataGroupInfo.title}
-                </b>
+                </span>
               </div>
-              {dataGroupInfo.username && (
-                <p className="text-sm text-[var(--tg-theme-hint-color)]">
-                  @{dataGroupInfo.username}
-                </p>
-              )}
-            </div>
-            <div className="flex-shrink-0 self-center">
-              <Cog8ToothIcon
-                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
-                aria-hidden="true"
-              />
+              <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                <div>
+                  <p className="text-sm text-gray-500">
+                  {dataGroupInfo.title}
+                  </p>
+                </div>
+                <div className="whitespace-nowrap text-right text-sm text-gray-500">
+                @{dataGroupInfo.username}
+                </div>
+              </div>
             </div>
           </div>
-          {dataGroupActive ? <Active /> : <NotActive />}
-          <TypeQuestion questionType={questionType} />
-          <TimeQuestion time={time} />
         </li>
       )}
     </>
