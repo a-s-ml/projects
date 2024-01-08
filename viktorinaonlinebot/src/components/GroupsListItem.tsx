@@ -37,13 +37,7 @@ export default function GroupsListItem({
       {errorGroupInfo && <li>error</li>}
       {dataGroupInfo && (
         <li className="py-4 sm:px-0">
-          <div
-            className="group relative flex items-start space-x-3"
-            onClick={() => {
-              dispatch(showModal(true));
-              dispatch(dataModal(group));
-            }}
-          >
+          <div className="group relative flex items-start space-x-3">
             <div className="flex-shrink-0">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
                 {dataGroupInfo.photo?.small_file_id && (
@@ -71,10 +65,7 @@ export default function GroupsListItem({
               )}
             </div>
             <div className="flex-shrink-0 self-center">
-              <Cog8ToothIcon
-                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
-                aria-hidden="true"
-              />
+              <ToggleButton />
             </div>
           </div>
           <div
@@ -90,7 +81,10 @@ export default function GroupsListItem({
               <TimeQuestion time={time} />
             </div>
             <div className="flex-shrink-0 self-center">
-              <ToggleButton />
+              <Cog8ToothIcon
+                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
+                aria-hidden="true"
+              />
             </div>
           </div>
         </li>
