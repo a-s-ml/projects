@@ -35,7 +35,13 @@ export default function GroupsListItem({
     <>
       {errorGroupInfo && <li>error</li>}
       {dataGroupInfo && (
-        <li className="py-4 sm:px-0">
+        <li
+          className="py-4 sm:px-0"
+          onClick={() => {
+            dispatch(showModal(true));
+            dispatch(dataModal(group));
+          }}
+        >
           <div className="group relative flex items-start space-x-3">
             <div className="flex-shrink-0">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
@@ -60,20 +66,13 @@ export default function GroupsListItem({
               {dataGroupInfo.username && (
                 <p className="text-sm text-[var(--tg-theme-hint-color)]">
                   @{dataGroupInfo.username}
-                </p> 
+                </p>
               )}
             </div>
-            <div
-              className="flex-shrink-0 self-center"
-
-            >
+            <div className="flex-shrink-0 self-center">
               <Cog8ToothIcon
                 className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
                 aria-hidden="true"
-                onClick={() => {
-                  dispatch(showModal(true));
-                  dispatch(dataModal(group));
-                }}
               />
             </div>
           </div>
