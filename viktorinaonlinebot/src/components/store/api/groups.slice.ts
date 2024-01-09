@@ -22,14 +22,14 @@ export const extendedApiSlice = vikApi.injectEndpoints({
     }),
     setActiveGroups: build.mutation<IActiveChat, number>({
       query: (chat) => ({
-        url: `chat-active/`,
+        url: `/chat-active`,
         method: 'POST',
         body: chat
       }),
     }),
     deleteActiveGroups: build.mutation<IActiveChat, number>({
       query: (chat) => ({
-        url: `chat-active/`,
+        url: `/chat-active`,
         method: 'DELETE',
         body: chat
       }),
