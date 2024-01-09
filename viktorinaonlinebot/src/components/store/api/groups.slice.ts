@@ -1,3 +1,4 @@
+import { ICategoryGroup } from "../../../models/ICategoryGroup";
 import { IActiveChat } from "../../../models/chats/IActiveChat";
 import { IChat } from "../../../models/chats/IChat";
 import { IGroup } from "../../../models/chats/IGroup";
@@ -18,6 +19,11 @@ export const extendedApiSlice = vikApi.injectEndpoints({
     getActiveGroups: build.query<boolean, number>({
       query: (chat) => ({
         url: `chat-active/${chat}`,
+      }),
+    }),
+    getCateoryGroups: build.query<ICategoryGroup[], bigint>({
+      query: (chat) => ({
+        url: `chat-category/${chat}`,
       }),
     }),
     setActiveGroups: build.mutation<IActiveChat, bigint>({
@@ -55,4 +61,5 @@ export const {
   useGetActiveGroupsQuery,
   useSetActiveGroupsMutation,
   useDeleteActiveGroupsMutation,
+  useGetCateoryGroupsQuery
 } = extendedApiSlice;

@@ -9,6 +9,7 @@ import { showModal, dataModal } from "./store/api/modal.slice";
 import TypeQuestion from "./TypeQuestion";
 import TimeQuestion from "./TimeQuestion";
 import ToggleButton from "./ToggleButton";
+import CategoryQuestion from "./CategoryQuestion";
 
 interface GroupsListItemProps {
   group: number;
@@ -76,6 +77,7 @@ export default function GroupsListItem({
             <div className="min-w-0 flex-1">
               <TypeQuestion questionType={questionType} />
               <TimeQuestion time={time} />
+              <CategoryQuestion group={dataGroupInfo.id}/>
             </div>
             <div className="flex-shrink-0 self-center">
               <Cog8ToothIcon

@@ -6,8 +6,6 @@ interface TimeQuestionProps {
 }
 export default function TimeQuestion({ time }: TimeQuestionProps) {
   const {
-    isLoading: loadTime,
-    isError: errorTime,
     data: dataTime,
   } = useGetTimeQuery(time);
 
