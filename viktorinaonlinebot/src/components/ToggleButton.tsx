@@ -58,11 +58,12 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
         onChange={useSetStatusActive}
         className={classNames(
           enabled
-            ? "bg-emerald-500"
-            : "bg-red-500",
+            ? "bg-[var(--tg-theme-accent-text-color)]"
+            : "bg-[var(--tg-theme-hint-color)]",
           "relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer rounded-full border-1 border-transparent transition-colors duration-200 ease-in-out"
         )}
       >
+        <span className="sr-only">Use setting</span>
         <span
           className={classNames(
             enabled ? "translate-x-5" : "translate-x-0",
@@ -79,7 +80,7 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
             aria-hidden="true"
           >
             <svg
-              className="h-2 w-2 text-red-500"
+              className="h-2 w-2 text-gray-400"
               fill="none"
               viewBox="0 0 12 12"
             >
@@ -102,7 +103,7 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
             aria-hidden="true"
           >
             <svg
-              className="h-2 w-2 text-emerald-500"
+              className="h-2 w-2 text-indigo-600"
               fill="currentColor"
               viewBox="0 0 12 12"
             >
