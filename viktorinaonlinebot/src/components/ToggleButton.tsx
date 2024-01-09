@@ -14,7 +14,7 @@ export default function ToggleButton() {
       onChange={setEnabled}
       className={classNames(
         enabled ? 'bg-indigo-600' : 'bg-gray-200',
-        'relative inline-flex h-5 w-10 flex-shrink-0 cursor-pointer rounded-full border-1 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2'
+        'relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer rounded-full border-1 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2'
       )}
     >
       <span className="sr-only">Use setting</span>
