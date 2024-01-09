@@ -1,6 +1,6 @@
 import { Cog8ToothIcon } from "@heroicons/react/24/outline";
 import {
-  useGetInfoActiveGroupsQuery,
+  useGetActiveGroupsQuery,
   useGetInfoGroupsQuery,
 } from "./store/api/groups.slice";
 import GroupAvatar from "./GroupAvatar";
@@ -28,7 +28,7 @@ export default function GroupsListItem({
     isError: errorGroupInfo,
     data: dataGroupInfo,
   } = useGetInfoGroupsQuery(group);
-  const { data: dataGroupActive } = useGetInfoActiveGroupsQuery(group);
+  const { data: dataGroupActive } = useGetActiveGroupsQuery(group);
 
   const dispatch = useAppDispatch();
 

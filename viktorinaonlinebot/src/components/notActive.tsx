@@ -2,7 +2,7 @@ import ToggleButton from "./ToggleButton";
 
 export default function NotActive() {
   return (
-    <div className="text-right">
+    <>
       <div className="group relative flex items-start space-x-3">
         <div className="min-w-0 flex">
           <div className="mt-1 flex items-center gap-x-1.5">
@@ -14,6 +14,6 @@ export default function NotActive() {
         </div>
       </div>
       <ToggleButton />
-    </div>
+    </>
   );
 }
