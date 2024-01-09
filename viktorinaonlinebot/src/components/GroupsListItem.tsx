@@ -6,8 +6,6 @@ import {
 import GroupAvatar from "./GroupAvatar";
 import { useAppDispatch } from "./store";
 import { showModal, dataModal } from "./store/api/modal.slice";
-import Active from "./Active";
-import NotActive from "./notActive";
 import TypeQuestion from "./TypeQuestion";
 import TimeQuestion from "./TimeQuestion";
 import ToggleButton from "./ToggleButton";
@@ -23,12 +21,12 @@ export default function GroupsListItem({
   questionType,
   time,
 }: GroupsListItemProps) {
-  const {
-    isLoading: loadGroupsInfo,
-    isError: errorGroupInfo,
-    data: dataGroupInfo,
-  } = useGetInfoGroupsQuery(group);
+  const { isError: errorGroupInfo, data: dataGroupInfo } =
+    useGetInfoGroupsQuery(group);
   const { data: dataGroupActive } = useGetActiveGroupsQuery(group);
+
+  let state: boolean;
+  dataGroupActive ? (state = true) : (state = false);
 
   const dispatch = useAppDispatch();
 
@@ -65,9 +63,7 @@ export default function GroupsListItem({
               )}
             </div>
             <div className="flex-shrink-0 self-center text-right">
-            {dataGroupActive && (
-              <ToggleButton group={dataGroupInfo.id} state={dataGroupActive}/>
-            )}
+              <ToggleButton group={dataGroupInfo.id} state={state} />
             </div>
           </div>
           <div

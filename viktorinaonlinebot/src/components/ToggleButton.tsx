@@ -44,11 +44,11 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
             </div>
             <p
               className={classNames(
-                enabled ? "bg-emerald-500" : "bg-red-500",
+                enabled ? "text-emerald-500" : "text-red-500",
                 "text-xs leading-5"
               )}
             >
-              Активна
+              Online
             </p>
           </div>
         </div>
