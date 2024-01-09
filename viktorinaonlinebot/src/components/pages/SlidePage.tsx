@@ -36,7 +36,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
         <Dialog
           as="div"
           className="relative z-10"
-          onClose={() => dispatch(showSlide(false))}
+          onClose={() => dispatch(showSlide(true))}
         >
           <div className="fixed inset-0 overflow-hidden">
             <div className="absolute inset-0 overflow-hidden">
