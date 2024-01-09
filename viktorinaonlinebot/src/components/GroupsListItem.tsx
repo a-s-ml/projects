@@ -65,8 +65,7 @@ export default function GroupsListItem({
               )}
             </div>
             <div className="flex-shrink-0 self-center">
-            {dataGroupActive ? <Active /> : <NotActive />}
-              <ToggleButton />
+              {dataGroupActive ? <Active /> : <NotActive />}
             </div>
           </div>
           <div
@@ -77,7 +76,6 @@ export default function GroupsListItem({
             }}
           >
             <div className="min-w-0 flex-1">
-              
               <TypeQuestion questionType={questionType} />
               <TimeQuestion time={time} />
             </div>
