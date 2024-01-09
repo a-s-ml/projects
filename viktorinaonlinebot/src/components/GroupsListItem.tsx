@@ -64,7 +64,7 @@ export default function GroupsListItem({
                 </p>
               )}
             </div>
-            <div className="flex-shrink-0 self-center">
+            <div className="flex-shrink-0 self-center text-right">
               {dataGroupActive ? <Active /> : <NotActive />}
             </div>
           </div>
