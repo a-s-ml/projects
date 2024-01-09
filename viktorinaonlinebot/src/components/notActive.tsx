@@ -10,8 +10,8 @@ export default function NotActive() {
           </div>
           <p className="text-xs leading-5 text-red-500">Нактивна</p>
         </div>
-        <ToggleButton />
       </div>
+      <ToggleButton />
     </div>
   );
 }

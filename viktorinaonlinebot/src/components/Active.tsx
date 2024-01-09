@@ -10,8 +10,8 @@ export default function Active() {
           </div>
           <p className="text-xs leading-5 text-emerald-500">Активна</p>
         </div>
-        <ToggleButton />
       </div>
+      <ToggleButton />
     </div>
   );
 }
