@@ -25,7 +25,7 @@ export default function CategoryQuestion({ group }: CategoryQuestionProps) {
           )}
           <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
             {" "}
-            {checkNum} | {dataCountCategory}
+            {checkNum} из {dataCountCategory}
           </span>
         </div>
       </div>
