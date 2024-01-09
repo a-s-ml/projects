@@ -23,7 +23,7 @@ export default function ToggleButton() {
           enabled ? 'translate-x-5' : 'translate-x-0',
           'pointer-events-none relative inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
         )}
-      >
+      > 
         <span
           className={classNames(
             enabled ? 'opacity-0 duration-100 ease-out' : 'opacity-100 duration-200 ease-in',
