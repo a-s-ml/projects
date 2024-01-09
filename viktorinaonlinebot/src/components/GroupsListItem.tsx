@@ -65,7 +65,9 @@ export default function GroupsListItem({
               )}
             </div>
             <div className="flex-shrink-0 self-center text-right">
-              {dataGroupActive ? <Active /> : <NotActive />}
+            {dataGroupActive && (
+              <ToggleButton group={dataGroupInfo.id} state={dataGroupActive}/>
+            )}
             </div>
           </div>
           <div

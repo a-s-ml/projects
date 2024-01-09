@@ -1,5 +1,3 @@
-import ToggleButton from "./ToggleButton";
-
 export default function NotActive() {
   return (
     <>
@@ -13,7 +11,6 @@ export default function NotActive() {
           </div>
         </div>
       </div>
-      <ToggleButton />
     </>
   );
 }
