@@ -29,10 +29,10 @@ export default function ModalPage({}: ModalProps) {
         >
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-300"
+            enter="ease-out duration-500"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="ease-in duration-200"
+            leave="ease-in duration-500"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
@@ -44,26 +44,24 @@ export default function ModalPage({}: ModalProps) {
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
-                enterFrom="opacity-0 translate-y-4"
-                enterTo="opacity-100 translate-y-0"
-                leave="ease-in duration-300"
-                leaveFrom="opacity-100 translate-y-0"
-                leaveTo="opacity-0 translate-y-4"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="ease-in duration-500"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
               >
                 <Dialog.Panel className="relative transform container w-screen h-full p-6 bg-[var(--tg-theme-bg-color)] transition-all">
-                    <div className="mt-3 text-center"> 
-                      <Dialog.Title
-                        as="h3"
-                        className="text-base font-semibold text-[var(--tg-theme-accent-text-color)]"
-                      >
-                        {modalData}
-                      </Dialog.Title>
-                      <div className="mt-2">
-                        <p className="text-sm text-[var(--tg-theme-accent-text-color)]">
-                          <SettingsGroupForm />
-                        </p>
-                      </div>
-                    </div>
+                  <Dialog.Title
+                    as="h3"
+                    className="text-base font-semibold text-[var(--tg-theme-accent-text-color)]"
+                  >
+                    {modalData}
+                  </Dialog.Title>
+                  <div className="mt-2">
+                    <p className="text-sm text-[var(--tg-theme-accent-text-color)]">
+                      <SettingsGroupForm />
+                    </p>
+                  </div>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
