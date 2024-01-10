@@ -1,4 +1,9 @@
-import { ChevronRightIcon, UsersIcon, QuestionMarkCircleIcon, QueueListIcon } from "@heroicons/react/20/solid";
+import {
+  ChevronRightIcon,
+  UsersIcon,
+  QuestionMarkCircleIcon,
+  QueueListIcon,
+} from "@heroicons/react/20/solid";
 import { IMenu } from "../models/IMenu";
 import { IProgressData } from "../models/IUser";
 import { useAppDispatch } from "./store";
@@ -9,7 +14,7 @@ interface MenuItemsProps {
   progress: IProgressData;
 }
 
-export default function MenuList({ item }: MenuItemsProps) {
+export default function MenuList({ item, progress }: MenuItemsProps) {
   const dispatch = useAppDispatch();
 
   return (
@@ -24,24 +29,24 @@ export default function MenuList({ item }: MenuItemsProps) {
       <div className="group relative flex items-start space-x-3 py-4">
         <div className="flex-shrink-0">
           <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
-          {item.name==='groups' && (
-            <UsersIcon
-              className="h-6 w-6 text-[var(--tg-theme-accent-text-color)]"
-              aria-hidden="true"
-            />
-          )}
-          {item.name==='questions' && (
-            <QuestionMarkCircleIcon
-              className="h-6 w-6 text-[var(--tg-theme-accent-text-color)]"
-              aria-hidden="true"
-            />
-          )}
-          {item.name==='answers' && (
-            <QueueListIcon
-              className="h-6 w-6 text-[var(--tg-theme-accent-text-color)]"
-              aria-hidden="true"
-            />
-          )}
+            {item.name === "groups" && (
+              <UsersIcon
+                className="h-6 w-6 text-[var(--tg-theme-accent-text-color)]"
+                aria-hidden="true"
+              />
+            )}
+            {item.name === "questions" && (
+              <QuestionMarkCircleIcon
+                className="h-6 w-6 text-[var(--tg-theme-accent-text-color)]"
+                aria-hidden="true"
+              />
+            )}
+            {item.name === "answers" && (
+              <QueueListIcon
+                className="h-6 w-6 text-[var(--tg-theme-accent-text-color)]"
+                aria-hidden="true"
+              />
+            )}
           </span>
         </div>
         <div className="min-w-0 flex-1">
@@ -51,7 +56,15 @@ export default function MenuList({ item }: MenuItemsProps) {
               {item.text}
             </b>
           </div>
-          <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего:</p>
+          {item.name === "groups" && (
+            <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего: ${progress.groupsProgress.all}</p>
+          )}
+          {item.name === "questions" && (
+            <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего: ${progress.questionsProgress.all}</p>
+          )}
+          {item.name === "answers" && (
+            <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего: ${progress.answersProgress.all}</p>
+          )}
         </div>
         <div className="flex-shrink-0 self-center">
           <ChevronRightIcon

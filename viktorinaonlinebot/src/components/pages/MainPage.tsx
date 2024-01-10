@@ -37,6 +37,8 @@ export function MainPage() {
     data: dataUser,
   } = useValidateQuery(tg.initData);
 
+  console.log(dataUser)
+
   if (dataUser) {
     console.log(dataUser);
   }
