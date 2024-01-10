@@ -57,20 +57,28 @@ export default function MenuList({ item, progress }: MenuItemsProps) {
             </b>
           </div>
           {item.name === "groups" && (
-            <p className="text-sm text-[var(--tg-theme-hint-color)]">
-              Всего: {progress.groupsProgress.groupsAll} / Активных:{" "}
-              {progress.groupsProgress.groupsActive}
-            </p>
+            <>
+              <p className="text-xs text-[var(--tg-theme-hint-color)]">
+                Всего: {progress.groupsProgress.groupsAll}
+              </p>
+              <p className="text-xs text-[var(--tg-theme-hint-color)]">
+                Активных: {progress.groupsProgress.groupsActive}
+              </p>
+            </>
           )}
           {item.name === "questions" && (
-            <p className="text-sm text-[var(--tg-theme-hint-color)]">
-              Всего: {progress.questionsProgress.questionsAll} / Модерированных:{" "}
-              {progress.questionsProgress.questionsModerate}
-            </p>
+            <>
+              <p className="text-xs text-[var(--tg-theme-hint-color)]">
+                Всего: {progress.questionsProgress.questionsAll}
+              </p>
+              <p className="text-xs text-[var(--tg-theme-hint-color)]">
+                Модерированных: {progress.questionsProgress.questionsModerate}
+              </p>
+            </>
           )}
           {item.name === "answers" && (
             <>
-              <p className="text-sm text-[var(--tg-theme-hint-color)]">
+              <p className="text-xs text-[var(--tg-theme-hint-color)]">
                 Всего: {progress.answersProgress.answersAll}
               </p>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
@@ -79,7 +87,7 @@ export default function MenuList({ item, progress }: MenuItemsProps) {
             </>
           )}
         </div>
-        <div className="flex-shrink-0 self-center"> 
+        <div className="flex-shrink-0 self-center">
           <ChevronRightIcon
             className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
             aria-hidden="true"
