@@ -36,36 +36,20 @@ export default function ModalPage({}: ModalProps) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-gray-100 bg-opacity-75 transition-opacity" />
-          </Transition.Child>
-
-          <div className="fixed inset-0 z-10">
-            <div className="flex items-center justify-center text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-800"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="ease-in duration-800"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0" 
+            <Dialog.Panel className="relative transform container w-screen h-full p-6 bg-[var(--tg-theme-bg-color)] transition-all">
+              <Dialog.Title
+                as="h3"
+                className="text-base font-semibold text-[var(--tg-theme-accent-text-color)]"
               >
-                <Dialog.Panel className="relative transform container w-screen h-full p-6 bg-[var(--tg-theme-bg-color)] transition-all">
-                  <Dialog.Title
-                    as="h3"
-                    className="text-base font-semibold text-[var(--tg-theme-accent-text-color)]"
-                  >
-                    {modalData}
-                  </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-[var(--tg-theme-accent-text-color)]">
-                      <SettingsGroupForm />
-                    </p>
-                  </div>
-                </Dialog.Panel>
-              </Transition.Child>
-            </div>
-          </div>
+                {modalData}
+              </Dialog.Title>
+              <div className="mt-2">
+                <p className="text-sm text-[var(--tg-theme-accent-text-color)]">
+                  <SettingsGroupForm />
+                </p>
+              </div>
+            </Dialog.Panel>
+          </Transition.Child>
         </Dialog>
       </Transition.Root>
     </>
