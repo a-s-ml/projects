@@ -36,7 +36,7 @@ export default function ModalPage({}: ModalProps) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Panel className="relative transform container w-screen h-full p-6 bg-[var(--tg-theme-bg-color)] transition-all">
+            <Dialog.Panel className="relative inset-0 text-center transform container w-screen h-full p-6 bg-[var(--tg-theme-bg-color)] transition-all">
               <Dialog.Title
                 as="h3"
                 className="text-base font-semibold text-[var(--tg-theme-accent-text-color)]"
