@@ -1,5 +1,5 @@
 import { ClockIcon } from "@heroicons/react/24/outline";
-import { useGetTimeQuery } from "./store/api/vik.api";
+import { useGetTimeGroupQuery } from "./store/api/vik.api";
 
 interface TimeQuestionProps {
   time: number;
@@ -7,7 +7,7 @@ interface TimeQuestionProps {
 export default function TimeQuestion({ time }: TimeQuestionProps) {
   const {
     data: dataTime,
-  } = useGetTimeQuery(time);
+  } = useGetTimeGroupQuery(time);
 
   return (
     <div className="group relative flex items-start space-x-3">

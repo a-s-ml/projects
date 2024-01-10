@@ -13,7 +13,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   const tg = window.Telegram.WebApp;
 
   const { data: dataType } = useGetTypeQuery("");
-  const { data: dataTime } = useGetTimeQuery("");
+  const { data: dataTime } = useGetTimeQuery(0);
 
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);

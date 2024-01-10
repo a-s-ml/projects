@@ -15,9 +15,14 @@ export const vikApi = createApi({
         url: `chat/validateUser/${initData}`,
       }),
     }),
-    getTime: build.query<ITime[], string>({
+    getTime: build.query<ITime[], number>({
       query: () => ({
         url: `time`,
+      }),
+    }),
+    getTimeGroup: build.query<ITime, number>({
+      query: (time) => ({
+        url: `time/${time}`,
       }),
     }),
     getType: build.query<IType[], string>({
@@ -41,6 +46,7 @@ export const vikApi = createApi({
 export const {
   useValidateQuery,
   useGetTimeQuery,
+  useGetTimeGroupQuery,
   useGetTypeQuery,
   useGetCategoryQuery,
   useCountCategoryQuery,
