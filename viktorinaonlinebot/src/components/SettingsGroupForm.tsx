@@ -1,9 +1,9 @@
 import { useState } from "react";
 import ErrorLoad from "./ErrorLoad";
 import GroupAvatar from "./GroupAvatar";
-import { useGetInfoGroupsQuery } from "./store/api/groups.slice";
 import { RadioGroup } from "@headlessui/react";
-import { useGetTypeQuery } from "./store/api/questionType.slice";
+import { useGetInfoGroupsQuery } from "./store/api/groups.slice";
+import { useGetTimeQuery, useGetTypeQuery } from "./store/api/vik.api";
 
 interface SettingsGroupProps {
   group: number;
@@ -13,6 +13,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   const tg = window.Telegram.WebApp;
 
   const { isError: errorType, data: dataType } = useGetTypeQuery("");
+  const { isError: errorTime, data: dataTime } = useGetTimeQuery(0);
 
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);

@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IValidate } from "../../../models/IUser";
 import { ITime } from "../../../models/ITime";
+import { IType } from "../../../models/IType";
+import { ICategory } from "../../../models/ICategory";
 
 export const vikApi = createApi({
   reducerPath: "vikApi",
@@ -17,11 +19,29 @@ export const vikApi = createApi({
       query: (time: number) => ({
         url: `time/${time}`,
       }),
-    })
+    }),
+    getType: build.query<IType[], string>({
+      query: () => ({
+        url: `question-type`,
+      }),
+    }),
+    getCategory: build.query<null, ICategory[]>({
+      query: () => ({
+        url: `category`,
+      }),
+    }),
+    countCategory: build.query<number, string>({
+      query: (count) => ({
+        url: `category/${count}`,
+      }),
+    }),
   })
 });
 
 export const {
   useValidateQuery,
-  useGetTimeQuery
+  useGetTimeQuery,
+  useGetTypeQuery,
+  useGetCategoryQuery,
+  useCountCategoryQuery
 } = vikApi
