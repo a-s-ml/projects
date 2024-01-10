@@ -41,17 +41,13 @@ export default function ModalPage() {
               leaveTo="opacity-0 translate-y-4"
             >
               <Dialog.Panel className="relative transform rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all">
-                <div className="ml-4 mt-0 text-left">
-                  <Dialog.Title
-                    as="h3"
-                    className="text-base font-semibold leading-6 text-gray-900"
-                  >
-                    {modalData}
-                  </Dialog.Title>
-                  <div className="mt-2">
-                    <SettingsGroupForm />
-                  </div>
-                </div>
+                <Dialog.Title
+                  as="h3"
+                  className="text-base font-semibold leading-6 text-gray-900"
+                >
+                  {modalData}
+                </Dialog.Title>
+                <SettingsGroupForm />
               </Dialog.Panel>
             </Transition.Child>
           </div>
