@@ -34,7 +34,7 @@ export default function ModalPage() {
             <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity h-full w-screen" />
           </Transition.Child>
 
-          <div className="fixed inset-0 z-10 overflow-y-auto ">
+          <div className="fixed inset-0 z-50 overflow-y-auto ">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
