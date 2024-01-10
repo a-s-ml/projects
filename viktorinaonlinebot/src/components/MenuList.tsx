@@ -17,6 +17,8 @@ interface MenuItemsProps {
 export default function MenuList({ item, progress }: MenuItemsProps) {
   const dispatch = useAppDispatch();
 
+  console.log(progress)
+
   return (
     <li
       className="px-1 py-1 sm:px-0"
