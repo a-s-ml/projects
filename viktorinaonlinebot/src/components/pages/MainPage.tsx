@@ -40,7 +40,7 @@ export function MainPage() {
   console.log(dataUser)
 
   if (dataUser) {
-    console.log(dataUser);
+    console.log('Прогресс - '+dataUser.ProgressData)
   }
 
   const slide = useAppSelector(selectSlide);
