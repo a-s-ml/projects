@@ -17,39 +17,31 @@ export default function ModalPage() {
   return (
     <>
       <Transition.Root show={modal} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={() => {}}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity h-full w-screen" />
-          </Transition.Child>
-
-          <div className="fixed inset-0 overflow-y-auto ">
-            <Transition.Child
-              as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0 translate-y-4"
-              enterTo="opacity-100 translate-y-0"
-              leave="ease-in duration-200"
-              leaveFrom="opacity-100 translate-y-0"
-              leaveTo="opacity-0 translate-y-4"
-            >
-              <Dialog.Panel className="transform rounded-lg bg-white text-center shadow-xl transition-all">
-                <Dialog.Title
-                  as="h3"
-                  className="text-base font-semibold leading-6 text-gray-900"
+        <Dialog
+          as="div"
+          className="relative z-10"
+          onClose={() => dispatch(showModal(true))}
+        >
+          <div className="fixed inset-0 overflow-hidden">
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full">
+                <Transition.Child
+                  as={Fragment}
+                  enter="transform transition ease-in-out duration-500 sm:duration-700"
+                  enterFrom="translate-x-full"
+                  enterTo="translate-x-0"
+                  leave="transform transition ease-in-out duration-500 sm:duration-700"
+                  leaveFrom="translate-x-0"
+                  leaveTo="translate-x-full"
                 >
-                  {modalData}
-                </Dialog.Title>
-                <SettingsGroupForm />
-              </Dialog.Panel>
-            </Transition.Child>
+                  <Dialog.Panel className="pointer-events-auto relative w-screen">
+                    <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                      <SettingsGroupForm />
+                    </div>
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
+            </div>
           </div>
         </Dialog>
       </Transition.Root>

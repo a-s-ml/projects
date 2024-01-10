@@ -15,7 +15,6 @@ interface SlideItemsProps {
 }
 
 export default function SlidePage({ chat }: SlideItemsProps) {
-  
   const slide = useAppSelector(selectSlide);
   const slideData = useAppSelector(selectSlideData);
   const dispatch = useAppDispatch();
@@ -52,6 +51,16 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                 >
                   <Dialog.Panel className="pointer-events-auto relative w-screen">
                     <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                      <div>
+                        <input
+                          type="range"
+                          className="transparent h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-neutral-200"
+                          min="0"
+                          max="5"
+                          step="0.5"
+                          id="customRange3"
+                        />
+                      </div>
                       {slideData === "groups" && <GroupsList chat={chat} />}
                       {slideData === "questions" && (
                         <QuestionsList chat={chat} />
