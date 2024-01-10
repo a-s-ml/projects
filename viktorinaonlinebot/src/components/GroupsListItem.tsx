@@ -10,6 +10,7 @@ import TypeQuestion from "./TypeQuestion";
 import TimeQuestion from "./TimeQuestion";
 import ToggleButton from "./ToggleButton";
 import CategoryQuestion from "./CategoryQuestion";
+import { showSlide } from "./store/api/slide.slice";
 
 interface GroupsListItemProps {
   group: number;
@@ -71,6 +72,7 @@ export default function GroupsListItem({
           <div
             className="group relative flex items-start space-x-3"
             onClick={() => {
+              dispatch(showSlide(false))
               dispatch(showModal(true));
               dispatch(dataModal(group));
             }}
