@@ -31,7 +31,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
 
   return (
     <>
-      {dataGroupInfo && (
+      {dataGroupInfo && ( 
         <form className="text-center">
           <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
             {dataGroupInfo.photo?.small_file_id && (
@@ -74,15 +74,15 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                         className={({ active, checked }) =>
                           classNames(
                             Boolean(type.active)
-                              ? "cursor-pointer focus:outline-none"
+                              ? "cursor-pointer"
                               : "cursor-not-allowed opacity-25",
                             active
-                              ? "ring-2 ring-indigo-600 ring-offset-2"
+                              ? "ring-2 ring-[var(--tg-theme-accent-text-color)] ring-offset-2"
                               : "",
                             checked
-                              ? "bg-indigo-600 text-white hover:bg-indigo-500"
-                              : "ring-1 ring-inset ring-gray-300 bg-white text-gray-900 hover:bg-gray-50",
-                            "flex items-center justify-center rounded-md py-3 px-3 text-sm font-semibold uppercase sm:flex-1"
+                              ? "bg-[var(--tg-theme-accent-text-color)] text-white"
+                              : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black",
+                            "flex items-center justify-center rounded-md py-3 px-3 text-sm font-semibold uppercase"
                           )
                         }
                         disabled={!Boolean(type.active)}
