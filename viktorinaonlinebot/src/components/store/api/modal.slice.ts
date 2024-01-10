@@ -19,10 +19,6 @@ export const modalSlice = createSlice({
     showModal: (state, action: PayloadAction<boolean>) => {
       tg.HapticFeedback.notificationOccurred("success");
       tg.BackButton.show();
-      tg.onEvent("backButtonClicked", () => {
-        dispatch(showModal(false));
-        dispatch(showSlide(true));
-      });
       state.show = action.payload;
     },
     dataModal: (state, action: PayloadAction<number>) => {
@@ -37,11 +33,3 @@ export const selectModal = (state: RootState) => state.modal.show;
 export const selectModalData = (state: RootState) => state.modal.data;
 
 export default modalSlice.reducer;
-function dispatch(arg0: { payload: boolean; type: "modal/showModal"; }) {
-  throw new Error("Function not implemented.");
-}
-
-function showSlide(arg0: boolean): any {
-  throw new Error("Function not implemented.");
-}
-

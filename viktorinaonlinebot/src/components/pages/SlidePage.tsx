@@ -20,8 +20,6 @@ export default function SlidePage({ chat }: SlideItemsProps) {
   const tg = window.Telegram.WebApp;
 
   if (slide) {
-    tg.HapticFeedback.notificationOccurred('success')
-    tg.BackButton.show();
     tg.onEvent("backButtonClicked", () => dispatch(showSlide(false)));
   }
 

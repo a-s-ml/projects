@@ -10,12 +10,15 @@ const initialState: slideState = {
   show: false,
   data: "",
 };
+const tg = window.Telegram.WebApp;
 
 export const slideSlice = createSlice({
   name: "slide",
   initialState,
   reducers: {
     showSlide: (state, action: PayloadAction<boolean>) => {
+      tg.HapticFeedback.notificationOccurred("success");
+      tg.BackButton.show();
       state.show = action.payload;
     },
     dataSlide: (state, action: PayloadAction<string>) => {
