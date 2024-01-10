@@ -17,11 +17,7 @@ export default function ModalPage() {
   return (
     <>
       <Transition.Root show={modal} as={Fragment}>
-        <Dialog
-          as="div"
-          className="relative z-10"
-          onClose={() => dispatch(showModal(true))}
-        >
+        <Dialog as="div" className="relative z-10" onClose={() => {}}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -53,9 +49,7 @@ export default function ModalPage() {
                     {modalData}
                   </Dialog.Title>
                   <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      <SettingsGroupForm />
-                    </p>
+                    <SettingsGroupForm />
                   </div>
                 </div>
               </Dialog.Panel>
