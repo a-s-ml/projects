@@ -48,7 +48,7 @@ export default function ModalPage({}: ModalProps) {
                 enterTo="opacity-100"
                 leave="ease-in duration-800"
                 leaveFrom="opacity-100"
-                leaveTo="opacity-0"
+                leaveTo="opacity-0" 
               >
                 <Dialog.Panel className="relative transform container w-screen h-full p-6 bg-[var(--tg-theme-bg-color)] transition-all">
                   <Dialog.Title
