@@ -50,14 +50,8 @@ export default function ModalPage({}: ModalProps) {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative transform container w-screen h-screen p-6 bg-white transition-all">
+                <Dialog.Panel className="relative transform container w-screen h-screen p-6 bg-[var(--tg-theme-bg-color)] transition-all">
                   <div className="sm:flex sm:items-start">
-                    <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                      <ExclamationTriangleIcon
-                        className="h-6 w-6 text-red-600"
-                        aria-hidden="true"
-                      />
-                    </div>
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                       <Dialog.Title
                         as="h3"
@@ -66,7 +60,7 @@ export default function ModalPage({}: ModalProps) {
                         {modalData}
                       </Dialog.Title>
                       <div className="mt-2">
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-[var(--tg-theme-accent-text-color)]">
                           <SettingsGroupForm />
                         </p>
                       </div>
