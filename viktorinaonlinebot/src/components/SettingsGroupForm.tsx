@@ -18,7 +18,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);
 
-  const [type, setType] = useState(dataType || '');
+  const [type, setType] = useState(dataType || "");
   const [time, setTime] = useState(dataTime || 3600);
 
   function classNames(...classes: string[]) {
@@ -33,7 +33,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
 
   return (
     <>
-      {dataGroupInfo && dataType && dataTime &&( 
+      {dataGroupInfo && dataType && dataTime && (
         <form className="text-center">
           <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
             {dataGroupInfo.photo?.small_file_id && (
@@ -101,14 +101,25 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
               <h3 className="text-sm font-medium text-left text-[var(--tg-theme-text-color)]">
                 Период публикаций
               </h3>
-              <input
-                onChange={() => selectionChanged()}
-                type="range"
-                className="transparent h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-neutral-200"
-                min={dataTime[0].period}
-                max={dataTime[dataTime.length - 1].period}
-                step="3600"
-              />
+              <div className="relative mb-6">
+                <label htmlFor="labels-range-input" className="sr-only">
+                  Labels range
+                </label>
+                <input
+                  id="labels-range-input"
+                  onChange={() => selectionChanged()}
+                  type="range"
+                  className="transparent h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-neutral-200"
+                  min={dataTime[0].period}
+                  max={dataTime[dataTime.length - 1].period}
+                  step="3600"
+                />
+                {dataTime.map((time) => (
+                  <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">
+                    {time.period}
+                  </span>
+                ))}
+              </div>
             </li>
             <li className="py-4 px-0">
               <h3 className="text-sm font-medium text-left text-[var(--tg-theme-text-color)]">
