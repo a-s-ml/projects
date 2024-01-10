@@ -20,12 +20,14 @@ export default function ModalPage() {
     tg.BackButton.show();
     tg.onEvent("backButtonClicked", () => {
       dispatch(showModal(false));
-      dispatch(showSlide(false));
+      dispatch(showSlide(true));
     });
   }
   if (!modal) {
     tg.BackButton.hide();
-    tg.offEvent("backButtonClicked", () => dispatch(showModal(false)));
+    tg.offEvent("backButtonClicked", () => {
+      dispatch(showModal(false));
+    });
   }
 
   return (
