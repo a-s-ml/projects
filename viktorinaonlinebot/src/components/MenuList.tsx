@@ -57,13 +57,13 @@ export default function MenuList({ item, progress }: MenuItemsProps) {
             </b>
           </div>
           {item.name === "groups" && (
-            <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего: ${progress.groupsProgress.all}</p>
+            <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего: {progress.groupsProgress.all}</p>
           )}
           {item.name === "questions" && (
-            <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего: ${progress.questionsProgress.all}</p>
+            <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего: {progress.questionsProgress.all}</p>
           )}
           {item.name === "answers" && (
-            <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего: ${progress.answersProgress.all}</p>
+            <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего: {progress.answersProgress.all}</p>
           )}
         </div>
         <div className="flex-shrink-0 self-center">
