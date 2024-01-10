@@ -73,7 +73,7 @@ export default function MenuList({ item, progress }: MenuItemsProps) {
               <p className="text-sm text-[var(--tg-theme-hint-color)]">
                 Всего: {progress.answersProgress.answersAll}
               </p>
-              <p className="text-sm text-[var(--tg-theme-hint-color)]">
+              <p className="text-xs text-[var(--tg-theme-hint-color)]">
                 Правильных: {progress.answersProgress.answersRight}
               </p>
             </>
