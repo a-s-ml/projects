@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import ErrorPage from "../ErrorPage";
 import GroupsList from "../GroupsList";
-import QuestionsList from "../QuestionsList";
 import {
   selectSlide,
   selectSlideData,
@@ -48,9 +47,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                   <Dialog.Panel className="pointer-events-auto relative w-screen">
                     <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                       {slideData === "groups" && <GroupsList chat={chat} />}
-                      {slideData === "questions" && (
-                        <QuestionsList chat={chat} />
-                      )}
+                      {slideData === "questions" && <ErrorPage />}
                       {slideData === "answers" && <ErrorPage />}
                     </div>
                   </Dialog.Panel>
