@@ -70,7 +70,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                       <RadioGroup.Option
                         key={type.id}
                         value={type.name}
-                        onChange={selectionChanged}
+                        onClick={() => selectionChanged()}
                         className={({ active, checked }) =>
                           classNames(
                             Boolean(type.active)
