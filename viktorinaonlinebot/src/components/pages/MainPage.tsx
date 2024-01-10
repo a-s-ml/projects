@@ -44,6 +44,7 @@ export function MainPage() {
   const slide = useAppSelector(selectSlide);
   const modal = useAppSelector(selectModal);
   if(!slide && !modal) {
+    tg.HapticFeedback.notificationOccurred('success')
     tg.BackButton.hide();
   }
 

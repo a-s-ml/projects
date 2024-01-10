@@ -6,7 +6,7 @@ export default function SettingsGroupForm() {
   return (
     <form>
       <input
-        onChange={() => toggle()}
+        onChange={() => toggle()} 
         type="range"
         className="transparent h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-neutral-200"
         min="0"
