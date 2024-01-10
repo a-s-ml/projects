@@ -1,4 +1,5 @@
 export default function ErrorPage() {
+  const tg = window.Telegram.WebApp;
   return (
     <>
       <main className="grid min-h-full place-items-center bg-[var(--tg-theme-bg-color)] px-6 py-24">
@@ -13,14 +14,15 @@ export default function ErrorPage() {
           <p className="mt-6 text-base leading-7 text-[var(--tg-theme-hint-color)]">
             Сообщите нам, пожалуйста, если найдёте ошибку
           </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
+          <div 
+          className="mt-10 flex items-center justify-center gap-x-6">
             {" "}
-            <a
-              href="#"
+            <span
+              onClick={() => tg.openTelegramLink('@a_s_ml')}
               className="rounded-md bg-[var(--tg-theme-accent-text-color)] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[var(--tg-theme-hint-color)]"
             >
               Go back home
-            </a>
+            </span>
           </div>
         </div>
       </main>
