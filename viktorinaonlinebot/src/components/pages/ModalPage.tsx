@@ -19,7 +19,7 @@ export default function ModalPage() {
       <Transition.Root show={modal} as={Fragment}>
         <Dialog
           as="div"
-          className="relative z-10"
+          className="relative z-20"
           onClose={() => dispatch(showModal(true))}
         >
           <div className="fixed inset-0 overflow-hidden">
