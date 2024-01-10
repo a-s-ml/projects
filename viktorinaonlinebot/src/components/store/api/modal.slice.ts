@@ -19,6 +19,7 @@ export const modalSlice = createSlice({
     showModal: (state, action: PayloadAction<boolean>) => {
       tg.HapticFeedback.notificationOccurred("success");
       tg.BackButton.show();
+      tg.MainButton.hide();
       state.show = action.payload;
     },
     dataModal: (state, action: PayloadAction<number>) => {

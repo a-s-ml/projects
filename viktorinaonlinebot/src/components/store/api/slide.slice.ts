@@ -19,6 +19,7 @@ export const slideSlice = createSlice({
     showSlide: (state, action: PayloadAction<boolean>) => {
       tg.HapticFeedback.notificationOccurred("success");
       tg.BackButton.show();
+      tg.MainButton.hide();
       state.show = action.payload;
     },
     dataSlide: (state, action: PayloadAction<string>) => {

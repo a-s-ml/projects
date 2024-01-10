@@ -49,6 +49,7 @@ export function MainPage() {
   if (!slide && !modal) {
     tg.HapticFeedback.notificationOccurred("success");
     tg.BackButton.hide();
+    tg.MainButton.hide();
   }
 
   return (
