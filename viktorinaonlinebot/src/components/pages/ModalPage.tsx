@@ -32,7 +32,7 @@ export default function ModalPage({}: ModalProps) {
       >
         <Dialog
           as="div"
-          className="relative z-10"
+          className="fixed inset-0 z-10"
           initialFocus={cancelButtonRef}
           onClose={() => dispatch(showModal(true))}
         >
