@@ -37,18 +37,11 @@ export function MainPage() {
     data: dataUser,
   } = useValidateQuery(tg.initData);
 
-  console.log(dataUser)
-
-  if (dataUser) {
-    console.log('Ghju')
-    console.log(dataUser.ProgressData)
-  }
-
   const slide = useAppSelector(selectSlide);
   const modal = useAppSelector(selectModal);
-  
-  if(!slide && !modal) {
-    tg.HapticFeedback.notificationOccurred('success')
+
+  if (!slide && !modal) {
+    tg.HapticFeedback.notificationOccurred("success");
     tg.BackButton.hide();
   }
 
@@ -58,7 +51,11 @@ export function MainPage() {
         <div className="mx-auto max-w-lg">
           <div>
             <div className="text-center">
-              <img className="mx-auto h-12 w-12" src={Logo} alt="https://80q.ru" />
+              <img
+                className="mx-auto h-12 w-12"
+                src={Logo}
+                alt="https://80q.ru"
+              />
               <h2 className="mt-2 text-base font-semibold leading-6 text-[var(--tg-theme-accent-text-color)]">
                 ViktorinaOnlineBot
               </h2>
@@ -77,7 +74,10 @@ export function MainPage() {
                 </b>
               )}
               {dataUser.validate && (
-                <ul role="list" className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]">
+                <ul
+                  role="list"
+                  className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
+                >
                   {menuitems &&
                     menuitems.map((item) => (
                       <MenuList
@@ -94,10 +94,8 @@ export function MainPage() {
       </div>
       {dataUser && (
         <>
-        <SlidePage
-          chat={dataUser.UserData.user.id}
-        />
-        <ModalPage />
+          <SlidePage chat={dataUser.UserData.user.id} />
+          <ModalPage />
         </>
       )}
     </>

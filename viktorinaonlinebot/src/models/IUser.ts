@@ -26,16 +26,16 @@ export interface IProgressData {
 }
 
 export interface IGroupsProgress {
-  all: number;
-  active: number;
+  groupsAll: number;
+  groupsActive: number;
 }
 
 export interface IAnswersProgress {
-  all: number;
-  right: number;
+  answersAll: number;
+  answersRight: number;
 }
 
 export interface IQuestionsProgress {
-  all: number;
-  moderate: number;
+  questionsAll: number;
+  questionsModerate: number;
 }

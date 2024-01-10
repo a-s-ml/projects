@@ -17,8 +17,6 @@ interface MenuItemsProps {
 export default function MenuList({ item, progress }: MenuItemsProps) {
   const dispatch = useAppDispatch();
 
-  console.log(progress)
-
   return (
     <li
       className="px-1 py-1 sm:px-0"
@@ -59,13 +57,22 @@ export default function MenuList({ item, progress }: MenuItemsProps) {
             </b>
           </div>
           {item.name === "groups" && (
-            <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего: {progress.groupsProgress.all}</p>
+            <p className="text-sm text-[var(--tg-theme-hint-color)]">
+              Всего: {progress.groupsProgress.groupsAll} / Активных:{" "}
+              {progress.groupsProgress.groupsActive}
+            </p>
           )}
           {item.name === "questions" && (
-            <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего: {progress.questionsProgress.all}</p>
+            <p className="text-sm text-[var(--tg-theme-hint-color)]">
+              Всего: {progress.questionsProgress.questionsAll} / Модерированных:{" "}
+              {progress.questionsProgress.questionsModerate}
+            </p>
           )}
           {item.name === "answers" && (
-            <p className="text-sm text-[var(--tg-theme-hint-color)]">Всего: {progress.answersProgress.all}</p>
+            <p className="text-sm text-[var(--tg-theme-hint-color)]">
+              Всего: {progress.answersProgress.answersAll} / Правильных:{" "}
+              {progress.answersProgress.answersRight}
+            </p>
           )}
         </div>
         <div className="flex-shrink-0 self-center">
