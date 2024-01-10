@@ -48,16 +48,13 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                 Вид вопросов
               </h3>
               <div className="flex items-center justify-between">
-                <h2 className="text-sm font-medium leading-6 text-gray-900">
-                  Вид
-                </h2>
                 <span
                   onClick={() =>
                     tg.openTelegramLink("https://t.me/ViktorinaOnlineChannel")
                   }
                   className="text-sm font-medium leading-6 text-[var(--tg-theme-accent-text-color)]"
                 >
-                  Посмотреть доступный вид вопросов
+                  Посмотреть пример
                 </span>
               </div>
 
@@ -71,6 +68,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                       <RadioGroup.Option
                         key={option.id}
                         value={option}
+                        onChange={() => selectionChanged()}
                         className={({ active, checked }) =>
                           classNames(
                             option.active == 1
@@ -88,7 +86,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                         disabled={option.active == 0}
                       >
                         <RadioGroup.Label as="span">
-                          {option.name}
+                          {option.description}
                         </RadioGroup.Label>
                       </RadioGroup.Option>
                     ))}
