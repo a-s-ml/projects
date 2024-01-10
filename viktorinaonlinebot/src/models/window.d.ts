@@ -67,6 +67,12 @@ export interface IBackButton {
   hide: () => void;
 }
 
+export interface IHapticFeedback {
+  impactOccurred: (style: string) => void;
+  notificationOccurred: (type: string) => void;
+  selectionChanged: () => void;
+}
+
 export interface ITelegramWebApp {
   initData: string;
   initDataUnsafe: ITelegramWebAppInitData;
@@ -75,6 +81,7 @@ export interface ITelegramWebApp {
   viewportStableHeight: number;
   MainButton: IMainButton;
   BackButton: IBackButton;
+  HapticFeedback: IHapticFeedback;
   onEvent: (eventType: string, callback) => void;
   offEvent: (eventType: string, callback) => void;
   sendData: (data: string) => void;

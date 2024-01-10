@@ -17,6 +17,7 @@ export default function ModalPage() {
   const tg = window.Telegram.WebApp;
 
   if (modal) {
+    tg.HapticFeedback.notificationOccurred('success')
     tg.BackButton.show();
     tg.onEvent("backButtonClicked", () => {
       dispatch(showModal(false));
