@@ -15,12 +15,14 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
     <>
       {dataGroupInfo && (
         <form>
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full">
+          <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
             {dataGroupInfo.photo?.small_file_id && (
               <GroupAvatar id={dataGroupInfo.photo?.small_file_id} />
             )}
           </div>
-          <h3>Настройки викторины в группе </h3>
+          <h3 className="text-3xl font-bold text-[var(--tg-theme-accent-text-color)]">
+            Настройки викторины в группе
+          </h3>
           <input
             onChange={() => selectionChanged()}
             type="range"
