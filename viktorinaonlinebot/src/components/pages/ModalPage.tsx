@@ -1,4 +1,4 @@
-import { Fragment, useRef } from "react";
+import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
 import { useAppSelector, useAppDispatch } from "../store";
@@ -8,11 +8,8 @@ import {
   showModal,
 } from "../store/api/modal.slice";
 import SettingsGroupForm from "../SettingsGroupForm";
-import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
-interface ModalProps {}
-
-export default function ModalPage({}: ModalProps) {
+export default function ModalPage() {
   const modal = useAppSelector(selectModal);
   const modalData = useAppSelector(selectModalData);
   const dispatch = useAppDispatch();

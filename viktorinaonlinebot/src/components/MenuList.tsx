@@ -24,19 +24,19 @@ export default function MenuList({ item }: MenuItemsProps) {
       <div className="group relative flex items-start space-x-3 py-4">
         <div className="flex-shrink-0">
           <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
-          {item.name=='groups' && (
+          {item.name==='groups' && (
             <UsersIcon
               className="h-6 w-6 text-[var(--tg-theme-accent-text-color)]"
               aria-hidden="true"
             />
           )}
-          {item.name=='questions' && (
+          {item.name==='questions' && (
             <QuestionMarkCircleIcon
               className="h-6 w-6 text-[var(--tg-theme-accent-text-color)]"
               aria-hidden="true"
             />
           )}
-          {item.name=='answers' && (
+          {item.name==='answers' && (
             <QueueListIcon
               className="h-6 w-6 text-[var(--tg-theme-accent-text-color)]"
               aria-hidden="true"

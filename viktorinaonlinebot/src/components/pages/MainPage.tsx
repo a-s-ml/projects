@@ -45,7 +45,7 @@ export function MainPage() {
         <div className="mx-auto max-w-lg">
           <div>
             <div className="text-center">
-              <img className="mx-auto h-12 w-12" src={Logo} />
+              <img className="mx-auto h-12 w-12" src={Logo} alt="https://80q.ru" />
               <h2 className="mt-2 text-base font-semibold leading-6 text-[var(--tg-theme-accent-text-color)]">
                 ViktorinaOnlineBot
               </h2>

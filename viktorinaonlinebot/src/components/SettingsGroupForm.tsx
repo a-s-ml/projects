@@ -1,30 +1,4 @@
-import { SetStateAction, useState } from "react";
-
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
-
 export default function SettingsGroupForm() {
-
-  const [selectedOption, setSelectedOption] = useState("")
-
-  const handleChange = (selectedOption: { value: SetStateAction<string> }) => {
-    console.log(selectedOption)
-    setSelectedOption(selectedOption.value)
-  }
-
   return (
     <form>
       <div className="space-y-12">
@@ -40,8 +14,7 @@ export default function SettingsGroupForm() {
               >
                 Country
               </label>
-              <div className="mt-2">
-              </div>
+              <div className="mt-2"></div>
             </div>
           </div>
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
