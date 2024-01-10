@@ -34,7 +34,7 @@ export function MainPage() {
   useEffect(() => {
     tg.expand();
     tg.ready();
-    tg.SettingsButton.hide();
+    tg.SettingsButton.show();
   }, []);
 
   const {
