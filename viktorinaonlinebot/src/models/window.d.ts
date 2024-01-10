@@ -73,6 +73,13 @@ export interface IHapticFeedback {
   selectionChanged: () => void;
 }
 
+export interface ISettingsButton {
+  onClick: (callback: () => void) => void;
+  offClick: (callback: () => void) => void;
+  show: () => void;
+  hide: () => void;
+}
+
 export interface ITelegramWebApp {
   initData: string;
   initDataUnsafe: ITelegramWebAppInitData;
@@ -81,6 +88,7 @@ export interface ITelegramWebApp {
   viewportStableHeight: number;
   MainButton: IMainButton;
   BackButton: IBackButton;
+  SettingsButton: ISettingsButton;
   HapticFeedback: IHapticFeedback;
   onEvent: (eventType: string, callback) => void;
   offEvent: (eventType: string, callback) => void;

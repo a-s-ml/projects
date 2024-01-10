@@ -8,6 +8,7 @@ import ModalPage from "./ModalPage";
 import { selectSlide } from "../store/api/slide.slice";
 import { useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
+import { useEffect } from "react";
 
 let menuitems: IMenu[] = [
   {
@@ -29,7 +30,12 @@ let menuitems: IMenu[] = [
 
 export function MainPage() {
   const tg = window.Telegram.WebApp;
-  tg.expand();
+
+  useEffect(() => {
+    tg.expand();
+    tg.ready();
+    tg.SettingsButton.hide();
+  }, []);
 
   const {
     isLoading: loadUser,
