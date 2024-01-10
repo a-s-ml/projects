@@ -18,13 +18,16 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
   const [enabled, setEnabled] = useState(state);
   const [setActive, {}] = useSetActiveGroupsMutation();
   const [deleteActive, {}] = useDeleteActiveGroupsMutation();
+  const tg = window.Telegram.WebApp;
 
   const useSetStatusActive = async () => {
     if (!enabled) {
       await setActive(group);
+      tg.HapticFeedback.notificationOccurred('success')
     }
     if (enabled) {
       deleteActive(group);
+      tg.HapticFeedback.notificationOccurred('error')
     }
     setEnabled(!enabled);
   };
