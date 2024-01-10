@@ -20,7 +20,7 @@ export default function ModalPage({}: ModalProps) {
   return (
     <>
       <Transition.Root show={modal} as={Fragment}>
-        <Dialog 
+        <Dialog
           as="div"
           className="relative z-10"
           onClose={() => dispatch(showModal(true))}
@@ -37,8 +37,8 @@ export default function ModalPage({}: ModalProps) {
             <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
-          <div className="fixed inset-0 z-10 overflow-y-auto">
-            <div className="flex h-96 w-96 items-center justify-center p-4 text-center">
+          <div className="fixed inset-0 z-10 h-96 w-96 ">
+            <div className="flex overflow-y-auto items-center justify-center p-0 text-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
