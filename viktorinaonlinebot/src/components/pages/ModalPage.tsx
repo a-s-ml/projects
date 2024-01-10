@@ -32,11 +32,11 @@ export default function ModalPage({}: ModalProps) {
       >
         <Dialog
           as="div"
-          className="fixed inset-0 z-10"
+          className="fixed inset-0 z-10 overflow-y-auto"
           initialFocus={cancelButtonRef}
           onClose={() => dispatch(showModal(true))}
         >
-          <Dialog.Panel className="relative text-center transform container w-screen h-full p-6 bg-[var(--tg-theme-bg-color)] transition-all">
+          <Dialog.Panel className="relative text-center opacity-100 container w-screen h-full p-6 bg-[var(--tg-theme-bg-color)] transition-all">
             <Dialog.Title 
               as="h3"
               className="text-[var(--tg-theme-accent-text-color)]"
