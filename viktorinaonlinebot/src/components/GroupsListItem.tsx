@@ -35,8 +35,8 @@ export default function GroupsListItem({
   return (
     <>
       {errorGroupInfo && <li>error</li>}
-      {dataGroupInfo && (
-        <li className="py-4 sm:px-0">
+      {dataGroupInfo && ( 
+        <li className="py-4 px-0">
           <div className="group relative flex items-start space-x-3">
             <div className="flex-shrink-0">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
