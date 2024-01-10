@@ -23,12 +23,6 @@ export default function ModalPage() {
       dispatch(showSlide(true));
     });
   }
-  if (!modal) {
-    tg.BackButton.hide();
-    tg.offEvent("backButtonClicked", () => {
-      dispatch(showModal(false));
-    });
-  }
 
   return (
     <>

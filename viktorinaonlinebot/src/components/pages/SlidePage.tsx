@@ -24,10 +24,6 @@ export default function SlidePage({ chat }: SlideItemsProps) {
     tg.BackButton.show();
     tg.onEvent("backButtonClicked", () => dispatch(showSlide(false)));
   }
-  if (!slide) {
-    tg.BackButton.hide();
-    tg.offEvent("backButtonClicked", () => dispatch(showSlide(false)));
-  }
 
   return (
     <>
