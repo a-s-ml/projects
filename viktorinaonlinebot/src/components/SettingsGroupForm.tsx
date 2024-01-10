@@ -12,13 +12,14 @@ interface SettingsGroupProps {
 export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   const tg = window.Telegram.WebApp;
 
-  const { isError: errorType, data: dataType } = useGetTypeQuery("");
-  const { isError: errorTime, data: dataTime } = useGetTimeQuery(0);
+  const { data: dataType } = useGetTypeQuery("");
+  const { data: dataTime } = useGetTimeQuery("");
 
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);
 
-  const [type, setType] = useState();
+  const [type, setType] = useState(dataType || '');
+  const [time, setTime] = useState(dataTime || 3600);
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
@@ -32,7 +33,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
 
   return (
     <>
-      {dataGroupInfo && ( 
+      {dataGroupInfo && dataType && dataTime &&( 
         <form className="text-center">
           <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
             {dataGroupInfo.photo?.small_file_id && (
@@ -104,9 +105,9 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                 onChange={() => selectionChanged()}
                 type="range"
                 className="transparent h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-neutral-200"
-                min="0"
-                max="5"
-                step="0.5"
+                min={dataTime[0].period}
+                max={dataTime[dataTime.length - 1].period}
+                step="3600"
               />
             </li>
             <li className="py-4 px-0">

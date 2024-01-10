@@ -9,15 +9,15 @@ export const vikApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_APIURL,
   }),
-  endpoints: build => ({
+  endpoints: (build) => ({
     validate: build.query<IValidate, string>({
       query: (initData: string) => ({
         url: `chat/validateUser/${initData}`,
       }),
     }),
-    getTime: build.query<ITime, number>({
-      query: (time: number) => ({
-        url: `time/${time}`,
+    getTime: build.query<ITime[], string>({
+      query: () => ({
+        url: `time`,
       }),
     }),
     getType: build.query<IType[], string>({
@@ -25,7 +25,7 @@ export const vikApi = createApi({
         url: `question-type`,
       }),
     }),
-    getCategory: build.query<null, ICategory[]>({
+    getCategory: build.query<ICategory[], string>({
       query: () => ({
         url: `category`,
       }),
@@ -35,7 +35,7 @@ export const vikApi = createApi({
         url: `category/${count}`,
       }),
     }),
-  })
+  }),
 });
 
 export const {
@@ -43,5 +43,5 @@ export const {
   useGetTimeQuery,
   useGetTypeQuery,
   useGetCategoryQuery,
-  useCountCategoryQuery
-} = vikApi
+  useCountCategoryQuery,
+} = vikApi;

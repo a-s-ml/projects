@@ -52,7 +52,7 @@ export default function TypeQuestion({ questionType }: TypeQuestionProps) {
               </span>
             </>
           )}
-          {questionType === 4 && (
+          {questionType === 6 && (
             <>
               <ArrowPathIcon
                 className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
