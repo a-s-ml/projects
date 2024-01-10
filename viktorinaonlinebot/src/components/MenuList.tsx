@@ -62,7 +62,7 @@ export default function MenuList({ item, progress }: MenuItemsProps) {
                 Всего: {progress.groupsProgress.groupsAll}
               </p>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                Активных: {progress.groupsProgress.groupsActive}
+                Активных: 
               </p>
             </>
           )}

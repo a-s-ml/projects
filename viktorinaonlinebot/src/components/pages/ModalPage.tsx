@@ -45,7 +45,7 @@ export default function ModalPage() {
                 >
                   <Dialog.Panel className="pointer-events-auto relative w-screen">
                     <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                      <SettingsGroupForm />
+                      <SettingsGroupForm group={modalData}/>
                     </div>
                   </Dialog.Panel>
                 </Transition.Child>
