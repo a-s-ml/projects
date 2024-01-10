@@ -8,11 +8,25 @@ import {
   showModal,
 } from "../store/api/modal.slice";
 import SettingsGroupForm from "../SettingsGroupForm";
+import { showSlide } from "../store/api/slide.slice";
 
 export default function ModalPage() {
   const modal = useAppSelector(selectModal);
   const modalData = useAppSelector(selectModalData);
   const dispatch = useAppDispatch();
+  const tg = window.Telegram.WebApp;
+
+  if (modal) {
+    tg.BackButton.show();
+    tg.onEvent("backButtonClicked", () => {
+      dispatch(showModal(false));
+      dispatch(showSlide(false));
+    });
+  }
+  if (!modal) {
+    tg.BackButton.hide();
+    tg.offEvent("backButtonClicked", () => dispatch(showModal(false)));
+  }
 
   return (
     <>
