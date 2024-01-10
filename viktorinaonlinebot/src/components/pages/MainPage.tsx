@@ -40,12 +40,16 @@ export function MainPage() {
 
   return (
     <>
-    <ModalPage />
+      <ModalPage />
       <div className="container p-6 mx-auto">
         <div className="mx-auto max-w-lg">
           <div>
             <div className="text-center">
-              <img className="mx-auto h-12 w-12" src={Logo} alt="https://80q.ru" />
+              <img
+                className="mx-auto h-12 w-12"
+                src={Logo}
+                alt="https://80q.ru"
+              />
               <h2 className="mt-2 text-base font-semibold leading-6 text-[var(--tg-theme-accent-text-color)]">
                 ViktorinaOnlineBot
               </h2>
@@ -53,6 +57,16 @@ export function MainPage() {
                 Бот проводит викторины в группах/каналах используя собственную
                 базу вопросов и вопросы, заданные участниками викторины
               </p>
+              <div>
+                <input
+                  type="range"
+                  className="transparent h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-neutral-200"
+                  min="0"
+                  max="5"
+                  step="0.5"
+                  id="customRange3"
+                />
+              </div>
             </div>
           </div>
           {dataUser && (
@@ -64,7 +78,10 @@ export function MainPage() {
                 </b>
               )}
               {dataUser.validate && (
-                <ul role="list" className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]">
+                <ul
+                  role="list"
+                  className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
+                >
                   {menuitems &&
                     menuitems.map((item) => (
                       <MenuList
@@ -79,11 +96,7 @@ export function MainPage() {
           )}
         </div>
       </div>
-      {dataUser && (
-        <SlidePage
-          chat={dataUser.UserData.user.id}
-        />
-      )}
+      {dataUser && <SlidePage chat={dataUser.UserData.user.id} />}
     </>
   );
 }
