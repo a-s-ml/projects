@@ -4,16 +4,18 @@ import GroupAvatar from "./GroupAvatar";
 import { useGetInfoGroupsQuery } from "./store/api/groups.slice";
 import { RadioGroup } from "@headlessui/react";
 import { useGetTypeQuery } from "./store/api/questionType.slice";
+
 interface SettingsGroupProps {
   group: number;
 }
+
 export default function SettingsGroupForm({ group }: SettingsGroupProps) {
+  const tg = window.Telegram.WebApp;
+
   const { isError: errorType, data: dataType } = useGetTypeQuery("");
 
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);
-
-  const tg = window.Telegram.WebApp;
 
   const [type, setType] = useState();
 
@@ -45,17 +47,22 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
             max="5"
             step="0.5"
           />
-          <div className="p-2">
+          <div className="p-4">
+            <h3 className="text-sm font-medium text-[var(--tg-theme-text-color)]">
+              Вид вопросов
+            </h3>
             <div className="flex items-center justify-between">
-              <h2 className="text-sm font-medium leading-6 text-gray-900">
-                RAM
-              </h2>
-              <a
-                href="#"
-                className="text-sm font-medium leading-6 text-indigo-600 hover:text-indigo-500"
+              {/* <h2 className="text-sm font-medium leading-6 text-gray-900">
+                Вид
+              </h2> */}
+              <span
+                onClick={() =>
+                  tg.openTelegramLink("https://t.me/ViktorinaOnlineChannel")
+                }
+                className="text-sm font-medium leading-6 text-[var(--tg-theme-accent-text-color)]"
               >
-                See performance specs
-              </a>
+                Посмотреть доступный вид вопросов
+              </span>
             </div>
 
             <RadioGroup value={type} onChange={setType} className="mt-2">
