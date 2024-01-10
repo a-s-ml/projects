@@ -18,8 +18,8 @@ export default function ErrorPage() {
           className="mt-10 flex items-center justify-center gap-x-6">
             {" "}
             <span
-              onClick={() => tg.openTelegramLink('@a_s_ml')}
-              className="rounded-md bg-[var(--tg-theme-accent-text-color)] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[var(--tg-theme-hint-color)]"
+              onClick={() => tg.openTelegramLink('https://t.me/a_s_ml')}
+              className="cursor-pointer rounded-md bg-[var(--tg-theme-accent-text-color)] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[var(--tg-theme-hint-color)]"
             >
               Go back home
             </span>
