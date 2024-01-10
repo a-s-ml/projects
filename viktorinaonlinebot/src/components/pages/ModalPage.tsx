@@ -29,24 +29,24 @@ export default function ModalPage({}: ModalProps) {
         >
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-500"
+            enter="ease-out duration-800"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="ease-in duration-500"
+            leave="ease-in duration-800"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            <div className="fixed inset-0 bg-gray-100 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
           <div className="fixed inset-0 z-10">
             <div className="flex items-center justify-center text-center">
               <Transition.Child
                 as={Fragment}
-                enter="ease-out duration-300"
+                enter="ease-out duration-800"
                 enterFrom="opacity-0"
                 enterTo="opacity-100"
-                leave="ease-in duration-500"
+                leave="ease-in duration-800"
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
