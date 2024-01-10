@@ -14,14 +14,14 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   return (
     <>
       {dataGroupInfo && (
-        <form>
+        <form className="text-center">
           <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
             {dataGroupInfo.photo?.small_file_id && (
               <GroupAvatar id={dataGroupInfo.photo?.small_file_id} />
             )}
           </div>
-          <h3 className="text-3xl font-bold text-[var(--tg-theme-accent-text-color)]">
-            Настройки викторины в группе
+          <h3 className="text-sm font-medium text-[var(--tg-theme-text-color)]">
+            Настройки викторины в группе {dataGroupInfo.title}
           </h3>
           <input
             onChange={() => selectionChanged()}
