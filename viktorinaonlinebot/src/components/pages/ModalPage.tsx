@@ -17,15 +17,12 @@ export default function ModalPage({}: ModalProps) {
   const modalData = useAppSelector(selectModalData);
   const dispatch = useAppDispatch();
 
-  const cancelButtonRef = useRef(null);
-
   return (
     <>
       <Transition.Root show={modal} as={Fragment}>
         <Dialog
           as="div"
           className="relative z-10"
-          initialFocus={cancelButtonRef}
           onClose={() => dispatch(showModal(true))}
         >
           <Transition.Child
