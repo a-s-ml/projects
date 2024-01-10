@@ -69,10 +69,14 @@ export default function MenuList({ item, progress }: MenuItemsProps) {
             </p>
           )}
           {item.name === "answers" && (
-            <p className="text-sm text-[var(--tg-theme-hint-color)]">
-              Всего: {progress.answersProgress.answersAll} / Правильных:{" "}
-              {progress.answersProgress.answersRight}
-            </p>
+            <>
+              <p className="text-sm text-[var(--tg-theme-hint-color)]">
+                Всего: {progress.answersProgress.answersAll}
+              </p>
+              <p className="text-sm text-[var(--tg-theme-hint-color)]">
+                Правильных: {progress.answersProgress.answersRight}
+              </p>
+            </>
           )}
         </div>
         <div className="flex-shrink-0 self-center">
