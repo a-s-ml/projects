@@ -5,6 +5,9 @@ import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
 import ModalPage from "./ModalPage";
+import { selectSlide } from "../store/api/slide.slice";
+import { useAppSelector } from "../store";
+import { selectModal } from "../store/api/modal.slice";
 
 let menuitems: IMenu[] = [
   {
@@ -36,6 +39,12 @@ export function MainPage() {
 
   if (dataUser) {
     console.log(dataUser);
+  }
+
+  const slide = useAppSelector(selectSlide);
+  const modal = useAppSelector(selectModal);
+  if(!slide && !modal) {
+    tg.BackButton.hide();
   }
 
   return (
