@@ -25,6 +25,8 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
 
   function selectionChanged() {
     tg.HapticFeedback.selectionChanged();
+    tg.MainButton.setText("Применить");
+    tg.MainButton.show();
   }
 
   return (
@@ -64,14 +66,14 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                 </RadioGroup.Label>
                 <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
                   {dataType &&
-                    dataType.map((option) => (
+                    dataType.map((type) => (
                       <RadioGroup.Option
-                        key={option.id}
-                        value={option}
+                        key={type.id}
+                        value={type.name}
                         onChange={() => selectionChanged()}
                         className={({ active, checked }) =>
                           classNames(
-                            option.active == 1
+                            Boolean(type.active)
                               ? "cursor-pointer focus:outline-none"
                               : "cursor-not-allowed opacity-25",
                             active
@@ -83,10 +85,10 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                             "flex items-center justify-center rounded-md py-3 px-3 text-sm font-semibold uppercase sm:flex-1"
                           )
                         }
-                        disabled={option.active == 0}
+                        disabled={!Boolean(type.active)}
                       >
                         <RadioGroup.Label as="span">
-                          {option.description}
+                          {type.description}
                         </RadioGroup.Label>
                       </RadioGroup.Option>
                     ))}
@@ -105,6 +107,11 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                 max="5"
                 step="0.5"
               />
+            </li>
+            <li className="py-4 px-0">
+              <h3 className="text-sm font-medium text-left text-[var(--tg-theme-text-color)]">
+                Категории
+              </h3>
             </li>
           </ul>
         </form>
