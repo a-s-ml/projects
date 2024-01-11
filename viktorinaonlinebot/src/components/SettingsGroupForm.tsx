@@ -39,6 +39,10 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   const [type, setType] = useState(dataGroupType?.name);
   const [time, setTime] = useState(dataGroupTime?.period);
 
+  function rangeChange(e: any) {
+    setTime(e.target.value)
+  }
+
   console.log(dataGroupInfo)
   console.log(dataGroupDb)
   console.log(dataType)
@@ -129,7 +133,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                 </label>
                 <input
                   id="labels-range-input"
-                  onChange={() => selectionChanged()}
+                  onChange={rangeChange}
                   type="range"
                   value={time}
                   className="transparent h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-neutral-200"
