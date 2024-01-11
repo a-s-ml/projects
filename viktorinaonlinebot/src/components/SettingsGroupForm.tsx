@@ -36,8 +36,8 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   const { data: dataGroupType } = useGetTypeGroupQuery(dataGroupDb?.question_type || 0);
   const { data: dataGroupTime } = useGetTimeGroupQuery(dataGroupDb?.time || 0);
   
-  const [type, setType] = useState(dataGroupType);
-  const [time, setTime] = useState(dataGroupTime);
+  const [type, setType] = useState(dataGroupType?.name);
+  const [time, setTime] = useState(dataGroupTime?.period);
 
   console.log(dataGroupInfo)
   console.log(dataGroupDb)
@@ -120,7 +120,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
               </h3>
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium leading-6 text-[var(--tg-theme-accent-text-color)]">
-                  {/* {time.toString} */}
+                  {time}
                 </span>
               </div>
               <div className="relative mb-6">
@@ -131,6 +131,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                   id="labels-range-input"
                   onChange={() => selectionChanged()}
                   type="range"
+                  value={time}
                   className="transparent h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-neutral-200"
                   min={dataTime[0].period}
                   max={dataTime[dataTime.length - 1].period}
