@@ -10,17 +10,17 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         url: `chat/findByReferal/${chat}`,
       }),
     }),
-    getInfoGroups: build.query<IChat, number>({
+    getInfoGroups: build.query<IChat, bigint>({
       query: (chat) => ({
         url: `chat/groupInfoById/${chat}`,
       }),
     }),
-    getGroupDb: build.query<IGroup, number>({
+    getGroupDb: build.query<IGroup, bigint>({
       query: (chat) => ({
         url: `chat/findByChatId/${chat}`,
       }),
     }),
-    getActiveGroups: build.query<boolean, number>({
+    getActiveGroups: build.query<boolean, bigint>({
       query: (chat) => ({
         url: `chat-active/${chat}`,
       }),

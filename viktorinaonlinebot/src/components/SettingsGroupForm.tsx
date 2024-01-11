@@ -16,7 +16,7 @@ import {
 } from "./store/api/vik.api";
 
 interface SettingsGroupProps {
-  group: number;
+  group: bigint;
 }
 
 export default function SettingsGroupForm({ group }: SettingsGroupProps) {

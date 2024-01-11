@@ -1,6 +1,6 @@
 export interface IGroup {
   id: number;
-  chat: string;
+  chat: bigint;
   type: string;
   bot: number;
   date: Date;

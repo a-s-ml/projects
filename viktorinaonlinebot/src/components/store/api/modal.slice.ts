@@ -3,12 +3,12 @@ import { RootState } from "..";
 
 export interface modalState {
   show: boolean;
-  data: number;
+  data: bigint;
 }
 
 const initialState: modalState = {
   show: false,
-  data: 0,
+  data: 0n,
 };
 const tg = window.Telegram.WebApp;
 
@@ -22,7 +22,7 @@ export const modalSlice = createSlice({
       tg.MainButton.hide();
       state.show = action.payload;
     },
-    dataModal: (state, action: PayloadAction<number>) => {
+    dataModal: (state, action: PayloadAction<bigint>) => {
       state.data = action.payload;
     },
   },

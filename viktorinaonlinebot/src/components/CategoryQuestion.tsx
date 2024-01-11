@@ -1,12 +1,12 @@
 import { ListBulletIcon } from "@heroicons/react/24/outline";
-import { useCountCategoryQuery } from "./store/api/vik.api";
+import { useCountCategoryQuery, useGetCategoryGroupsQuery } from "./store/api/vik.api";
 
 interface CategoryQuestionProps {
   group: bigint;
 }
 export default function CategoryQuestion({ group }: CategoryQuestionProps) {
   const { data: dataCountCategory } = useCountCategoryQuery("count");
-  const { data: dataCateoryGroup } = useGetCateoryGroupsQuery(group);
+  const { data: dataCateoryGroup } = useGetCategoryGroupsQuery(group);
   const checkNum = dataCateoryGroup?.length
 
   return (
@@ -31,7 +31,3 @@ export default function CategoryQuestion({ group }: CategoryQuestionProps) {
     </div>
   );
 }
-function useGetCateoryGroupsQuery(group: bigint): { data: any; } {
-  throw new Error("Function not implemented.");
-}
-

@@ -13,7 +13,7 @@ import CategoryQuestion from "./CategoryQuestion";
 import { showSlide } from "./store/api/slide.slice";
 
 interface GroupsListItemProps {
-  group: number;
+  group: bigint;
   questionType: number;
   time: number;
 }
@@ -23,8 +23,7 @@ export default function GroupsListItem({
   questionType,
   time,
 }: GroupsListItemProps) {
-  const { isError: errorGroupInfo, data: dataGroupInfo } =
-    useGetInfoGroupsQuery(group);
+  const { isError: errorGroupInfo, data: dataGroupInfo } = useGetInfoGroupsQuery(group);
   const { data: dataGroupActive } = useGetActiveGroupsQuery(group);
 
   let state: boolean;

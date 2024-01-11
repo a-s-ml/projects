@@ -41,7 +41,7 @@ export const vikApi = createApi({
         url: `category`,
       }),
     }),
-    getCategoryGroups: build.query<ICategoryGroup[], number>({
+    getCategoryGroups: build.query<ICategoryGroup[], bigint>({
       query: (chat) => ({
         url: `chat-category/${chat}`,
       }),
