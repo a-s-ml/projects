@@ -36,8 +36,8 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   const { data: dataGroupType } = useGetTypeGroupQuery(dataGroupDb?.question_type || 0);
   const { data: dataGroupTime } = useGetTimeGroupQuery(dataGroupDb?.time || 0);
   
-  const [type, setType] = useState(dataGroupType?.name);
-  const [time, setTime] = useState(dataGroupTime?.period);
+  const [type, setType] = useState(dataGroupType?.name || 'text');
+  const [time, setTime] = useState(dataGroupTime?.period || 3600);
 
   function rangeChange(e: any) {
     setTime(e.target.value)
