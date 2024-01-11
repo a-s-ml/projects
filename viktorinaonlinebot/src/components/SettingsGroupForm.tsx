@@ -168,7 +168,11 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                   options={dataCategory?.map((cat) => ({
                     value: cat.name,
                     label: cat.name,
+                    color: "#00B8D9",
                   }))}
+                  isMulti
+                  className="basic-multi-select"
+                  classNamePrefix="select"
                 />
               )}
             </li>
