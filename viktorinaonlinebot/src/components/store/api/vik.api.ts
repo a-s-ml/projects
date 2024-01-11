@@ -3,6 +3,7 @@ import { IValidate } from "../../../models/IUser";
 import { ITime } from "../../../models/ITime";
 import { IType } from "../../../models/IType";
 import { ICategory } from "../../../models/ICategory";
+import { ICategoryGroup } from "../../../models/ICategoryGroup";
 
 export const vikApi = createApi({
   reducerPath: "vikApi",
@@ -40,6 +41,11 @@ export const vikApi = createApi({
         url: `category`,
       }),
     }),
+    getCategoryGroups: build.query<ICategoryGroup[], number>({
+      query: (chat) => ({
+        url: `chat-category/${chat}`,
+      }),
+    }),
     countCategory: build.query<number, string>({
       query: (count) => ({
         url: `category/${count}`,
@@ -55,5 +61,6 @@ export const {
   useGetTypeQuery,
   useGetTypeGroupQuery,
   useGetCategoryQuery,
+  useGetCategoryGroupsQuery,
   useCountCategoryQuery,
 } = vikApi;

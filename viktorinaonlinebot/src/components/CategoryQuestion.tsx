@@ -1,5 +1,4 @@
 import { ListBulletIcon } from "@heroicons/react/24/outline";
-import { useGetCateoryGroupsQuery } from "./store/api/groups.slice";
 import { useCountCategoryQuery } from "./store/api/vik.api";
 
 interface CategoryQuestionProps {
@@ -32,3 +31,7 @@ export default function CategoryQuestion({ group }: CategoryQuestionProps) {
     </div>
   );
 }
+function useGetCateoryGroupsQuery(group: bigint): { data: any; } {
+  throw new Error("Function not implemented.");
+}
+

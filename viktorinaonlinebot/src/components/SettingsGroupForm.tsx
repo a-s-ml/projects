@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Select from "react-select";
 import GroupAvatar from "./GroupAvatar";
 import { RadioGroup } from "@headlessui/react";
 import {
@@ -6,6 +7,8 @@ import {
   useGetInfoGroupsQuery,
 } from "./store/api/groups.slice";
 import {
+  useGetCategoryGroupsQuery,
+  useGetCategoryQuery,
   useGetTimeGroupQuery,
   useGetTimeQuery,
   useGetTypeGroupQuery,
@@ -32,25 +35,29 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   const { data: dataGroupDb } = useGetGroupDbQuery(group);
   const { data: dataType } = useGetTypeQuery("");
   const { data: dataTime } = useGetTimeQuery(0);
+  const { data: dataCategory } = useGetCategoryQuery('');
 
   const { data: dataGroupType } = useGetTypeGroupQuery(dataGroupDb?.question_type || 0);
   const { data: dataGroupTime } = useGetTimeGroupQuery(dataGroupDb?.time || 0);
-  
-  const [type, setType] = useState(dataGroupType?.name || 'text');
+  const { data: dataGroupCategory } = useGetCategoryGroupsQuery(group);
+
+  const [type, setType] = useState(dataGroupType?.name || "text");
   const [time, setTime] = useState(dataGroupTime?.period || 3600);
 
   function rangeChange(e: any) {
-    setTime(e.target.value)
+    setTime(e.target.value);
   }
 
-  console.log(dataGroupInfo)
-  console.log(dataGroupDb)
-  console.log(dataType)
-  console.log(dataTime)
-  console.log(dataGroupType)
-  console.log(dataGroupTime)
-  console.log(type)
-  console.log(time)
+  console.log(dataGroupInfo);
+  console.log(dataGroupDb);
+  console.log(dataType);
+  console.log(dataTime);
+  console.log(dataCategory);
+  console.log(dataGroupType);
+  console.log(dataGroupTime);
+  console.log(dataGroupCategory);
+  console.log(type);
+  console.log(time);
 
   return (
     <>
