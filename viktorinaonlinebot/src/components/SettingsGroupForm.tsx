@@ -35,9 +35,11 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   const { data: dataGroupDb } = useGetGroupDbQuery(group);
   const { data: dataType } = useGetTypeQuery("");
   const { data: dataTime } = useGetTimeQuery(0);
-  const { data: dataCategory } = useGetCategoryQuery('');
+  const { data: dataCategory } = useGetCategoryQuery("");
 
-  const { data: dataGroupType } = useGetTypeGroupQuery(dataGroupDb?.question_type || 0);
+  const { data: dataGroupType } = useGetTypeGroupQuery(
+    dataGroupDb?.question_type || 0
+  );
   const { data: dataGroupTime } = useGetTimeGroupQuery(dataGroupDb?.time || 0);
   const { data: dataGroupCategory } = useGetCategoryGroupsQuery(group);
 
@@ -161,6 +163,14 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
               <h3 className="text-sm font-medium text-left text-[var(--tg-theme-text-color)]">
                 Категории
               </h3>
+              {dataCategory && (
+                <Select
+                  options={dataCategory?.map((cat) => ({
+                    value: cat.name,
+                    label: cat.name,
+                  }))}
+                />
+              )}
             </li>
           </ul>
         </form>
