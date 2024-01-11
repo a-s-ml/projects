@@ -120,7 +120,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
               </h3>
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium leading-6 text-[var(--tg-theme-accent-text-color)]">
-                  {time}
+                  Время: {time}
                 </span>
               </div>
               <div className="relative mb-6">
