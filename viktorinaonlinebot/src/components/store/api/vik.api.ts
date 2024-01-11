@@ -30,6 +30,11 @@ export const vikApi = createApi({
         url: `question-type`,
       }),
     }),
+    getTypeGroup: build.query<IType, number>({
+      query: (type) => ({
+        url: `question-type/${type}`,
+      }),
+    }),
     getCategory: build.query<ICategory[], string>({
       query: () => ({
         url: `category`,
@@ -48,6 +53,7 @@ export const {
   useGetTimeQuery,
   useGetTimeGroupQuery,
   useGetTypeQuery,
+  useGetTypeGroupQuery,
   useGetCategoryQuery,
   useCountCategoryQuery,
 } = vikApi;

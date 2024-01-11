@@ -1,9 +1,16 @@
 import { useState } from "react";
-import ErrorLoad from "./ErrorLoad";
 import GroupAvatar from "./GroupAvatar";
 import { RadioGroup } from "@headlessui/react";
-import { useGetInfoGroupsQuery } from "./store/api/groups.slice";
-import { useGetTimeQuery, useGetTypeQuery } from "./store/api/vik.api";
+import {
+  useGetGroupDbQuery,
+  useGetInfoGroupsQuery,
+} from "./store/api/groups.slice";
+import {
+  useGetTimeGroupQuery,
+  useGetTimeQuery,
+  useGetTypeGroupQuery,
+  useGetTypeQuery,
+} from "./store/api/vik.api";
 
 interface SettingsGroupProps {
   group: number;
@@ -11,16 +18,6 @@ interface SettingsGroupProps {
 
 export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   const tg = window.Telegram.WebApp;
-
-  const { data: dataType } = useGetTypeQuery("");
-  const { data: dataTime } = useGetTimeQuery(0);
-
-  const { isError: errorGroupInfo, data: dataGroupInfo } =
-    useGetInfoGroupsQuery(group);
-
-  const [type, setType] = useState(dataType || "");
-  const [time, setTime] = useState(dataTime || 3600);
-
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
@@ -31,9 +28,29 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
     tg.MainButton.show();
   }
 
+  const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
+  const { data: dataGroupDb } = useGetGroupDbQuery(group);
+  const { data: dataType } = useGetTypeQuery("");
+  const { data: dataTime } = useGetTimeQuery(0);
+
+  const { data: dataGroupType } = useGetTypeGroupQuery(dataGroupDb?.question_type || 0);
+  const { data: dataGroupTime } = useGetTimeGroupQuery(dataGroupDb?.time || 0);
+  
+  const [type, setType] = useState(dataGroupType);
+  const [time, setTime] = useState(dataGroupTime);
+
+  console.log(dataGroupInfo)
+  console.log(dataGroupDb)
+  console.log(dataType)
+  console.log(dataTime)
+  console.log(dataGroupType)
+  console.log(dataGroupTime)
+  console.log(type)
+  console.log(time)
+
   return (
     <>
-      {dataGroupInfo && dataType && dataTime && (
+      {dataGroupInfo && dataType && dataTime && dataGroupDb && (
         <form className="text-center">
           <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
             {dataGroupInfo.photo?.small_file_id && (
@@ -56,7 +73,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                   onClick={() =>
                     tg.openTelegramLink("https://t.me/ViktorinaOnlineChannel")
                   }
-                  className="text-sm font-medium leading-6 text-[var(--tg-theme-accent-text-color)]"
+                  className="cursor-pointer text-sm font-medium leading-6 text-[var(--tg-theme-accent-text-color)]"
                 >
                   Посмотреть пример
                 </span>
@@ -101,6 +118,11 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
               <h3 className="text-sm font-medium text-left text-[var(--tg-theme-text-color)]">
                 Период публикаций
               </h3>
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium leading-6 text-[var(--tg-theme-accent-text-color)]">
+                  {/* {time.toString} */}
+                </span>
+              </div>
               <div className="relative mb-6">
                 <label htmlFor="labels-range-input" className="sr-only">
                   Labels range
@@ -114,11 +136,13 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                   max={dataTime[dataTime.length - 1].period}
                   step="3600"
                 />
+                <span className="text-sm text-gray-500 dark:text-gray-400 absolute start- -bottom-6"></span>
                 {dataTime.map((time) => (
                   <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">
                     {time.period}
                   </span>
                 ))}
+                <span className="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6"></span>
               </div>
             </li>
             <li className="py-4 px-0">
@@ -129,7 +153,6 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
           </ul>
         </form>
       )}
-      {errorGroupInfo && <ErrorLoad />}
     </>
   );
 }
