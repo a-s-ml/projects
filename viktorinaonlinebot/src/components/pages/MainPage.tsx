@@ -10,8 +10,6 @@ import { useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
 import { Bars3Icon } from "@heroicons/react/24/outline";
-import { Header } from "./Header";
-import { Footer } from "./Footer";
 
 let menuitems: IMenu[] = [
   {
@@ -57,20 +55,24 @@ export function MainPage() {
 
   return (
     <>
-      <Header>
-        <div className="text-center">
-          <img className="mx-auto h-12 w-12" src={Logo} alt="https://80q.ru" />
-          <h2 className="mt-2 text-base font-semibold leading-6 text-[var(--tg-theme-accent-text-color)]">
-            ViktorinaOnlineBot
-          </h2>
-          <p className="mt-1 text-sm text-[var(--tg-theme-hint-color)]">
-            Бот проводит викторины в группах/каналах используя собственную базу
-            вопросов и вопросы, заданные участниками викторины
-          </p>
-        </div>
-      </Header>
       <div className="container p-6 mx-auto">
         <div className="mx-auto max-w-lg">
+          <div>
+            <div className="text-center">
+              <img
+                className="mx-auto h-12 w-12"
+                src={Logo}
+                alt="https://80q.ru"
+              />
+              <h2 className="mt-2 text-base font-semibold leading-6 text-[var(--tg-theme-accent-text-color)]">
+                ViktorinaOnlineBot
+              </h2>
+              <p className="mt-1 text-sm text-[var(--tg-theme-hint-color)]">
+                Бот проводит викторины в группах/каналах используя собственную
+                базу вопросов и вопросы, заданные участниками викторины
+              </p>
+            </div>
+          </div>
           {dataUser && (
             <div className="mt-10">
               {errorUser && <ErrorPage />}
@@ -98,9 +100,6 @@ export function MainPage() {
           )}
         </div>
       </div>
-      <Footer>
-        <p>ncsd</p>
-      </Footer>
       {dataUser && (
         <>
           <SlidePage chat={dataUser.UserData.user.id} />
