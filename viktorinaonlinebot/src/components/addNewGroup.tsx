@@ -4,7 +4,7 @@ export default function AddNewGroup() {
   return (
     <ul
       role="list"
-      className="divide-y divide-[var(--tg-theme-hint-color)]"
+      className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
     >
       <li className="py-2 px-0">
         <div className="group relative flex items-start space-x-3">
