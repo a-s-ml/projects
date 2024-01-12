@@ -52,10 +52,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                 </div>
                 <Footer>
                   <div>
-                    <p>fhghfj</p>
-                  </div>
-                  <div>
-                    <p>fhghfj</p>
+                    <p className="text-[var(--tg-theme-hint-color)]">Footer</p>
                   </div>
                 </Footer>
               </Dialog.Panel>
