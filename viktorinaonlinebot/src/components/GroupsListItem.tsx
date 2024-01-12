@@ -36,7 +36,7 @@ export default function GroupsListItem({
     <>
       <ul
         role="list"
-        className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
+        className="mt-4 divide-y divide-[var(--tg-theme-hint-color)] pt-28"
       >
         {errorGroupInfo && <li>error</li>}
         {dataGroupInfo && (
