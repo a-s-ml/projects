@@ -7,18 +7,18 @@ export default function AddNewGroup() {
       className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
     >
       <li className="py-4 px-0">
-        <div className="group relative flex items-start space-x-3">
+        <div className="addgroup relative flex items-start space-x-3">
           <div className="min-w-0 flex-1">
             <PlusCircleIcon
-              className="h-5 w-5 text-[var(--tg-theme-hint-color)] group-hover:text-[var(--tg-theme-text-color)]"
+              className="h-5 w-5 text-[var(--tg-theme-hint-color)] addgroup-hover:text-[var(--tg-theme-text-color)]"
               aria-hidden="true"
             />
           </div>
           <div className="flex-shrink-0 self-center">
-            <div className="text-sm font-medium text-[var(--tg-theme-hint-color)] group-hover:text-[var(--tg-theme-text-color)]">
+            <div className="text-sm font-medium text-[var(--tg-theme-hint-color)] addgroup-hover:text-[var(--tg-theme-text-color)]">
               <b>
                 <span className="absolute inset-0" aria-hidden="true" />
-                Добавить группу/канал
+                Добавить группу/канал 
               </b>
             </div>
           </div>
