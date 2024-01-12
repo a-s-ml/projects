@@ -34,26 +34,22 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
 
   return (
     <>
-      <div className="group relative flex items-start space-x-3">
-        <div className="min-w-0 flex">
-          <div className="mt-1 flex items-center gap-x-1.5">
-            <p
-              className={classNames(
-                enabled ? "text-emerald-500" : "text-red-500",
-                "text-xs leading-5"
-              )}
-            >
-              {enabled ? "Вкл" : "Выкл"}
-            </p>
-            <div className="flex-none rounded-full bg-emerald-500/20 p-1">
-              <div
-                className={classNames(
-                  enabled ? "bg-emerald-500" : "bg-red-500",
-                  "h-1.5 w-1.5 rounded-full"
-                )}
-              />
-            </div>
-          </div>
+      <div className="gap-x-1.5">
+        <p
+          className={classNames(
+            enabled ? "text-emerald-500" : "text-red-500",
+            "text-xs leading-5"
+          )}
+        >
+          {enabled ? "Вкл" : "Выкл"}
+        </p>
+        <div className="flex-none rounded-full bg-emerald-500/20 p-1">
+          <div
+            className={classNames(
+              enabled ? "bg-emerald-500" : "bg-red-500",
+              "h-1.5 w-1.5 rounded-full"
+            )}
+          />
         </div>
       </div>
       <Switch
