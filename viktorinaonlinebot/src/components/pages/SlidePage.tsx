@@ -53,12 +53,8 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                 <Footer>
                   <div>
                     <p>fhghfj</p>
-                    <p>fhghfj</p>
-                    <p>fhghfj</p>
                   </div>
                   <div>
-                    <p>fhghfj</p>
-                    <p>fhghfj</p>
                     <p>fhghfj</p>
                   </div>
                 </Footer>
