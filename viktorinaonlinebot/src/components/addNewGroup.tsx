@@ -4,9 +4,9 @@ export default function AddNewGroup() {
   return (
     <ul
       role="list"
-      className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
+      className="divide-y divide-[var(--tg-theme-hint-color)]"
     >
-      <li className="py-4 px-0">
+      <li className="py-2 px-0">
         <div className="group relative flex items-start space-x-3">
           <div className="min-w-0 flex-1">
             <div className="text-sm font-medium text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]">
