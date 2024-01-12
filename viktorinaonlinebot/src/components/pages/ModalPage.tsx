@@ -9,18 +9,8 @@ import {
 } from "../store/api/modal.slice";
 import SettingsGroupForm from "../SettingsGroupForm";
 import { showSlide } from "../store/api/slide.slice";
-import ExPage from "../Examp/ExPage";
-import ExPage2 from "../Examp/ExPage2";
-import ExPage3 from "../Examp/ExPage3";
-import ExPage4 from "../Examp/ExPage4";
-import ExPage5 from "../Examp/ExPage5";
-import ExPage6 from "../Examp/ExPage6";
-import ExPage7 from "../Examp/ExPage7";
-import ExPage8 from "../Examp/ExPage8";
-import ExPage9 from "../Examp/ExPage9";
-import ExPage10 from "../Examp/ExPage10";
-import ExPage11 from "../Examp/ExPage11";
-import ExPage12 from "../Examp/ExPage12";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 export default function ModalPage() {
   const modal = useAppSelector(selectModal);
@@ -54,10 +44,13 @@ export default function ModalPage() {
               leaveTo="translate-x-full opacity-5"
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
+              <Header />
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+
                   {/* <SettingsGroupForm group={modalData}/> */}
-                  <ExPage7 />
+
                 </div>
+                <Footer />
               </Dialog.Panel>
             </Transition.Child>
           </div>
