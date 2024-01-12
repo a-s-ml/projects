@@ -52,6 +52,10 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                 </div>
                 <Footer>
                   <p>fhghfj</p>
+                  <p>fhghfj</p>
+                  <p>fhghfj</p>
+                  <p>fhghfj</p>
+                  <p>fhghfj</p>
                 </Footer>
               </Dialog.Panel>
             </Transition.Child>

@@ -4,7 +4,7 @@ interface FooterProps {
 
 export function Footer({ children }: FooterProps) {
   return (
-    <header className="absolute inset-x-0 bottom-0 z-50">
+    <header className="absolute inset-x-0 bottom-0 z-50 bg-gradient-to-b from-inherit to-transparent">
       <div className="flex items-center justify-between p-6 lg:px-8">
         {children}
       </div>
