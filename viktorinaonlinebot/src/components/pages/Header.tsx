@@ -4,8 +4,8 @@ interface HeaderProps {
 
 export function Header({ children }: HeaderProps) {
   return (
-    <header className="absolute inset-x-0 top-0 z-50 p-8">
-      <div className="flex items-center justify-between">{children}</div>
+    <header className="absolute inset-x-0 top-0 z-50">
+      <div className="flex items-center justify-between p-8">{children}</div>
     </header>
   );
 }
