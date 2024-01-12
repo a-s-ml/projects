@@ -31,28 +31,24 @@ export default function SlidePage({ chat }: SlideItemsProps) {
           className="relative z-10"
           onClose={() => dispatch(showSlide(true))}
         >
-          <div className="fixed inset-0 overflow-hidden">
-            <div className="absolute inset-0 overflow-hidden">
-              <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full">
-                <Transition.Child
-                  as={Fragment}
-                  enter="transform transition ease-in-out duration-500"
-                  enterFrom="translate-x-full opacity-5"
-                  enterTo="translate-x-0 opacity-100"
-                  leave="transform transition ease-in-out duration-500"
-                  leaveFrom="translate-x-0 opacity-100"
-                  leaveTo="translate-x-full opacity-5"
-                >
-                  <Dialog.Panel className="pointer-events-auto relative w-screen">
-                    <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                      {slideData === "groups" && <GroupsList chat={chat} />}
-                      {slideData === "questions" && <ErrorPage />}
-                      {slideData === "answers" && <ErrorPage />}
-                    </div>
-                  </Dialog.Panel>
-                </Transition.Child>
-              </div>
-            </div>
+          <div className="fixed inset-y-0 right-0 flex max-w-full">
+            <Transition.Child
+              as={Fragment}
+              enter="transform transition ease-in-out duration-500"
+              enterFrom="translate-x-full opacity-5"
+              enterTo="translate-x-0 opacity-100"
+              leave="transform transition ease-in-out duration-500"
+              leaveFrom="translate-x-0 opacity-100"
+              leaveTo="translate-x-full opacity-5"
+            >
+              <Dialog.Panel className="pointer-events-auto relative w-screen">
+                <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                  {slideData === "groups" && <GroupsList chat={chat} />}
+                  {slideData === "questions" && <ErrorPage />}
+                  {slideData === "answers" && <ErrorPage />}
+                </div>
+              </Dialog.Panel>
+            </Transition.Child>
           </div>
         </Dialog>
       </Transition.Root>
