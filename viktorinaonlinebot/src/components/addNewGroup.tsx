@@ -2,7 +2,7 @@ import { PlusCircleIcon } from "@heroicons/react/24/outline";
 
 export default function AddNewGroup() {
   return (
-    <ul role="list" className="divide-y divide-[var(--tg-theme-hint-color)]">
+    <ul role="list" className="divide-y divide-[var(--tg-theme-hint-color)] w-full">
       <li className="py-4 px-0 ">
         <div className="group relative flex items-center justify-between ">
           <div className="text-sm font-medium text-[var(--tg-theme-hint-color)] group-hover:text-[var(--tg-theme-text-color)]">
