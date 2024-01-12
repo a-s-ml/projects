@@ -1,8 +1,6 @@
 import { useGetGroupsQuery } from "./store/api/groups.slice";
 import GroupsListItem from "./GroupsListItem";
 import ErrorPage from "./ErrorPage";
-import AddNewGroup from "./AddNewGroup";
-import { Header } from "./pages/Header";
 
 interface GroupsListProps {
   chat: number;
@@ -18,10 +16,6 @@ export default function GroupsList({ chat }: GroupsListProps) {
     <>
       {loadGroups && <p>Loading...</p>}
       {errorGroups && <ErrorPage />}
-      <Header>
-        <AddNewGroup />
-      </Header>
-
       <ul
         role="list"
         className="mt-4 divide-y divide-[var(--tg-theme-hint-color)] pt-9"

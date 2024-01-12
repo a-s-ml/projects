@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from "../store";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import AddNewGroup from "../AddNewGroup";
 
 interface SlideItemsProps {
   chat: number;
@@ -45,6 +46,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
               leaveTo="translate-x-full opacity-5"
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
+                <Header>{slideData === "groups" && <AddNewGroup />}</Header>
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   {slideData === "groups" && <GroupsList chat={chat} />}
                   {slideData === "questions" && <ErrorPage />}
