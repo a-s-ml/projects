@@ -21,42 +21,48 @@ export default function GroupsList({ chat }: GroupsListProps) {
       <Header>
         <AddNewGroup />
       </Header>
-      {dataGroups &&
-        dataGroups.map((group) => (
-          <GroupsListItem
-            key={group.id}
-            group={group.chat}
-            questionType={group.question_type}
-            time={group.time}
-          />
-        ))}
-      {dataGroups &&
-        dataGroups.map((group) => (
-          <GroupsListItem
-            key={group.id}
-            group={group.chat}
-            questionType={group.question_type}
-            time={group.time}
-          />
-        ))}
-      {dataGroups &&
-        dataGroups.map((group) => (
-          <GroupsListItem
-            key={group.id}
-            group={group.chat}
-            questionType={group.question_type}
-            time={group.time}
-          />
-        ))}
-      {dataGroups &&
-        dataGroups.map((group) => (
-          <GroupsListItem
-            key={group.id}
-            group={group.chat}
-            questionType={group.question_type}
-            time={group.time}
-          />
-        ))}
+
+      <ul
+        role="list"
+        className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
+      >
+        {dataGroups &&
+          dataGroups.map((group) => (
+            <GroupsListItem
+              key={group.id}
+              group={group.chat}
+              questionType={group.question_type}
+              time={group.time}
+            />
+          ))}
+        {dataGroups &&
+          dataGroups.map((group) => (
+            <GroupsListItem
+              key={group.id}
+              group={group.chat}
+              questionType={group.question_type}
+              time={group.time}
+            />
+          ))}
+        {dataGroups &&
+          dataGroups.map((group) => (
+            <GroupsListItem
+              key={group.id}
+              group={group.chat}
+              questionType={group.question_type}
+              time={group.time}
+            />
+          ))}
+        {dataGroups &&
+          dataGroups.map((group) => (
+            <GroupsListItem
+              key={group.id}
+              group={group.chat}
+              questionType={group.question_type}
+              time={group.time}
+            />
+          ))}
+      </ul>
     </>
   );
 }
