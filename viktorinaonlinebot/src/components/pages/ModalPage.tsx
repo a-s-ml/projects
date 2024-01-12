@@ -43,8 +43,6 @@ export default function ModalPage() {
           className="relative z-20"
           onClose={() => dispatch(showModal(true))}
         >
-          <div className="fixed inset-0 overflow-hidden">
-            <div className="absolute inset-0 overflow-hidden">
               <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full">
                 <Transition.Child
                   as={Fragment}
@@ -63,8 +61,6 @@ export default function ModalPage() {
                   </Dialog.Panel>
                 </Transition.Child>
               </div>
-            </div>
-          </div>
         </Dialog>
       </Transition.Root>
     </>
