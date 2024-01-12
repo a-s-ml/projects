@@ -16,7 +16,7 @@ export default function AddNewGroup() {
               </b>
             </div>
           </div>
-          <div className="flex-shrink-0 self-center">
+          <div className="flex-shrink-0 self-center"> 
             <PlusCircleIcon
               className="h-5 w-5 text-[var(--tg-theme-hint-color)] group-hover:text-[var(--tg-theme-text-color)]"
               aria-hidden="true"
