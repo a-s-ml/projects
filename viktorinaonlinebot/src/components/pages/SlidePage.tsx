@@ -50,7 +50,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   {slideData === "groups" && <GroupsList chat={chat} />}
                   {slideData === "questions" && <ErrorPage />}
-                  {slideData === "answers" && <ErrorPage />}
+                  {slideData === "answers" && <ErrorPage />} 
                 </div>
                 <Footer />
               </Dialog.Panel>
