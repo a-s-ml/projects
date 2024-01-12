@@ -52,8 +52,8 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                   {slideData === "questions" && <ErrorPage />}
                   {slideData === "answers" && <ErrorPage />}
                 </div>
-                <Footer />
               </Dialog.Panel>
+              <Footer />
             </Transition.Child>
           </div>
         </Dialog>
