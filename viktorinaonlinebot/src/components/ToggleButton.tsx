@@ -84,7 +84,7 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
               enabled
                 ? "opacity-0 duration-100 ease-out"
                 : "opacity-100 duration-200 ease-in",
-              "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity bg-white"
+              "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
             )}
             aria-hidden="true"
           >
