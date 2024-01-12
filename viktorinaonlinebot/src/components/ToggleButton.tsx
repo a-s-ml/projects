@@ -47,15 +47,15 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
             </p>
             <div
               className={classNames(
-                enabled
-                  ? " bg-emerald-500/20 animate-ping opacity-75"
-                  : "bg-red-500/20",
+                enabled ? " bg-emerald-500/20 animate-ping opacity-75" : "bg-red-500/20",
                 "flex-none rounded-full p-1"
               )}
             >
               <div
                 className={classNames(
-                  enabled ? "bg-emerald-500" : "bg-red-500",
+                  enabled
+                    ? "bg-emerald-500"
+                    : "bg-red-500",
                   "h-1.5 w-1.5 rounded-full"
                 )}
               />
@@ -73,7 +73,6 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
           "relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer rounded-full border-1 border-transparent transition-colors duration-200 ease-in-out"
         )}
       >
-        <span className="sr-only">Use setting</span>
         <span
           className={classNames(
             enabled ? "translate-x-5" : "translate-x-0",
@@ -85,7 +84,7 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
               enabled
                 ? "opacity-0 duration-100 ease-out"
                 : "opacity-100 duration-200 ease-in",
-              "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity bg-white border-solid border-2 border-sky-500"
+              "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
             )}
             aria-hidden="true"
           >
@@ -108,7 +107,7 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
               enabled
                 ? "opacity-100 duration-200 ease-in"
                 : "opacity-0 duration-100 ease-out",
-              "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity bg-white border-solid border-2 border-sky-500"
+              "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
             )}
             aria-hidden="true"
           >
