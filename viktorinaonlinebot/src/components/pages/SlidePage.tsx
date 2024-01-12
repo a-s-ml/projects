@@ -40,8 +40,8 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                   enterFrom="translate-x-full opacity-20"
                   enterTo="translate-x-0 opacity-100"
                   leave="transform transition ease-in-out duration-700"
-                  leaveFrom="translate-x-0 opacity-20"
-                  leaveTo="translate-x-full opacity-100"
+                  leaveFrom="translate-x-0 opacity-100"
+                  leaveTo="translate-x-full opacity-20"
                 >
                   <Dialog.Panel className="pointer-events-auto relative w-screen">
                     <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">

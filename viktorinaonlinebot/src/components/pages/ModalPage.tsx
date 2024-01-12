@@ -48,12 +48,12 @@ export default function ModalPage() {
               <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full">
                 <Transition.Child
                   as={Fragment}
-                  enter="transform transition ease-in-out duration-500 sm:duration-700"
-                  enterFrom="translate-x-full"
-                  enterTo="translate-x-0"
-                  leave="transform transition ease-in-out duration-500 sm:duration-700"
-                  leaveFrom="translate-x-0"
-                  leaveTo="translate-x-full"
+                  enter="transform transition ease-in-out duration-700"
+                  enterFrom="translate-x-full opacity-20"
+                  enterTo="translate-x-0 opacity-100"
+                  leave="transform transition ease-in-out duration-700"
+                  leaveFrom="translate-x-0 opacity-100"
+                  leaveTo="translate-x-full opacity-20"
                 >
                   <Dialog.Panel className="pointer-events-auto relative w-screen">
                     <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
