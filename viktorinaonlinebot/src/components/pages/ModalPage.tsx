@@ -61,6 +61,12 @@ export default function ModalPage() {
                       <ExPage4 />
 
                       <ExPage6 />
+                      <ExPage7 />
+                      <ExPage8 />
+                      <ExPage9 />
+                      <ExPage10 />
+                      <ExPage11 />
+                      <ExPage12 />
                     </div>
                   </Dialog.Panel>
                 </Transition.Child>
