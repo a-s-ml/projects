@@ -76,7 +76,7 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
         <span
           className={classNames(
             enabled ? "translate-x-5" : "translate-x-0",
-            "pointer-events-none relative inline-block h-4 w-4 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out border-solid border-1 border-[var(--tg-theme-accent-text-color)]"
+            "pointer-events-none relative inline-block h-4 w-4 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out border-solid border-1 border-sky-500"
           )}
         >
           <span
