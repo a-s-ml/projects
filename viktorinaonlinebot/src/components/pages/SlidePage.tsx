@@ -36,11 +36,11 @@ export default function SlidePage({ chat }: SlideItemsProps) {
               <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full">
                 <Transition.Child
                   as={Fragment}
-                  enter="transform transition ease-in-out duration-500"
-                  enterFrom="translate-x-full opacity-100"
-                  enterTo="translate-x-0 opacity-0"
-                  leave="transform transition ease-in-out duration-500"
-                  leaveFrom="translate-x-0 opacity-0"
+                  enter="transform transition ease-in-out duration-700"
+                  enterFrom="translate-x-full opacity-20"
+                  enterTo="translate-x-0 opacity-100"
+                  leave="transform transition ease-in-out duration-700"
+                  leaveFrom="translate-x-0 opacity-20"
                   leaveTo="translate-x-full opacity-100"
                 >
                   <Dialog.Panel className="pointer-events-auto relative w-screen">
