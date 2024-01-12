@@ -70,13 +70,13 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
           enabled
             ? "bg-[var(--tg-theme-accent-text-color)]"
             : "bg-[var(--tg-theme-hint-color)]",
-          "relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer rounded-full border-1 border-transparent transition-colors duration-200 ease-in-out bg-white border-solid border-2 border-sky-500"
+          "relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer rounded-full border-1 border-transparent transition-colors duration-200 ease-in-out"
         )}
       >
         <span
           className={classNames(
             enabled ? "translate-x-5" : "translate-x-0",
-            "pointer-events-none relative inline-block h-4 w-4 transform rounded-full bg-[var(--tg-theme-text-color)] shadow ring-0 transition duration-200 ease-in-out"
+            "pointer-events-none relative inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
           )}
         >
           <span
