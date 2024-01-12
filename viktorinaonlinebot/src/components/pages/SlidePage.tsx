@@ -36,6 +36,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
           onClose={() => dispatch(showSlide(true))}
         >
           <div className="fixed inset-y-0 right-0 flex max-w-full">
+            <Header>{slideData === "groups" && <AddNewGroup />}</Header>
             <Transition.Child
               as={Fragment}
               enter="transform transition ease-in-out duration-500"
@@ -45,7 +46,6 @@ export default function SlidePage({ chat }: SlideItemsProps) {
               leaveFrom="translate-x-0 opacity-100"
               leaveTo="translate-x-full opacity-5"
             >
-              <Header>{slideData === "groups" && <AddNewGroup />}</Header>
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   {slideData === "groups" && <GroupsList chat={chat} />}
@@ -53,8 +53,8 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                   {slideData === "answers" && <ErrorPage />}
                 </div>
               </Dialog.Panel>
-              <Footer />
             </Transition.Child>
+            <Footer />
           </div>
         </Dialog>
       </Transition.Root>
