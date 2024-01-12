@@ -1,14 +1,11 @@
-export function Header() {
+interface HeaderProps {
+  children: React.ReactNode;
+}
+
+export function Header({ children }: HeaderProps) {
   return (
     <header className="absolute inset-x-0 top-0 z-50">
-      <nav
-        className="flex items-center justify-between p-6 lg:px-8"
-        aria-label="Global"
-      >
-        <div className="flex">
-          <p>dsgdghsdfzhsfhs</p>
-        </div>
-      </nav>
+      <div className="flex items-center justify-between p-6">{children}</div>
     </header>
   );
 }
