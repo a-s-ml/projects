@@ -8,7 +8,7 @@ export function Header({ children }: HeaderProps) {
       <div className="flex items-center justify-between px-8 py-2 bg-[var(--tg-theme-bg-color)]">
         {children}
       </div>
-      <div className="bg-gradient-to-b from-[var(--tg-theme-bg-color)] to-transparent pt-14 w-screen"></div>
+      <div className="bg-gradient-to-b from-[var(--tg-theme-bg-color)] to-transparent pt-12 w-screen"></div>
     </header>
   );
 }

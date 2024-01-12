@@ -24,7 +24,7 @@ export default function GroupsList({ chat }: GroupsListProps) {
 
       <ul
         role="list"
-        className="mt-4 divide-y divide-[var(--tg-theme-hint-color)] pt-10"
+        className="mt-4 divide-y divide-[var(--tg-theme-hint-color)] pt-8"
       >
         {dataGroups &&
           dataGroups.map((group) => (
