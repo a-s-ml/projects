@@ -23,11 +23,11 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
   const useSetStatusActive = async () => {
     if (!enabled) {
       await setActive(group);
-      tg.HapticFeedback.notificationOccurred('success')
+      tg.HapticFeedback.notificationOccurred("success");
     }
     if (enabled) {
       deleteActive(group);
-      tg.HapticFeedback.notificationOccurred('error')
+      tg.HapticFeedback.notificationOccurred("error");
     }
     setEnabled(!enabled);
   };
@@ -37,6 +37,14 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
       <div className="group relative flex items-start space-x-3">
         <div className="min-w-0 flex">
           <div className="mt-1 flex items-center gap-x-1.5">
+            <p
+              className={classNames(
+                enabled ? "text-emerald-500" : "text-red-500",
+                "text-xs leading-5"
+              )}
+            >
+              {enabled ? "Вкл" : "Выкл"}
+            </p>
             <div className="flex-none rounded-full bg-emerald-500/20 p-1">
               <div
                 className={classNames(
@@ -45,14 +53,6 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
                 )}
               />
             </div>
-            <p
-              className={classNames(
-                enabled ? "text-emerald-500" : "text-red-500",
-                "text-xs leading-5"
-              )}
-            >
-              {enabled ? "Вкл" : "Выкл" }
-            </p>
           </div>
         </div>
       </div>
