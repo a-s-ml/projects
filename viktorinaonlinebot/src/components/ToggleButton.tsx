@@ -98,7 +98,7 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
                 stroke="currentColor"
                 strokeWidth={2}
                 strokeLinecap="round"
-                strokeLinejoin="round"
+                strokeLinejoin="round" 
               />
             </svg>
           </span>
