@@ -45,9 +45,6 @@ export default function SlidePage({ chat }: SlideItemsProps) {
               leaveTo="translate-x-full opacity-5"
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
-                <Header>
-                  <p>fhghfj</p>
-                </Header>
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   {slideData === "groups" && <GroupsList chat={chat} />}
                   {slideData === "questions" && <ErrorPage />}
