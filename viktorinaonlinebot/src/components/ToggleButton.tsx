@@ -48,7 +48,7 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
             <div className="flex-none rounded-full bg-emerald-500/20 p-1">
               <div
                 className={classNames(
-                  enabled ? "bg-emerald-500" : "bg-red-500",
+                  enabled ? "bg-emerald-500 animate-ping opacity-75" : "bg-red-500",
                   "h-1.5 w-1.5 rounded-full"
                 )}
               />
