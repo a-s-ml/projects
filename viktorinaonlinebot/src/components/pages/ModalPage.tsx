@@ -43,24 +43,22 @@ export default function ModalPage() {
           className="relative z-20"
           onClose={() => dispatch(showModal(true))}
         >
-              <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full">
-                <Transition.Child
-                  as={Fragment}
-                  enter="transform transition ease-in-out duration-500"
-                  enterFrom="translate-x-full opacity-5"
-                  enterTo="translate-x-0 opacity-100"
-                  leave="transform transition ease-in-out duration-500"
-                  leaveFrom="translate-x-0 opacity-100"
-                  leaveTo="translate-x-full opacity-5"
-                >
-                  <Dialog.Panel className="pointer-events-auto relative w-screen">
-                    <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                      {/* <SettingsGroupForm group={modalData}/> */}
-                      <ExPage7 />
-                    </div>
-                  </Dialog.Panel>
-                </Transition.Child>
+          <Transition.Child
+            as={Fragment}
+            enter="transform transition ease-in-out duration-500"
+            enterFrom="translate-x-full opacity-5"
+            enterTo="translate-x-0 opacity-100"
+            leave="transform transition ease-in-out duration-500"
+            leaveFrom="translate-x-0 opacity-100"
+            leaveTo="translate-x-full opacity-5"
+          >
+            <Dialog.Panel className="pointer-events-auto relative w-screen">
+              <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                {/* <SettingsGroupForm group={modalData}/> */}
+                <ExPage7 />
               </div>
+            </Dialog.Panel>
+          </Transition.Child>
         </Dialog>
       </Transition.Root>
     </>
