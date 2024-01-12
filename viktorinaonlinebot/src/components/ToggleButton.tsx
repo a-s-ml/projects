@@ -73,7 +73,6 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
           "relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer rounded-full border-1 border-transparent transition-colors duration-200 ease-in-out"
         )}
       >
-        <span className="sr-only">Use setting</span>
         <span
           className={classNames(
             enabled ? "translate-x-5" : "translate-x-0",
@@ -85,12 +84,12 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
               enabled
                 ? "opacity-0 duration-100 ease-out"
                 : "opacity-100 duration-200 ease-in",
-              "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
+              "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity bg-white border-solid border-2 border-sky-500"
             )}
             aria-hidden="true"
           >
             <svg
-              className="h-2 w-2 text-gray-400"
+              className="h-2 w-2 text-red-500"
               fill="none"
               viewBox="0 0 12 12"
             >
@@ -108,12 +107,12 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
               enabled
                 ? "opacity-100 duration-200 ease-in"
                 : "opacity-0 duration-100 ease-out",
-              "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
+              "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity bg-white border-solid border-2 border-sky-500"
             )}
             aria-hidden="true"
           >
             <svg
-              className="h-2 w-2 text-indigo-600"
+              className="h-2 w-2 text-emerald-500"
               fill="currentColor"
               viewBox="0 0 12 12"
             >
