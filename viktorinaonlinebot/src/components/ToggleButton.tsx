@@ -70,7 +70,7 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
           enabled
             ? "bg-[var(--tg-theme-accent-text-color)]"
             : "bg-[var(--tg-theme-hint-color)]",
-          "relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer rounded-full border-1 border-transparent transition-colors duration-200 ease-in-out"
+          "relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer rounded-full border-1 border-transparent transition-colors duration-200 ease-in-out bg-white border-solid border-2 border-sky-500"
         )}
       >
         <span
