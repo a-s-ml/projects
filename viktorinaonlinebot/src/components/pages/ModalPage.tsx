@@ -58,6 +58,8 @@ export default function ModalPage() {
                   <Dialog.Panel className="pointer-events-auto relative w-screen">
                     <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                       {/* <SettingsGroupForm group={modalData}/> */}
+                      <ExPage4 />
+
                       <ExPage6 />
                     </div>
                   </Dialog.Panel>
