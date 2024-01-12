@@ -50,11 +50,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                   {slideData === "questions" && <ErrorPage />}
                   {slideData === "answers" && <ErrorPage />}
                 </div>
-                <Footer>
-                  <div>
-                    <p className="text-[var(--tg-theme-hint-color)]">Footer</p>
-                  </div>
-                </Footer>
+                <Footer />
               </Dialog.Panel>
             </Transition.Child>
           </div>

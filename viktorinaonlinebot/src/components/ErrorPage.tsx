@@ -21,7 +21,7 @@ export default function ErrorPage() {
               onClick={() => tg.openTelegramLink('https://t.me/a_s_ml')}
               className="cursor-pointer rounded-md bg-[var(--tg-theme-accent-text-color)] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[var(--tg-theme-hint-color)]"
             >
-              Go back home
+              Сообщить об ошибке
             </span>
           </div>
         </div>

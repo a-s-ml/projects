@@ -50,9 +50,7 @@ export default function ModalPage() {
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   {/* <SettingsGroupForm group={modalData}/> */}
                 </div>
-                <Footer>
-                  <p>fhghfj</p>
-                </Footer>
+                <Footer />
               </Dialog.Panel>
             </Transition.Child>
           </div>
