@@ -51,7 +51,7 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
                 "text-xs leading-5"
               )}
             >
-              Online
+              {enabled ? "Online" : "Offline" }
             </p>
           </div>
         </div>

@@ -37,11 +37,11 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                 <Transition.Child
                   as={Fragment}
                   enter="transform transition ease-in-out duration-500"
-                  enterFrom="translate-x-full"
-                  enterTo="translate-x-0"
+                  enterFrom="translate-x-full opacity-100"
+                  enterTo="translate-x-0 opacity-0"
                   leave="transform transition ease-in-out duration-500"
-                  leaveFrom="translate-x-0"
-                  leaveTo="translate-x-full"
+                  leaveFrom="translate-x-0 opacity-0"
+                  leaveTo="translate-x-full opacity-100"
                 >
                   <Dialog.Panel className="pointer-events-auto relative w-screen">
                     <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
