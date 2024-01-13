@@ -14,6 +14,7 @@ import {
 import SettingsTypeQuestionGroup from "./SettingsTypeQuestionGroup";
 import SettingsCategoryQuestionGroup from "./SettingsCategoryQuestionGroup";
 import SettingsTimeQuestionGroup from "./SettingsTimeQuestionGroup";
+import SittingsNotactiveQuestionGroup from "./SittingsNotactiveQuestionGroup";
 
 interface SettingsGroupProps {
   group: bigint;
@@ -102,6 +103,21 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                 />
               </li>
             )}
+            <li className="py-4 px-0">
+              <SittingsNotactiveQuestionGroup
+                type={"Сложность вопросов"}
+              />
+            </li>
+            <li className="py-4 px-0">
+              <SittingsNotactiveQuestionGroup
+                type={"Период жизни вопроса"}
+              />
+            </li>
+            <li className="py-4 px-0">
+              <SittingsNotactiveQuestionGroup
+                type={"Ежедневная статистика"}
+              />
+            </li>
           </ul>
         </form>
       )}
