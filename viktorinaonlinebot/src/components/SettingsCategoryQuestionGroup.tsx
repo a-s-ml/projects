@@ -49,17 +49,30 @@ export default function SettingsCategoryQuestionGroup({
               </Disclosure.Button>
             </li>
             <Disclosure.Panel className="pt-6">
-              <div className="space-y-6">
+              <div className="space-y-1.5">
                 {dataCategory.map((item) => (
-                <div className="group relative flex items-start space-x-3">
-                  <div className="min-w-0 flex">
-                    <div className="mt-1 flex items-center gap-x-1.5">
-                      <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
+                  <div className="group relative flex items-start space-x-3">
+                    <div className="flex h-6 items-center">
+                      <input
+                        id={item.name}
+                        aria-describedby="comments-description"
+                        name={item.name}
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-[var(--tg-theme-hint-color)] text-[var(--tg-theme-accent-text-color)]"
+                      />
+                    </div>
+                    <div className="ml-3 text-sm leading-6">
+                      <label
+                        htmlFor={item.name}
+                        className="font-medium text-[var(--tg-theme-hint-color)]"
+                      >
                         {item.name}
-                      </span>
+                      </label>
+                      <p id="comments-description" className="text-[var(--tg-theme-hint-color)]">
+                        Количество вопросов в категории
+                      </p>
                     </div>
                   </div>
-                </div>
                 ))}
               </div>
             </Disclosure.Panel>
