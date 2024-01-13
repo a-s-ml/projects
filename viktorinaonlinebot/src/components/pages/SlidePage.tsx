@@ -47,9 +47,11 @@ export default function SlidePage({ chat }: SlideItemsProps) {
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                  <Header>{slideData === "groups" && <AddNewGroup />}</Header>
                   {slideData === "groups" && (
                     <>
+                      <Header>
+                        <AddNewGroup />
+                      </Header>
                       <GroupsList chat={chat} />
                       <Footer />
                     </>
