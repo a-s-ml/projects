@@ -66,7 +66,7 @@ export default function SettingsCategoryQuestionGroup({
                         onChange={selectionChanged}
                         name={item.name}
                         type="checkbox"
-                        className="h-4 w-4 rounded border-[var(--tg-theme-hint-color)] text-[var(--tg-theme-text-color)]"
+                        className="h-4 w-4 rounded border-[var(--tg-theme-accent-text-color)] text-[var(--tg-theme-text-color)]"
                       />
                     </div>
                     <div className="ml-3 text-sm leading-6">
