@@ -36,7 +36,7 @@ export default function GroupsListItem({
     <>
         {errorGroupInfo && <li>error</li>}
         {dataGroupInfo && (
-          <li className="py-4 px-0 cursor-pointer">
+          <li className="py-4 px-0">
             <div className="group relative flex items-start space-x-3">
               <div className="flex-shrink-0">
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
@@ -70,7 +70,7 @@ export default function GroupsListItem({
               </div>
             </div>
             <div
-              className="group relative flex items-start space-x-3"
+              className="group relative flex items-start space-x-3 cursor-pointer"
               onClick={() => {
                 dispatch(showSlide(false));
                 dispatch(showModal(true));
