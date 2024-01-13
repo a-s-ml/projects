@@ -79,62 +79,14 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
             className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
           >
             {dataGroupType && (
-            <SettingsTypeQuestionGroup dataType={dataType} type={type} setType={setType} />
+              <li className="py-4 px-0">
+                <SettingsTypeQuestionGroup
+                  dataType={dataType} 
+                  type={type}
+                  setType={setType}
+                />
+              </li>
             )}
-            <li className="py-4 px-0">
-
-
-
-            </li>
-            <li className="py-4 px-0">
-              <h3 className="text-sm font-medium text-left text-[var(--tg-theme-text-color)]">
-                Период публикаций
-              </h3>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium leading-6 text-[var(--tg-theme-accent-text-color)]">
-                  Время: {time}
-                </span>
-              </div>
-              <div className="relative mb-6">
-                <label htmlFor="labels-range-input" className="sr-only">
-                  Labels range
-                </label>
-                <input
-                  id="labels-range-input"
-                  onChange={rangeChange}
-                  type="range"
-                  value={time}
-                  className="transparent h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-neutral-200"
-                  min={dataTime[0].period}
-                  max={dataTime[dataTime.length - 1].period}
-                  step="3600"
-                />
-                <span className="text-sm text-gray-500 dark:text-gray-400 absolute start- -bottom-6"></span>
-                {dataTime.map((time) => (
-                  <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">
-                    {time.period}
-                  </span>
-                ))}
-                <span className="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6"></span>
-              </div>
-            </li>
-            <li className="py-4 px-0">
-              <h3 className="text-sm font-medium text-left text-[var(--tg-theme-text-color)]">
-                Категории
-              </h3>
-              {dataCategory && (
-                <Select
-                  options={dataCategory?.map((cat) => ({
-                    value: cat.name,
-                    label: cat.name,
-                    color: "#00B8D9",
-                  }))}
-                  isMulti
-                  className="basic-multi-select"
-                  classNamePrefix="select"
-                />
-              )}
-            </li>
           </ul>
         </form>
       )}
