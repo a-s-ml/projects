@@ -49,6 +49,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   function rangeChange(e: any) {
     setTime(e.target.value);
   }
+  const [type, setType] = useState(dataGroupType?.name || "text");
 
   console.log(dataGroupInfo);
   console.log(dataGroupDb);
@@ -58,12 +59,13 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   console.log(dataGroupType);
   console.log(dataGroupTime);
   console.log(dataGroupCategory);
+  console.log(type);
   console.log(time);
 
   return (
     <>
       {dataGroupInfo && dataType && dataTime && dataGroupDb && (
-        <form className="text-center pt-12">
+        <form className="text-center pt-24">
           <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
             {dataGroupInfo.photo?.small_file_id && (
               <GroupAvatar id={dataGroupInfo.photo?.small_file_id} />
@@ -77,7 +79,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
             className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
           >
             {dataGroupType && (
-            <SettingsTypeQuestionGroup dataType={dataType} dataGroupType={dataGroupType}/>
+            <SettingsTypeQuestionGroup dataType={dataType} type={type} setType={setType} />
             )}
             <li className="py-4 px-0">
 
