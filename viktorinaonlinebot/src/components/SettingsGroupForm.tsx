@@ -14,6 +14,7 @@ import {
   useGetTypeGroupQuery,
   useGetTypeQuery,
 } from "./store/api/vik.api";
+import SettingsTypeQuestionGroup from "./SettingsTypeQuestionGroup";
 
 interface SettingsGroupProps {
   group: bigint;
@@ -43,7 +44,6 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   const { data: dataGroupTime } = useGetTimeGroupQuery(dataGroupDb?.time || 0);
   const { data: dataGroupCategory } = useGetCategoryGroupsQuery(group);
 
-  const [type, setType] = useState(dataGroupType?.name || "text");
   const [time, setTime] = useState(dataGroupTime?.period || 3600);
 
   function rangeChange(e: any) {
@@ -58,7 +58,6 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   console.log(dataGroupType);
   console.log(dataGroupTime);
   console.log(dataGroupCategory);
-  console.log(type);
   console.log(time);
 
   return (
@@ -77,55 +76,13 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
             role="list"
             className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
           >
+            {dataGroupType && (
+            <SettingsTypeQuestionGroup dataType={dataType} dataGroupType={dataGroupType}/>
+            )}
             <li className="py-4 px-0">
-              <h3 className="text-sm font-medium text-left text-[var(--tg-theme-text-color)]">
-                Вид вопросов
-              </h3>
-              <div className="flex items-center justify-between">
-                <span
-                  onClick={() =>
-                    tg.openTelegramLink("https://t.me/ViktorinaOnlineChannel")
-                  }
-                  className="cursor-pointer text-sm font-medium leading-6 text-[var(--tg-theme-accent-text-color)]"
-                >
-                  Посмотреть пример
-                </span>
-              </div>
 
-              <RadioGroup value={type} onChange={setType} className="mt-2">
-                <RadioGroup.Label className="sr-only">
-                  Choose a memory option
-                </RadioGroup.Label>
-                <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
-                  {dataType &&
-                    dataType.map((type) => (
-                      <RadioGroup.Option
-                        key={type.id}
-                        value={type.name}
-                        onClick={() => selectionChanged()}
-                        className={({ active, checked }) =>
-                          classNames(
-                            Boolean(type.active)
-                              ? "cursor-pointer"
-                              : "cursor-not-allowed opacity-25",
-                            active
-                              ? "ring-2 ring-[var(--tg-theme-accent-text-color)] ring-offset-2"
-                              : "",
-                            checked
-                              ? "bg-[var(--tg-theme-accent-text-color)] text-white"
-                              : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black",
-                            "flex items-center justify-center rounded-md py-3 px-3 text-sm font-semibold uppercase"
-                          )
-                        }
-                        disabled={!Boolean(type.active)}
-                      >
-                        <RadioGroup.Label as="span">
-                          {type.description}
-                        </RadioGroup.Label>
-                      </RadioGroup.Option>
-                    ))}
-                </div>
-              </RadioGroup>
+
+
             </li>
             <li className="py-4 px-0">
               <h3 className="text-sm font-medium text-left text-[var(--tg-theme-text-color)]">
