@@ -19,7 +19,7 @@ export default function MenuList({ item, progress }: MenuItemsProps) {
 
   return (
     <li
-      className="px-1 py-1 sm:px-0"
+      className="px-1 py-1 sm:px-0 cursor-pointer"
       key={item.id}
       onClick={() => {
         dispatch(showSlide(true));

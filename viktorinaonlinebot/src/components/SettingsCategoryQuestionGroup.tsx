@@ -49,9 +49,9 @@ export default function SettingsCategoryQuestionGroup({
               </Disclosure.Button>
             </li>
             <Disclosure.Panel className="pt-6">
-              <div className="space-y-1.5">
+              <div className="space-y-1.5 columns-2">
                 {dataCategory.map((item) => (
-                  <div className="group relative flex items-start space-x-3 columns-2">
+                  <div className="group relative flex items-start space-x-3">
                     <div className="flex h-6 items-center">
                       <input
                         id={item.name}
@@ -64,13 +64,10 @@ export default function SettingsCategoryQuestionGroup({
                     <div className="ml-3 text-sm leading-6">
                       <label
                         htmlFor={item.name}
-                        className="font-medium text-[var(--tg-theme-text-color)]"
+                        className="font-medium text-[var(--tg-theme-text-color)] cursor-pointer"
                       >
                         {item.name}
                       </label>
-                      <p id="comments-description" className="text-[var(--tg-theme-hint-color)]">
-                        6768 вопросов
-                      </p>
                     </div>
                   </div>
                 ))}
