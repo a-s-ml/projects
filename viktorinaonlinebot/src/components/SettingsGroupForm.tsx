@@ -64,7 +64,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   return (
     <>
       {dataGroupInfo && dataType && dataTime && dataGroupDb && (
-        <form className="text-center pt-9">
+        <form className="text-center pt-12">
           <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
             {dataGroupInfo.photo?.small_file_id && (
               <GroupAvatar id={dataGroupInfo.photo?.small_file_id} />
