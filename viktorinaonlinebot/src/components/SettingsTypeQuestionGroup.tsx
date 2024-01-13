@@ -62,7 +62,7 @@ export default function SettingsTypeQuestionGroup({
                           className={({ checked }) =>
                             classNames(
                               checked
-                                ? "z-10 border-[var(--tg-theme-text-color)]"
+                                ? "z-10 border-[var(--tg-theme-accent-text-color)]"
                                 : "border-[var(--tg-theme-hint-color)]",
                               "relative flex cursor-pointer border p-4"
                             )
@@ -73,7 +73,7 @@ export default function SettingsTypeQuestionGroup({
                               <span
                                 className={classNames(
                                   checked
-                                    ? "bg-indigo-600 border-transparent"
+                                    ? "bg-[var(--tg-theme-accent-text-color)] border-transparent"
                                     : "border-[var(--tg-theme-accent-text-color)]",
                                   active
                                     ? "ring-2 ring-offset-2 ring-[var(--tg-theme-accent-text-color)]"
