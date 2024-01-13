@@ -32,26 +32,24 @@ export default function SettingsTypeQuestionGroup({
         {({ open }) => (
           <>
             <li className="py-4 px-0">
-              <Disclosure.Button className="flex w-full items-center justify-between">
-                <div className="group relative flex items-start space-x-3">
-                  <div className="min-w-0 flex-1">
-                    <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
-                      <b>Вид вопросов</b>
-                    </div>
+              <Disclosure.Button className="group first-letter:flex w-full items-center justify-between space-x-3">
+                <div className="min-w-0 flex-1">
+                  <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
+                    <b>Вид вопросов</b>
                   </div>
-                  <div className="flex-shrink-0 self-center text-right">
-                    {open ? (
-                      <ChevronDoubleUpIcon
-                        className="h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <ChevronDoubleDownIcon
-                        className="h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    )}
-                  </div>
+                </div>
+                <div className="flex-shrink-0 self-center text-right">
+                  {open ? (
+                    <ChevronDoubleUpIcon
+                      className="h-5 w-5"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <ChevronDoubleDownIcon
+                      className="h-5 w-5"
+                      aria-hidden="true"
+                    />
+                  )}
                 </div>
               </Disclosure.Button>
             </li>
