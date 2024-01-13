@@ -28,10 +28,10 @@ export default function SettingsTypeQuestionGroup({
             <li className="py-4 px-0">
               <Disclosure.Button className="group relative flex w-full items-start justify-between space-x-3">
                 <div className="min-w-0 flex-1 text-left">
-                  <div className="text-sm font-medium text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]">
+                  <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
                     Вид вопросов
                   </div>
-                  <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
+                  <span className="text-xs leading-5 text-[var(--tg-theme-hint-color)]">
                     Тукущий вид: {type}
                   </span>
                 </div>
@@ -51,7 +51,7 @@ export default function SettingsTypeQuestionGroup({
               </Disclosure.Button>
             </li>
             <Disclosure.Panel className="pt-6">
-              <div className="space-y-1.5 columns-2">
+              <div className="space-y-1.5">
                 <RadioGroup value={type} onChange={setType}>
                   <div className="-space-y-px rounded-md">
                     {dataType &&
@@ -62,9 +62,9 @@ export default function SettingsTypeQuestionGroup({
                           className={({ checked }) =>
                             classNames(
                               checked
-                                ? "z-10 border-indigo-200 bg-indigo-50"
-                                : "border-gray-200",
-                              "relative flex cursor-pointer border p-4 focus:outline-none"
+                                ? "z-10 border-[var(--tg-theme-text-color)]"
+                                : "border-[var(--tg-theme-hint-color)]",
+                              "relative flex cursor-pointer border p-4"
                             )
                           }
                         >
@@ -74,39 +74,28 @@ export default function SettingsTypeQuestionGroup({
                                 className={classNames(
                                   checked
                                     ? "bg-indigo-600 border-transparent"
-                                    : "bg-white border-gray-300",
+                                    : "border-[var(--tg-theme-text-color)]",
                                   active
-                                    ? "ring-2 ring-offset-2 ring-indigo-600"
+                                    ? "ring-2 ring-offset-2 ring-[var(--tg-theme-accent-text-color)]"
                                     : "",
                                   "mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded-full border flex items-center justify-center"
                                 )}
                                 aria-hidden="true"
                               >
-                                <span className="rounded-full bg-white w-1.5 h-1.5" />
+                                <span className="rounded-full w-1.5 h-1.5" />
                               </span>
                               <span className="ml-3 flex flex-col">
                                 <RadioGroup.Label
                                   as="span"
                                   className={classNames(
                                     checked
-                                      ? "text-indigo-900"
-                                      : "text-gray-900",
+                                      ? "text-[var(--tg-theme-accent-text-color)]" 
+                                      : "text-[var(--tg-theme-hint-color)]",
                                     "block text-sm font-medium"
                                   )}
                                 >
-                                  {type.name}
-                                </RadioGroup.Label>
-                                <RadioGroup.Description
-                                  as="span"
-                                  className={classNames(
-                                    checked
-                                      ? "text-indigo-700"
-                                      : "text-gray-500",
-                                    "block text-sm"
-                                  )}
-                                >
                                   {type.description}
-                                </RadioGroup.Description>
+                                </RadioGroup.Label>
                               </span>
                             </>
                           )}
