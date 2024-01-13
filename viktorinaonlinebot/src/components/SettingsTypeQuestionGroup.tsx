@@ -51,12 +51,9 @@ export default function SettingsTypeQuestionGroup({
               </Disclosure.Button>
             </li>
             <Disclosure.Panel className="pt-6">
-              <div className="space-y-6">
+              <div className="space-y-1.5 columns-2">
                 <RadioGroup value={type} onChange={setType}>
-                  <RadioGroup.Label className="sr-only">
-                    Privacy setting
-                  </RadioGroup.Label>
-                  <div className="-space-y-px rounded-md bg-white">
+                  <div className="-space-y-px rounded-md">
                     {dataType &&
                       dataType.map((type) => (
                         <RadioGroup.Option
