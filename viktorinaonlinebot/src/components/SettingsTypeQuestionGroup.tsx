@@ -75,7 +75,7 @@ export default function SettingsTypeQuestionGroup({
                                   checked
                                     ? "bg-[var(--tg-theme-accent-text-color)] border-transparent"
                                     : "border-[var(--tg-theme-accent-text-color)]",
-                                  active
+                                  Boolean(active)
                                     ? "ring-2 ring-offset-2 ring-[var(--tg-theme-accent-text-color)]"
                                     : "",
                                   "mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded-full border flex items-center justify-center"
@@ -89,9 +89,9 @@ export default function SettingsTypeQuestionGroup({
                                   as="span"
                                   className={classNames(
                                     checked
-                                      ? "text-[var(--tg-theme-accent-text-color)]" 
-                                      : "text-[var(--tg-theme-hint-color)]",
-                                    "block text-sm font-medium"
+                                      ? "text-[var(--tg-theme-text-color)] font-bold" 
+                                      : "text-[var(--tg-theme-hint-color)] font-medium",
+                                    "block text-sm"
                                   )}
                                 >
                                   {type.description}
