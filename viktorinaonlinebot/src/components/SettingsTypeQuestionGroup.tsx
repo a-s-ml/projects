@@ -34,19 +34,19 @@ export default function SettingsTypeQuestionGroup({
             <li className="py-4 px-0">
               <Disclosure.Button className="group relative flex w-full items-start justify-between space-x-3">
                 <div className="min-w-0 flex-1">
-                  <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
-                    <b>Вид вопросов</b>
+                  <div className="text-sm font-medium text-[var(--tg-theme-text-color)] text-left">
+                    Вид вопросов
                   </div>
                 </div>
                 <div className="flex-shrink-0 self-center text-right">
                   {open ? (
                     <ChevronDoubleUpIcon
-                      className="h-5 w-5"
+                      className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
                       aria-hidden="true"
                     />
                   ) : (
                     <ChevronDoubleDownIcon
-                      className="h-5 w-5"
+                      className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
                       aria-hidden="true"
                     />
                   )}
