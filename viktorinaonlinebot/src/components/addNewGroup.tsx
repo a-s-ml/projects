@@ -8,10 +8,7 @@ export default function AddNewGroup() {
         className="text-sm font-medium text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
         onClick={() => tg.MainButton.show()}
       >
-        <b>
-          <span className="absolute inset-0" aria-hidden="true" />
-          Добавить группу/канал
-        </b>
+        <b>Добавить группу/канал</b>
       </div>
 
       <PlusCircleIcon

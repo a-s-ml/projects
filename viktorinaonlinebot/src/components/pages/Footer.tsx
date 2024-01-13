@@ -11,10 +11,7 @@ export function Footer() {
         onClick={() => tg.openTelegramLink("https://t.me/a_s_ml")}
       >
         <div className="text-sm font-medium text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]">
-          <b>
-            <span className="absolute inset-0" aria-hidden="true" />
-            Вопрос/Отзыв/предложение
-          </b>
+          <b>Вопрос/Отзыв/предложение</b>
         </div>
 
         <ChatBubbleOvalLeftEllipsisIcon
