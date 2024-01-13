@@ -74,7 +74,7 @@ export default function SettingsTypeQuestionGroup({
                                 className={classNames(
                                   checked
                                     ? "bg-indigo-600 border-transparent"
-                                    : "border-[var(--tg-theme-text-color)]",
+                                    : "border-[var(--tg-theme-accent-text-color)]",
                                   active
                                     ? "ring-2 ring-offset-2 ring-[var(--tg-theme-accent-text-color)]"
                                     : "",
