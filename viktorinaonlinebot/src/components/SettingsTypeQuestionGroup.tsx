@@ -69,8 +69,8 @@ export default function SettingsTypeQuestionGroup({
                                 ? "ring-2 ring-[var(--tg-theme-accent-text-color)] ring-offset-2"
                                 : "",
                               checked
-                                ? "bg-[var(--tg-theme-accent-text-color)] text-white"
-                                : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black",
+                                ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
+                                : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold",
                               "flex items-center justify-center rounded-md py-2 px-2 text-xs"
                             )
                           }

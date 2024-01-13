@@ -63,9 +63,9 @@ export default function SettingsTimeQuestionGroup({
                           className={({ checked }) =>
                             classNames(
                               checked
-                                ? "bg-[var(--tg-theme-accent-text-color)] text-white"
-                                : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black",
-                              "flex items-center justify-center rounded-md py-2 px-2 text-xs"
+                                ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
+                                : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold",
+                              "flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer"
                             )
                           }
                         >
