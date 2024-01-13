@@ -65,7 +65,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   return (
     <>
       {dataGroupInfo && dataType && dataTime && dataGroupDb && (
-        <form className="text-center pt-24">
+        <form className="text-center py-24">
           <h3 className="text-sm font-medium text-[var(--tg-theme-text-color)] text-left">
             Настройки викторины в группе "{dataGroupInfo.title}"
           </h3>
