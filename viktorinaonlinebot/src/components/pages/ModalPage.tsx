@@ -11,6 +11,7 @@ import SettingsGroupForm from "../SettingsGroupForm";
 import { showSlide } from "../store/api/slide.slice";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import DefaultSettingsGroup from "../DefaultSettingsGroup";
 
 export default function ModalPage() {
   const modal = useAppSelector(selectModal);
@@ -45,10 +46,10 @@ export default function ModalPage() {
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <Header>
-                  <p>fhghfj</p>
+                  <DefaultSettingsGroup />
                 </Header>
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                  {/* <SettingsGroupForm group={modalData}/> */}
+                  <SettingsGroupForm group={modalData}/>
                 </div>
                 <Footer />
               </Dialog.Panel>
