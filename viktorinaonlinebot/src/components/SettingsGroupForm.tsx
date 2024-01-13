@@ -87,6 +87,15 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                 />
               </li>
             )}
+            {dataGroupType && (
+              <li className="py-4 px-0">
+                <SettingsTypeQuestionGroup
+                  dataType={dataType} 
+                  type={type}
+                  setType={setType}
+                />
+              </li>
+            )}
           </ul>
         </form>
       )}
