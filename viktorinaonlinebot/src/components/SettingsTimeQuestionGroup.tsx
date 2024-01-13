@@ -65,7 +65,7 @@ export default function SettingsTimeQuestionGroup({
                               checked
                                 ? "bg-[var(--tg-theme-accent-text-color)] text-white"
                                 : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black",
-                              "flex items-center justify-center rounded-md py-2 px-2 text-sm font-semibold"
+                              "flex items-center justify-center rounded-md py-2 px-2 text-xs"
                             )
                           }
                         >
