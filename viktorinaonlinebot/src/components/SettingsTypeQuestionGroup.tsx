@@ -32,7 +32,7 @@ export default function SettingsTypeQuestionGroup({
         {({ open }) => (
           <>
             <li className="py-4 px-0">
-              <Disclosure.Button className="group first-letter:flex w-full items-center justify-between space-x-3">
+              <Disclosure.Button className="group flex w-full items-start justify-between space-x-3">
                 <div className="min-w-0 flex-1">
                   <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
                     <b>Вид вопросов</b>
