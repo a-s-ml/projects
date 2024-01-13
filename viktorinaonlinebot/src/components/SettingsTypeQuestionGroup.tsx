@@ -3,25 +3,22 @@ import { IType } from "../models/IType";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { Dispatch, SetStateAction } from "react";
 
-interface GroupsListItemProps {
+interface SettingsTypeQuestionGroupProps {
   dataType: IType[];
   type: string;
   setType: Dispatch<SetStateAction<string>>;
+  selectionChanged: () => void;
 }
 
 export default function SettingsTypeQuestionGroup({
   dataType,
   type,
   setType,
-}: GroupsListItemProps) {
+  selectionChanged
+}: SettingsTypeQuestionGroupProps) {
   const tg = window.Telegram.WebApp;
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
-  }
-  function selectionChanged() {
-    tg.HapticFeedback.selectionChanged();
-    tg.MainButton.setText("Применить");
-    tg.MainButton.show();
   }
   return (
     <>

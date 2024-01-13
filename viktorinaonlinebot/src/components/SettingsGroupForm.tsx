@@ -1,7 +1,4 @@
 import { useState } from "react";
-import Select from "react-select";
-import GroupAvatar from "./GroupAvatar";
-import { RadioGroup } from "@headlessui/react";
 import {
   useGetGroupDbQuery,
   useGetInfoGroupsQuery,
@@ -15,6 +12,7 @@ import {
   useGetTypeQuery,
 } from "./store/api/vik.api";
 import SettingsTypeQuestionGroup from "./SettingsTypeQuestionGroup";
+import SettingsCategoryQuestionGroup from "./SettingsCategoryQuestionGroup";
 
 interface SettingsGroupProps {
   group: bigint;
@@ -80,6 +78,16 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                   dataType={dataType}
                   type={type}
                   setType={setType}
+                  selectionChanged={selectionChanged}
+                />
+              </li>
+            )}
+            {dataGroupCategory && dataCategory && (
+              <li className="py-4 px-0">
+                <SettingsCategoryQuestionGroup
+                  dataCategory={dataCategory}
+                  dataGroupCategory={dataGroupCategory}
+                  selectionChanged={selectionChanged}
                 />
               </li>
             )}
@@ -89,15 +97,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                   dataType={dataType}
                   type={type}
                   setType={setType}
-                />
-              </li>
-            )}
-            {dataGroupType && (
-              <li className="py-4 px-0">
-                <SettingsTypeQuestionGroup
-                  dataType={dataType}
-                  type={type}
-                  setType={setType}
+                  selectionChanged={selectionChanged}
                 />
               </li>
             )}
