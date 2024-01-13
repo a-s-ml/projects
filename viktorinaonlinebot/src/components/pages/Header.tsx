@@ -4,7 +4,7 @@ interface HeaderProps {
 
 export function Header({ children }: HeaderProps) {
   return (
-    <header className="absolute inset-x-0 top-0 z-50 pt-4">
+    <header className="absolute inset-x-0 top-0 z-50">
       <div className="flex items-center justify-between px-8 pt-8 pb-4 bg-[var(--tg-theme-bg-color)]">
         {children}
       </div>
