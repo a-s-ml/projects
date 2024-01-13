@@ -51,7 +51,7 @@ export default function SettingsCategoryQuestionGroup({
             <Disclosure.Panel className="pt-6">
               <div className="space-y-1.5">
                 {dataCategory.map((item) => (
-                  <div className="group relative flex items-start space-x-3 columns-3">
+                  <div className="group relative flex items-start space-x-3 columns-2">
                     <div className="flex h-6 items-center">
                       <input
                         id={item.name}
