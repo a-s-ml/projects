@@ -13,6 +13,7 @@ import {
 } from "./store/api/vik.api";
 import SettingsTypeQuestionGroup from "./SettingsTypeQuestionGroup";
 import SettingsCategoryQuestionGroup from "./SettingsCategoryQuestionGroup";
+import SettingsTimeQuestionGroup from "./SettingsTimeQuestionGroup";
 
 interface SettingsGroupProps {
   group: bigint;
@@ -93,10 +94,10 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
             )}
             {dataGroupType && (
               <li className="py-4 px-0">
-                <SettingsTypeQuestionGroup
-                  dataType={dataType}
-                  type={type}
-                  setType={setType}
+                <SettingsTimeQuestionGroup
+                  dataTime={dataTime}
+                  time={time}
+                  setTime={setTime}
                   selectionChanged={selectionChanged}
                 />
               </li>
