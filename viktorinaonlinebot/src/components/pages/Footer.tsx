@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="absolute inset-x-0 bottom-0 z-50">
       <div className="bg-gradient-to-t from-[var(--tg-theme-bg-color)] to-transparent pt-16 w-screen"></div>
-      <div className="flex items-start px-8 py-2 bg-[var(--tg-theme-bg-color)]">
+      <div className="flex items-start px-8 py-2 bg-[var(--tg-theme-bg-color)] space-x-3">
         <div className="text-sm font-medium text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]">
           <b>
             <span className="absolute inset-0" aria-hidden="true" />
