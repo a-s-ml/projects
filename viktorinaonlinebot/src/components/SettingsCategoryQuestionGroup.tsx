@@ -33,12 +33,12 @@ export default function SettingsCategoryQuestionGroup({
                   <div className="text-sm font-medium text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]">
                     Категории вопросов
                   </div>
-                  <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
+                  <p className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
                     Выбрано категорий:
-                  </span>
-                  <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
+                  </p>
+                  <p className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
                     Вопросов в выбранных категориях:
-                  </span>
+                  </p>
                 </div>
                 <div className="flex-shrink-0 self-center text-right">
                   {open ? (
@@ -62,7 +62,8 @@ export default function SettingsCategoryQuestionGroup({
                     <div className="flex h-6 items-center">
                       <input
                         id={item.name}
-                        aria-describedby="comments-description"
+                        checked={dataGroupCategory.find(itm => itm.category === item.id) ? true : false}
+                        onChange={selectionChanged}
                         name={item.name}
                         type="checkbox"
                         className="h-4 w-4 rounded border-[var(--tg-theme-hint-color)] text-[var(--tg-theme-text-color)]"
