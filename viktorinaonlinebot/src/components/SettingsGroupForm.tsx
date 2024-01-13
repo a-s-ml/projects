@@ -22,6 +22,7 @@ interface SettingsGroupProps {
 
 export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   const tg = window.Telegram.WebApp;
+
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
@@ -66,12 +67,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
     <>
       {dataGroupInfo && dataType && dataTime && dataGroupDb && (
         <form className="text-center pt-24">
-          <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
-            {dataGroupInfo.photo?.small_file_id && (
-              <GroupAvatar id={dataGroupInfo.photo?.small_file_id} />
-            )}
-          </div>
-          <h3 className="text-sm font-medium text-[var(--tg-theme-text-color)]">
+          <h3 className="text-sm font-medium text-[var(--tg-theme-text-color)] text-left">
             Настройки викторины в группе "{dataGroupInfo.title}"
           </h3>
           <ul
