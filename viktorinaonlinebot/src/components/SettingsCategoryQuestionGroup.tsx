@@ -71,6 +71,16 @@ export default function SettingsCategoryQuestionGroup({
                     </div>
                   </div>
                 ))}
+                <div className="group relative flex items-start space-x-3">
+                  <div className="ml-3 text-sm leading-6" onClick={() => tg.openTelegramLink('https://t.me/a_s_ml')}>
+                    <label
+                      htmlFor="add"
+                      className="font-medium text-[var(--tg-theme-accent-text-color)] cursor-pointer"
+                    >
+                      Добавить категорию
+                    </label>
+                  </div>
+                </div>
               </div>
             </Disclosure.Panel>
           </>
