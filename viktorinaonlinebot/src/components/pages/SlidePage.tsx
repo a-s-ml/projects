@@ -48,10 +48,14 @@ export default function SlidePage({ chat }: SlideItemsProps) {
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   <Header>{slideData === "groups" && <AddNewGroup />}</Header>
-                  {slideData === "groups" && <GroupsList chat={chat} />}
+                  {slideData === "groups" && (
+                    <>
+                      <GroupsList chat={chat} />
+                      <Footer />
+                    </>
+                  )}
                   {slideData === "questions" && <ErrorPage />}
                   {slideData === "answers" && <ErrorPage />}
-                  <Footer />
                 </div>
               </Dialog.Panel>
             </Transition.Child>
