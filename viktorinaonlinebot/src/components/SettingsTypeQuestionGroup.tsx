@@ -51,12 +51,9 @@ export default function SettingsTypeQuestionGroup({
               </Disclosure.Button>
             </li>
             <Disclosure.Panel className="pt-6">
-              <div className="space-y-6">
+              <div className="space-y-1.5">
                 <RadioGroup value={type} onChange={setType} className="mt-2">
-                  <RadioGroup.Label className="sr-only">
-                    Choose a memory option
-                  </RadioGroup.Label>
-                  <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
+                  <div className="grid grid-cols-3 gap-2">
                     {dataType &&
                       dataType.map((type) => (
                         <RadioGroup.Option
@@ -74,7 +71,7 @@ export default function SettingsTypeQuestionGroup({
                               checked
                                 ? "bg-[var(--tg-theme-accent-text-color)] text-white"
                                 : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black",
-                              "flex items-center justify-center rounded-md py-3 px-3 text-sm font-semibold uppercase"
+                              "flex items-center justify-center rounded-md py-3 px-3 text-sm font-semibold"
                             )
                           }
                           disabled={!Boolean(type.active)}
