@@ -62,8 +62,8 @@ export default function SettingsTypeQuestionGroup({
                           className={({ checked }) =>
                             classNames(
                               checked
-                                ? "z-10 border-[var(--tg-theme-accent-text-color)]"
-                                : "border-[var(--tg-theme-hint-color)]",
+                                ? "z-10 border-2 border-[var(--tg-theme-text-color)]"
+                                : " border-1 border-[var(--tg-theme-hint-color)]",
                               "relative flex cursor-pointer border p-4"
                             )
                           }
