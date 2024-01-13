@@ -34,6 +34,9 @@ export default function SettingsTypeQuestionGroup({
                   <div className="text-sm font-medium text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)] text-left">
                     Вид вопросов
                   </div>
+                  <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
+                    Тукущий вид: {type}
+                  </span>
                 </div>
                 <div className="flex-shrink-0 self-center text-right">
                   {open ? (
