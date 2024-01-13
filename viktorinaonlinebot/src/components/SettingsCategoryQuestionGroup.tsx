@@ -1,4 +1,8 @@
-import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  PlusCircleIcon,
+} from "@heroicons/react/24/outline";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { ICategoryGroup } from "../models/ICategoryGroup";
 import { ICategory } from "../models/ICategory";
@@ -30,7 +34,10 @@ export default function SettingsCategoryQuestionGroup({
                     Категории вопросов
                   </div>
                   <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-                    Тукущий вид:
+                    Выбрано категорий:
+                  </span>
+                  <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
+                    Вопросов в выбранных категориях:
                   </span>
                 </div>
                 <div className="flex-shrink-0 self-center text-right">
@@ -72,12 +79,20 @@ export default function SettingsCategoryQuestionGroup({
                   </div>
                 ))}
                 <div className="group relative flex items-start space-x-3">
-                  <div className="ml-3 text-sm leading-6" onClick={() => tg.openTelegramLink('https://t.me/a_s_ml')}>
+                  <div className="flex h-6 items-center">
+                    <PlusCircleIcon
+                      className="h-4 w-4 text-[var(--tg-theme-accent-text-color)]"
+                    />
+                  </div>
+                  <div
+                    className="ml-3 text-sm leading-6"
+                    onClick={() => tg.openTelegramLink("https://t.me/a_s_ml")}
+                  >
                     <label
                       htmlFor="add"
                       className="font-medium text-[var(--tg-theme-accent-text-color)] cursor-pointer"
                     >
-                      Добавить категорию
+                      Добавить
                     </label>
                   </div>
                 </div>
