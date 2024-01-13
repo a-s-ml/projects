@@ -29,33 +29,6 @@ export default function GroupsList({ chat }: GroupsListProps) {
               time={group.time}
             />
           ))}
-        {dataGroups &&
-          dataGroups.map((group) => (
-            <GroupsListItem
-              key={group.id}
-              group={group.chat}
-              questionType={group.question_type}
-              time={group.time}
-            />
-          ))}
-        {dataGroups &&
-          dataGroups.map((group) => (
-            <GroupsListItem
-              key={group.id}
-              group={group.chat}
-              questionType={group.question_type}
-              time={group.time}
-            />
-          ))}
-        {dataGroups &&
-          dataGroups.map((group) => (
-            <GroupsListItem
-              key={group.id}
-              group={group.chat}
-              questionType={group.question_type}
-              time={group.time}
-            />
-          ))}
       </ul>
     </>
   );
