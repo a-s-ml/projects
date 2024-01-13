@@ -2,7 +2,7 @@ export default function ErrorPage() {
   const tg = window.Telegram.WebApp;
   return (
     <>
-      <main className="grid min-h-full place-items-center bg-[var(--tg-theme-bg-color)] px-6 py-24">
+      <main className="grid h-screen place-items-center bg-[var(--tg-theme-bg-color)] px-6 py-20">
         <div className="text-center">
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-[var(--tg-theme-accent-text-color)]">
             Страница в разработке
