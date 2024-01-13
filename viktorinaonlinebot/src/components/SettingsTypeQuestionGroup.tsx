@@ -14,7 +14,7 @@ export default function SettingsTypeQuestionGroup({
   dataType,
   type,
   setType,
-  selectionChanged
+  selectionChanged,
 }: SettingsTypeQuestionGroupProps) {
   const tg = window.Telegram.WebApp;
   function classNames(...classes: string[]) {
@@ -52,36 +52,67 @@ export default function SettingsTypeQuestionGroup({
             </li>
             <Disclosure.Panel className="pt-6">
               <div className="space-y-6">
-                <RadioGroup value={type} onChange={setType} className="mt-2">
+                <RadioGroup value={type} onChange={setType}>
                   <RadioGroup.Label className="sr-only">
-                    Choose a memory option
+                    Privacy setting
                   </RadioGroup.Label>
-                  <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
+                  <div className="-space-y-px rounded-md bg-white">
                     {dataType &&
                       dataType.map((type) => (
                         <RadioGroup.Option
                           key={type.id}
                           value={type.name}
-                          onClick={() => selectionChanged()}
-                          className={({ active, checked }) =>
+                          className={({ checked }) =>
                             classNames(
-                              Boolean(type.active)
-                                ? "cursor-pointer"
-                                : "cursor-not-allowed opacity-25",
-                              active
-                                ? "ring-2 ring-[var(--tg-theme-accent-text-color)] ring-offset-2"
-                                : "",
                               checked
-                                ? "bg-[var(--tg-theme-accent-text-color)] text-white"
-                                : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black",
-                              "flex items-center justify-center rounded-md py-3 px-3 text-sm font-semibold uppercase"
+                                ? "z-10 border-indigo-200 bg-indigo-50"
+                                : "border-gray-200",
+                              "relative flex cursor-pointer border p-4 focus:outline-none"
                             )
                           }
-                          disabled={!Boolean(type.active)}
                         >
-                          <RadioGroup.Label as="span">
-                            {type.description}
-                          </RadioGroup.Label>
+                          {({ active, checked }) => (
+                            <>
+                              <span
+                                className={classNames(
+                                  checked
+                                    ? "bg-indigo-600 border-transparent"
+                                    : "bg-white border-gray-300",
+                                  active
+                                    ? "ring-2 ring-offset-2 ring-indigo-600"
+                                    : "",
+                                  "mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded-full border flex items-center justify-center"
+                                )}
+                                aria-hidden="true"
+                              >
+                                <span className="rounded-full bg-white w-1.5 h-1.5" />
+                              </span>
+                              <span className="ml-3 flex flex-col">
+                                <RadioGroup.Label
+                                  as="span"
+                                  className={classNames(
+                                    checked
+                                      ? "text-indigo-900"
+                                      : "text-gray-900",
+                                    "block text-sm font-medium"
+                                  )}
+                                >
+                                  {type.name}
+                                </RadioGroup.Label>
+                                <RadioGroup.Description
+                                  as="span"
+                                  className={classNames(
+                                    checked
+                                      ? "text-indigo-700"
+                                      : "text-gray-500",
+                                    "block text-sm"
+                                  )}
+                                >
+                                  {type.description}
+                                </RadioGroup.Description>
+                              </span>
+                            </>
+                          )}
                         </RadioGroup.Option>
                       ))}
                   </div>
