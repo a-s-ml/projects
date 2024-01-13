@@ -10,14 +10,13 @@ export function Footer() {
         className="group flex items-start px-8 py-2 bg-[var(--tg-theme-bg-color)] space-x-3 cursor-pointer"
         onClick={() => tg.openTelegramLink("https://t.me/a_s_ml")}
       >
-        <div className="text-sm font-medium text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]">
-          <b>Вопрос/Отзыв/предложение</b>
-        </div>
-
         <ChatBubbleOvalLeftEllipsisIcon
           className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
           aria-hidden="true"
         />
+        <div className="text-sm font-medium text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]">
+          <b>Вопрос/Отзыв/предложение</b>
+        </div>
       </div>
     </footer>
   );
