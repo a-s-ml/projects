@@ -27,7 +27,7 @@ export default function SettingsTypeQuestionGroup({
   }
   
   const types = useAppSelector(selectTypes);
-  console.log(types)
+  console.log(type)
   return (
     <>
       <Disclosure as="div">
@@ -62,14 +62,14 @@ export default function SettingsTypeQuestionGroup({
               <div className="space-y-1.5">
                 <RadioGroup value={type} onChange={setType} className="mt-2">
                   <div className="grid grid-cols-3 gap-2">
-                    {types.map((type) => (
+
                         <RadioGroup.Option
-                          key={type.id}
-                          value={type.name}
-                          onClick={() => typeChanged(type.name)}
+                          key={types.id}
+                          value={types.name}
+                          onClick={() => typeChanged(types.name)}
                           className={({ active, checked }) =>
                             classNames(
-                              Boolean(type.active)
+                              Boolean(types.active)
                                 ? "cursor-pointer"
                                 : "cursor-not-allowed opacity-25",
                               active
@@ -81,13 +81,13 @@ export default function SettingsTypeQuestionGroup({
                               "flex items-center justify-center rounded-md py-2 px-2 text-xs"
                             )
                           }
-                          disabled={!Boolean(type.active)}
+                          disabled={!Boolean(types.active)}
                         >
                           <RadioGroup.Label as="span">
-                            {type.description}
+                            {types.description}
                           </RadioGroup.Label>
                         </RadioGroup.Option>
-                      ))}
+  
                   </div>
                 </RadioGroup>
               </div>

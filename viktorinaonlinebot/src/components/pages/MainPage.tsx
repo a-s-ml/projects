@@ -60,7 +60,7 @@ export function MainPage() {
 
   const dispatch = useAppDispatch();
 
-  isSuccessType && dispatch(getTypes(dataType));
+  isSuccessType && dispatch(getTypes(dataType[0]));
   isSuccessTime && dispatch(getTimes(dataTime));
   isSuccessCategory && dispatch(getCategories(dataCategory));
 
