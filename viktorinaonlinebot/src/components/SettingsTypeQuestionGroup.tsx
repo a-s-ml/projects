@@ -2,7 +2,7 @@ import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { IType } from "../models/IType";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { Dispatch, SetStateAction } from "react";
-import { useAppSelector } from "./store";
+import { store, useAppSelector } from "./store";
 import { selectTypes } from "./store/api/types.slice";
 
 interface SettingsTypeQuestionGroupProps {
@@ -28,6 +28,7 @@ export default function SettingsTypeQuestionGroup({
   
   const types = useAppSelector(selectTypes);
   console.log(types)
+  console.log(useAppSelector(store.getState))
   return (
     <>
       <Disclosure as="div">
