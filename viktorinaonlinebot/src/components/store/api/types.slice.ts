@@ -11,7 +11,9 @@ export const typesSlice = createSlice({
     getTypes: (state, action: PayloadAction<IType[]>) => {
       console.log('payload')
       console.log(action.payload)
-      state = action.payload;
+      state = state.concat(action.payload);
+      console.log('state')
+      console.log(state)
     },
   },
 });
