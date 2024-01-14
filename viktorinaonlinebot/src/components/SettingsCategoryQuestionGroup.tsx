@@ -1,11 +1,9 @@
-import {
-  ChevronDownIcon,
-  ChevronUpIcon,
-  PlusCircleIcon,
-} from "@heroicons/react/24/outline";
-import { Disclosure, RadioGroup } from "@headlessui/react";
+import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import { Disclosure } from "@headlessui/react";
 import { ICategoryGroup } from "../models/ICategoryGroup";
 import { ICategory } from "../models/ICategory";
+import CategoryCheckbox from "./CategoryCheckbox";
+import AddNewCategory from "./AddNewCategory";
 
 interface SettingsCategoryQuestionGroupProps {
   dataCategory: ICategory[];
@@ -19,9 +17,11 @@ export default function SettingsCategoryQuestionGroup({
   selectionChanged,
 }: SettingsCategoryQuestionGroupProps) {
   const tg = window.Telegram.WebApp;
+
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
+
   return (
     <>
       <Disclosure as="div">
@@ -58,45 +58,17 @@ export default function SettingsCategoryQuestionGroup({
             <Disclosure.Panel className="pt-6">
               <div className="space-y-1.5 columns-2">
                 {dataCategory.map((item) => (
-                  <div className="group relative flex items-start space-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id={item.name}
-                        checked={dataGroupCategory.find(itm => itm.category === item.id) ? true : false}
-                        onChange={selectionChanged}
-                        name={item.name}
-                        type="checkbox"
-                        className="h-4 w-4 rounded text-[var(--tg-theme-accent-text-color)]"
-                      />
-                    </div>
-                    <div className="ml-3 text-sm leading-6">
-                      <label
-                        htmlFor={item.name}
-                        className="font-medium text-[var(--tg-theme-text-color)] cursor-pointer"
-                      >
-                        {item.name}
-                      </label>
-                    </div>
-                  </div>
+                  <CategoryCheckbox
+                    key={item.id}
+                    cat={item}
+                    checked={
+                      dataGroupCategory.find((itm) => itm.category === item.id)
+                        ? true
+                        : false
+                    }
+                  />
                 ))}
-                <div className="group relative flex items-start space-x-3">
-                  <div className="flex h-6 items-center">
-                    <PlusCircleIcon
-                      className="h-4 w-4 text-[var(--tg-theme-accent-text-color)]"
-                    />
-                  </div>
-                  <div
-                    className="ml-3 text-sm leading-6"
-                    onClick={() => tg.openTelegramLink("https://t.me/a_s_ml")}
-                  >
-                    <label
-                      htmlFor="add"
-                      className="font-medium text-[var(--tg-theme-accent-text-color)] cursor-pointer"
-                    >
-                      Добавить
-                    </label>
-                  </div>
-                </div>
+                <AddNewCategory />
               </div>
             </Disclosure.Panel>
           </>
