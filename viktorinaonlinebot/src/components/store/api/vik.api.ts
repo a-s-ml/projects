@@ -13,7 +13,7 @@ const staggeredBaseQuery = retry(
 export const vikApi = createApi({
   reducerPath: "vikApi",
   baseQuery: staggeredBaseQuery,
-  tagTypes: ["Time", "Type", "Category", "CategoryGroup", "Validate", "Group"],
+  tagTypes: ["Time", "Type", "Category", "CategoryGroup", "Validate", "Group", "ActiveGroups"],
   endpoints: (build) => ({
     validate: build.query<IValidate, string>({
       query: (initData: string) => ({

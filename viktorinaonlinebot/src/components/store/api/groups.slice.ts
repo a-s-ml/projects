@@ -31,6 +31,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         method: "POST",
         body: { chat },
       }),
+      invalidatesTags: ["ActiveGroups"],
     }),
     deleteActiveGroups: build.mutation<IActiveChat, bigint>({
       query: (chat) => ({
@@ -38,6 +39,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         method: "DELETE",
         body: { chat },
       }),
+      invalidatesTags: ["ActiveGroups"],
     }),
     getMemberCountGroups: build.query<number, number>({
       query: (chat) => ({
@@ -60,5 +62,5 @@ export const {
   useGetActiveGroupsQuery,
   useSetActiveGroupsMutation,
   useDeleteActiveGroupsMutation,
-  useGetGroupDbQuery
+  useGetGroupDbQuery,
 } = extendedApiSlice;
