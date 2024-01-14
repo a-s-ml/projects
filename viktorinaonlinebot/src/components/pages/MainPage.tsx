@@ -6,9 +6,10 @@ import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
 import ModalPage from "./ModalPage";
 import { selectSlide } from "../store/api/slide.slice";
-import { useAppSelector } from "../store";
+import { store, useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
+import { selectTypes } from "../store/api/types.slice";
 
 let menuitems: IMenu[] = [
   {
@@ -45,11 +46,15 @@ export function MainPage() {
   const slide = useAppSelector(selectSlide);
   const modal = useAppSelector(selectModal);
 
+  const types = useAppSelector(selectTypes);
+
   if (!slide && !modal) {
     tg.HapticFeedback.notificationOccurred("success");
     tg.BackButton.hide();
     tg.MainButton.hide();
   }
+
+  console.log(types);
 
   return (
     <>

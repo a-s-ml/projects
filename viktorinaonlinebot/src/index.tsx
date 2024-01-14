@@ -4,6 +4,10 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import {store} from './components/store';
+import { vikApi } from './components/store/api/vik.api';
+
+store.dispatch(vikApi.endpoints.getType.initiate(""))
+store.dispatch(vikApi.endpoints.getTime.initiate(0))
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
