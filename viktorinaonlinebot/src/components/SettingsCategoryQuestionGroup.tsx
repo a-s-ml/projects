@@ -4,23 +4,20 @@ import { ICategoryGroup } from "../models/ICategoryGroup";
 import { ICategory } from "../models/ICategory";
 import CategoryCheckbox from "./CategoryCheckbox";
 import AddNewCategory from "./AddNewCategory";
+import { Dispatch, SetStateAction } from "react";
 
 interface SettingsCategoryQuestionGroupProps {
   dataCategory: ICategory[];
-  dataGroupCategory: ICategoryGroup[];
-  selectionChanged: () => void;
+  category: ICategoryGroup[];
+  setCategory: Dispatch<SetStateAction<ICategoryGroup[]>>;
 }
 
 export default function SettingsCategoryQuestionGroup({
   dataCategory,
-  dataGroupCategory,
-  selectionChanged,
+  category,
+  setCategory
 }: SettingsCategoryQuestionGroupProps) {
   const tg = window.Telegram.WebApp;
-
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-  }
 
   return (
     <>
@@ -62,7 +59,7 @@ export default function SettingsCategoryQuestionGroup({
                     key={item.id}
                     cat={item}
                     checked={
-                      dataGroupCategory.find((itm) => itm.category === item.id)
+                      category.find((itm) => itm.category === item.id)
                         ? true
                         : false
                     }

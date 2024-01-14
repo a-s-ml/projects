@@ -14,13 +14,20 @@ export default function CategoryCheckbox({
 
   const [checkBox, setCheckBox] = useState(checked);
 
+  function categoryChanged(check: boolean) {
+    setCheckBox(check)
+    tg.HapticFeedback.selectionChanged();
+    tg.MainButton.setText("Применить");
+    tg.MainButton.show();
+  }
+
   return (
     <div className="group relative flex items-start space-x-3">
       <div className="flex h-6 items-center">
         <input
           id={cat.name}
           checked={checkBox}
-          onChange={()=>setCheckBox(!checkBox)}
+          onChange={()=>categoryChanged(!checkBox)}
           name={cat.name}
           type="checkbox"
           className="h-4 w-4 rounded text-[var(--tg-theme-accent-text-color)]"

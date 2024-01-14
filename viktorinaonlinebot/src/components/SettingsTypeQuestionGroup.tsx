@@ -7,18 +7,23 @@ interface SettingsTypeQuestionGroupProps {
   dataType: IType[];
   type: string;
   setType: Dispatch<SetStateAction<string>>;
-  selectionChanged: () => void;
 }
 
 export default function SettingsTypeQuestionGroup({
   dataType,
   type,
-  setType,
-  selectionChanged
+  setType
 }: SettingsTypeQuestionGroupProps) {
   const tg = window.Telegram.WebApp;
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
+  }
+
+  function typeChanged(type: string) {
+    setType(type)
+    tg.HapticFeedback.selectionChanged();
+    tg.MainButton.setText("Применить");
+    tg.MainButton.show();
   }
   return (
     <>
@@ -59,7 +64,7 @@ export default function SettingsTypeQuestionGroup({
                         <RadioGroup.Option
                           key={type.id}
                           value={type.name}
-                          onClick={() => selectionChanged()}
+                          onClick={() => typeChanged(type.name)}
                           className={({ active, checked }) =>
                             classNames(
                               Boolean(type.active)

@@ -7,18 +7,23 @@ interface SettingsTimeQuestionGroupProps {
   dataTime: ITime[];
   time: number;
   setTime: Dispatch<SetStateAction<number>>;
-  selectionChanged: () => void;
 }
 
 export default function SettingsTimeQuestionGroup({
   dataTime,
   time,
-  setTime,
-  selectionChanged
+  setTime
 }: SettingsTimeQuestionGroupProps) {
   const tg = window.Telegram.WebApp;
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
+  }
+  
+  function timeChanged(time: number) {
+    setTime(time)
+    tg.HapticFeedback.selectionChanged();
+    tg.MainButton.setText("Применить");
+    tg.MainButton.show();
   }
   return (
     <>
@@ -59,7 +64,7 @@ export default function SettingsTimeQuestionGroup({
                         <RadioGroup.Option
                           key={time.id}
                           value={time.period}
-                          onClick={() => selectionChanged()}
+                          onClick={() => timeChanged(time.period)}
                           className={({ checked }) =>
                             classNames(
                               checked
