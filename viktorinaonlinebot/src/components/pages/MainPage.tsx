@@ -1,15 +1,15 @@
 import SlidePage from "./SlidePage";
 import Logo from "../img/Logo.png";
-import { useValidateQuery } from "../store/api/vik.api";
+import { useGetTypeQuery, useValidateQuery } from "../store/api/vik.api";
 import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
 import ModalPage from "./ModalPage";
 import { selectSlide } from "../store/api/slide.slice";
-import { store, useAppSelector } from "../store";
+import { store, useAppDispatch, useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
-import { selectTypes } from "../store/api/types.slice";
+import { getTypes, selectTypes } from "../store/api/types.slice";
 
 let menuitems: IMenu[] = [
   {
@@ -46,6 +46,10 @@ export function MainPage() {
   const slide = useAppSelector(selectSlide);
   const modal = useAppSelector(selectModal);
 
+  const { data: dataType } = useGetTypeQuery("");
+  const dispatch = useAppDispatch();
+
+  dataType && dispatch(getTypes(dataType))
   const types = useAppSelector(selectTypes);
 
   if (!slide && !modal) {
