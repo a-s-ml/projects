@@ -5,8 +5,11 @@ import {
 } from "./store/api/groups.slice";
 import {
   useGetCategoryGroupsQuery,
+  useGetCategoryQuery,
   useGetTimeGroupQuery,
+  useGetTimeQuery,
   useGetTypeGroupQuery,
+  useGetTypeQuery,
 } from "./store/api/vik.api";
 import SettingsTypeQuestionGroup from "./SettingsTypeQuestionGroup";
 import SettingsCategoryQuestionGroup from "./SettingsCategoryQuestionGroup";
@@ -22,6 +25,9 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
 
   const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
   const { data: dataGroupDb } = useGetGroupDbQuery(group);
+  const { data: dataType } = useGetTypeQuery("");
+  const { data: dataTime } = useGetTimeQuery(0);
+  const { data: dataCategory } = useGetCategoryQuery("");
 
   const { data: dataGroupType } = useGetTypeGroupQuery(
     dataGroupDb?.question_type || 0
@@ -37,7 +43,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
 
   return (
     <>
-      {dataGroupInfo && dataGroupDb && (
+      {dataGroupInfo && dataType && dataTime && dataGroupDb && (
         <form className="text-center py-24">
           <h3 className="text-sm font-medium text-[var(--tg-theme-text-color)] text-left">
             Настройки викторины в группе "{dataGroupInfo.title}"
@@ -48,12 +54,17 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
           >
             {dataGroupType && (
               <li className="py-4 px-0">
-                <SettingsTypeQuestionGroup type={type} setType={setType} />
+                <SettingsTypeQuestionGroup
+                  dataType={dataType}
+                  type={type}
+                  setType={setType}
+                />
               </li>
             )}
-            {dataGroupCategory && (
+            {dataGroupCategory && dataCategory && (
               <li className="py-4 px-0">
                 <SettingsCategoryQuestionGroup
+                  dataCategory={dataCategory}
                   category={category}
                   setCategory={setCategory}
                 />
@@ -61,7 +72,11 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
             )}
             {dataGroupType && (
               <li className="py-4 px-0">
-                <SettingsTimeQuestionGroup time={time} setTime={setTime} />
+                <SettingsTimeQuestionGroup
+                  dataTime={dataTime}
+                  time={time}
+                  setTime={setTime}
+                />
               </li>
             )}
             <li className="py-4 px-0 cursor-not-allowed">

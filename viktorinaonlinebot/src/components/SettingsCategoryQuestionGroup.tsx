@@ -1,25 +1,23 @@
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { Disclosure } from "@headlessui/react";
 import { ICategoryGroup } from "../models/ICategoryGroup";
+import { ICategory } from "../models/ICategory";
 import CategoryCheckbox from "./CategoryCheckbox";
 import AddNewCategory from "./AddNewCategory";
 import { Dispatch, SetStateAction } from "react";
-import { useAppSelector } from "./store";
-import { selectCategories } from "./store/api/categories.slice";
 
 interface SettingsCategoryQuestionGroupProps {
+  dataCategory: ICategory[];
   category: ICategoryGroup[];
   setCategory: Dispatch<SetStateAction<ICategoryGroup[]>>;
 }
 
 export default function SettingsCategoryQuestionGroup({
+  dataCategory,
   category,
   setCategory
 }: SettingsCategoryQuestionGroupProps) {
   const tg = window.Telegram.WebApp;
-  
-  const categories = useAppSelector(selectCategories);
-  console.log(categories)
 
   return (
     <>
@@ -56,7 +54,7 @@ export default function SettingsCategoryQuestionGroup({
             </li>
             <Disclosure.Panel className="pt-6">
               <div className="space-y-1.5 columns-2">
-                {categories.map((item) => (
+                {dataCategory.map((item) => (
                   <CategoryCheckbox
                     key={item.id}
                     cat={item}

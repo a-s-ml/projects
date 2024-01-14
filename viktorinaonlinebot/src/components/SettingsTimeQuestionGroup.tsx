@@ -2,15 +2,15 @@ import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { Dispatch, SetStateAction } from "react";
 import { ITime } from "../models/ITime";
-import { useAppSelector } from "./store";
-import { selectTimes } from "./store/api/times.slice";
 
 interface SettingsTimeQuestionGroupProps {
+  dataTime: ITime[];
   time: number;
   setTime: Dispatch<SetStateAction<number>>;
 }
 
 export default function SettingsTimeQuestionGroup({
+  dataTime,
   time,
   setTime
 }: SettingsTimeQuestionGroupProps) {
@@ -25,11 +25,6 @@ export default function SettingsTimeQuestionGroup({
     tg.MainButton.setText("Применить");
     tg.MainButton.show();
   }
-
-
-  const times = useAppSelector(selectTimes);
-  console.log(times)
-
   return (
     <>
       <Disclosure as="div">
@@ -64,7 +59,8 @@ export default function SettingsTimeQuestionGroup({
               <div className="space-y-1.5">
                 <RadioGroup value={time} onChange={setTime} className="mt-2">
                   <div className="grid grid-cols-4 gap-2">
-                    {times.map((time) => (
+                    {dataTime &&
+                      dataTime.map((time) => (
                         <RadioGroup.Option
                           key={time.id}
                           value={time.period}

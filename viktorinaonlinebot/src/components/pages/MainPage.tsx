@@ -53,20 +53,7 @@ export function MainPage() {
   const slide = useAppSelector(selectSlide);
   const modal = useAppSelector(selectModal);
 
-  const { isSuccess: isSuccessType, data: dataType } = useGetTypeQuery("");
-  const { isSuccess: isSuccessTime, data: dataTime } = useGetTimeQuery(0);
-  const { isSuccess: isSuccessCategory, data: dataCategory } =
-    useGetCategoryQuery("");
-
-  const dispatch = useAppDispatch();
-
-  isSuccessType && dispatch(getTypes(dataType));
-  isSuccessTime && dispatch(getTimes(dataTime));
-  isSuccessCategory && dispatch(getCategories(dataCategory));
-
-  console.log(dataType);
-  console.log(dataTime);
-  console.log(dataCategory);
+  console.log(useAppSelector(store.getState));
 
   if (!slide && !modal) {
     tg.HapticFeedback.notificationOccurred("success");
