@@ -1,6 +1,6 @@
 import SlidePage from "./SlidePage";
 import Logo from "../img/Logo.png";
-import { useGetTimeQuery, useGetTypeQuery, useValidateQuery } from "../store/api/vik.api";
+import { useGetCategoryQuery, useGetTimeQuery, useGetTypeQuery, useValidateQuery } from "../store/api/vik.api";
 import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
@@ -11,6 +11,7 @@ import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
 import { getTypes, selectTypes } from "../store/api/types.slice";
 import { getTimes } from "../store/api/times.slice";
+import { getCategories } from "../store/api/categories.slice";
 
 let menuitems: IMenu[] = [
   {
@@ -49,11 +50,17 @@ export function MainPage() {
 
   const { data: dataType } = useGetTypeQuery("");
   const { data: dataTime } = useGetTimeQuery(0);
+  const { data: dataCategory } = useGetCategoryQuery("");
 
   const dispatch = useAppDispatch();
 
   dataType && dispatch(getTypes(dataType))
   dataTime && dispatch(getTimes(dataTime))
+  dataCategory && dispatch(getCategories(dataCategory))
+
+  console.log(dataType)
+  console.log(dataTime)
+  console.log(dataCategory)
 
   if (!slide && !modal) {
     tg.HapticFeedback.notificationOccurred("success");

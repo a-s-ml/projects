@@ -5,19 +5,13 @@ import {
 } from "./store/api/groups.slice";
 import {
   useGetCategoryGroupsQuery,
-  useGetCategoryQuery,
   useGetTimeGroupQuery,
-  useGetTimeQuery,
   useGetTypeGroupQuery,
-  useGetTypeQuery,
 } from "./store/api/vik.api";
 import SettingsTypeQuestionGroup from "./SettingsTypeQuestionGroup";
 import SettingsCategoryQuestionGroup from "./SettingsCategoryQuestionGroup";
 import SettingsTimeQuestionGroup from "./SettingsTimeQuestionGroup";
 import SittingsNotactiveQuestionGroup from "./SittingsNotactiveQuestionGroup";
-import { useAppSelector } from "./store";
-import { selectTypes } from "./store/api/types.slice";
-import { selectTimes } from "./store/api/times.slice";
 
 interface SettingsGroupProps {
   group: bigint;
@@ -28,8 +22,6 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
 
   const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
   const { data: dataGroupDb } = useGetGroupDbQuery(group);
-  
-  const { data: dataCategory } = useGetCategoryQuery("");
 
   const { data: dataGroupType } = useGetTypeGroupQuery(
     dataGroupDb?.question_type || 0
@@ -56,13 +48,10 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
           >
             {dataGroupType && (
               <li className="py-4 px-0">
-                <SettingsTypeQuestionGroup
-                  type={type}
-                  setType={setType}
-                />
+                <SettingsTypeQuestionGroup type={type} setType={setType} />
               </li>
             )}
-            {dataGroupCategory && dataCategory && (
+            {dataGroupCategory && (
               <li className="py-4 px-0">
                 <SettingsCategoryQuestionGroup
                   category={category}
@@ -72,10 +61,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
             )}
             {dataGroupType && (
               <li className="py-4 px-0">
-                <SettingsTimeQuestionGroup
-                  time={time}
-                  setTime={setTime}
-                />
+                <SettingsTimeQuestionGroup time={time} setTime={setTime} />
               </li>
             )}
             <li className="py-4 px-0 cursor-not-allowed">
