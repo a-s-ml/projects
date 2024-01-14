@@ -47,6 +47,6 @@ export const chatSlice = createSlice({
 
 export const { dataChatTime, dataChatType } = chatSlice.actions;
 
-export const selectChatGroups = (state: RootState) => state.chat.groups;
+export const selectChat = (state: RootState) => state.chat;
 
 export default chatSlice.reducer;
