@@ -1,6 +1,11 @@
 import SlidePage from "./SlidePage";
 import Logo from "../img/Logo.png";
-import { useGetCategoryQuery, useGetTimeQuery, useGetTypeQuery, useValidateQuery } from "../store/api/vik.api";
+import {
+  useGetCategoryQuery,
+  useGetTimeQuery,
+  useGetTypeQuery,
+  useValidateQuery,
+} from "../store/api/vik.api";
 import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
@@ -48,26 +53,26 @@ export function MainPage() {
   const slide = useAppSelector(selectSlide);
   const modal = useAppSelector(selectModal);
 
-  const { data: dataType } = useGetTypeQuery("");
-  const { data: dataTime } = useGetTimeQuery(0);
-  const { data: dataCategory } = useGetCategoryQuery("");
+  const { isSuccess: isSuccessType, data: dataType } = useGetTypeQuery("");
+  const { isSuccess: isSuccessTime, data: dataTime } = useGetTimeQuery(0);
+  const { isSuccess: isSuccessCategory, data: dataCategory } =
+    useGetCategoryQuery("");
 
   const dispatch = useAppDispatch();
 
-  dataType && dispatch(getTypes(dataType))
-  dataTime && dispatch(getTimes(dataTime))
-  dataCategory && dispatch(getCategories(dataCategory))
+  isSuccessType && dispatch(getTypes(dataType));
+  isSuccessTime && dispatch(getTimes(dataTime));
+  isSuccessCategory && dispatch(getCategories(dataCategory));
 
-  console.log(dataType)
-  console.log(dataTime)
-  console.log(dataCategory)
+  console.log(dataType);
+  console.log(dataTime);
+  console.log(dataCategory);
 
   if (!slide && !modal) {
     tg.HapticFeedback.notificationOccurred("success");
     tg.BackButton.hide();
     tg.MainButton.hide();
   }
-
 
   return (
     <>
