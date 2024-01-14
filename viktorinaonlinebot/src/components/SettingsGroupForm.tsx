@@ -15,6 +15,9 @@ import SettingsTypeQuestionGroup from "./SettingsTypeQuestionGroup";
 import SettingsCategoryQuestionGroup from "./SettingsCategoryQuestionGroup";
 import SettingsTimeQuestionGroup from "./SettingsTimeQuestionGroup";
 import SittingsNotactiveQuestionGroup from "./SittingsNotactiveQuestionGroup";
+import { useAppSelector } from "./store";
+import { selectTypes } from "./store/api/types.slice";
+import { selectTimes } from "./store/api/times.slice";
 
 interface SettingsGroupProps {
   group: bigint;
@@ -25,8 +28,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
 
   const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
   const { data: dataGroupDb } = useGetGroupDbQuery(group);
-  const { data: dataType } = useGetTypeQuery("");
-  const { data: dataTime } = useGetTimeQuery(0);
+  
   const { data: dataCategory } = useGetCategoryQuery("");
 
   const { data: dataGroupType } = useGetTypeGroupQuery(
@@ -41,13 +43,9 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
 
   const [category, setCategory] = useState(dataGroupCategory || []);
 
-  console.log(type);
-  console.log(time);
-  console.log(category);
-
   return (
     <>
-      {dataGroupInfo && dataType && dataTime && dataGroupDb && (
+      {dataGroupInfo && dataGroupDb && (
         <form className="text-center py-24">
           <h3 className="text-sm font-medium text-[var(--tg-theme-text-color)] text-left">
             Настройки викторины в группе "{dataGroupInfo.title}"
@@ -59,7 +57,6 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
             {dataGroupType && (
               <li className="py-4 px-0">
                 <SettingsTypeQuestionGroup
-                  dataType={dataType}
                   type={type}
                   setType={setType}
                 />
@@ -68,7 +65,6 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
             {dataGroupCategory && dataCategory && (
               <li className="py-4 px-0">
                 <SettingsCategoryQuestionGroup
-                  dataCategory={dataCategory}
                   category={category}
                   setCategory={setCategory}
                 />
@@ -77,7 +73,6 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
             {dataGroupType && (
               <li className="py-4 px-0">
                 <SettingsTimeQuestionGroup
-                  dataTime={dataTime}
                   time={time}
                   setTime={setTime}
                 />

@@ -1,6 +1,6 @@
 import SlidePage from "./SlidePage";
 import Logo from "../img/Logo.png";
-import { useGetTypeQuery, useValidateQuery } from "../store/api/vik.api";
+import { useGetTimeQuery, useGetTypeQuery, useValidateQuery } from "../store/api/vik.api";
 import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
@@ -10,6 +10,7 @@ import { store, useAppDispatch, useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
 import { getTypes, selectTypes } from "../store/api/types.slice";
+import { getTimes } from "../store/api/times.slice";
 
 let menuitems: IMenu[] = [
   {
@@ -47,10 +48,12 @@ export function MainPage() {
   const modal = useAppSelector(selectModal);
 
   const { data: dataType } = useGetTypeQuery("");
+  const { data: dataTime } = useGetTimeQuery(0);
+
   const dispatch = useAppDispatch();
 
   dataType && dispatch(getTypes(dataType))
-  const types = useAppSelector(selectTypes);
+  dataTime && dispatch(getTimes(dataTime))
 
   if (!slide && !modal) {
     tg.HapticFeedback.notificationOccurred("success");
@@ -58,7 +61,6 @@ export function MainPage() {
     tg.MainButton.hide();
   }
 
-  console.log(types);
 
   return (
     <>

@@ -2,15 +2,15 @@ import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { IType } from "../models/IType";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { Dispatch, SetStateAction } from "react";
+import { useAppSelector } from "./store";
+import { selectTypes } from "./store/api/types.slice";
 
 interface SettingsTypeQuestionGroupProps {
-  dataType: IType[];
   type: string;
   setType: Dispatch<SetStateAction<string>>;
 }
 
 export default function SettingsTypeQuestionGroup({
-  dataType,
   type,
   setType
 }: SettingsTypeQuestionGroupProps) {
@@ -25,6 +25,8 @@ export default function SettingsTypeQuestionGroup({
     tg.MainButton.setText("Применить");
     tg.MainButton.show();
   }
+  
+  const types = useAppSelector(selectTypes);
   return (
     <>
       <Disclosure as="div">
@@ -59,8 +61,7 @@ export default function SettingsTypeQuestionGroup({
               <div className="space-y-1.5">
                 <RadioGroup value={type} onChange={setType} className="mt-2">
                   <div className="grid grid-cols-3 gap-2">
-                    {dataType &&
-                      dataType.map((type) => (
+                    {types.map((type) => (
                         <RadioGroup.Option
                           key={type.id}
                           value={type.name}
