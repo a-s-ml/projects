@@ -39,8 +39,6 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
 
   const [type, setType] = useState(dataGroupType?.name || "text");
 
-  const [category, setCategory] = useState(dataGroupCategory || []);
-
   return (
     <>
       {dataGroupInfo && dataType && dataTime && dataGroupDb && (
@@ -65,8 +63,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
               <li className="py-4 px-0">
                 <SettingsCategoryQuestionGroup
                   dataCategory={dataCategory}
-                  category={category}
-                  setCategory={setCategory}
+                  category={dataGroupCategory}
                 />
               </li>
             )}

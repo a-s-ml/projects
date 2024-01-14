@@ -1,3 +1,4 @@
+import { IReqCategoryGroup, IResCategoryGroup } from "../../../models/ICategoryMutation";
 import { IActiveChat } from "../../../models/chats/IActiveChat";
 import { IChat } from "../../../models/chats/IChat";
 import { IGroup } from "../../../models/chats/IGroup";
@@ -41,6 +42,22 @@ export const extendedApiSlice = vikApi.injectEndpoints({
       }),
       invalidatesTags: ["ActiveGroups"],
     }),
+    addCategoryGroups: build.mutation<IResCategoryGroup, IReqCategoryGroup>({
+      query: (cat) => ({
+        url: `/chat-category`,
+        method: "POST",
+        body: { cat },
+      }),
+      invalidatesTags: ["ActiveGroups"],
+    }),
+    deleteCategoryGroups: build.mutation<IResCategoryGroup, IReqCategoryGroup>({
+      query: ({chat, category}) => ({
+        url: `/chat-category`,
+        method: "DELETE",
+        body: { chat, category },
+      }),
+      invalidatesTags: ["ActiveGroups"],
+    }),
     getMemberCountGroups: build.query<number, number>({
       query: (chat) => ({
         url: `chat/groupMemberCountById/${chat}`,
@@ -63,4 +80,6 @@ export const {
   useSetActiveGroupsMutation,
   useDeleteActiveGroupsMutation,
   useGetGroupDbQuery,
+  useAddCategoryGroupsMutation,
+  useDeleteCategoryGroupsMutation
 } = extendedApiSlice;

@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { ICategory } from "../models/ICategory";
+import { useAddCategoryGroupsMutation, useDeleteCategoryGroupsMutation } from "./store/api/groups.slice";
+import { useAppSelector } from "./store";
+import { selectModalData } from "./store/api/modal.slice";
 
 interface CategoryCheckboxProps {
   cat: ICategory;
@@ -13,12 +16,20 @@ export default function CategoryCheckbox({
   const tg = window.Telegram.WebApp;
 
   const [checkBox, setCheckBox] = useState(checked);
+  const [setCategory, {}] = useAddCategoryGroupsMutation();
+  const [deleteCategory, {}] = useDeleteCategoryGroupsMutation();
 
-  function categoryChanged(check: boolean) {
+  const chat = useAppSelector(selectModalData);
+
+  async function categoryChanged(check: boolean, category: number) {
+    if(check) {
+      await setCategory({chat, category})
+    }
+    if(!check) {
+      deleteCategory({chat, category})
+    }
     setCheckBox(check)
     tg.HapticFeedback.selectionChanged();
-    tg.MainButton.setText("Применить");
-    tg.MainButton.show();
   }
 
   return (
@@ -27,7 +38,7 @@ export default function CategoryCheckbox({
         <input
           id={cat.name}
           checked={checkBox}
-          onChange={()=>categoryChanged(!checkBox)}
+          onChange={()=>categoryChanged(!checkBox, cat.id)}
           name={cat.name}
           type="checkbox"
           className="h-4 w-4 rounded text-[var(--tg-theme-accent-text-color)]"

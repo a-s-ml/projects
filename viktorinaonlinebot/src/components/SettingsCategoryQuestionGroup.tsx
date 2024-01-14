@@ -9,13 +9,11 @@ import { Dispatch, SetStateAction } from "react";
 interface SettingsCategoryQuestionGroupProps {
   dataCategory: ICategory[];
   category: ICategoryGroup[];
-  setCategory: Dispatch<SetStateAction<ICategoryGroup[]>>;
 }
 
 export default function SettingsCategoryQuestionGroup({
   dataCategory,
-  category,
-  setCategory
+  category
 }: SettingsCategoryQuestionGroupProps) {
   const tg = window.Telegram.WebApp;
 
@@ -63,6 +61,7 @@ export default function SettingsCategoryQuestionGroup({
                         ? true
                         : false
                     }
+                    
                   />
                 ))}
                 <AddNewCategory />
