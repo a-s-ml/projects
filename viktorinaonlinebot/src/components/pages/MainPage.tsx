@@ -6,10 +6,10 @@ import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
 import ModalPage from "./ModalPage";
 import { selectSlide } from "../store/api/slide.slice";
-import { useAppSelector } from "../store";
+import { useAppDispatch, useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
-import { Bars3Icon } from "@heroicons/react/24/outline";
+import { selectChatGroups } from "../store/api/chat.slice";
 
 let menuitems: IMenu[] = [
   {
@@ -35,7 +35,6 @@ export function MainPage() {
   useEffect(() => {
     tg.expand();
     tg.ready();
-    tg.SettingsButton.show();
   }, []);
 
   const {
@@ -52,6 +51,11 @@ export function MainPage() {
     tg.BackButton.hide();
     tg.MainButton.hide();
   }
+
+  const chat = useAppSelector(selectChatGroups);
+  const dispatch = useAppDispatch();
+
+  console.log(chat)
 
   return (
     <>

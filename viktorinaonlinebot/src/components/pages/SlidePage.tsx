@@ -8,7 +8,6 @@ import {
   showSlide,
 } from "../store/api/slide.slice";
 import { useAppDispatch, useAppSelector } from "../store";
-import { Bars3Icon } from "@heroicons/react/24/outline";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import AddNewGroup from "../AddNewGroup";
