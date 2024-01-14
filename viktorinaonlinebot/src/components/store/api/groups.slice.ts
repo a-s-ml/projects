@@ -1,4 +1,9 @@
-import { IReqCategoryGroup, IResCategoryGroup } from "../../../models/ICategoryMutation";
+import {
+  IReqCategoryGroup,
+  IReqTimeGroup,
+  IReqTypeGroup,
+  IResCategoryGroup,
+} from "../../../models/IMutation";
 import { IActiveChat } from "../../../models/chats/IActiveChat";
 import { IChat } from "../../../models/chats/IChat";
 import { IGroup } from "../../../models/chats/IGroup";
@@ -43,20 +48,20 @@ export const extendedApiSlice = vikApi.injectEndpoints({
       invalidatesTags: ["ActiveGroups"],
     }),
     addCategoryGroups: build.mutation<IResCategoryGroup, IReqCategoryGroup>({
-      query: ({chat, category}) => ({
+      query: ({ chat, category }) => ({
         url: `/chat-category`,
         method: "POST",
         body: { chat, category },
       }),
-      invalidatesTags: ["ActiveGroups"],
+      invalidatesTags: ["CategoryGroup"],
     }),
     deleteCategoryGroups: build.mutation<IResCategoryGroup, IReqCategoryGroup>({
-      query: ({chat, category}) => ({
+      query: ({ chat, category }) => ({
         url: `/chat-category`,
         method: "DELETE",
         body: { chat, category },
       }),
-      invalidatesTags: ["ActiveGroups"],
+      invalidatesTags: ["CategoryGroup"],
     }),
     getMemberCountGroups: build.query<number, number>({
       query: (chat) => ({
@@ -67,6 +72,22 @@ export const extendedApiSlice = vikApi.injectEndpoints({
       query: (id) => ({
         url: `chat/tgGetFilePhoto/${id}`,
       }),
+    }),
+    updateTypeGroups: build.mutation<IGroup, IReqTypeGroup>({
+      query: ({ chat, question_type }) => ({
+        url: `/chat/${chat}`,
+        method: "PATCH",
+        body: { chat, question_type },
+      }),
+      invalidatesTags: ["Group"],
+    }),
+    updateTimeGroups: build.mutation<IGroup, IReqTimeGroup>({
+      query: ({ chat, time }) => ({
+        url: `/chat/${chat}`,
+        method: "PATCH",
+        body: { chat, time },
+      }),
+      invalidatesTags: ["Group"],
     }),
   }),
 });
@@ -81,5 +102,7 @@ export const {
   useDeleteActiveGroupsMutation,
   useGetGroupDbQuery,
   useAddCategoryGroupsMutation,
-  useDeleteCategoryGroupsMutation
+  useDeleteCategoryGroupsMutation,
+  useUpdateTimeGroupsMutation,
+  useUpdateTypeGroupsMutation
 } = extendedApiSlice;

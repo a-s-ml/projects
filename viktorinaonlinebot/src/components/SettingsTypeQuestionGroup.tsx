@@ -2,6 +2,9 @@ import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { IType } from "../models/IType";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { Dispatch, SetStateAction } from "react";
+import { useUpdateTypeGroupsMutation } from "./store/api/groups.slice";
+import { useAppSelector } from "./store";
+import { selectModalData } from "./store/api/modal.slice";
 
 interface SettingsTypeQuestionGroupProps {
   dataType: IType[];
@@ -18,13 +21,16 @@ export default function SettingsTypeQuestionGroup({
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
+  const chat = useAppSelector(selectModalData);
+  const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
 
-  function typeChanged(type: string) {
+
+  function typeChanged(type: string, question_type: number) {
+    updateTypeGroup({chat, question_type})
     setType(type)
     tg.HapticFeedback.selectionChanged();
-    tg.MainButton.setText("Применить");
-    tg.MainButton.show();
   }
+
   return (
     <>
       <Disclosure as="div">
@@ -64,7 +70,7 @@ export default function SettingsTypeQuestionGroup({
                         <RadioGroup.Option
                           key={type.id}
                           value={type.name}
-                          onClick={() => typeChanged(type.name)}
+                          onClick={() => typeChanged(type.name, type.id)}
                           className={({ active, checked }) =>
                             classNames(
                               Boolean(type.active)

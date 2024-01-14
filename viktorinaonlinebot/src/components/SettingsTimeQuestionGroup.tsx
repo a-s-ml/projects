@@ -2,6 +2,9 @@ import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { Dispatch, SetStateAction } from "react";
 import { ITime } from "../models/ITime";
+import { useUpdateTimeGroupsMutation } from "./store/api/groups.slice";
+import { useAppSelector } from "./store";
+import { selectModalData } from "./store/api/modal.slice";
 
 interface SettingsTimeQuestionGroupProps {
   dataTime: ITime[];
@@ -19,12 +22,15 @@ export default function SettingsTimeQuestionGroup({
     return classes.filter(Boolean).join(" ");
   }
   
+  const chat = useAppSelector(selectModalData);
+  const [updateTimeGroup, {}] = useUpdateTimeGroupsMutation();
+
   function timeChanged(time: number) {
     setTime(time)
+    updateTimeGroup({chat, time})
     tg.HapticFeedback.selectionChanged();
-    tg.MainButton.setText("Применить");
-    tg.MainButton.show();
   }
+
   return (
     <>
       <Disclosure as="div">
