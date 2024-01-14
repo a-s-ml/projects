@@ -15,8 +15,6 @@ import SettingsTypeQuestionGroup from "./SettingsTypeQuestionGroup";
 import SettingsCategoryQuestionGroup from "./SettingsCategoryQuestionGroup";
 import SettingsTimeQuestionGroup from "./SettingsTimeQuestionGroup";
 import SittingsNotactiveQuestionGroup from "./SittingsNotactiveQuestionGroup";
-import { useAppDispatch, useAppSelector } from "./store";
-import { dataChatTime, dataChatType, selectChat } from "./store/api/chat.slice";
 
 interface SettingsGroupProps {
   group: bigint;
@@ -43,16 +41,6 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
 
   const [category, setCategory] = useState(dataGroupCategory?.concat || []);
 
-  const dispatch = useAppDispatch();
-  if(dataGroupTime) {
-    dispatch(dataChatTime(dataGroupTime))
-  }
-  if(dataGroupType) {
-    dispatch(dataChatType(dataGroupType))
-  }
-  const chat = useAppSelector(selectChat);
-
-  console.log(chat)
   console.log(type);
   console.log(time);
   console.log(category);
