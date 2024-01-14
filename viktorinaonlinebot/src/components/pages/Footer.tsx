@@ -8,7 +8,7 @@ export function Footer() {
       <div className="bg-gradient-to-t from-[var(--tg-theme-bg-color)] to-transparent pt-16"></div>
       <div
         className="group flex items-start px-8 py-8 bg-[var(--tg-theme-bg-color)] space-x-3 cursor-pointer"
-        onClick={() => tg.openTelegramLink("https://t.me/a_s_ml")}
+        onClick={() => tg.openTelegramLink("https://t.me/more_details")}
       >
         <ChatBubbleOvalLeftEllipsisIcon
           className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
