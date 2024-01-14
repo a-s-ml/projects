@@ -39,7 +39,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
 
   const [type, setType] = useState(dataGroupType?.name || "text");
 
-  const [category, setCategory] = useState(dataGroupCategory || []);
+  const [category, setCategory] = useState(dataGroupCategory?.concat || []);
 
   console.log(type);
   console.log(time);
