@@ -15,6 +15,7 @@ import SettingsTypeQuestionGroup from "./SettingsTypeQuestionGroup";
 import SettingsCategoryQuestionGroup from "./SettingsCategoryQuestionGroup";
 import SettingsTimeQuestionGroup from "./SettingsTimeQuestionGroup";
 import SittingsNotactiveQuestionGroup from "./SittingsNotactiveQuestionGroup";
+import { store } from "./store";
 
 interface SettingsGroupProps {
   group: bigint;
@@ -44,6 +45,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   console.log(type);
   console.log(time);
   console.log(category);
+  console.log(store)
 
   return (
     <>
