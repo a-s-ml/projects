@@ -43,10 +43,10 @@ export const extendedApiSlice = vikApi.injectEndpoints({
       invalidatesTags: ["ActiveGroups"],
     }),
     addCategoryGroups: build.mutation<IResCategoryGroup, IReqCategoryGroup>({
-      query: (cat) => ({
+      query: ({chat, category}) => ({
         url: `/chat-category`,
         method: "POST",
-        body: { cat },
+        body: { chat, category },
       }),
       invalidatesTags: ["ActiveGroups"],
     }),
