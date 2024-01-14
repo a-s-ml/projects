@@ -9,7 +9,9 @@ export const typesSlice = createSlice({
   initialState,
   reducers: {
     getTypes: (state, action: PayloadAction<IType[]>) => {
-      state = state.concat(action.payload);
+      console.log('payload')
+      console.log(action.payload)
+      state = action.payload;
     },
   },
 });
