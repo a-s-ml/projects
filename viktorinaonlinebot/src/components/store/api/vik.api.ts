@@ -1,58 +1,61 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery, retry } from "@reduxjs/toolkit/query/react";
 import { IValidate } from "../../../models/IUser";
 import { ITime } from "../../../models/ITime";
 import { IType } from "../../../models/IType";
 import { ICategory } from "../../../models/ICategory";
 import { ICategoryGroup } from "../../../models/ICategoryGroup";
 
+const staggeredBaseQuery = retry(
+  fetchBaseQuery({ baseUrl: process.env.REACT_APP_APIURL }),
+  { maxRetries: 5 }
+);
+
 export const vikApi = createApi({
   reducerPath: "vikApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: process.env.REACT_APP_APIURL,
-  }),
+  baseQuery: staggeredBaseQuery,
   tagTypes: ["Time", "Type", "Category", "CategoryGroup", "Validate", "Group"],
   endpoints: (build) => ({
     validate: build.query<IValidate, string>({
       query: (initData: string) => ({
         url: `chat/validateUser/${initData}`,
       }),
-      providesTags: ['Validate'],
+      providesTags: ["Validate"],
     }),
     getTime: build.query<ITime[], number>({
       query: () => ({
         url: `time`,
       }),
-      providesTags: ['Time'],
+      providesTags: ["Time"],
     }),
     getTimeGroup: build.query<ITime, number>({
       query: (time) => ({
         url: `time/${time}`,
       }),
-      providesTags: ['Time'],
+      providesTags: ["Time"],
     }),
     getType: build.query<IType[], string>({
       query: () => ({
         url: `question-type`,
       }),
-      providesTags: ['Type'],
+      providesTags: ["Type"],
     }),
     getTypeGroup: build.query<IType, number>({
       query: (type) => ({
         url: `question-type/${type}`,
       }),
-      providesTags: ['Type'],
+      providesTags: ["Type"],
     }),
     getCategory: build.query<ICategory[], string>({
       query: () => ({
         url: `category`,
       }),
-      providesTags: ['Category'],
+      providesTags: ["Category"],
     }),
     getCategoryGroups: build.query<ICategoryGroup[], bigint>({
       query: (chat) => ({
         url: `chat-category/${chat}`,
       }),
-      providesTags: ['CategoryGroup'],
+      providesTags: ["CategoryGroup"],
     }),
     countCategory: build.query<number, string>({
       query: (count) => ({
