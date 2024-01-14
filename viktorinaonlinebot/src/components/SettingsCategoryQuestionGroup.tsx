@@ -19,6 +19,7 @@ export default function SettingsCategoryQuestionGroup({
   const tg = window.Telegram.WebApp;
   
   const categories = useAppSelector(selectCategories);
+  console.log(categories)
 
   return (
     <>

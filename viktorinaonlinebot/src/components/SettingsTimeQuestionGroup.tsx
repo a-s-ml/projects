@@ -28,6 +28,7 @@ export default function SettingsTimeQuestionGroup({
 
 
   const times = useAppSelector(selectTimes);
+  console.log(times)
 
   return (
     <>

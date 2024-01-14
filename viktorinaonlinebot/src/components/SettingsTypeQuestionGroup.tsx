@@ -27,6 +27,7 @@ export default function SettingsTypeQuestionGroup({
   }
   
   const types = useAppSelector(selectTypes);
+  console.log(types)
   return (
     <>
       <Disclosure as="div">
