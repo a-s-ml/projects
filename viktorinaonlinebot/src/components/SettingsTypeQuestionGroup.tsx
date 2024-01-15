@@ -12,7 +12,7 @@ import { selectModalData } from "./store/api/modal.slice";
 
 interface SettingsTypeQuestionGroupProps {
   dataType: IType[];
-  typeGroup: string;
+  typeGroup: IType;
 }
 
 export default function SettingsTypeQuestionGroup({
@@ -30,7 +30,6 @@ export default function SettingsTypeQuestionGroup({
 
   function typeChanged(type: string, question_type: number) {
     updateTypeGroup({ chat, question_type });
-    setType(type);
     tg.HapticFeedback.selectionChanged();
   }
 

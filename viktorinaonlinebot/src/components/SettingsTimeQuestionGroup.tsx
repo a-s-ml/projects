@@ -8,7 +8,7 @@ import { selectModalData } from "./store/api/modal.slice";
 
 interface SettingsTimeQuestionGroupProps {
   dataTime: ITime[];
-  timeGroup: number;
+  timeGroup: ITime;
 }
 
 export default function SettingsTimeQuestionGroup({
@@ -26,7 +26,6 @@ export default function SettingsTimeQuestionGroup({
   const [updateTimeGroup, {}] = useUpdateTimeGroupsMutation();
 
   function timeChanged(time: number) {
-    setTime(time)
     updateTimeGroup({chat, time})
     tg.HapticFeedback.selectionChanged();
   }

@@ -50,7 +50,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
               <li className="py-4 px-0">
                 <SettingsTypeQuestionGroup
                   dataType={dataType}
-                  typeGroup={dataGroupType.name}
+                  typeGroup={dataGroupType}
                 />
               </li>
             )}
@@ -66,7 +66,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
               <li className="py-4 px-0">
                 <SettingsTimeQuestionGroup
                   dataTime={dataTime}
-                  timeGroup={dataGroupTime.id}
+                  timeGroup={dataGroupTime}
                 />
               </li>
             )}
