@@ -53,7 +53,7 @@ export function MainPage() {
   const slide = useAppSelector(selectSlide);
   const modal = useAppSelector(selectModal);
 
-  console.log(useAppSelector(store.getState));
+  // console.log(useAppSelector(store.getState));
 
   if (!slide && !modal) {
     tg.HapticFeedback.notificationOccurred("success");
