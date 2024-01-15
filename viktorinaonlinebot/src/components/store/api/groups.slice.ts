@@ -77,7 +77,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         method: "PATCH",
         body: { question_type },
       }),
-      invalidatesTags: ["IType"]
+      invalidatesTags: ["TypeGroup"]
     }),
     updateTimeGroups: build.mutation<ITime, IReqTimeGroup>({
       query: ({ chat, time }) => ({

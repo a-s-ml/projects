@@ -29,23 +29,23 @@ export default function TypeQuestion({ questionType }: TypeQuestionProps) {
           )}
           {questionType === 2 && (
             <>
-              <ListBulletIcon
-                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
-                aria-hidden="true"
-              />
-              <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-                текст
-              </span>
-            </>
-          )}
-          {questionType === 3 && (
-            <>
               <LanguageIcon
                 className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
                 aria-hidden="true"
               />
               <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
                 опрос
+              </span>
+            </>
+          )}
+          {questionType === 3 && (
+            <>
+              <ListBulletIcon
+                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+                aria-hidden="true"
+              />
+              <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
+                текст
               </span>
             </>
           )}
