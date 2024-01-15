@@ -15,7 +15,6 @@ export const extendedApiSlice = vikApi.injectEndpoints({
       query: (chat) => ({
         url: `chat/findByReferal/${chat}`,
       }),
-      providesTags: ['Group']
     }),
     getInfoGroups: build.query<IChat, bigint>({
       query: (chat) => ({
@@ -38,7 +37,6 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         method: "POST",
         body: { chat },
       }),
-      invalidatesTags: ["ActiveGroups"],
     }),
     deleteActiveGroups: build.mutation<IActiveChat, bigint>({
       query: (chat) => ({
@@ -46,7 +44,6 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         method: "DELETE",
         body: { chat },
       }),
-      invalidatesTags: ["ActiveGroups"],
     }),
     addCategoryGroups: build.mutation<IResCategoryGroup, IReqCategoryGroup>({
       query: ({ chat, category }) => ({
@@ -54,7 +51,6 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         method: "POST",
         body: { chat, category },
       }),
-      invalidatesTags: ["CategoryGroup"],
     }),
     deleteCategoryGroups: build.mutation<IResCategoryGroup, IReqCategoryGroup>({
       query: ({ chat, category }) => ({
@@ -62,7 +58,6 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         method: "DELETE",
         body: { chat, category },
       }),
-      invalidatesTags: ["CategoryGroup"],
     }),
     getMemberCountGroups: build.query<number, number>({
       query: (chat) => ({
@@ -80,7 +75,6 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         method: "PATCH",
         body: { chat, question_type },
       }),
-      invalidatesTags: ["Group"],
     }),
     updateTimeGroups: build.mutation<IGroup, IReqTimeGroup>({
       query: ({ chat, time }) => ({
@@ -88,7 +82,6 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         method: "PATCH",
         body: { chat, time },
       }),
-      invalidatesTags: ["Group"],
     }),
   }),
 });
