@@ -1,4 +1,8 @@
-import { ClockIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import {
+  ClockIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+} from "@heroicons/react/24/outline";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { Dispatch, SetStateAction, useState } from "react";
 import { ITime } from "../models/ITime";
@@ -13,22 +17,26 @@ interface SettingsTimeQuestionGroupProps {
 
 export default function SettingsTimeQuestionGroup({
   dataTime,
-  timeGroup
+  timeGroup,
 }: SettingsTimeQuestionGroupProps) {
   const tg = window.Telegram.WebApp;
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
-  
-  const [timeState, setTime] = useState(timeGroup);
+
+  const [timeState, setTime] = useState(timeGroup.id);
 
   const chat = useAppSelector(selectModalData);
   const [updateTimeGroup, {}] = useUpdateTimeGroupsMutation();
 
   function timeChanged(time: number) {
-    updateTimeGroup({chat, time})
+    setTime(time)
+    updateTimeGroup({ chat, time });
     tg.HapticFeedback.selectionChanged();
   }
+
+  console.log(dataTime);
+  console.log(timeGroup);
 
   return (
     <>
@@ -37,7 +45,7 @@ export default function SettingsTimeQuestionGroup({
           <>
             <li className="py-4 px-0">
               <Disclosure.Button className="group relative flex w-full items-start justify-between space-x-3">
-              <div className="flex-shrink-0">
+                <div className="flex-shrink-0">
                   <span className="inline-flex h-5 w-5 items-center justify-center rounded-lg">
                     <ClockIcon
                       className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
@@ -67,14 +75,18 @@ export default function SettingsTimeQuestionGroup({
             </li>
             <Disclosure.Panel className="pt-6">
               <div className="space-y-1.5">
-                <RadioGroup value={timeState} onChange={setTime} className="mt-2">
+                <RadioGroup
+                  value={timeState}
+                  onChange={setTime}
+                  className="mt-2"
+                >
                   <div className="grid grid-cols-4 gap-2">
                     {dataTime &&
-                      dataTime.map((time) => (
+                      dataTime.map((timeData) => (
                         <RadioGroup.Option
-                          key={time.id}
-                          value={time.name}
-                          onClick={() => timeChanged(time.id)}
+                          key={timeData.id}
+                          value={timeData.name}
+                          onClick={() => timeChanged(timeData.id)}
                           className={({ checked }) =>
                             classNames(
                               checked
@@ -85,7 +97,7 @@ export default function SettingsTimeQuestionGroup({
                           }
                         >
                           <RadioGroup.Label as="span">
-                            {time.name}
+                            {timeData.name}
                           </RadioGroup.Label>
                         </RadioGroup.Option>
                       ))}
