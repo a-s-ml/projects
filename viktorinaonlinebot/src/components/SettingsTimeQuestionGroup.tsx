@@ -1,4 +1,4 @@
-import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import { ClockIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { Dispatch, SetStateAction } from "react";
 import { ITime } from "../models/ITime";
@@ -38,6 +38,14 @@ export default function SettingsTimeQuestionGroup({
           <>
             <li className="py-4 px-0">
               <Disclosure.Button className="group relative flex w-full items-start justify-between space-x-3">
+              <div className="flex-shrink-0">
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-lg">
+                    <ClockIcon
+                      className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </div>
                 <div className="min-w-0 flex-1 text-left">
                   <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
                     Период публикаций
