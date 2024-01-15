@@ -4,6 +4,8 @@ import {
   IReqTypeGroup,
   IResCategoryGroup,
 } from "../../../models/IMutation";
+import { ITime } from "../../../models/ITime";
+import { IType } from "../../../models/IType";
 import { IActiveChat } from "../../../models/chats/IActiveChat";
 import { IChat } from "../../../models/chats/IChat";
 import { IGroup } from "../../../models/chats/IGroup";
@@ -69,19 +71,19 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         url: `chat/tgGetFilePhoto/${id}`,
       }),
     }),
-    updateTypeGroups: build.mutation<IGroup, IReqTypeGroup>({
+    updateTypeGroups: build.mutation<IType, IReqTypeGroup>({
       query: ({ chat, question_type }) => ({
-        url: `/chat/${chat}`,
+        url: `/chat/updateTypeChat/${chat}`,
         method: "PATCH",
-        body: { chat, question_type },
+        body: { question_type },
       }),
-      invalidatesTags: (result, error, arg) => [{ type: 'IType', id: arg.question_type }],
+      invalidatesTags: ["IType"]
     }),
-    updateTimeGroups: build.mutation<IGroup, IReqTimeGroup>({
+    updateTimeGroups: build.mutation<ITime, IReqTimeGroup>({
       query: ({ chat, time }) => ({
-        url: `/chat/${chat}`,
+        url: `/chat/updateTimeChat/${chat}`,
         method: "PATCH",
-        body: { chat, time },
+        body: { time },
       }),
     }),
   }),
