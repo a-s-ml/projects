@@ -12,6 +12,7 @@ const staggeredBaseQuery = retry(
 
 export const vikApi = createApi({
   reducerPath: "vikApi",
+  refetchOnFocus: true,
   baseQuery: staggeredBaseQuery,
   tagTypes: ["TypeGroup"],
   endpoints: (build) => ({
