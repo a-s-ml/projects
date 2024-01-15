@@ -24,7 +24,7 @@ export default function SettingsTypeQuestionGroup({
     return classes.filter(Boolean).join(" ");
   }
   
-  const [type, setType] = useState(typeGroup);
+  const [typeState, setType] = useState(typeGroup);
   const chat = useAppSelector(selectModalData);
   const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
 
@@ -71,7 +71,7 @@ export default function SettingsTypeQuestionGroup({
             </li>
             <Disclosure.Panel className="pt-6">
               <div className="space-y-1.5">
-                <RadioGroup value={type} onChange={setType} className="mt-2">
+                <RadioGroup value={typeState} onChange={setType} className="mt-2">
                   <div className="grid grid-cols-3 gap-2">
                     {dataType &&
                       dataType.map((type) => (
