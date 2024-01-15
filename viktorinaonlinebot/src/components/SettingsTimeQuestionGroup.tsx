@@ -74,7 +74,7 @@ export default function SettingsTimeQuestionGroup({
                       dataTime.map((time) => (
                         <RadioGroup.Option
                           key={time.id}
-                          value={time.period}
+                          value={time.name}
                           onClick={() => timeChanged(time.id)}
                           className={({ checked }) =>
                             classNames(
