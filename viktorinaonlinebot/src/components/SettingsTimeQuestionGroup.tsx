@@ -35,9 +35,6 @@ export default function SettingsTimeQuestionGroup({
     tg.HapticFeedback.selectionChanged();
   }
 
-  console.log(dataTime);
-  console.log(timeGroup);
-
   return (
     <>
       <Disclosure as="div">

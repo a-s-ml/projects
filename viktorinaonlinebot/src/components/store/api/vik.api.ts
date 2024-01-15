@@ -30,6 +30,7 @@ export const vikApi = createApi({
       query: (time) => ({
         url: `time/${time}`,
       }),
+      providesTags: ['TimeGroup']
     }),
     getType: build.query<IType[], string>({
       query: () => ({
@@ -40,6 +41,7 @@ export const vikApi = createApi({
       query: (type) => ({
         url: `question-type/${type}`,
       }),
+      providesTags: ['TypeGroup']
     }),
     getCategory: build.query<ICategory[], string>({
       query: () => ({
@@ -50,6 +52,7 @@ export const vikApi = createApi({
       query: (chat) => ({
         url: `chat-category/${chat}`,
       }),
+      providesTags: ['CategoryGroup']
     }),
     countCategory: build.query<number, string>({
       query: (count) => ({
