@@ -68,7 +68,7 @@ export default function SettingsTimeQuestionGroup({
             </li>
             <Disclosure.Panel className="pt-6">
               <div className="space-y-1.5">
-                <RadioGroup value={time} onChange={setTime} className="mt-2">
+                <RadioGroup value={timeGroup} onChange={setTime} className="mt-2">
                   <div className="grid grid-cols-4 gap-2">
                     {dataTime &&
                       dataTime.map((time) => (
