@@ -28,8 +28,8 @@ export default function SettingsTypeQuestionGroup({
   const chat = useAppSelector(selectModalData);
   const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
 
-  function typeChanged(type: number, question_type: number) {
-    setType(type)
+  function typeChanged(question_type: number) {
+    setType(question_type)
     updateTypeGroup({ chat, question_type });
     tg.HapticFeedback.selectionChanged();
   }
@@ -80,7 +80,7 @@ console.log(typeGroup)
                         <RadioGroup.Option
                           key={type.id}
                           value={type.id}
-                          onClick={() => typeChanged(type.id, type.id)}
+                          onClick={() => typeChanged(type.id)}
                           className={({ active, checked }) =>
                             classNames(
                               Boolean(type.active)
