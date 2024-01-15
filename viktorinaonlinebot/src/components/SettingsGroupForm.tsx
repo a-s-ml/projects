@@ -35,10 +35,6 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   const { data: dataGroupTime } = useGetTimeGroupQuery(dataGroupDb?.time || 0);
   const { data: dataGroupCategory } = useGetCategoryGroupsQuery(group);
 
-  const [time, setTime] = useState(dataGroupTime?.period || 3600);
-
-  const [type, setType] = useState(dataGroupType?.name || "text");
-
   return (
     <>
       {dataGroupInfo && dataType && dataTime && dataGroupDb && (
@@ -54,8 +50,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
               <li className="py-4 px-0">
                 <SettingsTypeQuestionGroup
                   dataType={dataType}
-                  type={type}
-                  setType={setType}
+                  typeGroup={dataGroupType.name}
                 />
               </li>
             )}
@@ -67,12 +62,11 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
                 />
               </li>
             )}
-            {dataGroupType && (
+            {dataGroupTime && (
               <li className="py-4 px-0">
                 <SettingsTimeQuestionGroup
                   dataTime={dataTime}
-                  time={time}
-                  setTime={setTime}
+                  timeGroup={dataGroupTime.id}
                 />
               </li>
             )}

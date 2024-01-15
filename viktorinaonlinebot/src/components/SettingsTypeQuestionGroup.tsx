@@ -5,26 +5,26 @@ import {
 } from "@heroicons/react/24/outline";
 import { IType } from "../models/IType";
 import { Disclosure, RadioGroup } from "@headlessui/react";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useUpdateTypeGroupsMutation } from "./store/api/groups.slice";
 import { useAppSelector } from "./store";
 import { selectModalData } from "./store/api/modal.slice";
 
 interface SettingsTypeQuestionGroupProps {
   dataType: IType[];
-  type: string;
-  setType: Dispatch<SetStateAction<string>>;
+  typeGroup: string;
 }
 
 export default function SettingsTypeQuestionGroup({
   dataType,
-  type,
-  setType,
+  typeGroup
 }: SettingsTypeQuestionGroupProps) {
   const tg = window.Telegram.WebApp;
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
+  
+  const [type, setType] = useState(typeGroup);
   const chat = useAppSelector(selectModalData);
   const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
 

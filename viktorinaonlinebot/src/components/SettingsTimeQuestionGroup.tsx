@@ -1,6 +1,6 @@
 import { ClockIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { Disclosure, RadioGroup } from "@headlessui/react";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { ITime } from "../models/ITime";
 import { useUpdateTimeGroupsMutation } from "./store/api/groups.slice";
 import { useAppSelector } from "./store";
@@ -8,20 +8,20 @@ import { selectModalData } from "./store/api/modal.slice";
 
 interface SettingsTimeQuestionGroupProps {
   dataTime: ITime[];
-  time: number;
-  setTime: Dispatch<SetStateAction<number>>;
+  timeGroup: number;
 }
 
 export default function SettingsTimeQuestionGroup({
   dataTime,
-  time,
-  setTime
+  timeGroup
 }: SettingsTimeQuestionGroupProps) {
   const tg = window.Telegram.WebApp;
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
   
+  const [time, setTime] = useState(timeGroup);
+
   const chat = useAppSelector(selectModalData);
   const [updateTimeGroup, {}] = useUpdateTimeGroupsMutation();
 
