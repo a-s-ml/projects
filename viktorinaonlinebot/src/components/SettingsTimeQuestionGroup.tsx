@@ -39,12 +39,9 @@ export default function SettingsTimeQuestionGroup({
             <li className="py-4 px-0">
               <Disclosure.Button className="group relative flex w-full items-start justify-between space-x-3">
                 <div className="min-w-0 flex-1 text-left">
-                  <div className="text-sm font-medium text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]">
+                  <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
                     Период публикаций
                   </div>
-                  <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-                    Тукущий период: {time}
-                  </span>
                 </div>
                 <div className="flex-shrink-0 self-center text-right">
                   {open ? (
