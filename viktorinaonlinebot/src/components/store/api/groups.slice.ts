@@ -15,6 +15,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
       query: (chat) => ({
         url: `chat/findByReferal/${chat}`,
       }),
+      providesTags: ['Group']
     }),
     getInfoGroups: build.query<IChat, bigint>({
       query: (chat) => ({

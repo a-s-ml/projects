@@ -7,6 +7,7 @@ import timesReducer from "./api/times.slice";
 import categoriesReducer from "./api/categories.slice";
 import chatReducer from "./api/chat.slice";
 import { vikApi } from "./api/vik.api";
+import { setupListeners } from "@reduxjs/toolkit/query";
 
 export const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ export const store = configureStore({
     getDefaultMiddleware().concat(vikApi.middleware),
   devTools: true,
 });
+setupListeners(store.dispatch)
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

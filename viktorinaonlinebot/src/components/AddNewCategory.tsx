@@ -9,7 +9,7 @@ export default function AddNewCategory() {
       </div>
       <div
         className="ml-3 text-sm leading-6"
-        onClick={() => tg.openTelegramLink("https://t.me/a_s_ml")}
+        onClick={() => tg.openTelegramLink("https://t.me/more_details")}
       >
         <label
           htmlFor="add"
