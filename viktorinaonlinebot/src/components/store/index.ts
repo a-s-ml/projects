@@ -20,10 +20,8 @@ export const store = configureStore({
     categories: categoriesReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(vikApi.middleware),
-  devTools: true,
+    getDefaultMiddleware().concat(vikApi.middleware)
 });
-setupListeners(store.dispatch)
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
