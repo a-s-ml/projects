@@ -32,6 +32,8 @@ export default function SettingsTypeQuestionGroup({
     updateTypeGroup({ chat, question_type });
     tg.HapticFeedback.selectionChanged();
   }
+console.log(dataType)
+console.log(typeGroup)
 
   return (
     <>
