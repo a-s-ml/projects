@@ -17,7 +17,7 @@ interface SettingsTypeQuestionGroupProps {
 
 export default function SettingsTypeQuestionGroup({
   dataType,
-  typeGroup
+  typeGroup 
 }: SettingsTypeQuestionGroupProps) {
   const tg = window.Telegram.WebApp;
   function classNames(...classes: string[]) {
