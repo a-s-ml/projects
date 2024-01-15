@@ -23,7 +23,6 @@ export default function TypeQuestion({ questionType }: TypeQuestionProps) {
                 aria-hidden="true"
               />
               <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-                {" "}
                 фото
               </span>
             </>
@@ -35,7 +34,6 @@ export default function TypeQuestion({ questionType }: TypeQuestionProps) {
                 aria-hidden="true"
               />
               <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-                {" "}
                 текст
               </span>
             </>
@@ -47,7 +45,6 @@ export default function TypeQuestion({ questionType }: TypeQuestionProps) {
                 aria-hidden="true"
               />
               <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-                {" "}
                 опрос
               </span>
             </>
@@ -59,7 +56,6 @@ export default function TypeQuestion({ questionType }: TypeQuestionProps) {
                 aria-hidden="true"
               />
               <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-                {" "}
                 микс
               </span>
             </>

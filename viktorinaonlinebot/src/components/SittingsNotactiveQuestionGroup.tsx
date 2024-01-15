@@ -3,12 +3,10 @@ import { Disclosure } from "@headlessui/react";
 
 interface SittingsNotactiveQuestionGroupProps {
   type: string;
-  description: string;
 }
 
 export default function SittingsNotactiveQuestionGroup({
-  type,
-  description
+  type
 }: SittingsNotactiveQuestionGroupProps) {
   return (
     <>
@@ -19,9 +17,6 @@ export default function SittingsNotactiveQuestionGroup({
               <div className="text-sm font-medium text-[var(--tg-theme-hint-color)]">
                 {type}
               </div>
-              <span className="text-xs leading-5 text-[var(--tg-theme-hint-color)]">
-                Настройки {description} временно недоступны...
-              </span>
             </div>
             <div className="flex-shrink-0 self-center text-right">
               <ChevronDownIcon

@@ -1,4 +1,8 @@
-import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import {
+  PhotoIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+} from "@heroicons/react/24/outline";
 import { IType } from "../models/IType";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { Dispatch, SetStateAction } from "react";
@@ -15,7 +19,7 @@ interface SettingsTypeQuestionGroupProps {
 export default function SettingsTypeQuestionGroup({
   dataType,
   type,
-  setType
+  setType,
 }: SettingsTypeQuestionGroupProps) {
   const tg = window.Telegram.WebApp;
   function classNames(...classes: string[]) {
@@ -24,10 +28,9 @@ export default function SettingsTypeQuestionGroup({
   const chat = useAppSelector(selectModalData);
   const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
 
-
   function typeChanged(type: string, question_type: number) {
-    updateTypeGroup({chat, question_type})
-    setType(type)
+    updateTypeGroup({ chat, question_type });
+    setType(type);
     tg.HapticFeedback.selectionChanged();
   }
 
@@ -39,6 +42,10 @@ export default function SettingsTypeQuestionGroup({
             <li className="py-4 px-0">
               <Disclosure.Button className="group relative flex w-full items-start justify-between space-x-3">
                 <div className="min-w-0 flex-1 text-left">
+                  <PhotoIcon
+                    className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+                    aria-hidden="true"
+                  />
                   <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
                     Вид вопросов
                   </div>

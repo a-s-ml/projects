@@ -79,19 +79,16 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
             <li className="py-4 px-0 cursor-not-allowed">
               <SittingsNotactiveQuestionGroup
                 type={"Сложность вопросов"}
-                description={"сложности вопросов"}
               />
             </li>
             <li className="py-4 px-0 cursor-not-allowed">
               <SittingsNotactiveQuestionGroup
                 type={"Период жизни вопроса"}
-                description={"периода жизни вопросов"}
               />
             </li>
             <li className="py-4 px-0 cursor-not-allowed">
               <SittingsNotactiveQuestionGroup
                 type={"Ежедневная статистика"}
-                description={"ежедневной статистики"}
               />
             </li>
           </ul>
