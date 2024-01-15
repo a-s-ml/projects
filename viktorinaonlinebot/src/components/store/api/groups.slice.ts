@@ -17,6 +17,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
       query: (chat) => ({
         url: `chat/findByReferal/${chat}`,
       }),
+      providesTags: ['TypeGroup', 'TimeGroup', 'CategoryGroup']
     }),
     getInfoGroups: build.query<IChat, bigint>({
       query: (chat) => ({
@@ -85,6 +86,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         method: "PATCH",
         body: { time },
       }),
+      invalidatesTags: ["TimeGroup"]
     }),
   }),
 });
