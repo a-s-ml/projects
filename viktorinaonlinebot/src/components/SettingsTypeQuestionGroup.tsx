@@ -19,9 +19,6 @@ export default function SettingsTypeQuestionGroup({
   dataType,
   typeGroup,
 }: SettingsTypeQuestionGroupProps) {
-  useEffect(() => {
-    console.log(typeGroup.id);
-  }, [typeGroup]);
 
   const tg = window.Telegram.WebApp;
 
@@ -30,6 +27,10 @@ export default function SettingsTypeQuestionGroup({
   const chat = useAppSelector(selectModalData);
 
   const [typeState, setType] = useState(typeGroup.id);
+
+  useEffect(() => {
+    console.log(typeState);
+  }, [typeState]);
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
