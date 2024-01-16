@@ -30,7 +30,7 @@ export default function SettingsTimeQuestionGroup({
   const [updateTimeGroup, {}] = useUpdateTimeGroupsMutation();
 
   function timeChanged(time: number) {
-    setTime(time)
+    setTime(time);
     updateTimeGroup({ chat, time });
     tg.HapticFeedback.selectionChanged();
   }

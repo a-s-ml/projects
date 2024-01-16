@@ -35,6 +35,8 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
   const { data: dataGroupTime } = useGetTimeGroupQuery(dataGroupDb?.time || 0);
   const { data: dataGroupCategory } = useGetCategoryGroupsQuery(group);
 
+  useEffect(() => {}, [dataGroupType, dataGroupTime]);
+
   return (
     <>
       {dataGroupInfo && dataType && dataTime && dataGroupDb && (
