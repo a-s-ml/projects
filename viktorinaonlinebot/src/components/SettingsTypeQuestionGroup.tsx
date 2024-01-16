@@ -5,7 +5,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { IType } from "../models/IType";
 import { Disclosure, RadioGroup } from "@headlessui/react";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useUpdateTypeGroupsMutation } from "./store/api/groups.slice";
 import { useAppSelector } from "./store";
 import { selectModalData } from "./store/api/modal.slice";
@@ -17,19 +17,26 @@ interface SettingsTypeQuestionGroupProps {
 
 export default function SettingsTypeQuestionGroup({
   dataType,
-  typeGroup 
+  typeGroup,
 }: SettingsTypeQuestionGroupProps) {
+  useEffect(() => {
+    console.log(typeGroup.id);
+  }, [typeGroup]);
+
   const tg = window.Telegram.WebApp;
+
+  const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
+
+  const chat = useAppSelector(selectModalData);
+
+  const [typeState, setType] = useState(typeGroup.id);
+
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
-  
-  const [typeState, setType] = useState(typeGroup.id);
-  const chat = useAppSelector(selectModalData);
-  const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
 
   function typeChanged(question_type: number) {
-    setType(question_type)
+    setType(question_type);
     updateTypeGroup({ chat, question_type });
     tg.HapticFeedback.selectionChanged();
   }
@@ -71,7 +78,11 @@ export default function SettingsTypeQuestionGroup({
             </li>
             <Disclosure.Panel className="pt-6">
               <div className="space-y-1.5">
-                <RadioGroup value={typeState} onChange={setType} className="mt-2">
+                <RadioGroup
+                  value={typeState}
+                  onChange={setType}
+                  className="mt-2"
+                >
                   <div className="grid grid-cols-3 gap-2">
                     {dataType &&
                       dataType.map((type) => (
