@@ -28,10 +28,6 @@ export default function SettingsTypeQuestionGroup({
 
   const [typeState, setType] = useState(typeGroup.id);
 
-  useEffect(() => {
-    console.log(typeState);
-  }, [typeState]);
-
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   useGetGroupDbQuery,
   useGetInfoGroupsQuery,
@@ -71,19 +71,13 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
               </li>
             )}
             <li className="py-4 px-0 cursor-not-allowed">
-              <SittingsNotactiveQuestionGroup
-                type={"Сложность вопросов"}
-              />
+              <SittingsNotactiveQuestionGroup type={"Сложность вопросов"} />
             </li>
             <li className="py-4 px-0 cursor-not-allowed">
-              <SittingsNotactiveQuestionGroup
-                type={"Период жизни вопроса"}
-              />
+              <SittingsNotactiveQuestionGroup type={"Период жизни вопроса"} />
             </li>
             <li className="py-4 px-0 cursor-not-allowed">
-              <SittingsNotactiveQuestionGroup
-                type={"Ежедневная статистика"}
-              />
+              <SittingsNotactiveQuestionGroup type={"Ежедневная статистика"} />
             </li>
           </ul>
         </form>
