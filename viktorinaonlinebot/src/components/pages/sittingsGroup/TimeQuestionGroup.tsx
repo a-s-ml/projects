@@ -21,7 +21,9 @@ export default function TimeGroup() {
   const { data: GroupDb } = useGetGroupDbQuery(chat);
 
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
-  useEffect(() => {}, [GroupDb, GroupTime]);
+  useEffect(() => {
+    console.log("useeffect");
+  }, [GroupDb, GroupTime]);
 
   const tg = window.Telegram.WebApp;
 

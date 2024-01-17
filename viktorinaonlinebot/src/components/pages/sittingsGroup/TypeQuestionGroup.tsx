@@ -19,7 +19,9 @@ export default function TypeGroup() {
   const chat = useAppSelector(selectModalData);
   const { data: GroupDb } = useGetGroupDbQuery(chat);
   const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
-  useEffect(() => {}, [GroupDb, GroupType]);
+  useEffect(() => {
+    console.log("useeffect");
+  }, [GroupDb, GroupType]);
 
   const tg = window.Telegram.WebApp;
 
