@@ -5,7 +5,7 @@ import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
 import ModalPage from "./ModalPage";
 import { selectSlide } from "../store/api/slide.slice";
-import { useAppDispatch, useAppSelector } from "../store";
+import { store, useAppDispatch, useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
 import { useValidateQuery } from "../store/api/vik.api";
@@ -60,7 +60,7 @@ export function MainPage() {
   allTime && dispatch(getAllTime(allTime))
   allCategory && dispatch(getAllCategories(allCategory))
 
-  // console.log(useAppSelector(store.getState));
+  console.log(useAppSelector(store.getState));
 
   if (!slide && !modal) {
     tg.HapticFeedback.notificationOccurred("success");
