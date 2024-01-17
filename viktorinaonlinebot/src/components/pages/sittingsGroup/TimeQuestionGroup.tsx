@@ -23,6 +23,7 @@ export default function TimeGroup() {
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
 
   const tg = window.Telegram.WebApp;
+
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
@@ -36,6 +37,8 @@ export default function TimeGroup() {
     updateTimeGroup({ chat, time });
     tg.HapticFeedback.selectionChanged();
   }
+
+  console.log('timeState', timeState)
 
   return (
     <>

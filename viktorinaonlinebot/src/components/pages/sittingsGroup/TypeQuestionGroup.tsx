@@ -24,13 +24,12 @@ export default function TypeGroup() {
 
   const tg = window.Telegram.WebApp;
 
-  const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
-
-  const [typeState, setType] = useState(GroupType?.id);
-
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
+  const [typeState, setType] = useState(GroupType?.id);
+
+  const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
 
   function typeChanged(question_type: number) {
     setType(question_type);
@@ -38,11 +37,11 @@ export default function TypeGroup() {
     tg.HapticFeedback.selectionChanged();
   }
 
-  console.log(useAppSelector(store.getState));
+  console.log('typeState', typeState)
 
   return (
     <>
-      <Disclosure as="div">
+      <Disclosure as="div"> 
         {({ open }) => (
           <>
             <li className="py-4 px-0">
