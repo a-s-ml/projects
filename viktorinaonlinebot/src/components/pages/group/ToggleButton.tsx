@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Switch } from "@headlessui/react";
 import {
   useDeleteActiveGroupsMutation,
-  useGetActiveGroupsQuery,
   useSetActiveGroupsMutation,
 } from "../../store/api/activeGroup.api";
 
@@ -12,11 +11,11 @@ function classNames(...classes: string[]) {
 
 interface ToggleButtonProps {
   group: bigint;
+  state: boolean;
 }
 
-export default function ToggleButton({ group }: ToggleButtonProps) {
-  const { data: groupActive } = useGetActiveGroupsQuery(group);
-  const [enabled, setEnabled] = useState(groupActive);
+export default function ToggleButton({ group, state }: ToggleButtonProps) {
+  const [enabled, setEnabled] = useState(state);
   const [setActive, {}] = useSetActiveGroupsMutation();
   const [deleteActive, {}] = useDeleteActiveGroupsMutation();
   const tg = window.Telegram.WebApp;

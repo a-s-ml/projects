@@ -18,6 +18,7 @@ interface GroupsListItemProps {
 }
 
 export default function GroupsListItem({ group }: GroupsListItemProps) {
+  const { data: groupActive } = useGetActiveGroupsQuery(group);
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);
   const { data: GroupDb } = useGetGroupDbQuery(group);
@@ -54,9 +55,11 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
                 </p>
               )}
             </div>
+            {groupActive && (
             <div className="flex-shrink-0 self-center text-right">
-              <ToggleButton group={dataGroupInfo.id} />
+              <ToggleButton group={dataGroupInfo.id} state={groupActive}/>
             </div>
+            )}
           </div>
           <div
             className="group relative flex items-start space-x-3 cursor-pointer"
