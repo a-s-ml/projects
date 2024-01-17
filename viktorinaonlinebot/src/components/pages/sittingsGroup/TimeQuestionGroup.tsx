@@ -79,7 +79,7 @@ export default function TimeGroup({ timeGroup }: TimeGroupProps) {
                 >
                   <div className="grid grid-cols-4 gap-2">
                     {allTimes &&
-                      allTimes.times.map((timeData) => (
+                      allTimes.all.map((timeData) => (
                         <RadioGroup.Option
                           key={timeData.id}
                           value={timeData.id}

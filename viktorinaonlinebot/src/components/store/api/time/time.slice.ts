@@ -3,11 +3,11 @@ import { RootState } from "../..";
 import { ITime } from "../../../../models/ITime";
 
 export interface timeState {
-  times: ITime[];
+  all: ITime[];
 }
 
 const initialState: timeState = {
-  times: [],
+  all: [],
 };
 
 export const timeSlice = createSlice({
@@ -15,7 +15,7 @@ export const timeSlice = createSlice({
   initialState,
   reducers: {
     getAllTime: (state, action: PayloadAction<ITime[]>) => {
-      state.times = action.payload;
+      state.all = action.payload;
     },
   },
 });

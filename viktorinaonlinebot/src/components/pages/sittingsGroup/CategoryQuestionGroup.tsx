@@ -55,7 +55,7 @@ export default function CategoryGroup({ category }: CategoryGroupProps) {
             </li>
             <Disclosure.Panel className="pt-6">
               <div className="space-y-1.5 columns-2">
-                {allCategory.categories.map((item) => (
+                {allCategory.all.map((item) => (
                   <CategoryCheckbox
                     key={item.id}
                     cat={item}

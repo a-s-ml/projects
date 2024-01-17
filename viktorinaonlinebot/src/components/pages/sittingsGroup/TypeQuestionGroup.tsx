@@ -82,7 +82,7 @@ export default function TypeGroup({ typeGroup }: TypeGroupProps) {
                 >
                   <div className="grid grid-cols-3 gap-2">
                     {allTypes &&
-                      allTypes.types.map((type) => (
+                      allTypes.all.map((type) => (
                         <RadioGroup.Option
                           key={type.id}
                           value={type.id}

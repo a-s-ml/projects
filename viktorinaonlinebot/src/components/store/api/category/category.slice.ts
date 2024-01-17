@@ -3,11 +3,11 @@ import { RootState } from "../..";
 import { ICategory } from "../../../../models/ICategory";
 
 export interface categoryeState {
-  categories: ICategory[];
+  all: ICategory[];
 }
 
 const initialState: categoryeState = {
-  categories: [],
+  all: [],
 };
 
 export const categorySlice = createSlice({
@@ -15,7 +15,7 @@ export const categorySlice = createSlice({
   initialState,
   reducers: {
     getAllCategories: (state, action: PayloadAction<ICategory[]>) => {
-      state.categories = action.payload;
+      state.all = action.payload;
     },
   },
 });

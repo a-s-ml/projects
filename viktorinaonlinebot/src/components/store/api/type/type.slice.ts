@@ -3,11 +3,11 @@ import { RootState } from "../..";
 import { IType } from "../../../../models/IType";
 
 export interface typeState {
-  types: IType[];
+  all: IType[];
 }
 
 const initialState: typeState = {
-  types: [],
+  all: [],
 };
 
 export const typeSlice = createSlice({
@@ -15,7 +15,7 @@ export const typeSlice = createSlice({
   initialState,
   reducers: {
     getAllType: (state, action: PayloadAction<IType[]>) => {
-      state.types = action.payload;
+      state.all = action.payload;
     },
   },
 });

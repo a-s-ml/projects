@@ -5,9 +5,7 @@ interface TimeQuestionProps {
   time: number;
 }
 export default function TimeQuestion({ time }: TimeQuestionProps) {
-  const {
-    data: dataTime,
-  } = useGetTimeByIdQuery(time);
+  const { data: dataTime } = useGetTimeByIdQuery(time);
 
   return (
     <div className="group relative flex items-start space-x-3">
@@ -17,12 +15,16 @@ export default function TimeQuestion({ time }: TimeQuestionProps) {
             Период:
           </span>
           {dataTime && (
-            <ClockIcon
-              className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
-              aria-hidden="true"
-            />
+            <>
+              <ClockIcon
+                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+                aria-hidden="true"
+              />
+              <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
+                {dataTime.name}
+              </span>
+            </>
           )}
-          <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]"> {dataTime?.name}</span>
         </div>
       </div>
     </div>

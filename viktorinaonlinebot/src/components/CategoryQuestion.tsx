@@ -1,13 +1,14 @@
 import { ListBulletIcon } from "@heroicons/react/24/outline";
-import { useCountCategoryQuery, useGetCategoryGroupsQuery } from "./store/api/category/category.api";
+import { useGetCategoryGroupsQuery } from "./store/api/category/category.api";
+import { useAppSelector } from "./store";
+import { selectAllCategories } from "./store/api/category/category.slice";
 
 interface CategoryQuestionProps {
   group: bigint;
 }
 export default function CategoryQuestion({ group }: CategoryQuestionProps) {
-  const { data: dataCountCategory } = useCountCategoryQuery("count");
-  const { data: dataCateoryGroup } = useGetCategoryGroupsQuery(group);
-  const checkNum = dataCateoryGroup?.length;
+  const allCategory = useAppSelector(selectAllCategories);
+  const { data: cateoryGroup } = useGetCategoryGroupsQuery(group);
 
   return (
     <div className="group relative flex items-start space-x-3">
@@ -16,15 +17,18 @@ export default function CategoryQuestion({ group }: CategoryQuestionProps) {
           <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
             Категории:
           </span>
-          {dataCountCategory && (
+          {allCategory && (
             <ListBulletIcon
               className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
               aria-hidden="true"
             />
           )}
-          <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-            {checkNum} из {dataCountCategory}
-          </span>
+          {cateoryGroup && (
+            <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
+              {allCategory.all.length - cateoryGroup.length} из
+              {allCategory.all.length}
+            </span>
+          )}
         </div>
       </div>
     </div>
