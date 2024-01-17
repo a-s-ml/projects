@@ -10,7 +10,7 @@ export default function GroupsList({ chat }: GroupsListProps) {
     isLoading: loadGroups,
     isError: errorGroups,
     data: dataGroups,
-  } = useGetGroupsQuery(chat, {refetchOnFocus: true});
+  } = useGetGroupsQuery(chat);
 
   return (
     <>
