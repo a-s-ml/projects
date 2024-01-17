@@ -20,8 +20,9 @@ export default function TypeGroup() {
 
   const { data: GroupDb } = useGetGroupDbQuery(chat);
   console.log('GroupDb type', GroupDb)
+  const [GroupDbState, setGroupDb] = useState(GroupDb);
 
-  const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
+  const { data: GroupType } = useGetTypeByIdQuery(GroupDbState?.question_type || 0);
   console.log('GroupType', GroupType)
 
   const tg = window.Telegram.WebApp;

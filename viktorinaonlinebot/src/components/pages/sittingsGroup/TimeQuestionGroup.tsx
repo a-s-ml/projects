@@ -20,9 +20,11 @@ export default function TimeGroup() {
 
   const { data: GroupDb } = useGetGroupDbQuery(chat);
   console.log('GroupDb time', GroupDb)
+  const [GroupDbState, setGroupDb] = useState(GroupDb);
 
-  const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
+  const { data: GroupTime } = useGetTimeByIdQuery(GroupDbState?.time || 0);
   console.log('GroupDb time', GroupDb)
+
 
   const tg = window.Telegram.WebApp;
 
