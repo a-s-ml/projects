@@ -13,8 +13,7 @@ import { useGetCategoryGroupsQuery } from "../../store/api/category/category.api
 
 export default function CategoryGroup() {
   const allCategory = useAppSelector(selectAllCategories);
-  const group = useAppSelector(selectModalData);
-  const chat = group.chat;
+  const chat = useAppSelector(selectModalData);
   const { data: GroupCategory } = useGetCategoryGroupsQuery(chat);
   return (
     <>

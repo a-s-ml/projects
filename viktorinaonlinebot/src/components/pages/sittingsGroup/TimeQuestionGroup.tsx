@@ -4,7 +4,7 @@ import {
   ChevronUpIcon,
 } from "@heroicons/react/24/outline";
 import { Disclosure, RadioGroup } from "@headlessui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppSelector } from "../../store";
 import {
   useGetTimeByIdQuery,
@@ -12,13 +12,16 @@ import {
 } from "../../store/api/time/time.api";
 import { selectAllTime } from "../../store/api/time/time.slice";
 import { selectModalData } from "../../store/api/modal.slice";
+import { useGetGroupDbQuery } from "../../store/api/group.api";
 
 export default function TimeGroup() {
   const allTimes = useAppSelector(selectAllTime);
-  const group = useAppSelector(selectModalData);
-  const chat = group.chat;
+  const chat = useAppSelector(selectModalData);
 
-  const { data: GroupTime } = useGetTimeByIdQuery(group.time);
+  const { data: GroupDb } = useGetGroupDbQuery(chat);
+
+  const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
+  useEffect(() => {}, [GroupDb, GroupTime]);
 
   const tg = window.Telegram.WebApp;
 
@@ -36,7 +39,7 @@ export default function TimeGroup() {
     tg.HapticFeedback.selectionChanged();
   }
 
-  console.log('timeState', timeState)
+  console.log("timeState", timeState);
 
   return (
     <>

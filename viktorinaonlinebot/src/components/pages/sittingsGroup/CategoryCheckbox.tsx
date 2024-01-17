@@ -19,8 +19,7 @@ export default function CategoryCheckbox({
   const [setCategory, {}] = useAddCategoryGroupsMutation();
   const [deleteCategory, {}] = useDeleteCategoryGroupsMutation();
 
-  const group = useAppSelector(selectModalData);
-  const chat = group.chat;
+  const chat = useAppSelector(selectModalData);
 
   async function categoryChanged(check: boolean, category: number) {
     if(check) {

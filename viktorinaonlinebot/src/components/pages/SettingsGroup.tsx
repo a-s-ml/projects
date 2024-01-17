@@ -27,14 +27,14 @@ let noActive: NoActive[] = [
 export default function SettingsGroup({}) {
   const group = useAppSelector(selectModalData);
 
-  const { data: groupInfo } = useGetInfoGroupsQuery(group.chat);
+  const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
 
   return (
     <>
-      {groupInfo && (
+      {dataGroupInfo && (
         <form className="text-center py-24">
           <h3 className="text-sm font-medium text-[var(--tg-theme-text-color)] text-left">
-            Настройки викторины в группе "{groupInfo.title}"
+            Настройки викторины в группе "{dataGroupInfo.title}"
           </h3>
           <ul
             role="list"

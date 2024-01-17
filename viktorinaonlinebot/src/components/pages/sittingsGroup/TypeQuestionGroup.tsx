@@ -4,7 +4,7 @@ import {
   ChevronUpIcon,
 } from "@heroicons/react/24/outline";
 import { Disclosure, RadioGroup } from "@headlessui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppSelector } from "../../store";
 import {
   useGetTypeByIdQuery,
@@ -12,13 +12,14 @@ import {
 } from "../../store/api/type/type.api";
 import { selectAllType } from "../../store/api/type/type.slice";
 import { selectModalData } from "../../store/api/modal.slice";
+import { useGetGroupDbQuery } from "../../store/api/group.api";
 
 export default function TypeGroup() {
   const allTypes = useAppSelector(selectAllType);
-  const group = useAppSelector(selectModalData);
-  const chat = group.chat;
-
-  const { data: GroupType } = useGetTypeByIdQuery(group.question_type);
+  const chat = useAppSelector(selectModalData);
+  const { data: GroupDb } = useGetGroupDbQuery(chat);
+  const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
+  useEffect(() => {}, [GroupDb, GroupType]);
 
   const tg = window.Telegram.WebApp;
 

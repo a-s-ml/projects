@@ -24,7 +24,7 @@ export default function GroupsList({ chat }: GroupsListProps) {
           dataGroups.map((group) => (
             <GroupsListItem
               key={group.id}
-              group={group}
+              group={group.chat}
             />
           ))}
       </ul>

@@ -7,18 +7,18 @@ import TimeQuestion from "./TimeQuestion";
 import ToggleButton from "./ToggleButton";
 import CategoryQuestion from "./CategoryQuestion";
 import { showSlide } from "./store/api/slide.slice";
-import { useGetInfoGroupsQuery } from "./store/api/group.api";
+import { useGetGroupDbQuery, useGetInfoGroupsQuery } from "./store/api/group.api";
 import { useGetActiveGroupsQuery } from "./store/api/activeGroup.api";
-import { IGroup } from "../models/chats/IGroup";
 
 interface GroupsListItemProps {
-  group: IGroup;
+  group: bigint;
 }
 
 export default function GroupsListItem({ group }: GroupsListItemProps) {
   const { isError: errorGroupInfo, data: dataGroupInfo } =
-    useGetInfoGroupsQuery(group.chat);
-  const { data: dataGroupActive } = useGetActiveGroupsQuery(group.chat);
+    useGetInfoGroupsQuery(group);
+  const { data: dataGroupActive } = useGetActiveGroupsQuery(group);
+  const { data: GroupDb } = useGetGroupDbQuery(group);
 
   let state: boolean;
   dataGroupActive ? (state = true) : (state = false);
@@ -28,7 +28,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
   return (
     <>
       {errorGroupInfo && <li>error</li>}
-      {dataGroupInfo && (
+      {dataGroupInfo && GroupDb && (
         <li className="py-4 px-0">
           <div className="group relative flex items-start space-x-3">
             <div className="flex-shrink-0">
@@ -68,8 +68,8 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
             }}
           >
             <div className="min-w-0 flex-1">
-              <TypeQuestion questionType={group.question_type} />
-              <TimeQuestion time={group.time} />
+              <TypeQuestion questionType={GroupDb.question_type} />
+              <TimeQuestion time={GroupDb.time} />
               <CategoryQuestion group={dataGroupInfo.id} />
             </div>
             <div className="flex-shrink-0 self-center">
