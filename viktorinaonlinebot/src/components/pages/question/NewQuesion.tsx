@@ -43,7 +43,7 @@ export default function NewQuesion() {
   };
 
   return (
-    <form>
+    <form className="text-center py-24">
       <div>
         <label
           htmlFor="questionText"

@@ -63,6 +63,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                         <AddNewQuestion />
                       </Header>
                       <QuestionList chat={chat} />
+                      <Footer />
                     </>
                   )}
                   {slideData === "answers" && <ErrorPage />}

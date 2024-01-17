@@ -44,7 +44,7 @@ export default function CategoryList({categories, cat, setCategory}: CategoryLis
                     key={cat.id}
                     className={({ active }) =>
                       classNames(
-                        active ? 'bg-indigo-600 text-white' : 'text-gray-900',
+                        active ? 'bg-indigo-600 text-white' : 'text-[var(--tg-theme-text-color)]',
                         'relative cursor-default select-none py-2 pl-3 pr-9'
                       )
                     }
@@ -56,9 +56,9 @@ export default function CategoryList({categories, cat, setCategory}: CategoryLis
                           <span className={classNames(selected ? 'font-semibold' : 'font-normal', 'truncate')}>
                             {cat.name}
                           </span>
-                          <span className={classNames(active ? 'text-indigo-200' : 'text-gray-500', 'ml-2 truncate')}>
+                          {/* <span className={classNames(active ? 'text-indigo-200' : 'text-gray-500', 'ml-2 truncate')}>
                             {cat.id}
-                          </span>
+                          </span> */}
                         </div>
 
                         {selected ? (
