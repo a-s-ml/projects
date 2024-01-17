@@ -3,7 +3,7 @@ import { useAddQuestionMutation } from "../../store/api/question/question.api";
 import { useAppSelector } from "../../store";
 import { selectAllCategories } from "../../store/api/category/category.slice";
 
-export default function AddNewQuesion() {
+export default function NewQuesion() {
     const [addNewQuestion, { isLoading }] = useAddQuestionMutation()
 
     const [text, setText] = useState('')

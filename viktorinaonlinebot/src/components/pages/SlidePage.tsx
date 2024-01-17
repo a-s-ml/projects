@@ -11,7 +11,8 @@ import { useAppDispatch, useAppSelector } from "../store";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import AddNewGroup from "./group/AddNewGroup";
-import AddNewQuesion from "./question/AddNewQuesion";
+import QuestionList from "./question/QuestionList";
+import AddNewQuestion from "./question/AddNewQuestion";
 
 interface SlideItemsProps {
   chat: number;
@@ -56,7 +57,14 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                       <Footer />
                     </>
                   )}
-                  {slideData === "questions" && <AddNewQuesion />}
+                  {slideData === "questions" && (
+                    <>
+                      <Header>
+                        <AddNewQuestion />
+                      </Header>
+                      <QuestionList chat={chat} />
+                    </>
+                  )}
                   {slideData === "answers" && <ErrorPage />}
                 </div>
               </Dialog.Panel>
