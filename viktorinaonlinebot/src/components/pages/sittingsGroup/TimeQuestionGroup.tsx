@@ -1,45 +1,40 @@
 import {
-  PhotoIcon,
+  ClockIcon,
   ChevronDownIcon,
   ChevronUpIcon,
 } from "@heroicons/react/24/outline";
-import { IType } from "../models/IType";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { useState } from "react";
-import { store, useAppSelector } from "./store";
-import { selectModalData } from "./store/api/modal.slice";
-import { useUpdateTypeGroupsMutation } from "./store/api/type/type.api";
-import { selectAllType } from "./store/api/type/type.slice";
+import { ITime } from "../../../models/ITime";
+import { useAppSelector } from "../../store";
+import { selectModalData } from "../../store/api/modal.slice";
+import { useUpdateTimeGroupsMutation } from "../../store/api/time/time.api";
+import { selectAllTime } from "../../store/api/time/time.slice";
 
-interface SettingsTypeQuestionGroupProps {
-  typeGroup: IType;
+interface TimeGroupProps {
+  timeGroup: ITime;
 }
 
-export default function SettingsTypeQuestionGroup({
-  typeGroup,
-}: SettingsTypeQuestionGroupProps) {
-  const allTypes = useAppSelector(selectAllType);
+export default function TimeGroup({ timeGroup }: TimeGroupProps) {
   
+  const allTimes = useAppSelector(selectAllTime);
+
   const tg = window.Telegram.WebApp;
-
-  const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
-
-  const chat = useAppSelector(selectModalData);
-
-  const [typeState, setType] = useState(typeGroup.id);
-
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
 
-  function typeChanged(question_type: number) {
-    setType(question_type);
-    updateTypeGroup({ chat, question_type });
+  const [timeState, setTime] = useState(timeGroup.id);
+
+  const chat = useAppSelector(selectModalData);
+  const [updateTimeGroup, {}] = useUpdateTimeGroupsMutation();
+
+  function timeChanged(time: number) {
+    setTime(time);
+    updateTimeGroup({ chat, time });
     tg.HapticFeedback.selectionChanged();
   }
 
-  console.log(useAppSelector(store.getState));
-  
   return (
     <>
       <Disclosure as="div">
@@ -49,7 +44,7 @@ export default function SettingsTypeQuestionGroup({
               <Disclosure.Button className="group relative flex w-full items-start justify-between space-x-3">
                 <div className="flex-shrink-0">
                   <span className="inline-flex h-5 w-5 items-center justify-center rounded-lg">
-                    <PhotoIcon
+                    <ClockIcon
                       className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
                       aria-hidden="true"
                     />
@@ -57,7 +52,7 @@ export default function SettingsTypeQuestionGroup({
                 </div>
                 <div className="min-w-0 flex-1 text-left">
                   <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
-                    Вид вопросов
+                    Период публикаций
                   </div>
                 </div>
                 <div className="flex-shrink-0 self-center text-right">
@@ -78,35 +73,28 @@ export default function SettingsTypeQuestionGroup({
             <Disclosure.Panel className="pt-6">
               <div className="space-y-1.5">
                 <RadioGroup
-                  value={typeState}
-                  onChange={setType}
+                  value={timeState}
+                  onChange={setTime}
                   className="mt-2"
                 >
-                  <div className="grid grid-cols-3 gap-2">
-                    {allTypes &&
-                      allTypes.types.map((type) => (
+                  <div className="grid grid-cols-4 gap-2">
+                    {allTimes &&
+                      allTimes.times.map((timeData) => (
                         <RadioGroup.Option
-                          key={type.id}
-                          value={type.id}
-                          onClick={() => typeChanged(type.id)}
-                          className={({ active, checked }) =>
+                          key={timeData.id}
+                          value={timeData.id}
+                          onClick={() => timeChanged(timeData.id)}
+                          className={({ checked }) =>
                             classNames(
-                              Boolean(type.active)
-                                ? "cursor-pointer"
-                                : "cursor-not-allowed opacity-25",
-                              active
-                                ? "ring-2 ring-[var(--tg-theme-accent-text-color)] ring-offset-2"
-                                : "",
                               checked
                                 ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
                                 : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold",
-                              "flex items-center justify-center rounded-md py-2 px-2 text-xs"
+                              "flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer"
                             )
                           }
-                          disabled={!Boolean(type.active)}
                         >
                           <RadioGroup.Label as="span">
-                            {type.description}
+                            {timeData.name}
                           </RadioGroup.Label>
                         </RadioGroup.Option>
                       ))}

@@ -4,20 +4,17 @@ import {
   ChevronUpIcon,
 } from "@heroicons/react/24/outline";
 import { Disclosure } from "@headlessui/react";
-import { ICategoryGroup } from "../models/ICategoryGroup";
+import { ICategoryGroup } from "../../../models/ICategoryGroup";
 import CategoryCheckbox from "./CategoryCheckbox";
-import AddNewCategory from "./AddNewCategory";
-import { selectAllCategories } from "./store/api/category/category.slice";
-import { useAppSelector } from "./store";
+import AddNewCategory from "../../AddNewCategory";
+import { selectAllCategories } from "../../store/api/category/category.slice";
+import { useAppSelector } from "../../store";
 
-interface SettingsCategoryQuestionGroupProps {
+interface CategoryGroupProps {
   category: ICategoryGroup[];
 }
 
-export default function SettingsCategoryQuestionGroup({
-  category,
-}: SettingsCategoryQuestionGroupProps) {
-
+export default function CategoryGroup({ category }: CategoryGroupProps) {
   const tg = window.Telegram.WebApp;
   const allCategory = useAppSelector(selectAllCategories);
 

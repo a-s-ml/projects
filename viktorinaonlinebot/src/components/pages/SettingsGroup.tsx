@@ -1,20 +1,20 @@
 import {
   useGetGroupDbQuery,
   useGetInfoGroupsQuery,
-} from "./store/api/group.api";
-import SettingsTypeQuestionGroup from "./SettingsTypeQuestionGroup";
-import SettingsCategoryQuestionGroup from "./SettingsCategoryQuestionGroup";
-import SettingsTimeQuestionGroup from "./SettingsTimeQuestionGroup";
-import SittingsNotactiveQuestionGroup from "./SittingsNotactiveQuestionGroup";
-import { useGetTypeGroupQuery } from "./store/api/type/type.api";
-import { useGetTimeGroupQuery } from "./store/api/time/time.api";
-import { useGetCategoryGroupsQuery } from "./store/api/category/category.api";
+} from "../store/api/group.api";
+import TypeQuestionGroup from "./sittingsGroup/TypeQuestionGroup";
+import CategoryQuestionGroup from "./sittingsGroup/CategoryQuestionGroup";
+import TimeQuestionGroup from "./sittingsGroup/TimeQuestionGroup";
+import NotactiveSittings from "./sittingsGroup/NotactiveSittings";
+import { useGetTypeGroupQuery } from "../store/api/type/type.api";
+import { useGetTimeGroupQuery } from "../store/api/time/time.api";
+import { useGetCategoryGroupsQuery } from "../store/api/category/category.api";
 
 interface SettingsGroupProps {
   group: bigint;
 }
 
-export default function SettingsGroupForm({ group }: SettingsGroupProps) {
+export default function SettingsGroup({ group }: SettingsGroupProps) {
   const tg = window.Telegram.WebApp;
 
   const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
@@ -39,27 +39,27 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
           >
             {dataGroupType && (
               <li className="py-4 px-0">
-                <SettingsTypeQuestionGroup typeGroup={dataGroupType} />
+                <TypeQuestionGroup typeGroup={dataGroupType} />
               </li>
             )}
             {dataGroupCategory && (
               <li className="py-4 px-0">
-                <SettingsCategoryQuestionGroup category={dataGroupCategory} />
+                <CategoryQuestionGroup category={dataGroupCategory} />
               </li>
             )}
             {dataGroupTime && (
               <li className="py-4 px-0">
-                <SettingsTimeQuestionGroup timeGroup={dataGroupTime} />
+                <TimeQuestionGroup timeGroup={dataGroupTime} />
               </li>
             )}
             <li className="py-4 px-0 cursor-not-allowed">
-              <SittingsNotactiveQuestionGroup type={"Сложность вопросов"} />
+              <NotactiveSittings type={"Сложность вопросов"} />
             </li>
             <li className="py-4 px-0 cursor-not-allowed">
-              <SittingsNotactiveQuestionGroup type={"Период жизни вопроса"} />
+              <NotactiveSittings type={"Период жизни вопроса"} />
             </li>
             <li className="py-4 px-0 cursor-not-allowed">
-              <SittingsNotactiveQuestionGroup type={"Ежедневная статистика"} />
+              <NotactiveSittings type={"Ежедневная статистика"} />
             </li>
           </ul>
         </form>

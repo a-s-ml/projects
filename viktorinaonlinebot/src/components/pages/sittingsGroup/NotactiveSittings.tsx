@@ -1,13 +1,11 @@
 import { NoSymbolIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { Disclosure } from "@headlessui/react";
 
-interface SittingsNotactiveQuestionGroupProps {
+interface NotactiveSittingsProps {
   type: string;
 }
 
-export default function SittingsNotactiveQuestionGroup({
-  type,
-}: SittingsNotactiveQuestionGroupProps) {
+export default function NotactiveSittings({ type }: NotactiveSittingsProps) {
   return (
     <>
       <Disclosure as="div">

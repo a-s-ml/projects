@@ -7,11 +7,11 @@ import {
   selectModalData,
   showModal,
 } from "../store/api/modal.slice";
-import SettingsGroupForm from "../SettingsGroupForm";
+import SettingsGroup from "./SettingsGroup";
 import { showSlide } from "../store/api/slide.slice";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import DefaultSettingsGroup from "../DefaultSettingsGroup";
+import DefaultSettingsGroup from "./sittingsGroup/DefaultSettingsGroup";
 
 export default function ModalPage() {
   const modal = useAppSelector(selectModal);
@@ -49,7 +49,7 @@ export default function ModalPage() {
                   <DefaultSettingsGroup />
                 </Header>
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                  <SettingsGroupForm group={modalData}/>
+                  <SettingsGroup group={modalData}/>
                 </div>
                 <Footer />
               </Dialog.Panel>
