@@ -4,20 +4,17 @@ import {
   ChevronUpIcon,
 } from "@heroicons/react/24/outline";
 import { Disclosure } from "@headlessui/react";
-import { ICategoryGroup } from "../../../models/ICategoryGroup";
 import CategoryCheckbox from "./CategoryCheckbox";
 import AddNewCategory from "../../AddNewCategory";
 import { selectAllCategories } from "../../store/api/category/category.slice";
 import { useAppSelector } from "../../store";
+import { selectModalData } from "../../store/api/modal.slice";
+import { useGetCategoryGroupsQuery } from "../../store/api/category/category.api";
 
-interface CategoryGroupProps {
-  category: ICategoryGroup[];
-}
-
-export default function CategoryGroup({ category }: CategoryGroupProps) {
-  const tg = window.Telegram.WebApp;
+export default function CategoryGroup() {
   const allCategory = useAppSelector(selectAllCategories);
-
+  const chat = useAppSelector(selectModalData);
+  const { data: GroupCategory } = useGetCategoryGroupsQuery(chat);
   return (
     <>
       <Disclosure as="div">
@@ -55,17 +52,18 @@ export default function CategoryGroup({ category }: CategoryGroupProps) {
             </li>
             <Disclosure.Panel className="pt-6">
               <div className="space-y-1.5 columns-2">
-                {allCategory.all.map((item) => (
-                  <CategoryCheckbox
-                    key={item.id}
-                    cat={item}
-                    checked={
-                      category.find((itm) => itm.category === item.id)
-                        ? true
-                        : false
-                    }
-                  />
-                ))}
+                {GroupCategory &&
+                  allCategory.all.map((item) => (
+                    <CategoryCheckbox
+                      key={item.id}
+                      cat={item}
+                      checked={
+                        GroupCategory.find((itm) => itm.category === item.id)
+                          ? true
+                          : false
+                      }
+                    />
+                  ))}
                 <AddNewCategory />
               </div>
             </Disclosure.Panel>

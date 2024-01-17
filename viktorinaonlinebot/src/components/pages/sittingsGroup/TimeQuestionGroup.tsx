@@ -5,28 +5,30 @@ import {
 } from "@heroicons/react/24/outline";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { useState } from "react";
-import { ITime } from "../../../models/ITime";
 import { useAppSelector } from "../../store";
-import { selectModalData } from "../../store/api/modal.slice";
-import { useUpdateTimeGroupsMutation } from "../../store/api/time/time.api";
+import {
+  useGetTimeByIdQuery,
+  useUpdateTimeGroupsMutation,
+} from "../../store/api/time/time.api";
 import { selectAllTime } from "../../store/api/time/time.slice";
+import { useGetGroupDbQuery } from "../../store/api/group.api";
+import { selectModalData } from "../../store/api/modal.slice";
 
-interface TimeGroupProps {
-  timeGroup: ITime;
-}
-
-export default function TimeGroup({ timeGroup }: TimeGroupProps) {
-  
+export default function TimeGroup() {
   const allTimes = useAppSelector(selectAllTime);
+  const chat = useAppSelector(selectModalData);
+
+  const { data: GroupDb } = useGetGroupDbQuery(chat);
+
+  const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
 
   const tg = window.Telegram.WebApp;
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
 
-  const [timeState, setTime] = useState(timeGroup.id);
+  const [timeState, setTime] = useState(GroupTime?.id);
 
-  const chat = useAppSelector(selectModalData);
   const [updateTimeGroup, {}] = useUpdateTimeGroupsMutation();
 
   function timeChanged(time: number) {
