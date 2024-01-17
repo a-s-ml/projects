@@ -65,7 +65,7 @@ export default function NewQuesion() {
             rows={5}
             name="questionText"
             id="questionText"
-            className="block w-full rounded-md border-0 py-1.5 text-[var(--tg-theme-text-color)] shadow-sm ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-[var(--tg-theme-hint-color)]"
+            className="block w-full bg-[var(--tg-theme-bg-color)] rounded-md border-0 py-1.5 text-[var(--tg-theme-text-color)] shadow-sm ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-[var(--tg-theme-hint-color)]"
             value={text}
             onChange={onTextChanged}
           />
