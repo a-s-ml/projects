@@ -42,7 +42,7 @@ export default function NewQuesion() {
 
   return (
     <>
-      <form className="text-left py-24">
+      <form className="text-left pt-14 pb-24">
         <TexList text={text} />
         <CategoryList
           categories={categories.all}

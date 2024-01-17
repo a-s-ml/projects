@@ -17,7 +17,7 @@ export default function TexList({ text }: TexListProps) {
           rows={5}
           name="questionText"
           id="questionText"
-          className="block w-full bg-[var(--tg-theme-bg-color)] rounded-md border-0 py-1.5 text-[var(--tg-theme-text-color)] shadow-sm ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-[var(--tg-theme-hint-color)]"
+          className="block w-full bg-[var(--tg-theme-bg-color)] rounded-md border-0 px-2 py-2 text-[var(--tg-theme-text-color)] shadow-sm ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-[var(--tg-theme-hint-color)]"
           value={text}
         />
       </div>
