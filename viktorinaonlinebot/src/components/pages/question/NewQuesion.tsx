@@ -10,7 +10,7 @@ export default function NewQuesion() {
 
   const [text, setText] = useState("");
   const [content, setContent] = useState("");
-  const [category, setCategory] = useState(55);
+  const [category, setCategory] = useState(0);
 
   const categories = useAppSelector(selectAllCategories);
 
@@ -63,7 +63,7 @@ export default function NewQuesion() {
         </div>
       </div>
 
-      <CategoryList categories={categories.all} setCategory={setCategory} />
+      <CategoryList categories={categories.all} cat={category} setCategory={setCategory} />
       <AnswersList />
     </form>
   );

@@ -5,6 +5,7 @@ import { ICategory } from '../../../../models/ICategory'
 
 interface CategoryListProps {
     categories: ICategory[];
+    cat: number;
     setCategory: Dispatch<SetStateAction<number>>
 }
 
@@ -12,18 +13,18 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function CategoryList({categories, setCategory}: CategoryListProps) {
+export default function CategoryList({categories, cat, setCategory}: CategoryListProps) {
 
   return (
-    <Listbox value={categories[55].id} onChange={setCategory}>
+    <Listbox value={cat} onChange={setCategory}>
       {({ open }) => (
         <>
           <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">Assigned to</Listbox.Label>
           <div className="relative mt-2">
             <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
               <span className="inline-flex w-full truncate">
-                <span className="truncate">{categories[55].name}</span>
-                <span className="ml-2 truncate text-gray-500">{categories[55].id}</span>
+                <span className="truncate">dfg</span>
+                <span className="ml-2 truncate text-gray-500">sdfgsgs</span>
               </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
