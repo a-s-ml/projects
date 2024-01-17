@@ -46,12 +46,20 @@ export default function ModalPage() {
               leaveTo="translate-x-full opacity-5"
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
-                <Header>
-                  <DefaultSettingsGroup />
-                </Header>
-                <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                  {modalData === 0n ? <NewQuesion /> : <SettingsGroup />}
-                </div>
+                {modalData === 0n ? (
+                  <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                    <NewQuesion />
+                  </div>
+                ) : (
+                  <>
+                    <Header>
+                      <DefaultSettingsGroup />
+                    </Header>
+                    <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                      <SettingsGroup />
+                    </div>
+                  </>
+                )}
                 <Footer />
               </Dialog.Panel>
             </Transition.Child>
