@@ -17,13 +17,8 @@ import { useGetGroupDbQuery } from "../../store/api/group.api";
 export default function TimeGroup() {
   const allTimes = useAppSelector(selectAllTime);
   const chat = useAppSelector(selectModalData);
-
   const { data: GroupDb } = useGetGroupDbQuery(chat);
-
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
-  useEffect(() => {
-    console.log("useeffect");
-  }, [GroupDb, GroupTime]);
 
   const tg = window.Telegram.WebApp;
 
@@ -40,8 +35,6 @@ export default function TimeGroup() {
     updateTimeGroup({ chat, time });
     tg.HapticFeedback.selectionChanged();
   }
-
-  console.log("timeState", timeState);
 
   return (
     <>

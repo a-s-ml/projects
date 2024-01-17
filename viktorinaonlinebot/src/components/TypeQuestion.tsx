@@ -10,59 +10,42 @@ interface TypeQuestionProps {
   questionType: number;
 }
 export default function TypeQuestion({ questionType }: TypeQuestionProps) {
-  const { data: dataTime } = useGetTypeByIdQuery(questionType);
+  const { data: dataType } = useGetTypeByIdQuery(questionType);
   return (
     <div className="group relative flex items-start space-x-3">
       <div className="min-w-0 flex">
-        {dataTime && (
+        {dataType && (
           <div className="mt-1 flex items-center gap-x-1.5">
             <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
               Вид:
             </span>
-            {dataTime.id === 1 && (
-              <>
-                <PhotoIcon
-                  className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
-                  aria-hidden="true"
-                />
-                <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-                  фото
-                </span>
-              </>
+            {dataType.id === 1 && (
+              <PhotoIcon
+                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+                aria-hidden="true"
+              />
             )}
-            {dataTime.id === 2 && (
-              <>
-                <LanguageIcon
-                  className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
-                  aria-hidden="true"
-                />
-                <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-                  опрос
-                </span>
-              </>
+            {dataType.id === 2 && (
+              <LanguageIcon
+                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+                aria-hidden="true"
+              />
             )}
-            {dataTime.id === 3 && (
-              <>
-                <ListBulletIcon
-                  className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
-                  aria-hidden="true"
-                />
-                <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-                  текст
-                </span>
-              </>
+            {dataType.id === 3 && (
+              <ListBulletIcon
+                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+                aria-hidden="true"
+              />
             )}
-            {dataTime.id === 6 && (
-              <>
-                <ArrowPathIcon
-                  className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
-                  aria-hidden="true"
-                />
-                <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-                  микс
-                </span>
-              </>
+            {dataType.id === 6 && (
+              <ArrowPathIcon
+                className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+                aria-hidden="true"
+              />
             )}
+            <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
+              {dataType.description}
+            </span>
           </div>
         )}
       </div>

@@ -19,9 +19,6 @@ export default function TypeGroup() {
   const chat = useAppSelector(selectModalData);
   const { data: GroupDb } = useGetGroupDbQuery(chat);
   const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
-  useEffect(() => {
-    console.log("useeffect");
-  }, [GroupDb, GroupType]);
 
   const tg = window.Telegram.WebApp;
 
@@ -38,8 +35,6 @@ export default function TypeGroup() {
     updateTypeGroup({ chat, question_type });
     tg.HapticFeedback.selectionChanged();
   }
-
-  console.log("typeState", typeState);
 
   return (
     <>
