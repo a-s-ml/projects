@@ -60,7 +60,7 @@ export function MainPage() {
   allTime && dispatch(getAllTime(allTime))
   allCategory && dispatch(getAllCategories(allCategory))
 
-  console.log(useAppSelector(store.getState));
+  // console.log(useAppSelector(store.getState));
 
   if (!slide && !modal) {
     tg.BackButton.hide();
