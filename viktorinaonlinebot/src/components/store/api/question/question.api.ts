@@ -16,7 +16,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
   endpoints: (build) => ({
     getQuestionById: build.query<IQuestion, number>({
       query: (id) => ({
-        url: `question/${id}`,
+        url: `question/findById/${id}`,
       }),
     }),
 
