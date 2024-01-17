@@ -32,6 +32,8 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
 
   useEffect(() => {}, [dataGroupType, dataGroupTime]);
 
+    console.log(dataType)
+
   return (
     <>
       {dataGroupInfo && dataType && dataTime && dataGroupDb && (
