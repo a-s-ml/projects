@@ -1,7 +1,4 @@
-import {
-  useGetGroupDbQuery,
-  useGetInfoGroupsQuery,
-} from "../store/api/group.api";
+import { useGetGroupDbQuery, useGetInfoGroupsQuery } from "../store/api/group.api";
 import TypeQuestionGroup from "./sittingsGroup/TypeQuestionGroup";
 import CategoryQuestionGroup from "./sittingsGroup/CategoryQuestionGroup";
 import TimeQuestionGroup from "./sittingsGroup/TimeQuestionGroup";
@@ -25,7 +22,7 @@ let noActive: NoActive[] = [
   },
 ];
 
-export default function SettingsGroup({}) {
+export default function SettingsGroup() {
   const group = useAppSelector(selectModalData);
 
   const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
@@ -42,9 +39,9 @@ export default function SettingsGroup({}) {
             role="list"
             className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
           >
-            <TypeQuestionGroup />
+            <TypeQuestionGroup group={GroupDb} />
             <CategoryQuestionGroup />
-            <TimeQuestionGroup />
+            <TimeQuestionGroup group={GroupDb} />
             {noActive.map((item) => (
               <NotactiveSittings type={item.text} />
             ))}
