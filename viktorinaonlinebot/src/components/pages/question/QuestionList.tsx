@@ -15,7 +15,7 @@ export default function QuestionList({ chat }: QuestionListProps) {
   return (
     <>
       {loadGroups && <p>Loading...</p>}
-      {errorGroups && <ErrorPage />}
+      {errorGroups && <ErrorPage />} 
       <ul
         role="list"
         className="mt-4 divide-y divide-[var(--tg-theme-hint-color)] pt-9"

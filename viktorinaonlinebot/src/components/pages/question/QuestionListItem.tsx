@@ -1,5 +1,11 @@
-import { Cog8ToothIcon } from "@heroicons/react/24/outline";
+import {
+  QuestionMarkCircleIcon,
+  ChartBarIcon,
+} from "@heroicons/react/24/outline";
 import { useGetQuestionByIdQuery } from "../../store/api/question/question.api";
+import { useAppDispatch } from "../../store";
+import { showSlide } from "../../store/api/slide.slice";
+import { dataModal, showModal } from "../../store/api/modal.slice";
 
 interface QuestionListItemProps {
   id: number;
@@ -7,35 +13,44 @@ interface QuestionListItemProps {
 
 export default function QuestionListItem({ id }: QuestionListItemProps) {
   const { data: question, isError, isSuccess } = useGetQuestionByIdQuery(id);
+  const dispatch = useAppDispatch();
 
   return (
     <>
-      {isError && <li>error</li>}
       {isSuccess && (
-        <li className="py-4 px-0">
-          <div className="group relative flex items-start space-x-3">
+        <li
+          className="px-1 py-1 sm:px-0 cursor-pointer"
+          onClick={() => {
+            dispatch(showSlide(false));
+            dispatch(showModal(true));
+            dispatch(dataModal(0n));
+          }}
+        >
+          <div className="group relative flex items-start space-x-3 py-4">
+            <div className="flex-shrink-0">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
+                <QuestionMarkCircleIcon
+                  className="h-6 w-6 text-[var(--tg-theme-accent-text-color)]"
+                  aria-hidden="true"
+                />
+              </span>
+            </div>
             <div className="min-w-0 flex-1">
               <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
-                {question.text}
+                <b>
+                  <span className="absolute inset-0" aria-hidden="true" />
+                  {question.text}
+                </b>
               </div>
-            </div>
-          </div>
-          <div
-            className="group relative flex items-start space-x-3 cursor-pointer"
-            onClick={() => {
-              // dispatch(showSlide(false));
-              // dispatch(showModal(true));
-              // dispatch(dataModal(group));
-            }}
-          >
-            <div className="min-w-0 flex-1">
-            {question.answer1}
-            {question.answer2}
-            {question.answer3}
-            {question.answer4}
+              <p className="text-xs text-[var(--tg-theme-hint-color)]">
+                Категория: {question.category}
+              </p>
+              <p className="text-xs text-[var(--tg-theme-hint-color)]">
+                Сложность: {question.slog}
+              </p>
             </div>
             <div className="flex-shrink-0 self-center">
-              <Cog8ToothIcon
+              <ChartBarIcon
                 className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
                 aria-hidden="true"
               />
