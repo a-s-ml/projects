@@ -1,14 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "..";
+import { IGroup } from "../../../models/chats/IGroup";
 
 export interface modalState {
   show: boolean;
-  data: bigint;
+  data: IGroup;
 }
 
 const initialState: modalState = {
   show: false,
-  data: 0n,
+  data: {
+    id: 0,
+    chat: 0n,
+    type: "",
+    bot: 0,
+    date: undefined,
+    referral: "",
+    question_type: 0,
+    time: 0
+  }
 };
 const tg = window.Telegram.WebApp;
 
@@ -22,7 +32,7 @@ export const modalSlice = createSlice({
       tg.MainButton.hide(); 
       state.show = action.payload;
     },
-    dataModal: (state, action: PayloadAction<bigint>) => {
+    dataModal: (state, action: PayloadAction<IGroup>) => {
       state.data = action.payload;
     },
   },

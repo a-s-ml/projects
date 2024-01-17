@@ -12,18 +12,13 @@ import {
 } from "../../store/api/type/type.api";
 import { selectAllType } from "../../store/api/type/type.slice";
 import { selectModalData } from "../../store/api/modal.slice";
-import { useGetGroupDbQuery } from "../../store/api/group.api";
 
 export default function TypeGroup() {
   const allTypes = useAppSelector(selectAllType);
-  const chat = useAppSelector(selectModalData);
+  const group = useAppSelector(selectModalData);
+  const chat = group.chat;
 
-  const { data: GroupDb } = useGetGroupDbQuery(chat);
-  console.log('GroupDb type', GroupDb)
-  const [GroupDbState, setGroupDb] = useState(GroupDb);
-
-  const { data: GroupType } = useGetTypeByIdQuery(GroupDbState?.question_type || 0);
-  console.log('GroupType', GroupType)
+  const { data: GroupType } = useGetTypeByIdQuery(group.question_type);
 
   const tg = window.Telegram.WebApp;
 
@@ -41,11 +36,11 @@ export default function TypeGroup() {
     tg.HapticFeedback.selectionChanged();
   }
 
-  console.log('typeState', typeState)
+  console.log("typeState", typeState);
 
   return (
     <>
-      <Disclosure as="div"> 
+      <Disclosure as="div">
         {({ open }) => (
           <>
             <li className="py-4 px-0">

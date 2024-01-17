@@ -9,21 +9,16 @@ import CategoryQuestion from "./CategoryQuestion";
 import { showSlide } from "./store/api/slide.slice";
 import { useGetInfoGroupsQuery } from "./store/api/group.api";
 import { useGetActiveGroupsQuery } from "./store/api/activeGroup.api";
+import { IGroup } from "../models/chats/IGroup";
 
 interface GroupsListItemProps {
-  group: bigint;
-  questionType: number;
-  time: number;
+  group: IGroup;
 }
 
-export default function GroupsListItem({
-  group,
-  questionType,
-  time,
-}: GroupsListItemProps) {
+export default function GroupsListItem({ group }: GroupsListItemProps) {
   const { isError: errorGroupInfo, data: dataGroupInfo } =
-    useGetInfoGroupsQuery(group);
-  const { data: dataGroupActive } = useGetActiveGroupsQuery(group);
+    useGetInfoGroupsQuery(group.chat);
+  const { data: dataGroupActive } = useGetActiveGroupsQuery(group.chat);
 
   let state: boolean;
   dataGroupActive ? (state = true) : (state = false);
@@ -73,8 +68,8 @@ export default function GroupsListItem({
             }}
           >
             <div className="min-w-0 flex-1">
-              <TypeQuestion questionType={questionType} />
-              <TimeQuestion time={time} />
+              <TypeQuestion questionType={group.question_type} />
+              <TimeQuestion time={group.time} />
               <CategoryQuestion group={dataGroupInfo.id} />
             </div>
             <div className="flex-shrink-0 self-center">

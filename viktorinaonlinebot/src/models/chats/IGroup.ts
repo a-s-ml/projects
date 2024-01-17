@@ -3,7 +3,7 @@ export interface IGroup {
   chat: bigint;
   type: string;
   bot: number;
-  date: Date;
+  date: Date | undefined;
   referral: string;
   question_type: number;
   time: number;

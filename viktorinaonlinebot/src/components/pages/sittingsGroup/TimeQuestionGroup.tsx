@@ -12,19 +12,13 @@ import {
 } from "../../store/api/time/time.api";
 import { selectAllTime } from "../../store/api/time/time.slice";
 import { selectModalData } from "../../store/api/modal.slice";
-import { useGetGroupDbQuery } from "../../store/api/group.api";
 
 export default function TimeGroup() {
   const allTimes = useAppSelector(selectAllTime);
-  const chat = useAppSelector(selectModalData);
+  const group = useAppSelector(selectModalData);
+  const chat = group.chat;
 
-  const { data: GroupDb } = useGetGroupDbQuery(chat);
-  console.log('GroupDb time', GroupDb)
-  const [GroupDbState, setGroupDb] = useState(GroupDb);
-
-  const { data: GroupTime } = useGetTimeByIdQuery(GroupDbState?.time || 0);
-  console.log('GroupDb time', GroupDb)
-
+  const { data: GroupTime } = useGetTimeByIdQuery(group.time);
 
   const tg = window.Telegram.WebApp;
 
