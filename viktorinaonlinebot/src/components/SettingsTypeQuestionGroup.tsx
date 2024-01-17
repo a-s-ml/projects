@@ -6,16 +6,18 @@ import {
 import { IType } from "../models/IType";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { useState } from "react";
-import { store, useAppSelector } from "./store";
+import { useAppSelector } from "./store";
 import { selectModalData } from "./store/api/modal.slice";
 import { useUpdateTypeGroupsMutation } from "./store/api/type.api";
 import { selectAllType } from "./store/api/type.slice";
 
 interface SettingsTypeQuestionGroupProps {
+  dataType: IType[];
   typeGroup: IType;
 }
 
 export default function SettingsTypeQuestionGroup({
+  dataType,
   typeGroup,
 }: SettingsTypeQuestionGroupProps) {
   const allTypes = useAppSelector(selectAllType);
@@ -38,8 +40,6 @@ export default function SettingsTypeQuestionGroup({
     tg.HapticFeedback.selectionChanged();
   }
 
-  console.log(useAppSelector(store.getState));
-  
   return (
     <>
       <Disclosure as="div">
@@ -83,8 +83,8 @@ export default function SettingsTypeQuestionGroup({
                   className="mt-2"
                 >
                   <div className="grid grid-cols-3 gap-2">
-                    {allTypes &&
-                      allTypes.map((type) => (
+                    {dataType &&
+                      dataType.map((type) => (
                         <RadioGroup.Option
                           key={type.id}
                           value={type.id}
