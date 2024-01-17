@@ -19,6 +19,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
       query: (chat) => ({
         url: `chat/findByChatId/${chat}`,
       }),
+      providesTags: ['TypeGroup', 'TimeGroup']
     }),
     getMemberCountGroups: build.query<number, number>({
       query: (chat) => ({
