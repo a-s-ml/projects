@@ -25,8 +25,7 @@ export default function CategoryQuestion({ group }: CategoryQuestionProps) {
           )}
           {cateoryGroup && (
             <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-              {allCategory.all.length - cateoryGroup.length} из
-              {allCategory.all.length}
+              {allCategory.all.length - cateoryGroup.length} из {allCategory.all.length}
             </span>
           )}
         </div>
