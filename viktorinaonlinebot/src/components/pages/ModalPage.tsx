@@ -13,6 +13,7 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import DefaultSettingsGroup from "./group/sittingsGroup/DefaultSettingsGroup";
 import NewQuesion from "./question/NewQuesion";
+import TitleForm from "./question/newQuestion/TitleForm";
 
 export default function ModalPage() {
   const modal = useAppSelector(selectModal);
@@ -48,7 +49,9 @@ export default function ModalPage() {
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 {modalData === 0n ? (
                   <>
-                    <Header><p>Форма добавления вопроса</p></Header>
+                    <Header>
+                      <TitleForm />
+                    </Header>
                     <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                       <NewQuesion />
                     </div>
