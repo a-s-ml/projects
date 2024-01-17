@@ -1,4 +1,6 @@
-import { useGetGroupDbQuery, useGetInfoGroupsQuery } from "../store/api/group.api";
+import {
+  useGetInfoGroupsQuery,
+} from "../store/api/group.api";
 import TypeQuestionGroup from "./sittingsGroup/TypeQuestionGroup";
 import CategoryQuestionGroup from "./sittingsGroup/CategoryQuestionGroup";
 import TimeQuestionGroup from "./sittingsGroup/TimeQuestionGroup";
@@ -22,15 +24,14 @@ let noActive: NoActive[] = [
   },
 ];
 
-export default function SettingsGroup() {
+export default function SettingsGroup({}) {
   const group = useAppSelector(selectModalData);
 
   const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
-  const { data: GroupDb } = useGetGroupDbQuery(group);
 
   return (
     <>
-      {dataGroupInfo && GroupDb && (
+      {dataGroupInfo && (
         <form className="text-center py-24">
           <h3 className="text-sm font-medium text-[var(--tg-theme-text-color)] text-left">
             Настройки викторины в группе "{dataGroupInfo.title}"
@@ -39,9 +40,9 @@ export default function SettingsGroup() {
             role="list"
             className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
           >
-            <TypeQuestionGroup group={GroupDb} />
+            <TypeQuestionGroup />
             <CategoryQuestionGroup />
-            <TimeQuestionGroup group={GroupDb} />
+            <TimeQuestionGroup />
             {noActive.map((item) => (
               <NotactiveSittings type={item.text} />
             ))}

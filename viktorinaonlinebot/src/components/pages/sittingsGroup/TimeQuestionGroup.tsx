@@ -12,18 +12,17 @@ import {
 } from "../../store/api/time/time.api";
 import { selectAllTime } from "../../store/api/time/time.slice";
 import { selectModalData } from "../../store/api/modal.slice";
-import { IGroup } from "../../../models/chats/IGroup";
+import { useGetGroupDbQuery } from "../../store/api/group.api";
 
-interface TimeGroupProps {
-  group: IGroup;
-}
-
-export default function TimeGroup({ group }: TimeGroupProps) {
+export default function TimeGroup() {
   const allTimes = useAppSelector(selectAllTime);
   const chat = useAppSelector(selectModalData);
 
-  const { data: GroupTime } = useGetTimeByIdQuery(group.time || 0);
-  console.log("GroupTime", GroupTime);
+  const { data: GroupDb } = useGetGroupDbQuery(chat);
+  console.log('GroupDb time', GroupDb)
+
+  const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
+  console.log('GroupDb time', GroupDb)
 
   const tg = window.Telegram.WebApp;
 
@@ -41,7 +40,7 @@ export default function TimeGroup({ group }: TimeGroupProps) {
     tg.HapticFeedback.selectionChanged();
   }
 
-  console.log("timeState", timeState);
+  console.log('timeState', timeState)
 
   return (
     <>

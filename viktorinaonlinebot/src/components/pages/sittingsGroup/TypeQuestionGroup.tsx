@@ -12,17 +12,16 @@ import {
 } from "../../store/api/type/type.api";
 import { selectAllType } from "../../store/api/type/type.slice";
 import { selectModalData } from "../../store/api/modal.slice";
-import { IGroup } from "../../../models/chats/IGroup";
+import { useGetGroupDbQuery } from "../../store/api/group.api";
 
-interface TypeGroupProps {
-  group: IGroup;
-}
-
-export default function TypeGroup({group}: TypeGroupProps) {
+export default function TypeGroup() {
   const allTypes = useAppSelector(selectAllType);
   const chat = useAppSelector(selectModalData);
 
-  const { data: GroupType } = useGetTypeByIdQuery(group.question_type || 0);
+  const { data: GroupDb } = useGetGroupDbQuery(chat);
+  console.log('GroupDb type', GroupDb)
+
+  const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
   console.log('GroupType', GroupType)
 
   const tg = window.Telegram.WebApp;
