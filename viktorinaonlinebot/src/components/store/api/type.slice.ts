@@ -1,19 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "..";
-
-// export interface typeState {
-//   id: number;
-//   name: string;
-//   description: string;
-//   active: number;
-// }
+import { IType } from "../../../models/IType";
 
 export interface typeState {
-  name: string;
+  types: IType[];
 }
 
 const initialState: typeState = {
-  name: "",
+  types: [],
 };
 
 const tg = window.Telegram.WebApp;
@@ -22,8 +16,10 @@ export const typeSlice = createSlice({
   name: "type",
   initialState,
   reducers: {
-    getAllType: (state, action: PayloadAction<string>) => {
-      state.name = action.payload;
+    getAllType: (state, action: PayloadAction<IType[]>) => {
+      console.log("payload", action.payload);
+      state.types = action.payload;
+      console.log("state", state.types);
     },
   },
 });

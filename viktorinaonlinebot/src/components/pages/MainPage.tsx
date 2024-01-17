@@ -52,7 +52,7 @@ export function MainPage() {
 
   console.log(allTypes)
   
-  allTypes && dispatch(getAllType('хуй'))
+  allTypes && dispatch(getAllType(allTypes))
 
   // console.log(useAppSelector(store.getState));
 
