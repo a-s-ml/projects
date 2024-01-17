@@ -20,7 +20,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
       }),
     }),
 
-    getQuestionByChat: build.query<IQuestion[], bigint>({
+    getQuestionByChat: build.query<IQuestion[], number>({
       query: (chat) => ({
         url: `question/findByChatId/${chat}`,
       }),
