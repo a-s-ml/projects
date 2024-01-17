@@ -6,29 +6,42 @@ import TypeQuestionGroup from "./sittingsGroup/TypeQuestionGroup";
 import CategoryQuestionGroup from "./sittingsGroup/CategoryQuestionGroup";
 import TimeQuestionGroup from "./sittingsGroup/TimeQuestionGroup";
 import NotactiveSittings from "./sittingsGroup/NotactiveSittings";
-import { useGetTypeGroupQuery } from "../store/api/type/type.api";
-import { useGetTimeGroupQuery } from "../store/api/time/time.api";
 import { useGetCategoryGroupsQuery } from "../store/api/category/category.api";
+import { useGetTypeByIdQuery } from "../store/api/type/type.api";
+import { useGetTimeByIdQuery } from "../store/api/time/time.api";
 
 interface SettingsGroupProps {
   group: bigint;
 }
+interface NoActive {
+  text: string;
+}
+
+let noActive: NoActive[] = [
+  {
+    text: "Сложность вопросов",
+  },
+  {
+    text: "Период жизни вопроса",
+  },
+  {
+    text: "Ежедневная статистика",
+  },
+];
 
 export default function SettingsGroup({ group }: SettingsGroupProps) {
   const tg = window.Telegram.WebApp;
 
   const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
-  const { data: dataGroupDb } = useGetGroupDbQuery(group);
+  const { data: GroupDb } = useGetGroupDbQuery(group);
 
-  const { data: dataGroupType } = useGetTypeGroupQuery(
-    dataGroupDb?.question_type || 0
-  );
-  const { data: dataGroupTime } = useGetTimeGroupQuery(dataGroupDb?.time || 0);
-  const { data: dataGroupCategory } = useGetCategoryGroupsQuery(group);
+  const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
+  const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
+  const { data: GroupCategory } = useGetCategoryGroupsQuery(group);
 
   return (
     <>
-      {dataGroupInfo && dataGroupDb && (
+      {dataGroupInfo && GroupDb && (
         <form className="text-center py-24">
           <h3 className="text-sm font-medium text-[var(--tg-theme-text-color)] text-left">
             Настройки викторины в группе "{dataGroupInfo.title}"
@@ -37,30 +50,26 @@ export default function SettingsGroup({ group }: SettingsGroupProps) {
             role="list"
             className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
           >
-            {dataGroupType && (
+            {GroupType && (
               <li className="py-4 px-0">
-                <TypeQuestionGroup typeGroup={dataGroupType} />
+                <TypeQuestionGroup typeGroup={GroupType} />
               </li>
             )}
-            {dataGroupCategory && (
+            {GroupCategory && (
               <li className="py-4 px-0">
-                <CategoryQuestionGroup category={dataGroupCategory} />
+                <CategoryQuestionGroup category={GroupCategory} />
               </li>
             )}
-            {dataGroupTime && (
+            {GroupTime && (
               <li className="py-4 px-0">
-                <TimeQuestionGroup timeGroup={dataGroupTime} />
+                <TimeQuestionGroup timeGroup={GroupTime} />
               </li>
             )}
-            <li className="py-4 px-0 cursor-not-allowed">
-              <NotactiveSittings type={"Сложность вопросов"} />
-            </li>
-            <li className="py-4 px-0 cursor-not-allowed">
-              <NotactiveSittings type={"Период жизни вопроса"} />
-            </li>
-            <li className="py-4 px-0 cursor-not-allowed">
-              <NotactiveSittings type={"Ежедневная статистика"} />
-            </li>
+            {noActive.map((item) => (
+              <li className="py-4 px-0 cursor-not-allowed">
+                <NotactiveSittings type={item.text} />
+              </li>
+            ))}
           </ul>
         </form>
       )}

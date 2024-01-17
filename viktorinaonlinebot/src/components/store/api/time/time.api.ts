@@ -11,7 +11,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
       }),
     }),
     
-    getTimeGroup: build.query<ITime, number>({
+    getTimeById: build.query<ITime, number>({
       query: (time) => ({
         url: `time/${time}`,
       }),
@@ -32,6 +32,6 @@ export const extendedApiSlice = vikApi.injectEndpoints({
 
 export const {
   useGetTimeQuery,
-  useGetTimeGroupQuery,
+  useGetTimeByIdQuery,
   useUpdateTimeGroupsMutation
 } = extendedApiSlice;

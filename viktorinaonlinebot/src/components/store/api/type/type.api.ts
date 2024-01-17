@@ -11,7 +11,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
       }),
     }),
 
-    getTypeGroup: build.query<IType, number>({
+    getTypeById: build.query<IType, number>({
       query: (type) => ({
         url: `question-type/${type}`,
       }),
@@ -32,6 +32,6 @@ export const extendedApiSlice = vikApi.injectEndpoints({
 
 export const {
   useGetTypeQuery,
-  useGetTypeGroupQuery,
+  useGetTypeByIdQuery,
   useUpdateTypeGroupsMutation
 } = extendedApiSlice;
