@@ -13,6 +13,8 @@ import { useGetTypeQuery } from "../store/api/type/type.api";
 import { getAllType } from "../store/api/type/type.slice";
 import { useGetTimeQuery } from "../store/api/time/time.api";
 import { getAllTime } from "../store/api/time/time.slice";
+import { useGetCategoryQuery } from "../store/api/category/category.api";
+import { getAllCategories } from "../store/api/category/category.slice";
 
 let menuitems: IMenu[] = [
   {
@@ -51,10 +53,12 @@ export function MainPage() {
   const modal = useAppSelector(selectModal);
 
   const { data: allTypes } = useGetTypeQuery("");
-  const { data: allTime } = useGetTimeQuery(0);
+  const { data: allTime } = useGetTimeQuery("");
+  const { data: allCategory } = useGetCategoryQuery("");
   
   allTypes && dispatch(getAllType(allTypes))
   allTime && dispatch(getAllTime(allTime))
+  allCategory && dispatch(getAllCategories(allCategory))
 
   // console.log(useAppSelector(store.getState));
 

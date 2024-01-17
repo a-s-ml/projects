@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   useGetGroupDbQuery,
   useGetInfoGroupsQuery,
@@ -7,12 +6,9 @@ import SettingsTypeQuestionGroup from "./SettingsTypeQuestionGroup";
 import SettingsCategoryQuestionGroup from "./SettingsCategoryQuestionGroup";
 import SettingsTimeQuestionGroup from "./SettingsTimeQuestionGroup";
 import SittingsNotactiveQuestionGroup from "./SittingsNotactiveQuestionGroup";
-import { useGetTypeGroupQuery, useGetTypeQuery } from "./store/api/type/type.api";
-import { useGetTimeGroupQuery, useGetTimeQuery } from "./store/api/time/time.api";
-import {
-  useGetCategoryGroupsQuery,
-  useGetCategoryQuery,
-} from "./store/api/category/category.api";
+import { useGetTypeGroupQuery } from "./store/api/type/type.api";
+import { useGetTimeGroupQuery } from "./store/api/time/time.api";
+import { useGetCategoryGroupsQuery } from "./store/api/category/category.api";
 
 interface SettingsGroupProps {
   group: bigint;
@@ -48,9 +44,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
             )}
             {dataGroupCategory && (
               <li className="py-4 px-0">
-                <SettingsCategoryQuestionGroup
-                  category={dataGroupCategory}
-                />
+                <SettingsCategoryQuestionGroup category={dataGroupCategory} />
               </li>
             )}
             {dataGroupTime && (
