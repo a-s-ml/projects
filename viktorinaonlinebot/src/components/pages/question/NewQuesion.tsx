@@ -1,9 +1,10 @@
-import { SetStateAction, useState } from "react";
+import { ChangeEventHandler, SetStateAction, useState } from "react";
 import { useAddQuestionMutation } from "../../store/api/question/question.api";
 import { useAppSelector } from "../../store";
 import { selectAllCategories } from "../../store/api/category/category.slice";
 import CategoryList from "./newQuestion/CategoryList";
 import AnswersList from "./newQuestion/AnswersList";
+import TexList from "./newQuestion/TexList";
 
 export default function NewQuesion() {
   const [addNewQuestion, { isLoading }] = useAddQuestionMutation();
@@ -13,9 +14,6 @@ export default function NewQuesion() {
   const [category, setCategory] = useState(0);
 
   const categories = useAppSelector(selectAllCategories);
-
-  const onTextChanged = (e: { target: { value: SetStateAction<string> } }) =>
-    setText(e.target.value);
 
   const canSave = [text, content, category].every(Boolean) && !isLoading;
 
@@ -44,26 +42,8 @@ export default function NewQuesion() {
 
   return (
     <>
-      <form className="text-center py-24">
-        <div>
-          <label
-            htmlFor="questionText"
-            className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
-          >
-            Текст вопроса:
-          </label>
-          <div className="mt-2">
-            <textarea
-              rows={5}
-              name="questionText"
-              id="questionText"
-              className="block w-full bg-[var(--tg-theme-bg-color)] rounded-md border-0 py-1.5 text-[var(--tg-theme-text-color)] shadow-sm ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-[var(--tg-theme-hint-color)]"
-              value={text}
-              onChange={onTextChanged}
-            />
-          </div>
-        </div>
-
+      <form className="text-left py-24">
+        <TexList text={text} />
         <CategoryList
           categories={categories.all}
           cat={category}

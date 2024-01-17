@@ -2,7 +2,7 @@ import { XMarkIcon, CheckIcon } from "@heroicons/react/24/outline";
 
 export default function AnswersList() {
   return (
-    <>
+    <div className="py-2">
       <div>
         <label
           htmlFor="email"
@@ -16,7 +16,7 @@ export default function AnswersList() {
               type="email"
               name="email"
               id="email"
-              className="block w-full rounded-none rounded-l-md border-0 py-1.5 pl-10 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
+              className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-10 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 1"
             />
           </div>
@@ -45,7 +45,7 @@ export default function AnswersList() {
               type="email"
               name="email"
               id="email"
-              className="block w-full rounded-none rounded-l-md border-0 py-1.5 pl-10 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
+              className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-10 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 2"
             />
           </div>
@@ -74,7 +74,7 @@ export default function AnswersList() {
               type="email"
               name="email"
               id="email"
-              className="block w-full rounded-none rounded-l-md border-0 py-1.5 pl-10 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
+              className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-10 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 3"
             />
           </div>
@@ -103,7 +103,7 @@ export default function AnswersList() {
               type="email"
               name="email"
               id="email"
-              className="block w-full rounded-none rounded-l-md border-0 py-1.5 pl-10 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
+              className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-10 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 4"
             />
           </div>
@@ -119,6 +119,6 @@ export default function AnswersList() {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
