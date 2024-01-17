@@ -19,15 +19,15 @@ export default function CategoryList({categories, cat, setCategory}: CategoryLis
     <Listbox value={cat} onChange={setCategory}>
       {({ open }) => (
         <>
-          <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">Assigned to</Listbox.Label>
+          <Listbox.Label className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]">Assigned to</Listbox.Label>
           <div className="relative mt-2">
-            <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
+            <Listbox.Button className="relative w-full cursor-default rounded-md bg-[var(--tg-theme-bg-color)] py-1.5 pl-3 pr-10 text-left text-[var(--tg-theme-text-color)] shadow-sm ring-1 ring-inset ring-[var(--tg-theme-text-color)]">
               <span className="inline-flex w-full truncate">
-                <span className="truncate">dfg</span>
-                <span className="ml-2 truncate text-gray-500">sdfgsgs</span>
+                <span className="truncate"></span>
+                <span className="ml-2 truncate"></span>
               </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                <ChevronUpDownIcon className="h-5 w-5 text-[var(--tg-theme-text-color)]" aria-hidden="true" />
               </span>
             </Listbox.Button>
 
@@ -38,7 +38,7 @@ export default function CategoryList({categories, cat, setCategory}: CategoryLis
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+              <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-[var(--tg-theme-bg-color)] py-1 text-base shadow-lg ring-1 ring-[var(--tg-theme-text-color)] ring-opacity-5">
                 {categories.map((cat) => (
                   <Listbox.Option
                     key={cat.id}
