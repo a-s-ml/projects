@@ -36,7 +36,6 @@ export default function SettingsGroup({}) {
   const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
   const { data: GroupDb } = useGetGroupDbQuery(group);
 
-  const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
   const { data: GroupCategory } = useGetCategoryGroupsQuery(group);
 
@@ -51,11 +50,9 @@ export default function SettingsGroup({}) {
             role="list"
             className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
           >
-            {GroupType && (
               <li className="py-4 px-0">
-                <TypeQuestionGroup typeGroup={GroupType} />
+                <TypeQuestionGroup />
               </li>
-            )}
             {GroupCategory && (
               <li className="py-4 px-0">
                 <CategoryQuestionGroup category={GroupCategory} />

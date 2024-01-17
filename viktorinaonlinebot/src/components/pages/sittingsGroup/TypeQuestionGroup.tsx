@@ -3,28 +3,30 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
 } from "@heroicons/react/24/outline";
-import { IType } from "../../../models/IType";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { useState } from "react";
 import { store, useAppSelector } from "../../store";
 import { selectModalData } from "../../store/api/modal.slice";
-import { useUpdateTypeGroupsMutation } from "../../store/api/type/type.api";
+import {
+  useGetTypeByIdQuery,
+  useUpdateTypeGroupsMutation,
+} from "../../store/api/type/type.api";
 import { selectAllType } from "../../store/api/type/type.slice";
+import { useGetGroupDbQuery } from "../../store/api/group.api";
 
-interface TypeGroupProps {
-  typeGroup: IType;
-}
-
-export default function TypeGroup({ typeGroup }: TypeGroupProps) {
+export default function TypeGroup() {
   const allTypes = useAppSelector(selectAllType);
+  const chat = useAppSelector(selectModalData);
+
+  const { data: GroupDb } = useGetGroupDbQuery(chat);
+
+  const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
 
   const tg = window.Telegram.WebApp;
 
   const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
 
-  const chat = useAppSelector(selectModalData);
-
-  const [typeState, setType] = useState(typeGroup.id);
+  const [typeState, setType] = useState(GroupType?.id);
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
