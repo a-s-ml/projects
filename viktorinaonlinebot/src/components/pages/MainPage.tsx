@@ -9,6 +9,7 @@ import { useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
 import { useValidateQuery } from "../store/api/vik.api";
+import { useGetTypeQuery } from "../store/api/type.api";
 
 let menuitems: IMenu[] = [
   {
@@ -44,6 +45,10 @@ export function MainPage() {
 
   const slide = useAppSelector(selectSlide);
   const modal = useAppSelector(selectModal);
+
+  const { data: allTypes } = useGetTypeQuery("");
+
+  console.log(allTypes)
 
   // console.log(useAppSelector(store.getState));
 

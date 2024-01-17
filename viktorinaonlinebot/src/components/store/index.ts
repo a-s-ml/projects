@@ -2,7 +2,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import modalReducer from "./api/modal.slice";
 import slideReducer from "./api/slide.slice";
-import chatReducer from "./api/chat.slice";
+import typeReducer from "./api/type.slice";
 import { vikApi } from "./api/vik.api";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
@@ -11,7 +11,7 @@ export const store = configureStore({
     [vikApi.reducerPath]: vikApi.reducer,
     modal: modalReducer,
     slide: slideReducer,
-    chat: chatReducer,
+    type: typeReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(vikApi.middleware)
