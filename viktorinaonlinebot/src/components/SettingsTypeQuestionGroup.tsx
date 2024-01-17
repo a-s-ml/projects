@@ -6,7 +6,7 @@ import {
 import { IType } from "../models/IType";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { useState } from "react";
-import { useAppSelector } from "./store";
+import { store, useAppSelector } from "./store";
 import { selectModalData } from "./store/api/modal.slice";
 import { useUpdateTypeGroupsMutation } from "./store/api/type.api";
 import { selectAllType } from "./store/api/type.slice";
@@ -38,6 +38,8 @@ export default function SettingsTypeQuestionGroup({
     tg.HapticFeedback.selectionChanged();
   }
 
+  console.log(useAppSelector(store.getState));
+  
   return (
     <>
       <Disclosure as="div">
