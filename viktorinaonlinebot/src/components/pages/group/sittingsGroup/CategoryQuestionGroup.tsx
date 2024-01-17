@@ -5,11 +5,11 @@ import {
 } from "@heroicons/react/24/outline";
 import { Disclosure } from "@headlessui/react";
 import CategoryCheckbox from "./CategoryCheckbox";
-import AddNewCategory from "../../AddNewCategory";
-import { selectAllCategories } from "../../store/api/category/category.slice";
-import { useAppSelector } from "../../store";
-import { selectModalData } from "../../store/api/modal.slice";
-import { useGetCategoryGroupsQuery } from "../../store/api/category/category.api";
+import AddNewCategory from "./AddNewCategory";
+import { selectAllCategories } from "../../../store/api/category/category.slice";
+import { useAppSelector } from "../../../store";
+import { selectModalData } from "../../../store/api/modal.slice";
+import { useGetCategoryGroupsQuery } from "../../../store/api/category/category.api";
 
 export default function CategoryGroup() {
   const allCategory = useAppSelector(selectAllCategories);

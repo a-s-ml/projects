@@ -1,24 +1,24 @@
 import {
-  ClockIcon,
+  PhotoIcon,
   ChevronDownIcon,
   ChevronUpIcon,
 } from "@heroicons/react/24/outline";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../../store";
+import { useAppSelector } from "../../../store";
 import {
-  useGetTimeByIdQuery,
-  useUpdateTimeGroupsMutation,
-} from "../../store/api/time/time.api";
-import { selectAllTime } from "../../store/api/time/time.slice";
-import { selectModalData } from "../../store/api/modal.slice";
-import { useGetGroupDbQuery } from "../../store/api/group.api";
+  useGetTypeByIdQuery,
+  useUpdateTypeGroupsMutation,
+} from "../../../store/api/type/type.api";
+import { selectAllType } from "../../../store/api/type/type.slice";
+import { selectModalData } from "../../../store/api/modal.slice";
+import { useGetGroupDbQuery } from "../../../store/api/group.api";
 
-export default function TimeGroup() {
-  const allTimes = useAppSelector(selectAllTime);
+export default function TypeGroup() {
+  const allTypes = useAppSelector(selectAllType);
   const chat = useAppSelector(selectModalData);
   const { data: GroupDb } = useGetGroupDbQuery(chat);
-  const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
+  const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
 
   const tg = window.Telegram.WebApp;
 
@@ -26,13 +26,13 @@ export default function TimeGroup() {
     return classes.filter(Boolean).join(" ");
   }
 
-  const [timeState, setTime] = useState(GroupTime?.id);
+  const [typeState, setType] = useState(GroupType?.id);
 
-  const [updateTimeGroup, {}] = useUpdateTimeGroupsMutation();
+  const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
 
-  function timeChanged(time: number) {
-    setTime(time);
-    updateTimeGroup({ chat, time });
+  function typeChanged(question_type: number) {
+    setType(question_type);
+    updateTypeGroup({ chat, question_type });
     tg.HapticFeedback.selectionChanged();
   }
 
@@ -45,7 +45,7 @@ export default function TimeGroup() {
               <Disclosure.Button className="group relative flex w-full items-start justify-between space-x-3">
                 <div className="flex-shrink-0">
                   <span className="inline-flex h-5 w-5 items-center justify-center rounded-lg">
-                    <ClockIcon
+                    <PhotoIcon
                       className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
                       aria-hidden="true"
                     />
@@ -53,7 +53,7 @@ export default function TimeGroup() {
                 </div>
                 <div className="min-w-0 flex-1 text-left">
                   <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
-                    Период публикаций
+                    Вид вопросов
                   </div>
                 </div>
                 <div className="flex-shrink-0 self-center text-right">
@@ -74,28 +74,35 @@ export default function TimeGroup() {
             <Disclosure.Panel className="py-4">
               <div className="space-y-1.5">
                 <RadioGroup
-                  value={timeState}
-                  onChange={setTime}
+                  value={typeState}
+                  onChange={setType}
                   className="mt-2"
                 >
-                  <div className="grid grid-cols-4 gap-2">
-                    {allTimes &&
-                      allTimes.all.map((time) => (
+                  <div className="grid grid-cols-3 gap-2">
+                    {allTypes &&
+                      allTypes.all.map((type) => (
                         <RadioGroup.Option
-                          key={time.id}
-                          value={time.id}
-                          onClick={() => timeChanged(time.id)}
-                          className={({ checked }) =>
+                          key={type.id}
+                          value={type.id}
+                          onClick={() => typeChanged(type.id)}
+                          className={({ active, checked }) =>
                             classNames(
+                              Boolean(type.active)
+                                ? "cursor-pointer"
+                                : "cursor-not-allowed opacity-25",
+                              active
+                                ? "ring-2 ring-[var(--tg-theme-accent-text-color)] ring-offset-2"
+                                : "",
                               checked
                                 ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
                                 : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold",
-                              "flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer"
+                              "flex items-center justify-center rounded-md py-2 px-2 text-xs"
                             )
                           }
+                          disabled={!Boolean(type.active)}
                         >
                           <RadioGroup.Label as="span">
-                            {time.name}
+                            {type.description}
                           </RadioGroup.Label>
                         </RadioGroup.Option>
                       ))}

@@ -1,17 +1,17 @@
 import { Cog8ToothIcon } from "@heroicons/react/24/outline";
 import GroupAvatar from "./GroupAvatar";
-import { useAppDispatch } from "./store";
-import { showModal, dataModal } from "./store/api/modal.slice";
+import { useAppDispatch } from "../../store";
+import { showModal, dataModal } from "../../store/api/modal.slice";
 import TypeQuestion from "./TypeQuestion";
 import TimeQuestion from "./TimeQuestion";
 import ToggleButton from "./ToggleButton";
 import CategoryQuestion from "./CategoryQuestion";
-import { showSlide } from "./store/api/slide.slice";
+import { showSlide } from "../../store/api/slide.slice";
 import {
   useGetGroupDbQuery,
   useGetInfoGroupsQuery,
-} from "./store/api/group.api";
-import { useGetActiveGroupsQuery } from "./store/api/activeGroup.api";
+} from "../../store/api/group.api";
+import { useGetActiveGroupsQuery } from "../../store/api/activeGroup.api";
 
 interface GroupsListItemProps {
   group: bigint;

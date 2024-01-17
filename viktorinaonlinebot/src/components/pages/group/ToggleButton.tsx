@@ -4,7 +4,7 @@ import {
   useDeleteActiveGroupsMutation,
   useGetActiveGroupsQuery,
   useSetActiveGroupsMutation,
-} from "./store/api/activeGroup.api";
+} from "../../store/api/activeGroup.api";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");

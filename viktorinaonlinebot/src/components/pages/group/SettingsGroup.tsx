@@ -1,12 +1,12 @@
 import {
   useGetInfoGroupsQuery,
-} from "../store/api/group.api";
+} from "../../store/api/group.api";
 import TypeQuestionGroup from "./sittingsGroup/TypeQuestionGroup";
 import CategoryQuestionGroup from "./sittingsGroup/CategoryQuestionGroup";
 import TimeQuestionGroup from "./sittingsGroup/TimeQuestionGroup";
 import NotactiveSittings from "./sittingsGroup/NotactiveSittings";
-import { useAppSelector } from "../store";
-import { selectModalData } from "../store/api/modal.slice";
+import { useAppSelector } from "../../store";
+import { selectModalData } from "../../store/api/modal.slice";
 
 interface NoActive {
   text: string;

@@ -1,7 +1,7 @@
 import SlidePage from "./SlidePage";
 import Logo from "../img/Logo.png";
-import ErrorPage from "../ErrorPage";
-import MenuList from "../MenuList";
+import ErrorPage from "./ErrorPage";
+import MenuList from "./menu/MenuList";
 import { IMenu } from "../../models/IMenu";
 import ModalPage from "./ModalPage";
 import { selectSlide } from "../store/api/slide.slice";

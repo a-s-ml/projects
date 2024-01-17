@@ -7,11 +7,11 @@ import {
   selectModalData,
   showModal,
 } from "../store/api/modal.slice";
-import SettingsGroup from "./SettingsGroup";
+import SettingsGroup from "./group/SettingsGroup";
 import { showSlide } from "../store/api/slide.slice";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import DefaultSettingsGroup from "./sittingsGroup/DefaultSettingsGroup";
+import DefaultSettingsGroup from "./group/sittingsGroup/DefaultSettingsGroup";
 
 export default function ModalPage() {
   const modal = useAppSelector(selectModal);

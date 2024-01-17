@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import ErrorPage from "../ErrorPage";
-import GroupsList from "../GroupsList";
+import ErrorPage from "./ErrorPage";
+import GroupsList from "./group/GroupsList";
 import {
   selectSlide,
   selectSlideData,
@@ -10,7 +10,8 @@ import {
 import { useAppDispatch, useAppSelector } from "../store";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import AddNewGroup from "../AddNewGroup";
+import AddNewGroup from "./group/AddNewGroup";
+import AddNewQuesion from "./question/AddNewQuesion";
 
 interface SlideItemsProps {
   chat: number;
@@ -55,7 +56,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                       <Footer />
                     </>
                   )}
-                  {slideData === "questions" && <ErrorPage />}
+                  {slideData === "questions" && <AddNewQuesion />}
                   {slideData === "answers" && <ErrorPage />}
                 </div>
               </Dialog.Panel>

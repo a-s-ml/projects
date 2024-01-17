@@ -4,10 +4,10 @@ import {
   QuestionMarkCircleIcon,
   QueueListIcon,
 } from "@heroicons/react/20/solid";
-import { IMenu } from "../models/IMenu";
-import { IProgressData } from "../models/IUser";
-import { useAppDispatch } from "./store";
-import { showSlide, dataSlide } from "./store/api/slide.slice";
+import { IMenu } from "../../../models/IMenu";
+import { IProgressData } from "../../../models/IUser";
+import { useAppDispatch } from "../../store";
+import { showSlide, dataSlide } from "../../store/api/slide.slice";
 
 interface MenuItemsProps {
   item: IMenu;

@@ -1,7 +1,7 @@
 import { ListBulletIcon } from "@heroicons/react/24/outline";
-import { useGetCategoryGroupsQuery } from "./store/api/category/category.api";
-import { useAppSelector } from "./store";
-import { selectAllCategories } from "./store/api/category/category.slice";
+import { useGetCategoryGroupsQuery } from "../../store/api/category/category.api";
+import { useAppSelector } from "../../store";
+import { selectAllCategories } from "../../store/api/category/category.slice";
 
 interface CategoryQuestionProps {
   group: bigint;

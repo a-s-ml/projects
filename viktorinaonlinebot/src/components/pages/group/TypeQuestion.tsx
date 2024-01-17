@@ -4,7 +4,7 @@ import {
   ArrowPathIcon,
   LanguageIcon,
 } from "@heroicons/react/24/outline";
-import { useGetTypeByIdQuery } from "./store/api/type/type.api";
+import { useGetTypeByIdQuery } from "../../store/api/type/type.api";
 
 interface TypeQuestionProps {
   questionType: number;
