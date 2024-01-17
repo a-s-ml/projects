@@ -11,16 +11,18 @@ import {
   useUpdateTimeGroupsMutation,
 } from "../../store/api/time/time.api";
 import { selectAllTime } from "../../store/api/time/time.slice";
-import { useGetGroupDbQuery } from "../../store/api/group.api";
 import { selectModalData } from "../../store/api/modal.slice";
+import { useGetGroupDbQuery } from "../../store/api/group.api";
 
 export default function TimeGroup() {
   const allTimes = useAppSelector(selectAllTime);
   const chat = useAppSelector(selectModalData);
 
   const { data: GroupDb } = useGetGroupDbQuery(chat);
+  console.log('GroupDb time', GroupDb)
 
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
+  console.log('GroupTime', GroupTime)
 
   const tg = window.Telegram.WebApp;
 
@@ -84,11 +86,11 @@ export default function TimeGroup() {
                 >
                   <div className="grid grid-cols-4 gap-2">
                     {allTimes &&
-                      allTimes.all.map((timeData) => (
+                      allTimes.all.map((time) => (
                         <RadioGroup.Option
-                          key={timeData.id}
-                          value={timeData.id}
-                          onClick={() => timeChanged(timeData.id)}
+                          key={time.id}
+                          value={time.id}
+                          onClick={() => timeChanged(time.id)}
                           className={({ checked }) =>
                             classNames(
                               checked
@@ -99,7 +101,7 @@ export default function TimeGroup() {
                           }
                         >
                           <RadioGroup.Label as="span">
-                            {timeData.name}
+                            {time.name}
                           </RadioGroup.Label>
                         </RadioGroup.Option>
                       ))}

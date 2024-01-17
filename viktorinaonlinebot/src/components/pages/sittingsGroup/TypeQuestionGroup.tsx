@@ -6,12 +6,12 @@ import {
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { useState } from "react";
 import { useAppSelector } from "../../store";
-import { selectModalData } from "../../store/api/modal.slice";
 import {
   useGetTypeByIdQuery,
   useUpdateTypeGroupsMutation,
 } from "../../store/api/type/type.api";
 import { selectAllType } from "../../store/api/type/type.slice";
+import { selectModalData } from "../../store/api/modal.slice";
 import { useGetGroupDbQuery } from "../../store/api/group.api";
 
 export default function TypeGroup() {
@@ -19,14 +19,17 @@ export default function TypeGroup() {
   const chat = useAppSelector(selectModalData);
 
   const { data: GroupDb } = useGetGroupDbQuery(chat);
+  console.log('GroupDb type', GroupDb)
 
   const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
+  console.log('GroupType', GroupType)
 
   const tg = window.Telegram.WebApp;
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
+
   const [typeState, setType] = useState(GroupType?.id);
 
   const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
