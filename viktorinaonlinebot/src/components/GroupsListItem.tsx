@@ -7,7 +7,10 @@ import TimeQuestion from "./TimeQuestion";
 import ToggleButton from "./ToggleButton";
 import CategoryQuestion from "./CategoryQuestion";
 import { showSlide } from "./store/api/slide.slice";
-import { useGetGroupDbQuery, useGetInfoGroupsQuery } from "./store/api/group.api";
+import {
+  useGetGroupDbQuery,
+  useGetInfoGroupsQuery,
+} from "./store/api/group.api";
 import { useGetActiveGroupsQuery } from "./store/api/activeGroup.api";
 
 interface GroupsListItemProps {
@@ -17,11 +20,7 @@ interface GroupsListItemProps {
 export default function GroupsListItem({ group }: GroupsListItemProps) {
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);
-  const { data: dataGroupActive } = useGetActiveGroupsQuery(group);
   const { data: GroupDb } = useGetGroupDbQuery(group);
-
-  let state: boolean;
-  dataGroupActive ? (state = true) : (state = false);
 
   const dispatch = useAppDispatch();
 
@@ -56,7 +55,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
               )}
             </div>
             <div className="flex-shrink-0 self-center text-right">
-              <ToggleButton group={dataGroupInfo.id} state={state} />
+              <ToggleButton group={dataGroupInfo.id} />
             </div>
           </div>
           <div

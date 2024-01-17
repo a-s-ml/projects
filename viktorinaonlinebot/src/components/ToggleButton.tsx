@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
-import { useDeleteActiveGroupsMutation, useSetActiveGroupsMutation } from "./store/api/activeGroup.api";
+import {
+  useDeleteActiveGroupsMutation,
+  useGetActiveGroupsQuery,
+  useSetActiveGroupsMutation,
+} from "./store/api/activeGroup.api";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -8,11 +12,11 @@ function classNames(...classes: string[]) {
 
 interface ToggleButtonProps {
   group: bigint;
-  state: boolean;
 }
 
-export default function ToggleButton({ group, state }: ToggleButtonProps) {
-  const [enabled, setEnabled] = useState(state);
+export default function ToggleButton({ group }: ToggleButtonProps) {
+  const { data: groupActive } = useGetActiveGroupsQuery(group);
+  const [enabled, setEnabled] = useState(groupActive);
   const [setActive, {}] = useSetActiveGroupsMutation();
   const [deleteActive, {}] = useDeleteActiveGroupsMutation();
   const tg = window.Telegram.WebApp;
@@ -44,15 +48,15 @@ export default function ToggleButton({ group, state }: ToggleButtonProps) {
             </p>
             <div
               className={classNames(
-                enabled ? " bg-emerald-500/20 animate-ping opacity-75" : "bg-red-500/20",
+                enabled
+                  ? " bg-emerald-500/20 animate-ping opacity-75"
+                  : "bg-red-500/20",
                 "flex-none rounded-full p-1"
               )}
             >
               <div
                 className={classNames(
-                  enabled
-                    ? "bg-emerald-500"
-                    : "bg-red-500",
+                  enabled ? "bg-emerald-500" : "bg-red-500",
                   "h-1.5 w-1.5 rounded-full"
                 )}
               />
