@@ -9,8 +9,10 @@ import { useAppDispatch, useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
 import { useValidateQuery } from "../store/api/vik.api";
-import { useGetTypeQuery } from "../store/api/type.api";
-import { getAllType } from "../store/api/type.slice";
+import { useGetTypeQuery } from "../store/api/type/type.api";
+import { getAllType } from "../store/api/type/type.slice";
+import { useGetTimeQuery } from "../store/api/time/time.api";
+import { getAllTime } from "../store/api/time/time.slice";
 
 let menuitems: IMenu[] = [
   {
@@ -49,10 +51,10 @@ export function MainPage() {
   const modal = useAppSelector(selectModal);
 
   const { data: allTypes } = useGetTypeQuery("");
-
-  console.log(allTypes)
+  const { data: allTime } = useGetTimeQuery(0);
   
   allTypes && dispatch(getAllType(allTypes))
+  allTime && dispatch(getAllTime(allTime))
 
   // console.log(useAppSelector(store.getState));
 

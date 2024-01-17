@@ -1,6 +1,6 @@
-import { IReqTimeGroup } from "../../../models/IMutation";
-import { ITime } from "../../../models/ITime";
-import { vikApi } from "./vik.api";
+import { IReqTimeGroup } from "../../../../models/IMutation";
+import { ITime } from "../../../../models/ITime";
+import { vikApi } from "../vik.api";
 
 export const extendedApiSlice = vikApi.injectEndpoints({
   endpoints: (build) => ({

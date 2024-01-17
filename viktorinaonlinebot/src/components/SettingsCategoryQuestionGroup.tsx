@@ -5,20 +5,21 @@ import {
 } from "@heroicons/react/24/outline";
 import { Disclosure } from "@headlessui/react";
 import { ICategoryGroup } from "../models/ICategoryGroup";
-import { ICategory } from "../models/ICategory";
 import CategoryCheckbox from "./CategoryCheckbox";
 import AddNewCategory from "./AddNewCategory";
+import { selectAllCategories } from "./store/api/category/category.slice";
+import { useAppSelector } from "./store";
 
 interface SettingsCategoryQuestionGroupProps {
-  dataCategory: ICategory[];
   category: ICategoryGroup[];
 }
 
 export default function SettingsCategoryQuestionGroup({
-  dataCategory,
   category,
 }: SettingsCategoryQuestionGroupProps) {
+
   const tg = window.Telegram.WebApp;
+  const allCategory = useAppSelector(selectAllCategories);
 
   return (
     <>
@@ -57,7 +58,7 @@ export default function SettingsCategoryQuestionGroup({
             </li>
             <Disclosure.Panel className="pt-6">
               <div className="space-y-1.5 columns-2">
-                {dataCategory.map((item) => (
+                {allCategory.categories.map((item) => (
                   <CategoryCheckbox
                     key={item.id}
                     cat={item}

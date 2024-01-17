@@ -8,8 +8,8 @@ import { Disclosure, RadioGroup } from "@headlessui/react";
 import { useState } from "react";
 import { store, useAppSelector } from "./store";
 import { selectModalData } from "./store/api/modal.slice";
-import { useUpdateTypeGroupsMutation } from "./store/api/type.api";
-import { selectAllType } from "./store/api/type.slice";
+import { useUpdateTypeGroupsMutation } from "./store/api/type/type.api";
+import { selectAllType } from "./store/api/type/type.slice";
 
 interface SettingsTypeQuestionGroupProps {
   typeGroup: IType;
@@ -19,7 +19,7 @@ export default function SettingsTypeQuestionGroup({
   typeGroup,
 }: SettingsTypeQuestionGroupProps) {
   const allTypes = useAppSelector(selectAllType);
-    console.log('settings page', allTypes)
+  
   const tg = window.Telegram.WebApp;
 
   const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();

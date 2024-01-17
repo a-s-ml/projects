@@ -1,10 +1,10 @@
-import { ICategory } from "../../../models/ICategory";
-import { ICategoryGroup } from "../../../models/ICategoryGroup";
+import { ICategory } from "../../../../models/ICategory";
+import { ICategoryGroup } from "../../../../models/ICategoryGroup";
 import {
   IReqCategoryGroup,
   IResCategoryGroup,
-} from "../../../models/IMutation";
-import { vikApi } from "./vik.api";
+} from "../../../../models/IMutation";
+import { vikApi } from "../vik.api";
 
 export const extendedApiSlice = vikApi.injectEndpoints({
   endpoints: (build) => ({

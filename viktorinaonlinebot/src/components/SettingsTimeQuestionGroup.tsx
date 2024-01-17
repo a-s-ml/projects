@@ -8,17 +8,19 @@ import { useState } from "react";
 import { ITime } from "../models/ITime";
 import { useAppSelector } from "./store";
 import { selectModalData } from "./store/api/modal.slice";
-import { useUpdateTimeGroupsMutation } from "./store/api/time.api";
+import { useUpdateTimeGroupsMutation } from "./store/api/time/time.api";
+import { selectAllTime } from "./store/api/time/time.slice";
 
 interface SettingsTimeQuestionGroupProps {
-  dataTime: ITime[];
   timeGroup: ITime;
 }
 
 export default function SettingsTimeQuestionGroup({
-  dataTime,
   timeGroup,
 }: SettingsTimeQuestionGroupProps) {
+  
+  const allTimes = useAppSelector(selectAllTime);
+
   const tg = window.Telegram.WebApp;
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
@@ -78,8 +80,8 @@ export default function SettingsTimeQuestionGroup({
                   className="mt-2"
                 >
                   <div className="grid grid-cols-4 gap-2">
-                    {dataTime &&
-                      dataTime.map((timeData) => (
+                    {allTimes &&
+                      allTimes.times.map((timeData) => (
                         <RadioGroup.Option
                           key={timeData.id}
                           value={timeData.id}

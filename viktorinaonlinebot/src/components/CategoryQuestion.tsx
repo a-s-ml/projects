@@ -1,5 +1,5 @@
 import { ListBulletIcon } from "@heroicons/react/24/outline";
-import { useCountCategoryQuery, useGetCategoryGroupsQuery } from "./store/api/category.api";
+import { useCountCategoryQuery, useGetCategoryGroupsQuery } from "./store/api/category/category.api";
 
 interface CategoryQuestionProps {
   group: bigint;
