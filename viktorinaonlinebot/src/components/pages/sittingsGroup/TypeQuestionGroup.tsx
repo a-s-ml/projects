@@ -5,7 +5,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { Disclosure, RadioGroup } from "@headlessui/react";
 import { useState } from "react";
-import { store, useAppSelector } from "../../store";
+import { useAppSelector } from "../../store";
 import { selectModalData } from "../../store/api/modal.slice";
 import {
   useGetTypeByIdQuery,
