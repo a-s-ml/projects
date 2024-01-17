@@ -12,6 +12,7 @@ import { showSlide } from "../store/api/slide.slice";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import DefaultSettingsGroup from "./group/sittingsGroup/DefaultSettingsGroup";
+import NewQuesion from "./question/NewQuesion";
 
 export default function ModalPage() {
   const modal = useAppSelector(selectModal);
@@ -49,7 +50,7 @@ export default function ModalPage() {
                   <DefaultSettingsGroup />
                 </Header>
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                  <SettingsGroup />
+                  {modalData === 0n ? <NewQuesion /> : <SettingsGroup />}
                 </div>
                 <Footer />
               </Dialog.Panel>
