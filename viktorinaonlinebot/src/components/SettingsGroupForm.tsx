@@ -10,6 +10,8 @@ import SittingsNotactiveQuestionGroup from "./SittingsNotactiveQuestionGroup";
 import { useGetTypeGroupQuery, useGetTypeQuery } from "./store/api/type.api";
 import { useGetTimeGroupQuery, useGetTimeQuery } from "./store/api/time.api";
 import { useGetCategoryGroupsQuery, useGetCategoryQuery } from "./store/api/category.api";
+import { useAppSelector } from "./store";
+import { selectAllType } from "./store/api/type.slice";
 
 interface SettingsGroupProps {
   group: bigint;
@@ -20,7 +22,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
 
   const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
   const { data: dataGroupDb } = useGetGroupDbQuery(group);
-  const { data: dataType } = useGetTypeQuery("");
+  // const { data: dataType } = useGetTypeQuery("");
   const { data: dataTime } = useGetTimeQuery(0);
   const { data: dataCategory } = useGetCategoryQuery("");
 
@@ -32,11 +34,14 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
 
   useEffect(() => {}, [dataGroupType, dataGroupTime]);
 
-    console.log(dataType)
+
+  
+  const allTypes = useAppSelector(selectAllType);
+    console.log(allTypes)
 
   return (
     <>
-      {dataGroupInfo && dataType && dataTime && dataGroupDb && (
+      {dataGroupInfo && allTypes && dataTime && dataGroupDb && (
         <form className="text-center py-24">
           <h3 className="text-sm font-medium text-[var(--tg-theme-text-color)] text-left">
             Настройки викторины в группе "{dataGroupInfo.title}"
@@ -48,7 +53,7 @@ export default function SettingsGroupForm({ group }: SettingsGroupProps) {
             {dataGroupType && (
               <li className="py-4 px-0">
                 <SettingsTypeQuestionGroup
-                  dataType={dataType}
+                  dataType={allTypes}
                   typeGroup={dataGroupType}
                 />
               </li>

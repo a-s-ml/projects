@@ -5,11 +5,12 @@ import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
 import ModalPage from "./ModalPage";
 import { selectSlide } from "../store/api/slide.slice";
-import { useAppSelector } from "../store";
+import { useAppDispatch, useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
 import { useValidateQuery } from "../store/api/vik.api";
 import { useGetTypeQuery } from "../store/api/type.api";
+import { getAllType } from "../store/api/type.slice";
 
 let menuitems: IMenu[] = [
   {
@@ -31,6 +32,7 @@ let menuitems: IMenu[] = [
 
 export function MainPage() {
   const tg = window.Telegram.WebApp;
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     tg.expand();
@@ -49,6 +51,8 @@ export function MainPage() {
   const { data: allTypes } = useGetTypeQuery("");
 
   console.log(allTypes)
+  
+  allTypes && dispatch(getAllType(allTypes))
 
   // console.log(useAppSelector(store.getState));
 
