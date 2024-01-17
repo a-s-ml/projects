@@ -1,8 +1,4 @@
 import { Cog8ToothIcon } from "@heroicons/react/24/outline";
-import {
-  useGetActiveGroupsQuery,
-  useGetInfoGroupsQuery,
-} from "./store/api/groups.slice";
 import GroupAvatar from "./GroupAvatar";
 import { useAppDispatch } from "./store";
 import { showModal, dataModal } from "./store/api/modal.slice";
@@ -11,6 +7,8 @@ import TimeQuestion from "./TimeQuestion";
 import ToggleButton from "./ToggleButton";
 import CategoryQuestion from "./CategoryQuestion";
 import { showSlide } from "./store/api/slide.slice";
+import { useGetInfoGroupsQuery } from "./store/api/group.api";
+import { useGetActiveGroupsQuery } from "./store/api/activeGroup.api";
 
 interface GroupsListItemProps {
   group: bigint;

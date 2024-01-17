@@ -4,11 +4,11 @@ import {
   ChevronUpIcon,
 } from "@heroicons/react/24/outline";
 import { Disclosure, RadioGroup } from "@headlessui/react";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { ITime } from "../models/ITime";
-import { useUpdateTimeGroupsMutation } from "./store/api/groups.slice";
 import { useAppSelector } from "./store";
 import { selectModalData } from "./store/api/modal.slice";
+import { useUpdateTimeGroupsMutation } from "./store/api/time.api";
 
 interface SettingsTimeQuestionGroupProps {
   dataTime: ITime[];

@@ -1,5 +1,5 @@
 import { ClockIcon } from "@heroicons/react/24/outline";
-import { useGetTimeGroupQuery } from "./store/api/vik.api";
+import { useGetTimeGroupQuery } from "./store/api/time.api";
 
 interface TimeQuestionProps {
   time: number;

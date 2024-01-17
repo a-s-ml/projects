@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ICategory } from "../models/ICategory";
-import { useAddCategoryGroupsMutation, useDeleteCategoryGroupsMutation } from "./store/api/groups.slice";
 import { useAppSelector } from "./store";
 import { selectModalData } from "./store/api/modal.slice";
+import { useAddCategoryGroupsMutation, useDeleteCategoryGroupsMutation } from "./store/api/category.api";
 
 interface CategoryCheckboxProps {
   cat: ICategory;

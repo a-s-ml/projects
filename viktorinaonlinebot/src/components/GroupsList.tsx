@@ -1,4 +1,4 @@
-import { useGetGroupsQuery } from "./store/api/groups.slice";
+import { useGetGroupsQuery } from "./store/api/group.api";
 import GroupsListItem from "./GroupsListItem";
 import ErrorPage from "./ErrorPage";
 

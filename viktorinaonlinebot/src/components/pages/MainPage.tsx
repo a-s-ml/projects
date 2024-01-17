@@ -1,22 +1,14 @@
 import SlidePage from "./SlidePage";
 import Logo from "../img/Logo.png";
-import {
-  useGetCategoryQuery,
-  useGetTimeQuery,
-  useGetTypeQuery,
-  useValidateQuery,
-} from "../store/api/vik.api";
 import ErrorPage from "../ErrorPage";
 import MenuList from "../MenuList";
 import { IMenu } from "../../models/IMenu";
 import ModalPage from "./ModalPage";
 import { selectSlide } from "../store/api/slide.slice";
-import { store, useAppDispatch, useAppSelector } from "../store";
+import { useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
-import { getTypes, selectTypes } from "../store/api/types.slice";
-import { getTimes } from "../store/api/times.slice";
-import { getCategories } from "../store/api/categories.slice";
+import { useValidateQuery } from "../store/api/vik.api";
 
 let menuitems: IMenu[] = [
   {

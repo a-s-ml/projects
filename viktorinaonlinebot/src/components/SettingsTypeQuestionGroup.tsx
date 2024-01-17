@@ -5,10 +5,10 @@ import {
 } from "@heroicons/react/24/outline";
 import { IType } from "../models/IType";
 import { Disclosure, RadioGroup } from "@headlessui/react";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { useUpdateTypeGroupsMutation } from "./store/api/groups.slice";
+import { useState } from "react";
 import { useAppSelector } from "./store";
 import { selectModalData } from "./store/api/modal.slice";
+import { useUpdateTypeGroupsMutation } from "./store/api/type.api";
 
 interface SettingsTypeQuestionGroupProps {
   dataType: IType[];

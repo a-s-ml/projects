@@ -8,7 +8,6 @@ import { ICategoryGroup } from "../models/ICategoryGroup";
 import { ICategory } from "../models/ICategory";
 import CategoryCheckbox from "./CategoryCheckbox";
 import AddNewCategory from "./AddNewCategory";
-import { Dispatch, SetStateAction } from "react";
 
 interface SettingsCategoryQuestionGroupProps {
   dataCategory: ICategory[];

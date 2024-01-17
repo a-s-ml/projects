@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
-import {
-  useDeleteActiveGroupsMutation,
-  useSetActiveGroupsMutation,
-} from "./store/api/groups.slice";
+import { useDeleteActiveGroupsMutation, useSetActiveGroupsMutation } from "./store/api/activeGroup.api";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");

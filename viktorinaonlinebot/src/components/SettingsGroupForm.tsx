@@ -2,19 +2,14 @@ import { useEffect, useState } from "react";
 import {
   useGetGroupDbQuery,
   useGetInfoGroupsQuery,
-} from "./store/api/groups.slice";
-import {
-  useGetCategoryGroupsQuery,
-  useGetCategoryQuery,
-  useGetTimeGroupQuery,
-  useGetTimeQuery,
-  useGetTypeGroupQuery,
-  useGetTypeQuery,
-} from "./store/api/vik.api";
+} from "./store/api/group.api";
 import SettingsTypeQuestionGroup from "./SettingsTypeQuestionGroup";
 import SettingsCategoryQuestionGroup from "./SettingsCategoryQuestionGroup";
 import SettingsTimeQuestionGroup from "./SettingsTimeQuestionGroup";
 import SittingsNotactiveQuestionGroup from "./SittingsNotactiveQuestionGroup";
+import { useGetTypeGroupQuery, useGetTypeQuery } from "./store/api/type.api";
+import { useGetTimeGroupQuery, useGetTimeQuery } from "./store/api/time.api";
+import { useGetCategoryGroupsQuery, useGetCategoryQuery } from "./store/api/category.api";
 
 interface SettingsGroupProps {
   group: bigint;

@@ -1,5 +1,5 @@
 import { ListBulletIcon } from "@heroicons/react/24/outline";
-import { useCountCategoryQuery, useGetCategoryGroupsQuery } from "./store/api/vik.api";
+import { useCountCategoryQuery, useGetCategoryGroupsQuery } from "./store/api/category.api";
 
 interface CategoryQuestionProps {
   group: bigint;
@@ -7,7 +7,7 @@ interface CategoryQuestionProps {
 export default function CategoryQuestion({ group }: CategoryQuestionProps) {
   const { data: dataCountCategory } = useCountCategoryQuery("count");
   const { data: dataCateoryGroup } = useGetCategoryGroupsQuery(group);
-  const checkNum = dataCateoryGroup?.length
+  const checkNum = dataCateoryGroup?.length;
 
   return (
     <div className="group relative flex items-start space-x-3">
@@ -23,7 +23,6 @@ export default function CategoryQuestion({ group }: CategoryQuestionProps) {
             />
           )}
           <span className="text-xs leading-5 text-[var(--tg-theme-text-color)]">
-            {" "}
             {checkNum} из {dataCountCategory}
           </span>
         </div>
