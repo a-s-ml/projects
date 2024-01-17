@@ -49,7 +49,7 @@ export default function ModalPage() {
                   <DefaultSettingsGroup />
                 </Header>
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                  <SettingsGroup group={modalData}/>
+                  <SettingsGroup />
                 </div>
                 <Footer />
               </Dialog.Panel>

@@ -9,10 +9,9 @@ import NotactiveSittings from "./sittingsGroup/NotactiveSittings";
 import { useGetCategoryGroupsQuery } from "../store/api/category/category.api";
 import { useGetTypeByIdQuery } from "../store/api/type/type.api";
 import { useGetTimeByIdQuery } from "../store/api/time/time.api";
+import { useAppSelector } from "../store";
+import { selectModalData } from "../store/api/modal.slice";
 
-interface SettingsGroupProps {
-  group: bigint;
-}
 interface NoActive {
   text: string;
 }
@@ -29,7 +28,9 @@ let noActive: NoActive[] = [
   },
 ];
 
-export default function SettingsGroup({ group }: SettingsGroupProps) {
+export default function SettingsGroup({}) {
+  const group = useAppSelector(selectModalData);
+
   const tg = window.Telegram.WebApp;
 
   const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
