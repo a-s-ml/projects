@@ -50,7 +50,7 @@ export default function CategoryGroup() {
                 </div>
               </Disclosure.Button>
             </li>
-            <Disclosure.Panel className="pt-6">
+            <Disclosure.Panel className="py-4">
               <div className="space-y-1.5 columns-2">
                 {GroupCategory &&
                   allCategory.all.map((item) => (
