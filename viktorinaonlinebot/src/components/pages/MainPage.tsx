@@ -47,7 +47,7 @@ export function MainPage() {
     isLoading: loadUser,
     isError: errorUser,
     data: dataUser,
-    isSuccess: successUser
+    isSuccess: successUser,
   } = useValidateQuery(tg.initData);
 
   const slide = useAppSelector(selectSlide);
@@ -55,15 +55,16 @@ export function MainPage() {
 
   const { data: allTypes, isSuccess: successType } = useGetTypeQuery("");
   const { data: allTime, isSuccess: successTime } = useGetTimeQuery("");
-  const { data: allCategory, isSuccess: successCategory } = useGetCategoryQuery("");
+  const { data: allCategory, isSuccess: successCategory } =
+    useGetCategoryQuery("");
 
-  successUser && dispatch(userSlide(dataUser.UserData.user.id))
+  successUser && dispatch(userSlide(dataUser.UserData.user.id));
 
-  successType && dispatch(getAllType(allTypes))
-  successTime && dispatch(getAllTime(allTime))
-  successCategory && dispatch(getAllCategories(allCategory))
+  successType && dispatch(getAllType(allTypes));
+  successTime && dispatch(getAllTime(allTime));
+  successCategory && dispatch(getAllCategories(allCategory));
 
-  console.log(useAppSelector(store.getState)); 
+  console.log(useAppSelector(store.getState));
 
   if (!slide && !modal) {
     tg.BackButton.hide();
@@ -89,39 +90,44 @@ export function MainPage() {
               </p>
             </div>
           </div>
-          {successUser && successUser && successTime && successCategory && (
-            <div className="mt-10">
-              {errorUser && <ErrorPage />}
-              {loadUser && (
-                <b className="text-center text-[var(--tg-theme-text-color)]">
-                  Loading...
-                </b>
-              )}
-              {dataUser.validate && (
+          <div className="mt-10">
+            {errorUser && <ErrorPage />}
+            {loadUser && (
+              <b className="text-center text-[var(--tg-theme-text-color)]">
+                Loading...
+              </b>
+            )}
+            {successUser &&
+              successUser &&
+              successTime &&
+              successCategory &&
+              dataUser.validate && (
                 <ul
                   role="list"
                   className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
                 >
-                  {menuitems &&
-                    menuitems.map((item) => (
-                      <MenuList
-                        key={item.id}
-                        item={item}
-                        progress={dataUser.ProgressData}
-                      />
-                    ))}
+                  {menuitems.map((item) => (
+                    <MenuList
+                      key={item.id}
+                      item={item}
+                      progress={dataUser.ProgressData}
+                    />
+                  ))}
                 </ul>
               )}
-            </div>
-          )}
+          </div>
         </div>
       </div>
-      {dataUser && (
-        <>
-          <SlidePage chat={dataUser.UserData.user.id} />
-          <ModalPage />
-        </>
-      )}
+      {successUser &&
+        successUser &&
+        successTime &&
+        successCategory &&
+        dataUser.validate && (
+          <>
+            <SlidePage chat={dataUser.UserData.user.id} />
+            <ModalPage />
+          </>
+        )}
     </>
   );
 }
