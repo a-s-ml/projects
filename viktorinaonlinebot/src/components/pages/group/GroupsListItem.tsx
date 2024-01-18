@@ -1,12 +1,11 @@
 import { Cog8ToothIcon } from "@heroicons/react/24/outline";
 import GroupAvatar from "./GroupAvatar";
 import { useAppDispatch } from "../../store";
-import { showModal, dataModal } from "../../store/api/modal.slice";
 import TypeQuestion from "./TypeQuestion";
 import TimeQuestion from "./TimeQuestion";
 import ToggleButton from "./ToggleButton";
 import CategoryQuestion from "./CategoryQuestion";
-import { dataSlide, levelUpSlide, showSlide } from "../../store/api/slide.slice";
+import { dataSlide, levelSlide, showSlide } from "../../store/api/slide.slice";
 import {
   useGetGroupDbQuery,
   useGetInfoGroupsQuery,
@@ -64,7 +63,8 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
           <div
             className="group relative flex items-start space-x-3 cursor-pointer"
             onClick={() => {
-              dispatch(levelUpSlide());
+              dispatch(showSlide(false));
+              dispatch(levelSlide(2));
               dispatch(dataSlide({
                 group,
                 type: "groups",
@@ -72,6 +72,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
                 answer: 0,
                 question: 0
               }));
+              dispatch(showSlide(true));
             }}
           >
             <div className="min-w-0 flex-1">

@@ -48,20 +48,10 @@ export const slideSlice = createSlice({
     dataSlide: (state, action: PayloadAction<slidaData>) => {
       state.data = action.payload;
     },
-    levelUpSlide: (state) => {
-      state.show = !state.show;
-      state.level = state.level + 1;
-      state.show = !state.show;
-    },
-    levelDownSlide: (state) => {
-      state.show = !state.show;
-      state.level = state.level - 1;
-      state.show = !state.show;
-    },
   },
 });
 
-export const { showSlide, dataSlide, userSlide, levelSlide, levelUpSlide, levelDownSlide } =
+export const { showSlide, dataSlide, userSlide, levelSlide } =
   slideSlice.actions;
 
 export const selectSlide = (state: RootState) => state.slide.show;
