@@ -48,7 +48,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                  {slideData === "groups" && (
+                  {slideData.type === "groups" && (
                     <>
                       <Header>
                         <AddNewGroup />
@@ -57,7 +57,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                       <Footer />
                     </>
                   )}
-                  {slideData === "questions" && (
+                  {slideData.type === "questions" && (
                     <>
                       <Header>
                         <AddNewQuestion />
@@ -66,7 +66,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                       <Footer />
                     </>
                   )}
-                  {slideData === "answers" && <ErrorPage />}
+                  {slideData.type === "answers" && <ErrorPage />}
                 </div>
               </Dialog.Panel>
             </Transition.Child>

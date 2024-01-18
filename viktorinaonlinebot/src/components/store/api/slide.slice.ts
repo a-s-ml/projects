@@ -1,14 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "..";
 
+export interface slideDataState {
+  type: string;
+  value: number | bigint;
+}
+
 export interface slideState {
+  user: number;
   show: boolean;
-  data: string;
+  data: slideDataState;
 }
 
 const initialState: slideState = {
+  user: 0,
   show: false,
-  data: "",
+  data: {
+    type: "",
+    value: 0,
+  },
 };
 const tg = window.Telegram.WebApp;
 
@@ -21,15 +31,27 @@ export const slideSlice = createSlice({
       tg.MainButton.hide();
       state.show = action.payload;
     },
-    dataSlide: (state, action: PayloadAction<string>) => {
+    userSlide: (state, action: PayloadAction<number>) => {
+      state.user = action.payload;
+    },
+    dataSlide: (state, action: PayloadAction<slideDataState>) => {
       state.data = action.payload;
+    },
+    dataTypeSlide: (state, action: PayloadAction<string>) => {
+      state.data.type = action.payload;
+    },
+    dataValueSlide: (state, action: PayloadAction<number | bigint>) => {
+      state.data.value = action.payload;
     },
   },
 });
 
-export const { showSlide, dataSlide } = slideSlice.actions;
+export const { showSlide, dataSlide, userSlide, dataTypeSlide, dataValueSlide } = slideSlice.actions;
 
 export const selectSlide = (state: RootState) => state.slide.show;
+export const selectSlideUser = (state: RootState) => state.slide.user;
 export const selectSlideData = (state: RootState) => state.slide.data;
+export const selectSlideTypeData = (state: RootState) => state.slide.data.type;
+export const selectSlideValueData = (state: RootState) => state.slide.data.value;
 
 export default slideSlice.reducer;
