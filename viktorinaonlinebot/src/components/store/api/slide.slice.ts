@@ -34,9 +34,15 @@ export const slideSlice = createSlice({
   name: "slide",
   initialState,
   reducers: {
+    toggleShow: (state, action: PayloadAction<boolean>) => {
+      tg.BackButton.show();
+      state.show = !action.payload;
+      setTimeout(() => {
+        state.show = !action.payload;
+      }, 2000);
+    },
     showSlide: (state, action: PayloadAction<boolean>) => {
       tg.BackButton.show();
-      tg.MainButton.hide();
       state.show = action.payload;
     },
     userSlide: (state, action: PayloadAction<number>) => {
@@ -51,7 +57,7 @@ export const slideSlice = createSlice({
   },
 });
 
-export const { showSlide, dataSlide, userSlide, levelSlide } =
+export const { showSlide, dataSlide, userSlide, levelSlide, toggleShow } =
   slideSlice.actions;
 
 export const selectSlide = (state: RootState) => state.slide.show;
