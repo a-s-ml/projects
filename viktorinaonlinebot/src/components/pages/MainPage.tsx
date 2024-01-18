@@ -15,7 +15,7 @@ import { useGetTimeQuery } from "../store/api/time/time.api";
 import { getAllTime } from "../store/api/time/time.slice";
 import { useGetCategoryQuery } from "../store/api/category/category.api";
 import { getAllCategories } from "../store/api/category/category.slice";
-import Preloader from "./Preloader";
+import Preloader from "../Preloader/Preloader";
 
 let menuitems: IMenu[] = [
   {
