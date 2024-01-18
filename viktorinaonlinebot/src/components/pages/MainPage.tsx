@@ -92,9 +92,26 @@ export function MainPage() {
             </div>
           </div>
           <div className="mt-10">
-
-              <Preloader />
-
+            {errorUser && <ErrorPage />}
+            {loadUser && <Preloader />}
+            {successUser &&
+              successUser &&
+              successTime &&
+              successCategory &&
+              dataUser.validate && (
+                <ul
+                  role="list"
+                  className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
+                >
+                  {menuitems.map((item) => (
+                    <MenuList
+                      key={item.id}
+                      item={item}
+                      progress={dataUser.ProgressData}
+                    />
+                  ))}
+                </ul>
+              )}
           </div>
         </div>
       </div>
