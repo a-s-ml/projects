@@ -4,7 +4,7 @@ import ErrorPage from "./ErrorPage";
 import MenuList from "./menu/MenuList";
 import { IMenu } from "../../models/IMenu";
 import ModalPage from "./ModalPage";
-import { selectSlide } from "../store/api/slide.slice";
+import { selectSlide, slideState, userSlide } from "../store/api/slide.slice";
 import { store, useAppDispatch, useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
@@ -47,20 +47,23 @@ export function MainPage() {
     isLoading: loadUser,
     isError: errorUser,
     data: dataUser,
+    isSuccess: successUser
   } = useValidateQuery(tg.initData);
 
   const slide = useAppSelector(selectSlide);
   const modal = useAppSelector(selectModal);
 
-  const { data: allTypes } = useGetTypeQuery("");
-  const { data: allTime } = useGetTimeQuery("");
-  const { data: allCategory } = useGetCategoryQuery("");
-  
-  allTypes && dispatch(getAllType(allTypes))
-  allTime && dispatch(getAllTime(allTime))
-  allCategory && dispatch(getAllCategories(allCategory))
+  const { data: allTypes, isSuccess: successType } = useGetTypeQuery("");
+  const { data: allTime, isSuccess: successTime } = useGetTimeQuery("");
+  const { data: allCategory, isSuccess: successCategory } = useGetCategoryQuery("");
 
-  // console.log(useAppSelector(store.getState));
+  successUser && dispatch(userSlide(dataUser.UserData.user.id))
+
+  successType && dispatch(getAllType(allTypes))
+  successTime && dispatch(getAllTime(allTime))
+  successCategory && dispatch(getAllCategories(allCategory))
+
+  console.log(useAppSelector(store.getState));
 
   if (!slide && !modal) {
     tg.BackButton.hide();
@@ -86,7 +89,7 @@ export function MainPage() {
               </p>
             </div>
           </div>
-          {dataUser && (
+          {successUser && successUser && successTime && successCategory && (
             <div className="mt-10">
               {errorUser && <ErrorPage />}
               {loadUser && (

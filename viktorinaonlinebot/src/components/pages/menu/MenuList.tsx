@@ -23,7 +23,13 @@ export default function MenuList({ item, progress }: MenuItemsProps) {
       key={item.id}
       onClick={() => {
         dispatch(showSlide(true));
-        dispatch(dataSlide(item.name));
+        dispatch(dataSlide({
+          type: item.name,
+          chat: 0,
+          group: 0n,
+          answer: 0,
+          question: 0
+        }));
       }}
     >
       <div className="group relative flex items-start space-x-3 py-4">
