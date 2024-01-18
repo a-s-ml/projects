@@ -34,16 +34,10 @@ export const slideSlice = createSlice({
   name: "slide",
   initialState,
   reducers: {
-    toggleShow: (state, action: PayloadAction<boolean>) => {
-      tg.BackButton.show();
-      state.show = !action.payload;
-      setTimeout(() => {
-        state.show = !action.payload;
-      }, 2000);
-    },
     showSlide: (state, action: PayloadAction<boolean>) => {
       tg.BackButton.show();
       state.show = action.payload;
+      setTimeout(() => {}, 700);
     },
     userSlide: (state, action: PayloadAction<number>) => {
       state.user = action.payload;
@@ -57,13 +51,10 @@ export const slideSlice = createSlice({
   },
 });
 
-export const { showSlide, dataSlide, userSlide, levelSlide, toggleShow } =
+export const { showSlide, dataSlide, userSlide, levelSlide } =
   slideSlice.actions;
 
 export const selectSlide = (state: RootState) => state.slide.show;
 export const selectSlideData = (state: RootState) => state.slide.data;
 
 export default slideSlice.reducer;
-function dispatch(arg0: any) {
-  throw new Error("Function not implemented.");
-}
