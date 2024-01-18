@@ -5,7 +5,6 @@ import GroupsList from "./group/GroupsList";
 import {
   selectSlide,
   selectSlideData,
-  selectSlideLevel,
   showSlide,
 } from "../store/api/slide.slice";
 import { useAppDispatch, useAppSelector } from "../store";
@@ -14,8 +13,6 @@ import { Footer } from "./Footer";
 import AddNewGroup from "./group/AddNewGroup";
 import QuestionList from "./question/QuestionList";
 import AddNewQuestion from "./question/AddNewQuestion";
-import DefaultSettingsGroup from "./group/sittingsGroup/DefaultSettingsGroup";
-import SettingsGroup from "./group/SettingsGroup";
 
 interface SlideItemsProps {
   chat: number;
@@ -24,7 +21,6 @@ interface SlideItemsProps {
 export default function SlidePage({ chat }: SlideItemsProps) {
   const slide = useAppSelector(selectSlide);
   const slideData = useAppSelector(selectSlideData);
-  const slideLevel = useAppSelector(selectSlideLevel);
   const dispatch = useAppDispatch();
   const tg = window.Telegram.WebApp;
 
@@ -52,30 +48,16 @@ export default function SlidePage({ chat }: SlideItemsProps) {
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                  {slideData.type === "groups" && (
+                  {slideData === "groups" && (
                     <>
-                      {slideLevel === 1 && (
-                        <>
-                          <Header>
-                            <AddNewGroup />
-                          </Header>
-                          <GroupsList chat={chat} />
-                          <Footer />
-                        </>
-                      )}
-                      {slideLevel === 2 && (
-                        <>
-                          <Header>
-                            <DefaultSettingsGroup />
-                          </Header>
-                          <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                            <SettingsGroup />
-                          </div>
-                        </>
-                      )}
+                      <Header>
+                        <AddNewGroup />
+                      </Header>
+                      <GroupsList chat={chat} />
+                      <Footer />
                     </>
                   )}
-                  {slideData.type === "questions" && (
+                  {slideData === "questions" && (
                     <>
                       <Header>
                         <AddNewQuestion />
@@ -84,7 +66,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                       <Footer />
                     </>
                   )}
-                  {slideData.type === "answers" && <ErrorPage />}
+                  {slideData === "answers" && <ErrorPage />}
                 </div>
               </Dialog.Panel>
             </Transition.Child>

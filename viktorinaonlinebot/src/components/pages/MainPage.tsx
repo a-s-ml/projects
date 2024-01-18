@@ -4,7 +4,7 @@ import ErrorPage from "./ErrorPage";
 import MenuList from "./menu/MenuList";
 import { IMenu } from "../../models/IMenu";
 import ModalPage from "./ModalPage";
-import { selectSlide, slideState, userSlide } from "../store/api/slide.slice";
+import { selectSlide } from "../store/api/slide.slice";
 import { store, useAppDispatch, useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
@@ -47,24 +47,20 @@ export function MainPage() {
     isLoading: loadUser,
     isError: errorUser,
     data: dataUser,
-    isSuccess: successUser,
   } = useValidateQuery(tg.initData);
 
   const slide = useAppSelector(selectSlide);
   const modal = useAppSelector(selectModal);
 
-  const { data: allTypes, isSuccess: successType } = useGetTypeQuery("");
-  const { data: allTime, isSuccess: successTime } = useGetTimeQuery("");
-  const { data: allCategory, isSuccess: successCategory } =
-    useGetCategoryQuery("");
+  const { data: allTypes } = useGetTypeQuery("");
+  const { data: allTime } = useGetTimeQuery("");
+  const { data: allCategory } = useGetCategoryQuery("");
+  
+  allTypes && dispatch(getAllType(allTypes))
+  allTime && dispatch(getAllTime(allTime))
+  allCategory && dispatch(getAllCategories(allCategory))
 
-  successUser && dispatch(userSlide(dataUser.UserData.user.id));
-
-  successType && dispatch(getAllType(allTypes));
-  successTime && dispatch(getAllTime(allTime));
-  successCategory && dispatch(getAllCategories(allCategory));
-
-  console.log(useAppSelector(store.getState));
+  // console.log(useAppSelector(store.getState));
 
   if (!slide && !modal) {
     tg.BackButton.hide();
@@ -90,44 +86,39 @@ export function MainPage() {
               </p>
             </div>
           </div>
-          <div className="mt-10">
-            {errorUser && <ErrorPage />}
-            {loadUser && (
-              <b className="text-center text-[var(--tg-theme-text-color)]">
-                Loading...
-              </b>
-            )}
-            {successUser &&
-              successUser &&
-              successTime &&
-              successCategory &&
-              dataUser.validate && (
+          {dataUser && (
+            <div className="mt-10">
+              {errorUser && <ErrorPage />}
+              {loadUser && (
+                <b className="text-center text-[var(--tg-theme-text-color)]">
+                  Loading...
+                </b>
+              )}
+              {dataUser.validate && (
                 <ul
                   role="list"
                   className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
                 >
-                  {menuitems.map((item) => (
-                    <MenuList
-                      key={item.id}
-                      item={item}
-                      progress={dataUser.ProgressData}
-                    />
-                  ))}
+                  {menuitems &&
+                    menuitems.map((item) => (
+                      <MenuList
+                        key={item.id}
+                        item={item}
+                        progress={dataUser.ProgressData}
+                      />
+                    ))}
                 </ul>
               )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
-      {successUser &&
-        successUser &&
-        successTime &&
-        successCategory &&
-        dataUser.validate && (
-          <>
-            <SlidePage chat={dataUser.UserData.user.id} />
-            <ModalPage />
-          </>
-        )}
+      {dataUser && (
+        <>
+          <SlidePage chat={dataUser.UserData.user.id} />
+          <ModalPage />
+        </>
+      )}
     </>
   );
 }
