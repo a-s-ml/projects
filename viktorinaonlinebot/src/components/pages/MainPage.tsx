@@ -91,30 +91,11 @@ export function MainPage() {
             </div>
           </div>
           <div className="mt-10">
-            {errorUser && <ErrorPage />}
-            {loadUser && (
+
               <b className="text-center text-[var(--tg-theme-text-color)]">
                 Loading...
               </b>
-            )}
-            {successUser &&
-              successUser &&
-              successTime &&
-              successCategory &&
-              dataUser.validate && (
-                <ul
-                  role="list"
-                  className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
-                >
-                  {menuitems.map((item) => (
-                    <MenuList
-                      key={item.id}
-                      item={item}
-                      progress={dataUser.ProgressData}
-                    />
-                  ))}
-                </ul>
-              )}
+
           </div>
         </div>
       </div>
