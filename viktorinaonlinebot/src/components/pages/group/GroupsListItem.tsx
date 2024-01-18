@@ -72,7 +72,6 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
                 answer: 0,
                 question: 0
               }));
-              dispatch(showSlide(true));
             }}
           >
             <div className="min-w-0 flex-1">
