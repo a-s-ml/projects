@@ -15,6 +15,7 @@ import { useGetTimeQuery } from "../store/api/time/time.api";
 import { getAllTime } from "../store/api/time/time.slice";
 import { useGetCategoryQuery } from "../store/api/category/category.api";
 import { getAllCategories } from "../store/api/category/category.slice";
+import Preloader from "./Preloader";
 
 let menuitems: IMenu[] = [
   {
@@ -92,9 +93,7 @@ export function MainPage() {
           </div>
           <div className="mt-10">
 
-              <b className="text-center text-[var(--tg-theme-text-color)]">
-                Loading...
-              </b>
+              <Preloader />
 
           </div>
         </div>
