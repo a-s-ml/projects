@@ -49,14 +49,14 @@ export const slideSlice = createSlice({
       state.data = action.payload;
     },
     levelUpSlide: (state) => {
-      dispatch(showSlide(false));
+      state.show = !state.show;
       state.level = state.level + 1;
-      dispatch(showSlide(true));
+      state.show = !state.show;
     },
     levelDownSlide: (state) => {
-      dispatch(showSlide(false));
+      state.show = !state.show;
       state.level = state.level - 1;
-      dispatch(showSlide(true));
+      state.show = !state.show;
     },
   },
 });
