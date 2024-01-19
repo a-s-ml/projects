@@ -12,6 +12,7 @@ import {
   useGetInfoGroupsQuery,
 } from "../../store/api/group.api";
 import { useGetActiveGroupsQuery } from "../../store/api/activeGroup.api";
+import DeleteButton from "./DeleteButton";
 
 interface GroupsListItemProps {
   group: bigint;
@@ -22,6 +23,10 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);
   const { data: GroupDb } = useGetGroupDbQuery(group);
+
+  const onDel = (id: number) => {
+    console.log('Удалена группа: ', id)
+  }
 
   const dispatch = useAppDispatch();
 
@@ -81,6 +86,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
               />
             </div>
           </div>
+          <DeleteButton id={GroupDb.id} onDelele={onDel} />
         </li>
       )}
     </>
