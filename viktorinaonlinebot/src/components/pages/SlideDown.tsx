@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Preloader from "../Preloader/Preloader";
+import SwipeToDelete from "./group/swipe/swipe";
 
 interface SlideDownProps {
   slide: boolean;
@@ -13,6 +14,17 @@ export default function SlideDown({ slide }: SlideDownProps) {
   if (slide) {
     tg.HapticFeedback.notificationOccurred("success");
   }
+
+  const [stateDel, setStateDel] = useState([
+    { id: 1, title: "Кнопка 1" },
+    { id: 2, title: "Кнопка 2" },
+    { id: 3, title: "Кнопка 3" },
+    { id: 4, title: "Кнопка 4" },
+  ]);
+
+  const onDel = (id: number) => {
+    setStateDel((prev) => prev.filter((row) => row.id !== id));
+  };
 
   return (
     <>
@@ -33,8 +45,10 @@ export default function SlideDown({ slide }: SlideDownProps) {
               leaveTo="translate-y-full opacity-5"
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
-                <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] py-28">
                   <Preloader />
+
+                  <SwipeToDelete rows={stateDel} onDel={onDel} />
                 </div>
               </Dialog.Panel>
             </Transition.Child>
