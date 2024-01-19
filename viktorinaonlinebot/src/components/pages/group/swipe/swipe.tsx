@@ -42,7 +42,7 @@ interface ItemProps {
 }
 
 const Item = ({ children }: ItemProps) => {
-  const ref = useRef<HTMLElement>();
+  const ref = useRef<HTMLElement>(null);
   let downX: number;
 
   const onPointerMove = (e: { clientX: number }) => {
