@@ -46,9 +46,16 @@ export default function SlideDown({ slide }: SlideDownProps) {
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] py-28">
-                  <Preloader />
+                  <ul
+                    role="list"
+                    className="mt-4 divide-y divide-[var(--tg-theme-hint-color)] pt-9"
+                  >
+                    <li className="py-4 px-0">
+                      <Preloader />
 
-                  <SwipeToDelete rows={stateDel} onDel={onDel} />
+                      <SwipeToDelete rows={stateDel} onDel={onDel} />
+                    </li>
+                  </ul>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
