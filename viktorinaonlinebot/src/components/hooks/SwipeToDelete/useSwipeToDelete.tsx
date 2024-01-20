@@ -186,7 +186,7 @@ const SwipeToDelete = ({
     )}
     >
       <div className={`delete${deleting ? " deleting" : ""}`}>
-        <button onClick={onDeleteClick}>{deleteComponent ? deleteComponent : deleteText}</button>
+        <button className={"buttondel"} onClick={onDeleteClick}>{deleteComponent ? deleteComponent : deleteText}</button>
       </div>
       <div
         className={classNames(

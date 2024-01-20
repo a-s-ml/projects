@@ -60,7 +60,7 @@
   align-items: center;
 }
 
-.rstdi .delete button {
+.buttondel {
   width: var(--rstdiDeleteWidth);
   transition: margin transform var(--rstdiTransitionDuration) ease-in-out;
   margin-left: var(--rstdiButtonMarginLeft);
