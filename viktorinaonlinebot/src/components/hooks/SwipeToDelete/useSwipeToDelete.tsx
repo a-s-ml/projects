@@ -171,7 +171,7 @@ const SwipeToDelete = ({
   }, [onMouseMove, onMouseUp, onTouchMove, touching]);
 
   return (
-    <div id={id} className={`rstdi${deleting ? " deleting" : ""} ${className} w-screen h-full`} ref={container}>
+    <div id={id} className={`rstdi${deleting ? " deleting" : ""} ${className} w-full`} ref={container}>
       <div className={`delete${deleting ? " deleting" : ""}`}>
         <button className="buttondel" onClick={onDeleteClick}>{deleteComponent ? deleteComponent : deleteText}</button>
       </div>
