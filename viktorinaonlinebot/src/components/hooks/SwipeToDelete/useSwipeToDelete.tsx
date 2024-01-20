@@ -170,19 +170,13 @@ const SwipeToDelete = ({
     };
   }, [onMouseMove, onMouseUp, onTouchMove, touching]);
 
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-  }
-
   return (
-    <div id={id} 
-    className={`rstdi ${deleting ? " deleting" : ""} ${className} "before: border-box after: border-box"`}
-    ref={container}>
-      <div className={`delete ${deleting ? " deleting" : ""} "absolute `}>
+    <div id={id} className={`rstdi${deleting ? " deleting" : ""} ${className}`} ref={container}>
+      <div className={`delete${deleting ? " deleting" : ""}`}>
         <button onClick={onDeleteClick}>{deleteComponent ? deleteComponent : deleteText}</button>
       </div>
       <div
-        className={`content ${deleting ? " deleting" : ""}${!touching ? " transition" : ""}"`}
+        className={`content${deleting ? " deleting" : ""}${!touching ? " transition" : ""}`}
         onMouseDown={onStart}
         onTouchStart={onStart}>
         {children}
