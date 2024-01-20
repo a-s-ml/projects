@@ -75,16 +75,7 @@ export default function SlideDown({ slide }: SlideDownProps) {
                       }}
                     >
                       <li className="py-4 px-0">
-                        <p>Кнопка 1</p>
-                      </li>
-                      <li className="py-4 px-0">
-                        <p>Кнопка 2</p>
-                      </li>
-                      <li className="py-4 px-0">
-                        <p>Кнопка 3</p>
-                      </li>
-                      <li className="py-4 px-0">
-                        <p>Кнопка 4</p>
+                        <p>Кнопка </p>
                       </li>
                     </SwipeToDelete>
                   </ul>
