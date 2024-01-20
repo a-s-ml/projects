@@ -22,7 +22,8 @@ export interface Props {
 const cursorPosition = (event: any) => {
   if (event?.touches?.[0]?.clientX) return event.touches[0].clientX;
   if (event?.clientX) return event?.clientX;
-  if (event?.nativeEvent?.touches?.[0]?.clientX) return event.nativeEvent.touches[0].clientX;
+  if (event?.nativeEvent?.touches?.[0]?.clientX)
+    return event.nativeEvent.touches[0].clientX;
   return event?.nativeEvent?.clientX;
 };
 
@@ -50,8 +51,10 @@ const SwipeToDelete = ({
   const startTouchPosition = useRef(0);
   const initTranslate = useRef(0);
   const container = useRef<HTMLDivElement>(null);
-  const containerWidth: number = container.current?.getBoundingClientRect().width || 0;
-  const deleteWithoutConfirmThreshold: number = containerWidth * (deleteThreshold / 100);
+  const containerWidth: number =
+    container.current?.getBoundingClientRect().width || 0;
+  const deleteWithoutConfirmThreshold: number =
+    containerWidth * (deleteThreshold / 100);
 
   const onStart = useCallback(
     (event: React.TouchEvent | React.MouseEvent) => {
@@ -67,7 +70,10 @@ const SwipeToDelete = ({
   useEffect(() => {
     const root = container.current;
     root?.style.setProperty("--rstdiHeight", height + "px");
-    root?.style.setProperty("--rstdiTransitionDuration", transitionDuration + "ms");
+    root?.style.setProperty(
+      "--rstdiTransitionDuration",
+      transitionDuration + "ms"
+    );
     root?.style.setProperty("--rstdiIsRtl", rtl ? "1" : "-1");
     root?.style.setProperty("--rstdiDeleteColor", deleteColor);
     root?.style.setProperty("--rstdiDeleteWidth", deleteWidth + "px");
@@ -75,22 +81,45 @@ const SwipeToDelete = ({
 
   useEffect(() => {
     const root = container.current;
-    root?.style.setProperty("--rstdiTranslate", translate * (rtl ? -1 : 1) + "px");
+    root?.style.setProperty(
+      "--rstdiTranslate",
+      translate * (rtl ? -1 : 1) + "px"
+    );
     const shiftDelete = -translate >= deleteWithoutConfirmThreshold;
     root?.style.setProperty(
       `--rstdiButtonMargin${rtl ? "Right" : "Left"}`,
-      (shiftDelete ? containerWidth + translate : containerWidth - deleteWidth) + "px"
+      (shiftDelete
+        ? containerWidth + translate
+        : containerWidth - deleteWidth) + "px"
     );
-  }, [translate, deleteWidth, containerWidth, rtl, deleteWithoutConfirmThreshold]);
+  }, [
+    translate,
+    deleteWidth,
+    containerWidth,
+    rtl,
+    deleteWithoutConfirmThreshold,
+  ]);
 
   const onMove = useCallback(
     function (event: TouchEvent | MouseEvent) {
       if (!touching) return;
-      if (!rtl && cursorPosition(event) > startTouchPosition.current - initTranslate.current)
+      if (
+        !rtl &&
+        cursorPosition(event) >
+          startTouchPosition.current - initTranslate.current
+      )
         return setTranslate(0);
-      if (rtl && cursorPosition(event) < startTouchPosition.current - initTranslate.current)
+      if (
+        rtl &&
+        cursorPosition(event) <
+          startTouchPosition.current - initTranslate.current
+      )
         return setTranslate(0);
-      setTranslate(cursorPosition(event) - startTouchPosition.current + initTranslate.current);
+      setTranslate(
+        cursorPosition(event) -
+          startTouchPosition.current +
+          initTranslate.current
+      );
     },
     [rtl, touching]
   );
@@ -134,9 +163,14 @@ const SwipeToDelete = ({
     function () {
       startTouchPosition.current = 0;
       const acceptableMove = -deleteWidth * 0.7;
-      const showDelete = showDeleteAction ? (rtl ? -1 : 1) * translate < acceptableMove : false;
-      const notShowDelete = showDeleteAction ? (rtl ? -1 : 1) * translate >= acceptableMove : true;
-      const deleteWithoutConfirm = (rtl ? 1 : -1) * translate >= deleteWithoutConfirmThreshold;
+      const showDelete = showDeleteAction
+        ? (rtl ? -1 : 1) * translate < acceptableMove
+        : false;
+      const notShowDelete = showDeleteAction
+        ? (rtl ? -1 : 1) * translate >= acceptableMove
+        : true;
+      const deleteWithoutConfirm =
+        (rtl ? 1 : -1) * translate >= deleteWithoutConfirmThreshold;
       if (deleteWithoutConfirm) {
         setTranslate(() => -containerWidth);
       } else if (notShowDelete) {
@@ -147,7 +181,14 @@ const SwipeToDelete = ({
       setTouching(() => false);
       if (deleteWithoutConfirm) onDeleteClick();
     },
-    [containerWidth, deleteWidth, deleteWithoutConfirmThreshold, onDeleteClick, rtl, translate]
+    [
+      containerWidth,
+      deleteWidth,
+      deleteWithoutConfirmThreshold,
+      onDeleteClick,
+      rtl,
+      translate,
+    ]
   );
 
   useEffect(() => {
@@ -171,14 +212,23 @@ const SwipeToDelete = ({
   }, [onMouseMove, onMouseUp, onTouchMove, touching]);
 
   return (
-    <div id={id} className={`rstdi${deleting ? " deleting" : ""} ${className}`} ref={container}>
+    <div
+      id={id}
+      className={`rstdi${deleting ? " deleting" : ""} ${className}`}
+      ref={container}
+    >
       <div className={`delete${deleting ? " deleting" : ""}`}>
-        <button onClick={onDeleteClick}>{deleteComponent ? deleteComponent : deleteText}</button>
+        <button onClick={onDeleteClick}>
+          {deleteComponent ? deleteComponent : deleteText}
+        </button>
       </div>
       <div
-        className={`content${deleting ? " deleting" : ""}${!touching ? " transition" : ""}`}
+        className={`content${deleting ? " deleting" : ""}${
+          !touching ? " transition" : ""
+        }`}
         onMouseDown={onStart}
-        onTouchStart={onStart}>
+        onTouchStart={onStart}
+      >
         {children}
       </div>
     </div>

@@ -40,42 +40,54 @@ export default function SlideDown({ slide }: SlideDownProps) {
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   <Preloader />
-
-                  <SwipeToDelete
-                    onDelete={handleDelete} // required
-                    // optional
-                    height={50} // default
-                    transitionDuration={250} // default
-                    deleteWidth={75} // default
-                    deleteThreshold={75} // default
-                    showDeleteAction={true} //default
-                    deleteColor="rgba(252, 58, 48, 1.00)" // default
-                    deleteText="Delete" // default
-                    disabled={false} // default
-                    id="swiper-1" // not default
-                    className="my-swiper" // not default
-                    rtl={false} // default
-                    onDeleteConfirm={(
-                      onSuccess: () => void,
-                      onCancel: () => void
-                    ) => {
-                      // not default - default is null
-                      if (
-                        window.confirm(
-                          "Do you really want to delete this item ?"
-                        )
-                      ) {
-                        onSuccess();
-                      } else {
-                        onCancel();
-                      }
-                    }}
+                  <ul
+                    role="list"
+                    className="mt-4 divide-y divide-[var(--tg-theme-hint-color)] pt-9"
                   >
-                    <p>dsgdgsa</p>
-                    <p>adssdfs</p>
-                    <p>asdfasd</p>
-                    <p>asdfasdf</p>
-                  </SwipeToDelete>
+                    <SwipeToDelete
+                      onDelete={handleDelete} // required
+                      // optional
+                      height={50} // default
+                      transitionDuration={250} // default
+                      deleteWidth={75} // default
+                      deleteThreshold={75} // default
+                      showDeleteAction={true} //default
+                      deleteColor="rgba(252, 58, 48, 1.00)" // default
+                      deleteText="Delete" // default
+                      disabled={false} // default
+                      id="swiper-1" // not default
+                      className="my-swiper" // not default
+                      rtl={false} // default
+                      onDeleteConfirm={(
+                        onSuccess: () => void,
+                        onCancel: () => void
+                      ) => {
+                        // not default - default is null
+                        if (
+                          window.confirm(
+                            "Do you really want to delete this item ?"
+                          )
+                        ) {
+                          onSuccess();
+                        } else {
+                          onCancel();
+                        }
+                      }}
+                    >
+                      <li className="py-4 px-0">
+                        <p>Кнопка 1</p>
+                      </li>
+                      <li className="py-4 px-0">
+                        <p>Кнопка 2</p>
+                      </li>
+                      <li className="py-4 px-0">
+                        <p>Кнопка 3</p>
+                      </li>
+                      <li className="py-4 px-0">
+                        <p>Кнопка 4</p>
+                      </li>
+                    </SwipeToDelete>
+                  </ul>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
