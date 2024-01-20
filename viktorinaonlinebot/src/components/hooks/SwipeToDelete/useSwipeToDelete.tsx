@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import styles from './styles.module.css';
+import "./styles.module.css";
 
 export interface Props {
   onDelete: Function;
@@ -170,31 +170,13 @@ const SwipeToDelete = ({
     };
   }, [onMouseMove, onMouseUp, onTouchMove, touching]);
 
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-  }
-
   return (
-    <div 
-    id={id} 
-    ref={container}
-    className={classNames(
-      deleting
-        ? styles.deleting
-        : "",
-      styles.rstdi
-    )}
-    >
+    <div id={id} className={`rstdi${deleting ? " deleting" : ""} ${className} w-screen h-full`} ref={container}>
       <div className={`delete${deleting ? " deleting" : ""}`}>
-        <button className={"buttondel"} onClick={onDeleteClick}>{deleteComponent ? deleteComponent : deleteText}</button>
+        <button className="buttondel" onClick={onDeleteClick}>{deleteComponent ? deleteComponent : deleteText}</button>
       </div>
       <div
-        className={classNames(
-          deleting
-            ? styles.deleting
-            : "",
-          styles.content
-        )}
+        className={`content${deleting ? " deleting" : ""}${!touching ? " transition" : ""}`}
         onMouseDown={onStart}
         onTouchStart={onStart}>
         {children}
