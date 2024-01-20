@@ -1,5 +1,7 @@
+/* rstdi = react-swipe-to-delete-ios */
+
 .rstdi {
-  --rstdiHeight: 130px;
+  --rstdiHeight: 30px;
   --rstdiTransitionDuration: 250ms;
   --rstdiTranslate: 0px;
   --rstdiIsRtl: 0;
@@ -58,7 +60,7 @@
   align-items: center;
 }
 
-.buttondel {
+.rstdi .delete button {
   width: var(--rstdiDeleteWidth);
   transition: margin transform var(--rstdiTransitionDuration) ease-in-out;
   margin-left: var(--rstdiButtonMarginLeft);
