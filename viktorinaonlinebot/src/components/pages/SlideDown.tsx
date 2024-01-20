@@ -15,9 +15,21 @@ export default function SlideDown({ slide }: SlideDownProps) {
     tg.HapticFeedback.notificationOccurred("success");
   }
 
-  function handleDelete() {
-    console.log("handleDelete");
-  }
+  const color = () => Math.ceil(Math.random() * 250);
+
+  const arrItems = [
+    {
+      content: "Item 1",
+    },
+    {
+      content: "Item 2",
+    },
+    {
+      content: "Item 3",
+    },
+  ];
+
+  const [items, setItems] = useState(arrItems);
 
   return (
     <>
@@ -40,12 +52,21 @@ export default function SlideDown({ slide }: SlideDownProps) {
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   <Preloader />
-                  <SwipeToDelete onDelete={handleDelete}>
-                    Ryjgrf
-                    <div className="py-4 px-0 text-[var(--tg-theme-text-color)]">
-                      Кнопка
-                    </div>
-                  </SwipeToDelete>
+                  {items.map((item) => (
+                    <SwipeToDelete
+                      key={item.content}
+                      height={50}
+                      onDelete={() =>
+                        setItems((items) =>
+                          items.filter((i) => i.content !== item.content)
+                        )
+                      }
+                    >
+                      <span className="flex justify-start items-center h-[50px] pl-3 w-full border-box relative">
+                        <span>{item.content}</span>
+                      </span>
+                    </SwipeToDelete>
+                  ))}
                 </div>
               </Dialog.Panel>
             </Transition.Child>
