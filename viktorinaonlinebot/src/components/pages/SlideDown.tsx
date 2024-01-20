@@ -40,10 +40,11 @@ export default function SlideDown({ slide }: SlideDownProps) {
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   <Preloader />
-                  <SwipeToDelete
-                    onDelete={handleDelete}
-                  >
-                    <div className="py-4 px-0 text-[var(--tg-theme-text-color)]">Кнопка</div>
+                  <SwipeToDelete onDelete={handleDelete}>
+                    Ryjgrf
+                    <div className="py-4 px-0 text-[var(--tg-theme-text-color)]">
+                      Кнопка
+                    </div>
                   </SwipeToDelete>
                 </div>
               </Dialog.Panel>
