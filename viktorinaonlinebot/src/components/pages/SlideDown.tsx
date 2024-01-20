@@ -43,7 +43,7 @@ export default function SlideDown({ slide }: SlideDownProps) {
                   <SwipeToDelete
                     onDelete={handleDelete} // required
                     // optional
-                    height={50} // default
+                    height={150} // default
                     transitionDuration={250} // default
                     deleteWidth={75} // default
                     deleteThreshold={75} // default
@@ -70,7 +70,7 @@ export default function SlideDown({ slide }: SlideDownProps) {
                       }
                     }}
                   >
-                    <div className="py-4 px-0 text-[var(--tg-theme-text-color)]">Кнопка</div>
+                    <span>Item 3</span>
                   </SwipeToDelete>
                 </div>
               </Dialog.Panel>
