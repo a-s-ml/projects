@@ -2,7 +2,6 @@ import { useGetGroupsQuery } from "../../store/api/group.api";
 import GroupsListItem from "./GroupsListItem";
 import ErrorPage from "../ErrorPage";
 import Preloader from "../../Preloader/Preloader";
-import { useState } from "react";
 
 interface GroupsListProps {
   chat: number;

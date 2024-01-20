@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Preloader from "../Preloader/Preloader";
-import SwipeToDelete from "./group/swipe/swipe";
+import SwipeToDelete from "../hooks/SwipeToDelete";
 
 interface SlideDownProps {
   slide: boolean;
@@ -15,16 +15,9 @@ export default function SlideDown({ slide }: SlideDownProps) {
     tg.HapticFeedback.notificationOccurred("success");
   }
 
-  const [stateDel, setStateDel] = useState([
-    { id: 1, title: "Кнопка 1" },
-    { id: 2, title: "Кнопка 2" },
-    { id: 3, title: "Кнопка 3" },
-    { id: 4, title: "Кнопка 4" },
-  ]);
-
-  const onDel = (id: number) => {
-    setStateDel((prev) => prev.filter((row) => row.id !== id));
-  };
+  function handleDelete() {
+    console.log("handleDelete")
+  }
 
   return (
     <>
@@ -47,9 +40,37 @@ export default function SlideDown({ slide }: SlideDownProps) {
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   <Preloader />
-
-                  <SwipeToDelete rows={stateDel} onDel={onDel} />
                 </div>
+                <SwipeToDelete
+                  onDelete={handleDelete} // required
+                  // optional
+                  height={50} // default
+                  transitionDuration={250} // default
+                  deleteWidth={75} // default
+                  deleteThreshold={75} // default
+                  showDeleteAction={true} //default
+                  deleteColor="rgba(252, 58, 48, 1.00)" // default
+                  deleteText="Delete" // default
+                  disabled={false} // default
+                  id="swiper-1" // not default
+                  className="my-swiper" // not default
+                  rtl={false} // default
+                  onDeleteConfirm={(onSuccess: () => void, onCancel: () => void) => {
+                    // not default - default is null
+                    if (
+                      window.confirm("Do you really want to delete this item ?")
+                    ) {
+                      onSuccess();
+                    } else {
+                      onCancel();
+                    }
+                  }}
+                >
+                    <p>dsgdgsa</p>
+                    <p>adssdfs</p>
+                    <p>asdfasd</p>
+                    <p>asdfasdf</p>
+                </SwipeToDelete>
               </Dialog.Panel>
             </Transition.Child>
           </div>
