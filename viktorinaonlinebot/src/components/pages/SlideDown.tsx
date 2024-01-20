@@ -15,8 +15,6 @@ export default function SlideDown({ slide }: SlideDownProps) {
     tg.HapticFeedback.notificationOccurred("success");
   }
 
-  const color = () => Math.ceil(Math.random() * 250);
-
   const arrItems = [
     {
       content: "Item 1",
@@ -62,8 +60,8 @@ export default function SlideDown({ slide }: SlideDownProps) {
                         )
                       }
                     >
-                      <span className="flex justify-start items-center h-[50px] pl-3 w-full border-box relative">
-                        <span>{item.content}</span>
+                      <span className="flex justify-start items-center h-[50px] pl-3 w-full border-box relative ">
+                        <span className="text-[var(--tg-theme-text-color)]">{item.content}</span>
                       </span>
                     </SwipeToDelete>
                   ))}
