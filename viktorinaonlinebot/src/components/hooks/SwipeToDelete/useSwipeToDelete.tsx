@@ -53,8 +53,7 @@ const SwipeToDelete = ({
   const container = useRef<HTMLDivElement>(null);
   const containerWidth: number =
     container.current?.getBoundingClientRect().width || 0;
-  const containerHeight: number =
-    container.current?.getBoundingClientRect().height || 0;
+
   const deleteWithoutConfirmThreshold: number =
     containerWidth * (deleteThreshold / 100);
 
@@ -71,6 +70,7 @@ const SwipeToDelete = ({
 
   useEffect(() => {
     const root = container.current;
+    const containerHeight: number = root?.getBoundingClientRect().height || 0;
     root?.style.setProperty("--rstdiHeight", containerHeight + "px");
     root?.style.setProperty(
       "--rstdiTransitionDuration",
@@ -79,7 +79,7 @@ const SwipeToDelete = ({
     root?.style.setProperty("--rstdiIsRtl", rtl ? "1" : "-1");
     root?.style.setProperty("--rstdiDeleteColor", deleteColor);
     root?.style.setProperty("--rstdiDeleteWidth", deleteWidth + "px");
-  }, [deleteColor, deleteWidth, height, rtl, transitionDuration]);
+  }, [deleteColor, deleteWidth, rtl, transitionDuration]);
 
   useEffect(() => {
     const root = container.current;
