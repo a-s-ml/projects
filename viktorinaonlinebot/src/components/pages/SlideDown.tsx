@@ -56,6 +56,7 @@ export default function SlideDown({ slide }: SlideDownProps) {
                       dataGroups.map((group) => (
                         <SwipeToDelete
                           key={group.id}
+                          height={140}
                           onDelete={() => console.log("sdfsdf")}
                         >
                           <GroupsListItem key={group.id} group={group.chat} />
