@@ -44,7 +44,6 @@ const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
 
   useEffect(() => {
     const root = container.current;
-    root?.style.setProperty("--rstdiTranslate", translate + "px");
     const shiftDelete = -translate >= deleteWithoutConfirmThreshold;
     root?.style.setProperty(
       `--rstdiButtonMarginLeft`,
@@ -161,7 +160,7 @@ const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
         </button>
       </div>
       <div
-        className={`${classes.content} h-full w-auto relative ${
+        className={`${classes.content} h-full w-auto relative translate-x-[${translate}px] ${
           deleting ? ` relative h-full w-auto` : ""
         }${
           !touching
@@ -171,7 +170,9 @@ const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
         onMouseDown={onStart}
         onTouchStart={onStart}
       >
-        {children}
+        <div className="flex relative justify-start items-center h-full w-full border-box bg-[var(--tg-theme-bg-color)] text-[var(--tg-theme-text-color)]">
+          {children}
+        </div>
       </div>
     </div>
   );

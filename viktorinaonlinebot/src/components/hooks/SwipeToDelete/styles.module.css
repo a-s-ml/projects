@@ -1,11 +1,6 @@
 .rstdi {
   --rstdiTranslate: 0px;
-  --rstdiButtonMarginRight: 0px;
   --rstdiButtonMarginLeft: 0px;
-}
-
-.rstdi .content {
-  transform: translateX(var(--rstdiTranslate));
 }
 
 .rstdi .content.deleting {
@@ -19,5 +14,4 @@
 .rstdi .delete button {
   transition: margin transform 250ms ease-in-out;
   margin-left: var(--rstdiButtonMarginLeft);
-  margin-right: var(--rstdiButtonMarginRight);
 }

@@ -58,9 +58,7 @@ export default function SlideDown({ slide }: SlideDownProps) {
                           key={group.id}
                           onDelete={() => console.log("sdfsdf")}
                         >
-                          <div className="flex relative justify-start items-center h-full w-full border-box bg-[var(--tg-theme-bg-color)] text-[var(--tg-theme-text-color)]">
-                            <GroupsListItem key={group.id} group={group.chat} />
-                          </div>
+                          <GroupsListItem key={group.id} group={group.chat} />
                         </SwipeToDelete>
                       ))}
                   </ul>
