@@ -146,8 +146,8 @@ const SwipeToDelete = ({
 
   return (
     <div
-      className={`${classes.rstdi} ${
-        deleting ? ` ${classes.deleting}` : ``
+      className={`${classes.rstdi} w-auto relative border-box overflow-hidden h-full before:border-box after:border-box ${
+        deleting ? ` transition-all ease-out duration-250 max-h-0` : ``
       }`}
       ref={container}
     >
