@@ -2,6 +2,7 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Preloader from "../Preloader/Preloader";
 import SwipeToDelete from "../hooks/SwipeToDelete";
+import Demo from "../hooks/SwipeToDelete/demo";
 
 interface SlideDownProps {
   slide: boolean;
@@ -40,11 +41,7 @@ export default function SlideDown({ slide }: SlideDownProps) {
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   <Preloader />
-                  <SwipeToDelete
-                    onDelete={handleDelete}
-                  >
-                    <div className="py-4 px-0 text-[var(--tg-theme-text-color)]">Кнопка</div>
-                  </SwipeToDelete>
+                  <Demo />
                 </div>
               </Dialog.Panel>
             </Transition.Child>
