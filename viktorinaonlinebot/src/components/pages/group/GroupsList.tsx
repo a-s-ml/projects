@@ -20,13 +20,14 @@ export default function GroupsList({ chat }: GroupsListProps) {
       {errorGroups && <ErrorPage />}
       <ul
         role="list"
-        className="mt-4 divide-y divide-[var(--tg-theme-hint-color)] py-9"
+        className="mt-4 divide-y divide-[var(--tg-theme-hint-color)] pt-9"
       >
         {successGroup &&
           dataGroups.map((group) => (
             <GroupsListItem key={group.id} group={group.chat} />
           ))}
       </ul>
+      <div className="pb-12"></div>
     </>
   );
 }
