@@ -2,7 +2,6 @@ import { useGetGroupsQuery } from "../../store/api/group.api";
 import GroupsListItem from "./GroupsListItem";
 import ErrorPage from "../ErrorPage";
 import Preloader from "../../Preloader/Preloader";
-import Demo from "../../hooks/SwipeToDelete/demo";
 
 interface GroupsListProps {
   chat: number;

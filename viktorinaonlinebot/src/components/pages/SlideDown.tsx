@@ -3,6 +3,10 @@ import { Dialog, Transition } from "@headlessui/react";
 import Preloader from "../Preloader/Preloader";
 import SwipeToDelete from "../hooks/SwipeToDelete";
 import Demo from "../hooks/SwipeToDelete/demo";
+import { useAppSelector } from "../store";
+import { selectSlideUser } from "../store/api/slide.slice";
+import { useGetGroupsQuery } from "../store/api/group.api";
+import GroupsListItem from "./group/GroupsListItem";
 
 interface SlideDownProps {
   slide: boolean;
@@ -16,10 +20,14 @@ export default function SlideDown({ slide }: SlideDownProps) {
     tg.HapticFeedback.notificationOccurred("success");
   }
 
-  function handleDelete() {
-    console.log("handleDelete");
-  }
+  const chat = useAppSelector(selectSlideUser);
 
+  const {
+    isLoading: loadGroups,
+    isError: errorGroups,
+    data: dataGroups,
+    isSuccess: successGroup,
+  } = useGetGroupsQuery(chat);
   return (
     <>
       <Transition.Root show={slideState} as={Fragment}>
@@ -41,34 +49,20 @@ export default function SlideDown({ slide }: SlideDownProps) {
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   <Preloader />
-                  <SwipeToDelete
-                    height={50}
-                    onDelete={() => console.log("sdfsdf")}
+                  <ul
+                    role="list"
+                    className="mt-4 divide-y divide-[var(--tg-theme-hint-color)] pt-9"
                   >
-                    <div className="flex border-box relative w-full h-[50px] justify-start items-center">
-                      1
-                    </div>
-                  </SwipeToDelete>
-                  <SwipeToDelete
-                    height={50}
-                    onDelete={() => console.log("sdfsdf")}
-                  >
-                    <div className="flex border-box relative w-full h-[50px] justify-start items-center">
-                      2
-                    </div>
-                  </SwipeToDelete>
-                  <SwipeToDelete
-                    height={50}
-                    onDelete={() => console.log("sdfsdf")}
-                  >
-                    <span>sdf3</span>
-                  </SwipeToDelete>
-                  <SwipeToDelete
-                    height={50}
-                    onDelete={() => console.log("sdfsdf")}
-                  >
-                    <span>sdf4</span>
-                  </SwipeToDelete>
+                    {successGroup &&
+                      dataGroups.map((group) => (
+                        <SwipeToDelete
+                          key={group.id}
+                          onDelete={() => console.log("sdfsdf")}
+                        >
+                          <GroupsListItem key={group.id} group={group.chat} />
+                        </SwipeToDelete>
+                      ))}
+                  </ul>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
