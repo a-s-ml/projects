@@ -58,7 +58,7 @@ export default function SlideDown({ slide }: SlideDownProps) {
                           key={group.id}
                           onDelete={() => console.log("sdfsdf")}
                         >
-                          <span key={group.id}>Span {String(group.chat)}</span>
+                          <GroupsListItem key={group.id} group={group.chat} />
                         </SwipeToDelete>
                       ))}
                   </ul>
