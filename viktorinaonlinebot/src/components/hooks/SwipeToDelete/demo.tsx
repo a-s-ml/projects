@@ -72,8 +72,8 @@ const Demo = () => {
           height={50}
           onDelete={() => setItems((items) => items.filter((i) => i.content !== item.content))}>
           <span className="item">
-            <div className="dot" style={{ backgroundColor: item.color }} />
-            <span>{item.content}</span>
+            <div className="dot text-[var(--tg-theme-text-color)]" style={{ backgroundColor: item.color }} />
+            <span className="text-[var(--tg-theme-text-color)]">{item.content}</span>
           </span>
         </SwipeToDelete>
       ))}
