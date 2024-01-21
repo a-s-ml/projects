@@ -1,5 +1,5 @@
+import { TrashIcon } from "@heroicons/react/24/outline";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-
 export interface Props {
   onDelete: Function;
   disabled?: boolean;
@@ -14,10 +14,14 @@ const cursorPosition = (event: any) => {
   return event?.nativeEvent?.clientX;
 };
 
-export default function SwipeToDelete({ onDelete, disabled = false, children }: Props) {
-  const deleteWidth: number = 75;
-  const deleteThreshold: number = 75;
-  const transitionDuration: number = 250;
+export default function SwipeToDelete({
+  onDelete,
+  disabled = false,
+  children,
+}: Props) {
+  const deleteWidth: number = 70;
+  const deleteThreshold: number = 70;
+  const transitionDuration: number = 500;
   const [touching, setTouching] = useState(false);
   const [translate, setTranslate] = useState(0);
   const [deleting, setDeleting] = useState(false);
@@ -156,9 +160,9 @@ export default function SwipeToDelete({ onDelete, disabled = false, children }: 
       >
         <button
           onClick={onDeleteClick}
-          className={`bg-transparent px-2 w-[${deleteWidth}px] font-bold text-[var(--tg-theme-text-color)] h-full cursor-pointer ml-[var(--rstdiButtonMarginLeft)] transition-all transform ease-in-out duration-${transitionDuration}`}
+          className={`bg-transparent px-4 w-[${deleteWidth}px] text-[var(--tg-theme-text-color)] h-full cursor-pointer ml-[var(--rstdiButtonMarginLeft)] transition-all transform ease-in-out duration-${transitionDuration}`}
         >
-          Удалить
+          <TrashIcon />
         </button>
       </div>
       <div
@@ -180,4 +184,4 @@ export default function SwipeToDelete({ onDelete, disabled = false, children }: 
       </div>
     </div>
   );
-};
+}

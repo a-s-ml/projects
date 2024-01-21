@@ -61,6 +61,15 @@ export default function SlideDown({ slide }: SlideDownProps) {
                           <GroupsListItem key={group.id} group={group.chat} />
                         </SwipeToDelete>
                       ))}
+                    {successGroup &&
+                      dataGroups.map((group) => (
+                        <SwipeToDelete
+                          key={group.id+2}
+                          onDelete={() => console.log("sdfsdf")}
+                        >
+                          <GroupsListItem key={group.id} group={group.chat} />
+                        </SwipeToDelete>
+                      ))}
                   </ul>
                 </div>
               </Dialog.Panel>
