@@ -162,7 +162,7 @@ export default function SwipeToDelete({
           onClick={onDeleteClick}
           className={`bg-transparent px-4 w-[${deleteWidth}px] h-full cursor-pointer ml-[var(--rstdiButtonMarginLeft)] transition-all transform ease-in-out duration-${transitionDuration}`}
         >
-          <TrashIcon className="text-[var(--tg-theme-text-color)] bg-[var(--tg-theme-text-color)]"/>
+          <TrashIcon className="text-[var(--tg-theme-text-color)] w-[40px] mx-auto"/>
         </button>
       </div>
       <div
