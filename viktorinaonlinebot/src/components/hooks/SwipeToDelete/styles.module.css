@@ -21,15 +21,3 @@
   margin-left: var(--rstdiButtonMarginLeft);
   margin-right: var(--rstdiButtonMarginRight);
 }
-
-.item {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 100%;
-  color: var(--tg-theme-text-color);
-  background: var(--tg-theme-bg-color);
-  width: 100%;
-  box-sizing: border-box;
-  position: relative;
-}
