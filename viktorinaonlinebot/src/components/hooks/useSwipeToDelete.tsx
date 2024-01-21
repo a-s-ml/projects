@@ -156,7 +156,7 @@ export default function SwipeToDelete({ onDelete, disabled = false, children }: 
       >
         <button
           onClick={onDeleteClick}
-          className={`bg-transparent w-[${deleteWidth}px] h-full cursor-pointer ml-[var(--rstdiButtonMarginLeft)] transition-all transform ease-in-out duration-${transitionDuration}`}
+          className={`bg-transparent px-2 w-[${deleteWidth}px] h-full cursor-pointer ml-[var(--rstdiButtonMarginLeft)] transition-all transform ease-in-out duration-${transitionDuration}`}
         >
           Удалить
         </button>
