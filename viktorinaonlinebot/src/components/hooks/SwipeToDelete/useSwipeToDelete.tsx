@@ -171,9 +171,7 @@ const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
         onMouseDown={onStart}
         onTouchStart={onStart}
       >
-        <div className="flex relative justify-start items-center h-full w-full border-box bg-[var(--tg-theme-bg-color)] text-[var(--tg-theme-text-color)]">
-          {children}
-        </div>
+        {children}
       </div>
     </div>
   );
