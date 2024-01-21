@@ -13,6 +13,7 @@
   box-sizing: border-box;
   overflow: hidden;
   height: auto;
+  max-height: calc(100% + 10px);
 }
 
 .rstdi *,
