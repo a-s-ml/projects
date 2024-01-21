@@ -57,13 +57,13 @@ export default function SlideDown({ slide }: SlideDownProps) {
                     height={50}
                     onDelete={() => console.log("sdfsdf")}
                   >
-                    <div className="flex border-box relative w-full h-[50px] justify-start items-center">3</div>
+                    <div className="flex border-box relative w-full h-[50px] justify-start items-center bg-[var(--tg-theme-bg-color)]">3</div>
                   </SwipeToDelete>
                   <SwipeToDelete
                     height={50}
                     onDelete={() => console.log("sdfsdf")}
                   >
-                    <div className="flex border-box relative w-full h-[50px] justify-start items-center">4</div>
+                    <div className="flex border-box relative w-full h-[50px] justify-start items-center bg-[var(--tg-theme-bg-color)]">4</div>
                   </SwipeToDelete>
                 </div>
               </Dialog.Panel>
