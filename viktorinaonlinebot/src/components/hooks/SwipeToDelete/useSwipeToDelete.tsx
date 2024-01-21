@@ -136,6 +136,7 @@ const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
   return (
     <div
       ref={container}
+      style={{ "--rstdiTranslate": "0px",  "--rstdiButtonMarginLeft": "0px" } as React.CSSProperties}
       className={`${
         classes.rstdi
       } w-auto relative border-box overflow-hidden h-full before:border-box after:border-box ${
@@ -155,7 +156,7 @@ const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
       >
         <button
           onClick={onDeleteClick}
-          className={`bg-transparent w-[${deleteWidth}px] h-full cursor-pointer`}
+          className={`bg-transparent w-[${deleteWidth}px] h-full cursor-pointer ml-[var(--rstdiButtonMarginLeft)] transition-all transform ease-in-out duration-${transitionDuration}`}
         >
           Удалить
         </button>
