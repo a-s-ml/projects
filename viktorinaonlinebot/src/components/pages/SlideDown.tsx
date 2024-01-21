@@ -1,11 +1,11 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Preloader from "../Preloader/Preloader";
-import SwipeToDelete from "../hooks/SwipeToDelete";
 import { useAppSelector } from "../store";
 import { selectSlideUser } from "../store/api/slide.slice";
 import { useGetGroupsQuery } from "../store/api/group.api";
 import GroupsListItem from "./group/GroupsListItem";
+import SwipeToDelete from "../hooks/SwipeToDelete/useSwipeToDelete";
 
 interface SlideDownProps {
   slide: boolean;

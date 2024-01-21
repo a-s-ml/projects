@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import classes from "./styles.module.css";
 
 export interface Props {
   onDelete: Function;
@@ -15,7 +14,7 @@ const cursorPosition = (event: any) => {
   return event?.nativeEvent?.clientX;
 };
 
-const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
+export default function SwipeToDelete({ onDelete, disabled = false, children }: Props) {
   const deleteWidth: number = 75;
   const deleteThreshold: number = 75;
   const transitionDuration: number = 250;
@@ -136,19 +135,20 @@ const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
   return (
     <div
       ref={container}
-      style={{ "--rstdiTranslate": "0px",  "--rstdiButtonMarginLeft": "0px" } as React.CSSProperties}
-      className={`${
-        classes.rstdi
-      } w-auto relative border-box overflow-hidden h-full before:border-box after:border-box ${
+      style={
+        {
+          "--rstdiTranslate": "0px",
+          "--rstdiButtonMarginLeft": "0px",
+        } as React.CSSProperties
+      }
+      className={`w-auto relative border-box overflow-hidden h-full before:border-box after:border-box ${
         deleting
           ? ` transition-all ease-out duration-${transitionDuration} max-h-0`
           : ""
       }`}
     >
       <div
-        className={`${
-          classes.delete
-        } absolute right-0 top-0 h-full w-full inline-flex justify-start items-center bg-red-500 ${
+        className={`absolute right-0 top-0 h-full w-full inline-flex justify-start items-center bg-red-500 ${
           deleting
             ? ` transition-all ease-out duration-${transitionDuration} max-h-0`
             : ""
@@ -162,8 +162,10 @@ const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
         </button>
       </div>
       <div
-        className={`${classes.content} h-full w-auto relative translate-x-[var(--rstdiTranslate)] ${
-          deleting ? ` relative h-full w-auto scale-0 translate-x-[var(--rstdiTranslate)]` : ""
+        className={`h-full w-auto relative translate-x-[var(--rstdiTranslate)] ${
+          deleting
+            ? ` relative h-full w-auto scale-0 translate-x-[var(--rstdiTranslate)]`
+            : ""
         }${
           !touching
             ? ` transition-all ease-out duration-${transitionDuration}`
@@ -179,5 +181,3 @@ const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
     </div>
   );
 };
-
-export default SwipeToDelete;
