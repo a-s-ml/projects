@@ -5,7 +5,7 @@ import { useAppSelector } from "../store";
 import { selectSlideUser } from "../store/api/slide.slice";
 import { useGetGroupsQuery } from "../store/api/group.api";
 import GroupsListItem from "./group/GroupsListItem";
-import SwipeToDelete from "../hooks/SwipeToDelete/useSwipeToDelete";
+import SwipeToDelete from "../hooks/useSwipeToDelete";
 
 interface SlideDownProps {
   slide: boolean;
