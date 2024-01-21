@@ -71,3 +71,17 @@
   font-size: 1rem;
   cursor: pointer;
 }
+
+.item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid grey;
+  padding-left: 10px;
+  background: var(--tg-theme-bg-color);
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
