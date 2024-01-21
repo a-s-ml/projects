@@ -76,7 +76,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: auto;
+  height: 100%;
   color: var(--tg-theme-text-color);
   background: var(--tg-theme-bg-color);
   width: 100%;
