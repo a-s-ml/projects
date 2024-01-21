@@ -53,6 +53,8 @@ const SwipeToDelete = ({
   const container = useRef<HTMLDivElement>(null);
   const containerWidth: number =
     container.current?.getBoundingClientRect().width || 0;
+  const containerHeight: number =
+    container.current?.getBoundingClientRect().height || 0;
   const deleteWithoutConfirmThreshold: number =
     containerWidth * (deleteThreshold / 100);
 
@@ -69,7 +71,7 @@ const SwipeToDelete = ({
 
   useEffect(() => {
     const root = container.current;
-    root?.style.setProperty("--rstdiHeight", height + "px");
+    root?.style.setProperty("--rstdiHeight", containerHeight + "px");
     root?.style.setProperty(
       "--rstdiTransitionDuration",
       transitionDuration + "ms"
