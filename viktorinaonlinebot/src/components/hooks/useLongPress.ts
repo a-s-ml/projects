@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 
 export default function useLongPress() {
+  
   const [action, setAction] = useState('');
 
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
@@ -15,6 +16,7 @@ export default function useLongPress() {
   }
 
   function handleOnClick(e: any) {
+    e.preventDefault()
     console.log('handleOnClick');
     if ( isLongPress.current ) {
       console.log('Is long press - not continuing.');
