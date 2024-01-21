@@ -6,6 +6,7 @@ export interface Props {
   onDeleteConfirm?: Function;
   deleteComponent?: React.ReactNode;
   disabled?: boolean;
+  height?: number;
   transitionDuration?: number;
   deleteWidth?: number;
   deleteThreshold?: number;
@@ -31,6 +32,7 @@ const SwipeToDelete = ({
   onDeleteConfirm,
   deleteComponent,
   disabled = false,
+  height = 50,
   transitionDuration = 250,
   deleteWidth = 75,
   deleteThreshold = 75,
@@ -67,6 +69,7 @@ const SwipeToDelete = ({
 
   useEffect(() => {
     const root = container.current;
+    root?.style.setProperty("--rstdiHeight", height + "px");
     root?.style.setProperty(
       "--rstdiTransitionDuration",
       transitionDuration + "ms"
@@ -74,7 +77,7 @@ const SwipeToDelete = ({
     root?.style.setProperty("--rstdiIsRtl", rtl ? "1" : "-1");
     root?.style.setProperty("--rstdiDeleteColor", deleteColor);
     root?.style.setProperty("--rstdiDeleteWidth", deleteWidth + "px");
-  }, [deleteColor, deleteWidth, rtl, transitionDuration]);
+  }, [deleteColor, deleteWidth, height, rtl, transitionDuration]);
 
   useEffect(() => {
     const root = container.current;

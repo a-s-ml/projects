@@ -12,7 +12,8 @@
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
-  height: 50%;
+  height: var(--rstdiHeight);
+  max-height: calc(var(--rstdiHeight) + 10px);
 }
 
 .rstdi *,
