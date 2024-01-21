@@ -1,8 +1,4 @@
 .rstdi {
-  --rstdiTranslate: 0px;
-  --rstdiButtonMarginRight: 0px;
-  --rstdiButtonMarginLeft: 0px;
-
   width: auto;
   position: relative;
   box-sizing: border-box;
@@ -25,7 +21,7 @@
   height: 100%;
   width: auto;
   position: relative;
-  transform: translateX(var(--rstdiTranslate));
+  transform: translateX(0px);
 }
 
 .rstdi .content.transition {
@@ -36,7 +32,7 @@
   height: 100%;
   width: auto;
   position: relative;
-  transform: scale(0) translateX(var(--rstdiTranslate));
+  transform: scale(0) translateX(0px);
 }
 
 .rstdi .delete {
@@ -55,8 +51,8 @@
 .rstdi .delete button {
   width: 75px;
   transition: margin transform 250ms ease-in-out;
-  margin-left: var(--rstdiButtonMarginLeft);
-  margin-right: var(--rstdiButtonMarginRight);
+  margin-left: 0px;
+  margin-right: 0px;
   text-align: center;
   height: 100%;
   background: transparent;
