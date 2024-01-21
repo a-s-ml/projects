@@ -139,11 +139,11 @@ const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
       className={`${
         classes.rstdi
       } w-auto relative border-box overflow-hidden h-full before:border-box after:border-box ${
-        deleting ? ` transition-all ease-out duration-250 max-h-0` : ``
+        deleting ? ` transition-all ease-out duration-250 max-h-0` : ""
       }`}
     >
       <div
-        className={`${classes.delete} absolute right-0 top-0 h-full w-[75px] inline-flex justify-start items-center bg-red-500 ${
+        className={`${classes.delete} absolute right-0 top-0 h-full w-full inline-flex justify-start items-center bg-red-500 ${
           deleting ? ` ${classes.deleting} transition-all ease-out duration-250 max-h-0` : ""
         }`}
       >

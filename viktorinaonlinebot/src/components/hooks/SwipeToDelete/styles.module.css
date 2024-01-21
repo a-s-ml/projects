@@ -23,7 +23,7 @@
 }
 
 .rstdi .delete {
-  position: absolute;
+  font-weight: 400;
 }
 
 .rstdi .delete button {
