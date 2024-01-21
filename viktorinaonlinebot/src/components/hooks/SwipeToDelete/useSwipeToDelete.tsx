@@ -6,12 +6,10 @@ export interface Props {
   onDeleteConfirm?: Function;
   deleteComponent?: React.ReactNode;
   disabled?: boolean;
-  transitionDuration?: number;
   deleteWidth?: number;
   deleteThreshold?: number;
   showDeleteAction?: boolean;
   deleteColor?: string;
-  deleteText?: string;
   className?: string;
   id?: string;
   rtl?: boolean;
@@ -31,17 +29,16 @@ const SwipeToDelete = ({
   onDeleteConfirm,
   deleteComponent,
   disabled = false,
-  transitionDuration = 250,
   deleteWidth = 75,
   deleteThreshold = 75,
   showDeleteAction = true,
   deleteColor = "rgba(252, 58, 48, 1.00)",
-  deleteText = "Delete",
   className = "",
   id = "",
   rtl = false,
   children,
 }: Props) => {
+  const transitionDuration: number = 250;
   const [touching, setTouching] = useState(false);
   const [translate, setTranslate] = useState(0);
   const [deleting, setDeleting] = useState(false);
@@ -67,14 +64,10 @@ const SwipeToDelete = ({
 
   useEffect(() => {
     const root = container.current;
-    root?.style.setProperty(
-      "--rstdiTransitionDuration",
-      transitionDuration + "ms"
-    );
     root?.style.setProperty("--rstdiIsRtl", rtl ? "1" : "-1");
     root?.style.setProperty("--rstdiDeleteColor", deleteColor);
     root?.style.setProperty("--rstdiDeleteWidth", deleteWidth + "px");
-  }, [deleteColor, deleteWidth, rtl, transitionDuration]);
+  }, [deleteColor, deleteWidth, rtl]);
 
   useEffect(() => {
     const root = container.current;
@@ -221,9 +214,7 @@ const SwipeToDelete = ({
           deleting ? ` ${classes.deleting}` : ""
         }`}
       >
-        <button onClick={onDeleteClick}>
-          {deleteComponent ? deleteComponent : deleteText}
-        </button>
+        <button onClick={onDeleteClick}>Удалить</button>
       </div>
       <div
         className={`${classes.content} ${
