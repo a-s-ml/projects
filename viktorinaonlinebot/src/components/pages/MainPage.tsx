@@ -16,7 +16,6 @@ import { getAllTime } from "../store/api/time/time.slice";
 import { useGetCategoryQuery } from "../store/api/category/category.api";
 import { getAllCategories } from "../store/api/category/category.slice";
 import Preloader from "../Preloader/Preloader";
-import Demo from "../hooks/SwipeToDelete/demo";
 
 let menuitems: IMenu[] = [
   {

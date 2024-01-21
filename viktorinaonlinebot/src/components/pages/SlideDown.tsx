@@ -2,7 +2,6 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Preloader from "../Preloader/Preloader";
 import SwipeToDelete from "../hooks/SwipeToDelete";
-import Demo from "../hooks/SwipeToDelete/demo";
 import { useAppSelector } from "../store";
 import { selectSlideUser } from "../store/api/slide.slice";
 import { useGetGroupsQuery } from "../store/api/group.api";
