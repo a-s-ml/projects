@@ -46,10 +46,24 @@ export default function SlideDown({ slide }: SlideDownProps) {
                     onDelete={() => console.log("sdfsdf")}
                   >
                     <p>1</p>
+                  </SwipeToDelete>
+                  <SwipeToDelete
+                    height={50}
+                    onDelete={() => console.log("sdfsdf")}
+                  >
                     <p>2</p>
+                  </SwipeToDelete>
+                  <SwipeToDelete
+                    height={50}
+                    onDelete={() => console.log("sdfsdf")}
+                  >
                     <p>3</p>
+                  </SwipeToDelete>
+                  <SwipeToDelete
+                    height={50}
+                    onDelete={() => console.log("sdfsdf")}
+                  >
                     <p>4</p>
-                    <p>5</p>
                   </SwipeToDelete>
                 </div>
               </Dialog.Panel>
