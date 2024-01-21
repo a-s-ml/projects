@@ -114,7 +114,6 @@ export function MainPage() {
                 </ul>
               )}
           </div>
-          <Demo />
         </div>
       </div>
       {successUser &&

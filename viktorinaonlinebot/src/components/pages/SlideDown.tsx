@@ -41,6 +41,16 @@ export default function SlideDown({ slide }: SlideDownProps) {
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   <Preloader />
+                  <SwipeToDelete
+                    height={50}
+                    onDelete={() => console.log("sdfsdf")}
+                  >
+                    <p>1</p>
+                    <p>2</p>
+                    <p>3</p>
+                    <p>4</p>
+                    <p>5</p>
+                  </SwipeToDelete>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
