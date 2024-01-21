@@ -80,6 +80,7 @@
   line-height: 50px;
   border-bottom: 1px solid grey;
   padding-left: 10px;
+  color: var(--tg-theme-text-color);
   background: var(--tg-theme-bg-color);
   width: 100%;
   box-sizing: border-box;
