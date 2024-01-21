@@ -38,12 +38,11 @@ let menuitems: IMenu[] = [
 export function MainPage() {
   const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
-  const viewportHeight: number = tg.viewportHeight;
 
   useEffect(() => {
     tg.expand();
-    console.log(viewportHeight)
-  }, [viewportHeight]);
+    tg.ready();
+  }, []);
 
   const {
     isLoading: loadUser,
