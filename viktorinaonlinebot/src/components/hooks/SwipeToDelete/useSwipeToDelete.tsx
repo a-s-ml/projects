@@ -4,12 +4,10 @@ import classes from "./styles.module.css";
 export interface Props {
   onDelete: Function;
   onDeleteConfirm?: Function;
-  deleteComponent?: React.ReactNode;
   disabled?: boolean;
   deleteWidth?: number;
   deleteThreshold?: number;
   showDeleteAction?: boolean;
-  deleteColor?: string;
   className?: string;
   id?: string;
   rtl?: boolean;
@@ -27,12 +25,10 @@ const cursorPosition = (event: any) => {
 const SwipeToDelete = ({
   onDelete,
   onDeleteConfirm,
-  deleteComponent,
   disabled = false,
   deleteWidth = 75,
   deleteThreshold = 75,
   showDeleteAction = true,
-  deleteColor = "rgba(252, 58, 48, 1.00)",
   className = "",
   id = "",
   rtl = false,
@@ -65,9 +61,8 @@ const SwipeToDelete = ({
   useEffect(() => {
     const root = container.current;
     root?.style.setProperty("--rstdiIsRtl", rtl ? "1" : "-1");
-    root?.style.setProperty("--rstdiDeleteColor", deleteColor);
     root?.style.setProperty("--rstdiDeleteWidth", deleteWidth + "px");
-  }, [deleteColor, deleteWidth, rtl]);
+  }, [deleteWidth, rtl]);
 
   useEffect(() => {
     const root = container.current;

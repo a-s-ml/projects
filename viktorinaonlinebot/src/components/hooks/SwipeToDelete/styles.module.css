@@ -1,9 +1,6 @@
 .rstdi {
-  --rstdiHeight: 30px;
-  --rstdiTransitionDuration: 250ms;
   --rstdiTranslate: 0px;
   --rstdiIsRtl: 0;
-  --rstdiDeleteColor: rgba(252, 58, 48, 1);
   --rstdiDeleteWidth: 75px;
   --rstdiButtonMarginRight: 0px;
   --rstdiButtonMarginLeft: 0px;
@@ -22,7 +19,7 @@
 }
 
 .rstdi.deleting {
-  transition: all var(--rstdiTransitionDuration) ease-out;
+  transition: all 250ms ease-out;
   max-height: 0;
 }
 
@@ -34,7 +31,7 @@
 }
 
 .rstdi .content.transition {
-  transition: transform var(--rstdiTransitionDuration) ease-out;
+  transition: transform 250ms ease-out;
 }
 
 .rstdi .content.deleting {
@@ -50,7 +47,7 @@
   height: 100%;
   width: 100%;
   top: 0;
-  background: var(--rstdiDeleteColor);
+  background: red;
   font-weight: 400;
   display: inline-flex;
   justify-content: flex-start;
@@ -59,7 +56,7 @@
 
 .rstdi .delete button {
   width: var(--rstdiDeleteWidth);
-  transition: margin transform var(--rstdiTransitionDuration) ease-in-out;
+  transition: margin transform 250ms ease-in-out;
   margin-left: var(--rstdiButtonMarginLeft);
   margin-right: var(--rstdiButtonMarginRight);
   text-align: center;
