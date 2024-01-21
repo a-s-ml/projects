@@ -144,15 +144,15 @@ const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
     >
       <div
         className={`${classes.delete} absolute right-0 top-0 h-full w-full inline-flex justify-start items-center bg-red-500 ${
-          deleting ? ` ${classes.deleting} transition-all ease-out duration-250 max-h-0` : ""
+          deleting ? ` transition-all ease-out duration-250 max-h-0` : ""
         }`}
       >
         <button onClick={onDeleteClick}>Удалить</button>
       </div>
       <div
-        className={`${classes.content} ${
-          deleting ? ` ${classes.deleting}` : ""
-        }${!touching ? ` ${classes.transition}` : ""}`}
+        className={`${classes.content} h-full w-auto relative ${
+          deleting ? ` relative h-full w-auto` : ""
+        }${!touching ? ` transition-all ease-out duration-300` : ""}`}
         onMouseDown={onStart}
         onTouchStart={onStart}
       >

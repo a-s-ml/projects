@@ -5,20 +5,10 @@
 }
 
 .rstdi .content {
-  height: 100%;
-  width: auto;
-  position: relative;
   transform: translateX(var(--rstdiTranslate));
 }
 
-.rstdi .content.transition {
-  transition: transform 250ms ease-out;
-}
-
 .rstdi .content.deleting {
-  height: 100%;
-  width: auto;
-  position: relative;
   transform: scale(0) translateX(var(--rstdiTranslate));
 }
 
