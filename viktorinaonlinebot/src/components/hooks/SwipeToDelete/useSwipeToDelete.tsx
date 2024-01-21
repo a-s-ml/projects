@@ -236,7 +236,6 @@ const SwipeToDelete = ({
         onTouchStart={onStart}
       >
         <div className={classes.item}>{children}</div>
-        {children}
       </div>
     </div>
   );
