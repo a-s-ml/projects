@@ -3,14 +3,6 @@
   --rstdiButtonMarginLeft: 0px;
 }
 
-.rstdi .content {
-  transform: translateX(var(--rstdiTranslate));
-}
-
-.rstdi .content.deleting {
-  transform: scale(0) translateX(var(--rstdiTranslate));
-}
-
 .rstdi .delete {
   font-weight: 400;
 }

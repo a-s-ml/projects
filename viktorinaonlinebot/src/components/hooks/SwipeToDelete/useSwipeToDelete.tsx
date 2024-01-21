@@ -161,8 +161,8 @@ const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
         </button>
       </div>
       <div
-        className={`${classes.content} h-full w-auto relative ${
-          deleting ? ` relative h-full w-auto` : ""
+        className={`${classes.content} h-full w-auto relative translate-x-[var(--rstdiTranslate)] ${
+          deleting ? ` relative h-full w-auto scale-0 translate-x-[var(--rstdiTranslate)]` : ""
         }${
           !touching
             ? ` transition-all ease-out duration-${transitionDuration}`
