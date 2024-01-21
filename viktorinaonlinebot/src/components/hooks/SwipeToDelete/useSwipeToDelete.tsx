@@ -219,35 +219,19 @@ const SwipeToDelete = ({
   }
 
   return (
-    <div
-      id={id}
-      ref={container}
-      className={classNames(
-        deleting ? `transition-all ease-out duration-300 max-h-0` : "",
-        `w-auto relative border-box overflow-hidden h-[50px] max-h-[60px] before:border-box after:border-box`
-      )}
-    >
-      <div
-        className={classNames(
-          deleting ? `transition-all ease-out duration-300` : "",
-          `absolute right-0 top-0 h-full w-full inline-flex justify-start items-center bg-red-500`
-        )}
-      >
-        <button onClick={onDeleteClick}>
-          {deleteComponent ? deleteComponent : deleteText}
-        </button>
-      </div>
-      <div
-        onMouseDown={onStart}
-        onTouchStart={onStart}
-        className={classNames(
-          deleting ? `h-full w-auto relative scale-0 translate-x-0` : "",
-          `relative h-full w-auto transform translate-x-0`
-        )}
-      >
-        {children}
-      </div>
+    <div id={id} className={`rstdi${deleting ? " deleting" : ""} ${className}`} ref={container}>
+    <div className={`delete${deleting ? " deleting" : ""}`}>
+      <button onClick={onDeleteClick}>{deleteComponent ? deleteComponent : deleteText}</button>
     </div>
+    <div
+      className={`content${deleting ? " deleting" : ""}${!touching ? " transition" : ""}`}
+      onMouseDown={onStart}
+      onTouchStart={onStart}>
+          <span className="itemsrst">
+            <span>Кнопка СЫЫ</span>
+          </span>
+    </div>
+  </div>
   );
 };
 
