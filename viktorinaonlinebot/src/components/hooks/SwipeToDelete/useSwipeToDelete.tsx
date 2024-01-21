@@ -4,13 +4,8 @@ import classes from "./styles.module.css";
 export interface Props {
   onDelete: Function;
   disabled?: boolean;
-  deleteWidth?: number;
-  deleteThreshold?: number;
   showDeleteAction?: boolean;
-  className?: string;
-  id?: string;
-  rtl?: boolean;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
 const cursorPosition = (event: any) => {
@@ -24,14 +19,11 @@ const cursorPosition = (event: any) => {
 const SwipeToDelete = ({
   onDelete,
   disabled = false,
-  deleteWidth = 75,
-  deleteThreshold = 75,
   showDeleteAction = true,
-  className = "",
-  id = "",
-  rtl = false,
   children,
 }: Props) => {
+  const deleteWidth: number = 75;
+  const deleteThreshold: number = 75;
   const transitionDuration: number = 250;
   const [touching, setTouching] = useState(false);
   const [translate, setTranslate] = useState(0);
@@ -58,19 +50,13 @@ const SwipeToDelete = ({
 
   useEffect(() => {
     const root = container.current;
-    root?.style.setProperty("--rstdiIsRtl", rtl ? "1" : "-1");
-    root?.style.setProperty("--rstdiDeleteWidth", deleteWidth + "px");
-  }, [deleteWidth, rtl]);
-
-  useEffect(() => {
-    const root = container.current;
     root?.style.setProperty(
       "--rstdiTranslate",
-      translate * (rtl ? -1 : 1) + "px"
+      translate + "px"
     );
     const shiftDelete = -translate >= deleteWithoutConfirmThreshold;
     root?.style.setProperty(
-      `--rstdiButtonMargin${rtl ? "Right" : "Left"}`,
+      `--rstdiButtonMarginLeft`,
       (shiftDelete
         ? containerWidth + translate
         : containerWidth - deleteWidth) + "px"
@@ -79,32 +65,23 @@ const SwipeToDelete = ({
     translate,
     deleteWidth,
     containerWidth,
-    rtl,
     deleteWithoutConfirmThreshold,
   ]);
 
   const onMove = useCallback(
     function (event: TouchEvent | MouseEvent) {
       if (!touching) return;
-      if (
-        !rtl &&
-        cursorPosition(event) >
-          startTouchPosition.current - initTranslate.current
-      )
+      if (cursorPosition(event) > startTouchPosition.current - initTranslate.current)
         return setTranslate(0);
-      if (
-        rtl &&
-        cursorPosition(event) <
-          startTouchPosition.current - initTranslate.current
-      )
-        return setTranslate(0);
+
       setTranslate(
         cursorPosition(event) -
           startTouchPosition.current +
           initTranslate.current
       );
+
     },
-    [rtl, touching]
+    [touching]
   );
 
   const onMouseMove = useCallback(
@@ -131,19 +108,19 @@ const SwipeToDelete = ({
       startTouchPosition.current = 0;
       const acceptableMove = -deleteWidth * 0.7;
       const showDelete = showDeleteAction
-        ? (rtl ? -1 : 1) * translate < acceptableMove
+        ? translate < acceptableMove
         : false;
       const notShowDelete = showDeleteAction
-        ? (rtl ? -1 : 1) * translate >= acceptableMove
+        ? translate >= acceptableMove
         : true;
       const deleteWithoutConfirm =
-        (rtl ? 1 : -1) * translate >= deleteWithoutConfirmThreshold;
+        -translate >= deleteWithoutConfirmThreshold;
       if (deleteWithoutConfirm) {
         setTranslate(() => -containerWidth);
       } else if (notShowDelete) {
         setTranslate(() => 0);
       } else if (showDelete && !deleteWithoutConfirm) {
-        setTranslate(() => (rtl ? 1 : -1) * deleteWidth);
+        setTranslate(() => -deleteWidth);
       }
       setTouching(() => false);
       if (deleteWithoutConfirm) onDeleteClick();
@@ -153,7 +130,6 @@ const SwipeToDelete = ({
       deleteWidth,
       deleteWithoutConfirmThreshold,
       onDeleteClick,
-      rtl,
       translate,
     ]
   );
@@ -180,10 +156,9 @@ const SwipeToDelete = ({
 
   return (
     <div
-      id={id}
       className={`${classes.rstdi} ${
         deleting ? ` ${classes.deleting}` : ``
-      } ${className}`}
+      }`}
       ref={container}
     >
       <div
