@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SwipeToDelete from "./useSwipeToDelete";
-import "./demo.module.css";
+import styles from "./demo.module.css";
 
 const color = () => Math.ceil(Math.random() * 250);
 
@@ -71,8 +71,8 @@ const Demo = () => {
           key={item.content}
           height={50}
           onDelete={() => setItems((items) => items.filter((i) => i.content !== item.content))}>
-          <span className="item">
-            <div className="dot text-[var(--tg-theme-text-color)]" style={{ backgroundColor: item.color }} />
+          <span className={styles.item}>
+            <div className={styles.dot} style={{ backgroundColor: item.color }} />
             <span className="text-[var(--tg-theme-text-color)]">{item.content}</span>
           </span>
         </SwipeToDelete>

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import "./styles.module.css";
+import classes from "./styles.module.css";
 
 export interface Props {
   onDelete: Function;
@@ -171,12 +171,12 @@ const SwipeToDelete = ({
   }, [onMouseMove, onMouseUp, onTouchMove, touching]);
 
   return (
-    <div id={id} className={`rstdi${deleting ? " deleting" : ""} ${className}`} ref={container}>
-      <div className={`delete${deleting ? " deleting" : ""}`}>
+    <div id={id} className={`${classes.rstdi} ${deleting ? ` ${classes.deleting}` : ``} ${className}`} ref={container}>
+      <div className={`${classes.delete} ${deleting ? ` ${classes.deleting}` : ""}`}>
         <button onClick={onDeleteClick}>{deleteComponent ? deleteComponent : deleteText}</button>
       </div>
       <div
-        className={`content${deleting ? " deleting" : ""}${!touching ? " transition" : ""}`}
+        className={`${classes.content} ${deleting ? ` ${classes.deleting}` : ""}${!touching ? ` ${classes.transition}` : ""}`}
         onMouseDown={onStart}
         onTouchStart={onStart}>
         {children}
