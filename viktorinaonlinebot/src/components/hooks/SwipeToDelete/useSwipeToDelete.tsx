@@ -136,20 +136,18 @@ const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
   return (
     <div
       ref={container}
-      style={
-        {
-          "--rstdiTranslate": "0px",
-          "--rstdiButtonMarginLeft": "0px",
-        } as React.CSSProperties
-      }
-      className={`w-auto relative border-box overflow-hidden h-full before:border-box after:border-box ${
+      className={`${
+        classes.rstdi
+      } w-auto relative border-box overflow-hidden h-full before:border-box after:border-box ${
         deleting
           ? ` transition-all ease-out duration-${transitionDuration} max-h-0`
           : ""
       }`}
     >
       <div
-        className={`absolute right-0 top-0 h-full w-full inline-flex justify-start items-center bg-red-500 ${
+        className={`${
+          classes.delete
+        } absolute right-0 top-0 h-full w-full inline-flex justify-start items-center bg-red-500 ${
           deleting
             ? ` transition-all ease-out duration-${transitionDuration} max-h-0`
             : ""
@@ -157,26 +155,13 @@ const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
       >
         <button
           onClick={onDeleteClick}
-          style={
-            {
-              transition: "margin transform 250ms ease-in-out",
-              "margin-left": "var(--rstdiButtonMarginLeft)",
-            } as React.CSSProperties
-          }
           className={`bg-transparent w-[${deleteWidth}px] h-full cursor-pointer`}
         >
           Удалить
         </button>
       </div>
       <div
-        style={
-          deleting
-            ? ({
-                transform: "scale(0) translateX(var(--rstdiTranslate))",
-              } as React.CSSProperties)
-            : {}
-        }
-        className={`h-full w-auto relative ${
+        className={`${classes.content} h-full w-auto relative ${
           deleting ? ` relative h-full w-auto` : ""
         }${
           !touching
