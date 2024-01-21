@@ -3,7 +3,6 @@ import classes from "./styles.module.css";
 
 export interface Props {
   onDelete: Function;
-  onDeleteConfirm?: Function;
   disabled?: boolean;
   deleteWidth?: number;
   deleteThreshold?: number;
@@ -24,7 +23,6 @@ const cursorPosition = (event: any) => {
 
 const SwipeToDelete = ({
   onDelete,
-  onDeleteConfirm,
   disabled = false,
   deleteWidth = 75,
   deleteThreshold = 75,
@@ -123,26 +121,10 @@ const SwipeToDelete = ({
     [onMove]
   );
 
-  const onDeleteConfirmed = useCallback(() => {
+  const onDeleteClick = useCallback(() => {
     setDeleting(() => true);
     window.setTimeout(onDelete, transitionDuration);
   }, [onDelete, transitionDuration]);
-
-  const onDeleteCancel = useCallback(() => {
-    setTouching(() => false);
-    setTranslate(() => 0);
-    setDeleting(() => false);
-    startTouchPosition.current = 0;
-    initTranslate.current = 0;
-  }, [onDelete, transitionDuration]);
-
-  const onDeleteClick = useCallback(() => {
-    if (onDeleteConfirm) {
-      onDeleteConfirm(onDeleteConfirmed, onDeleteCancel);
-    } else {
-      onDeleteConfirmed();
-    }
-  }, [onDeleteConfirm, onDeleteConfirmed]);
 
   const onMouseUp = useCallback(
     function () {
