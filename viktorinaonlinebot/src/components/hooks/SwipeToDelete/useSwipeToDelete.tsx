@@ -4,7 +4,6 @@ import classes from "./styles.module.css";
 export interface Props {
   onDelete: Function;
   disabled?: boolean;
-  showDeleteAction?: boolean;
   children: React.ReactNode;
 }
 
@@ -19,7 +18,6 @@ const cursorPosition = (event: any) => {
 const SwipeToDelete = ({
   onDelete,
   disabled = false,
-  showDeleteAction = true,
   children,
 }: Props) => {
   const deleteWidth: number = 75;
@@ -107,19 +105,11 @@ const SwipeToDelete = ({
     function () {
       startTouchPosition.current = 0;
       const acceptableMove = -deleteWidth * 0.7;
-      const showDelete = showDeleteAction
-        ? translate < acceptableMove
-        : false;
-      const notShowDelete = showDeleteAction
-        ? translate >= acceptableMove
-        : true;
       const deleteWithoutConfirm =
         -translate >= deleteWithoutConfirmThreshold;
       if (deleteWithoutConfirm) {
         setTranslate(() => -containerWidth);
-      } else if (notShowDelete) {
-        setTranslate(() => 0);
-      } else if (showDelete && !deleteWithoutConfirm) {
+      } else if (translate < acceptableMove && !deleteWithoutConfirm) {
         setTranslate(() => -deleteWidth);
       }
       setTouching(() => false);
