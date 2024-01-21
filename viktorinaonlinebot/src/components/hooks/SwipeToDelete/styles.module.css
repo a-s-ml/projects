@@ -1,4 +1,7 @@
 .rstdi {
+  --rstdiButtonMarginRight: 0px;
+  --rstdiButtonMarginLeft: 0px;
+
   width: auto;
   position: relative;
   box-sizing: border-box;
@@ -51,8 +54,8 @@
 .rstdi .delete button {
   width: 75px;
   transition: margin transform 250ms ease-in-out;
-  margin-left: 0px;
-  margin-right: 0px;
+  margin-left: var(--rstdiButtonMarginLeft);
+  margin-right: var(--rstdiButtonMarginRight);
   text-align: center;
   height: 100%;
   background: transparent;
