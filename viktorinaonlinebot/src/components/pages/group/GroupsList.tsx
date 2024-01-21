@@ -28,7 +28,6 @@ export default function GroupsList({ chat }: GroupsListProps) {
             <GroupsListItem key={group.id} group={group.chat} />
           ))}
       </ul>
-      <Demo />
     </>
   );
 }
