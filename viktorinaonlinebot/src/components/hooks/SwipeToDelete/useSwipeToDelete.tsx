@@ -15,11 +15,7 @@ const cursorPosition = (event: any) => {
   return event?.nativeEvent?.clientX;
 };
 
-const SwipeToDelete = ({
-  onDelete,
-  disabled = false,
-  children,
-}: Props) => {
+const SwipeToDelete = ({ onDelete, disabled = false, children }: Props) => {
   const deleteWidth: number = 75;
   const deleteThreshold: number = 75;
   const transitionDuration: number = 250;
@@ -48,10 +44,7 @@ const SwipeToDelete = ({
 
   useEffect(() => {
     const root = container.current;
-    root?.style.setProperty(
-      "--rstdiTranslate",
-      translate + "px"
-    );
+    root?.style.setProperty("--rstdiTranslate", translate + "px");
     const shiftDelete = -translate >= deleteWithoutConfirmThreshold;
     root?.style.setProperty(
       `--rstdiButtonMarginLeft`,
@@ -59,17 +52,15 @@ const SwipeToDelete = ({
         ? containerWidth + translate
         : containerWidth - deleteWidth) + "px"
     );
-  }, [
-    translate,
-    deleteWidth,
-    containerWidth,
-    deleteWithoutConfirmThreshold,
-  ]);
+  }, [translate, deleteWidth, containerWidth, deleteWithoutConfirmThreshold]);
 
   const onMove = useCallback(
     function (event: TouchEvent | MouseEvent) {
       if (!touching) return;
-      if (cursorPosition(event) > startTouchPosition.current - initTranslate.current)
+      if (
+        cursorPosition(event) >
+        startTouchPosition.current - initTranslate.current
+      )
         return setTranslate(0);
 
       setTranslate(
@@ -77,7 +68,6 @@ const SwipeToDelete = ({
           startTouchPosition.current +
           initTranslate.current
       );
-
     },
     [touching]
   );
@@ -105,8 +95,7 @@ const SwipeToDelete = ({
     function () {
       startTouchPosition.current = 0;
       const acceptableMove = -deleteWidth * 0.7;
-      const deleteWithoutConfirm =
-        -translate >= deleteWithoutConfirmThreshold;
+      const deleteWithoutConfirm = -translate >= deleteWithoutConfirmThreshold;
       if (deleteWithoutConfirm) {
         setTranslate(() => -containerWidth);
       } else if (translate < acceptableMove && !deleteWithoutConfirm) {
@@ -146,14 +135,16 @@ const SwipeToDelete = ({
 
   return (
     <div
-      className={`${classes.rstdi} w-auto relative border-box overflow-hidden h-full before:border-box after:border-box ${
+      ref={container}
+      className={`${
+        classes.rstdi
+      } w-auto relative border-box overflow-hidden h-full before:border-box after:border-box ${
         deleting ? ` transition-all ease-out duration-250 max-h-0` : ``
       }`}
-      ref={container}
     >
       <div
-        className={`${classes.delete} ${
-          deleting ? ` ${classes.deleting}` : ""
+        className={`${classes.delete} absolute right-0 top-0 h-full w-[75px] inline-flex justify-start items-center bg-red-500 ${
+          deleting ? ` ${classes.deleting} transition-all ease-out duration-250 max-h-0` : ""
         }`}
       >
         <button onClick={onDeleteClick}>Удалить</button>

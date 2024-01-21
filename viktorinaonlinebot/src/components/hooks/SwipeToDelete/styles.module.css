@@ -2,8 +2,6 @@
   --rstdiTranslate: 0px;
   --rstdiButtonMarginRight: 0px;
   --rstdiButtonMarginLeft: 0px;
-
-  height: 100%;
 }
 
 .rstdi .content {
@@ -26,15 +24,6 @@
 
 .rstdi .delete {
   position: absolute;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  background: red;
-  font-weight: 400;
-  display: inline-flex;
-  justify-content: flex-start;
-  align-items: center;
 }
 
 .rstdi .delete button {
