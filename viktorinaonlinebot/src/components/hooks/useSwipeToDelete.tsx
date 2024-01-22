@@ -101,7 +101,7 @@ export default function SwipeToDelete({
     window.setTimeout(onDelete, transitionDuration);
   }, [onDelete, transitionDuration]);
 
-  const onMouseUp = useCallback(
+  const onMouseUp = useCallback( 
     function () {
       startTouchPosition.current = 0;
       const acceptableMove = -deleteWidth * 0.7;
