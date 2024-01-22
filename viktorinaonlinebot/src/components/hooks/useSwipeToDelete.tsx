@@ -155,7 +155,7 @@ export default function SwipeToDelete({
           "--rstdiButtonMarginLeft": "0px",
         } as React.CSSProperties
       }
-      className={`w-auto relative border-box overflow-hidden h-full before:border-box after:border-box ${
+      className={`w-auto relative border-box overflow-hidden before:border-box after:border-box ${
         deleting
           ? ` transition-all ease-out duration-${transitionDuration} max-h-0`
           : ""
