@@ -94,7 +94,7 @@ export default function SwipeToDelete({
     console.log(container.current)
     container.current && console.log(container.current.contains(event.target))
     if (container.current && !container.current.contains(event.target)) {
-      console.log("вне");
+      console.log("вне"); 
     }
   };
 
