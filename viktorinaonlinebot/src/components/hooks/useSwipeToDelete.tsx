@@ -21,7 +21,7 @@ export default function SwipeToDelete({
 }: Props) {
   const deleteWidth: number = 70;
   const deleteThreshold: number = 70;
-  const transitionDuration: number = 500;
+  const transitionDuration: number = 250;
   const [touching, setTouching] = useState(false);
   const [translate, setTranslate] = useState(0);
   const [deleting, setDeleting] = useState(false);
@@ -89,7 +89,8 @@ export default function SwipeToDelete({
     [onMove]
   );
 
-  const handleClick = (event: { target: any }) => {
+  const onMouseDown = (event: { target: any }) => {
+    console.log('down')
     if (container.current && !container.current.contains(event.target)) {
       console.log("вне");
     }
@@ -128,22 +129,22 @@ export default function SwipeToDelete({
       window.addEventListener("touchmove", onTouchMove);
       window.addEventListener("mouseup", onMouseUp);
       window.addEventListener("touchend", onMouseUp);
-      window.addEventListener("mousedown", handleClick);
+      window.addEventListener("mousedown", onMouseDown);
     } else {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("mouseup", onMouseUp);
       window.removeEventListener("touchend", onMouseUp);
-      window.removeEventListener("mousedown", handleClick);
+      window.removeEventListener("mousedown", onMouseDown);
     }
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("mouseup", onMouseUp);
       window.removeEventListener("touchend", onMouseUp);
-      window.removeEventListener("mousedown", handleClick);
+      window.removeEventListener("mousedown", onMouseDown);
     };
-  }, [onMouseMove, onMouseUp, onTouchMove, handleClick, touching]);
+  }, [onMouseMove, onMouseUp, onTouchMove, onMouseDown, touching]);
 
   return (
     <div
