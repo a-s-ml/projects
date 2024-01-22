@@ -37,16 +37,16 @@ export default function SlideDown({ slide }: SlideDownProps) {
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   <Preloader />
                   <SwipeToDelete key={1} onDelete={() => console.log("sdfsdf 1")}>
-                    <p>jgksjgkahkjg 1</p>
+                    <p className="p-2">jgksjgkahkjg 1</p>
                   </SwipeToDelete>
                   <SwipeToDelete key={2} onDelete={() => console.log("sdfsdf 2")}>
-                    <p>jgksjgkahkjg 2</p>
+                    <p className="p-2">jgksjgkahkjg 2</p>
                   </SwipeToDelete>
                   <SwipeToDelete key={3} onDelete={() => console.log("sdfsdf 3")}>
-                    <p>jgksjgkahkjg 3</p>
+                    <p className="p-2">jgksjgkahkjg 3</p>
                   </SwipeToDelete>
                   <SwipeToDelete key={4} onDelete={() => console.log("sdfsdf 4")}>
-                    <p>jgksjgkahkjg 4</p>
+                    <p className="p-2">jgksjgkahkjg 4</p>
                   </SwipeToDelete>
                 </div>
               </Dialog.Panel>
