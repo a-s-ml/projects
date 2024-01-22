@@ -89,6 +89,12 @@ export default function SwipeToDelete({
     [onMove]
   );
 
+  const handleClick = (event: { target: any; }) => {
+      if(container.current && !container.current.contains(event?.target)) {
+        console.log('вне')
+      }
+    }
+
   const onDeleteClick = useCallback(() => {
     setDeleting(() => true);
     window.setTimeout(onDelete, transitionDuration);
@@ -122,17 +128,20 @@ export default function SwipeToDelete({
       window.addEventListener("touchmove", onTouchMove);
       window.addEventListener("mouseup", onMouseUp);
       window.addEventListener("touchend", onMouseUp);
+      window.addEventListener("mousedown", handleClick);
     } else {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("mouseup", onMouseUp);
       window.removeEventListener("touchend", onMouseUp);
+      window.removeEventListener("mousedown", handleClick);
     }
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("mouseup", onMouseUp);
       window.removeEventListener("touchend", onMouseUp);
+      window.removeEventListener("mousedown", handleClick);
     };
   }, [onMouseMove, onMouseUp, onTouchMove, touching]);
 
