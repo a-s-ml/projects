@@ -148,7 +148,7 @@ export default function SwipeToDelete({
 
   return (
     <div
-      ref={container}
+      ref={container} 
       style={
         {
           "--rstdiTranslate": "0px",

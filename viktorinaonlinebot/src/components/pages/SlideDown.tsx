@@ -2,6 +2,7 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Preloader from "../Preloader/Preloader";
 import SwipeToDelete from "../hooks/useSwipeToDelete";
+import AddNewCategory from "./group/sittingsGroup/AddNewCategory";
 
 interface SlideDownProps {
   slide: boolean;
@@ -36,17 +37,29 @@ export default function SlideDown({ slide }: SlideDownProps) {
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   <Preloader />
-                  <SwipeToDelete key={1} onDelete={() => console.log("sdfsdf 1")}>
-                    <p className="p-2">jgksjgkahkjg 1</p>
+                  <SwipeToDelete
+                    key={1}
+                    onDelete={() => console.log("sdfsdf 1")}
+                  >
+                    <AddNewCategory />
                   </SwipeToDelete>
-                  <SwipeToDelete key={2} onDelete={() => console.log("sdfsdf 2")}>
-                    <p className="p-2">jgksjgkahkjg 2</p>
+                  <SwipeToDelete
+                    key={2}
+                    onDelete={() => console.log("sdfsdf 2")}
+                  >
+                    <AddNewCategory />
                   </SwipeToDelete>
-                  <SwipeToDelete key={3} onDelete={() => console.log("sdfsdf 3")}>
-                    <p className="p-2">jgksjgkahkjg 3</p>
+                  <SwipeToDelete
+                    key={3}
+                    onDelete={() => console.log("sdfsdf 3")}
+                  >
+                    <AddNewCategory />
                   </SwipeToDelete>
-                  <SwipeToDelete key={4} onDelete={() => console.log("sdfsdf 4")}>
-                    <p className="p-2">jgksjgkahkjg 4</p>
+                  <SwipeToDelete
+                    key={4}
+                    onDelete={() => console.log("sdfsdf 4")}
+                  >
+                    <AddNewCategory />
                   </SwipeToDelete>
                 </div>
               </Dialog.Panel>
