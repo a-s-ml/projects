@@ -92,7 +92,7 @@ export default function SwipeToDelete({
   const onMouseDown = (event: { target: any }) => {
     console.log('down')
     console.log(container.current)
-    console.log(cursorPosition(event.target))
+    console.log(!container.current?.contains(event.target))
     console.log(container.current && !container.current.contains(event.target))
     if(container.current && !container.current.contains(event.target)) console.log('sdf')
   };
