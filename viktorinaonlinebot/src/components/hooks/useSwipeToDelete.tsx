@@ -89,11 +89,11 @@ export default function SwipeToDelete({
     [onMove]
   );
 
-  const handleClick = (event: { target: any; }) => {
-      if(container.current && !container.current.contains(event?.target)) {
-        console.log('вне')
-      }
+  const handleClick = (event: { target: any }) => {
+    if (container.current && !container.current.contains(event.target)) {
+      console.log("вне");
     }
+  };
 
   const onDeleteClick = useCallback(() => {
     setDeleting(() => true);
@@ -128,22 +128,22 @@ export default function SwipeToDelete({
       window.addEventListener("touchmove", onTouchMove);
       window.addEventListener("mouseup", onMouseUp);
       window.addEventListener("touchend", onMouseUp);
-      window.addEventListener("mousedown", handleClick);
+      window.addEventListener("click", handleClick);
     } else {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("mouseup", onMouseUp);
       window.removeEventListener("touchend", onMouseUp);
-      window.removeEventListener("mousedown", handleClick);
+      window.removeEventListener("click", handleClick);
     }
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("mouseup", onMouseUp);
       window.removeEventListener("touchend", onMouseUp);
-      window.removeEventListener("mousedown", handleClick);
+      window.removeEventListener("click", handleClick);
     };
-  }, [onMouseMove, onMouseUp, onTouchMove, touching]);
+  }, [onMouseMove, onMouseUp, onTouchMove, handleClick, touching]);
 
   return (
     <div
@@ -171,7 +171,7 @@ export default function SwipeToDelete({
           onClick={onDeleteClick}
           className={`bg-transparent px-4 w-[${deleteWidth}px] h-full cursor-pointer ml-[var(--rstdiButtonMarginLeft)] transition-all transform ease-in-out duration-${transitionDuration}`}
         >
-          <TrashIcon className="text-[var(--tg-theme-text-color)] w-[24px] mx-auto"/>
+          <TrashIcon className="text-[var(--tg-theme-text-color)] w-[24px] mx-auto" />
         </button>
       </div>
       <div
