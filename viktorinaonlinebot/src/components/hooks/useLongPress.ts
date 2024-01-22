@@ -17,7 +17,7 @@ export default function useLongPress() {
 
   function handleOnClick(e: any) {
     e.preventDefault()
-    console.log('handleOnClick');
+    // console.log('handleOnClick');
     if ( isLongPress.current ) {
       console.log('Is long press - not continuing.');
       return;
@@ -26,23 +26,23 @@ export default function useLongPress() {
   }
 
   function handleOnMouseDown() {
-    console.log('handleOnMouseDown');
+    // console.log('handleOnMouseDown');
     startPressTimer();
   }
 
   function handleOnMouseUp() {
-    console.log('handleOnMouseUp');
+    // console.log('handleOnMouseUp');
     clearTimeout(timerRef.current);
   }
 
   function handleOnTouchStart() {
-    console.log('handleOnTouchStart');
+    // console.log('handleOnTouchStart');
     startPressTimer();
   }
 
   function handleOnTouchEnd() {
     if ( action === 'longpress' ) return;
-    console.log('handleOnTouchEnd');
+    // console.log('handleOnTouchEnd');
     clearTimeout(timerRef.current);
   }
 
