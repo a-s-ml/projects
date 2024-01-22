@@ -128,20 +128,20 @@ export default function SwipeToDelete({
       window.addEventListener("touchmove", onTouchMove);
       window.addEventListener("mouseup", onMouseUp);
       window.addEventListener("touchend", onMouseUp);
-      window.addEventListener("click", handleClick);
+      window.addEventListener("mousedown", handleClick);
     } else {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("mouseup", onMouseUp);
       window.removeEventListener("touchend", onMouseUp);
-      window.removeEventListener("click", handleClick);
+      window.removeEventListener("mousedown", handleClick);
     }
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("mouseup", onMouseUp);
       window.removeEventListener("touchend", onMouseUp);
-      window.removeEventListener("click", handleClick);
+      window.removeEventListener("mousedown", handleClick);
     };
   }, [onMouseMove, onMouseUp, onTouchMove, handleClick, touching]);
 
