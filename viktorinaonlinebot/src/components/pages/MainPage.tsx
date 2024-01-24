@@ -44,14 +44,12 @@ export function MainPage() {
     tg.ready();
   }, []);
 
-  const user = useAppSelector(selectSlideUser);
-
   const {
     isLoading: loadUser,
     isError: errorUser,
     data: dataUser,
     isSuccess: successUser,
-  } = useValidateQuery(tg.initData, {skip: user != 0});
+  } = useValidateQuery(tg.initData);
 
   const slide = useAppSelector(selectSlide);
   const modal = useAppSelector(selectModal);
