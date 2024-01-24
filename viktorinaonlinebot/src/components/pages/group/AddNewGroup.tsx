@@ -1,16 +1,13 @@
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
-import useLongPress from "../../hooks/useLongPress";
-import SlideDown from "../SlideDown";
 
 export default function AddNewGroup() {
-  const { action: otherAction, handlers: otherHandlers } = useLongPress();
+  const tg = window.Telegram.WebApp;
 
   return (
     <div
       className="group flex items-start px-8 pt-8 pb-4 bg-[var(--tg-theme-bg-color)] space-x-3 cursor-pointer"
-      {...otherHandlers}
+      onClick={() => tg.switchInlineQuery("https://t.me/more_details", ["groups", "channels"])}
     >
-      {otherAction === "longpress" && <SlideDown slide={true} />}
       <PlusCircleIcon
         className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
         aria-hidden="true"

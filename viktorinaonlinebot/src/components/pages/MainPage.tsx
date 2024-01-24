@@ -4,7 +4,7 @@ import ErrorPage from "./ErrorPage";
 import MenuList from "./menu/MenuList";
 import { IMenu } from "../../models/IMenu";
 import ModalPage from "./ModalPage";
-import { selectSlide, slideState, userSlide } from "../store/api/slide.slice";
+import { selectSlide, selectSlideUser, slideState, userSlide } from "../store/api/slide.slice";
 import { store, useAppDispatch, useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
@@ -44,12 +44,14 @@ export function MainPage() {
     tg.ready();
   }, []);
 
+  const user = useAppSelector(selectSlideUser);
+
   const {
     isLoading: loadUser,
     isError: errorUser,
     data: dataUser,
     isSuccess: successUser,
-  } = useValidateQuery(tg.initData);
+  } = useValidateQuery(tg.initData, {skip: user != 0});
 
   const slide = useAppSelector(selectSlide);
   const modal = useAppSelector(selectModal);

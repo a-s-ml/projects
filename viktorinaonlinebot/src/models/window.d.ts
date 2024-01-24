@@ -97,4 +97,5 @@ export interface ITelegramWebApp {
   expand: () => void;
   close: () => void;
   openTelegramLink: (url: string) => void;
+  switchInlineQuery: (query: string, type: Array<string>) => void;
 }
