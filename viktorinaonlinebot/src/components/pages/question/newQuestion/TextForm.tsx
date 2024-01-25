@@ -1,5 +1,3 @@
-import { FormWrapper } from "./FormWrapper";
-
 type UserData = {
   text: string;
 };
@@ -10,7 +8,6 @@ type UserFormProps = UserData & {
 
 export function TextForm({ text, updateFields }: UserFormProps) {
   return (
-    <FormWrapper title="Текст вопроса">
     <div className="py-2">
       <label
         htmlFor="questionText"
@@ -29,6 +26,5 @@ export function TextForm({ text, updateFields }: UserFormProps) {
         />
       </div>
     </div>
-    </FormWrapper>
   );
 }
