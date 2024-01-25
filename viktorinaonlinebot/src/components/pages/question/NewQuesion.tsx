@@ -46,17 +46,12 @@ function NewQuesion() {
   function onSubmit() {
     if (!isLastStep) return next();
   }
-  const dispatch = useAppDispatch();
 
   const tg = window.Telegram.WebApp;
-  tg.MainButton.show();
   tg.MainButton.setText(isLastStep ? "Добавить вопрос" : "Следующий шаг");
-  tg.BackButton.offClick(() => {
-    dispatch(showModal(false));
-    dispatch(showSlide(true));
-  });
-  tg.BackButton.onClick(() => back());
-  tg.onEvent("mainButtonClicked", () => onSubmit());
+  tg.MainButton.show();
+  tg.BackButton.onClick(back);
+  tg.onEvent("mainButtonClicked", onSubmit);
 
   return (
     <>
