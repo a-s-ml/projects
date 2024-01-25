@@ -4,9 +4,6 @@ import { AnswersList } from "./newQuestion/AnswersList";
 import { useMultistepForm } from "../../hooks/useNewQuestionFormContext";
 import StepsForm from "./newQuestion/StepsForm";
 import { TextForm } from "./newQuestion/TextForm";
-import { useAppDispatch } from "../../store";
-import { showModal } from "../../store/api/modal.slice";
-import { showSlide } from "../../store/api/slide.slice";
 
 type FormData = {
   text: string;
@@ -18,7 +15,7 @@ type FormData = {
   answerRight: number;
 };
 
-const INITIAL_DATA: FormData = {
+const initialData: FormData = {
   text: "",
   category: 63,
   answer1: "",
@@ -29,7 +26,7 @@ const INITIAL_DATA: FormData = {
 };
 
 function NewQuesion() {
-  const [data, setData] = useState(INITIAL_DATA);
+  const [data, setData] = useState(initialData);
 
   console.log(data);
 
