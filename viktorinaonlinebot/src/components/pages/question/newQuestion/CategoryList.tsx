@@ -1,8 +1,9 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
-import { Fragment, useState } from "react";
+import { Fragment, SetStateAction, useState } from "react";
 import { useAppSelector } from "../../../store";
 import { selectAllCategories } from "../../../store/api/category/category.slice";
+import { ICategory } from "../../../../models/ICategory";
 
 type CategoryData = {
   category: number;
@@ -17,14 +18,21 @@ export function CategoryList({ category, updateFields }: CategoryListProps) {
 
   const [selectedCategory, setCategory] = useState(categories.all[0]);
 
-  console.log(selectedCategory)
-  console.log(categories)
+  console.log(selectedCategory);
+  console.log(categories);
+
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
+
+  const handleChange = (cat: ICategory) => {
+    setCategory(cat);
+    updateFields({ category: selectedCategory.id });
+  };
+
   return (
     <div className="py-2">
-      <Listbox value={selectedCategory} onChange={setCategory}>
+      <Listbox value={selectedCategory} onChange={handleChange}>
         {({ open }) => (
           <>
             <Listbox.Label className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]">
@@ -33,7 +41,9 @@ export function CategoryList({ category, updateFields }: CategoryListProps) {
             <div className="relative mt-2">
               <Listbox.Button className="relative w-full cursor-default rounded-md bg-[var(--tg-theme-bg-color)] py-1.5 pl-3 pr-10 text-left text-[var(--tg-theme-text-color)] shadow-sm ring-1 ring-inset ring-[var(--tg-theme-text-color)]">
                 <span className="inline-flex w-full truncate">
-                  <span className="truncate text-[var(--tg-theme-text-color)]">{selectedCategory.name}</span>
+                  <span className="truncate text-[var(--tg-theme-text-color)]">
+                    {selectedCategory.name}
+                  </span>
                 </span>
                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                   <ChevronUpDownIcon
@@ -62,7 +72,7 @@ export function CategoryList({ category, updateFields }: CategoryListProps) {
                           "relative cursor-default select-none py-2 pl-3 pr-9"
                         )
                       }
-                      value={cat.id}
+                      value={cat}
                     >
                       {({ selected, active }) => (
                         <>
