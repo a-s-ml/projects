@@ -7,7 +7,7 @@ import { TextForm } from "./newQuestion/TextForm";
 
 type FormData = {
   text: string;
-  category: string;
+  category: number;
   answer1: string;
   answer2: string;
   answer3: string;
@@ -17,7 +17,7 @@ type FormData = {
 
 const INITIAL_DATA: FormData = {
   text: "",
-  category: "",
+  category: 0,
   answer1: "",
   answer2: "",
   answer3: "",
