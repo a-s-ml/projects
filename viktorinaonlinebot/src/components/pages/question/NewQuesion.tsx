@@ -56,6 +56,7 @@ function NewQuesion() {
     dispatch(showModal(false));
     dispatch(showSlide(true));
   });
+  tg.BackButton.show();
   tg.onEvent("backButtonClicked", () => back());
   tg.onEvent("mainButtonClicked", () => onSubmit());
 
