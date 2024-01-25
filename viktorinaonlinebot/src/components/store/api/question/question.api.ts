@@ -38,7 +38,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
       query: (question) => ({
         url: `/question`,
         method: "POST",
-        body: { question },
+        body: { data: question },
       }),
     }),
 
