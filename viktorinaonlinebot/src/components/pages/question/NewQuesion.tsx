@@ -48,26 +48,28 @@ function NewQuesion() {
     alert("Successful Account Creation");
   }
 
+  console.log(steps); 
+
   return (
-      <div>
-        (user === 521884639 && (
-        <form onSubmit={onSubmit}>
-          {/* <div style={{ position: "absolute", top: ".5rem", right: ".5rem" }}>
+    <div>
+      (user === 521884639 && (
+      <form onSubmit={onSubmit}>
+        {/* <div style={{ position: "absolute", top: ".5rem", right: ".5rem" }}>
             {currentStepIndex + 1} / {steps.length}
           </div> */}
-          {step}
-          <StepsForm stepid={currentStepIndex + 1} />
-          <div>
-            {!isFirstStep && (
-              <button type="button" onClick={back}>
-                Back
-              </button>
-            )}
-            <button type="submit">{isLastStep ? "Finish" : "Next"}</button>
-          </div>
-        </form>
-        ))
-      </div>
+        {step}
+        <StepsForm stepid={currentStepIndex + 1} />
+        <div>
+          {!isFirstStep && (
+            <button type="button" onClick={back}>
+              Back
+            </button>
+          )}
+          <button type="submit">{isLastStep ? "Finish" : "Next"}</button>
+        </div>
+      </form>
+      ))
+    </div>
   );
 }
 
