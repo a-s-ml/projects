@@ -59,7 +59,7 @@ export function MainPage() {
     isSuccess: successUser,
   } = useValidateQuery(user === 0 ? skipToken : tg.initData);
 
-  console.log(dataUser);
+  console.log(dataUser); 
   const { data: allTypes, isSuccess: successType } = useGetTypeQuery("");
   const { data: allTime, isSuccess: successTime } = useGetTimeQuery("");
   const { data: allCategory, isSuccess: successCategory } =
