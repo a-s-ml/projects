@@ -52,7 +52,7 @@ export function MainPage() {
     isError: errorUser,
     data: dataUser,
     isSuccess: successUser,
-  } = useValidateQuery(tg.initData);
+  } = useValidateQuery(tg.initData, {skip: user !== 0});
 
   console.log(user) 
 
