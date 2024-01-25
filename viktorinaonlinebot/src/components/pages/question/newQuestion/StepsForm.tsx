@@ -20,8 +20,8 @@ export default function StepsForm({ step, stepsCount }: StepsFormProps) {
 
   return (
     <nav className="flex items-center justify-center" aria-label="Progress">
-      <p className="text-sm font-medium">
-        Step {step} of {stepsCount}
+      <p className="text-sm font-medium text-[var(--tg-theme-accent-text-color)]">
+        Шаг {step} из {stepsCount}
       </p>
       <ol role="list" className="ml-8 flex items-center space-x-5">
         {steps.map((step) => (

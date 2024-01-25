@@ -29,13 +29,13 @@ const INITIAL_DATA: FormData = {
 };
 
 function NewQuesion() {
-  const user = useAppSelector(selectSlideUser);
   const [data, setData] = useState(INITIAL_DATA);
   function updateFields(fields: Partial<FormData>) {
     setData((prev) => {
       return { ...prev, ...fields };
     });
   }
+
   const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
     useMultistepForm([
       <UserForm {...data} updateFields={updateFields} />,
@@ -49,12 +49,19 @@ function NewQuesion() {
     alert("Successful Account Creation");
   }
 
-  console.log(steps);
+
+  const tg = window.Telegram.WebApp;
+  tg.MainButton.show();
+  tg.MainButton.setText(isLastStep ? "Добавить вопрос" : "Следующий шаг");
+  tg.onEvent("backButtonClicked", () => back);
+  tg.onEvent("mainButtonClicked", () => onSubmit);
 
   return (
     <>
       <Header>
-        <StepsForm step={currentStepIndex + 1} stepsCount={steps.length} />
+        <>
+          <StepsForm step={currentStepIndex + 1} stepsCount={steps.length} />
+        </>
       </Header>
       <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
         <form onSubmit={onSubmit}>
