@@ -43,18 +43,17 @@ function NewQuesion() {
       <AnswersList {...data} updateFields={updateFields} />,
     ]);
 
-  function onSubmit() {
-    if (!isLastStep) return next();
-  }
+  // function onSubmit() {
+  //   if (!isLastStep) return next();
+  // }
 
   console.log(currentStepIndex);
-  console.log(steps);
 
   const tg = window.Telegram.WebApp;
   tg.MainButton.setText(isLastStep ? "Добавить вопрос" : "Следующий шаг");
   tg.MainButton.show();
   tg.BackButton.onClick(back);
-  tg.onEvent("mainButtonClicked", onSubmit);
+  tg.onEvent("mainButtonClicked", next);
 
   return (
     <>
