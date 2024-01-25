@@ -4,11 +4,7 @@ import ErrorPage from "./ErrorPage";
 import MenuList from "./menu/MenuList";
 import { IMenu } from "../../models/IMenu";
 import ModalPage from "./ModalPage";
-import {
-  selectSlide,
-  selectSlideUser,
-  userSlide,
-} from "../store/api/slide.slice";
+import { selectSlide, selectSlideUser, slideState, userSlide } from "../store/api/slide.slice";
 import { store, useAppDispatch, useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
@@ -20,7 +16,6 @@ import { getAllTime } from "../store/api/time/time.slice";
 import { useGetCategoryQuery } from "../store/api/category/category.api";
 import { getAllCategories } from "../store/api/category/category.slice";
 import Preloader from "../Preloader/Preloader";
-import { skipToken } from "@reduxjs/toolkit/query";
 
 let menuitems: IMenu[] = [
   {
@@ -50,16 +45,16 @@ export function MainPage() {
   useEffect(() => {
     tg.expand();
     tg.ready();
-  }, []); 
+  }, []);
 
   const {
     isLoading: loadUser,
     isError: errorUser,
     data: dataUser,
     isSuccess: successUser,
-  } = useValidateQuery(user === 0 ? skipToken : tg.initData);
+  } = useValidateQuery(tg.initData);
 
-  console.log(dataUser); 
+
   const { data: allTypes, isSuccess: successType } = useGetTypeQuery("");
   const { data: allTime, isSuccess: successTime } = useGetTimeQuery("");
   const { data: allCategory, isSuccess: successCategory } =
@@ -121,12 +116,16 @@ export function MainPage() {
           </div>
         </div>
       </div>
-      {user != 0 && (
-        <>
-          <SlidePage chat={user} />
-          <ModalPage />
-        </>
-      )}
+      {successUser &&
+        successUser &&
+        successTime &&
+        successCategory &&
+        dataUser.validate && (
+          <>
+            <SlidePage chat={dataUser.UserData.user.id} />
+            <ModalPage />
+          </>
+        )}
     </>
   );
 }
