@@ -1,4 +1,4 @@
-import { ChangeEventHandler, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { useAddQuestionMutation } from "../../store/api/question/question.api";
 import { useAppSelector } from "../../store";
 import { selectAllCategories } from "../../store/api/category/category.slice";
@@ -52,19 +52,20 @@ export default function NewQuesion() {
           setCategory={setCategory}
         />
         <AnswersList />
+        <SwipeToDelete key={1} onDelete={() => console.log("sdfsdf 1")}>
+          <AddNewCategory />
+        </SwipeToDelete>
+        <SwipeToDelete key={2} onDelete={() => console.log("sdfsdf 2")}>
+          <AddNewCategory />
+        </SwipeToDelete>
+        <SwipeToDelete key={3} onDelete={() => console.log("sdfsdf 3")}>
+          <AddNewCategory />
+        </SwipeToDelete>
+        <SwipeToDelete key={4} onDelete={() => console.log("sdfsdf 4")}>
+          <AddNewCategory />
+        </SwipeToDelete>
       </form>
-      <SwipeToDelete key={1} onDelete={() => console.log("sdfsdf 1")}>
-        <AddNewCategory />
-      </SwipeToDelete>
-      <SwipeToDelete key={2} onDelete={() => console.log("sdfsdf 2")}>
-        <AddNewCategory />
-      </SwipeToDelete>
-      <SwipeToDelete key={3} onDelete={() => console.log("sdfsdf 3")}>
-        <AddNewCategory />
-      </SwipeToDelete>
-      <SwipeToDelete key={4} onDelete={() => console.log("sdfsdf 4")}>
-        <AddNewCategory />
-      </SwipeToDelete>
+
       <div className="pb-6"></div>
     </>
   );
