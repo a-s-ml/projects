@@ -78,9 +78,9 @@ export function CategoryList({ category, updateFields }: CategoryListProps) {
                             >
                               {cat.name}
                             </span>
-                            {/* <span className={classNames(active ? 'text-indigo-200' : 'text-gray-500', 'ml-2 truncate')}>
+                            <span className={classNames(active ? 'text-indigo-200' : 'text-gray-500', 'ml-2 truncate')}>
                             {cat.id}
-                          </span> */}
+                          </span>
                           </div>
 
                           {selected ? (

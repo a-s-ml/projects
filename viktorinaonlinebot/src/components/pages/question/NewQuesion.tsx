@@ -20,7 +20,7 @@ type FormData = {
 
 const INITIAL_DATA: FormData = {
   text: "",
-  category: 0,
+  category: 63,
   answer1: "",
   answer2: "",
   answer3: "",
@@ -34,6 +34,7 @@ function NewQuesion() {
     setData((prev) => {
       return { ...prev, ...fields };
     });
+    console.log(data);
   }
 
   const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
