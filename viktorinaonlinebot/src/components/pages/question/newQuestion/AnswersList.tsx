@@ -53,7 +53,7 @@ export function AnswersList({
           </div>
           <button
             type="button"
-            onClick={() => hendelClick}
+            onClick={() => hendelClick(1)}
             className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] hover:bg-[var(--tg-theme-accent-text-color)] hover:text-[var(--tg-theme-text-color)]"
           >
             <XMarkIcon
@@ -85,7 +85,7 @@ export function AnswersList({
           </div>
           <button
             type="button"
-            onClick={() => hendelClick}
+            onClick={() => hendelClick(2)}
             className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] hover:bg-[var(--tg-theme-accent-text-color)] hover:text-[var(--tg-theme-text-color)]"
           >
             <XMarkIcon
@@ -117,7 +117,7 @@ export function AnswersList({
           </div>
           <button
             type="button"
-            onClick={() => hendelClick}
+            onClick={() => hendelClick(3)}
             className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] hover:bg-[var(--tg-theme-accent-text-color)] hover:text-[var(--tg-theme-text-color)]"
           >
             <CheckIcon
@@ -149,7 +149,7 @@ export function AnswersList({
           </div>
           <button
             type="button"
-            onClick={() => hendelClick}
+            onClick={() => hendelClick(4)}
             className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] hover:bg-[var(--tg-theme-accent-text-color)] hover:text-[var(--tg-theme-text-color)]"
           >
             <XMarkIcon
