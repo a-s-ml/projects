@@ -27,7 +27,7 @@ export function CategoryList({ category, updateFields }: CategoryListProps) {
 
   const handleChange = (cat: ICategory) => {
     setCategory(cat);
-    updateFields({ category: selectedCategory.id });
+    updateFields({ category: cat.id });
   };
 
   return (
