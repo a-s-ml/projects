@@ -1,12 +1,12 @@
-type UserData = {
+type TextData = {
   text: string;
 };
 
-type UserFormProps = UserData & {
-  updateFields: (fields: Partial<UserData>) => void;
+type TextFormProps = TextData & {
+  updateFields: (fields: Partial<TextData>) => void;
 };
 
-export function TextForm({ text, updateFields }: UserFormProps) {
+export function TextForm({ text, updateFields }: TextFormProps) {
   return (
     <div className="py-2">
       <label

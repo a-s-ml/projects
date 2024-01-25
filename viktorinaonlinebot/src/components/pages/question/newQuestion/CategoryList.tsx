@@ -1,26 +1,29 @@
-import { Dispatch, Fragment, SetStateAction, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import { ICategory } from "../../../../models/ICategory";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import { Fragment } from "react";
+import { useAppSelector } from "../../../store";
+import { selectAllCategories } from "../../../store/api/category/category.slice";
 
-interface CategoryListProps {
-  categories: ICategory[];
-  cat: number;
-  setCategory: Dispatch<SetStateAction<number>>;
-}
+type CategoryData = {
+  category: number;
+};
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+type CategoryListProps = CategoryData & {
+  updateFields: (fields: Partial<CategoryData>) => void;
+};
 
-export default function CategoryList({
-  categories,
-  cat,
-  setCategory,
-}: CategoryListProps) {
+export function CategoryList({ category, updateFields }: CategoryListProps) {
+  const categories = useAppSelector(selectAllCategories);
+  
+  function classNames(...classes: string[]) {
+    return classes.filter(Boolean).join(" ");
+  }
   return (
     <div className="py-2">
-      <Listbox value={cat} onChange={setCategory}>
+      <Listbox
+        value={category}
+        onChange={() => console.log()}
+      >
         {({ open }) => (
           <>
             <Listbox.Label className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]">
@@ -48,7 +51,7 @@ export default function CategoryList({
                 leaveTo="opacity-0"
               >
                 <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-[var(--tg-theme-bg-color)] py-1 text-base shadow-lg ring-1 ring-[var(--tg-theme-text-color)] ring-opacity-5">
-                  {categories.map((cat) => (
+                  {categories.all.map((cat) => (
                     <Listbox.Option
                       key={cat.id}
                       className={({ active }) =>

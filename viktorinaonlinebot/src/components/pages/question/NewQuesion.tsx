@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { AddressForm } from "./newQuestion/AddressForm";
-import { AccountForm } from "./newQuestion/AccountForm";
+import { CategoryList } from "./newQuestion/CategoryList";
+import { AnswersList } from "./newQuestion/AnswersList";
 import { useMultistepForm } from "../../hooks/useNewQuestionFormContext";
 import StepsForm from "./newQuestion/StepsForm";
 import { TextForm } from "./newQuestion/TextForm";
@@ -36,8 +36,8 @@ function NewQuesion() {
   const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
     useMultistepForm([
       <TextForm {...data} updateFields={updateFields} />,
-      <AddressForm {...data} updateFields={updateFields} />,
-      <AccountForm {...data} updateFields={updateFields} />,
+      <CategoryList {...data} updateFields={updateFields} />,
+      <AnswersList {...data} updateFields={updateFields} />,
     ]);
 
   function onSubmit() {

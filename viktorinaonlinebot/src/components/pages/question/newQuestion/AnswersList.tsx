@@ -1,11 +1,28 @@
-import { XMarkIcon, CheckIcon } from "@heroicons/react/24/outline";
+import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
-export default function AnswersList() {
+type AnswersData = {
+  answer1: string;
+  answer2: string;
+  answer3: string;
+  answer4: string;
+};
+
+type AnswersListProps = AnswersData & {
+  updateFields: (fields: Partial<AnswersData>) => void;
+};
+
+export function AnswersList({
+  answer1,
+  answer2,
+  answer3,
+  answer4,
+  updateFields,
+}: AnswersListProps) {
   return (
     <div className="py-2">
       <div>
         <label
-          htmlFor="email"
+          htmlFor="answer1"
           className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
         >
           Вариант ответа 1
@@ -13,11 +30,13 @@ export default function AnswersList() {
         <div className="mt-2 flex rounded-md shadow-sm">
           <div className="relative flex flex-grow items-stretch focus-within:z-10">
             <input
-              type="email"
-              name="email"
-              id="email"
+              type="text"
+              name="answer1"
+              id="answer1"
               className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 1"
+              value={answer1}
+              onChange={(e) => updateFields({ answer1: e.target.value })}
             />
           </div>
           <button
@@ -34,7 +53,7 @@ export default function AnswersList() {
       </div>
       <div>
         <label
-          htmlFor="email"
+          htmlFor="answer2"
           className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
         >
           Вариант ответа 2
@@ -42,11 +61,13 @@ export default function AnswersList() {
         <div className="mt-2 flex rounded-md shadow-sm">
           <div className="relative flex flex-grow items-stretch focus-within:z-10">
             <input
-              type="email"
-              name="email"
-              id="email"
+              type="text"
+              name="answer2"
+              id="answer2"
               className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 2"
+              value={answer2}
+              onChange={(e) => updateFields({ answer2: e.target.value })}
             />
           </div>
           <button
@@ -63,7 +84,7 @@ export default function AnswersList() {
       </div>
       <div>
         <label
-          htmlFor="email"
+          htmlFor="answer3"
           className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
         >
           Вариант ответа 3
@@ -71,11 +92,13 @@ export default function AnswersList() {
         <div className="mt-2 flex rounded-md shadow-sm">
           <div className="relative flex flex-grow items-stretch focus-within:z-10">
             <input
-              type="email"
-              name="email"
-              id="email"
+              type="text"
+              name="answer3"
+              id="answer3"
               className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 3"
+              value={answer3}
+              onChange={(e) => updateFields({ answer3: e.target.value })}
             />
           </div>
           <button
@@ -92,7 +115,7 @@ export default function AnswersList() {
       </div>
       <div>
         <label
-          htmlFor="email"
+          htmlFor="answer4"
           className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
         >
           Вариант ответа 4
@@ -100,11 +123,13 @@ export default function AnswersList() {
         <div className="mt-2 flex rounded-md shadow-sm">
           <div className="relative flex flex-grow items-stretch focus-within:z-10">
             <input
-              type="email"
-              name="email"
-              id="email"
+              type="text"
+              name="answer4"
+              id="answer4"
               className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 4"
+              value={answer4}
+              onChange={(e) => updateFields({ answer4: e.target.value })}
             />
           </div>
           <button
