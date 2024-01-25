@@ -47,6 +47,9 @@ function NewQuesion() {
     if (!isLastStep) return next();
   }
 
+  console.log(currentStepIndex);
+  console.log(steps);
+
   const tg = window.Telegram.WebApp;
   tg.MainButton.setText(isLastStep ? "Добавить вопрос" : "Следующий шаг");
   tg.MainButton.show();
