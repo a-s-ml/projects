@@ -38,6 +38,9 @@ let menuitems: IMenu[] = [
 export function MainPage() {
   const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
+  const user = useAppSelector(selectSlideUser);
+  const slide = useAppSelector(selectSlide);
+  const modal = useAppSelector(selectModal);
 
   useEffect(() => {
     tg.expand();
@@ -49,10 +52,7 @@ export function MainPage() {
     isError: errorUser,
     data: dataUser,
     isSuccess: successUser,
-  } = useValidateQuery(tg.initData);
-
-  const slide = useAppSelector(selectSlide);
-  const modal = useAppSelector(selectModal);
+  } = useValidateQuery(tg.initData, {skip: user !== 0});
 
   const { data: allTypes, isSuccess: successType } = useGetTypeQuery("");
   const { data: allTime, isSuccess: successTime } = useGetTimeQuery("");
@@ -65,7 +65,7 @@ export function MainPage() {
   successTime && dispatch(getAllTime(allTime));
   successCategory && dispatch(getAllCategories(allCategory));
 
-  console.log(useAppSelector(store.getState));
+  // console.log(useAppSelector(store.getState));
 
   if (!slide && !modal) {
     tg.BackButton.hide();
@@ -94,11 +94,7 @@ export function MainPage() {
           <div className="mt-10">
             {errorUser && <ErrorPage />}
             {loadUser && <Preloader />}
-            {successUser &&
-              successUser &&
-              successTime &&
-              successCategory &&
-              dataUser.validate && (
+            {dataUser && (
                 <ul
                   role="list"
                   className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
@@ -115,11 +111,7 @@ export function MainPage() {
           </div>
         </div>
       </div>
-      {successUser &&
-        successUser &&
-        successTime &&
-        successCategory &&
-        dataUser.validate && (
+      {dataUser && (
           <>
             <SlidePage chat={dataUser.UserData.user.id} />
             <ModalPage />
