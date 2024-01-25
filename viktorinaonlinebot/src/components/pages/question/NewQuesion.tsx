@@ -6,6 +6,7 @@ import { useMultistepForm } from "../../hooks/useNewQuestionFormContext";
 import { useAppDispatch } from "../../store";
 import { showSlide } from "../../store/api/slide.slice";
 import StepsForm from "./newQuestion/StepsForm";
+import { showModal } from "../../store/api/modal.slice";
 
 type FormData = {
   text: string;
@@ -51,7 +52,10 @@ function NewQuesion() {
   const tg = window.Telegram.WebApp;
   tg.MainButton.show();
   tg.MainButton.setText(isLastStep ? "Добавить вопрос" : "Следующий шаг");
-  tg.offEvent("backButtonClicked", () => dispatch(showSlide(false)));
+  tg.offEvent("backButtonClicked", () => {
+    dispatch(showModal(false));
+    dispatch(showSlide(true));
+  });
   tg.onEvent("backButtonClicked", () => back());
   tg.onEvent("mainButtonClicked", () => onSubmit());
 
