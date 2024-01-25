@@ -21,11 +21,10 @@ export function AnswersList({
   answerRight,
   updateFields,
 }: AnswersListProps) {
-
   const [selectedAnswerRight, setAnswerRight] = useState(answerRight);
 
   const hendelClick = (id: number) => {
-    setAnswerRight(id)
+    setAnswerRight(id);
     console.log(id);
     updateFields({ answerRight: id });
   };
@@ -53,13 +52,23 @@ export function AnswersList({
           </div>
           <button
             type="button"
+            className={`relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] ${
+              selectedAnswerRight === 1 &&
+              "bg-[var(--tg-theme-accent-text-color)]"
+            }`}
             onClick={() => hendelClick(1)}
-            className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] hover:bg-[var(--tg-theme-accent-text-color)] hover:text-[var(--tg-theme-text-color)]"
           >
-            <XMarkIcon
-              className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
-              aria-hidden="true"
-            />
+            {selectedAnswerRight === 1 ? (
+              <CheckIcon
+                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                aria-hidden="true"
+              />
+            ) : (
+              <XMarkIcon
+                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                aria-hidden="true"
+              />
+            )}
             Верно
           </button>
         </div>
@@ -85,13 +94,23 @@ export function AnswersList({
           </div>
           <button
             type="button"
+            className={`relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] ${
+              selectedAnswerRight === 2 &&
+              "bg-[var(--tg-theme-accent-text-color)]"
+            }`}
             onClick={() => hendelClick(2)}
-            className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] hover:bg-[var(--tg-theme-accent-text-color)] hover:text-[var(--tg-theme-text-color)]"
           >
-            <XMarkIcon
-              className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
-              aria-hidden="true"
-            />
+            {selectedAnswerRight === 2 ? (
+              <CheckIcon
+                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                aria-hidden="true"
+              />
+            ) : (
+              <XMarkIcon
+                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                aria-hidden="true"
+              />
+            )}
             Верно
           </button>
         </div>
@@ -117,13 +136,23 @@ export function AnswersList({
           </div>
           <button
             type="button"
+            className={`relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] ${
+              selectedAnswerRight === 3 &&
+              "bg-[var(--tg-theme-accent-text-color)]"
+            }`}
             onClick={() => hendelClick(3)}
-            className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] hover:bg-[var(--tg-theme-accent-text-color)] hover:text-[var(--tg-theme-text-color)]"
           >
-            <CheckIcon
-              className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
-              aria-hidden="true"
-            />
+            {selectedAnswerRight === 3 ? (
+              <CheckIcon
+                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                aria-hidden="true"
+              />
+            ) : (
+              <XMarkIcon
+                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                aria-hidden="true"
+              />
+            )}
             Верно
           </button>
         </div>
@@ -149,13 +178,23 @@ export function AnswersList({
           </div>
           <button
             type="button"
+            className={`relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] ${
+              selectedAnswerRight === 4 &&
+              "bg-[var(--tg-theme-accent-text-color)]"
+            }`}
             onClick={() => hendelClick(4)}
-            className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] hover:bg-[var(--tg-theme-accent-text-color)] hover:text-[var(--tg-theme-text-color)]"
           >
-            <XMarkIcon
-              className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
-              aria-hidden="true"
-            />
+            {selectedAnswerRight === 4 ? (
+              <CheckIcon
+                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                aria-hidden="true"
+              />
+            ) : (
+              <XMarkIcon
+                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                aria-hidden="true"
+              />
+            )}
             Верно
           </button>
         </div>
