@@ -1,12 +1,9 @@
-import { FormEvent, useState } from "react";
-import { UserForm } from "./newQuestion/UserForm";
+import { useState } from "react";
 import { AddressForm } from "./newQuestion/AddressForm";
 import { AccountForm } from "./newQuestion/AccountForm";
 import { useMultistepForm } from "../../hooks/useNewQuestionFormContext";
-import { useAppDispatch } from "../../store";
-import { showSlide } from "../../store/api/slide.slice";
 import StepsForm from "./newQuestion/StepsForm";
-import { showModal } from "../../store/api/modal.slice";
+import { TextForm } from "./newQuestion/TextForm";
 
 type FormData = {
   text: string;
@@ -38,7 +35,7 @@ function NewQuesion() {
 
   const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
     useMultistepForm([
-      <UserForm {...data} updateFields={updateFields} />,
+      <TextForm {...data} updateFields={updateFields} />,
       <AddressForm {...data} updateFields={updateFields} />,
       <AccountForm {...data} updateFields={updateFields} />,
     ]);
@@ -47,16 +44,9 @@ function NewQuesion() {
     if (!isLastStep) return next();
   }
 
-  const dispatch = useAppDispatch();
-
   const tg = window.Telegram.WebApp;
   tg.MainButton.show();
   tg.MainButton.setText(isLastStep ? "Добавить вопрос" : "Следующий шаг");
-  tg.offEvent("backButtonClicked", () => {
-    dispatch(showModal(false));
-    dispatch(showSlide(true));
-  });
-  tg.BackButton.show();
   tg.onEvent("backButtonClicked", () => back());
   tg.onEvent("mainButtonClicked", () => onSubmit());
 

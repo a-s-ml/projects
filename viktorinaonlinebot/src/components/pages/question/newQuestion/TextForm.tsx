@@ -1,10 +1,16 @@
-interface TexListProps {
-  text: string;
-}
+import { FormWrapper } from "./FormWrapper";
 
-export default function TexList({ text }: TexListProps) {
-  const tg = window.Telegram.WebApp;
+type UserData = {
+  text: string;
+};
+
+type UserFormProps = UserData & {
+  updateFields: (fields: Partial<UserData>) => void;
+};
+
+export function TextForm({ text, updateFields }: UserFormProps) {
   return (
+    <FormWrapper title="Текст вопроса">
     <div className="py-2">
       <label
         htmlFor="questionText"
@@ -19,8 +25,10 @@ export default function TexList({ text }: TexListProps) {
           id="questionText"
           className="block w-full bg-[var(--tg-theme-bg-color)] rounded-md border-0 px-2 py-2 text-[var(--tg-theme-text-color)] shadow-sm ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-[var(--tg-theme-hint-color)]"
           value={text}
+          onChange={(e) => updateFields({ text: e.target.value })}
         />
       </div>
     </div>
+    </FormWrapper>
   );
 }
