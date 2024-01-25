@@ -3,10 +3,9 @@ import { UserForm } from "./newQuestion/UserForm";
 import { AddressForm } from "./newQuestion/AddressForm";
 import { AccountForm } from "./newQuestion/AccountForm";
 import { useMultistepForm } from "../../hooks/useNewQuestionFormContext";
-import { useAppDispatch, useAppSelector } from "../../store";
-import { selectSlideUser, showSlide } from "../../store/api/slide.slice";
+import { useAppDispatch } from "../../store";
+import { showSlide } from "../../store/api/slide.slice";
 import StepsForm from "./newQuestion/StepsForm";
-import { Header } from "../Header";
 
 type FormData = {
   text: string;
@@ -43,10 +42,8 @@ function NewQuesion() {
       <AccountForm {...data} updateFields={updateFields} />,
     ]);
 
-  function onSubmit(e: FormEvent) {
-    e.preventDefault();
+  function onSubmit() {
     if (!isLastStep) return next();
-    alert("Successful Account Creation");
   }
 
   const dispatch = useAppDispatch();
@@ -55,29 +52,18 @@ function NewQuesion() {
   tg.MainButton.show();
   tg.MainButton.setText(isLastStep ? "Добавить вопрос" : "Следующий шаг");
   tg.offEvent("backButtonClicked", () => dispatch(showSlide(false)));
-  tg.onEvent("backButtonClicked", back);
-  tg.onEvent("mainButtonClicked", onSubmit);
+  tg.onEvent("backButtonClicked", () => back());
+  tg.onEvent("mainButtonClicked", () => onSubmit());
 
   return (
     <>
-      <Header>
-        <>
-          <StepsForm step={currentStepIndex + 1} stepsCount={steps.length} />
-        </>
-      </Header>
-      <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-        <form onSubmit={onSubmit}>
-          {step}
+      <header className="absolute inset-x-0 top-0 z-50">
+        <StepsForm step={currentStepIndex + 1} stepsCount={steps.length} />
+        <div className="bg-gradient-to-b from-[var(--tg-theme-bg-color)] to-transparent pt-12 w-screen"></div>
+      </header>
 
-          <div>
-            {!isFirstStep && (
-              <button type="button" onClick={back}>
-                Back
-              </button>
-            )}
-            <button type="submit">{isLastStep ? "Finish" : "Next"}</button>
-          </div>
-        </form>
+      <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+        <form>{step}</form>
       </div>
     </>
   );
