@@ -96,7 +96,7 @@ export function MainPage() {
           <div className="mt-10">
             {errorUser && <ErrorPage />}
             {loadUser && <Preloader />}
-            {user !=0 && dataUser && (
+            {dataUser && (
                 <ul
                   role="list"
                   className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
@@ -113,7 +113,7 @@ export function MainPage() {
           </div>
         </div>
       </div>
-      {user !=0 && dataUser && (
+      {dataUser && (
           <>
             <SlidePage chat={dataUser.UserData.user.id} />
             <ModalPage />
