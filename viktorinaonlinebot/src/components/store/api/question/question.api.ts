@@ -35,7 +35,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
     }),
 
     addQuestion: build.mutation<IQuestion, IAddQuestion>({
-      query: (question) => ({
+      query: (question) => ({ 
         url: `/question`,
         method: "POST",
         body: { data: question },
