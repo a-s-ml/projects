@@ -15,8 +15,10 @@ type CategoryListProps = CategoryData & {
 export function CategoryList({ category, updateFields }: CategoryListProps) {
   const categories = useAppSelector(selectAllCategories);
 
-  const [selectedCategory, setCategory] = useState(categories.all[category]);
+  const [selectedCategory, setCategory] = useState(categories.all[0]);
 
+  console.log(selectedCategory)
+  console.log(setCategory)
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
