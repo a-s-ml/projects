@@ -1,10 +1,12 @@
 import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
 
 type AnswersData = {
   answer1: string;
   answer2: string;
   answer3: string;
   answer4: string;
+  answerRight: number,
 };
 
 type AnswersListProps = AnswersData & {
@@ -16,8 +18,12 @@ export function AnswersList({
   answer2,
   answer3,
   answer4,
+  answerRight,
   updateFields,
 }: AnswersListProps) {
+  
+  const [selectedAnswerRight, setAnswerRight] = useState(answerRight);
+
   return (
     <div className="py-2">
       <div>

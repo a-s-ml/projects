@@ -51,6 +51,7 @@ export interface IMainButton {
   isProgressVisible: boolean;
   setText: (text: string) => void;
   onClick: (callback: () => void) => void;
+  offClick: (callback: () => void) => void;
   show: () => void;
   hide: () => void;
   disable: () => void;
@@ -63,6 +64,7 @@ export interface IBackButton {
   isVisible: string;
   isActive: boolean;
   onClick: (callback: () => void) => void;
+  offClick: (callback: () => void) => void;
   show: () => void;
   hide: () => void;
 }

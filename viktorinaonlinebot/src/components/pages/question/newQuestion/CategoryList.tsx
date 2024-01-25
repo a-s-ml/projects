@@ -1,6 +1,6 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { useAppSelector } from "../../../store";
 import { selectAllCategories } from "../../../store/api/category/category.slice";
 
@@ -14,16 +14,19 @@ type CategoryListProps = CategoryData & {
 
 export function CategoryList({ category, updateFields }: CategoryListProps) {
   const categories = useAppSelector(selectAllCategories);
-  
+
+  const [selectedCategory, setCategory] = useState(category);
+
+  const selectCategory = () => {
+    updateFields({ category: selectedCategory });
+  };
+
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
   return (
     <div className="py-2">
-      <Listbox
-        value={category}
-        onChange={() => console.log()}
-      >
+      <Listbox value={category} onChange={setCategory}>
         {({ open }) => (
           <>
             <Listbox.Label className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]">
