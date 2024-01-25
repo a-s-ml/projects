@@ -4,7 +4,7 @@ import ErrorPage from "./ErrorPage";
 import MenuList from "./menu/MenuList";
 import { IMenu } from "../../models/IMenu";
 import ModalPage from "./ModalPage";
-import { selectSlide, selectSlideUser, slideState, userSlide } from "../store/api/slide.slice";
+import { selectSlide, selectSlideUser, userSlide } from "../store/api/slide.slice";
 import { store, useAppDispatch, useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
@@ -117,8 +117,7 @@ export function MainPage() {
           </div>
         </div>
       </div>
-      {successUser &&
-        successUser &&
+      {dataUser &&
         successTime &&
         successCategory &&
         dataUser.validate && (
