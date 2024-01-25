@@ -89,20 +89,12 @@ export default function SwipeToDelete({
     [onMove]
   );
 
-  const onMouseDown = (event: { target: any }) => {
-    console.log('down')
-    console.log(container.current)
-    console.log(!container.current?.contains(event.target))
-    console.log(container.current && !container.current.contains(event.target))
-    if(container.current && !container.current.contains(event.target)) console.log('вне')
-  };
-
   const onDeleteClick = useCallback(() => {
     setDeleting(() => true);
     window.setTimeout(onDelete, transitionDuration);
   }, [onDelete, transitionDuration]);
 
-  const onMouseUp = useCallback( 
+  const onMouseUp = useCallback(
     function () {
       startTouchPosition.current = 0;
       const acceptableMove = -deleteWidth * 0.7;
@@ -130,26 +122,23 @@ export default function SwipeToDelete({
       window.addEventListener("touchmove", onTouchMove);
       window.addEventListener("mouseup", onMouseUp);
       window.addEventListener("touchend", onMouseUp);
-      window.addEventListener("mousedown", onMouseDown);
     } else {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("mouseup", onMouseUp);
       window.removeEventListener("touchend", onMouseUp);
-      window.removeEventListener("mousedown", onMouseDown);
     }
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("mouseup", onMouseUp);
       window.removeEventListener("touchend", onMouseUp);
-      window.removeEventListener("mousedown", onMouseDown);
     };
-  }, [onMouseMove, onMouseUp, onTouchMove, onMouseDown, touching]);
+  }, [onMouseMove, onMouseUp, onTouchMove, touching]);
 
   return (
     <div
-      ref={container} 
+      ref={container}
       style={
         {
           "--rstdiTranslate": "0px",

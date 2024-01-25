@@ -5,8 +5,6 @@ import { selectAllCategories } from "../../store/api/category/category.slice";
 import CategoryList from "./newQuestion/CategoryList";
 import AnswersList from "./newQuestion/AnswersList";
 import TexList from "./newQuestion/TexList";
-import SwipeToDelete from "../../hooks/useSwipeToDelete";
-import AddNewCategory from "../group/sittingsGroup/AddNewCategory";
 
 export default function NewQuesion() {
   const [addNewQuestion, { isLoading }] = useAddQuestionMutation();
@@ -52,18 +50,6 @@ export default function NewQuesion() {
           setCategory={setCategory}
         />
         <AnswersList />
-        <SwipeToDelete key={1} onDelete={() => console.log("sdfsdf 1")}>
-          <AddNewCategory />
-        </SwipeToDelete>
-        <SwipeToDelete key={2} onDelete={() => console.log("sdfsdf 2")}>
-          <AddNewCategory />
-        </SwipeToDelete>
-        <SwipeToDelete key={3} onDelete={() => console.log("sdfsdf 3")}>
-          <AddNewCategory />
-        </SwipeToDelete>
-        <SwipeToDelete key={4} onDelete={() => console.log("sdfsdf 4")}>
-          <AddNewCategory />
-        </SwipeToDelete>
       </form>
 
       <div className="pb-6"></div>
