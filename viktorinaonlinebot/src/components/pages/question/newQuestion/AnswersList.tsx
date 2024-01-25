@@ -6,7 +6,7 @@ type AnswersData = {
   answer2: string;
   answer3: string;
   answer4: string;
-  answerRight: number,
+  answerRight: number;
 };
 
 type AnswersListProps = AnswersData & {
@@ -21,8 +21,14 @@ export function AnswersList({
   answerRight,
   updateFields,
 }: AnswersListProps) {
-  
+
   const [selectedAnswerRight, setAnswerRight] = useState(answerRight);
+
+  const hendelClick = (id: number) => {
+    setAnswerRight(id)
+    console.log(id);
+    updateFields({ answerRight: id });
+  };
 
   return (
     <div className="py-2">
@@ -47,6 +53,7 @@ export function AnswersList({
           </div>
           <button
             type="button"
+            onClick={() => hendelClick}
             className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] hover:bg-[var(--tg-theme-accent-text-color)] hover:text-[var(--tg-theme-text-color)]"
           >
             <XMarkIcon
@@ -78,6 +85,7 @@ export function AnswersList({
           </div>
           <button
             type="button"
+            onClick={() => hendelClick}
             className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] hover:bg-[var(--tg-theme-accent-text-color)] hover:text-[var(--tg-theme-text-color)]"
           >
             <XMarkIcon
@@ -109,6 +117,7 @@ export function AnswersList({
           </div>
           <button
             type="button"
+            onClick={() => hendelClick}
             className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] hover:bg-[var(--tg-theme-accent-text-color)] hover:text-[var(--tg-theme-text-color)]"
           >
             <CheckIcon
@@ -140,6 +149,7 @@ export function AnswersList({
           </div>
           <button
             type="button"
+            onClick={() => hendelClick}
             className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] hover:bg-[var(--tg-theme-accent-text-color)] hover:text-[var(--tg-theme-text-color)]"
           >
             <XMarkIcon

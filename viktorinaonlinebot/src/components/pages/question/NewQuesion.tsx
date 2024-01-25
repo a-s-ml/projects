@@ -63,7 +63,7 @@ function NewQuesion() {
       </header>
 
       <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-        <form className="py-24">{step}</form>
+        <div className="py-24">{step}</div>
       </div>
     </>
   );
