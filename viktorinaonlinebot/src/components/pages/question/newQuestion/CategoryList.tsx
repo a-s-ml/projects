@@ -15,14 +15,14 @@ type CategoryListProps = CategoryData & {
 export function CategoryList({ category, updateFields }: CategoryListProps) {
   const categories = useAppSelector(selectAllCategories);
 
-  const [selectedCategory, setCategory] = useState(category);
+  const [selectedCategory, setCategory] = useState(categories.all[category]);
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
   return (
     <div className="py-2">
-      <Listbox value={category} onChange={() => setCategory}>
+      <Listbox value={selectedCategory} onChange={setCategory}>
         {({ open }) => (
           <>
             <Listbox.Label className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]">
