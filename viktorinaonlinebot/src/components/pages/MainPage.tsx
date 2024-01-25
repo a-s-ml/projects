@@ -57,7 +57,7 @@ export function MainPage() {
     isError: errorUser,
     data: dataUser,
     isSuccess: successUser,
-  } = useValidateQuery(user === 0 ? tg.initData : skipToken);
+  } = useValidateQuery(user === 0 ? skipToken : tg.initData);
 
   console.log(dataUser);
   const { data: allTypes, isSuccess: successType } = useGetTypeQuery("");
