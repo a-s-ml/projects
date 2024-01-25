@@ -118,8 +118,6 @@ export function MainPage() {
         </div>
       </div>
       {dataUser &&
-        successTime &&
-        successCategory &&
         dataUser.validate && (
           <>
             <SlidePage chat={dataUser.UserData.user.id} />
