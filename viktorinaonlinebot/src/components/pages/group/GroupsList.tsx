@@ -23,7 +23,7 @@ export default function GroupsList({ chat }: GroupsListProps) {
         className="mt-4 divide-y divide-[var(--tg-theme-hint-color)] pt-9"
       >
         {dataGroups?.length === 0 && (
-          <p className="text-center text-[var(--tg-theme-text-color)]">
+          <p className="font-light py-2 text-center text-[var(--tg-theme-text-color)]">
             Вы не добавили бота ещё ни в одну группу/канал
           </p>
         )}
