@@ -17,16 +17,12 @@ export function CategoryList({ category, updateFields }: CategoryListProps) {
 
   const [selectedCategory, setCategory] = useState(category);
 
-  const selectCategory = () => {
-    updateFields({ category: selectedCategory });
-  };
-
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
   return (
     <div className="py-2">
-      <Listbox value={category} onChange={setCategory}>
+      <Listbox value={category} onChange={() => setCategory}>
         {({ open }) => (
           <>
             <Listbox.Label className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]">
@@ -78,9 +74,9 @@ export function CategoryList({ category, updateFields }: CategoryListProps) {
                             >
                               {cat.name}
                             </span>
-                            <span className={classNames(active ? 'text-indigo-200' : 'text-gray-500', 'ml-2 truncate')}>
+                            {/* <span className={classNames(active ? 'text-indigo-200' : 'text-gray-500', 'ml-2 truncate')}>
                             {cat.id}
-                          </span>
+                          </span> */}
                           </div>
 
                           {selected ? (
