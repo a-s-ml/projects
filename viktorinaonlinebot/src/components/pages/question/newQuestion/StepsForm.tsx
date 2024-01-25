@@ -19,7 +19,7 @@ export default function StepsForm({ step, stepsCount }: StepsFormProps) {
   }
 
   return (
-    <nav className="flex items-center justify-center" aria-label="Progress">
+    <nav className="flex items-center px-8 pt-8 pb-4 bg-[var(--tg-theme-bg-color)] space-x-3 justify-center" aria-label="Progress">
       <p className="text-sm font-medium text-[var(--tg-theme-accent-text-color)]">
         Шаг {step} из {stepsCount}
       </p>
