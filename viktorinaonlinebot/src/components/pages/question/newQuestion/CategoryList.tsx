@@ -15,9 +15,10 @@ type CategoryListProps = CategoryData & {
 export function CategoryList({ category, updateFields }: CategoryListProps) {
   const categories = useAppSelector(selectAllCategories);
 
-  const [selectedCategory, setCategory] = useState(category);
+  const [selectedCategory, setCategory] = useState(categories.all[0]);
 
   console.log(selectedCategory)
+  console.log(categories)
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
@@ -32,8 +33,7 @@ export function CategoryList({ category, updateFields }: CategoryListProps) {
             <div className="relative mt-2">
               <Listbox.Button className="relative w-full cursor-default rounded-md bg-[var(--tg-theme-bg-color)] py-1.5 pl-3 pr-10 text-left text-[var(--tg-theme-text-color)] shadow-sm ring-1 ring-inset ring-[var(--tg-theme-text-color)]">
                 <span className="inline-flex w-full truncate">
-                  <span className="truncate"></span>
-                  <span className="ml-2 truncate"></span>
+                  <span className="truncate text-[var(--tg-theme-text-color)]">{selectedCategory.name}</span>
                 </span>
                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                   <ChevronUpDownIcon
