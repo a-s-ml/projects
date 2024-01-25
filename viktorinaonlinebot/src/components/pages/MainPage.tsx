@@ -4,7 +4,12 @@ import ErrorPage from "./ErrorPage";
 import MenuList from "./menu/MenuList";
 import { IMenu } from "../../models/IMenu";
 import ModalPage from "./ModalPage";
-import { selectSlide, selectSlideUser, slideState, userSlide } from "../store/api/slide.slice";
+import {
+  selectSlide,
+  selectSlideUser,
+  slideState,
+  userSlide,
+} from "../store/api/slide.slice";
 import { store, useAppDispatch, useAppSelector } from "../store";
 import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
@@ -52,7 +57,7 @@ export function MainPage() {
     isError: errorUser,
     data: dataUser,
     isSuccess: successUser,
-  } = useValidateQuery(tg.initData, {skip: user !== 0});
+  } = useValidateQuery(tg.initData, { skip: user !== 0 });
 
   const { data: allTypes, isSuccess: successType } = useGetTypeQuery("");
   const { data: allTime, isSuccess: successTime } = useGetTimeQuery("");
@@ -95,28 +100,28 @@ export function MainPage() {
             {errorUser && <ErrorPage />}
             {loadUser && <Preloader />}
             {dataUser && (
-                <ul
-                  role="list"
-                  className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
-                >
-                  {menuitems.map((item) => (
-                    <MenuList
-                      key={item.id}
-                      item={item}
-                      progress={dataUser.ProgressData}
-                    />
-                  ))}
-                </ul>
-              )}
+              <ul
+                role="list"
+                className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
+              >
+                {menuitems.map((item) => (
+                  <MenuList
+                    key={item.id}
+                    item={item}
+                    progress={dataUser.ProgressData}
+                  />
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>
       {dataUser && (
-          <>
-            <SlidePage chat={dataUser.UserData.user.id} />
-            <ModalPage />
-          </>
-        )}
+        <>
+          <SlidePage chat={dataUser.UserData.user.id} />
+          <ModalPage />
+        </>
+      )}
     </>
   );
 }
