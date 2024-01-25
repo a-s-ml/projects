@@ -63,13 +63,12 @@ export function AnswersList({
                 className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
                 aria-hidden="true"
               />
-            ) : ( 
+            ) : (
               <XMarkIcon
                 className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
                 aria-hidden="true"
               />
             )}
-            {selectedAnswerRight === 1 ? "Вкл" : "Выкл"}
           </button>
         </div>
       </div>
@@ -111,7 +110,6 @@ export function AnswersList({
                 aria-hidden="true"
               />
             )}
-            Верно
           </button>
         </div>
       </div>
@@ -153,7 +151,6 @@ export function AnswersList({
                 aria-hidden="true"
               />
             )}
-            Верно
           </button>
         </div>
       </div>
@@ -195,10 +192,61 @@ export function AnswersList({
                 aria-hidden="true"
               />
             )}
-            Верно
           </button>
         </div>
       </div>
     </div>
   );
 }
+
+// {buttons.map((button) => (
+//   <div>
+//     <label
+//       htmlFor={button.data}
+//       className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
+//     >
+//       {button.text}
+//     </label>
+//     <div className="mt-2 flex rounded-md shadow-sm">
+//       <div className="relative flex flex-grow items-stretch focus-within:z-10">
+//         <input
+//           type="text"
+//           name={button.data}
+//           id={button.data}
+//           className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
+//           placeholder={button.text}
+//           value={button.data}
+//           onChange={(e) => updateFields({ answer1: e.target.value })}
+//         />
+//       </div>
+//       <button
+//         type="button"
+//         className={`relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] ${
+//           selectedAnswerRight === button.id &&
+//           "bg-[var(--tg-theme-accent-text-color)]"
+//         }`}
+//         onClick={() => hendelClick(button.id)}
+//       >
+//         {selectedAnswerRight === button.id ? (
+//           <CheckIcon
+//             className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+//             aria-hidden="true"
+//           />
+//         ) : (
+//           <XMarkIcon
+//             className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+//             aria-hidden="true"
+//           />
+//         )}
+//       </button>
+//     </div>
+//   </div>
+// ))}
+
+
+// const buttons = [
+//   { id: 1, text: "Вариант ответа 1", data: answer1 },
+//   { id: 2, text: "Вариант ответа 2", data: answer2 },
+//   { id: 3, text: "Вариант ответа 3", data: answer3 },
+//   { id: 4, text: "Вариант ответа 4", data: answer4 },
+// ];
