@@ -12,9 +12,6 @@ export default function SlideDown({ slide }: SlideDownProps) {
   const tg = window.Telegram.WebApp;
 
   const [slideState, setSlide] = useState(slide);
-  if (slide) {
-    tg.HapticFeedback.notificationOccurred("success");
-  }
 
   return (
     <>
