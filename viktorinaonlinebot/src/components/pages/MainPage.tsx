@@ -117,10 +117,9 @@ export function MainPage() {
           </div>
         </div>
       </div>
-      {dataUser &&
-        dataUser.validate && (
+      {user != 0 && (
           <>
-            <SlidePage chat={dataUser.UserData.user.id} />
+            <SlidePage chat={user} />
             <ModalPage />
           </>
         )}
