@@ -54,7 +54,7 @@ export function MainPage() {
     isSuccess: successUser,
   } = useValidateQuery(tg.initData);
 
-  console.log(user)
+  console.log(user) 
 
   const { data: allTypes, isSuccess: successType } = useGetTypeQuery("");
   const { data: allTime, isSuccess: successTime } = useGetTimeQuery("");
