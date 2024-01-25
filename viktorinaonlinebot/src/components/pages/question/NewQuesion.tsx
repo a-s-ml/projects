@@ -3,8 +3,8 @@ import { UserForm } from "./newQuestion/UserForm";
 import { AddressForm } from "./newQuestion/AddressForm";
 import { AccountForm } from "./newQuestion/AccountForm";
 import { useMultistepForm } from "../../hooks/useNewQuestionFormContext";
-import { useAppSelector } from "../../store";
-import { selectSlideUser } from "../../store/api/slide.slice";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { selectSlideUser, showSlide } from "../../store/api/slide.slice";
 import StepsForm from "./newQuestion/StepsForm";
 import { Header } from "../Header";
 
@@ -49,12 +49,14 @@ function NewQuesion() {
     alert("Successful Account Creation");
   }
 
+  const dispatch = useAppDispatch();
 
   const tg = window.Telegram.WebApp;
   tg.MainButton.show();
   tg.MainButton.setText(isLastStep ? "Добавить вопрос" : "Следующий шаг");
-  tg.onEvent("backButtonClicked", () => back);
-  tg.onEvent("mainButtonClicked", () => onSubmit);
+  tg.offEvent("backButtonClicked", () => dispatch(showSlide(false)));
+  tg.onEvent("backButtonClicked", back);
+  tg.onEvent("mainButtonClicked", onSubmit);
 
   return (
     <>
