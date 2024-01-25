@@ -16,6 +16,7 @@ import { getAllTime } from "../store/api/time/time.slice";
 import { useGetCategoryQuery } from "../store/api/category/category.api";
 import { getAllCategories } from "../store/api/category/category.slice";
 import Preloader from "../Preloader/Preloader";
+import { skipToken } from "@reduxjs/toolkit/query";
 
 let menuitems: IMenu[] = [
   {
@@ -38,6 +39,9 @@ let menuitems: IMenu[] = [
 export function MainPage() {
   const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
+  const user = useAppSelector(selectSlideUser);
+  const slide = useAppSelector(selectSlide);
+  const modal = useAppSelector(selectModal);
 
   useEffect(() => {
     tg.expand();
@@ -49,10 +53,8 @@ export function MainPage() {
     isError: errorUser,
     data: dataUser,
     isSuccess: successUser,
-  } = useValidateQuery(tg.initData);
+  } = useValidateQuery(user === 0 ? tg.initData : skipToken);
 
-  const slide = useAppSelector(selectSlide);
-  const modal = useAppSelector(selectModal);
 
   const { data: allTypes, isSuccess: successType } = useGetTypeQuery("");
   const { data: allTime, isSuccess: successTime } = useGetTimeQuery("");
