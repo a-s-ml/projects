@@ -30,11 +30,11 @@ const INITIAL_DATA: FormData = {
 
 function NewQuesion() {
   const [data, setData] = useState(INITIAL_DATA);
+  console.log(data);
   function updateFields(fields: Partial<FormData>) {
     setData((prev) => {
       return { ...prev, ...fields };
     });
-    console.log(data);
   }
 
   const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
