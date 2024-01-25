@@ -6,7 +6,7 @@ type AnswersData = {
   answer2: string;
   answer3: string;
   answer4: string;
-  answerRight: number;
+  answerright: number;
 };
 
 type AnswersListProps = AnswersData & {
@@ -18,15 +18,15 @@ export function AnswersList({
   answer2,
   answer3,
   answer4,
-  answerRight,
+  answerright,
   updateFields,
 }: AnswersListProps) {
-  const [selectedAnswerRight, setAnswerRight] = useState(answerRight);
+  const [selectedAnswerRight, setAnswerRight] = useState(answerright);
 
   const hendelClick = (id: number) => {
     setAnswerRight(id);
     console.log(id);
-    updateFields({ answerRight: id });
+    updateFields({ answerright: id });
   };
 
   return (

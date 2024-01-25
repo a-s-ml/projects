@@ -1,7 +1,7 @@
 import { IQuestion } from "../../../../models/IQuestion";
 import { vikApi } from "../vik.api";
 
-interface IAddQuestion {
+export interface IAddQuestion {
   chat: bigint;
   text: string;
   category: number;
@@ -36,7 +36,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
 
     addQuestion: build.mutation<IQuestion, IAddQuestion>({
       query: (question) => ({
-        url: `/chat-category`,
+        url: `/question`,
         method: "POST",
         body: { question },
       }),
