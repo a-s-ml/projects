@@ -50,6 +50,7 @@ export function MainPage() {
   useEffect(() => {
     tg.expand();
     tg.ready();
+    tg.onEvent('viewportChanged', () => tg.expand())
   }, []);
 
   const {
