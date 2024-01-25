@@ -15,7 +15,7 @@ type CategoryListProps = CategoryData & {
 export function CategoryList({ category, updateFields }: CategoryListProps) {
   const categories = useAppSelector(selectAllCategories);
 
-  const [selectedCategory, setCategory] = useState(categories.all[0]);
+  const [selectedCategory, setCategory] = useState(category);
 
   console.log(selectedCategory)
   function classNames(...classes: string[]) {
@@ -70,7 +70,7 @@ export function CategoryList({ category, updateFields }: CategoryListProps) {
                             <span
                               className={classNames(
                                 selected ? "font-semibold" : "font-normal",
-                                "truncate"
+                                "truncate text-[var(--tg-theme-text-color)]"
                               )}
                             >
                               {cat.name}
