@@ -6,6 +6,7 @@ import { useMultistepForm } from "../../hooks/useNewQuestionFormContext";
 import { useAppSelector } from "../../store";
 import { selectSlideUser } from "../../store/api/slide.slice";
 import StepsForm from "./newQuestion/StepsForm";
+import { Header } from "../Header";
 
 type FormData = {
   text: string;
@@ -48,28 +49,28 @@ function NewQuesion() {
     alert("Successful Account Creation");
   }
 
-  console.log(steps); 
+  console.log(steps);
 
   return (
-    <div>
-      (user === 521884639 && (
-      <form onSubmit={onSubmit}>
-        {/* <div style={{ position: "absolute", top: ".5rem", right: ".5rem" }}>
-            {currentStepIndex + 1} / {steps.length}
-          </div> */}
-        {step}
-        <StepsForm stepid={currentStepIndex + 1} />
-        <div>
-          {!isFirstStep && (
-            <button type="button" onClick={back}>
-              Back
-            </button>
-          )}
-          <button type="submit">{isLastStep ? "Finish" : "Next"}</button>
-        </div>
-      </form>
-      ))
-    </div>
+    <>
+      <Header>
+        <StepsForm step={currentStepIndex + 1} stepsCount={steps.length} />
+      </Header>
+      <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+        <form onSubmit={onSubmit}>
+          {step}
+
+          <div>
+            {!isFirstStep && (
+              <button type="button" onClick={back}>
+                Back
+              </button>
+            )}
+            <button type="submit">{isLastStep ? "Finish" : "Next"}</button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }
 
