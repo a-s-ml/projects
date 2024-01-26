@@ -52,7 +52,9 @@ export default function CategoryCheckbox({
           disabled={disabled}
           type="checkbox"
           className={classNames(
-            disabled ? "text-[var(--tg-theme-hint-color)]" : "text-[var(--tg-theme-accent-text-color)]",
+            disabled
+              ? "text-[var(--tg-theme-hint-color)]"
+              : "text-[var(--tg-theme-accent-text-color)]",
             "h-4 w-4 rounded "
           )}
         />
@@ -61,8 +63,10 @@ export default function CategoryCheckbox({
         <label
           htmlFor={cat.name}
           className={classNames(
-            disabled ? "text-[var(--tg-theme-hint-color)]" : "text-[var(--tg-theme-text-color)]",
-            "font-medium cursor-pointer"
+            disabled
+              ? "text-[var(--tg-theme-hint-color)] cursor-not-allowed"
+              : "text-[var(--tg-theme-text-color)] cursor-pointer",
+            "font-medium"
           )}
         >
           {cat.name}

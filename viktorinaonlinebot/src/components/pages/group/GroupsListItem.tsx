@@ -3,7 +3,7 @@ import GroupAvatar from "./GroupAvatar";
 import { useAppDispatch } from "../../store";
 import { showModal, dataModal } from "../../store/api/modal.slice";
 import TypeQuestion from "./TypeQuestion";
-import TimeQuestion from "./TimeQuestion";
+import PeriodQuestion from "./PeriodQuestion";
 import ToggleButton from "./ToggleButton";
 import CategoryQuestion from "./CategoryQuestion";
 import { showSlide } from "../../store/api/slide.slice";
@@ -71,7 +71,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
           >
             <div className="min-w-0 flex-1">
               <TypeQuestion questionType={GroupDb.question_type} />
-              <TimeQuestion time={GroupDb.time} />
+              <PeriodQuestion time={GroupDb.time} />
               <CategoryQuestion group={dataGroupInfo.id} />
             </div>
             <div className="flex-shrink-0 self-center">

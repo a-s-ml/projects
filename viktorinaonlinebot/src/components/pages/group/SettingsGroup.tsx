@@ -3,7 +3,7 @@ import {
 } from "../../store/api/group.api";
 import TypeQuestionGroup from "./sittingsGroup/TypeQuestionGroup";
 import CategoryQuestionGroup from "./sittingsGroup/CategoryQuestionGroup";
-import TimeQuestionGroup from "./sittingsGroup/TimeQuestionGroup";
+import PeriodQuestionGroup from "./sittingsGroup/PeriodQuestionGroup";
 import NotactiveSittings from "./sittingsGroup/NotactiveSittings";
 import { useAppSelector } from "../../store";
 import { selectModalData } from "../../store/api/modal.slice";
@@ -42,7 +42,7 @@ export default function SettingsGroup({}) {
           >
             <TypeQuestionGroup />
             <CategoryQuestionGroup />
-            <TimeQuestionGroup />
+            <PeriodQuestionGroup />
             {noActive.map((item) => (
               <NotactiveSittings type={item.text} />
             ))}

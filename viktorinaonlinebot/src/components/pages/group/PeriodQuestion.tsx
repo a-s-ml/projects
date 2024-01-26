@@ -4,7 +4,7 @@ import { useGetTimeByIdQuery } from "../../store/api/time/time.api";
 interface TimeQuestionProps {
   time: number;
 }
-export default function TimeQuestion({ time }: TimeQuestionProps) {
+export default function PeriodQuestion({ time }: TimeQuestionProps) {
   const { data: dataTime } = useGetTimeByIdQuery(time);
 
   return (

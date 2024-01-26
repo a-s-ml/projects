@@ -14,7 +14,7 @@ import { selectAllTime } from "../../../store/api/time/time.slice";
 import { selectModalData } from "../../../store/api/modal.slice";
 import { useGetGroupDbQuery } from "../../../store/api/group.api";
 
-export default function TimeGroup() {
+export default function PeriodQuestionGroup() {
   const allTimes = useAppSelector(selectAllTime);
   const chat = useAppSelector(selectModalData);
   const { data: GroupDb } = useGetGroupDbQuery(chat);
