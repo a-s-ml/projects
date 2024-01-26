@@ -41,6 +41,14 @@ export default function SettingsGroup({}) {
   //*
   const { data: GroupDb } = useGetGroupDbQuery(group);
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
+
+  let date: Date;
+
+  successtAvailable && successtPublished && GroupTime ?
+   date = new Date(Math.round(
+    ((countAvailableQuestion - countPublishedQuestion) *
+      GroupTime.period)
+  ) * 1000) : date = new Date()
   //*
   return (
     <>
@@ -69,13 +77,9 @@ export default function SettingsGroup({}) {
           )}
           {successtAvailable && successtPublished && GroupTime && (
             <h5 className="pt-2 text-xs font-light text-[var(--tg-theme-text-color)] text-left">
-              Завершение викторины
+              Завершение викторины &asymp; 
               <span className="font-semibold text-[var(--tg-theme-accent-text-color)]">
-                {Math.round(
-                  ((countAvailableQuestion - countPublishedQuestion) *
-                    GroupTime.period) /
-                    1000 / 60 / 60
-                )}
+                {String(date)}
               </span>
             </h5>
           )}
