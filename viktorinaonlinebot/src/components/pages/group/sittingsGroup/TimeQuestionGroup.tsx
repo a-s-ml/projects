@@ -111,7 +111,7 @@ export default function TimeQuestionGroup() {
             <Disclosure.Panel className="py-4">
               <div className="space-y-1.5">
                 <RadioGroup value={times} onChange={setTimes} className="mt-2">
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-6 gap-2">
                     {allTimes.map((time) => (
                       <RadioGroup.Option
                         key={time.id}
@@ -119,7 +119,7 @@ export default function TimeQuestionGroup() {
                         onClick={() => hendleTimes(time.id)}
                         className={({ active, checked }) =>
                           classNames(
-                            Boolean(time.active)
+                            time.active === true
                               ? "cursor-pointer"
                               : "cursor-not-allowed opacity-25",
                             active
