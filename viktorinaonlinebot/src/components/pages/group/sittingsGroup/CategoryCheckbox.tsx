@@ -60,7 +60,10 @@ export default function CategoryCheckbox({
       <div className="ml-3 text-sm leading-6">
         <label
           htmlFor={cat.name}
-          className="font-medium text-[var(--tg-theme-text-color)] cursor-pointer"
+          className={classNames(
+            disabled ? "text-[var(--tg-theme-hint-color)]" : "text-[var(--tg-theme-text-color)]",
+            "font-medium cursor-pointer"
+          )}
         >
           {cat.name}
         </label>
