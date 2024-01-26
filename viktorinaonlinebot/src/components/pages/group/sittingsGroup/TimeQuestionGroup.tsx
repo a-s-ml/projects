@@ -101,7 +101,9 @@ export default function TimeQuestionGroup() {
                   {allTimes.map((time) => (
                     <button
                       type="button"
-                      className="flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer"
+                      className={`flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer ${
+                        time.id === 2 ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold" : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
+                      }`}
                     >
                       {time.name}
                     </button>
