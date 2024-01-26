@@ -97,34 +97,16 @@ export default function TimeQuestionGroup() {
             </li>
             <Disclosure.Panel className="py-4">
               <div className="space-y-1.5">
-                <RadioGroup
-                  value={timeState}
-                  onChange={setTime}
-                  className="mt-2"
-                >
-                  <div className="grid grid-cols-6 gap-2">
-                    {allTimes &&
-                      allTimes.map((time) => (
-                        <RadioGroup.Option
-                          key={time.id}
-                          value={time.id}
-                          onClick={() => timeChanged(time.id)}
-                          className={({ checked }) =>
-                            classNames(
-                              checked
-                                ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
-                                : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold",
-                              "flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer"
-                            )
-                          }
-                        >
-                          <RadioGroup.Label as="span">
-                            {time.name}
-                          </RadioGroup.Label>
-                        </RadioGroup.Option>
-                      ))}
-                  </div>
-                </RadioGroup>
+                <div className="grid grid-cols-6 gap-2">
+                  {allTimes.map((time) => (
+                    <button
+                      type="button"
+                      className="relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+                    >
+                      {time.name}
+                    </button>
+                  ))}
+                </div>
               </div>
             </Disclosure.Panel>
           </>
