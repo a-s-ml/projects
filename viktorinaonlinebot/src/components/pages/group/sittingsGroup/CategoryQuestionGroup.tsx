@@ -57,10 +57,15 @@ export default function CategoryGroup() {
                     <CategoryCheckbox
                       key={item.id}
                       cat={item}
-                      checked={
-                        GroupCategory.find((itm) => itm.category === item.id)
+                      disabled={
+                        GroupCategory.find((itm) => itm.category === 1001)
                           ? true
                           : false
+                      }
+                      checked={
+                        GroupCategory.find((itm) => itm.category === item.id)
+                          ? false
+                          : true
                       }
                     />
                   ))}

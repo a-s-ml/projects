@@ -7,11 +7,13 @@ import { useAddCategoryGroupsMutation, useDeleteCategoryGroupsMutation } from ".
 interface CategoryCheckboxProps {
   cat: ICategory;
   checked: boolean;
+  disabled: boolean
 }
 
 export default function CategoryCheckbox({
   cat,
   checked,
+  disabled,
 }: CategoryCheckboxProps) {
   const tg = window.Telegram.WebApp;
 
@@ -40,6 +42,7 @@ export default function CategoryCheckbox({
           checked={checkBox}
           onChange={()=>categoryChanged(!checkBox, cat.id)}
           name={cat.name}
+          disabled={disabled}
           type="checkbox"
           className="h-4 w-4 rounded text-[var(--tg-theme-accent-text-color)]"
         />
