@@ -34,6 +34,8 @@ function NewQuesion() {
 
   function updateFields(fields: Partial<FormData>) {
     setData((prev) => {
+      console.log(prev)
+      console.log(fields)
       return { ...prev, ...fields };
     });
   }
