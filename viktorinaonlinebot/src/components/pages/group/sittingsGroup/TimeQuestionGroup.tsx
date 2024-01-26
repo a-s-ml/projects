@@ -55,6 +55,10 @@ export default function TimeQuestionGroup() {
   // let hour: number
   // GroupTime ? hour = GroupTime.period / 1000 : 25
 
+  function classNames(...classes: string[]) {
+    return classes.filter(Boolean).join(" ");
+  }
+
   let newArr: ITimesInteface[];
   console.log(times);
 
@@ -104,21 +108,35 @@ export default function TimeQuestionGroup() {
             </li>
             <Disclosure.Panel className="py-4">
               <div className="space-y-1.5">
-                <div className="grid grid-cols-6 gap-2">
-                  {times.map((time) => (
-                    <button
-                      type="button"
-                      onClick={() => hendleTimes(time.id)}
-                      className={`flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer ${
-                        time.active === true 
-                          ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
-                          : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
-                      }`}
-                    >
-                      {time.name}
-                    </button>
-                  ))}
-                </div>
+                <RadioGroup value={times} onChange={setTimes} className="mt-2">
+                  <div className="grid grid-cols-3 gap-2">
+                    {times.map((time) => (
+                      <RadioGroup.Option
+                        key={time.id}
+                        value={time.id}
+                        onClick={() => hendleTimes(time.id)}
+                        className={({ active, checked }) =>
+                          classNames(
+                            Boolean(time.active)
+                              ? "cursor-pointer"
+                              : "cursor-not-allowed opacity-25",
+                            active
+                              ? "ring-2 ring-[var(--tg-theme-accent-text-color)] ring-offset-2"
+                              : "",
+                            checked
+                              ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
+                              : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold",
+                            "flex items-center justify-center rounded-md py-2 px-2 text-xs"
+                          )
+                        }
+                      >
+                        <RadioGroup.Label as="span">
+                          {time.name}
+                        </RadioGroup.Label>
+                      </RadioGroup.Option>
+                    ))}
+                  </div>
+                </RadioGroup>
               </div>
             </Disclosure.Panel>
           </>
@@ -126,4 +144,23 @@ export default function TimeQuestionGroup() {
       </Disclosure>
     </>
   );
+}
+
+{
+  /* <div className="grid grid-cols-6 gap-2">
+{times.map((time) => (
+  <button
+    type="button"
+    value={time.id}
+    onClick={(e) => hendleTimes(e.target.value)}
+    className={`flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer ${
+      time.active === true 
+        ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
+        : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
+    }`}
+  >
+    {time.name}
+  </button>
+))}
+</div> */
 }
