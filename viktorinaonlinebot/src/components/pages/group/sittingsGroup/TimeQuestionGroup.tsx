@@ -56,24 +56,12 @@ export default function TimeQuestionGroup() {
   // GroupTime ? hour = GroupTime.period / 1000 : 25
 
   let newArr: ITimesInteface[];
-  
+
   function hendleTimes(id: number) {
     times.map((time) => {
-      time.id === id
-        ? newArr.push({
-            id: time.id,
-            time: time.time,
-            name: time.name,
-            active: true,
-          })
-        : {
-            id: time.id,
-            time: time.time,
-            name: time.name,
-            active: false,
-          };
-    });
-    setTimes(newArr)
+      time.id === id ? time.active = true : time.active = false
+    })
+    setTimes(times)
   }
 
   return (
