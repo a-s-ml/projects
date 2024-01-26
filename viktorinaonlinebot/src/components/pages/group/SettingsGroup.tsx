@@ -82,7 +82,7 @@ export default function SettingsGroup({}) {
             <h5 className="pt-2 text-xs font-light text-[var(--tg-theme-text-color)] text-left">
               Завершение викторины &asymp;
               <span className="font-semibold text-[var(--tg-theme-accent-text-color)]">
-                {String(date)}
+                {date.toLocaleDateString()}
               </span>
             </h5>
           )}
