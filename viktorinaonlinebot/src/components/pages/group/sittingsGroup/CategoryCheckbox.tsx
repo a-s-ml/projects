@@ -24,10 +24,10 @@ export default function CategoryCheckbox({
   const chat = useAppSelector(selectModalData);
 
   async function categoryChanged(check: boolean, category: number) {
-    if(check) {
+    if(!check) {
       await setCategory({chat, category})
     }
-    if(!check) {
+    if(check) {
       deleteCategory({chat, category})
     }
     setCheckBox(check)
