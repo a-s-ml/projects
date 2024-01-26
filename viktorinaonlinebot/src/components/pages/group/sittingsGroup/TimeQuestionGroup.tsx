@@ -15,50 +15,46 @@ import { useGetGroupDbQuery } from "../../../store/api/group.api";
 
 export default function TimeQuestionGroup() {
   const allTimes = [
-    { id: 0, time: 0, name: "00:00" },
-    { id: 1, time: 0, name: "01:00" },
-    { id: 2, time: 0, name: "02:00" },
-    { id: 3, time: 0, name: "03:00" },
-    { id: 4, time: 0, name: "04:00" },
-    { id: 5, time: 0, name: "05:00" },
-    { id: 6, time: 0, name: "06:00" },
-    { id: 7, time: 0, name: "07:00" },
-    { id: 8, time: 0, name: "08:00" },
-    { id: 9, time: 0, name: "09:00" },
-    { id: 10, time: 0, name: "10:00" },
-    { id: 11, time: 0, name: "11:00" },
-    { id: 12, time: 0, name: "12:00" },
-    { id: 13, time: 0, name: "13:00" },
-    { id: 14, time: 0, name: "14:00" },
-    { id: 15, time: 0, name: "15:00" },
-    { id: 16, time: 0, name: "16:00" },
-    { id: 17, time: 0, name: "17:00" },
-    { id: 18, time: 0, name: "18:00" },
-    { id: 19, time: 0, name: "19:00" },
-    { id: 20, time: 0, name: "20:00" },
-    { id: 21, time: 0, name: "21:00" },
-    { id: 22, time: 0, name: "22:00" },
-    { id: 23, time: 0, name: "23:00" },
+    { id: 0, time: 0, name: "00:00", active: false},
+    { id: 1, time: 0, name: "01:00", active: false },
+    { id: 2, time: 0, name: "02:00", active: false },
+    { id: 3, time: 0, name: "03:00", active: false },
+    { id: 4, time: 0, name: "04:00", active: false },
+    { id: 5, time: 0, name: "05:00", active: false },
+    { id: 6, time: 0, name: "06:00", active: false },
+    { id: 7, time: 0, name: "07:00", active: false },
+    { id: 8, time: 0, name: "08:00", active: false },
+    { id: 9, time: 0, name: "09:00", active: false },
+    { id: 10, time: 0, name: "10:00", active: false },
+    { id: 11, time: 0, name: "11:00", active: false },
+    { id: 12, time: 0, name: "12:00", active: false },
+    { id: 13, time: 0, name: "13:00", active: false },
+    { id: 14, time: 0, name: "14:00", active: false },
+    { id: 15, time: 0, name: "15:00", active: false },
+    { id: 16, time: 0, name: "16:00", active: false },
+    { id: 17, time: 0, name: "17:00", active: false },
+    { id: 18, time: 0, name: "18:00", active: false },
+    { id: 19, time: 0, name: "19:00", active: false },
+    { id: 20, time: 0, name: "20:00", active: false },
+    { id: 21, time: 0, name: "21:00", active: false },
+    { id: 22, time: 0, name: "22:00", active: false },
+    { id: 23, time: 0, name: "23:00", active: false },
   ];
   const chat = useAppSelector(selectModalData);
   const { data: GroupDb } = useGetGroupDbQuery(chat);
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
+  const [times, setTimes] = useState(allTimes);
 
-  const tg = window.Telegram.WebApp;
+  // let hour: number
+  // GroupTime ? hour = GroupTime.period / 1000 : 25
 
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
+  function hendleTimes(id: number) {
+    const newArr = times.filter((time) => {
+      return time.id === id;  
+  });
+    setTimes(newArr)
   }
 
-  const [timeState, setTime] = useState(GroupTime?.id);
-
-  const [updateTimeGroup, {}] = useUpdateTimeGroupsMutation();
-
-  function timeChanged(time: number) {
-    setTime(time);
-    updateTimeGroup({ chat, time });
-    tg.HapticFeedback.selectionChanged();
-  }
 
   return (
     <>
@@ -98,9 +94,10 @@ export default function TimeQuestionGroup() {
             <Disclosure.Panel className="py-4">
               <div className="space-y-1.5">
                 <div className="grid grid-cols-6 gap-2">
-                  {allTimes.map((time) => (
+                  {times.map((time) => (
                     <button
                       type="button"
+                      onClick={() => hendleTimes(time.id)}
                       className={`flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer ${
                         time.id === 2 ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold" : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
                       }`}
