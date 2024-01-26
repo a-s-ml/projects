@@ -33,7 +33,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         method: "POST",
         body: { chat, category },
       }),
-      invalidatesTags: ["CategoryGroup"],
+      invalidatesTags: ["CategoryGroup", "CountAvailableQuestionGroup"],
     }),
 
     deleteCategoryGroups: build.mutation<IResCategoryGroup, IReqCategoryGroup>({
@@ -42,7 +42,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         method: "DELETE",
         body: { chat, category },
       }),
-      invalidatesTags: ["CategoryGroup"],
+      invalidatesTags: ["CategoryGroup", "CountAvailableQuestionGroup"],
     }),
   }),
 });

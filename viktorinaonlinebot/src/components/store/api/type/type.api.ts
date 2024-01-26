@@ -24,7 +24,7 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         method: "PATCH",
         body: { question_type },
       }),
-      invalidatesTags: ["TypeGroup"]
+      invalidatesTags: ["TypeGroup", "CountAvailableQuestionGroup"]
     }),
     
   }),
