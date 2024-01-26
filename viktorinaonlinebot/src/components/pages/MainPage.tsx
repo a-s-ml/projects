@@ -54,7 +54,7 @@ export function MainPage() {
   }, []);
 
   const {
-    isLoading: loadUser,
+    isLoading: loadUser, 
     isError: errorUser,
     data: dataUser,
     isSuccess: successUser,
