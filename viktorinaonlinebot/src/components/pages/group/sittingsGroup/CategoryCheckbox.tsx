@@ -2,12 +2,15 @@ import { useState } from "react";
 import { ICategory } from "../../../../models/ICategory";
 import { useAppSelector } from "../../../store";
 import { selectModalData } from "../../../store/api/modal.slice";
-import { useAddCategoryGroupsMutation, useDeleteCategoryGroupsMutation } from "../../../store/api/category/category.api";
+import {
+  useAddCategoryGroupsMutation,
+  useDeleteCategoryGroupsMutation,
+} from "../../../store/api/category/category.api";
 
 interface CategoryCheckboxProps {
   cat: ICategory;
   checked: boolean;
-  disabled: boolean
+  disabled: boolean;
 }
 
 export default function CategoryCheckbox({
@@ -24,14 +27,18 @@ export default function CategoryCheckbox({
   const chat = useAppSelector(selectModalData);
 
   async function categoryChanged(check: boolean, category: number) {
-    if(!check) {
-      await setCategory({chat, category})
+    if (!check) {
+      await setCategory({ chat, category });
     }
-    if(check) {
-      deleteCategory({chat, category})
+    if (check) {
+      deleteCategory({ chat, category });
     }
-    setCheckBox(check)
+    setCheckBox(check);
     tg.HapticFeedback.selectionChanged();
+  }
+
+  function classNames(...classes: string[]) {
+    return classes.filter(Boolean).join(" ");
   }
 
   return (
@@ -40,11 +47,14 @@ export default function CategoryCheckbox({
         <input
           id={cat.name}
           checked={checkBox}
-          onChange={()=>categoryChanged(!checkBox, cat.id)}
+          onChange={() => categoryChanged(!checkBox, cat.id)}
           name={cat.name}
           disabled={disabled}
           type="checkbox"
-          className="h-4 w-4 rounded text-[var(--tg-theme-accent-text-color)]"
+          className={classNames(
+            disabled ? "text-[var(--tg-theme-hint-color)]" : "text-[var(--tg-theme-accent-text-color)]",
+            "h-4 w-4 rounded "
+          )}
         />
       </div>
       <div className="ml-3 text-sm leading-6">
