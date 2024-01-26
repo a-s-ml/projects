@@ -32,8 +32,6 @@ function NewQuesion() {
   const user = useAppSelector(selectSlideUser);
   const [data, setData] = useState(initialData);
 
-  console.log(data);
-
   function updateFields(fields: Partial<FormData>) {
     setData((prev) => {
       return { ...prev, ...fields };
@@ -51,16 +49,27 @@ function NewQuesion() {
 
   async function onSubmit() {
     if (!isLastStep) return next();
-    await addQuestion({
-      chat: user as unknown as bigint,
-      text: data.text,
-      category: data.category,
-      answer1: data.answer1,
-      answer2: data.answer2,
-      answer3: data.answer3,
-      answer4: data.answer4,
-      answerright: data.answerright,
-    });
+    // await addQuestion({
+    //   chat: user as unknown as bigint,
+    //   text: data.text,
+    //   category: data.category,
+    //   answer1: data.answer1,
+    //   answer2: data.answer2,
+    //   answer3: data.answer3,
+    //   answer4: data.answer4,
+    //   answerright: data.answerright,
+    // });
+
+    console.log({
+        chat: user as unknown as bigint,
+        text: data.text,
+        category: data.category,
+        answer1: data.answer1,
+        answer2: data.answer2,
+        answer3: data.answer3,
+        answer4: data.answer4,
+        answerright: data.answerright,
+      });
   }
 
   console.log(currentStepIndex);
