@@ -10,6 +10,7 @@ interface CategoryListProps {
   onSubmit: () => void;
 }
 
+const tg = window.Telegram.WebApp;
 let mona: boolean = false;
 
 export function CategoryList({ onSubmit }: CategoryListProps) {
@@ -30,8 +31,6 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
     mona = true;
   };
 
-  const tg = window.Telegram.WebApp;
-  tg.MainButton.hide();
   if (mona) {
     tg.MainButton.setText("Следующий шаг");
     tg.MainButton.show();

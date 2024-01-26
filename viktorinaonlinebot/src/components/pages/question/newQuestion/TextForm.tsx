@@ -6,6 +6,8 @@ interface TextFormProps {
   onSubmit: () => void;
 }
 
+const tg = window.Telegram.WebApp;
+
 export function TextForm({ onSubmit }: TextFormProps) {
   
   const dispatch = useAppDispatch();
@@ -16,8 +18,6 @@ export function TextForm({ onSubmit }: TextFormProps) {
     dispatch(getQuestionText(txt));
   };
 
-  const tg = window.Telegram.WebApp;
-  tg.MainButton.hide();
   if (text.length > 5) {
     tg.MainButton.setText("Следующий шаг");
     tg.MainButton.show();

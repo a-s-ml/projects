@@ -17,7 +17,10 @@ function NewQuesion() {
   const user = useAppSelector(selectSlideUser);
   const question = useAppSelector(selectQuestion);
 
+
   const tg = window.Telegram.WebApp;
+  tg.MainButton.hide();
+  
   function onSubmit() {
     if (!isLastStep) return next();
     if (isLastStep) {

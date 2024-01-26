@@ -13,6 +13,9 @@ interface AnswersListProps {
   onSubmit: () => void;
 }
 
+const tg = window.Telegram.WebApp;
+tg.MainButton.hide();
+
 export function AnswersList({ onSubmit }: AnswersListProps) {
   const [selectedAnswerRight, setAnswerRight] = useState(0);
   const [answer1, setAnswer1] = useState("");
@@ -42,8 +45,6 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
     dispatch(getQuestionAnswerright(id));
   };
 
-  const tg = window.Telegram.WebApp;
-  tg.MainButton.hide();
   if (
     answer1.length > 1 &&
     answer2.length > 1 &&
