@@ -56,15 +56,15 @@ export default function TimeQuestionGroup() {
   // GroupTime ? hour = GroupTime.period / 1000 : 25
 
   let newArr: ITimesInteface[];
-  console.log(times)
+  console.log(times);
 
   function hendleTimes(id: number) {
-    console.log(id)
+    console.log(id);
     times.map((time) => {
-      time.id === id ? time.active = true : time.active = false
-    })
-    console.log(times)
-    setTimes(times)
+      time.id === id ? (time.active = true) : (time.active = false);
+    });
+    console.log(times);
+    setTimes(times);
   }
 
   return (
@@ -110,7 +110,7 @@ export default function TimeQuestionGroup() {
                       type="button"
                       onClick={() => hendleTimes(time.id)}
                       className={`flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer ${
-                        time.id === 2
+                        time.active
                           ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
                           : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
                       }`}
