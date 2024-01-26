@@ -10,6 +10,8 @@ interface CategoryListProps {
   onSubmit: () => void;
 }
 
+let mona: boolean = false;
+
 export function CategoryList({ onSubmit }: CategoryListProps) {
   const categories = useAppSelector(selectAllCategories);
   const dispatch = useAppDispatch();
@@ -20,7 +22,6 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
     return classes.filter(Boolean).join(" ");
   }
 
-  let mona: boolean = false;
   console.log(mona)
 
   const handleChange = (cat: ICategory) => {
