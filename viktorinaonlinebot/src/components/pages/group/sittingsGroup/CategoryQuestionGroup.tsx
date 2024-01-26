@@ -58,9 +58,7 @@ export default function CategoryGroup() {
                       key={item.id}
                       cat={item}
                       disabled={
-                        GroupCategory.find((itm) => itm.category === 1001)
-                          ? true
-                          : false
+                        item.id === 1001 || item.id === 85 ? true : false
                       }
                       checked={
                         GroupCategory.find((itm) => itm.category === item.id)
