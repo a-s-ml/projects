@@ -20,7 +20,7 @@ function NewQuesion() {
 
   const tg = window.Telegram.WebApp;
   tg.MainButton.hide();
-  
+
   function onSubmit() {
     if (!isLastStep) return next();
     if (isLastStep) {
@@ -35,7 +35,7 @@ function NewQuesion() {
         answer4: question.answer4,
         answerright: question.answerright,
       });
-      dispatch(getQuestionDefault());
+      dispatch(getQuestionDefault(""));
       dispatch(showModal(false));
       dispatch(showSlide(true));
     }
