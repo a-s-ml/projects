@@ -64,9 +64,9 @@ export default function SettingsGroup({}) {
               </span>
             </h4>
           )}
-          {successtAvailable && GroupTime && (
+          {successtAvailable && successtPublished && GroupTime && (
             <h5 className="pt-2 text-xs font-light text-[var(--tg-theme-text-color)] text-left">
-              Завершение викторины {Math.round(Number(successtAvailable) * GroupTime.period / 1000)}
+              Завершение викторины {Math.round((countAvailableQuestion - countPublishedQuestion) * GroupTime.period / 1000)}
             </h5>
           )}
           <ul
