@@ -1,4 +1,7 @@
-import { useGetGroupDbQuery, useGetInfoGroupsQuery } from "../../store/api/group.api";
+import {
+  useGetGroupDbQuery,
+  useGetInfoGroupsQuery,
+} from "../../store/api/group.api";
 import TypeQuestionGroup from "./sittingsGroup/TypeQuestionGroup";
 import CategoryQuestionGroup from "./sittingsGroup/CategoryQuestionGroup";
 import PeriodQuestionGroup from "./sittingsGroup/PeriodQuestionGroup";
@@ -35,10 +38,10 @@ export default function SettingsGroup({}) {
     useCountAvailableQuestionQuery(group);
   const { isSuccess: successtPublished, data: countPublishedQuestion } =
     useCountPublishedQuestionQuery(group);
-    //*
-    const { data: GroupDb } = useGetGroupDbQuery(group);
-    const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
-    //*
+  //*
+  const { data: GroupDb } = useGetGroupDbQuery(group);
+  const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
+  //*
   return (
     <>
       {dataGroupInfo && (
@@ -66,7 +69,14 @@ export default function SettingsGroup({}) {
           )}
           {successtAvailable && successtPublished && GroupTime && (
             <h5 className="pt-2 text-xs font-light text-[var(--tg-theme-text-color)] text-left">
-              Завершение викторины {Math.round((countAvailableQuestion - countPublishedQuestion) * GroupTime.period / 1000)}
+              Завершение викторины
+              <span className="font-semibold text-[var(--tg-theme-accent-text-color)]">
+                {Math.round(
+                  ((countAvailableQuestion - countPublishedQuestion) *
+                    GroupTime.period) /
+                    1000 / 60 / 60
+                )}
+              </span>
             </h5>
           )}
           <ul
