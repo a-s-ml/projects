@@ -40,7 +40,11 @@ export default function SettingsGroup({}) {
       {dataGroupInfo && (
         <form className="text-center py-24">
           <h3 className="text-sm font-medium text-[var(--tg-theme-text-color)] text-left">
-            Настройки викторины в группе "{dataGroupInfo.title}"
+            Настройки викторины в группе "
+            <span className="font-semibold text-sm ">
+              {dataGroupInfo.title}
+            </span>
+            "
           </h3>
           {successtAvailable && successtPublished && (
             <h2 className="pt-2 text-xs font-light text-[var(--tg-theme-text-color)] text-left">
