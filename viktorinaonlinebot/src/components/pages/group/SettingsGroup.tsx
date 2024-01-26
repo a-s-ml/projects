@@ -46,10 +46,7 @@ export default function SettingsGroup({}) {
 
   successtAvailable && successtPublished && GroupTime
     ? (date = new Date(
-        Date.now() +
-          (countAvailableQuestion - countPublishedQuestion) *
-            GroupTime.period *
-            1000
+        Date.now() + countAvailableQuestion * GroupTime.period * 1000
       ))
     : (date = new Date());
   //*
@@ -74,7 +71,7 @@ export default function SettingsGroup({}) {
               из
               <span className="font-semibold text-[var(--tg-theme-accent-text-color)]">
                 {" "}
-                {countAvailableQuestion}{" "}
+                {countAvailableQuestion + countPublishedQuestion}{" "}
               </span>
             </h4>
           )}
