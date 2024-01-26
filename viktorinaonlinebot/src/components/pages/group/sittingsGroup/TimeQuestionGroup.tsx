@@ -13,6 +13,13 @@ import {
 import { selectModalData } from "../../../store/api/modal.slice";
 import { useGetGroupDbQuery } from "../../../store/api/group.api";
 
+interface ITimesInteface {
+  id: number;
+  time: number;
+  name: string;
+  active: boolean;
+}
+
 export default function TimeQuestionGroup() {
   const allTimes = [
     { id: 0, time: 0, name: "00:00", active: false },
@@ -48,11 +55,25 @@ export default function TimeQuestionGroup() {
   // let hour: number
   // GroupTime ? hour = GroupTime.period / 1000 : 25
 
+  let newArr: ITimesInteface[];
+  
   function hendleTimes(id: number) {
-    const newArr = times.filter((time) => {
-      time.id === id ? (time.active = true) : (time.active = false);
+    times.map((time) => {
+      time.id === id
+        ? newArr.push({
+            id: time.id,
+            time: time.time,
+            name: time.name,
+            active: true,
+          })
+        : {
+            id: time.id,
+            time: time.time,
+            name: time.name,
+            active: false,
+          };
     });
-    setTimes(newArr);
+    setTimes(newArr)
   }
 
   return (
