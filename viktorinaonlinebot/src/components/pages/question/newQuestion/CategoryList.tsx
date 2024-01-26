@@ -21,6 +21,7 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
   }
 
   let mona: boolean = false;
+  console.log(mona)
 
   const handleChange = (cat: ICategory) => {
     setCategory(cat);
