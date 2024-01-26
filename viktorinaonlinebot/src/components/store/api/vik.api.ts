@@ -10,7 +10,7 @@ export const vikApi = createApi({
   reducerPath: "vikApi",
   refetchOnFocus: true,
   baseQuery: staggeredBaseQuery,
-  tagTypes: ["TypeGroup", "TimeGroup", "CategoryGroup", "Validate", "CountAvailableQuestionGroup"],
+  tagTypes: ["TypeGroup", "TimeGroup", "CategoryGroup", "Validate", "CountAvailableQuestionGroup", "CountPublishedQuestionGroup"],
   endpoints: (build) => ({
     validate: build.query<IValidate, string>({
       query: (initData: string) => ({

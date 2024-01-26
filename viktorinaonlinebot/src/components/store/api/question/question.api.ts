@@ -54,12 +54,14 @@ export const extendedApiSlice = vikApi.injectEndpoints({
       query: (id) => ({
         url: `auto-post/countAvailableQuestionByChatId/${id}`,
       }),
+      providesTags: ["CountAvailableQuestionGroup"],
     }),
 
     countPublishedQuestion: build.query<number, bigint>({
       query: (id) => ({
         url: `auto-post/countPublishedQuestion/${id}`,
       }),
+      providesTags: ["CountAvailableQuestionGroup"],
     }),
 
   }),

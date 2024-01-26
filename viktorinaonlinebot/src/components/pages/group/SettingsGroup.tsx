@@ -44,7 +44,14 @@ export default function SettingsGroup({}) {
           </h3>
           {successtAvailable && successtPublished && (
             <h2 className="pt-2 text-xs font-light text-[var(--tg-theme-text-color)] text-left">
-              Опубликовано вопросов {countPublishedQuestion} из {countAvailableQuestion}
+              Опубликовано вопросов
+              <span className="font-semibold text-sm text-[var(--tg-theme-accent-text-color)]">
+                {countPublishedQuestion}
+              </span>
+              из
+              <span className="font-semibold text-[var(--tg-theme-accent-text-color)]">
+                {countAvailableQuestion}
+              </span>
             </h2>
           )}
           <ul
