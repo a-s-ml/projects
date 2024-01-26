@@ -15,7 +15,7 @@ import { useGetGroupDbQuery } from "../../../store/api/group.api";
 
 export default function TimeQuestionGroup() {
   const allTimes = [
-    { id: 0, time: 0, name: "00:00", active: false},
+    { id: 0, time: 0, name: "00:00", active: false },
     { id: 1, time: 0, name: "01:00", active: false },
     { id: 2, time: 0, name: "02:00", active: false },
     { id: 3, time: 0, name: "03:00", active: false },
@@ -50,11 +50,10 @@ export default function TimeQuestionGroup() {
 
   function hendleTimes(id: number) {
     const newArr = times.filter((time) => {
-      return time.id === id;  
-  });
-    setTimes(newArr)
+      time.id === id ? (time.active = true) : (time.active = false);
+    });
+    setTimes(newArr);
   }
-
 
   return (
     <>
@@ -99,7 +98,9 @@ export default function TimeQuestionGroup() {
                       type="button"
                       onClick={() => hendleTimes(time.id)}
                       className={`flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer ${
-                        time.id === 2 ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold" : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
+                        time.id === 2
+                          ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
+                          : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
                       }`}
                     >
                       {time.name}
