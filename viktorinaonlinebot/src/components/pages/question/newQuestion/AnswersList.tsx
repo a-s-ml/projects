@@ -1,28 +1,38 @@
 import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { useAppDispatch } from "../../../store";
-import { getQuestionAnswerOne, getQuestionAnswerright } from "../../../store/api/question/question.slice";
+import {
+  getQuestionAnswerFour,
+  getQuestionAnswerOne,
+  getQuestionAnswerThree,
+  getQuestionAnswerTwo,
+  getQuestionAnswerright,
+} from "../../../store/api/question/question.slice";
 
 export function AnswersList() {
   const [selectedAnswerRight, setAnswerRight] = useState(0);
-  const [answers, setAnswers] = useState({
-    answer1: "",
-    answer2: "",
-    answer3: "",
-    answer4: ""
-  })
+  const [answer1, setAnswer1] = useState("");
+  const [answer2, setAnswer2] = useState("");
+  const [answer3, setAnswer3] = useState("");
+  const [answer4, setAnswer4] = useState("");
   const dispatch = useAppDispatch();
 
-const hendleAnswers = (e: { target: { name: any; value: any; }; }) => {
-  const name = e.target.name
-  const value = e.target.value
-  setAnswers(prevData => ({
-    ...prevData,
-    [name]: value
-}))
-}
-
-
+  const handleAnswer1 = (txt: string) => {
+    setAnswer1(txt);
+    dispatch(getQuestionAnswerOne(txt));
+  };
+  const handleAnswer2 = (txt: string) => {
+    setAnswer1(txt);
+    dispatch(getQuestionAnswerTwo(txt));
+  };
+  const handleAnswer3 = (txt: string) => {
+    setAnswer1(txt);
+    dispatch(getQuestionAnswerThree(txt));
+  };
+  const handleAnswer4 = (txt: string) => {
+    setAnswer1(txt);
+    dispatch(getQuestionAnswerFour(txt));
+  };
   const hendelClick = (id: number) => {
     setAnswerRight(id);
     dispatch(getQuestionAnswerright(id));
@@ -45,8 +55,8 @@ const hendleAnswers = (e: { target: { name: any; value: any; }; }) => {
               id="answer1"
               className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 1"
-              value={answers.answer1}
-              onChange={hendleAnswers}
+              value={answer1}
+              onChange={(e) => handleAnswer1(e.target.value)}
             />
           </div>
           <button
@@ -86,8 +96,8 @@ const hendleAnswers = (e: { target: { name: any; value: any; }; }) => {
               id="answer2"
               className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 2"
-              value={answers.answer2}
-              onChange={hendleAnswers}
+              value={answer2}
+              onChange={(e) => handleAnswer2(e.target.value)}
             />
           </div>
           <button
@@ -127,8 +137,8 @@ const hendleAnswers = (e: { target: { name: any; value: any; }; }) => {
               id="answer3"
               className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 3"
-              value={answers.answer3}
-              onChange={hendleAnswers}
+              value={answer3}
+              onChange={(e) => handleAnswer3(e.target.value)}
             />
           </div>
           <button
@@ -168,8 +178,8 @@ const hendleAnswers = (e: { target: { name: any; value: any; }; }) => {
               id="answer4"
               className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 4"
-              value={answers.answer4}
-              onChange={hendleAnswers}
+              value={answer4}
+              onChange={(e) => handleAnswer4(e.target.value)}
             />
           </div>
           <button
@@ -241,7 +251,6 @@ const hendleAnswers = (e: { target: { name: any; value: any; }; }) => {
 //     </div>
 //   </div>
 // ))}
-
 
 // const buttons = [
 //   { id: 1, text: "Вариант ответа 1", data: answer1 },

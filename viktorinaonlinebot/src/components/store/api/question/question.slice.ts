@@ -46,6 +46,9 @@ export const questionSlice = createSlice({
     getQuestionAnswerright: (state, action: PayloadAction<number>) => {
       state.answerright = action.payload;
     },
+    getQuestionDefault: (state) => {
+      state = initialState;
+    },
   },
 });
 
@@ -57,6 +60,7 @@ export const {
   getQuestionAnswerThree,
   getQuestionAnswerFour,
   getQuestionAnswerright,
+  getQuestionDefault
 } = questionSlice.actions;
 
 export const selectQuestionText = (state: RootState) => state.question.text;
