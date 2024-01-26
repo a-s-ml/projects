@@ -22,15 +22,15 @@ export function AnswersList() {
     dispatch(getQuestionAnswerOne(txt));
   };
   const handleAnswer2 = (txt: string) => {
-    setAnswer1(txt);
+    setAnswer2(txt);
     dispatch(getQuestionAnswerTwo(txt));
   };
   const handleAnswer3 = (txt: string) => {
-    setAnswer1(txt);
+    setAnswer3(txt);
     dispatch(getQuestionAnswerThree(txt));
   };
   const handleAnswer4 = (txt: string) => {
-    setAnswer1(txt);
+    setAnswer4(txt);
     dispatch(getQuestionAnswerFour(txt));
   };
   const hendelClick = (id: number) => {
