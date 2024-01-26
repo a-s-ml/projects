@@ -5,7 +5,7 @@ export function Footer() {
 
   function confirm(b: boolean) {
     if (b) return tg.openTelegramLink("https://t.me/more_details");
-
+    return;
   }
   return (
     <footer className="absolute inset-x-0 bottom-0 z-50">

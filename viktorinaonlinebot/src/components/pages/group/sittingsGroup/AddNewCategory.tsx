@@ -5,6 +5,7 @@ export default function AddNewCategory() {
 
   function confirm(b: boolean) {
     if (b) return tg.openTelegramLink("https://t.me/more_details");
+    return;
   }
 
   return (
