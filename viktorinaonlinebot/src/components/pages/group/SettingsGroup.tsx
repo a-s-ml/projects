@@ -13,6 +13,7 @@ import {
   useCountPublishedQuestionQuery,
 } from "../../store/api/question/question.api";
 import { useGetTimeByIdQuery } from "../../store/api/time/time.api";
+import TimeQuestionGroup from "./sittingsGroup/TimeQuestionGroup";
 
 interface NoActive {
   text: string;
@@ -90,6 +91,7 @@ export default function SettingsGroup({}) {
             <TypeQuestionGroup />
             <CategoryQuestionGroup />
             <PeriodQuestionGroup />
+            <TimeQuestionGroup />
             {noActive.map((item) => (
               <NotactiveSittings type={item.text} />
             ))}
