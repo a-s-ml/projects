@@ -43,6 +43,7 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
   };
 
   const tg = window.Telegram.WebApp;
+  tg.MainButton.hide();
   if (
     answer1.length > 1 &&
     answer2.length > 1 &&
@@ -50,7 +51,7 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
     answer4.length > 1 &&
     selectedAnswerRight != 0
   ) {
-    tg.MainButton.setText("Следующий шаг");
+    tg.MainButton.setText("Добавить вопрос");
     tg.MainButton.show();
     tg.onEvent("mainButtonClicked", onSubmit);
   }

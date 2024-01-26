@@ -7,6 +7,7 @@ interface TextFormProps {
 }
 
 export function TextForm({ onSubmit }: TextFormProps) {
+  
   const dispatch = useAppDispatch();
   const [text, setText] = useState("");
 
@@ -16,6 +17,7 @@ export function TextForm({ onSubmit }: TextFormProps) {
   };
 
   const tg = window.Telegram.WebApp;
+  tg.MainButton.hide();
   if (text.length > 5) {
     tg.MainButton.setText("Следующий шаг");
     tg.MainButton.show();

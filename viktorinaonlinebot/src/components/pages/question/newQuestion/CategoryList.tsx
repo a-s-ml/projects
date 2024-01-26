@@ -20,10 +20,21 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
     return classes.filter(Boolean).join(" ");
   }
 
+  let mona: boolean = false;
+
   const handleChange = (cat: ICategory) => {
     setCategory(cat);
     dispatch(getQuestionCategory(cat.id));
+    mona = true;
   };
+
+  const tg = window.Telegram.WebApp;
+  tg.MainButton.hide();
+  if (mona) {
+    tg.MainButton.setText("Следующий шаг");
+    tg.MainButton.show();
+    tg.onEvent("mainButtonClicked", onSubmit);
+  }
 
   return (
     <div className="py-2">
