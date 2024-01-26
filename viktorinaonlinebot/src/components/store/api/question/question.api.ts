@@ -49,6 +49,19 @@ export const extendedApiSlice = vikApi.injectEndpoints({
         body: { id },
       }),
     }),
+
+    countAvailableQuestion: build.query<number, bigint>({
+      query: (id) => ({
+        url: `auto-post/countAvailableQuestionByChatId/${id}`,
+      }),
+    }),
+
+    countPublishedQuestion: build.query<number, bigint>({
+      query: (id) => ({
+        url: `auto-post/countPublishedQuestion/${id}`,
+      }),
+    }),
+
   }),
 });
 
@@ -57,5 +70,7 @@ export const {
   useGetQuestionByIdQuery,
   useAddQuestionMutation,
   useDeleteQuestionMutation,
-  useUpdateQuestionMutation
+  useUpdateQuestionMutation,
+  useCountAvailableQuestionQuery,
+  useCountPublishedQuestionQuery
 } = extendedApiSlice;
