@@ -120,8 +120,8 @@ export default function TimeQuestionGroup() {
                         className={({ active, checked }) =>
                           classNames(
                             time.active === true
-                              ? "cursor-pointer"
-                              : "cursor-not-allowed opacity-25",
+                              ? "cursor-not-allowed opacity-25"
+                              : "cursor-pointer",
                             active
                               ? "ring-2 ring-[var(--tg-theme-accent-text-color)] ring-offset-2"
                               : "",
