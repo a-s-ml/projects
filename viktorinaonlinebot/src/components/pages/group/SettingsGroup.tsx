@@ -80,7 +80,7 @@ export default function SettingsGroup({}) {
           )}
           {successtAvailable && successtPublished && GroupTime && (
             <h5 className="pt-2 text-xs font-light text-[var(--tg-theme-text-color)] text-left">
-              Завершение викторины &asymp;
+              Завершение викторины &asymp;{" "}
               <span className="font-semibold text-[var(--tg-theme-accent-text-color)]">
                 {date.toLocaleDateString()}
               </span>
