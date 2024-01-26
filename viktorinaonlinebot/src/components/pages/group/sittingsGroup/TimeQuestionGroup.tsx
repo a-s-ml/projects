@@ -77,7 +77,7 @@ export default function TimeQuestionGroup() {
                 </div>
                 <div className="min-w-0 flex-1 text-left">
                   <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
-                    Период публикаций
+                    Время публикаций
                   </div>
                 </div>
                 <div className="flex-shrink-0 self-center text-right">
@@ -102,7 +102,7 @@ export default function TimeQuestionGroup() {
                   onChange={setTime}
                   className="mt-2"
                 >
-                  <div className="grid grid-cols-4 gap-2">
+                  <div className="grid grid-cols-6 gap-2">
                     {allTimes &&
                       allTimes.map((time) => (
                         <RadioGroup.Option
