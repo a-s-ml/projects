@@ -1,4 +1,4 @@
-import { useGetInfoGroupsQuery } from "../../store/api/group.api";
+import { useGetGroupDbQuery, useGetInfoGroupsQuery } from "../../store/api/group.api";
 import TypeQuestionGroup from "./sittingsGroup/TypeQuestionGroup";
 import CategoryQuestionGroup from "./sittingsGroup/CategoryQuestionGroup";
 import PeriodQuestionGroup from "./sittingsGroup/PeriodQuestionGroup";
@@ -9,6 +9,7 @@ import {
   useCountAvailableQuestionQuery,
   useCountPublishedQuestionQuery,
 } from "../../store/api/question/question.api";
+import { useGetTimeByIdQuery } from "../../store/api/time/time.api";
 
 interface NoActive {
   text: string;
@@ -34,7 +35,10 @@ export default function SettingsGroup({}) {
     useCountAvailableQuestionQuery(group);
   const { isSuccess: successtPublished, data: countPublishedQuestion } =
     useCountPublishedQuestionQuery(group);
-
+    //*
+    const { data: GroupDb } = useGetGroupDbQuery(group);
+    const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
+    //*
   return (
     <>
       {dataGroupInfo && (
@@ -47,18 +51,23 @@ export default function SettingsGroup({}) {
             "
           </h3>
           {successtAvailable && successtPublished && (
-            <h2 className="pt-2 text-xs font-light text-[var(--tg-theme-text-color)] text-left">
+            <h4 className="pt-2 text-xs font-light text-[var(--tg-theme-text-color)] text-left">
               Опубликовано вопросов
-              <span className="font-semibold text-sm text-[var(--tg-theme-accent-text-color)]">
+              <span className="font-semibold text-[var(--tg-theme-accent-text-color)]">
                 {" "}
                 {countPublishedQuestion}{" "}
               </span>
               из
-              <span className="font-semibold text-sm text-[var(--tg-theme-accent-text-color)]">
+              <span className="font-semibold text-[var(--tg-theme-accent-text-color)]">
                 {" "}
                 {countAvailableQuestion}{" "}
               </span>
-            </h2>
+            </h4>
+          )}
+          {successtAvailable && GroupTime && (
+            <h5 className="pt-2 text-xs font-light text-[var(--tg-theme-text-color)] text-left">
+              Завершение викторины {Math.round(Number(successtAvailable) * GroupTime.period / 1000)}
+            </h5>
           )}
           <ul
             role="list"
