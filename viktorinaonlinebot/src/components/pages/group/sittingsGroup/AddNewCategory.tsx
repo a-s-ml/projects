@@ -9,7 +9,12 @@ export default function AddNewCategory() {
       </div>
       <div
         className="ml-3 text-sm leading-6"
-        onClick={() => tg.openTelegramLink("https://t.me/more_details")}
+        onClick={() =>
+          tg.showConfirm(
+            "Задатьв опрос или сделать предложение/рекомендацию вы можете разработчику приложения @ViktorinaOnlineBot. Нажмите Ок, чтобы перейти в чат с разработчиком",
+            () => tg.openTelegramLink("https://t.me/more_details")
+          )
+        }
       >
         <label
           htmlFor="add"
