@@ -4,6 +4,7 @@ import modalReducer from "./api/modal.slice";
 import slideReducer from "./api/slide.slice";
 import typeReducer from "./api/type/type.slice";
 import timeReducer from "./api/time/time.slice";
+import questionReducer from "./api/question/question.slice";
 import categoryReducer from "./api/category/category.slice";
 import { vikApi } from "./api/vik.api";
 import { setupListeners } from "@reduxjs/toolkit/query";
@@ -14,6 +15,7 @@ export const store = configureStore({
     modal: modalReducer,
     slide: slideReducer,
     category: categoryReducer,
+    question: questionReducer,
     type: typeReducer,
     time: timeReducer,
   },

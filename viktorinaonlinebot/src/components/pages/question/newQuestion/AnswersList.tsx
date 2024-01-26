@@ -1,32 +1,31 @@
 import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import { useAppDispatch } from "../../../store";
+import { getQuestionAnswerOne, getQuestionAnswerright } from "../../../store/api/question/question.slice";
 
-type AnswersData = {
-  answer1: string;
-  answer2: string;
-  answer3: string;
-  answer4: string;
-  answerright: number;
-};
+export function AnswersList() {
+  const [selectedAnswerRight, setAnswerRight] = useState(0);
+  const [answers, setAnswers] = useState({
+    answer1: "",
+    answer2: "",
+    answer3: "",
+    answer4: ""
+  })
+  const dispatch = useAppDispatch();
 
-type AnswersListProps = AnswersData & {
-  updateFields: (fields: Partial<AnswersData>) => void;
-};
+const hendleAnswers = (e: { target: { name: any; value: any; }; }) => {
+  const name = e.target.name
+  const value = e.target.value
+  setAnswers(prevData => ({
+    ...prevData,
+    [name]: value
+}))
+}
 
-export function AnswersList({
-  answer1,
-  answer2,
-  answer3,
-  answer4,
-  answerright,
-  updateFields,
-}: AnswersListProps) {
-  const [selectedAnswerRight, setAnswerRight] = useState(answerright);
 
   const hendelClick = (id: number) => {
     setAnswerRight(id);
-    console.log(id);
-    updateFields({ answerright: id });
+    dispatch(getQuestionAnswerright(id));
   };
 
   return (
@@ -46,8 +45,8 @@ export function AnswersList({
               id="answer1"
               className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 1"
-              value={answer1}
-              onChange={(e) => updateFields({ answer1: e.target.value })}
+              value={answers.answer1}
+              onChange={hendleAnswers}
             />
           </div>
           <button
@@ -87,8 +86,8 @@ export function AnswersList({
               id="answer2"
               className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 2"
-              value={answer2}
-              onChange={(e) => updateFields({ answer2: e.target.value })}
+              value={answers.answer2}
+              onChange={hendleAnswers}
             />
           </div>
           <button
@@ -128,8 +127,8 @@ export function AnswersList({
               id="answer3"
               className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 3"
-              value={answer3}
-              onChange={(e) => updateFields({ answer3: e.target.value })}
+              value={answers.answer3}
+              onChange={hendleAnswers}
             />
           </div>
           <button
@@ -169,8 +168,8 @@ export function AnswersList({
               id="answer4"
               className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
               placeholder="Вариант ответа 4"
-              value={answer4}
-              onChange={(e) => updateFields({ answer4: e.target.value })}
+              value={answers.answer4}
+              onChange={hendleAnswers}
             />
           </div>
           <button

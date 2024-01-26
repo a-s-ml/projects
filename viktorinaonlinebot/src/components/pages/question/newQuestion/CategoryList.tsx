@@ -1,24 +1,16 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline";
-import { Fragment, SetStateAction, useState } from "react";
-import { useAppSelector } from "../../../store";
+import { Fragment, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../../store";
 import { selectAllCategories } from "../../../store/api/category/category.slice";
 import { ICategory } from "../../../../models/ICategory";
+import { getQuestionCategory } from "../../../store/api/question/question.slice";
 
-type CategoryData = {
-  category: number;
-};
-
-type CategoryListProps = CategoryData & {
-  updateFields: (fields: Partial<CategoryData>) => void;
-};
-
-export function CategoryList({ category, updateFields }: CategoryListProps) {
+export function CategoryList() {
   const categories = useAppSelector(selectAllCategories);
+  const dispatch = useAppDispatch();
 
-  const initialCategory = categories.all.find((cat) => cat.id === category);
-
-  const [selectedCategory, setCategory] = useState(initialCategory || categories.all[0]);
+  const [selectedCategory, setCategory] = useState(categories.all[0]);
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
@@ -26,7 +18,7 @@ export function CategoryList({ category, updateFields }: CategoryListProps) {
 
   const handleChange = (cat: ICategory) => {
     setCategory(cat);
-    updateFields({ category: cat.id });
+    dispatch(getQuestionCategory(cat.id));
   };
 
   return (

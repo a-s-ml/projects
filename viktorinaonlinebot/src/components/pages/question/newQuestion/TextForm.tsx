@@ -1,12 +1,17 @@
-type TextData = {
-  text: string;
-};
+import { useState } from "react";
+import { useAppDispatch } from "../../../store";
+import { getQuestionText } from "../../../store/api/question/question.slice";
 
-type TextFormProps = TextData & {
-  updateFields: (fields: Partial<TextData>) => void;
-};
+export function TextForm() {
 
-export function TextForm({ text, updateFields }: TextFormProps) {
+  const dispatch = useAppDispatch();
+  const [text, setText] = useState("")
+
+  const handleText = (txt: string) => {
+    setText(txt)
+    dispatch(getQuestionText(txt));
+  }
+
   return (
     <div className="py-2">
       <label
@@ -22,7 +27,7 @@ export function TextForm({ text, updateFields }: TextFormProps) {
           id="questionText"
           className="block w-full bg-[var(--tg-theme-bg-color)] rounded-md border-0 px-2 py-2 text-[var(--tg-theme-text-color)] shadow-sm ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-[var(--tg-theme-hint-color)]"
           value={text}
-          onChange={(e) => updateFields({ text: e.target.value })}
+          onChange={(e) => handleText(e.target.value)}
         />
       </div>
     </div>
