@@ -6,7 +6,10 @@ import { useAddQuestionMutation } from "../../store/api/question/question.api";
 import { store, useAppDispatch, useAppSelector } from "../../store";
 import { selectSlideUser, showSlide } from "../../store/api/slide.slice";
 import { useNewQuestionForm } from "../../hooks/useNewQuestionForm";
-import { getQuestionDefault, selectQuestion } from "../../store/api/question/question.slice";
+import {
+  getQuestionDefault,
+  selectQuestion,
+} from "../../store/api/question/question.slice";
 import { showModal } from "../../store/api/modal.slice";
 
 function NewQuesion() {
@@ -14,21 +17,25 @@ function NewQuesion() {
   const user = useAppSelector(selectSlideUser);
   const question = useAppSelector(selectQuestion);
 
+  const tg = window.Telegram.WebApp;
   function onSubmit() {
     if (!isLastStep) return next();
-    addQuestion({
-      chat: user as unknown as bigint,
-      text: question.text,
-      category: question.category,
-      answer1: question.answer1,
-      answer2: question.answer2,
-      answer3: question.answer3,
-      answer4: question.answer4,
-      answerright: question.answerright
-    })
-    dispatch(getQuestionDefault());
-    dispatch(showModal(false));
-    dispatch(showSlide(true));
+    if (isLastStep) {
+      tg.MainButton.hide();
+      addQuestion({
+        chat: user as unknown as bigint,
+        text: question.text,
+        category: question.category,
+        answer1: question.answer1,
+        answer2: question.answer2,
+        answer3: question.answer3,
+        answer4: question.answer4,
+        answerright: question.answerright,
+      });
+      dispatch(getQuestionDefault());
+      dispatch(showModal(false));
+      dispatch(showSlide(true));
+    }
   }
 
   const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
