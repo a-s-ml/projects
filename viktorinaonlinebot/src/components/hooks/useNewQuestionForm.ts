@@ -1,6 +1,6 @@
 import { ReactElement, useState } from "react"
 
-export function useMultistepForm(steps: ReactElement[]) {
+export function useNewQuestionForm(steps: ReactElement[]) {
   const [currentStepIndex, setCurrentStepIndex] = useState(0)
 
   function next() {
