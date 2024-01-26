@@ -131,7 +131,7 @@ export default function TimeQuestionGroup() {
                             "flex items-center justify-center rounded-md py-2 px-2 text-xs"
                           )
                         }
-                        disabled={!Boolean(time.active)}
+                        disabled={time.active}
                       >
                         <RadioGroup.Label as="span">
                           {time.name}
