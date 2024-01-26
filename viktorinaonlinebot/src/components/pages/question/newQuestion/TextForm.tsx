@@ -2,14 +2,24 @@ import { useState } from "react";
 import { useAppDispatch } from "../../../store";
 import { getQuestionText } from "../../../store/api/question/question.slice";
 
-export function TextForm() {
+interface TextFormProps {
+  onSubmit: () => void;
+}
 
+export function TextForm({ onSubmit }: TextFormProps) {
   const dispatch = useAppDispatch();
-  const [text, setText] = useState("")
+  const [text, setText] = useState("");
 
   const handleText = (txt: string) => {
-    setText(txt)
+    setText(txt);
     dispatch(getQuestionText(txt));
+  };
+
+  const tg = window.Telegram.WebApp;
+  if (text.length > 5) {
+    tg.MainButton.setText("Следующий шаг");
+    tg.MainButton.show();
+    tg.onEvent("mainButtonClicked", onSubmit);
   }
 
   return (

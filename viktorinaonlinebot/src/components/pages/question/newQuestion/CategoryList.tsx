@@ -6,7 +6,11 @@ import { selectAllCategories } from "../../../store/api/category/category.slice"
 import { ICategory } from "../../../../models/ICategory";
 import { getQuestionCategory } from "../../../store/api/question/question.slice";
 
-export function CategoryList() {
+interface CategoryListProps {
+  onSubmit: () => void;
+}
+
+export function CategoryList({ onSubmit }: CategoryListProps) {
   const categories = useAppSelector(selectAllCategories);
   const dispatch = useAppDispatch();
 

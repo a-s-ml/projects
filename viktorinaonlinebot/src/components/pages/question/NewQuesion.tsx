@@ -10,23 +10,21 @@ import { selectSlideUser } from "../../store/api/slide.slice";
 function NewQuesion() {
   const user = useAppSelector(selectSlideUser);
 
+  function onSubmit() {
+    if (!isLastStep) return next();
+  }
+
   const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
-    useMultistepForm([<TextForm />, <CategoryList />, <AnswersList />]);
+    useMultistepForm([
+      <TextForm onSubmit={onSubmit} />,
+      <CategoryList onSubmit={onSubmit} />,
+      <AnswersList onSubmit={onSubmit} />,
+    ]);
 
   const [addQuestion, {}] = useAddQuestionMutation();
   console.log(useAppSelector(store.getState));
 
-  async function onSubmit() {
-    if (!isLastStep) return next();
-  }
-
   console.log(currentStepIndex);
-
-  const tg = window.Telegram.WebApp;
-  tg.MainButton.setText(isLastStep ? "Добавить вопрос" : "Следующий шаг");
-  tg.MainButton.show();
-  tg.BackButton.onClick(back);
-  tg.onEvent("mainButtonClicked", onSubmit);
 
   return (
     <>

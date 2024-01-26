@@ -9,7 +9,11 @@ import {
   getQuestionAnswerright,
 } from "../../../store/api/question/question.slice";
 
-export function AnswersList() {
+interface AnswersListProps {
+  onSubmit: () => void;
+}
+
+export function AnswersList({ onSubmit }: AnswersListProps) {
   const [selectedAnswerRight, setAnswerRight] = useState(0);
   const [answer1, setAnswer1] = useState("");
   const [answer2, setAnswer2] = useState("");
@@ -37,6 +41,19 @@ export function AnswersList() {
     setAnswerRight(id);
     dispatch(getQuestionAnswerright(id));
   };
+
+  const tg = window.Telegram.WebApp;
+  if (
+    answer1.length > 1 &&
+    answer2.length > 1 &&
+    answer3.length > 1 &&
+    answer4.length > 1 &&
+    selectedAnswerRight != 0
+  ) {
+    tg.MainButton.setText("Следующий шаг");
+    tg.MainButton.show();
+    tg.onEvent("mainButtonClicked", onSubmit);
+  }
 
   return (
     <div className="py-2">
