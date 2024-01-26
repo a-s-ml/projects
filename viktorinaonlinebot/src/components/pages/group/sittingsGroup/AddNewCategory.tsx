@@ -2,6 +2,11 @@ import { PlusCircleIcon } from "@heroicons/react/24/outline";
 
 export default function AddNewCategory() {
   const tg = window.Telegram.WebApp;
+
+  function confirm(b: boolean) {
+    if (b) return tg.openTelegramLink("https://t.me/more_details");
+  }
+
   return (
     <div className="group relative flex items-start space-x-3">
       <div className="flex h-6 items-center">
@@ -11,8 +16,8 @@ export default function AddNewCategory() {
         className="ml-3 text-sm leading-6"
         onClick={() =>
           tg.showConfirm(
-            "Задатьв опрос или сделать предложение/рекомендацию вы можете разработчику приложения @ViktorinaOnlineBot. Нажмите Ок, чтобы перейти в чат с разработчиком",
-            () => tg.openTelegramLink("https://t.me/more_details")
+            `Задатьв опрос или сделать предложение/рекомендацию вы можете разработчику приложения.\n\nНажмите "Ок", чтобы перейти в чат с разработчиком`,
+            confirm
           )
         }
       >
