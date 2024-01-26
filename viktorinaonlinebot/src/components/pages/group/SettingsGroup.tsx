@@ -43,7 +43,7 @@ export default function SettingsGroup({}) {
             Настройки викторины в группе "{dataGroupInfo.title}"
           </h3>
           {successtAvailable && successtPublished && (
-            <h2 className="text-xs font-light text-[var(--tg-theme-text-color)] text-left">
+            <h2 className="pt-2 text-xs font-light text-[var(--tg-theme-text-color)] text-left">
               Опубликовано вопросов {countPublishedQuestion} из {countAvailableQuestion}
             </h2>
           )}
