@@ -54,32 +54,21 @@ export default function TimeQuestionGroup() {
 
   let hours: Array<number> = [];
 
-  // .push = GroupTime.period / 1000 : 1
-
-  GroupTime
-    ? allTimes.map((time) => {
-        times + GroupTime.period / 3600 <= 23
-          ? hours.push(time.time + GroupTime.period / 3600)
-          : console.log("> 23");
-      })
-    : console.log("не GroupTime");
-
-  console.log("hours", hours);
-
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
+  function compareNumeric(a: number, b: number) {
+    if (a > b) return 1;
+    if (a === b) return 0;
+    return -1;
   }
 
-  let newArr: ITimesInteface[];
-  console.log("times", times);
-
-  function hendleTimes(id: number) {
-    // console.log(id);
-    // times.map((time) => {
-    //   time.id === id ? (time.active = true) : (time.active = false);
-    // });
-    // console.log(times);
-    setTimes(id);
+  if (GroupTime) {
+    for (let i = times; i < 24; i + GroupTime?.period / 3600) {
+      hours.push(i);
+    }
+    for (let i = times; i >= 0; i - GroupTime?.period / 3600) {
+      hours.push(i);
+    }
+    hours.sort(compareNumeric);
+    console.log('hours', hours)
   }
 
   return (
@@ -124,11 +113,11 @@ export default function TimeQuestionGroup() {
                     <button
                       type="button"
                       value={time.id}
-                      onClick={() => hendleTimes(time.id)}
+                      onClick={() => setTimes(time.id)}
                       className={`flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer ${
                         time.id === times
-                        ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
-                        : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
+                          ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
+                          : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
                       }`}
                     >
                       {time.name}
