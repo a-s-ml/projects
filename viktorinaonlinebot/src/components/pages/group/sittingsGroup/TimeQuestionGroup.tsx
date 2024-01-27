@@ -118,7 +118,7 @@ export default function TimeQuestionGroup() {
                           : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
                       }
                           ${
-                            nightNode === true && time.id < 7 && time.id > 22
+                            time.id < 7
                               ? "bg-[var(--tg-theme-hint-color)] text-black font-semibold cursor-not-allowed"
                               : ""
                           }`}
