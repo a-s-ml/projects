@@ -81,6 +81,10 @@ export default function TimeQuestionGroup() {
                   <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
                     Время публикаций
                   </div>
+                  <b className=" text-red-600 text-xs font-light leading-3">
+                    Внимание! Настройка времени находится на доработке,
+                    изменения не применяются
+                  </b>
                 </div>
                 <div className="flex-shrink-0 self-center text-right">
                   {open ? (
@@ -98,12 +102,7 @@ export default function TimeQuestionGroup() {
               </Disclosure.Button>
             </li>
             <Disclosure.Panel className="py-4">
-              <div className="pb-2 text-left">
-                <b className=" text-red-600 text-xs font-light leading-3">
-                  Внимание! Настройка времени находится на доработке, изменения
-                  не применяются
-                </b>
-              </div>
+              <div className="pb-2 text-left"></div>
               <div className="space-y-1.5">
                 <div className="grid grid-cols-6 gap-2">
                   {allTimes.map((time) => (
