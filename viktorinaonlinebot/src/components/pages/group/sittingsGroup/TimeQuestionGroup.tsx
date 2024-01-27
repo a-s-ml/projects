@@ -100,8 +100,10 @@ export default function TimeQuestionGroup() {
               </Disclosure.Button>
             </li>
             <Disclosure.Panel className="py-4">
-
-                <NightModeQuestion enabled={nightNode} setEnabled={setNightNode} />
+              <NightModeQuestion
+                enabled={nightNode}
+                setEnabled={setNightNode}
+              />
 
               <div className="space-y-1.5">
                 <div className="grid grid-cols-6 gap-2">
@@ -114,7 +116,12 @@ export default function TimeQuestionGroup() {
                         sortHours.includes(time.id)
                           ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
                           : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
-                      }`}
+                      }
+                          ${
+                            nightNode && time.id < 7 && time.id > 22
+                              ? "bg-[var(--tg-theme-hint-color)] text-black font-semibold cursor-not-allowed"
+                              : ""
+                          }`}
                     >
                       {time.name}
                     </button>
