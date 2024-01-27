@@ -65,13 +65,11 @@ export default function TimeQuestionGroup() {
 
   useEffect(() => {
     const period = 5;
-    if (times + period < 24 && times != 0) {
-      for (let a = times; a < 24; a + period) {
-        console.log("a", a);
-        hours.push(a);
-        if (a > 100) break;
-      }
+    for (let a = times; a < 24; a += period) {
+      console.log("a", a);
+      hours.push(a);
     }
+
     // if (times - period > 0) {
     //   for (let b = times; b > 0; b - period) {
     //     console.log("b", b);
