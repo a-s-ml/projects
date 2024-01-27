@@ -60,26 +60,20 @@ export default function TimeQuestionGroup() {
   //   return -1;
   // }
 
-  // let period: number;
-  // GroupTime ? (period = GroupTime.period / 3600) : (period = 25);
-
   useEffect(() => {
-    const period = 5;
+    let period: number;
+    GroupTime ? (period = GroupTime.period / 3600) : (period = 25);
     for (let a = times; a < 24; a += period) {
-      console.log("a", a);
       hours.push(a);
     }
+    for (let b = times; b > 0; b -= period) {
+      console.log("b", b);
+      hours.push(b);
+    }
 
-    // if (times - period > 0) {
-    //   for (let b = times; b > 0; b - period) {
-    //     console.log("b", b);
-    //     hours.push(b);
-    //     if (b > 100) break;
-    //   }
-    // }
     // hours.sort(compareNumeric);
     console.log("hours", hours);
-  }, []);
+  }, [GroupTime, times]);
 
   return (
     <>
