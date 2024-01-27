@@ -53,7 +53,7 @@ export default function TimeQuestionGroup() {
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
   const [times, setTimes] = useState(0);
   const [nightNode, setNightNode] = useState(false);
-
+  console.log(nightNode);
   let hours: Array<number> = [];
   let period: number;
   GroupTime ? (period = GroupTime.period / 3600) : (period = 25);
@@ -118,7 +118,7 @@ export default function TimeQuestionGroup() {
                           : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
                       }
                           ${
-                            nightNode && time.id < 7 && time.id > 22
+                            nightNode === true && time.id < 7 && time.id > 22
                               ? "bg-[var(--tg-theme-hint-color)] text-black font-semibold cursor-not-allowed"
                               : ""
                           }`}
