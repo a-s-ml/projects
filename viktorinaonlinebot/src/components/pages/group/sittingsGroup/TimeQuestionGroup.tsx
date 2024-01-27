@@ -61,16 +61,7 @@ export default function TimeQuestionGroup() {
   for (let a = times; a < 24; a += period) {
     hours.push(a);
   }
-
-  allTimes.map((time) => console.log(time.id, "=", hours.includes(time.id)));
-  allTimes.map((time) =>
-    console.log(
-      time.id,
-      "==",
-      hours.find((hour) => hour === time.id)
-    )
-  );
-
+  let sortHours: Array<number> = hours.sort((n1, n2) => n1 - n2);
   return (
     <>
       <Disclosure as="div">
@@ -107,8 +98,8 @@ export default function TimeQuestionGroup() {
               </Disclosure.Button>
             </li>
             <Disclosure.Panel className="py-4">
-              <div className="py-2">
-                <b className="text-left text-red-600 text-xs font-light">
+              <div className="pb-2 text-left">
+                <b className=" text-red-600 text-xs font-light leading-3">
                   Внимание! Настройка времени находится на доработке, изменения
                   не применяются
                 </b>
@@ -121,7 +112,7 @@ export default function TimeQuestionGroup() {
                       value={time.id}
                       onClick={() => setTimes(time.id)}
                       className={`flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer ${
-                        hours.includes(time.id)
+                        sortHours.includes(time.id)
                           ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
                           : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
                       }`}
