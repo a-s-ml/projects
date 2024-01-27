@@ -74,6 +74,11 @@ export default function TimeQuestionGroup() {
     console.log("hours", hours);
   }, [GroupTime, times]);
 
+
+  allTimes.map((time) => (
+    console.log(time.name, '=', hours.includes(time.time))
+  ))
+
   return (
     <>
       <Disclosure as="div">
@@ -110,7 +115,12 @@ export default function TimeQuestionGroup() {
               </Disclosure.Button>
             </li>
             <Disclosure.Panel className="py-4">
-            <b className="text-left text-red-600 text-xs font-light">Внимание! Настройка времени находится на доработке, изменения не применяются</b>
+              <div className="py-2">
+                <b className="text-left text-red-600 text-xs font-light">
+                  Внимание! Настройка времени находится на доработке, изменения
+                  не применяются
+                </b>
+              </div>
               <div className="space-y-1.5">
                 <div className="grid grid-cols-6 gap-2">
                   {allTimes.map((time) => (
