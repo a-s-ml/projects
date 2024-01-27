@@ -23,30 +23,30 @@ interface ITimesInteface {
 
 export default function TimeQuestionGroup() {
   const allTimes = [
-    { id: 0, time: 0, name: "00:00", active: false, disabled: false },
-    { id: 1, time: 1, name: "01:00", active: false, disabled: false },
-    { id: 2, time: 2, name: "02:00", active: false, disabled: false },
-    { id: 3, time: 3, name: "03:00", active: false, disabled: false },
-    { id: 4, time: 4, name: "04:00", active: false, disabled: false },
-    { id: 5, time: 5, name: "05:00", active: false, disabled: false },
-    { id: 6, time: 6, name: "06:00", active: false, disabled: false },
-    { id: 7, time: 7, name: "07:00", active: false, disabled: false },
-    { id: 8, time: 8, name: "08:00", active: false, disabled: false },
-    { id: 9, time: 9, name: "09:00", active: false, disabled: false },
-    { id: 10, time: 10, name: "10:00", active: false, disabled: false },
-    { id: 11, time: 11, name: "11:00", active: false, disabled: false },
-    { id: 12, time: 12, name: "12:00", active: false, disabled: false },
-    { id: 13, time: 13, name: "13:00", active: false, disabled: false },
-    { id: 14, time: 14, name: "14:00", active: false, disabled: false },
-    { id: 15, time: 15, name: "15:00", active: false, disabled: false },
-    { id: 16, time: 16, name: "16:00", active: false, disabled: false },
-    { id: 17, time: 17, name: "17:00", active: false, disabled: false },
-    { id: 18, time: 18, name: "18:00", active: false, disabled: false },
-    { id: 19, time: 19, name: "19:00", active: false, disabled: false },
-    { id: 20, time: 20, name: "20:00", active: false, disabled: false },
-    { id: 21, time: 21, name: "21:00", active: false, disabled: false },
-    { id: 22, time: 22, name: "22:00", active: false, disabled: false },
-    { id: 23, time: 23, name: "23:00", active: false, disabled: false },
+    { id: 0, name: "00:00", night: true },
+    { id: 1, name: "01:00", night: true },
+    { id: 2, name: "02:00", night: true },
+    { id: 3, name: "03:00", night: true },
+    { id: 4, name: "04:00", night: true },
+    { id: 5, name: "05:00", night: true },
+    { id: 6, name: "06:00", night: true },
+    { id: 7, name: "07:00", night: true },
+    { id: 8, name: "08:00", night: true },
+    { id: 9, name: "09:00", night: false },
+    { id: 10, name: "10:00", night: false },
+    { id: 11, name: "11:00", night: false },
+    { id: 12, name: "12:00", night: false },
+    { id: 13, name: "13:00", night: false },
+    { id: 14, name: "14:00", night: false },
+    { id: 15, name: "15:00", night: false },
+    { id: 16, name: "16:00", night: false },
+    { id: 17, name: "17:00", night: false },
+    { id: 18, name: "18:00", night: false },
+    { id: 19, name: "19:00", night: false },
+    { id: 20, name: "20:00", night: false },
+    { id: 21, name: "21:00", night: false },
+    { id: 22, name: "22:00", night: false },
+    { id: 23, name: "23:00", night: true },
   ];
   const chat = useAppSelector(selectModalData);
   const { data: GroupDb } = useGetGroupDbQuery(chat);
@@ -64,6 +64,7 @@ export default function TimeQuestionGroup() {
     hours.push(a);
   }
   let sortHours: Array<number> = hours.sort((n1, n2) => n1 - n2);
+
   return (
     <>
       <Disclosure as="div">
@@ -117,7 +118,7 @@ export default function TimeQuestionGroup() {
                           ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
                           : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
                       }`}
-                      disabled={time.id < 7 && time.id > 22 && nightNode}
+                      disabled={Boolean(nightNode && time.night)}
                     >
                       {time.name}
                     </button>
