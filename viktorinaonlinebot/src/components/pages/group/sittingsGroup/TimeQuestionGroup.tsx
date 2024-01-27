@@ -62,7 +62,7 @@ export default function TimeQuestionGroup() {
 
   // let period: number;
   // GroupTime ? (period = GroupTime.period / 3600) : (period = 25);
-
+ 
   // if (times + period < 24) {
   //   for (let a = times; a < 24; a + period) {
   //     console.log("a", a);
