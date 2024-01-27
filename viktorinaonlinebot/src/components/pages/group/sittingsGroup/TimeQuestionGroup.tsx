@@ -113,7 +113,13 @@ export default function TimeQuestionGroup() {
                       type="button"
                       value={time.id}
                       onClick={() => setTimes(time.id)}
-                      className={`flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer ${
+                      className={`flex items-center justify-center rounded-md py-2 px-2 text-xs  
+                      ${
+                        Boolean((nightNode === time.night) === true)
+                          ? "bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed"
+                          : "cursor-pointer"
+                      }
+                      ${
                         sortHours.includes(time.id)
                           ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
                           : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
