@@ -100,9 +100,9 @@ export default function TimeQuestionGroup() {
               </Disclosure.Button>
             </li>
             <Disclosure.Panel className="py-4">
-              <div className="pb-2 text-left">
+
                 <NightModeQuestion enabled={nightNode} setEnabled={setNightNode} />
-              </div>
+
               <div className="space-y-1.5">
                 <div className="grid grid-cols-6 gap-2">
                   {allTimes.map((time) => (
