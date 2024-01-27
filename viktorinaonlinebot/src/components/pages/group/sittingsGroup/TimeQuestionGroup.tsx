@@ -76,7 +76,7 @@ export default function TimeQuestionGroup() {
 
 
   allTimes.map((time) => (
-    console.log(time.name, '=', hours.includes(time.time))
+    console.log(time.id, '=', hours.includes(time.id))
   ))
 
   return (
