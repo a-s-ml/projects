@@ -53,31 +53,23 @@ export default function TimeQuestionGroup() {
   const [times, setTimes] = useState(0);
 
   let hours: Array<number> = [];
+  let period: number;
+  GroupTime ? (period = GroupTime.period / 3600) : (period = 25);
+  for (let b = times - period; b > 0; b -= period) {
+    hours.push(b);
+  }
+  for (let a = times; a < 24; a += period) {
+    hours.push(a);
+  }
 
-  // function compareNumeric(a: number, b: number) {
-  //   if (a > b) return 1;
-  //   if (a === b) return 0;
-  //   return -1;
-  // }
-
-  useEffect(() => {
-    let period: number;
-    GroupTime ? (period = GroupTime.period / 3600) : (period = 25);
-    for (let b = times - period; b > 0; b -= period) {
-      hours.push(b);
-    }
-    for (let a = times; a < 24; a += period) {
-      hours.push(a);
-    }
-
-    // hours.sort(compareNumeric);
-    console.log("hours", hours);
-  }, [GroupTime, times]);
-
-
-  allTimes.map((time) => (
-    console.log(time.id, '=', hours.includes(time.id))
-  ))
+  allTimes.map((time) => console.log(time.id, "=", hours.includes(time.id)));
+  allTimes.map((time) =>
+    console.log(
+      time.id,
+      "==",
+      hours.find((hour) => hour === time.id)
+    )
+  );
 
   return (
     <>
@@ -129,7 +121,7 @@ export default function TimeQuestionGroup() {
                       value={time.id}
                       onClick={() => setTimes(time.id)}
                       className={`flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer ${
-                        hours.includes(time.time)
+                        hours.includes(time.id)
                           ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
                           : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
                       }`}
