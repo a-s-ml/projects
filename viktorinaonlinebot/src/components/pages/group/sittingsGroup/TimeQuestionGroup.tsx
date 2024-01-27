@@ -52,23 +52,26 @@ export default function TimeQuestionGroup() {
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
   const [times, setTimes] = useState(0);
 
-  let hours: Array<number> = []
+  let hours: Array<number> = [];
 
   // .push = GroupTime.period / 1000 : 1
 
-  GroupTime ? allTimes.map((time) => {
-    times + (GroupTime.period / 3600) <= 23 ? hours.push(time.time + (GroupTime.period / 3600)) : console.log('> 23')
-  }) : console.log('не GroupTime')
+  GroupTime
+    ? allTimes.map((time) => {
+        times + GroupTime.period / 3600 <= 23
+          ? hours.push(time.time + GroupTime.period / 3600)
+          : console.log("> 23");
+      })
+    : console.log("не GroupTime");
 
-
-  console.log('hours', hours)
+  console.log("hours", hours);
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
 
   let newArr: ITimesInteface[];
-  console.log('times', times);
+  console.log("times", times);
 
   function hendleTimes(id: number) {
     // console.log(id);
@@ -116,37 +119,22 @@ export default function TimeQuestionGroup() {
             </li>
             <Disclosure.Panel className="py-4">
               <div className="space-y-1.5">
-                <RadioGroup value={times} onChange={setTimes} className="mt-2">
-                  <div className="grid grid-cols-6 gap-2">
-                    {allTimes.map((time) => (
-                      <RadioGroup.Option
-                        key={time.id}
-                        value={time.id}
-                        onClick={() => hendleTimes(time.id)}
-                        className={({ active, checked }) =>
-                          classNames(
-
-                            time.active === true
-                              ? "cursor-not-allowed opacity-25"
-                              : "cursor-pointer",
-                            active
-                              ? "ring-2 ring-[var(--tg-theme-accent-text-color)] ring-offset-2"
-                              : "",
-                            checked
-                              ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
-                              : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold",
-                            "flex items-center justify-center rounded-md py-2 px-2 text-xs"
-                          )
-                        }
-                        disabled={time.disabled}
-                      >
-                        <RadioGroup.Label as="span">
-                          {time.name}
-                        </RadioGroup.Label>
-                      </RadioGroup.Option>
-                    ))}
-                  </div>
-                </RadioGroup>
+                <div className="grid grid-cols-6 gap-2">
+                  {allTimes.map((time) => (
+                    <button
+                      type="button"
+                      value={time.id}
+                      onClick={() => hendleTimes(time.id)}
+                      className={`flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer ${
+                        time.active === true
+                          ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
+                          : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
+                      }`}
+                    >
+                      {time.name}
+                    </button>
+                  ))}
+                </div>
               </div>
             </Disclosure.Panel>
           </>
