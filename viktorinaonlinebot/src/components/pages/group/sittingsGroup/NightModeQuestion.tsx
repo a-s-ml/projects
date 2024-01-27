@@ -18,11 +18,8 @@ export default function NightModeQuestion({ enabled, setEnabled }: NightModeQues
           className="text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
           passive
         >
-          Available to hire
-        </Switch.Label>
-        <Switch.Description as="span" className="text-sm text-[var(--tg-theme-text-color)]">
           Публикация вопросов ночью
-        </Switch.Description>
+        </Switch.Label>
       </span>
       <Switch
         checked={enabled}
