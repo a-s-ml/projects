@@ -60,18 +60,25 @@ export default function TimeQuestionGroup() {
   //   return -1;
   // }
 
-  // if (GroupTime) {
-  //   for (let a = times; a < 24; a + (GroupTime.period / 3600)) {
-  //     console.log('a', a)
-  //     hours.push(a);
-  //   }
-  //   for (let b = times; b >= 0; b - (GroupTime.period / 3600)) {
-  //     console.log('b', b)
-  //     hours.push(b);
-  //   }
-  //   // hours.sort(compareNumeric);
-  //   console.log('hours', hours)
-  // }
+  let period: number;
+  GroupTime ? (period = GroupTime.period / 3600) : (period = 25);
+
+  if (times + period < 24) {
+    for (let a = times; a < 24; a + period) {
+      console.log("a", a);
+      hours.push(a);
+      if (a < 0) break;
+    }
+  }
+  if (times - period > 0) {
+    for (let b = times; b > 0; b - period) {
+      console.log("b", b);
+      hours.push(b);
+      if (b > 100) break;
+    }
+  }
+  // hours.sort(compareNumeric);
+  console.log("hours", hours);
 
   return (
     <>
