@@ -63,12 +63,11 @@ export default function TimeQuestionGroup() {
   useEffect(() => {
     let period: number;
     GroupTime ? (period = GroupTime.period / 3600) : (period = 25);
+    for (let b = times - period; b > 0; b -= period) {
+      hours.push(b);
+    }
     for (let a = times; a < 24; a += period) {
       hours.push(a);
-    }
-    for (let b = times; b > 0; b -= period) {
-      console.log("b", b);
-      hours.push(b);
     }
 
     // hours.sort(compareNumeric);
@@ -112,6 +111,7 @@ export default function TimeQuestionGroup() {
             </li>
             <Disclosure.Panel className="py-4">
               <div className="space-y-1.5">
+                <b>Внимание! Настройка времени находится на доработке, изменения не применяются</b>
                 <div className="grid grid-cols-6 gap-2">
                   {allTimes.map((time) => (
                     <button
@@ -119,7 +119,7 @@ export default function TimeQuestionGroup() {
                       value={time.id}
                       onClick={() => setTimes(time.id)}
                       className={`flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer ${
-                        time.id === times
+                        hours.includes(time.id)
                           ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
                           : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
                       }`}
