@@ -12,6 +12,7 @@ import {
 } from "../../../store/api/time/time.api";
 import { selectModalData } from "../../../store/api/modal.slice";
 import { useGetGroupDbQuery } from "../../../store/api/group.api";
+import NightModeQuestion from "./NightModeQuestion";
 
 interface ITimesInteface {
   id: number;
@@ -51,11 +52,12 @@ export default function TimeQuestionGroup() {
   const { data: GroupDb } = useGetGroupDbQuery(chat);
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
   const [times, setTimes] = useState(0);
+  const [nightNode, setNightNode] = useState(false);
 
   let hours: Array<number> = [];
   let period: number;
   GroupTime ? (period = GroupTime.period / 3600) : (period = 25);
-  for (let b = times - period; b > 0; b -= period) {
+  for (let b = times - period; b >= 0; b -= period) {
     hours.push(b);
   }
   for (let a = times; a < 24; a += period) {
@@ -102,7 +104,9 @@ export default function TimeQuestionGroup() {
               </Disclosure.Button>
             </li>
             <Disclosure.Panel className="py-4">
-              <div className="pb-2 text-left"></div>
+              <div className="pb-2 text-left">
+                <NightModeQuestion enabled={nightNode} setEnabled={setNightNode} />
+              </div>
               <div className="space-y-1.5">
                 <div className="grid grid-cols-6 gap-2">
                   {allTimes.map((time) => (
