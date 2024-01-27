@@ -126,9 +126,9 @@ export default function TimeQuestionGroup() {
                       value={time.id}
                       onClick={() => hendleTimes(time.id)}
                       className={`flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer ${
-                        time.active === true
-                          ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
-                          : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
+                        time.id === times
+                        ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
+                        : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
                       }`}
                     >
                       {time.name}
