@@ -54,20 +54,22 @@ export default function TimeQuestionGroup() {
 
   let hours: Array<number> = [];
 
-  function compareNumeric(a: number, b: number) {
-    if (a > b) return 1;
-    if (a === b) return 0;
-    return -1;
-  }
+  // function compareNumeric(a: number, b: number) {
+  //   if (a > b) return 1;
+  //   if (a === b) return 0;
+  //   return -1;
+  // }
 
   if (GroupTime) {
-    for (let i = times; i < 24; i + GroupTime?.period / 3600) {
-      hours.push(i);
+    for (let a = times; a < 24; a + (GroupTime.period / 3600)) {
+      console.log('a', a)
+      hours.push(a);
     }
-    for (let i = times; i >= 0; i - GroupTime?.period / 3600) {
-      hours.push(i);
+    for (let b = times; b >= 0; b - (GroupTime.period / 3600)) {
+      console.log('b', b)
+      hours.push(b);
     }
-    hours.sort(compareNumeric);
+    // hours.sort(compareNumeric);
     console.log('hours', hours)
   }
 
