@@ -118,7 +118,7 @@ export default function TimeQuestionGroup() {
                           ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
                           : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
                       }`}
-                      disabled={Boolean(nightNode && time.night)}
+                      disabled={Boolean((nightNode === time.night) === true)}
                     >
                       {time.name}
                     </button>
