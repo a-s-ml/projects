@@ -110,8 +110,8 @@ export default function TimeQuestionGroup() {
               </Disclosure.Button>
             </li>
             <Disclosure.Panel className="py-4">
+            <b className="text-left text-red-600 text-xs font-light">Внимание! Настройка времени находится на доработке, изменения не применяются</b>
               <div className="space-y-1.5">
-                <b>Внимание! Настройка времени находится на доработке, изменения не применяются</b>
                 <div className="grid grid-cols-6 gap-2">
                   {allTimes.map((time) => (
                     <button
@@ -119,7 +119,7 @@ export default function TimeQuestionGroup() {
                       value={time.id}
                       onClick={() => setTimes(time.id)}
                       className={`flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer ${
-                        hours.includes(time.id)
+                        hours.includes(time.time)
                           ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
                           : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
                       }`}
