@@ -116,12 +116,8 @@ export default function TimeQuestionGroup() {
                         sortHours.includes(time.id)
                           ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
                           : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
-                      }
-                          ${
-                            (time.id < 7 && time.id > 22 && nightNode)
-                              ? "bg-[var(--tg-theme-hint-color)] text-black font-semibold cursor-not-allowed"
-                              : ""
-                          }`}
+                      }`}
+                      disabled={time.id < 7 && time.id > 22 && nightNode}
                     >
                       {time.name}
                     </button>
