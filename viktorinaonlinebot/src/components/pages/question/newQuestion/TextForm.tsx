@@ -60,7 +60,7 @@ export function TextForm({ onSubmit }: TextFormProps) {
             />
           )}
           <span className={`text-xs ${textLength > 10 ? "text-green-600" : "text-red-500"}`}>
-            Минимальная длина текста вопроса 10 символов {textLength < 10 ? `(осталось {10 - textLength})` : ""}
+            Минимальная длина текста вопроса 10 символов
           </span>
         </div>
       </div>
