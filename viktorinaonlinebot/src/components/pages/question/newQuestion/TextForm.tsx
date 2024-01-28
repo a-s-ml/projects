@@ -7,27 +7,15 @@ interface TextFormProps {
   onSubmit: () => void;
 }
 
-const tg = window.Telegram.WebApp;
-
 export function TextForm({ onSubmit }: TextFormProps) {
   const dispatch = useAppDispatch();
 
-  const [textLength, setTextLength] = useState(0);
-  const [textLastСharacter, setTextLastСharacter] = useState("");
   const [text, setText] = useState("");
 
   const handleText = (txt: string) => {
     setText(txt);
-    setTextLength(txt.length);
-    setTextLastСharacter(txt.substring(txt.length - 1));
     dispatch(getQuestionText(txt));
   };
-
-  if (text.length > 10) {
-    tg.MainButton.setText("Следующий шаг");
-    tg.MainButton.show();
-    tg.onEvent("mainButtonClicked", onSubmit);
-  }
 
   return (
     <div className="py-2">
@@ -47,7 +35,7 @@ export function TextForm({ onSubmit }: TextFormProps) {
           onChange={(e) => handleText(e.target.value)}
         />
       </div>
-      <TextFormValidate text={text}/>
+      <TextFormValidate text={text} onSubmit={onSubmit} />
     </div>
   );
 }
