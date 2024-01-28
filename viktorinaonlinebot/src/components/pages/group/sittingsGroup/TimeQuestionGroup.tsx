@@ -182,7 +182,7 @@ export default function TimeQuestionGroup() {
                                     : ""
                                 }
                                 `}
-                      disabled={Boolean(!nightNode && time.night === true)}
+                      disabled={Boolean(nightNode === true && time.night === true)}
                     >
                       {time.name}
                     </button>
