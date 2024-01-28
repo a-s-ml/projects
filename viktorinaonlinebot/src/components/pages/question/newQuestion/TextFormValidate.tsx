@@ -9,7 +9,7 @@ const tg = window.Telegram.WebApp;
 export function TextFormValidate({ text }: TextFormValidateProps) {
   return (
     <div className="py-4">
-      <div className="mt-1 flex items-center">
+      <div className="mt-1 flex items-center gap-x-1.5">
         {text.length >= 10 && (
           <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
         )}
@@ -24,7 +24,7 @@ export function TextFormValidate({ text }: TextFormValidateProps) {
           Минимальная длина текста вопроса 10 символов
         </span>
       </div>
-      <div className="mt-1 flex items-center">
+      <div className="mt-1 flex items-center gap-x-1.5">
         {text.substring(text.length - 1) === "?" && (
           <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
         )}
