@@ -118,17 +118,26 @@ export default function TimeQuestionGroup() {
                       value={time.id}
                       onClick={() => setTimes(time.id)}
                       className={`flex items-center justify-center rounded-md py-2 px-2 text-xs
-${
-  sortHours.includes(time.id)
-    ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
-    : ""
-}
-${
-  Boolean(!nightNode && time.night === true)
-    ? "bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed"
-    : "bg-white text-black font-semibold ring-1 ring-inset ring-[var(--tg-theme-hint-color)] cursor-pointer"
-}
-`}
+                                ${
+                                  Boolean(
+                                    sortHours.includes(time.id) && nightNode === false
+                                  )
+                                    ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
+                                    : ""
+                                }
+                                ${
+                                    Boolean(
+                                      sortHours.includes(time.id) && nightNode === true
+                                    )
+                                      ? "bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed"
+                                      : ""
+                                  }
+                                ${
+                                  Boolean(!nightNode && time.night === true)
+                                    ? "bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed"
+                                    : "bg-white text-black font-semibold ring-1 ring-inset ring-[var(--tg-theme-hint-color)] cursor-pointer"
+                                }
+                                `}
                       disabled={Boolean(!nightNode && time.night === true)}
                     >
                       {time.name}
