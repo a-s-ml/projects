@@ -65,24 +65,6 @@ export default function TimeQuestionGroup() {
   }
   let sortHours: Array<number> = hours.sort((n1, n2) => n1 - n2);
 
-  //   nightNode === true && time.night == true && !sortHours.includes(time.id) //не публикуем ночью не активное время ночные часы
-  //    bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed
-  //   nightNode === true && time.night == false && !sortHours.includes(time.id) //не публикуем ночью не активное время дневные часы
-  //    bg-white text-black cursor-pointer
-  //   nightNode === true && time.night == true && sortHours.includes(time.id) //не публикуем ночью активное время ночные часы
-  //    bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed
-  //   nightNode === true && time.night == false && sortHours.includes(time.id) //не публикуем ночью активное время дневные часы
-  //    bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer
-
-  //   nightNode === false && time.night == true && sortHours.includes(time.id) //публикуем ночью активное время ночные часы
-  //    bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer
-  //   nightNode === false && time.night == false && sortHours.includes(time.id) //публикуем ночью активное время дневные часы
-  //    bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer
-  //   nightNode === false && time.night == false && !sortHours.includes(time.id) //публикуем ночью не активное время дневные часы
-  //    bg-white text-black cursor-pointer
-  //   nightNode === false && time.night == true && !sortHours.includes(time.id) //публикуем ночью не активное время ночные часы
-  //    bg-white text-black cursor-pointer
-
   return (
     <>
       <Disclosure as="div">

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../../store";
 import { getQuestionText } from "../../../store/api/question/question.slice";
+import { CheckIcon, NoSymbolIcon } from "@heroicons/react/24/outline";
 
 interface TextFormProps {
   onSubmit: () => void;
@@ -9,12 +10,14 @@ interface TextFormProps {
 const tg = window.Telegram.WebApp;
 
 export function TextForm({ onSubmit }: TextFormProps) {
-  
   const dispatch = useAppDispatch();
+
+  const [textLength, setTextLength] = useState(0);
   const [text, setText] = useState("");
 
   const handleText = (txt: string) => {
     setText(txt);
+    setTextLength(txt.length);
     dispatch(getQuestionText(txt));
   };
 
@@ -41,6 +44,25 @@ export function TextForm({ onSubmit }: TextFormProps) {
           value={text}
           onChange={(e) => handleText(e.target.value)}
         />
+      </div>
+      <div className="py-4">
+        <div className="mt-1 flex items-center gap-x-1.5">
+          {textLength > 10 && (
+            <CheckIcon
+              className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+              aria-hidden="true"
+            />
+          )}
+          {textLength < 10 && (
+            <NoSymbolIcon
+              className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+              aria-hidden="true"
+            />
+          )}
+          <span className={`text-xs leading-5 ${textLength > 10 ? "text-green-600" : "text-red-500"}`}>
+            Минимальная длина текста вопроса 10 символов ${textLength < 10 ? `(осталось {10 - textLength})` : ""}
+          </span>
+        </div>
       </div>
     </div>
   );
