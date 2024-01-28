@@ -73,9 +73,10 @@ export default function TimeQuestionGroup() {
   //    bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed
   //   nightNode === true && time.night == false && sortHours.includes(time.id) //не публикуем ночью активное время дневные часы
   //    bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer
-  //   nightNode === false && time.night == true && !sortHours.includes(time.id) //публикуем ночью активное время ночные часы
+
+  //   nightNode === false && time.night == true && sortHours.includes(time.id) //публикуем ночью активное время ночные часы
   //    bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer
-  //   nightNode === false && time.night == false && sortHours.includes(time.id) //публикуем ночью не активное время дневные часы
+  //   nightNode === false && time.night == false && !sortHours.includes(time.id) //публикуем ночью не активное время дневные часы
   //    bg-white text-black cursor-pointer
 
   return (
@@ -167,7 +168,7 @@ export default function TimeQuestionGroup() {
                                   Boolean(
                                     nightNode === false &&
                                       time.night == true &&
-                                      !sortHours.includes(time.id)
+                                      sortHours.includes(time.id)
                                   )
                                     ? "bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer"
                                     : ""
@@ -176,7 +177,7 @@ export default function TimeQuestionGroup() {
                                   Boolean(
                                     nightNode === false &&
                                       time.night == false &&
-                                      sortHours.includes(time.id)
+                                      !sortHours.includes(time.id)
                                   )
                                     ? "bg-white text-black cursor-pointer"
                                     : ""
