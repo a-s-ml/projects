@@ -13,11 +13,13 @@ export function TextForm({ onSubmit }: TextFormProps) {
   const dispatch = useAppDispatch();
 
   const [textLength, setTextLength] = useState(0);
+  const [textLastСharacter, setTextLastСharacter] = useState("");
   const [text, setText] = useState("");
 
   const handleText = (txt: string) => {
     setText(txt);
     setTextLength(txt.length);
+    setTextLastСharacter(txt.substring(txt.length - 1));
     dispatch(getQuestionText(txt));
   };
 
@@ -48,19 +50,34 @@ export function TextForm({ onSubmit }: TextFormProps) {
       <div className="py-4">
         <div className="mt-1 flex items-center gap-x-1.5">
           {textLength >= 10 && (
-            <CheckIcon
-              className="h-5 w-5 text-green-600"
-              aria-hidden="true"
-            />
+            <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
           )}
           {textLength < 10 && (
-            <NoSymbolIcon
-              className="h-5 w-5 text-red-500"
-              aria-hidden="true"
-            />
+            <NoSymbolIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
           )}
-          <span className={`text-xs ${textLength > 10 ? "text-green-600" : "text-red-500"}`}>
+          <span
+            className={`text-xs ${
+              textLength >= 10 ? "text-green-600" : "text-red-500"
+            }`}
+          >
             Минимальная длина текста вопроса 10 символов
+          </span>
+        </div>
+      </div>
+      <div className="py-4">
+        <div className="mt-1 flex items-center gap-x-1.5">
+          {textLastСharacter === "?" && (
+            <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
+          )}
+          {textLastСharacter != "?" && (
+            <NoSymbolIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+          )}
+          <span
+            className={`text-xs ${
+              textLength >= 10 ? "text-green-600" : "text-red-500"
+            }`}
+          >
+            Сформулируйте вопрос, чтобы он заканчивался вопросительным знаком
           </span>
         </div>
       </div>
