@@ -47,20 +47,20 @@ export function TextForm({ onSubmit }: TextFormProps) {
       </div>
       <div className="py-4">
         <div className="mt-1 flex items-center gap-x-1.5">
-          {textLength > 10 && (
+          {textLength >= 10 && (
             <CheckIcon
-              className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+              className="h-5 w-5 text-green-600"
               aria-hidden="true"
             />
           )}
           {textLength < 10 && (
             <NoSymbolIcon
-              className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+              className="h-5 w-5 text-red-500"
               aria-hidden="true"
             />
           )}
-          <span className={`text-xs leading-5 ${textLength > 10 ? "text-green-600" : "text-red-500"}`}>
-            Минимальная длина текста вопроса 10 символов ${textLength < 10 ? `(осталось {10 - textLength})` : ""}
+          <span className={`text-xs ${textLength > 10 ? "text-green-600" : "text-red-500"}`}>
+            Минимальная длина текста вопроса 10 символов {textLength < 10 ? `(осталось {10 - textLength})` : ""}
           </span>
         </div>
       </div>
