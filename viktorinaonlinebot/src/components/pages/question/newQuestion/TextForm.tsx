@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAppDispatch } from "../../../store";
 import { getQuestionText } from "../../../store/api/question/question.slice";
 import { CheckIcon, NoSymbolIcon } from "@heroicons/react/24/outline";
+import { TextFormValidate } from "./TextFormValidate";
 
 interface TextFormProps {
   onSubmit: () => void;
@@ -23,7 +24,7 @@ export function TextForm({ onSubmit }: TextFormProps) {
     dispatch(getQuestionText(txt));
   };
 
-  if (text.length > 5) {
+  if (text.length > 10) {
     tg.MainButton.setText("Следующий шаг");
     tg.MainButton.show();
     tg.onEvent("mainButtonClicked", onSubmit);
@@ -47,38 +48,7 @@ export function TextForm({ onSubmit }: TextFormProps) {
           onChange={(e) => handleText(e.target.value)}
         />
       </div>
-      <div className="py-4">
-        <div className="mt-1 flex items-center gap-x-1.5">
-          {textLength >= 10 && (
-            <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
-          )}
-          {textLength < 10 && (
-            <NoSymbolIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
-          )}
-          <span
-            className={`text-xs ${
-              textLength >= 10 ? "text-green-600" : "text-red-500"
-            }`}
-          >
-            Минимальная длина текста вопроса 10 символов
-          </span>
-        </div>
-        <div className="mt-1 flex items-center gap-x-1.5">
-          {textLastСharacter === "?" && (
-            <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
-          )}
-          {textLastСharacter != "?" && (
-            <NoSymbolIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
-          )}
-          <span
-            className={`text-xs ${
-              textLastСharacter != "?" ? "text-green-600" : "text-red-500"
-            }`}
-          >
-            Сформулируйте вопрос, чтобы он заканчивался вопросительным знаком
-          </span>
-        </div>
-      </div>
+      <TextFormValidate text={text}/>
     </div>
   );
 }
