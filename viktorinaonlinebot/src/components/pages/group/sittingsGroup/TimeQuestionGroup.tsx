@@ -134,56 +134,11 @@ export default function TimeQuestionGroup() {
                       className={`flex items-center justify-center rounded-md py-2 px-2 text-xs font-semibold 
                                 ${
                                   Boolean(
-                                    nightNode === true &&
+                                    nightNode === false &&
                                       time.night == true &&
                                       !sortHours.includes(time.id)
                                   )
                                     ? "bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed"
-                                    : ""
-                                }
-                                ${
-                                  Boolean(
-                                    nightNode === true &&
-                                      time.night == false &&
-                                      !sortHours.includes(time.id)
-                                  )
-                                    ? "bg-white text-black cursor-pointer"
-                                    : ""
-                                }
-                                ${
-                                  Boolean(
-                                    nightNode === true &&
-                                      time.night == true &&
-                                      sortHours.includes(time.id)
-                                  )
-                                    ? "bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed"
-                                    : ""
-                                }
-                                ${
-                                  Boolean(
-                                    nightNode === true &&
-                                      time.night == false &&
-                                      sortHours.includes(time.id)
-                                  )
-                                    ? "bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer"
-                                    : ""
-                                }
-                                ${
-                                  Boolean(
-                                    nightNode === false &&
-                                      time.night == true &&
-                                      sortHours.includes(time.id)
-                                  )
-                                    ? "bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer"
-                                    : ""
-                                }
-                                ${
-                                  Boolean(
-                                    nightNode === false &&
-                                      time.night == false &&
-                                      sortHours.includes(time.id)
-                                  )
-                                    ? "bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer"
                                     : ""
                                 }
                                 ${
@@ -198,6 +153,51 @@ export default function TimeQuestionGroup() {
                                 ${
                                   Boolean(
                                     nightNode === false &&
+                                      time.night == true &&
+                                      sortHours.includes(time.id)
+                                  )
+                                    ? "bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed"
+                                    : ""
+                                }
+                                ${
+                                  Boolean(
+                                    nightNode === false &&
+                                      time.night == false &&
+                                      sortHours.includes(time.id)
+                                  )
+                                    ? "bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer"
+                                    : ""
+                                }
+                                ${
+                                  Boolean(
+                                    nightNode === true &&
+                                      time.night == true &&
+                                      sortHours.includes(time.id)
+                                  )
+                                    ? "bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer"
+                                    : ""
+                                }
+                                ${
+                                  Boolean(
+                                    nightNode === true &&
+                                      time.night == false &&
+                                      sortHours.includes(time.id)
+                                  )
+                                    ? "bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer"
+                                    : ""
+                                }
+                                ${
+                                  Boolean(
+                                    nightNode === true &&
+                                      time.night == false &&
+                                      !sortHours.includes(time.id)
+                                  )
+                                    ? "bg-white text-black cursor-pointer"
+                                    : ""
+                                }
+                                ${
+                                  Boolean(
+                                    nightNode === true &&
                                       time.night == true &&
                                       !sortHours.includes(time.id)
                                   )
