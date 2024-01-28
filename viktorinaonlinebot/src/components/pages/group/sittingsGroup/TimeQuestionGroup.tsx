@@ -65,9 +65,18 @@ export default function TimeQuestionGroup() {
   }
   let sortHours: Array<number> = hours.sort((n1, n2) => n1 - n2);
 
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-  }
+  //   nightNode === true && time.night == true && !sortHours.includes(time.id) //не публикуем ночью не активное время ночные часы
+  //    bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed
+  //   nightNode === true && time.night == false && !sortHours.includes(time.id) //не публикуем ночью не активное время дневные часы
+  //    bg-white text-black cursor-pointer
+  //   nightNode === true && time.night == true && sortHours.includes(time.id) //не публикуем ночью активное время ночные часы
+  //    bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed
+  //   nightNode === true && time.night == false && sortHours.includes(time.id) //не публикуем ночью активное время дневные часы
+  //    bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer
+  //   nightNode === false && time.night == true && !sortHours.includes(time.id) //публикуем ночью активное время ночные часы
+  //    bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer
+  //   nightNode === false && time.night == false && sortHours.includes(time.id) //публикуем ночью не активное время дневные часы
+  //    bg-white text-black cursor-pointer
 
   return (
     <>
@@ -117,25 +126,60 @@ export default function TimeQuestionGroup() {
                       type="button"
                       value={time.id}
                       onClick={() => setTimes(time.id)}
-                      className={`flex items-center justify-center rounded-md py-2 px-2 text-xs
+                      className={`flex items-center justify-center rounded-md py-2 px-2 text-xs font-semibold 
                                 ${
                                   Boolean(
-                                    sortHours.includes(time.id) && nightNode === false
+                                    nightNode === true &&
+                                      time.night == true &&
+                                      !sortHours.includes(time.id)
                                   )
-                                    ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
+                                    ? "bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed"
                                     : ""
                                 }
                                 ${
-                                    Boolean(
-                                      sortHours.includes(time.id) && nightNode === true
-                                    )
-                                      ? "bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed"
-                                      : ""
-                                  }
+                                  Boolean(
+                                    nightNode === true &&
+                                      time.night == false &&
+                                      !sortHours.includes(time.id)
+                                  )
+                                    ? "bg-white text-black cursor-pointer"
+                                    : ""
+                                }
                                 ${
-                                  Boolean(!nightNode && time.night === true)
+                                  Boolean(
+                                    nightNode === true &&
+                                      time.night == true &&
+                                      sortHours.includes(time.id)
+                                  )
                                     ? "bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed"
-                                    : "bg-white text-black font-semibold ring-1 ring-inset ring-[var(--tg-theme-hint-color)] cursor-pointer"
+                                    : ""
+                                }
+                                ${
+                                  Boolean(
+                                    nightNode === true &&
+                                      time.night == false &&
+                                      sortHours.includes(time.id)
+                                  )
+                                    ? "bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer"
+                                    : ""
+                                }
+                                ${
+                                  Boolean(
+                                    nightNode === false &&
+                                      time.night == true &&
+                                      !sortHours.includes(time.id)
+                                  )
+                                    ? "bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer"
+                                    : ""
+                                }
+                                ${
+                                  Boolean(
+                                    nightNode === false &&
+                                      time.night == false &&
+                                      sortHours.includes(time.id)
+                                  )
+                                    ? "bg-white text-black cursor-pointer"
+                                    : ""
                                 }
                                 `}
                       disabled={Boolean(!nightNode && time.night === true)}
