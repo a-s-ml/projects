@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { useAppDispatch } from "../../../store";
-import { getQuestionText } from "../../../store/api/question/question.slice";
 import { CheckIcon, NoSymbolIcon } from "@heroicons/react/24/outline";
 
 interface TextFormValidateProps {
@@ -12,7 +9,7 @@ const tg = window.Telegram.WebApp;
 export function TextFormValidate({ text }: TextFormValidateProps) {
   return (
     <div className="py-4">
-      <div className="mt-1 flex items-center gap-x-1.5">
+      <div className="mt-1 flex items-center">
         {text.length >= 10 && (
           <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
         )}
@@ -27,7 +24,7 @@ export function TextFormValidate({ text }: TextFormValidateProps) {
           Минимальная длина текста вопроса 10 символов
         </span>
       </div>
-      <div className="mt-1 flex items-center gap-x-1.5">
+      <div className="mt-1 flex items-center">
         {text.substring(text.length - 1) === "?" && (
           <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
         )}
@@ -36,7 +33,7 @@ export function TextFormValidate({ text }: TextFormValidateProps) {
         )}
         <span
           className={`text-xs ${
-            text.substring(text.length - 1) != "?"
+            text.substring(text.length - 1) === "?"
               ? "text-green-600"
               : "text-red-500"
           }`}

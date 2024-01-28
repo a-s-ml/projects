@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../../store";
 import { getQuestionText } from "../../../store/api/question/question.slice";
-import { CheckIcon, NoSymbolIcon } from "@heroicons/react/24/outline";
 import { TextFormValidate } from "./TextFormValidate";
 
 interface TextFormProps {
