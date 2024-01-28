@@ -21,7 +21,7 @@ export function TextFormValidate({ text }: TextFormValidateProps) {
             text.length >= 10 ? "text-green-600" : "text-red-500"
           }`}
         >
-          Минимальная длина текста вопроса 10 символов
+          Минимальная длина текста вопроса должна составлять не менее 10 символов
         </span>
       </div>
       <div className="mt-1 flex items-center gap-x-1.5">
