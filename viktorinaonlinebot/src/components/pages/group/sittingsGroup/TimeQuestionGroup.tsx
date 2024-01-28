@@ -120,7 +120,7 @@ export default function TimeQuestionGroup() {
                           : ""
                       }
                       ${
-                        Boolean((!nightNode === time.night) === true)
+                        Boolean(!nightNode && time.night === true)
                           ? "bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed"
                           : "bg-white text-black font-semibold ring-1 ring-inset ring-[var(--tg-theme-hint-color)] cursor-pointer"
                       }
