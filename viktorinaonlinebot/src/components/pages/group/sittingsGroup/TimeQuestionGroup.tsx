@@ -76,7 +76,11 @@ export default function TimeQuestionGroup() {
 
   //   nightNode === false && time.night == true && sortHours.includes(time.id) //публикуем ночью активное время ночные часы
   //    bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer
+  //   nightNode === false && time.night == false && sortHours.includes(time.id) //публикуем ночью активное время дневные часы
+  //    bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer
   //   nightNode === false && time.night == false && !sortHours.includes(time.id) //публикуем ночью не активное время дневные часы
+  //    bg-white text-black cursor-pointer
+  //   nightNode === false && time.night == true && !sortHours.includes(time.id) //публикуем ночью не активное время ночные часы
   //    bg-white text-black cursor-pointer
 
   return (
@@ -177,13 +181,33 @@ export default function TimeQuestionGroup() {
                                   Boolean(
                                     nightNode === false &&
                                       time.night == false &&
+                                      sortHours.includes(time.id)
+                                  )
+                                    ? "bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer"
+                                    : ""
+                                }
+                                ${
+                                  Boolean(
+                                    nightNode === false &&
+                                      time.night == false &&
+                                      !sortHours.includes(time.id)
+                                  )
+                                    ? "bg-white text-black cursor-pointer"
+                                    : ""
+                                }
+                                ${
+                                  Boolean(
+                                    nightNode === false &&
+                                      time.night == true &&
                                       !sortHours.includes(time.id)
                                   )
                                     ? "bg-white text-black cursor-pointer"
                                     : ""
                                 }
                                 `}
-                      disabled={Boolean(nightNode === true && time.night === true)}
+                      disabled={Boolean(
+                        nightNode === true && time.night === true
+                      )}
                     >
                       {time.name}
                     </button>
