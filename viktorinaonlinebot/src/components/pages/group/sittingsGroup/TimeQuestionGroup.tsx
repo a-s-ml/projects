@@ -206,7 +206,7 @@ export default function TimeQuestionGroup() {
                                 }
                                 `}
                       disabled={Boolean(
-                        nightNode === true && time.night === true
+                        nightNode === false && time.night === true
                       )}
                     >
                       {time.name}
