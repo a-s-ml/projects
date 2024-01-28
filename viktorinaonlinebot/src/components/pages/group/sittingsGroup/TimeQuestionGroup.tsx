@@ -113,7 +113,7 @@ export default function TimeQuestionGroup() {
                       type="button"
                       value={time.id}
                       onClick={() => setTimes(time.id)}
-                      className={`flex items-center justify-center rounded-md py-2 px-2 text-xs  
+                      className={`flex items-center justify-center rounded-md py-2 px-2 text-xs text-black bg-white 
                       ${
                         sortHours.includes(time.id)
                           ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
@@ -121,8 +121,8 @@ export default function TimeQuestionGroup() {
                       }
                       ${
                         Boolean(!nightNode && time.night === true)
-                          ? "bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed"
-                          : "bg-white text-black font-semibold ring-1 ring-inset ring-[var(--tg-theme-hint-color)] cursor-pointer"
+                          ? "bg-[var(--tg-theme-hint-color)] cursor-not-allowed"
+                          : "font-semibold cursor-pointer"
                       }
                       `}
                       disabled={Boolean(!nightNode && time.night === true)}
