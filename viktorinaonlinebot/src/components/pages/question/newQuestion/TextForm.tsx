@@ -63,8 +63,6 @@ export function TextForm({ onSubmit }: TextFormProps) {
             Минимальная длина текста вопроса 10 символов
           </span>
         </div>
-      </div>
-      <div className="py-4">
         <div className="mt-1 flex items-center gap-x-1.5">
           {textLastСharacter === "?" && (
             <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
@@ -74,7 +72,7 @@ export function TextForm({ onSubmit }: TextFormProps) {
           )}
           <span
             className={`text-xs ${
-              textLength >= 10 ? "text-green-600" : "text-red-500"
+              textLastСharacter != "?" ? "text-green-600" : "text-red-500"
             }`}
           >
             Сформулируйте вопрос, чтобы он заканчивался вопросительным знаком
