@@ -65,6 +65,10 @@ export default function TimeQuestionGroup() {
   }
   let sortHours: Array<number> = hours.sort((n1, n2) => n1 - n2);
 
+  function classNames(...classes: string[]) {
+    return classes.filter(Boolean).join(" ");
+  }
+
   return (
     <>
       <Disclosure as="div">
@@ -113,18 +117,18 @@ export default function TimeQuestionGroup() {
                       type="button"
                       value={time.id}
                       onClick={() => setTimes(time.id)}
-                      className={`flex items-center justify-center rounded-md py-2 px-2 text-xs text-black bg-white 
-                      ${
-                        sortHours.includes(time.id)
-                          ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
-                          : ""
-                      }
-                      ${
-                        Boolean(!nightNode && time.night === true)
-                          ? "bg-[var(--tg-theme-hint-color)] cursor-not-allowed"
-                          : "font-semibold cursor-pointer"
-                      }
-                      `}
+                      className={`flex items-center justify-center rounded-md py-2 px-2 text-xs
+${
+  sortHours.includes(time.id)
+    ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
+    : ""
+}
+${
+  Boolean(!nightNode && time.night === true)
+    ? "bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed"
+    : "bg-white text-black font-semibold ring-1 ring-inset ring-[var(--tg-theme-hint-color)] cursor-pointer"
+}
+`}
                       disabled={Boolean(!nightNode && time.night === true)}
                     >
                       {time.name}
@@ -138,23 +142,4 @@ export default function TimeQuestionGroup() {
       </Disclosure>
     </>
   );
-}
-
-{
-  /* <div className="grid grid-cols-6 gap-2">
-{times.map((time) => (
-  <button
-    type="button"
-    value={time.id}
-    onClick={(e) => hendleTimes(e.target.value)}
-    className={`flex items-center justify-center rounded-md py-2 px-2 text-xs cursor-pointer ${
-      time.active === true 
-        ? "bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold"
-        : "ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold"
-    }`}
-  >
-    {time.name}
-  </button>
-))}
-</div> */
 }

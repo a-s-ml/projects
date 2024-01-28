@@ -4,7 +4,7 @@ import {
   ChevronUpIcon,
 } from "@heroicons/react/24/outline";
 import { Disclosure, RadioGroup } from "@headlessui/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAppSelector } from "../../../store";
 import {
   useGetTypeByIdQuery,
