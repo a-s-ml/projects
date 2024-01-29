@@ -15,9 +15,12 @@ export function TextList({ onSubmit }: TextListProps) {
   const questionText = useAppSelector(selectQuestionText);
   const dispatch = useAppDispatch();
   const [text, setText] = useState("");
+  const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
-    console.log("questionText", questionText);
+    if (questionText != "") {
+      setShowNotification(true);
+    }
   }, []);
 
   const handleText = (txt: string) => {
@@ -27,7 +30,7 @@ export function TextList({ onSubmit }: TextListProps) {
 
   const applyDraft = () => {
     setText(questionText);
-  }
+  };
 
   return (
     <>
@@ -50,8 +53,11 @@ export function TextList({ onSubmit }: TextListProps) {
         </div>
         <TextListValidate text={text} onSubmit={onSubmit} />
       </div>
-      {}
-      <ApplyDraft showNotification={true} applyDraft={applyDraft} />
+      <ApplyDraft
+        showNotification={showNotification}
+        setShowNotification={setShowNotification}
+        applyDraft={applyDraft}
+      />
     </>
   );
 }

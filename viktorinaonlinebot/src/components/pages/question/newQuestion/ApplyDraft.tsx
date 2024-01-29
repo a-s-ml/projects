@@ -1,14 +1,14 @@
-import { Fragment, useState } from "react";
+import { Dispatch, Fragment, SetStateAction, useState } from "react";
 import { Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
 interface ApplyDraftProps {
   showNotification: boolean;
+  setShowNotification: Dispatch<SetStateAction<boolean>>;
   applyDraft: () => void;
 }
 
-export default function ApplyDraft({showNotification, applyDraft}: ApplyDraftProps) {
-  const [show, setShow] = useState(showNotification);
+export default function ApplyDraft({showNotification, setShowNotification, applyDraft}: ApplyDraftProps) {
 
   return (
     <>
@@ -18,7 +18,7 @@ export default function ApplyDraft({showNotification, applyDraft}: ApplyDraftPro
       >
         <div className="flex w-full flex-col items-center space-y-4">
           <Transition
-            show={show}
+            show={showNotification}
             as={Fragment}
             enter="transform ease-out duration-300 transition delay-1000 "
             enterFrom="translate-y-2 opacity-0 delay-1000 "
@@ -51,9 +51,7 @@ export default function ApplyDraft({showNotification, applyDraft}: ApplyDraftPro
                       <XMarkIcon
                         className="h-5 w-5"
                         aria-hidden="true"
-                        onClick={() => {
-                          setShow(false);
-                        }}
+                        onClick={() => setShowNotification(!showNotification)}
                       />
                     </button>
                   </div>
