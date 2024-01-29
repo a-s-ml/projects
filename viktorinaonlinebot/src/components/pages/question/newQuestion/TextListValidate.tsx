@@ -12,6 +12,8 @@ export function TextListValidate({ text, onSubmit }: TextListValidateProps) {
     tg.MainButton.setText("Следующий шаг");
     tg.MainButton.show();
     tg.onEvent("mainButtonClicked", onSubmit);
+  } else {
+    tg.MainButton.hide();
   }
 
   return (

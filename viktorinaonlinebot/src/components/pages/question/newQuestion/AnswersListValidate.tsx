@@ -10,7 +10,6 @@ interface TextFormValidateProps {
 }
 
 const tg = window.Telegram.WebApp;
-tg.MainButton.hide();
 
 export function AnswersListValidate({
   answer1,
@@ -22,14 +21,20 @@ export function AnswersListValidate({
 }: TextFormValidateProps) {
   if (
     answer1.length > 10 &&
+    answer1.length <= 25 &&
     answer2.length > 10 &&
+    answer2.length <= 25 &&
     answer3.length > 10 &&
+    answer3.length <= 25 &&
     answer4.length > 10 &&
+    answer4.length <= 25 &&
     answerRight != 0
   ) {
     tg.MainButton.setText("Добавить вопрос");
     tg.MainButton.show();
     tg.onEvent("mainButtonClicked", onSubmit);
+  } else {
+    tg.MainButton.hide();
   }
 
   return (
