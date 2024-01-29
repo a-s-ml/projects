@@ -35,12 +35,11 @@ function NewQuesion() {
           answer4: question.answer4,
           answerright: question.answerright,
         });
-      } else {
-        tg.MainButton.hide();
       }
       dispatch(getQuestionDefault(""));
       dispatch(showModal(false));
       dispatch(showSlide(true));
+      tg.MainButton.hide();
     }
   }
 
