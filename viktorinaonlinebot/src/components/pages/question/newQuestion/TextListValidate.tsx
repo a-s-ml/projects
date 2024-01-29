@@ -1,13 +1,13 @@
 import { CheckIcon, NoSymbolIcon } from "@heroicons/react/24/outline";
 
-interface TextFormValidateProps {
+interface TextListValidateProps {
   text: string;
   onSubmit: () => void;
 }
 
 const tg = window.Telegram.WebApp;
 
-export function TextFormValidate({ text, onSubmit }: TextFormValidateProps) {
+export function TextListValidate({ text, onSubmit }: TextListValidateProps) {
   if (text.length > 10 && text.substring(text.length - 1) === "?") {
     tg.MainButton.setText("Следующий шаг");
     tg.MainButton.show();

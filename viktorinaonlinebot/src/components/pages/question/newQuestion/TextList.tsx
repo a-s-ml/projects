@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../../store";
 import { getQuestionText } from "../../../store/api/question/question.slice";
-import { TextFormValidate } from "./TextFormValidate";
+import { TextListValidate } from "./TextListValidate";
 
-interface TextFormProps {
+interface TextListProps {
   onSubmit: () => void;
 }
 
-export function TextForm({ onSubmit }: TextFormProps) {
+export function TextList({ onSubmit }: TextListProps) {
   const dispatch = useAppDispatch();
 
   const [text, setText] = useState("");
@@ -35,7 +35,7 @@ export function TextForm({ onSubmit }: TextFormProps) {
           onChange={(e) => handleText(e.target.value)}
         />
       </div>
-      <TextFormValidate text={text} onSubmit={onSubmit} />
+      <TextListValidate text={text} onSubmit={onSubmit} />
     </div>
   );
 }

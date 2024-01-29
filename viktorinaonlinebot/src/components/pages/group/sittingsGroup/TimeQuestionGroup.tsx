@@ -3,23 +3,13 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
 } from "@heroicons/react/24/outline";
-import { Disclosure, RadioGroup } from "@headlessui/react";
-import { useEffect, useState } from "react";
+import { Disclosure } from "@headlessui/react";
+import { useState } from "react";
 import { useAppSelector } from "../../../store";
-import {
-  useGetTimeByIdQuery,
-  useUpdateTimeGroupsMutation,
-} from "../../../store/api/time/time.api";
+import { useGetTimeByIdQuery } from "../../../store/api/time/time.api";
 import { selectModalData } from "../../../store/api/modal.slice";
 import { useGetGroupDbQuery } from "../../../store/api/group.api";
 import NightModeQuestion from "./NightModeQuestion";
-
-interface ITimesInteface {
-  id: number;
-  time: number;
-  name: string;
-  active: boolean;
-}
 
 export default function TimeQuestionGroup() {
   const allTimes = [
@@ -52,7 +42,7 @@ export default function TimeQuestionGroup() {
   const { data: GroupDb } = useGetGroupDbQuery(chat);
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
   const [times, setTimes] = useState(0);
-  const [nightNode, setNightNode] = useState(false);
+  const [nightNode, setNightNode] = useState(true);
   console.log(nightNode);
   let hours: Array<number> = [];
   let period: number;

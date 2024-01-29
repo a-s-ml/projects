@@ -8,13 +8,11 @@ import {
   getQuestionAnswerTwo,
   getQuestionAnswerright,
 } from "../../../store/api/question/question.slice";
+import { AnswersListValidate } from "./AnswersListValidate";
 
 interface AnswersListProps {
   onSubmit: () => void;
 }
-
-const tg = window.Telegram.WebApp;
-tg.MainButton.hide();
 
 export function AnswersList({ onSubmit }: AnswersListProps) {
   const [selectedAnswerRight, setAnswerRight] = useState(0);
@@ -45,185 +43,183 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
     dispatch(getQuestionAnswerright(id));
   };
 
-  if (
-    answer1.length > 1 &&
-    answer2.length > 1 &&
-    answer3.length > 1 &&
-    answer4.length > 1 &&
-    selectedAnswerRight != 0
-  ) {
-    tg.MainButton.setText("Добавить вопрос");
-    tg.MainButton.show();
-    tg.onEvent("mainButtonClicked", onSubmit);
-  }
-
   return (
-    <div className="py-2">
-      <div>
-        <label
-          htmlFor="answer1"
-          className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
-        >
-          Вариант ответа 1
-        </label>
-        <div className="mt-2 flex rounded-md shadow-sm">
-          <div className="relative flex flex-grow items-stretch focus-within:z-10">
-            <input
-              type="text"
-              name="answer1"
-              id="answer1"
-              className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
-              placeholder="Вариант ответа 1"
-              value={answer1}
-              onChange={(e) => handleAnswer1(e.target.value)}
-            />
-          </div>
-          <button
-            type="button"
-            className={`relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] ${
-              selectedAnswerRight === 1 &&
-              "bg-[var(--tg-theme-accent-text-color)]"
-            }`}
-            onClick={() => hendelClick(1)}
+    <>
+      <div className="py-2">
+        <div>
+          <label
+            htmlFor="answer1"
+            className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
           >
-            {selectedAnswerRight === 1 ? (
-              <CheckIcon
-                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
-                aria-hidden="true"
+            Вариант ответа 1
+          </label>
+          <div className="mt-2 flex rounded-md shadow-sm">
+            <div className="relative flex flex-grow items-stretch focus-within:z-10">
+              <input
+                type="text"
+                name="answer1"
+                id="answer1"
+                className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
+                placeholder="Вариант ответа 1"
+                value={answer1}
+                onChange={(e) => handleAnswer1(e.target.value)}
               />
-            ) : (
-              <XMarkIcon
-                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
-                aria-hidden="true"
+            </div>
+            <button
+              type="button"
+              className={`relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] ${
+                selectedAnswerRight === 1 &&
+                "bg-[var(--tg-theme-accent-text-color)]"
+              }`}
+              onClick={() => hendelClick(1)}
+            >
+              {selectedAnswerRight === 1 ? (
+                <CheckIcon
+                  className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                  aria-hidden="true"
+                />
+              ) : (
+                <XMarkIcon
+                  className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                  aria-hidden="true"
+                />
+              )}
+            </button>
+          </div>
+        </div>
+        <div>
+          <label
+            htmlFor="answer2"
+            className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
+          >
+            Вариант ответа 2
+          </label>
+          <div className="mt-2 flex rounded-md shadow-sm">
+            <div className="relative flex flex-grow items-stretch focus-within:z-10">
+              <input
+                type="text"
+                name="answer2"
+                id="answer2"
+                className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
+                placeholder="Вариант ответа 2"
+                value={answer2}
+                onChange={(e) => handleAnswer2(e.target.value)}
               />
-            )}
-          </button>
+            </div>
+            <button
+              type="button"
+              className={`relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] ${
+                selectedAnswerRight === 2 &&
+                "bg-[var(--tg-theme-accent-text-color)]"
+              }`}
+              onClick={() => hendelClick(2)}
+            >
+              {selectedAnswerRight === 2 ? (
+                <CheckIcon
+                  className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                  aria-hidden="true"
+                />
+              ) : (
+                <XMarkIcon
+                  className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                  aria-hidden="true"
+                />
+              )}
+            </button>
+          </div>
+        </div>
+        <div>
+          <label
+            htmlFor="answer3"
+            className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
+          >
+            Вариант ответа 3
+          </label>
+          <div className="mt-2 flex rounded-md shadow-sm">
+            <div className="relative flex flex-grow items-stretch focus-within:z-10">
+              <input
+                type="text"
+                name="answer3"
+                id="answer3"
+                className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
+                placeholder="Вариант ответа 3"
+                value={answer3}
+                onChange={(e) => handleAnswer3(e.target.value)}
+              />
+            </div>
+            <button
+              type="button"
+              className={`relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] ${
+                selectedAnswerRight === 3 &&
+                "bg-[var(--tg-theme-accent-text-color)]"
+              }`}
+              onClick={() => hendelClick(3)}
+            >
+              {selectedAnswerRight === 3 ? (
+                <CheckIcon
+                  className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                  aria-hidden="true"
+                />
+              ) : (
+                <XMarkIcon
+                  className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                  aria-hidden="true"
+                />
+              )}
+            </button>
+          </div>
+        </div>
+        <div>
+          <label
+            htmlFor="answer4"
+            className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
+          >
+            Вариант ответа 4
+          </label>
+          <div className="mt-2 flex rounded-md shadow-sm">
+            <div className="relative flex flex-grow items-stretch focus-within:z-10">
+              <input
+                type="text"
+                name="answer4"
+                id="answer4"
+                className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
+                placeholder="Вариант ответа 4"
+                value={answer4}
+                onChange={(e) => handleAnswer4(e.target.value)}
+              />
+            </div>
+            <button
+              type="button"
+              className={`relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] ${
+                selectedAnswerRight === 4 &&
+                "bg-[var(--tg-theme-accent-text-color)]"
+              }`}
+              onClick={() => hendelClick(4)}
+            >
+              {selectedAnswerRight === 4 ? (
+                <CheckIcon
+                  className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                  aria-hidden="true"
+                />
+              ) : (
+                <XMarkIcon
+                  className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
+                  aria-hidden="true"
+                />
+              )}
+            </button>
+          </div>
         </div>
       </div>
-      <div>
-        <label
-          htmlFor="answer2"
-          className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
-        >
-          Вариант ответа 2
-        </label>
-        <div className="mt-2 flex rounded-md shadow-sm">
-          <div className="relative flex flex-grow items-stretch focus-within:z-10">
-            <input
-              type="text"
-              name="answer2"
-              id="answer2"
-              className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
-              placeholder="Вариант ответа 2"
-              value={answer2}
-              onChange={(e) => handleAnswer2(e.target.value)}
-            />
-          </div>
-          <button
-            type="button"
-            className={`relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] ${
-              selectedAnswerRight === 2 &&
-              "bg-[var(--tg-theme-accent-text-color)]"
-            }`}
-            onClick={() => hendelClick(2)}
-          >
-            {selectedAnswerRight === 2 ? (
-              <CheckIcon
-                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
-                aria-hidden="true"
-              />
-            ) : (
-              <XMarkIcon
-                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
-                aria-hidden="true"
-              />
-            )}
-          </button>
-        </div>
-      </div>
-      <div>
-        <label
-          htmlFor="answer3"
-          className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
-        >
-          Вариант ответа 3
-        </label>
-        <div className="mt-2 flex rounded-md shadow-sm">
-          <div className="relative flex flex-grow items-stretch focus-within:z-10">
-            <input
-              type="text"
-              name="answer3"
-              id="answer3"
-              className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
-              placeholder="Вариант ответа 3"
-              value={answer3}
-              onChange={(e) => handleAnswer3(e.target.value)}
-            />
-          </div>
-          <button
-            type="button"
-            className={`relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] ${
-              selectedAnswerRight === 3 &&
-              "bg-[var(--tg-theme-accent-text-color)]"
-            }`}
-            onClick={() => hendelClick(3)}
-          >
-            {selectedAnswerRight === 3 ? (
-              <CheckIcon
-                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
-                aria-hidden="true"
-              />
-            ) : (
-              <XMarkIcon
-                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
-                aria-hidden="true"
-              />
-            )}
-          </button>
-        </div>
-      </div>
-      <div>
-        <label
-          htmlFor="answer4"
-          className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
-        >
-          Вариант ответа 4
-        </label>
-        <div className="mt-2 flex rounded-md shadow-sm">
-          <div className="relative flex flex-grow items-stretch focus-within:z-10">
-            <input
-              type="text"
-              name="answer4"
-              id="answer4"
-              className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
-              placeholder="Вариант ответа 4"
-              value={answer4}
-              onChange={(e) => handleAnswer4(e.target.value)}
-            />
-          </div>
-          <button
-            type="button"
-            className={`relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] ${
-              selectedAnswerRight === 4 &&
-              "bg-[var(--tg-theme-accent-text-color)]"
-            }`}
-            onClick={() => hendelClick(4)}
-          >
-            {selectedAnswerRight === 4 ? (
-              <CheckIcon
-                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
-                aria-hidden="true"
-              />
-            ) : (
-              <XMarkIcon
-                className="-ml-0.5 h-5 w-5 text-[var(--tg-theme-text-color)]"
-                aria-hidden="true"
-              />
-            )}
-          </button>
-        </div>
-      </div>
-    </div>
+      <AnswersListValidate
+        answer1={answer1}
+        answer2={answer2}
+        answer3={answer3}
+        answer4={answer4}
+        answerRight={selectedAnswerRight}
+        onSubmit={onSubmit}
+      />
+    </>
   );
 }
 

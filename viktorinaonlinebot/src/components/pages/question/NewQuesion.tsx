@@ -1,7 +1,7 @@
 import { CategoryList } from "./newQuestion/CategoryList";
 import { AnswersList } from "./newQuestion/AnswersList";
 import StepsForm from "./newQuestion/StepsForm";
-import { TextForm } from "./newQuestion/TextForm";
+import { TextList } from "./newQuestion/TextList";
 import { useAddQuestionMutation } from "../../store/api/question/question.api";
 import { store, useAppDispatch, useAppSelector } from "../../store";
 import { selectSlideUser, showSlide } from "../../store/api/slide.slice";
@@ -43,7 +43,7 @@ function NewQuesion() {
 
   const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
     useNewQuestionForm([
-      <TextForm onSubmit={onSubmit} />,
+      <TextList onSubmit={onSubmit} />,
       <CategoryList onSubmit={onSubmit} />,
       <AnswersList onSubmit={onSubmit} />,
     ]);
