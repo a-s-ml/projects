@@ -1,4 +1,4 @@
-import { CheckIcon, NoSymbolIcon } from "@heroicons/react/24/outline";
+import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 interface TextListValidateProps {
   text: string;
@@ -21,10 +21,10 @@ export function TextListValidate({ text, onSubmit }: TextListValidateProps) {
           <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
         )}
         {text.length < 10 && (
-          <NoSymbolIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+          <XMarkIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
         )}
         <span
-          className={`text-xs ${
+          className={`max-w-[80%] text-xs ${
             text.length >= 10 ? "text-green-600" : "text-red-500"
           }`}
         >
@@ -37,10 +37,10 @@ export function TextListValidate({ text, onSubmit }: TextListValidateProps) {
           <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
         )}
         {text.substring(text.length - 1) != "?" && (
-          <NoSymbolIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+          <XMarkIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
         )}
         <span
-          className={`text-xs ${
+          className={`max-w-[80%] text-xs ${
             text.substring(text.length - 1) === "?"
               ? "text-green-600"
               : "text-red-500"
