@@ -18,11 +18,11 @@ function NewQuesion() {
   const question = useAppSelector(selectQuestion);
 
   const tg = window.Telegram.WebApp;
-    tg.MainButton.hide();
 
   async function onSubmit() {
     if (!isLastStep) return next();
     if (isLastStep) {
+      tg.MainButton.hide();
       if (question.text != "") {
         await addQuestion({
           chat: user as unknown as bigint,

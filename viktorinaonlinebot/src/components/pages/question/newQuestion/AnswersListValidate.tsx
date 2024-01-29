@@ -20,13 +20,13 @@ export function AnswersListValidate({
   onSubmit,
 }: TextFormValidateProps) {
   if (
-    answer1.length > 10 &&
+    answer1.length >= 10 &&
     answer1.length <= 25 &&
-    answer2.length > 10 &&
+    answer2.length >= 10 &&
     answer2.length <= 25 &&
-    answer3.length > 10 &&
+    answer3.length >= 10 &&
     answer3.length <= 25 &&
-    answer4.length > 10 &&
+    answer4.length >= 10 &&
     answer4.length <= 25 &&
     answerRight != 0
   ) {
