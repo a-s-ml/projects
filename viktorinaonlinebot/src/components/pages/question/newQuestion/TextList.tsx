@@ -29,7 +29,8 @@ export function TextList({ onSubmit }: TextListProps) {
   };
 
   const applyDraft = () => {
-    setText(questionText);
+    handleText(questionText);
+    setShowNotification(false)
   };
 
   return (
