@@ -14,7 +14,7 @@ interface TextListProps {
 export function TextList({ onSubmit }: TextListProps) {
   const questionText = useAppSelector(selectQuestionText);
   const dispatch = useAppDispatch();
-
+  console.log(questionText);
   const [text, setText] = useState("");
 
   const handleText = (txt: string) => {
@@ -25,7 +25,7 @@ export function TextList({ onSubmit }: TextListProps) {
   const applyDraft = () => {
     setText(questionText);
     dispatch(getQuestionText(questionText));
-  }
+  };
 
   return (
     <>
