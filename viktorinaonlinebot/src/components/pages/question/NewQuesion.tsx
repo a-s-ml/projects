@@ -11,7 +11,6 @@ import {
   selectQuestion,
 } from "../../store/api/question/question.slice";
 import { showModal } from "../../store/api/modal.slice";
-import ApplyDraft from "./newQuestion/ApplyDraft";
 
 function NewQuesion() {
   const dispatch = useAppDispatch();
@@ -22,19 +21,23 @@ function NewQuesion() {
   tg.MainButton.hide();
 
   async function onSubmit() {
+    tg.MainButton.hide();
     if (!isLastStep) return next();
     if (isLastStep) {
-      tg.MainButton.hide();
-      await addQuestion({
-        chat: user as unknown as bigint,
-        text: question.text,
-        category: question.category,
-        answer1: question.answer1,
-        answer2: question.answer2,
-        answer3: question.answer3,
-        answer4: question.answer4,
-        answerright: question.answerright,
-      });
+      if (question.text != "") {
+        await addQuestion({
+          chat: user as unknown as bigint,
+          text: question.text,
+          category: question.category,
+          answer1: question.answer1,
+          answer2: question.answer2,
+          answer3: question.answer3,
+          answer4: question.answer4,
+          answerright: question.answerright,
+        });
+      } else {
+        tg.MainButton.hide();
+      }
       dispatch(getQuestionDefault(""));
       dispatch(showModal(false));
       dispatch(showSlide(true));
