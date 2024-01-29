@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store";
 import {
   getQuestionText,
@@ -14,8 +14,11 @@ interface TextListProps {
 export function TextList({ onSubmit }: TextListProps) {
   const questionText = useAppSelector(selectQuestionText);
   const dispatch = useAppDispatch();
-  console.log(questionText);
   const [text, setText] = useState("");
+
+  useEffect(() => {
+    console.log('questionText', questionText);
+  }, []);
 
   const handleText = (txt: string) => {
     setText(txt);
