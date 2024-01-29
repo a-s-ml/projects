@@ -48,7 +48,7 @@ export function AnswersListValidate({
             <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
           )}
         <span
-          className={`text-xs ${
+          className={`max-w-[90%] text-xs ${
             answer1.length <= 25 &&
             answer2.length <= 25 &&
             answer3.length <= 25 &&
@@ -75,7 +75,7 @@ export function AnswersListValidate({
             <NoSymbolIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
           )}
         <span
-          className={`text-xs ${
+          className={`max-w-[90%] text-xs ${
             answer1.length >= 10 &&
             answer2.length >= 10 &&
             answer3.length >= 10 &&
@@ -96,7 +96,7 @@ export function AnswersListValidate({
           <NoSymbolIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
         )}
         <span
-          className={`text-xs ${
+          className={`max-w-[90%] text-xs ${
             answerRight != 0 ? "text-green-600" : "text-red-500"
           }`}
         >
