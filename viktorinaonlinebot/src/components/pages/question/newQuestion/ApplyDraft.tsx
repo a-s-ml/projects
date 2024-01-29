@@ -3,11 +3,12 @@ import { Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
 interface ApplyDraftProps {
+  showNotification: boolean;
   applyDraft: () => void;
 }
 
-export default function ApplyDraft({applyDraft}: ApplyDraftProps) {
-  const [show, setShow] = useState(true);
+export default function ApplyDraft({showNotification, applyDraft}: ApplyDraftProps) {
+  const [show, setShow] = useState(showNotification);
 
   return (
     <>

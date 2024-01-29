@@ -50,7 +50,8 @@ export function TextList({ onSubmit }: TextListProps) {
         </div>
         <TextListValidate text={text} onSubmit={onSubmit} />
       </div>
-      <ApplyDraft applyDraft={applyDraft} />
+      {}
+      <ApplyDraft showNotification={true} applyDraft={applyDraft} />
     </>
   );
 }
