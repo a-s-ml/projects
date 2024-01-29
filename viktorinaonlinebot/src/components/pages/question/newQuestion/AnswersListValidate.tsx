@@ -35,24 +35,25 @@ export function AnswersListValidate({
   return (
     <div className="py-4">
       <div className="mt-1 flex items-center gap-x-1.5">
-        {answer1.length > 25 ||
-          answer2.length > 25 ||
-          answer3.length > 25 ||
-          answer4.length > 25 && (
-            <NoSymbolIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
-          )}
-        {answer1.length <= 25 &&
-          answer2.length <= 25 &&
-          answer3.length <= 25 &&
-          answer4.length <= 25 && (
-            <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
-          )}
+        {Boolean(
+          answer1.length > 25 ||
+            answer2.length > 25 ||
+            answer3.length > 25 ||
+            answer4.length > 25
+        ) ? (
+          <NoSymbolIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+        ) : (
+          <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
+        )}
+
         <span
-          className={`max-w-[90%] text-xs ${
-            answer1.length <= 25 &&
-            answer2.length <= 25 &&
-            answer3.length <= 25 &&
-            answer4.length <= 25
+          className={`max-w-[80%] text-xs ${
+            Boolean(
+              answer1.length <= 25 &&
+                answer2.length <= 25 &&
+                answer3.length <= 25 &&
+                answer4.length <= 25
+            )
               ? "text-green-600"
               : "text-red-500"
           }`}
@@ -62,20 +63,19 @@ export function AnswersListValidate({
         </span>
       </div>
       <div className="mt-1 flex items-center gap-x-1.5">
-        {answer1.length >= 10 &&
-          answer2.length >= 10 &&
-          answer3.length >= 10 &&
-          answer4.length >= 10 && (
-            <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
-          )}
-        {answer1.length < 10 ||
-          answer2.length < 10 ||
-          answer3.length < 10 ||
-          answer4.length < 10 && (
-            <NoSymbolIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
-          )}
+        {Boolean(
+          answer1.length >= 10 &&
+            answer2.length >= 10 &&
+            answer3.length >= 10 &&
+            answer4.length >= 10
+        ) ? (
+          <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
+        ) : (
+          <NoSymbolIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+        )}
+
         <span
-          className={`max-w-[90%] text-xs ${
+          className={`max-w-[80%] text-xs ${
             answer1.length >= 10 &&
             answer2.length >= 10 &&
             answer3.length >= 10 &&
@@ -96,11 +96,12 @@ export function AnswersListValidate({
           <NoSymbolIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
         )}
         <span
-          className={`max-w-[90%] text-xs ${
+          className={`max-w-[80%] text-xs ${
             answerRight != 0 ? "text-green-600" : "text-red-500"
           }`}
         >
-          Обязательно нужно выбрать верный вариант ответа (вопросы для всех групп проходят модерацию)
+          Обязательно нужно выбрать верный вариант ответа (вопросы для всех
+          групп проходят модерацию)
         </span>
       </div>
     </div>
