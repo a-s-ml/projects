@@ -19,12 +19,12 @@ export default function ApplyDraft({applyDraft}: ApplyDraftProps) {
           <Transition
             show={show}
             as={Fragment}
-            enter="transform ease-out delay-1000 duration-300 transition"
-            enterFrom="translate-y-2 opacity-0"
-            enterTo="translate-y-0 opacity-100"
+            enter="transform ease-out duration-300 transition delay-1000 "
+            enterFrom="translate-y-2 opacity-0 delay-1000 "
+            enterTo="translate-y-0 opacity-100 delay-1000 "
             leave="transition ease-in duration-100"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            leaveFrom="opacity-100 delay-1000 "
+            leaveTo="opacity-0 delay-1000 "
           >
             <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
               <div className="p-4">
