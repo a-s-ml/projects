@@ -17,7 +17,7 @@ export function TextList({ onSubmit }: TextListProps) {
   const [text, setText] = useState("");
 
   useEffect(() => {
-    console.log('questionText', questionText);
+    console.log("questionText", questionText);
   }, []);
 
   const handleText = (txt: string) => {
@@ -32,7 +32,7 @@ export function TextList({ onSubmit }: TextListProps) {
 
   return (
     <>
-      {questionText != "" && <ApplyDraft applyDraft={applyDraft} />}
+      <ApplyDraft applyDraft={applyDraft} />
       <div className="py-2">
         <label
           htmlFor="questionText"
