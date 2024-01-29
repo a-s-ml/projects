@@ -7,7 +7,6 @@ import ModalPage from "./ModalPage";
 import {
   selectSlide,
   selectSlideUser,
-  slideState,
   userSlide,
 } from "../store/api/slide.slice";
 import { store, useAppDispatch, useAppSelector } from "../store";
@@ -21,7 +20,6 @@ import { getAllTime } from "../store/api/time/time.slice";
 import { useGetCategoryQuery } from "../store/api/category/category.api";
 import { getAllCategories } from "../store/api/category/category.slice";
 import Preloader from "../Preloader/Preloader";
-import ApplyDraft from "./question/newQuestion/ApplyDraft";
 
 let menuitems: IMenu[] = [
   {
@@ -51,11 +49,11 @@ export function MainPage() {
   useEffect(() => {
     tg.expand();
     tg.ready();
-    tg.onEvent('viewportChanged', () => tg.expand())
+    tg.onEvent("viewportChanged", () => tg.expand());
   }, []);
 
   const {
-    isLoading: loadUser, 
+    isLoading: loadUser,
     isError: errorUser,
     data: dataUser,
     isSuccess: successUser,
@@ -124,7 +122,6 @@ export function MainPage() {
           <ModalPage />
         </>
       )}
-      <ApplyDraft />
     </>
   );
 }
