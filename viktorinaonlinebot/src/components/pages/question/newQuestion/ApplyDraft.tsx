@@ -13,7 +13,7 @@ export default function ApplyDraft() {
     <>
       <div
         aria-live="assertive"
-        className="pointer-events-none fixed inset-0 flex items-end px-4 py-36"
+        className="pointer-events-none fixed inset-0 flex items-end px-4 py-6"
       >
         <div className="flex w-full flex-col items-center space-y-4">
           <Transition
