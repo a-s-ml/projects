@@ -37,6 +37,8 @@ export function AnswersListValidate({
     tg.MainButton.hide();
   }
 
+  tg.MainButton.onClick(() => tg.MainButton.hide())
+
   return (
     <div className="py-4">
       <div className="mt-1 flex items-center gap-x-1.5">

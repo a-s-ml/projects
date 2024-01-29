@@ -18,10 +18,9 @@ function NewQuesion() {
   const question = useAppSelector(selectQuestion);
 
   const tg = window.Telegram.WebApp;
-  tg.MainButton.hide();
+    tg.MainButton.hide();
 
   async function onSubmit() {
-    tg.MainButton.hide();
     if (!isLastStep) return next();
     if (isLastStep) {
       if (question.text != "") {
@@ -39,7 +38,6 @@ function NewQuesion() {
       dispatch(getQuestionDefault(""));
       dispatch(showModal(false));
       dispatch(showSlide(true));
-      tg.MainButton.hide();
     }
   }
 
