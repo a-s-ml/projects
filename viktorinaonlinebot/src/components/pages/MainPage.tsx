@@ -21,7 +21,6 @@ import { getAllTime } from "../store/api/time/time.slice";
 import { useGetCategoryQuery } from "../store/api/category/category.api";
 import { getAllCategories } from "../store/api/category/category.slice";
 import Preloader from "../Preloader/Preloader";
-import ApplyDraft from "./question/newQuestion/ApplyDraft";
 
 let menuitems: IMenu[] = [
   {
@@ -124,7 +123,6 @@ export function MainPage() {
           <ModalPage />
         </>
       )}
-      <ApplyDraft />
     </>
   );
 }
