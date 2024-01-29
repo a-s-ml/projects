@@ -58,9 +58,8 @@ function NewQuesion() {
 
       <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
         <div className="py-24">{step}</div>
+        <ApplyDraft />
       </div>
-      
-      <ApplyDraft />
     </>
   );
 }
