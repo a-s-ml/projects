@@ -1,12 +1,13 @@
 import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
-import { useAppDispatch } from "../../../store";
+import { useAppDispatch, useAppSelector } from "../../../store";
 import {
   getQuestionAnswerFour,
   getQuestionAnswerOne,
   getQuestionAnswerThree,
   getQuestionAnswerTwo,
   getQuestionAnswerright,
+  selectQuestion,
 } from "../../../store/api/question/question.slice";
 import { AnswersListValidate } from "./AnswersListValidate";
 
@@ -15,11 +16,12 @@ interface AnswersListProps {
 }
 
 export function AnswersList({ onSubmit }: AnswersListProps) {
-  const [selectedAnswerRight, setAnswerRight] = useState(0);
-  const [answer1, setAnswer1] = useState("");
-  const [answer2, setAnswer2] = useState("");
-  const [answer3, setAnswer3] = useState("");
-  const [answer4, setAnswer4] = useState("");
+  const question = useAppSelector(selectQuestion);
+  const [selectedAnswerRight, setAnswerRight] = useState(question.answerright);
+  const [answer1, setAnswer1] = useState(question.answer1);
+  const [answer2, setAnswer2] = useState(question.answer2);
+  const [answer3, setAnswer3] = useState(question.answer3);
+  const [answer4, setAnswer4] = useState(question.answer4);
   const dispatch = useAppDispatch();
 
   const handleAnswer1 = (txt: string) => {

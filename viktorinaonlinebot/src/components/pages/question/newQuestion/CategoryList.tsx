@@ -4,7 +4,10 @@ import { Fragment, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store";
 import { selectAllCategories } from "../../../store/api/category/category.slice";
 import { ICategory } from "../../../../models/ICategory";
-import { getQuestionCategory, selectQuestionCategory } from "../../../store/api/question/question.slice";
+import {
+  getQuestionCategory,
+  selectQuestionCategory,
+} from "../../../store/api/question/question.slice";
 
 interface CategoryListProps {
   onSubmit: () => void;
@@ -16,9 +19,12 @@ let mona: boolean = false;
 export function CategoryList({ onSubmit }: CategoryListProps) {
   const questionCategory = useAppSelector(selectQuestionCategory);
   const categories = useAppSelector(selectAllCategories);
+  categories.all.unshift({ id: 0, name: "" });
   const dispatch = useAppDispatch();
 
-  const [selectedCategory, setCategory] = useState(categories.all[0]);
+  const [selectedCategory, setCategory] = useState(
+    categories.all.find((id) => id.id === questionCategory)
+  );
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
@@ -48,7 +54,7 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
               <Listbox.Button className="relative w-full cursor-default rounded-md bg-[var(--tg-theme-bg-color)] py-1.5 pl-3 pr-10 text-left text-[var(--tg-theme-text-color)] shadow-sm ring-1 ring-inset ring-[var(--tg-theme-text-color)]">
                 <span className="inline-flex w-full truncate">
                   <span className="truncate text-[var(--tg-theme-text-color)]">
-                    {selectedCategory.name}
+                    {selectedCategory?.name}
                   </span>
                 </span>
                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
