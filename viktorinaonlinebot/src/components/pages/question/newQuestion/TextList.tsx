@@ -25,14 +25,8 @@ export function TextList({ onSubmit }: TextListProps) {
     dispatch(getQuestionText(txt));
   };
 
-  const applyDraft = () => {
-    setText(questionText);
-    dispatch(getQuestionText(questionText));
-  };
-
   return (
     <>
-      <ApplyDraft applyDraft={applyDraft} />
       <div className="py-2">
         <label
           htmlFor="questionText"

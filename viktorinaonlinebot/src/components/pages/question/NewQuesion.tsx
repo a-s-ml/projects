@@ -11,12 +11,12 @@ import {
   selectQuestion,
 } from "../../store/api/question/question.slice";
 import { showModal } from "../../store/api/modal.slice";
+import ApplyDraft from "./newQuestion/ApplyDraft";
 
 function NewQuesion() {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectSlideUser);
   const question = useAppSelector(selectQuestion);
-
 
   const tg = window.Telegram.WebApp;
   tg.MainButton.hide();
@@ -49,12 +49,10 @@ function NewQuesion() {
     ]);
 
   const [addQuestion, {}] = useAddQuestionMutation();
-  console.log(useAppSelector(store.getState));
-
-  console.log(currentStepIndex);
-
+  const applyDraft = () => {};
   return (
     <>
+      <ApplyDraft applyDraft={applyDraft} />
       <header className="absolute inset-x-0 top-0 z-50">
         <StepsForm step={currentStepIndex + 1} stepsCount={steps.length} />
         <div className="bg-gradient-to-b from-[var(--tg-theme-bg-color)] to-transparent pt-12 w-screen"></div>
