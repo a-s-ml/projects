@@ -4,7 +4,7 @@ import { Fragment, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store";
 import { selectAllCategories } from "../../../store/api/category/category.slice";
 import { ICategory } from "../../../../models/ICategory";
-import { getQuestionCategory } from "../../../store/api/question/question.slice";
+import { getQuestionCategory, selectQuestionCategory } from "../../../store/api/question/question.slice";
 
 interface CategoryListProps {
   onSubmit: () => void;
@@ -14,6 +14,7 @@ const tg = window.Telegram.WebApp;
 let mona: boolean = false;
 
 export function CategoryList({ onSubmit }: CategoryListProps) {
+  const questionCategory = useAppSelector(selectQuestionCategory);
   const categories = useAppSelector(selectAllCategories);
   const dispatch = useAppDispatch();
 
@@ -22,8 +23,6 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
   }
-
-  console.log(mona)
 
   const handleChange = (cat: ICategory) => {
     setCategory(cat);
