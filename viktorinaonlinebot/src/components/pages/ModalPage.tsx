@@ -19,6 +19,7 @@ export default function ModalPage() {
   const modalData = useAppSelector(selectModalData);
   const dispatch = useAppDispatch();
   const tg = window.Telegram.WebApp;
+  tg.MainButton.hide();
 
   if (modal) {
     tg.onEvent("backButtonClicked", () => {
