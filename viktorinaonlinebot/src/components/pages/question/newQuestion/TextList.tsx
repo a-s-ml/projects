@@ -25,6 +25,10 @@ export function TextList({ onSubmit }: TextListProps) {
     dispatch(getQuestionText(txt));
   };
 
+  const applyDraft = () => {
+    setText(questionText);
+  }
+
   return (
     <>
       <div className="py-2">
@@ -46,6 +50,7 @@ export function TextList({ onSubmit }: TextListProps) {
         </div>
         <TextListValidate text={text} onSubmit={onSubmit} />
       </div>
+      <ApplyDraft applyDraft={applyDraft} />
     </>
   );
 }

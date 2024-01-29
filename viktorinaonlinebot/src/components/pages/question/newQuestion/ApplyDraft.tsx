@@ -6,14 +6,14 @@ interface ApplyDraftProps {
   applyDraft: () => void;
 }
 
-export default function ApplyDraft() {
+export default function ApplyDraft({applyDraft}: ApplyDraftProps) {
   const [show, setShow] = useState(true);
 
   return (
     <>
       <div
         aria-live="assertive"
-        className="pointer-events-none fixed inset-0 flex items-end px-4 py-6"
+        className="pointer-events-none fixed inset-0 flex items-end px-4 py-12"
       >
         <div className="flex w-full flex-col items-center space-y-4">
           <Transition
@@ -44,9 +44,7 @@ export default function ApplyDraft() {
                     <button
                       type="button"
                       className="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                      onClick={() => {
-                        setShow(false);
-                      }}
+                      onClick={applyDraft}
                     >
                       <span className="sr-only">Close</span>
                       <XMarkIcon
