@@ -25,18 +25,16 @@ function NewQuesion() {
     if (!isLastStep) return next();
     if (isLastStep) {
       tg.MainButton.hide();
-      if (question.text != "") {
-        await addQuestion({
-          chat: user as unknown as bigint,
-          text: question.text,
-          category: question.category,
-          answer1: question.answer1,
-          answer2: question.answer2,
-          answer3: question.answer3,
-          answer4: question.answer4,
-          answerright: question.answerright,
-        });
-      }
+      await addQuestion({
+        chat: user as unknown as bigint,
+        text: question.text,
+        category: question.category,
+        answer1: question.answer1,
+        answer2: question.answer2,
+        answer3: question.answer3,
+        answer4: question.answer4,
+        answerright: question.answerright,
+      });
       dispatch(getQuestionDefault(""));
       dispatch(showModal(false));
       dispatch(showSlide(true));
