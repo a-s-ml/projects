@@ -49,10 +49,8 @@ function NewQuesion() {
     ]);
 
   const [addQuestion, {}] = useAddQuestionMutation();
-  const applyDraft = () => {};
   return (
     <>
-      <ApplyDraft applyDraft={applyDraft} />
       <header className="absolute inset-x-0 top-0 z-50">
         <StepsForm step={currentStepIndex + 1} stepsCount={steps.length} />
         <div className="bg-gradient-to-b from-[var(--tg-theme-bg-color)] to-transparent pt-12 w-screen"></div>
