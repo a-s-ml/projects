@@ -21,9 +21,6 @@ interface NoActive {
 
 let noActive: NoActive[] = [
   {
-    text: "Сложность вопросов",
-  },
-  {
     text: "Период жизни вопроса",
   },
   {
