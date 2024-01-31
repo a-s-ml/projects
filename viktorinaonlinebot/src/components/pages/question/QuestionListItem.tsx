@@ -37,7 +37,7 @@ export default function QuestionListItem({ id }: QuestionListItemProps) {
               </p>
               {successCategory && dataCategory && (
                 <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                  Категория: {String(dataCategory.name)}
+                  Категория: {dataCategory.name}
                 </p>
               )}
             </div>
