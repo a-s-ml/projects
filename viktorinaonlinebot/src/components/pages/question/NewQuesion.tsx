@@ -11,6 +11,7 @@ import {
   selectQuestion,
 } from "../../store/api/question/question.slice";
 import { showModal } from "../../store/api/modal.slice";
+import { SuccessQuestion } from "./newQuestion/SuccessQuestion";
 
 function NewQuesion() {
   const dispatch = useAppDispatch();
@@ -20,9 +21,9 @@ function NewQuesion() {
   const tg = window.Telegram.WebApp;
 
   async function onSubmit() {
+    tg.MainButton.hide();
     if (!isLastStep) return next();
     if (isLastStep) {
-      tg.MainButton.hide();
       if (question.text != "") {
         await addQuestion({
           chat: user as unknown as bigint,
@@ -46,6 +47,7 @@ function NewQuesion() {
       <TextList onSubmit={onSubmit} />,
       <CategoryList onSubmit={onSubmit} />,
       <AnswersList onSubmit={onSubmit} />,
+      <SuccessQuestion onSubmit={onSubmit} />
     ]);
 
   const [addQuestion, {}] = useAddQuestionMutation();

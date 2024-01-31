@@ -30,7 +30,7 @@ export function AnswersListValidate({
     answer4.length <= 25 &&
     answerRight != 0
   ) {
-    tg.MainButton.setText("Добавить вопрос");
+    tg.MainButton.setText("Следующий шаг");
     tg.MainButton.show();
     tg.onEvent("mainButtonClicked", onSubmit);
   } else {
