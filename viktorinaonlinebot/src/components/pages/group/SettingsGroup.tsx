@@ -14,6 +14,7 @@ import {
 } from "../../store/api/question/question.api";
 import { useGetTimeByIdQuery } from "../../store/api/time/time.api";
 import TimeQuestionGroup from "./sittingsGroup/TimeQuestionGroup";
+import DifficultyQuestionGroup from "./sittingsGroup/DifficultyQuestionGroup";
 
 interface NoActive {
   text: string;
@@ -89,6 +90,7 @@ export default function SettingsGroup({}) {
             <CategoryQuestionGroup />
             <PeriodQuestionGroup />
             <TimeQuestionGroup />
+            <DifficultyQuestionGroup />
             {noActive.map((item) => (
               <NotactiveSittings type={item.text} />
             ))}
