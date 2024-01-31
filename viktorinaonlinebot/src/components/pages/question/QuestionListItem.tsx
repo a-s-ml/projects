@@ -2,7 +2,6 @@ import { ChartBarIcon } from "@heroicons/react/24/outline";
 import { useGetQuestionByIdQuery } from "../../store/api/question/question.api";
 import { useAppDispatch } from "../../store";
 import { showSlide } from "../../store/api/slide.slice";
-import { dataModal, showModal } from "../../store/api/modal.slice";
 import { useGetCategoryByIdQuery } from "../../store/api/category/category.api";
 
 interface QuestionListItemProps {
@@ -23,8 +22,6 @@ export default function QuestionListItem({ id }: QuestionListItemProps) {
           className="px-1 py-1 sm:px-0 cursor-pointer"
           onClick={() => {
             dispatch(showSlide(false));
-            // dispatch(showModal(true));
-            // dispatch(dataModal(0n));
           }}
         >
           <div className="group relative flex items-start space-x-3 py-4">
