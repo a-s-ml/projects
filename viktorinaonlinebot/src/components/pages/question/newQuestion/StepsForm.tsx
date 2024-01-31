@@ -27,22 +27,22 @@ export default function StepsForm({ step, stepsCount }: StepsFormProps) {
         {steps.map((step) => (
           <li key={step.id}>
             {step.status === "complete" ? (
-              <span className="block h-2.5 w-2.5 rounded-full bg-indigo-600 hover:bg-indigo-900"></span>
+              <span className="block h-2.5 w-2.5 rounded-full bg-[var(--tg-theme-accent-text-color)]"></span>
             ) : step.status === "current" ? (
               <span
                 className="relative flex items-center justify-center"
                 aria-current="step"
               >
                 <span className="absolute flex h-5 w-5 p-px" aria-hidden="true">
-                  <span className="h-full w-full rounded-full bg-indigo-200" />
+                  <span className="h-full w-full rounded-full bg-[var(--tg-theme-text-color)]" />
                 </span>
                 <span
-                  className="relative block h-2.5 w-2.5 rounded-full bg-indigo-600"
+                  className="relative block h-2.5 w-2.5 rounded-full bg-[var(--tg-theme-accent-text-color)]"
                   aria-hidden="true"
                 />
               </span>
             ) : (
-              <span className="block h-2.5 w-2.5 rounded-full bg-gray-200 hover:bg-gray-400"></span>
+              <span className="block h-2.5 w-2.5 rounded-full bg-[var(--tg-theme-text-color)]"></span>
             )}
           </li>
         ))}
