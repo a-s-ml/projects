@@ -11,7 +11,7 @@ interface QuestionListItemProps {
 export default function QuestionListItem({ id }: QuestionListItemProps) {
   const { data: question, isSuccess: successQuestion } =
     useGetQuestionByIdQuery(id);
-  const { data: category, isSuccess: successCategory } =
+  const { data: dataCategory, isSuccess: successCategory } =
     useGetCategoryByIdQuery(question?.category || 0);
   const dispatch = useAppDispatch();
 
@@ -32,9 +32,12 @@ export default function QuestionListItem({ id }: QuestionListItemProps) {
                   {question.text}
                 </b>
               </div>
+              <p className="text-xs text-[var(--tg-theme-hint-color)]">
+                Дата добавления: {question.dateadd}
+              </p>
               {successCategory && (
                 <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                  Категория: {String(category)}
+                  Категория: {String(dataCategory.name)}
                 </p>
               )}
             </div>
