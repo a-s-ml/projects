@@ -3,18 +3,22 @@ import { useGetQuestionByIdQuery } from "../../store/api/question/question.api";
 import { useAppDispatch } from "../../store";
 import { showSlide } from "../../store/api/slide.slice";
 import { dataModal, showModal } from "../../store/api/modal.slice";
+import { useGetCategoryByIdQuery } from "../../store/api/category/category.api";
 
 interface QuestionListItemProps {
   id: number;
 }
 
 export default function QuestionListItem({ id }: QuestionListItemProps) {
-  const { data: question, isSuccess } = useGetQuestionByIdQuery(id);
+  const { data: question, isSuccess: successQuestion } =
+    useGetQuestionByIdQuery(id);
+  const { data: category, isSuccess: successCategory } =
+    useGetCategoryByIdQuery(question?.category || 0);
   const dispatch = useAppDispatch();
 
   return (
     <>
-      {isSuccess && (
+      {successQuestion && (
         <li
           className="px-1 py-1 sm:px-0 cursor-pointer"
           onClick={() => {
@@ -31,15 +35,11 @@ export default function QuestionListItem({ id }: QuestionListItemProps) {
                   {question.text}
                 </b>
               </div>
-              <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                Категория: {question.category}
-              </p>
-              <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                Сложность: {question.slog}
-              </p>
-              <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                Ответов: {question.answers}
-              </p>
+              {successCategory && (
+                <p className="text-xs text-[var(--tg-theme-hint-color)]">
+                  Категория: {category.name}
+                </p>
+              )}
             </div>
             <div className="flex-shrink-0 self-center">
               <ChartBarIcon

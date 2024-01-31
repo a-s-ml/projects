@@ -20,6 +20,12 @@ export const extendedApiSlice = vikApi.injectEndpoints({
       }),
     }),
 
+    getCategoryById: build.query<ICategory, number>({
+      query: (id) => ({
+        url: `category/${id}`,
+      }),
+    }),
+
     getCategoryGroups: build.query<ICategoryGroup[], bigint>({
       query: (chat) => ({
         url: `chat-category/${chat}`,
@@ -52,7 +58,7 @@ export const {
   useGetCategoryQuery,
   useGetCategoryGroupsQuery,
   useAddCategoryGroupsMutation, 
-  useDeleteCategoryGroupsMutation ,
-
+  useDeleteCategoryGroupsMutation,
+  useGetCategoryByIdQuery
 } =
   extendedApiSlice;
