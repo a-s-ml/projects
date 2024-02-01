@@ -32,7 +32,7 @@ export function AnswersListValidate({
   ) {
     tg.MainButton.setText("Добавить вопрос");
     tg.MainButton.show();
-    tg.onEvent("mainButtonClicked", onSubmit);
+    tg.onEvent("mainButtonClicked", (tg.MainButton.hide(), onSubmit));
   } else {
     tg.MainButton.hide();
   }
