@@ -12,12 +12,14 @@ import {
 } from "../../store/api/question/question.slice";
 import { showModal } from "../../store/api/modal.slice";
 
+const tg = window.Telegram.WebApp;
 function NewQuesion() {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectSlideUser);
   const question = useAppSelector(selectQuestion);
 
   async function onSubmit() {
+    tg.MainButton.hide();
     if (!isLastStep) return next();
     if (isLastStep) {
       if (question.text != "") {

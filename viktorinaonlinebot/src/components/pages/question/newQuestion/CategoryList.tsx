@@ -30,9 +30,6 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
     return classes.filter(Boolean).join(" ");
   }
 
-  console.log("questionCategory", questionCategory);
-  console.log("categories", categories);
-  console.log("selectedCategory", selectedCategory);
   const handleChange = (cat: ICategory) => {
     setCategory(cat);
     dispatch(getQuestionCategory(cat.id));
