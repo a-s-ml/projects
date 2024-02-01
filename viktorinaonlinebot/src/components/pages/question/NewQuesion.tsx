@@ -19,7 +19,6 @@ function NewQuesion() {
   const question = useAppSelector(selectQuestion);
 
   async function onSubmit() {
-    tg.MainButton.hide();
     if (!isLastStep) return next();
     if (isLastStep) {
       if (question.text != "") {

@@ -11,7 +11,7 @@ export function TextListValidate({ text, onSubmit }: TextListValidateProps) {
   if (text.length > 10 && text.substring(text.length - 1) === "?") {
     tg.MainButton.setText("Следующий шаг");
     tg.MainButton.show();
-    tg.onEvent("mainButtonClicked", (tg.MainButton.hide(), onSubmit));
+    tg.onEvent("mainButtonClicked", onSubmit);
   } else {
     tg.MainButton.hide();
   }
