@@ -65,16 +65,16 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
                 <ToggleButton group={dataGroupInfo.id} state={groupActive} />
               </div>
             )}
-          </div>
+          </div> 
           <div
             className="group relative flex items-start space-x-3 cursor-pointer"
             onClick={() => {
               dispatch(showSlide(false));
+              dispatch(dataLevelSlide(2));
+              dispatch(groupSlide(group));
               setTimeout(() => {
                 dispatch(showSlide(true));
               }, 300);
-              dispatch(dataLevelSlide(2));
-              dispatch(groupSlide(group));
             }}
           >
             <div className="min-w-0 flex-1">

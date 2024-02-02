@@ -62,7 +62,7 @@ export const {
 
 export const selectSlide = (state: RootState) => state.slide.show;
 export const selectSlideUser = (state: RootState) => state.slide.user;
-export const selectSlideGroup = (state: RootState) => state.slide.group;
+export const selectSlideGroup = (state: RootState) => state.slide.group; 
 export const selectSlideData = (state: RootState) => state.slide.data;
 export const selectSlideTypeData = (state: RootState) => state.slide.data.type;
 

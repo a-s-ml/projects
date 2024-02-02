@@ -57,7 +57,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                   {slideData.level === 1 ? (
                     <>
                       {slideData.type === "groups" && (
-                        <>
+                <>
                           <Header>
                             <AddNewGroup />
                           </Header>
@@ -93,7 +93,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                       )}
                     </>
                   )}
-                </div>
+                  </div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
