@@ -26,7 +26,6 @@ export default function SlidePage({ chat }: SlideItemsProps) {
 
   if (slide) {
     tg.onEvent("backButtonClicked", () => dispatch(showSlide(false)));
-    tg.MainButton.hide();
   }
 
   return (

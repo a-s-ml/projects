@@ -21,10 +21,16 @@ export default function ModalPage() {
   const tg = window.Telegram.WebApp;
   tg.MainButton.hide();
 
+  function firstFunction() {
+    return new Promise<void>((resolve, reject) => {
+      dispatch(showModal(false));
+      resolve();
+    });
+  }
+
   if (modal) {
     tg.onEvent("backButtonClicked", () => {
-      dispatch(showModal(false));
-      dispatch(showSlide(true));
+      return firstFunction().then(()=> dispatch(showModal(true)));
     });
   }
 
