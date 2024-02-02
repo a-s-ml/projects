@@ -31,7 +31,7 @@ export const slideSlice = createSlice({
     showSlide: (state, action: PayloadAction<boolean>) => {
       state.show = action.payload;
     },
-    dataTypeSlide: (state, action: PayloadAction<string>) => {
+    typeSlide: (state, action: PayloadAction<string>) => {
       state.type = action.payload;
     },
     levelSlide: (state, action: PayloadAction<number>) => {
@@ -47,7 +47,7 @@ export const {
   showSlide,
   dataSlide,
   userSlide,
-  dataTypeSlide,
+  typeSlide,
   groupSlide,
   levelSlide,
 } = slideSlice.actions;
