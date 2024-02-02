@@ -28,8 +28,7 @@ export default function MenuList({ item, progress }: MenuItemsProps) {
       className="px-1 py-1 sm:px-0 cursor-pointer"
       key={item.id}
       onClick={() => {
-        nextLevel();
-        dispatch(dataTypeSlide(item.name));
+        nextLevel(item.name, 0);
       }}
     >
       <div className="group relative flex items-start space-x-3 py-4">

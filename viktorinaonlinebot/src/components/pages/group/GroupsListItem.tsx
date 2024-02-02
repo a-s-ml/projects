@@ -65,8 +65,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
           <div
             className="group relative flex items-start space-x-3 cursor-pointer"
             onClick={() => {
-              nextLevel();
-              dispatch(groupSlide(group));
+              nextLevel("group", group);
             }}
           >
             <div className="min-w-0 flex-1">
