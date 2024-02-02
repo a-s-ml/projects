@@ -77,7 +77,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                   </div>
                 ) : (
                   <>
-                    {slideGroup === 0n && slideData.type != "main" ? (
+                    {slideGroup === 0n ? (
                       <NewQuesion />
                     ) : (
                       <>
