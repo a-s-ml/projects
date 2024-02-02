@@ -7,7 +7,7 @@ import {
 import { IMenu } from "../../../models/IMenu";
 import { IProgressData } from "../../../models/IUser";
 import { useAppDispatch } from "../../store";
-import { showSlide, dataTypeSlide } from "../../store/api/slide.slice";
+import { dataTypeSlide, nextLevelSlide } from "../../store/api/slide.slice";
 
 interface MenuItemsProps {
   item: IMenu;
@@ -16,10 +16,6 @@ interface MenuItemsProps {
 
 export default function MenuList({ item, progress }: MenuItemsProps) {
   const dispatch = useAppDispatch();
-
-  function nextLevelSlide(): any {
-    throw new Error("Function not implemented.");
-  }
 
   return (
     <li
