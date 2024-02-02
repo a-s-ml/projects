@@ -3,10 +3,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import ErrorPage from "./ErrorPage";
 import GroupsList from "./group/GroupsList";
 import {
-  prevLevelSlide,
+  levelSlide,
   selectSlide,
   selectSlideData,
-  selectSlideLevel,
   showSlide,
 } from "../store/api/slide.slice";
 import { useAppDispatch, useAppSelector } from "../store";
@@ -30,7 +29,13 @@ export default function SlidePage({ chat }: SlideItemsProps) {
 
   if (slide) {
     tg.onEvent("backButtonClicked", () => {
-      dispatch(prevLevelSlide(false));
+      dispatch(showSlide(false));
+      if (slideData.level > 1) {
+        dispatch(levelSlide(slideData.level - 1));
+        setTimeout(() => {
+          dispatch(showSlide(true));
+        }, 250);
+      }
     });
   }
 

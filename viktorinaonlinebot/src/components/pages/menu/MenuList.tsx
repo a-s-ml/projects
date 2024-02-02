@@ -7,7 +7,7 @@ import {
 import { IMenu } from "../../../models/IMenu";
 import { IProgressData } from "../../../models/IUser";
 import { useAppDispatch } from "../../store";
-import { dataTypeSlide, nextLevelSlide } from "../../store/api/slide.slice";
+import { showSlide, dataTypeSlide, levelSlide } from "../../store/api/slide.slice";
 
 interface MenuItemsProps {
   item: IMenu;
@@ -22,7 +22,8 @@ export default function MenuList({ item, progress }: MenuItemsProps) {
       className="px-1 py-1 sm:px-0 cursor-pointer"
       key={item.id}
       onClick={() => {
-        dispatch(nextLevelSlide(true));
+        dispatch(showSlide(true));
+        dispatch(levelSlide(1));
         dispatch(dataTypeSlide(item.name));
       }}
     >
