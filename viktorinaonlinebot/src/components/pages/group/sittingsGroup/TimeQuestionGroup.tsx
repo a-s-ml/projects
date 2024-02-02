@@ -10,6 +10,7 @@ import { useGetTimeByIdQuery } from "../../../store/api/period/period.api";
 import { selectModalData } from "../../../store/api/modal.slice";
 import { useGetGroupDbQuery } from "../../../store/api/group.api";
 import NightModeQuestion from "./NightModeQuestion";
+import { selectSlideGroup } from "../../../store/api/slide.slice";
 
 export default function TimeQuestionGroup() {
   const allTimes = [
@@ -38,7 +39,7 @@ export default function TimeQuestionGroup() {
     { id: 22, name: "22:00", night: false },
     { id: 23, name: "23:00", night: true },
   ];
-  const chat = useAppSelector(selectModalData);
+  const chat = useAppSelector(selectSlideGroup);
   const { data: GroupDb } = useGetGroupDbQuery(chat);
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
   const [times, setTimes] = useState(0);
