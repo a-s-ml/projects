@@ -68,17 +68,21 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                       </>
                     )}
                     {slideData.type === "answers" && <ErrorPage />}
-                    {slideData.type === "addQuestion" && <NewQuesion />}
                   </div>
                 ) : (
                   <>
-                    <Header>
-                      <DefaultSettingsGroup />
-                    </Header>
-                    <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                      <SettingsGroup />
-                    </div>
-                    <Footer />
+                    {slideData.type === "addQuestion" && <NewQuesion />}
+                    {slideData.type === "group" && (
+                      <>
+                        <Header>
+                          <DefaultSettingsGroup />
+                        </Header>
+                        <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                          <SettingsGroup />
+                        </div>
+                        <Footer />
+                      </>
+                    )}
                   </>
                 )}
               </Dialog.Panel>
