@@ -70,9 +70,9 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
             onClick={() => {
               dispatch(showSlide(false));
               dispatch(dataLevelSlide(2));
-              dispatch(groupSlide(group));
               setTimeout(() => {
                 dispatch(showSlide(true));
+                dispatch(groupSlide(group));
               }, 250);
             }}
           >
