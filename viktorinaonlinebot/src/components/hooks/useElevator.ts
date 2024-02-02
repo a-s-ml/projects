@@ -17,17 +17,21 @@ export function useElevator() {
     }, 250);
   }
 
-  async function nextLevel() {
+  function nextLevel() {
     if (level < 2) {
       dispatch(dataLevelSlide(level + 1));
       toggleSlide();
+      tg.BackButton.show();
     }
   }
 
-  async function prevLevel() {
-    if (level > 0) {
+  function prevLevel() {
+    if (level > 1) {
       dispatch(dataLevelSlide(level - 1));
       toggleSlide();
+    } else {
+      dispatch(showSlide(false));
+      tg.BackButton.hide();
     }
   }
 

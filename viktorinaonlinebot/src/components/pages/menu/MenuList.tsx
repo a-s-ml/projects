@@ -27,8 +27,8 @@ export default function MenuList({ item, progress }: MenuItemsProps) {
     <li
       className="px-1 py-1 sm:px-0 cursor-pointer"
       key={item.id}
-      onClick={async () => {
-        await nextLevel();
+      onClick={() => {
+        nextLevel();
         dispatch(dataTypeSlide(item.name));
       }}
     >
