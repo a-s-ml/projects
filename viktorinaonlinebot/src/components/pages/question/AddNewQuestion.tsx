@@ -1,6 +1,6 @@
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { useAppDispatch } from "../../store";
-import { showSlide } from "../../store/api/slide.slice";
+import { groupSlide, showSlide } from "../../store/api/slide.slice";
 import { dataModal, showModal } from "../../store/api/modal.slice";
 
 export default function AddNewQuestion() {
@@ -18,6 +18,7 @@ export default function AddNewQuestion() {
           dispatch(showSlide(false));
           dispatch(showModal(true));
           dispatch(dataModal(0n));
+          dispatch(groupSlide(0n));
         }}
       >
         <b>Добавить вопрос</b>

@@ -5,6 +5,7 @@ import GroupsList from "./group/GroupsList";
 import {
   selectSlide,
   selectSlideData,
+  selectSlideGroup,
   showSlide,
 } from "../store/api/slide.slice";
 import { useAppDispatch, useAppSelector } from "../store";
@@ -13,6 +14,9 @@ import { Footer } from "./Footer";
 import AddNewGroup from "./group/AddNewGroup";
 import QuestionList from "./question/QuestionList";
 import AddNewQuestion from "./question/AddNewQuestion";
+import DefaultSettingsGroup from "./group/sittingsGroup/DefaultSettingsGroup";
+import SettingsGroup from "./group/SettingsGroup";
+import NewQuesion from "./question/NewQuesion";
 
 interface SlideItemsProps {
   chat: number;
@@ -21,6 +25,7 @@ interface SlideItemsProps {
 export default function SlidePage({ chat }: SlideItemsProps) {
   const slide = useAppSelector(selectSlide);
   const slideData = useAppSelector(selectSlideData);
+  const slideGroup = useAppSelector(selectSlideGroup);
   const dispatch = useAppDispatch();
   const tg = window.Telegram.WebApp;
 
@@ -49,6 +54,19 @@ export default function SlidePage({ chat }: SlideItemsProps) {
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                {slideGroup === 0n && slideData.type === "main" ? (
+                  <NewQuesion />
+                ) : (
+                  <>
+                    <Header>
+                      <DefaultSettingsGroup />
+                    </Header>
+                    <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                      <SettingsGroup />
+                    </div>
+                    <Footer />
+                  </>
+                )}
                   {slideData.type === "groups" && (
                     <>
                       <Header>

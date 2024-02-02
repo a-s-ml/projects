@@ -18,7 +18,7 @@ const initialState: slideState = {
   group: 0n,
   show: false,
   data: {
-    type: "",
+    type: "main",
     level: 0,
   },
 };
@@ -36,6 +36,9 @@ export const slideSlice = createSlice({
     userSlide: (state, action: PayloadAction<number>) => {
       state.user = action.payload;
     },
+    groupSlide: (state, action: PayloadAction<bigint>) => {
+      state.group = action.payload;
+    },
     dataSlide: (state, action: PayloadAction<slideDataState>) => {
       state.data = action.payload;
     },
@@ -48,10 +51,18 @@ export const slideSlice = createSlice({
   },
 });
 
-export const { showSlide, dataSlide, userSlide, dataTypeSlide, dataLevelSlide } = slideSlice.actions;
+export const {
+  showSlide,
+  dataSlide,
+  userSlide,
+  groupSlide,
+  dataTypeSlide,
+  dataLevelSlide,
+} = slideSlice.actions;
 
 export const selectSlide = (state: RootState) => state.slide.show;
 export const selectSlideUser = (state: RootState) => state.slide.user;
+export const selectSlideGroup = (state: RootState) => state.slide.group;
 export const selectSlideData = (state: RootState) => state.slide.data;
 export const selectSlideTypeData = (state: RootState) => state.slide.data.type;
 
