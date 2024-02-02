@@ -12,7 +12,7 @@ export function useElevator() {
   const tg = window.Telegram.WebApp;
   const [currentLevel, setCurrentLevel] = useState(level);
   const dispatch = useAppDispatch();
-
+  console.log('currentLevel', currentLevel)
   if (currentLevel < 1) {
     tg.BackButton.hide();
   } else {
