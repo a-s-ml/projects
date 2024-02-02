@@ -6,13 +6,11 @@ interface QuestionListProps {
   chat: number;
 }
 export default function QuestionList({ chat }: QuestionListProps) {
-  const tg = window.Telegram.WebApp;
   const {
     isLoading: loadGroups,
     isError: errorGroups,
     data: dataQuestion,
   } = useGetQuestionByChatQuery(chat);
-  tg.MainButton.hide();
 
   return (
     <>

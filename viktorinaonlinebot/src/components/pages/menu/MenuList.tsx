@@ -7,11 +7,7 @@ import {
 import { IMenu } from "../../../models/IMenu";
 import { IProgressData } from "../../../models/IUser";
 import { useAppDispatch } from "../../store";
-import {
-  showSlide,
-  dataTypeSlide,
-  dataLevelSlide,
-} from "../../store/api/slide.slice";
+import { dataTypeSlide } from "../../store/api/slide.slice";
 import { useElevator } from "../../hooks/useElevator";
 
 interface MenuItemsProps {

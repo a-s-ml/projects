@@ -27,12 +27,6 @@ export default function SlidePage({ chat }: SlideItemsProps) {
   const slideData = useAppSelector(selectSlideData);
   const slideGroup = useAppSelector(selectSlideGroup);
   const dispatch = useAppDispatch();
-  const tg = window.Telegram.WebApp;
-
-  if (slide) {
-    tg.onEvent("backButtonClicked", () => dispatch(showSlide(false)));
-    tg.MainButton.hide();
-  }
 
   return (
     <>

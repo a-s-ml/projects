@@ -69,10 +69,6 @@ export function MainPage() {
 
   console.log(useAppSelector(store.getState));
 
-  if (!slide) {
-    tg.BackButton.hide();
-  }
-
   return (
     <>
       <div className="container p-6 mx-auto">
