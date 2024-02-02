@@ -18,7 +18,6 @@ export const modalSlice = createSlice({
   reducers: {
     showModal: (state, action: PayloadAction<boolean>) => {
       tg.BackButton.show();
-      tg.MainButton.hide(); 
       state.show = action.payload;
     },
     dataModal: (state, action: PayloadAction<bigint>) => {
