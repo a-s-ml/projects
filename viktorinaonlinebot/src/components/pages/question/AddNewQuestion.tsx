@@ -1,10 +1,12 @@
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { useAppDispatch } from "../../store";
-import { dataLevelSlide, groupSlide, showSlide } from "../../store/api/slide.slice";
+import { dataTypeSlide } from "../../store/api/slide.slice";
+import { useElevator } from "../../hooks/useElevator";
 
 export default function AddNewQuestion() {
   const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
+  const { nextLevel, prevLevel } = useElevator();
   return (
     <div className="group flex items-start px-8 pt-8 pb-4 bg-[var(--tg-theme-bg-color)] space-x-3 cursor-pointer">
       <PlusCircleIcon
@@ -14,12 +16,8 @@ export default function AddNewQuestion() {
       <div
         className="text-sm font-medium text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
         onClick={() => {
-          dispatch(showSlide(false));
-          dispatch(dataLevelSlide(2));
-          setTimeout(() => {
-            dispatch(showSlide(true));
-          }, 250);
-          dispatch(groupSlide(0n));
+          nextLevel();
+          dispatch(dataTypeSlide("addQuestion"));
         }}
       >
         <b>Добавить вопрос</b>

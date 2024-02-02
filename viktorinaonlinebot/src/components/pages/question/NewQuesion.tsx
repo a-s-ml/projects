@@ -10,12 +10,14 @@ import {
   getQuestionDefault,
   selectQuestion,
 } from "../../store/api/question/question.slice";
+import { useElevator } from "../../hooks/useElevator";
 
 const tg = window.Telegram.WebApp;
 function NewQuesion() {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectSlideUser);
   const question = useAppSelector(selectQuestion);
+  const { nextLevel, prevLevel } = useElevator();
 
   async function onSubmit() {
     if (!isLastStep) return next();
@@ -33,10 +35,7 @@ function NewQuesion() {
         });
       }
       dispatch(getQuestionDefault(""));
-      dispatch(showSlide(false));
-      setTimeout(() => {
-        dispatch(showSlide(true));
-      }, 250);
+      prevLevel();
     }
   }
 

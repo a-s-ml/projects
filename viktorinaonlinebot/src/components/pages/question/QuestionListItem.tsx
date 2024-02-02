@@ -3,6 +3,7 @@ import { useGetQuestionByIdQuery } from "../../store/api/question/question.api";
 import { useAppDispatch } from "../../store";
 import { showSlide } from "../../store/api/slide.slice";
 import { useGetCategoryByIdQuery } from "../../store/api/category/category.api";
+import { useElevator } from "../../hooks/useElevator";
 
 interface QuestionListItemProps {
   id: number;
@@ -14,6 +15,7 @@ export default function QuestionListItem({ id }: QuestionListItemProps) {
   const { data: dataCategory, isSuccess: successCategory } =
     useGetCategoryByIdQuery(question?.category || 67);
   const dispatch = useAppDispatch();
+  const { nextLevel, prevLevel } = useElevator();
 
   return (
     <>
@@ -21,7 +23,7 @@ export default function QuestionListItem({ id }: QuestionListItemProps) {
         <li
           className="px-1 py-1 sm:px-0 cursor-pointer"
           onClick={() => {
-            dispatch(showSlide(false));
+            prevLevel();
           }}
         >
           <div className="group relative flex items-start space-x-3 py-4">
