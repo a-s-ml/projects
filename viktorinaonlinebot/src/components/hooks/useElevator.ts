@@ -8,20 +8,10 @@ import {
 } from "../store/api/slide.slice";
 
 export function useElevator() {
-  const level = useAppSelector(selectSlideLevelData);
   const tg = window.Telegram.WebApp;
-  const [currentLevel, setCurrentLevel] = useState(level);
   const dispatch = useAppDispatch();
-  
-  console.log("currentLevel", currentLevel);
 
-  if (currentLevel === 0) {
-    tg.BackButton.hide();
-  }
-  if (currentLevel > 0) {
-    tg.BackButton.show();
-    tg.onEvent("backButtonClicked", () => prevLevel());
-  }
+  const level = useAppSelector(selectSlideLevelData);
 
   function toggleSlide() {
     dispatch(showSlide(false));
@@ -33,7 +23,6 @@ export function useElevator() {
   function nextLevel() {
     if (level < 2) {
       dispatch(dataLevelSlide(level + 1));
-      setCurrentLevel(level + 1);
       toggleSlide();
     }
   }
@@ -41,7 +30,6 @@ export function useElevator() {
   function prevLevel() {
     if (level >= 1) {
       dispatch(dataLevelSlide(level - 1));
-      setCurrentLevel(level - 1);
       toggleSlide();
     } else {
       dispatch(showSlide(false));

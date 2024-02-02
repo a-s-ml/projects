@@ -5,11 +5,12 @@ import MenuList from "./menu/MenuList";
 import { IMenu } from "../../models/IMenu";
 import {
   selectSlide,
+  selectSlideLevelData,
   selectSlideUser,
   userSlide,
 } from "../store/api/slide.slice";
 import { store, useAppDispatch, useAppSelector } from "../store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useValidateQuery } from "../store/api/vik.api";
 import { useGetTypeQuery } from "../store/api/type/type.api";
 import { getAllType } from "../store/api/type/type.slice";
@@ -18,6 +19,7 @@ import { getAllPeriod } from "../store/api/period/period.slice";
 import { useGetCategoryQuery } from "../store/api/category/category.api";
 import { getAllCategories } from "../store/api/category/category.slice";
 import Preloader from "../Preloader/Preloader";
+import { useElevator } from "../hooks/useElevator";
 
 let menuitems: IMenu[] = [
   {
@@ -64,6 +66,18 @@ export function MainPage() {
   successType && dispatch(getAllType(allTypes));
   successTime && dispatch(getAllPeriod(allTime));
   successCategory && dispatch(getAllCategories(allCategory));
+
+  const level = useAppSelector(selectSlideLevelData);
+  console.log("currentLevel", level);
+  const { prevLevel, nextLevel } = useElevator();
+
+  if (level === 0) {
+    tg.BackButton.hide();
+  }
+  if (level > 0) {
+    tg.BackButton.show();
+    tg.onEvent("backButtonClicked", () => prevLevel());
+  }
 
   console.log(useAppSelector(store.getState));
 

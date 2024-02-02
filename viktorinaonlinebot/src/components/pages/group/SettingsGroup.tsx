@@ -64,13 +64,11 @@ export default function SettingsGroup({}) {
             <h4 className="pt-2 text-xs font-light text-[var(--tg-theme-text-color)] text-left">
               Опубликовано вопросов
               <span className="font-semibold text-[var(--tg-theme-accent-text-color)]">
-                {" "}
-                {countPublishedQuestion}{" "}
+                {countPublishedQuestion}
               </span>
               из
               <span className="font-semibold text-[var(--tg-theme-accent-text-color)]">
-                {" "}
-                {countAvailableQuestion + countPublishedQuestion}{" "}
+                {countAvailableQuestion + countPublishedQuestion}
               </span>
             </h4>
           )}
