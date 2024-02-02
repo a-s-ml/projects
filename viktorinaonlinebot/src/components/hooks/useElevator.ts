@@ -4,7 +4,6 @@ import {
   groupSlide,
   selectSlideLevelData,
   showSlide,
-  userSlide,
 } from "../store/api/slide.slice";
 
 export function useElevator() {
@@ -19,17 +18,11 @@ export function useElevator() {
     }, 250);
   }
 
-  function nextLevel(type: string, value: number | bigint) {
+  function nextLevel() {
     if (level < 2) {
       dispatch(dataLevelSlide(level + 1));
       toggleSlide();
       tg.BackButton.show();
-    }
-    if (typeof value === "bigint") {
-      dispatch(groupSlide(value));
-    }
-    if (typeof value === "number") {
-      dispatch(userSlide(value));
     }
   }
 
