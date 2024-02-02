@@ -17,12 +17,16 @@ interface MenuItemsProps {
 export default function MenuList({ item, progress }: MenuItemsProps) {
   const dispatch = useAppDispatch();
 
+  function nextLevelSlide(): any {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <li
       className="px-1 py-1 sm:px-0 cursor-pointer"
       key={item.id}
       onClick={() => {
-        dispatch(showSlide(true));
+        dispatch(nextLevelSlide());
         dispatch(dataTypeSlide(item.name));
       }}
     >

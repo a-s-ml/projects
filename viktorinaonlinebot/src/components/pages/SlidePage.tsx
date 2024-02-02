@@ -25,13 +25,12 @@ interface SlideItemsProps {
 export default function SlidePage({ chat }: SlideItemsProps) {
   const slide = useAppSelector(selectSlide);
   const slideData = useAppSelector(selectSlideData);
-  const level = useAppSelector(selectSlideLevel);
   const dispatch = useAppDispatch();
   const tg = window.Telegram.WebApp;
 
   if (slide) {
     tg.onEvent("backButtonClicked", () => {
-      dispatch(prevLevelSlide(level));
+      dispatch(prevLevelSlide());
     });
   }
 
