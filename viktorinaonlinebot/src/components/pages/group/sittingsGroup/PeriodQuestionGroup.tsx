@@ -9,13 +9,13 @@ import { useAppSelector } from "../../../store";
 import {
   useGetTimeByIdQuery,
   useUpdateTimeGroupsMutation,
-} from "../../../store/api/time/time.api";
-import { selectAllTime } from "../../../store/api/time/time.slice";
+} from "../../../store/api/period/period.api";
+import { selectAllPeriod } from "../../../store/api/period/period.slice";
 import { selectModalData } from "../../../store/api/modal.slice";
 import { useGetGroupDbQuery } from "../../../store/api/group.api";
 
 export default function PeriodQuestionGroup() {
-  const allTimes = useAppSelector(selectAllTime);
+  const allPeriod = useAppSelector(selectAllPeriod);
   const chat = useAppSelector(selectModalData);
   const { data: GroupDb } = useGetGroupDbQuery(chat);
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
@@ -79,12 +79,12 @@ export default function PeriodQuestionGroup() {
                   className="mt-2"
                 >
                   <div className="grid grid-cols-4 gap-2">
-                    {allTimes &&
-                      allTimes.all.map((time) => (
+                    {allPeriod &&
+                      allPeriod.all.map((period) => (
                         <RadioGroup.Option
-                          key={time.id}
-                          value={time.id}
-                          onClick={() => timeChanged(time.id)}
+                          key={period.id}
+                          value={period.id}
+                          onClick={() => timeChanged(period.id)}
                           className={({ checked }) =>
                             classNames(
                               checked
@@ -95,7 +95,7 @@ export default function PeriodQuestionGroup() {
                           }
                         >
                           <RadioGroup.Label as="span">
-                            {time.name}
+                            {period.name}
                           </RadioGroup.Label>
                         </RadioGroup.Option>
                       ))}

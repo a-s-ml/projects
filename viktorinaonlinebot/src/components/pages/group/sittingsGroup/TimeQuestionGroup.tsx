@@ -6,7 +6,7 @@ import {
 import { Disclosure } from "@headlessui/react";
 import { useState } from "react";
 import { useAppSelector } from "../../../store";
-import { useGetTimeByIdQuery } from "../../../store/api/time/time.api";
+import { useGetTimeByIdQuery } from "../../../store/api/period/period.api";
 import { selectModalData } from "../../../store/api/modal.slice";
 import { useGetGroupDbQuery } from "../../../store/api/group.api";
 import NightModeQuestion from "./NightModeQuestion";

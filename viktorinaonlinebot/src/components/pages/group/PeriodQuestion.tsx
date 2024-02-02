@@ -1,5 +1,5 @@
 import { ClockIcon } from "@heroicons/react/24/outline";
-import { useGetTimeByIdQuery } from "../../store/api/time/time.api";
+import { useGetTimeByIdQuery } from "../../store/api/period/period.api";
 
 interface TimeQuestionProps {
   time: number;

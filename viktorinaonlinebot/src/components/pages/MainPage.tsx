@@ -15,8 +15,8 @@ import { useEffect } from "react";
 import { useValidateQuery } from "../store/api/vik.api";
 import { useGetTypeQuery } from "../store/api/type/type.api";
 import { getAllType } from "../store/api/type/type.slice";
-import { useGetTimeQuery } from "../store/api/time/time.api";
-import { getAllTime } from "../store/api/time/time.slice";
+import { useGetTimeQuery } from "../store/api/period/period.api";
+import { getAllPeriod } from "../store/api/period/period.slice";
 import { useGetCategoryQuery } from "../store/api/category/category.api";
 import { getAllCategories } from "../store/api/category/category.slice";
 import Preloader from "../Preloader/Preloader";
@@ -67,7 +67,7 @@ export function MainPage() {
   successUser && dispatch(userSlide(dataUser.UserData.user.id));
 
   successType && dispatch(getAllType(allTypes));
-  successTime && dispatch(getAllTime(allTime));
+  successTime && dispatch(getAllPeriod(allTime));
   successCategory && dispatch(getAllCategories(allCategory));
 
   console.log(useAppSelector(store.getState));

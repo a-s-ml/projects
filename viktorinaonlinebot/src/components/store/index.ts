@@ -3,7 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import modalReducer from "./api/modal.slice";
 import slideReducer from "./api/slide.slice";
 import typeReducer from "./api/type/type.slice";
-import timeReducer from "./api/time/time.slice";
+import periodReducer from "./api/period/period.slice";
 import questionReducer from "./api/question/question.slice";
 import categoryReducer from "./api/category/category.slice";
 import { vikApi } from "./api/vik.api";
@@ -17,7 +17,7 @@ export const store = configureStore({
     category: categoryReducer,
     question: questionReducer,
     type: typeReducer,
-    time: timeReducer,
+    period: periodReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(vikApi.middleware)

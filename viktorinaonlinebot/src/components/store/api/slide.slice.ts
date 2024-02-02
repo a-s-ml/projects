@@ -1,24 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "..";
 
-export interface slideDataState {
-  type: string;
-  value: number | bigint;
-}
-
 export interface slideState {
   user: number;
   show: boolean;
-  data: slideDataState;
+  type: string;
+  level: number;
+  group: bigint;
 }
 
 const initialState: slideState = {
-  user: 0,
   show: false,
-  data: {
-    type: "",
-    value: 0,
-  },
+  type: "",
+  level: 0,
+  user: 0,
+  group: 0n,
 };
 const tg = window.Telegram.WebApp;
 
@@ -26,31 +22,41 @@ export const slideSlice = createSlice({
   name: "slide",
   initialState,
   reducers: {
-    showSlide: (state, action: PayloadAction<boolean>) => {
-      tg.BackButton.show();
-      state.show = action.payload;
-    },
     userSlide: (state, action: PayloadAction<number>) => {
       state.user = action.payload;
     },
-    dataSlide: (state, action: PayloadAction<slideDataState>) => {
-      state.data = action.payload;
+    dataSlide: (state, action: PayloadAction<slideState>) => {
+      state = action.payload;
+    },
+    showSlide: (state, action: PayloadAction<boolean>) => {
+      state.show = action.payload;
     },
     dataTypeSlide: (state, action: PayloadAction<string>) => {
-      state.data.type = action.payload;
+      state.type = action.payload;
     },
-    dataValueSlide: (state, action: PayloadAction<number | bigint>) => {
-      state.data.value = action.payload;
+    dataLevelSlide: (state, action: PayloadAction<number>) => {
+      state.level = action.payload;
+    },
+    groupSlide: (state, action: PayloadAction<bigint>) => {
+      state.group = action.payload;
     },
   },
 });
 
-export const { showSlide, dataSlide, userSlide, dataTypeSlide, dataValueSlide } = slideSlice.actions;
+export const {
+  showSlide,
+  dataSlide,
+  userSlide,
+  dataTypeSlide,
+  groupSlide,
+  dataLevelSlide,
+} = slideSlice.actions;
 
-export const selectSlide = (state: RootState) => state.slide.show;
 export const selectSlideUser = (state: RootState) => state.slide.user;
-export const selectSlideData = (state: RootState) => state.slide.data;
-export const selectSlideTypeData = (state: RootState) => state.slide.data.type;
-export const selectSlideValueData = (state: RootState) => state.slide.data.value;
+export const selectSlideData = (state: RootState) => state.slide;
+export const selectSlide = (state: RootState) => state.slide.show;
+export const selectSlideType = (state: RootState) => state.slide.type;
+export const selectSlideLevel = (state: RootState) => state.slide.level;
+export const selectSlideGroup = (state: RootState) => state.slide.group;
 
 export default slideSlice.reducer;
