@@ -5,7 +5,6 @@ import GroupsList from "./group/GroupsList";
 import {
   selectSlide,
   selectSlideData,
-  selectSlideGroup,
   showSlide,
 } from "../store/api/slide.slice";
 import { useAppDispatch, useAppSelector } from "../store";
@@ -25,7 +24,6 @@ interface SlideItemsProps {
 export default function SlidePage({ chat }: SlideItemsProps) {
   const slide = useAppSelector(selectSlide);
   const slideData = useAppSelector(selectSlideData);
-  const slideGroup = useAppSelector(selectSlideGroup);
   const dispatch = useAppDispatch();
 
   return (

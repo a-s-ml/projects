@@ -1,22 +1,11 @@
 import { Disclosure } from "@headlessui/react";
-import { useAppSelector } from "../../../store";
-import { useGetGroupDbQuery } from "../../../store/api/group.api";
 import {
   ChevronDownIcon,
   ChevronUpIcon,
   ScaleIcon,
 } from "@heroicons/react/24/outline";
-import { selectSlideGroup } from "../../../store/api/slide.slice";
 
 export default function DifficultyQuestionGroup() {
-  const chat = useAppSelector(selectSlideGroup);
-  const { data: GroupDb } = useGetGroupDbQuery(chat);
-  const tg = window.Telegram.WebApp;
-
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-  }
-
   return (
     <Disclosure as="div">
       {({ open }) => (

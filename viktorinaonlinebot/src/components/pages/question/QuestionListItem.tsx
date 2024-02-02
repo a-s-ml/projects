@@ -1,7 +1,5 @@
 import { ChartBarIcon } from "@heroicons/react/24/outline";
 import { useGetQuestionByIdQuery } from "../../store/api/question/question.api";
-import { useAppDispatch } from "../../store";
-import { showSlide } from "../../store/api/slide.slice";
 import { useGetCategoryByIdQuery } from "../../store/api/category/category.api";
 import { useElevator } from "../../hooks/useElevator";
 
@@ -14,8 +12,7 @@ export default function QuestionListItem({ id }: QuestionListItemProps) {
     useGetQuestionByIdQuery(id);
   const { data: dataCategory, isSuccess: successCategory } =
     useGetCategoryByIdQuery(question?.category || 67);
-  const dispatch = useAppDispatch();
-  const { nextLevel, prevLevel } = useElevator();
+  const { prevLevel } = useElevator();
 
   return (
     <>

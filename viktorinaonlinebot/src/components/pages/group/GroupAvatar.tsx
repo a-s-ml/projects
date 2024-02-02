@@ -12,7 +12,7 @@ export default function GroupAvatar({ id }: GroupAvatarProps) {
 
   return (
     <>
-      {loadPhoto && <p>sdfsf</p>}
+      {loadPhoto && <p>...</p>}
       {dataPhoto && (
         <img
           className="inline-block h-10 w-14 rounded-full"

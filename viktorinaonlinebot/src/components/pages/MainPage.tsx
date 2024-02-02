@@ -41,12 +41,10 @@ export function MainPage() {
   const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectSlideUser);
-  const slide = useAppSelector(selectSlide);
 
   useEffect(() => {
     tg.expand();
     tg.ready();
-    tg.onEvent("viewportChanged", () => tg.expand());
   }, []);
 
   const {

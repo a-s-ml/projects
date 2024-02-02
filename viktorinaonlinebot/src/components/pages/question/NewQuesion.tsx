@@ -4,7 +4,7 @@ import StepsForm from "./newQuestion/StepsForm";
 import { TextList } from "./newQuestion/TextList";
 import { useAddQuestionMutation } from "../../store/api/question/question.api";
 import { useAppDispatch, useAppSelector } from "../../store";
-import { selectSlideUser, showSlide } from "../../store/api/slide.slice";
+import { selectSlideUser } from "../../store/api/slide.slice";
 import { useNewQuestionForm } from "../../hooks/useNewQuestionForm";
 import {
   getQuestionDefault,
@@ -12,12 +12,11 @@ import {
 } from "../../store/api/question/question.slice";
 import { useElevator } from "../../hooks/useElevator";
 
-const tg = window.Telegram.WebApp;
 function NewQuesion() {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectSlideUser);
   const question = useAppSelector(selectQuestion);
-  const { nextLevel, prevLevel } = useElevator();
+  const { prevLevel } = useElevator();
 
   async function onSubmit() {
     if (!isLastStep) return next();

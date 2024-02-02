@@ -23,7 +23,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);
   const { data: GroupDb } = useGetGroupDbQuery(group);
-  const { nextLevel, prevLevel } = useElevator();
+  const { nextLevel } = useElevator();
   const dispatch = useAppDispatch();
 
   return (

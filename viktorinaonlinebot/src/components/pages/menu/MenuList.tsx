@@ -17,7 +17,7 @@ interface MenuItemsProps {
 
 export default function MenuList({ item, progress }: MenuItemsProps) {
   const dispatch = useAppDispatch();
-  const { nextLevel, prevLevel } = useElevator();
+  const { nextLevel } = useElevator();
 
   return (
     <li
