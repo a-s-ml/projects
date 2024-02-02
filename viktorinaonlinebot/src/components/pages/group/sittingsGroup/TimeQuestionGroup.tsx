@@ -43,7 +43,6 @@ export default function TimeQuestionGroup() {
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
   const [times, setTimes] = useState(0);
   const [nightNode, setNightNode] = useState(true);
-  console.log(nightNode);
   let hours: Array<number> = [];
   let period: number;
   GroupTime ? (period = GroupTime.period / 3600) : (period = 25);
