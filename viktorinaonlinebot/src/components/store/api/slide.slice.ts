@@ -46,12 +46,11 @@ export const slideSlice = createSlice({
   },
 });
 
-export const { showSlide, dataSlide, userSlide, dataTypeSlide, dataValueSlide } = slideSlice.actions;
+export const { showSlide, dataSlide, userSlide, dataTypeSlide } = slideSlice.actions;
 
 export const selectSlide = (state: RootState) => state.slide.show;
 export const selectSlideUser = (state: RootState) => state.slide.user;
 export const selectSlideData = (state: RootState) => state.slide.data;
 export const selectSlideTypeData = (state: RootState) => state.slide.data.type;
-export const selectSlideValueData = (state: RootState) => state.slide.data.value;
 
 export default slideSlice.reducer;
