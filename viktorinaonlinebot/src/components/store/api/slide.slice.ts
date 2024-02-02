@@ -65,5 +65,6 @@ export const selectSlideUser = (state: RootState) => state.slide.user;
 export const selectSlideGroup = (state: RootState) => state.slide.group; 
 export const selectSlideData = (state: RootState) => state.slide.data;
 export const selectSlideTypeData = (state: RootState) => state.slide.data.type;
+export const selectSlideLevelData = (state: RootState) => state.slide.data.level;
 
 export default slideSlice.reducer;

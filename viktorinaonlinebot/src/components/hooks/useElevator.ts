@@ -1,26 +1,35 @@
-import { useState } from "react";
-import { useAppDispatch } from "../store";
+import { useAppDispatch, useAppSelector } from "../store";
+import {
+  dataLevelSlide,
+  selectSlideLevelData,
+  showSlide,
+} from "../store/api/slide.slice";
 
 export function useElevator() {
+  const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
+  const level = useAppSelector(selectSlideLevelData);
 
-  const [currentLevel, setCurrentLevel] = useState(0);
+  function toggleSlide() {
+    dispatch(showSlide(false));
+    setTimeout(() => {
+      dispatch(showSlide(true));
+    }, 250);
+  }
 
   function nextLevel() {
-    setCurrentLevel((i) => {
-      if (i <= 0) return i;
-      return i - 1;
-    });
+    if (level < 2) {
+      dispatch(dataLevelSlide(level + 1));
+      toggleSlide();
+    }
   }
 
   function prevLevel() {
-    setCurrentLevel((i) => {
-      if (i <= 0) return i;
-      return i - 1;
-    });
+    if (level > 0) {
+      dispatch(dataLevelSlide(level - 1));
+      toggleSlide();
+    }
   }
-  return {
-    nextLevel,
-    prevLevel,
-  };
+
+  return { nextLevel, prevLevel };
 }

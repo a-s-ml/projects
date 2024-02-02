@@ -15,6 +15,7 @@ import {
   useGetInfoGroupsQuery,
 } from "../../store/api/group.api";
 import { useGetActiveGroupsQuery } from "../../store/api/activeGroup.api";
+import { useElevator } from "../../hooks/useElevator";
 
 interface GroupsListItemProps {
   group: bigint;
@@ -26,7 +27,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);
   const { data: GroupDb } = useGetGroupDbQuery(group);
-
+  const { nextLevel, prevLevel } = useElevator();
   const dispatch = useAppDispatch();
 
   return (
@@ -64,15 +65,11 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
                 <ToggleButton group={dataGroupInfo.id} state={groupActive} />
               </div>
             )}
-          </div> 
+          </div>
           <div
             className="group relative flex items-start space-x-3 cursor-pointer"
             onClick={() => {
-              dispatch(showSlide(false));
-              dispatch(dataLevelSlide(2));
-              setTimeout(() => {
-                dispatch(showSlide(true));
-              }, 250);
+              nextLevel();
               dispatch(groupSlide(group));
             }}
           >

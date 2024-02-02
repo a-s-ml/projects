@@ -11,12 +11,14 @@ interface Steps {
 export default function StepsForm({ step, stepsCount }: StepsFormProps) {
   let steps: Steps[] = [];
 
+  //хз
   for (let i = 0; i < stepsCount; i++) {
     steps.push({
       id: i,
       status: step > i ? "complete" : "upcoming",
     });
   }
+  //хз
 
   return (
     <nav className="flex items-center px-8 pt-8 pb-4 bg-[var(--tg-theme-bg-color)] space-x-3 justify-center" aria-label="Progress">
