@@ -73,10 +73,8 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
               setTimeout(() => {
                 dispatch(showSlide(true));
               }, 300);
-
               dispatch(dataLevelSlide(2));
               dispatch(groupSlide(group));
-              dispatch(dataModal(group));
             }}
           >
             <div className="min-w-0 flex-1">
