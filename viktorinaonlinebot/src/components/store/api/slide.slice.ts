@@ -34,8 +34,17 @@ export const slideSlice = createSlice({
     dataTypeSlide: (state, action: PayloadAction<string>) => {
       state.type = action.payload;
     },
-    dataLevelSlide: (state, action: PayloadAction<number>) => {
+    levelSlide: (state, action: PayloadAction<number>) => {
       state.level = action.payload;
+    },
+    prevLevelSlide: (state, action: PayloadAction<number>) => {
+      state.show = false;
+      if(action.payload >= 1) {
+        state.level = action.payload - 1;
+        setTimeout(() => {
+          state.show = true;
+        }, 250);
+      }
     },
     groupSlide: (state, action: PayloadAction<bigint>) => {
       state.group = action.payload;
@@ -49,7 +58,8 @@ export const {
   userSlide,
   dataTypeSlide,
   groupSlide,
-  dataLevelSlide,
+  levelSlide,
+  prevLevelSlide
 } = slideSlice.actions;
 
 export const selectSlideUser = (state: RootState) => state.slide.user;

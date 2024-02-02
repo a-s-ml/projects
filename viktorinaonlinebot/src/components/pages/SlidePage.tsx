@@ -3,9 +3,10 @@ import { Dialog, Transition } from "@headlessui/react";
 import ErrorPage from "./ErrorPage";
 import GroupsList from "./group/GroupsList";
 import {
-  dataLevelSlide,
+  prevLevelSlide,
   selectSlide,
   selectSlideData,
+  selectSlideLevel,
   showSlide,
 } from "../store/api/slide.slice";
 import { useAppDispatch, useAppSelector } from "../store";
@@ -24,18 +25,13 @@ interface SlideItemsProps {
 export default function SlidePage({ chat }: SlideItemsProps) {
   const slide = useAppSelector(selectSlide);
   const slideData = useAppSelector(selectSlideData);
+  const level = useAppSelector(selectSlideLevel);
   const dispatch = useAppDispatch();
   const tg = window.Telegram.WebApp;
 
   if (slide) {
     tg.onEvent("backButtonClicked", () => {
-      dispatch(showSlide(false));
-      if (slideData.level > 1) {
-        dispatch(dataLevelSlide(slideData.level - 1));
-        setTimeout(() => {
-          dispatch(showSlide(true));
-        }, 250);
-      }
+      dispatch(prevLevelSlide(level));
     });
   }
 
