@@ -13,10 +13,11 @@ import {
 import { selectAllPeriod } from "../../../store/api/period/period.slice";
 import { selectModalData } from "../../../store/api/modal.slice";
 import { useGetGroupDbQuery } from "../../../store/api/group.api";
+import { selectSlideGroup } from "../../../store/api/slide.slice";
 
 export default function PeriodQuestionGroup() {
   const allPeriod = useAppSelector(selectAllPeriod);
-  const chat = useAppSelector(selectModalData);
+  const chat = useAppSelector(selectSlideGroup);
   const { data: GroupDb } = useGetGroupDbQuery(chat);
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
 
