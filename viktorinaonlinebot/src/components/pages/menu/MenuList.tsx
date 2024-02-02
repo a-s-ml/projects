@@ -12,6 +12,7 @@ import {
   dataTypeSlide,
   dataLevelSlide,
 } from "../../store/api/slide.slice";
+import { useElevator } from "../../hooks/useElevator";
 
 interface MenuItemsProps {
   item: IMenu;
@@ -20,14 +21,14 @@ interface MenuItemsProps {
 
 export default function MenuList({ item, progress }: MenuItemsProps) {
   const dispatch = useAppDispatch();
+  const { nextLevel, prevLevel } = useElevator();
 
   return (
     <li
       className="px-1 py-1 sm:px-0 cursor-pointer"
       key={item.id}
-      onClick={() => {
-        dispatch(showSlide(true));
-        dispatch(dataLevelSlide(1));
+      onClick={async () => {
+        await nextLevel();
         dispatch(dataTypeSlide(item.name));
       }}
     >
