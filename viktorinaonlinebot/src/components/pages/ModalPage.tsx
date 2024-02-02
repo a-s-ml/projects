@@ -24,7 +24,7 @@ export default function ModalPage() {
   if (modal) {
     tg.onEvent("backButtonClicked", () => {
       dispatch(showModal(false));
-      setTimeout(() => { dispatch(showModal(true)) }, 500)
+      setTimeout(() => { dispatch(showModal(true)) }, 250)
     });
   }
 
