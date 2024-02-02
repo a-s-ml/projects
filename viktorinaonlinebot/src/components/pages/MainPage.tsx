@@ -69,7 +69,7 @@ export function MainPage() {
 
   const level = useAppSelector(selectSlideLevelData);
   console.log("currentLevel", level);
-  const { prevLevel, nextLevel } = useElevator();
+  const { prevLevel } = useElevator();
 
   if (level === 0) {
     tg.BackButton.hide();
