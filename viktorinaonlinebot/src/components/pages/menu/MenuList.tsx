@@ -7,7 +7,11 @@ import {
 import { IMenu } from "../../../models/IMenu";
 import { IProgressData } from "../../../models/IUser";
 import { useAppDispatch } from "../../store";
-import { showSlide, dataTypeSlide } from "../../store/api/slide.slice";
+import {
+  showSlide,
+  dataTypeSlide,
+  dataLevelSlide,
+} from "../../store/api/slide.slice";
 
 interface MenuItemsProps {
   item: IMenu;
@@ -23,6 +27,7 @@ export default function MenuList({ item, progress }: MenuItemsProps) {
       key={item.id}
       onClick={() => {
         dispatch(showSlide(true));
+        dispatch(dataLevelSlide(1));
         dispatch(dataTypeSlide(item.name));
       }}
     >
@@ -62,7 +67,7 @@ export default function MenuList({ item, progress }: MenuItemsProps) {
                 Всего: {progress.groupsProgress.groupsAll}
               </p>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                Активных: 
+                Активных:
               </p>
             </>
           )}

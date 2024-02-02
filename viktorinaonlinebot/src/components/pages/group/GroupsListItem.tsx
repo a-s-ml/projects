@@ -6,7 +6,7 @@ import TypeQuestion from "./TypeQuestion";
 import PeriodQuestion from "./PeriodQuestion";
 import ToggleButton from "./ToggleButton";
 import CategoryQuestion from "./CategoryQuestion";
-import { showSlide } from "../../store/api/slide.slice";
+import { dataLevelSlide, showSlide } from "../../store/api/slide.slice";
 import {
   useGetGroupDbQuery,
   useGetInfoGroupsQuery,
@@ -66,6 +66,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
             onClick={() => {
               dispatch(showSlide(false));
               dispatch(showModal(true));
+              dispatch(dataLevelSlide(2));
               dispatch(dataModal(group));
             }}
           >
