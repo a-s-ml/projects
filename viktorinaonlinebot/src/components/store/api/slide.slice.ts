@@ -3,21 +3,23 @@ import { RootState } from "..";
 
 export interface slideDataState {
   type: string;
-  value: number | bigint;
+  level: number;
 }
 
 export interface slideState {
   user: number;
+  group: bigint;
   show: boolean;
   data: slideDataState;
 }
 
 const initialState: slideState = {
   user: 0,
+  group: 0n,
   show: false,
   data: {
     type: "",
-    value: 0,
+    level: 0,
   },
 };
 const tg = window.Telegram.WebApp;
@@ -40,13 +42,13 @@ export const slideSlice = createSlice({
     dataTypeSlide: (state, action: PayloadAction<string>) => {
       state.data.type = action.payload;
     },
-    dataValueSlide: (state, action: PayloadAction<number | bigint>) => {
-      state.data.value = action.payload;
+    dataLevelSlide: (state, action: PayloadAction<number>) => {
+      state.data.level = action.payload;
     },
   },
 });
 
-export const { showSlide, dataSlide, userSlide, dataTypeSlide } = slideSlice.actions;
+export const { showSlide, dataSlide, userSlide, dataTypeSlide, dataLevelSlide } = slideSlice.actions;
 
 export const selectSlide = (state: RootState) => state.slide.show;
 export const selectSlideUser = (state: RootState) => state.slide.user;
