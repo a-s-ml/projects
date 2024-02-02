@@ -41,7 +41,7 @@ export const slideSlice = createSlice({
       state.show = !action.payload;
       state.level = state.level + 1;
       setTimeout(() => {
-        state.show = true;
+        state.show = action.payload;
       }, 250);
     },
     prevLevelSlide: (state, action: PayloadAction<boolean>) => {
@@ -49,7 +49,7 @@ export const slideSlice = createSlice({
       if (state.level >= 1) {
         state.level = state.level - 1;
         setTimeout(() => {
-          state.show = true;
+          state.show = action.payload;
         }, 250);
       }
     },
