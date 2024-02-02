@@ -54,38 +54,45 @@ export default function SlidePage({ chat }: SlideItemsProps) {
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                {slideGroup === 0n && slideData.type === "main" ? (
-                  <NewQuesion />
-                ) : (
-                  <>
-                    <Header>
-                      <DefaultSettingsGroup />
-                    </Header>
-                    <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                      <SettingsGroup />
-                    </div>
-                    <Footer />
-                  </>
-                )}
-                  {slideData.type === "groups" && (
+                  {slideData.level === 1 ? (
                     <>
-                      <Header>
-                        <AddNewGroup />
-                      </Header>
-                      <GroupsList chat={chat} />
-                      <Footer />
+                      {slideData.type === "groups" && (
+                        <>
+                          <Header>
+                            <AddNewGroup />
+                          </Header>
+                          <GroupsList chat={chat} />
+                          <Footer />
+                        </>
+                      )}
+                      {slideData.type === "questions" && (
+                        <>
+                          <Header>
+                            <AddNewQuestion />
+                          </Header>
+                          <QuestionList chat={chat} />
+                          <Footer />
+                        </>
+                      )}
+                      {slideData.type === "answers" && <ErrorPage />}
+                    </>
+                  ) : (
+                    <>
+                      {slideGroup === 0n ? (
+                        <NewQuesion />
+                      ) : (
+                        <>
+                          <Header>
+                            <DefaultSettingsGroup />
+                          </Header>
+                          <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                            <SettingsGroup />
+                          </div>
+                          <Footer />
+                        </>
+                      )}
                     </>
                   )}
-                  {slideData.type === "questions" && (
-                    <>
-                      <Header>
-                        <AddNewQuestion />
-                      </Header>
-                      <QuestionList chat={chat} />
-                      <Footer />
-                    </>
-                  )}
-                  {slideData.type === "answers" && <ErrorPage />}
                 </div>
               </Dialog.Panel>
             </Transition.Child>
