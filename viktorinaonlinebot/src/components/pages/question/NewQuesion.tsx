@@ -10,7 +10,6 @@ import {
   getQuestionDefault,
   selectQuestion,
 } from "../../store/api/question/question.slice";
-import { showModal } from "../../store/api/modal.slice";
 
 const tg = window.Telegram.WebApp;
 function NewQuesion() {
@@ -34,8 +33,10 @@ function NewQuesion() {
         });
       }
       dispatch(getQuestionDefault(""));
-      dispatch(showModal(false));
-      dispatch(showSlide(true));
+      dispatch(showSlide(false));
+      setTimeout(() => {
+        dispatch(showSlide(true));
+      }, 250);
     }
   }
 

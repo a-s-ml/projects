@@ -8,7 +8,6 @@ import CategoryCheckbox from "./CategoryCheckbox";
 import AddNewCategory from "./AddNewCategory";
 import { selectAllCategories } from "../../../store/api/category/category.slice";
 import { useAppSelector } from "../../../store";
-import { selectModalData } from "../../../store/api/modal.slice";
 import { useGetCategoryGroupsQuery } from "../../../store/api/category/category.api";
 import { selectSlideGroup } from "../../../store/api/slide.slice";
 

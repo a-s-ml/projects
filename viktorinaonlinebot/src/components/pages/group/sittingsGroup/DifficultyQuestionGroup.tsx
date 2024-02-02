@@ -1,7 +1,6 @@
 import { Disclosure } from "@headlessui/react";
 import { useAppSelector } from "../../../store";
 import { useGetGroupDbQuery } from "../../../store/api/group.api";
-import { selectModalData } from "../../../store/api/modal.slice";
 import {
   ChevronDownIcon,
   ChevronUpIcon,

@@ -11,7 +11,6 @@ import {
   useUpdateTypeGroupsMutation,
 } from "../../../store/api/type/type.api";
 import { selectAllType } from "../../../store/api/type/type.slice";
-import { selectModalData } from "../../../store/api/modal.slice";
 import { useGetGroupDbQuery } from "../../../store/api/group.api";
 import { selectSlideGroup } from "../../../store/api/slide.slice";
 

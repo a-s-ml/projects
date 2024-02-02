@@ -1,7 +1,6 @@
 import { Cog8ToothIcon } from "@heroicons/react/24/outline";
 import GroupAvatar from "./GroupAvatar";
 import { useAppDispatch } from "../../store";
-import { showModal, dataModal } from "../../store/api/modal.slice";
 import TypeQuestion from "./TypeQuestion";
 import PeriodQuestion from "./PeriodQuestion";
 import ToggleButton from "./ToggleButton";

@@ -1,7 +1,6 @@
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { useAppDispatch } from "../../store";
-import { groupSlide, showSlide } from "../../store/api/slide.slice";
-import { dataModal, showModal } from "../../store/api/modal.slice";
+import { dataLevelSlide, groupSlide, showSlide } from "../../store/api/slide.slice";
 
 export default function AddNewQuestion() {
   const tg = window.Telegram.WebApp;
@@ -16,8 +15,10 @@ export default function AddNewQuestion() {
         className="text-sm font-medium text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
         onClick={() => {
           dispatch(showSlide(false));
-          dispatch(showModal(true));
-          dispatch(dataModal(0n));
+          dispatch(dataLevelSlide(2));
+          setTimeout(() => {
+            dispatch(showSlide(true));
+          }, 250);
           dispatch(groupSlide(0n));
         }}
       >

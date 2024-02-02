@@ -1,6 +1,5 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import modalReducer from "./api/modal.slice";
 import slideReducer from "./api/slide.slice";
 import typeReducer from "./api/type/type.slice";
 import periodReducer from "./api/period/period.slice";
@@ -12,7 +11,6 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 export const store = configureStore({
   reducer: {
     [vikApi.reducerPath]: vikApi.reducer,
-    modal: modalReducer,
     slide: slideReducer,
     category: categoryReducer,
     question: questionReducer,

@@ -7,7 +7,6 @@ import CategoryQuestionGroup from "./sittingsGroup/CategoryQuestionGroup";
 import PeriodQuestionGroup from "./sittingsGroup/PeriodQuestionGroup";
 import NotactiveSittings from "./sittingsGroup/NotactiveSittings";
 import { useAppSelector } from "../../store";
-import { selectModalData } from "../../store/api/modal.slice";
 import {
   useCountAvailableQuestionQuery,
   useCountPublishedQuestionQuery,

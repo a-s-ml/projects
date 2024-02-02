@@ -3,14 +3,12 @@ import Logo from "../img/Logo.png";
 import ErrorPage from "./ErrorPage";
 import MenuList from "./menu/MenuList";
 import { IMenu } from "../../models/IMenu";
-import ModalPage from "./ModalPage";
 import {
   selectSlide,
   selectSlideUser,
   userSlide,
 } from "../store/api/slide.slice";
 import { store, useAppDispatch, useAppSelector } from "../store";
-import { selectModal } from "../store/api/modal.slice";
 import { useEffect } from "react";
 import { useValidateQuery } from "../store/api/vik.api";
 import { useGetTypeQuery } from "../store/api/type/type.api";
@@ -44,7 +42,6 @@ export function MainPage() {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectSlideUser);
   const slide = useAppSelector(selectSlide);
-  const modal = useAppSelector(selectModal);
 
   useEffect(() => {
     tg.expand();
@@ -72,7 +69,7 @@ export function MainPage() {
 
   console.log(useAppSelector(store.getState));
 
-  if (!slide && !modal) {
+  if (!slide) {
     tg.BackButton.hide();
   }
 
@@ -119,7 +116,6 @@ export function MainPage() {
       {dataUser && (
         <>
           <SlidePage chat={dataUser.UserData.user.id} />
-          <ModalPage />
         </>
       )}
     </>

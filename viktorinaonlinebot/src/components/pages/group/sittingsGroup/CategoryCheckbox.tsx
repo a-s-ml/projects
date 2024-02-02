@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { ICategory } from "../../../../models/ICategory";
 import { useAppSelector } from "../../../store";
-import { selectModalData } from "../../../store/api/modal.slice";
 import {
   useAddCategoryGroupsMutation,
   useDeleteCategoryGroupsMutation,
 } from "../../../store/api/category/category.api";
+import { selectSlideGroup } from "../../../store/api/slide.slice";
 
 interface CategoryCheckboxProps {
   cat: ICategory;
@@ -24,7 +24,7 @@ export default function CategoryCheckbox({
   const [setCategory, {}] = useAddCategoryGroupsMutation();
   const [deleteCategory, {}] = useDeleteCategoryGroupsMutation();
 
-  const chat = useAppSelector(selectModalData);
+  const chat = useAppSelector(selectSlideGroup);
 
   async function categoryChanged(check: boolean, category: number) {
     if (!check) {
