@@ -6,7 +6,7 @@ import TypeQuestion from "./TypeQuestion";
 import PeriodQuestion from "./PeriodQuestion";
 import ToggleButton from "./ToggleButton";
 import CategoryQuestion from "./CategoryQuestion";
-import { dataSlide, groupSlide, showSlide, typeSlide } from "../../store/api/slide.slice";
+import { showSlide } from "../../store/api/slide.slice";
 import {
   useGetGroupDbQuery,
   useGetInfoGroupsQuery,
@@ -18,8 +18,7 @@ interface GroupsListItemProps {
 }
 
 export default function GroupsListItem({ group }: GroupsListItemProps) {
-  const { data: groupActive, isSuccess: successActive } =
-    useGetActiveGroupsQuery(group);
+  const { data: groupActive, isSuccess: successActive } = useGetActiveGroupsQuery(group);
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);
   const { data: GroupDb } = useGetGroupDbQuery(group);
@@ -57,20 +56,17 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
               )}
             </div>
             {successActive && (
-              <div className="flex-shrink-0 self-center text-right">
-                <ToggleButton group={dataGroupInfo.id} state={groupActive} />
-              </div>
+            <div className="flex-shrink-0 self-center text-right">
+              <ToggleButton group={dataGroupInfo.id} state={groupActive}/>
+            </div>
             )}
           </div>
           <div
             className="group relative flex items-start space-x-3 cursor-pointer"
             onClick={() => {
               dispatch(showSlide(false));
-              setTimeout(() => {
-                dispatch(showSlide(true));
-              }, 250);
-              dispatch(typeSlide("group"));
-              dispatch(groupSlide(group));
+              dispatch(showModal(true));
+              dispatch(dataModal(group));
             }}
           >
             <div className="min-w-0 flex-1">

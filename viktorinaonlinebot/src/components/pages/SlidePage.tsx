@@ -3,7 +3,6 @@ import { Dialog, Transition } from "@headlessui/react";
 import ErrorPage from "./ErrorPage";
 import GroupsList from "./group/GroupsList";
 import {
-  levelSlide,
   selectSlide,
   selectSlideData,
   showSlide,
@@ -14,8 +13,6 @@ import { Footer } from "./Footer";
 import AddNewGroup from "./group/AddNewGroup";
 import QuestionList from "./question/QuestionList";
 import AddNewQuestion from "./question/AddNewQuestion";
-import DefaultSettingsGroup from "./group/sittingsGroup/DefaultSettingsGroup";
-import SettingsGroup from "./group/SettingsGroup";
 
 interface SlideItemsProps {
   chat: number;
@@ -28,15 +25,8 @@ export default function SlidePage({ chat }: SlideItemsProps) {
   const tg = window.Telegram.WebApp;
 
   if (slide) {
-    tg.onEvent("backButtonClicked", () => {
-      dispatch(showSlide(false));
-      if (slideData.level > 1) {
-        dispatch(levelSlide(slideData.level - 1));
-        setTimeout(() => {
-          dispatch(showSlide(true));
-        }, 250);
-      }
-    });
+    tg.onEvent("backButtonClicked", () => dispatch(showSlide(false)));
+    tg.MainButton.hide();
   }
 
   return (
@@ -65,17 +55,6 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                         <AddNewGroup />
                       </Header>
                       <GroupsList chat={chat} />
-                      <Footer />
-                    </>
-                  )}
-                  {slideData.type === "group" && (
-                    <>
-                      <Header>
-                        <DefaultSettingsGroup />
-                      </Header>
-                      <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                        <SettingsGroup />
-                      </div>
                       <Footer />
                     </>
                   )}

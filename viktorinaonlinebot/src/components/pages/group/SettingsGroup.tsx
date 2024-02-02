@@ -15,7 +15,6 @@ import {
 import { useGetTimeByIdQuery } from "../../store/api/period/period.api";
 import TimeQuestionGroup from "./sittingsGroup/TimeQuestionGroup";
 import DifficultyQuestionGroup from "./sittingsGroup/DifficultyQuestionGroup";
-import { selectSlideGroup } from "../../store/api/slide.slice";
 
 interface NoActive {
   text: string;
@@ -31,7 +30,7 @@ let noActive: NoActive[] = [
 ];
 
 export default function SettingsGroup({}) {
-  const group = useAppSelector(selectSlideGroup);
+  const group = useAppSelector(selectModalData);
 
   const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
   const { isSuccess: successtAvailable, data: countAvailableQuestion } =
