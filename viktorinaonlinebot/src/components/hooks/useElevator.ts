@@ -17,14 +17,14 @@ export function useElevator() {
     }, 250);
   }
 
-  function nextLevel() {
+  async function nextLevel() {
     if (level < 2) {
       dispatch(dataLevelSlide(level + 1));
       toggleSlide();
     }
   }
 
-  function prevLevel() {
+  async function prevLevel() {
     if (level > 0) {
       dispatch(dataLevelSlide(level - 1));
       toggleSlide();
