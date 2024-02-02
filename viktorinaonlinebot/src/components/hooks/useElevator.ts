@@ -13,9 +13,12 @@ export function useElevator() {
   const [currentLevel, setCurrentLevel] = useState(level);
   const dispatch = useAppDispatch();
   console.log('currentLevel', currentLevel)
-  if (currentLevel < 1) {
+
+
+  if (currentLevel === 0) {
     tg.BackButton.hide();
-  } else {
+  } 
+  if (currentLevel > 0) {
     tg.BackButton.show();
     tg.onEvent("backButtonClicked", () => prevLevel());
   }
