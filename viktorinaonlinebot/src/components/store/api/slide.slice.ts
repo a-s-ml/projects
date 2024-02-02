@@ -38,7 +38,6 @@ export const slideSlice = createSlice({
       state.level = action.payload;
     },
     nextLevelSlide: (state) => {
-      state.show = false;
       state.level = state.level + 1;
       setTimeout(() => {
         state.show = true;
