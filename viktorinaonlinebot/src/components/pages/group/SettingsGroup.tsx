@@ -16,6 +16,8 @@ import TimeQuestionGroup from "./sittingsGroup/TimeQuestionGroup";
 import DifficultyQuestionGroup from "./sittingsGroup/DifficultyQuestionGroup";
 import { selectSlideGroup } from "../../store/api/slide.slice";
 import { useElevator } from "../../hooks/useElevator";
+import TypeGroup from "./sittingsGroup/TypeQuestionGroup";
+import { useEffect } from "react";
 
 interface NoActive {
   text: string;
@@ -31,8 +33,9 @@ let noActive: NoActive[] = [
 ];
 
 export default function SettingsGroup({}) {
+  const tg = window.Telegram.WebApp;
   const group = useAppSelector(selectSlideGroup);
-  const { prevLevel, nextLevel } = useElevator();
+  const { prevLevel } = useElevator();
 
   const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
   const { isSuccess: successtAvailable, data: countAvailableQuestion } =
@@ -51,6 +54,11 @@ export default function SettingsGroup({}) {
       ))
     : (date = new Date());
   //*
+
+  // useEffect(() => {
+  //   tg.onEvent("backButtonClicked", () => prevLevel());
+  // }, []);
+
   return (
     <>
       {dataGroupInfo && (
@@ -70,12 +78,7 @@ export default function SettingsGroup({}) {
                 {countPublishedQuestion}{" "}
               </span>
               из
-              <span
-                className="font-semibold text-[var(--tg-theme-accent-text-color)]"
-                onClick={() => {
-                  prevLevel();
-                }}
-              >
+              <span className="font-semibold text-[var(--tg-theme-accent-text-color)]">
                 {" "}
                 {countAvailableQuestion + countPublishedQuestion}{" "}
               </span>
