@@ -8,6 +8,7 @@ import {
   groupSlide,
   removePatchSlide,
   selectSlideLevelData,
+  selectSlidePatch,
   selectSlidePrevTypeData,
   selectSlideTypeData,
   showSlide,
@@ -18,6 +19,7 @@ export function useElevator() {
   const dispatch = useAppDispatch();
   const prev = useAppSelector(selectSlidePrevTypeData);
   const current = useAppSelector(selectSlideTypeData);
+  const pathSlide = useAppSelector(selectSlidePatch);
 
   const level = useAppSelector(selectSlideLevelData);
 
@@ -29,23 +31,22 @@ export function useElevator() {
   }
 
   function nextLevel(name: string) {
-    if (level < 2) {
-      dispatch(dataLevelSlide(level + 1));
+    if (pathSlide.length < 2) {
       toggleSlide();
-      dispatch(dataPrevTypeSlide(current));
       dispatch(addPatchSlide(name));
+      dispatch(dataTypeSlide(name));
     }
   }
 
   function prevLevel() {
-    if (level >= 1) {
+    if (pathSlide.length >= 1) {
       dispatch(dataLevelSlide(level - 1));
       toggleSlide();
       dispatch(removePatchSlide());
     } else {
       dispatch(showSlide(false));
     }
-    dispatch(dataTypeSlide(prev));
+    dispatch(dataTypeSlide(pathSlide[pathSlide.length-1]));
   }
 
   return { nextLevel, prevLevel };
