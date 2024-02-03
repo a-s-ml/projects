@@ -29,7 +29,11 @@ export function useElevator() {
   }
 
   function prevLevel() {
-    toggleSlide();
+    if (pathSlide.length > 1) {
+      toggleSlide();
+    } else {
+      dispatch(showSlide(false));
+    }
     dispatch(removePatchSlide(pathSlide[pathSlide.length - 1]));
   }
 
