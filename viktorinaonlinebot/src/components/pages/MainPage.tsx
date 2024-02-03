@@ -66,9 +66,6 @@ export function MainPage() {
   successTime && dispatch(getAllPeriod(allTime));
   successCategory && dispatch(getAllCategories(allCategory));
   const pathSlide = useAppSelector(selectSlidePatch);
-  if (pathSlide.length === 1) {
-    tg.BackButton.hide();
-  }
   // console.log(useAppSelector(store.getState));
 
   useEffect(() => {
