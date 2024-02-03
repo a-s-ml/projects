@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "..";
 
 export interface slideDataState {
+  prevType: string;
   type: string;
   level: number;
 }
@@ -18,6 +19,7 @@ const initialState: slideState = {
   group: 0n,
   show: false,
   data: {
+    prevType: "",
     type: "main",
     level: 0,
   },
@@ -45,6 +47,9 @@ export const slideSlice = createSlice({
     dataTypeSlide: (state, action: PayloadAction<string>) => {
       state.data.type = action.payload;
     },
+    dataPrevTypeSlide: (state, action: PayloadAction<string>) => {
+      state.data.prevType = action.payload;
+    },
     dataLevelSlide: (state, action: PayloadAction<number>) => {
       state.data.level = action.payload;
     },
@@ -58,13 +63,16 @@ export const {
   groupSlide,
   dataTypeSlide,
   dataLevelSlide,
+  dataPrevTypeSlide,
 } = slideSlice.actions;
 
 export const selectSlide = (state: RootState) => state.slide.show;
 export const selectSlideUser = (state: RootState) => state.slide.user;
-export const selectSlideGroup = (state: RootState) => state.slide.group; 
+export const selectSlideGroup = (state: RootState) => state.slide.group;
 export const selectSlideData = (state: RootState) => state.slide.data;
 export const selectSlideTypeData = (state: RootState) => state.slide.data.type;
-export const selectSlideLevelData = (state: RootState) => state.slide.data.level;
+export const selectSlidePrevTypeData = (state: RootState) => state.slide.data.prevType;
+export const selectSlideLevelData = (state: RootState) =>
+  state.slide.data.level;
 
 export default slideSlice.reducer;
