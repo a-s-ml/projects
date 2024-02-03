@@ -70,7 +70,7 @@ export function MainPage() {
   successCategory && dispatch(getAllCategories(allCategory));
   const pathSlide = useAppSelector(selectSlidePatch);
   const { prevLevel } = useElevator(); 
-  if (pathSlide.length === 0) {
+  if (pathSlide.length === 1) {
     tg.BackButton.hide();
   } else {
     tg.BackButton.onClick(() => prevLevel());
