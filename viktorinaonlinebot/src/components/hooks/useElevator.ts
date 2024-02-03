@@ -10,8 +10,9 @@ export function useElevator() {
   const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
   const pathSlide = useAppSelector(selectSlidePatch);
+  console.log(pathSlide.length);
 
-  // if (level > 0) {
+  // if (level > 0) {s
   //   tg.BackButton.show();
   //   tg.onEvent("backButtonClicked", () => prevLevel());
   // }
