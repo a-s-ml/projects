@@ -19,9 +19,11 @@ export function useElevator() {
 
   function toggleSlide() {
     dispatch(showSlide(false));
-    setTimeout(() => {
-      dispatch(showSlide(true));
-    }, 250);
+    if (pathSlide.length > 0) {
+      setTimeout(() => {
+        dispatch(showSlide(true));
+      }, 250);
+    }
   }
 
   function nextLevel(name: string) {
@@ -33,12 +35,7 @@ export function useElevator() {
   }
 
   function prevLevel() {
-    if (pathSlide.length > 1) {
-      toggleSlide();
-    }
-    if (pathSlide.length < 1) {
-      dispatch(showSlide(false));
-    }
+    toggleSlide();
     dispatch(removePatchSlide(pathSlide[pathSlide.length - 1]));
   }
 
