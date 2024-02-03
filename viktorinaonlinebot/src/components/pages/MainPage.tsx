@@ -18,6 +18,7 @@ import { getAllPeriod } from "../store/api/period/period.slice";
 import { useGetCategoryQuery } from "../store/api/category/category.api";
 import { getAllCategories } from "../store/api/category/category.slice";
 import Preloader from "../Preloader/Preloader";
+import { useElevator } from "../hooks/useElevator";
 
 let menuitems: IMenu[] = [
   {
@@ -70,6 +71,20 @@ export function MainPage() {
   }
   // console.log(useAppSelector(store.getState));
   console.log("pathSlide.length", pathSlide.length);
+  const { prevLevel } = useElevator();
+
+  useEffect(() => {
+    console.log(pathSlide);
+    console.log(pathSlide.length);
+    if (pathSlide.length < 2) {
+      tg.BackButton.hide();
+    }
+    if (pathSlide.length >= 2) {
+      tg.BackButton.offClick(() => prevLevel());
+      tg.BackButton.show();
+      tg.BackButton.onClick(() => prevLevel());
+    }
+  }, [pathSlide]);
 
   return (
     <>

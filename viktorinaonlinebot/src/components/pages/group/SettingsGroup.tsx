@@ -15,9 +15,6 @@ import { useGetTimeByIdQuery } from "../../store/api/period/period.api";
 import TimeQuestionGroup from "./sittingsGroup/TimeQuestionGroup";
 import DifficultyQuestionGroup from "./sittingsGroup/DifficultyQuestionGroup";
 import { selectSlideGroup } from "../../store/api/slide.slice";
-import { useElevator } from "../../hooks/useElevator";
-import TypeGroup from "./sittingsGroup/TypeQuestionGroup";
-import { useEffect } from "react";
 
 interface NoActive {
   text: string;
@@ -33,9 +30,7 @@ let noActive: NoActive[] = [
 ];
 
 export default function SettingsGroup({}) {
-  const tg = window.Telegram.WebApp;
   const group = useAppSelector(selectSlideGroup);
-  const { prevLevel } = useElevator();
 
   const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
   const { isSuccess: successtAvailable, data: countAvailableQuestion } =
@@ -54,10 +49,6 @@ export default function SettingsGroup({}) {
       ))
     : (date = new Date());
   //*
-
-  useEffect(() => {
-    tg.onEvent("backButtonClicked", () => prevLevel());
-  }, []);
 
   return (
     <>

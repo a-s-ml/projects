@@ -2,25 +2,17 @@ import { useGetGroupsQuery } from "../../store/api/group.api";
 import GroupsListItem from "./GroupsListItem";
 import ErrorPage from "../ErrorPage";
 import Preloader from "../../Preloader/Preloader";
-import { useEffect } from "react";
-import { useElevator } from "../../hooks/useElevator";
 
 interface GroupsListProps {
   chat: number;
 }
 export default function GroupsList({ chat }: GroupsListProps) {
-  const tg = window.Telegram.WebApp;
   const {
     isLoading: loadGroups,
     isError: errorGroups,
     data: dataGroups,
     isSuccess: successGroup,
   } = useGetGroupsQuery(chat);
-  const { prevLevel } = useElevator();
-
-  useEffect(() => {
-    tg.onEvent("backButtonClicked", () => prevLevel());
-  }, []);
 
   return (
     <>
