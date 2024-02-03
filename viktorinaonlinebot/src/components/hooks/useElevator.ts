@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../store";
 import {
   addPatchSlide,
@@ -8,7 +7,6 @@ import {
 } from "../store/api/slide.slice";
 
 export function useElevator() {
-  const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
   const pathSlide = useAppSelector(selectSlidePatch);
 
