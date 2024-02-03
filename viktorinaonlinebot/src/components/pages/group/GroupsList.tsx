@@ -18,9 +18,9 @@ export default function GroupsList({ chat }: GroupsListProps) {
   } = useGetGroupsQuery(chat);
   const { prevLevel } = useElevator();
 
-  // useEffect(() => {
-  //   tg.onEvent("backButtonClicked", () => prevLevel());
-  // }, []);
+  useEffect(() => {
+    tg.onEvent("backButtonClicked", () => prevLevel());
+  }, []);
 
   return (
     <>

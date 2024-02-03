@@ -55,9 +55,9 @@ export default function SettingsGroup({}) {
     : (date = new Date());
   //*
 
-  // useEffect(() => {
-  //   tg.onEvent("backButtonClicked", () => prevLevel());
-  // }, []);
+  useEffect(() => {
+    tg.onEvent("backButtonClicked", () => prevLevel());
+  }, []);
 
   return (
     <>

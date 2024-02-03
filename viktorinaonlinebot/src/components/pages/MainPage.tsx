@@ -8,8 +8,8 @@ import {
   selectSlideUser,
   userSlide,
 } from "../store/api/slide.slice";
-import { store, useAppDispatch, useAppSelector } from "../store";
-import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../store";
+import { useEffect } from "react";
 import { useValidateQuery } from "../store/api/vik.api";
 import { useGetTypeQuery } from "../store/api/type/type.api";
 import { getAllType } from "../store/api/type/type.slice";
@@ -18,7 +18,6 @@ import { getAllPeriod } from "../store/api/period/period.slice";
 import { useGetCategoryQuery } from "../store/api/category/category.api";
 import { getAllCategories } from "../store/api/category/category.slice";
 import Preloader from "../Preloader/Preloader";
-import { useElevator } from "../hooks/useElevator";
 
 let menuitems: IMenu[] = [
   {
@@ -66,11 +65,10 @@ export function MainPage() {
   successTime && dispatch(getAllPeriod(allTime));
   successCategory && dispatch(getAllCategories(allCategory));
   const pathSlide = useAppSelector(selectSlidePatch);
-  const { prevLevel } = useElevator();
   if (pathSlide.length === 1) {
     tg.BackButton.hide();
   }
-  console.log(useAppSelector(store.getState));
+  // console.log(useAppSelector(store.getState));
   console.log("pathSlide.length", pathSlide.length);
 
   return (
