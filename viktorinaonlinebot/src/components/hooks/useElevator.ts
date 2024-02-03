@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../store";
 import {
   addPatchSlide,
@@ -10,12 +11,23 @@ export function useElevator() {
   const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
   const pathSlide = useAppSelector(selectSlidePatch);
-  console.log(pathSlide.length);
 
   // if (level > 0) {
   //   tg.BackButton.show();
   //   tg.onEvent("backButtonClicked", () => prevLevel());
   // }
+
+  useEffect(() => {
+    console.log(pathSlide);
+    console.log(pathSlide.length);
+    if (pathSlide.length < 2) {
+      tg.BackButton.hide();
+    }
+    if (pathSlide.length >= 2) {
+      tg.BackButton.show();
+      tg.BackButton.onClick(() => prevLevel());
+    }
+  }, [pathSlide.length]);
 
   function toggleSlide() {
     dispatch(showSlide(false));
@@ -25,11 +37,8 @@ export function useElevator() {
   }
 
   function nextLevel(name: string) {
-    tg.BackButton.show();
-    tg.BackButton.offClick(() => prevLevel());
     toggleSlide();
     dispatch(addPatchSlide(name));
-    tg.BackButton.onClick(() => prevLevel());
   }
 
   function prevLevel() {
