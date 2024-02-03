@@ -17,11 +17,7 @@ import {
 export function useElevator() {
   const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
-  const prev = useAppSelector(selectSlidePrevTypeData);
-  const current = useAppSelector(selectSlideTypeData);
   const pathSlide = useAppSelector(selectSlidePatch);
-
-  const level = useAppSelector(selectSlideLevelData);
   const [currentLevelIndex, setCurrentLevelIndex] = useState(pathSlide.length);
 
   // if (level > 0) {
