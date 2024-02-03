@@ -23,8 +23,6 @@ export const slideSlice = createSlice({
   initialState,
   reducers: {
     showSlide: (state, action: PayloadAction<boolean>) => {
-      tg.BackButton.show();
-      tg.MainButton.hide();
       state.show = action.payload;
     },
     userSlide: (state, action: PayloadAction<number>) => {
