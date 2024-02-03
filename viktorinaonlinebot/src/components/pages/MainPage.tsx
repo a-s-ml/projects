@@ -6,6 +6,7 @@ import { IMenu } from "../../models/IMenu";
 import {
   selectSlide,
   selectSlideLevelData,
+  selectSlidePatch,
   selectSlidePrevTypeData,
   selectSlideUser,
   userSlide,
@@ -67,10 +68,10 @@ export function MainPage() {
   successType && dispatch(getAllType(allTypes));
   successTime && dispatch(getAllPeriod(allTime));
   successCategory && dispatch(getAllCategories(allCategory));
-
-  const level = useAppSelector(selectSlideLevelData);
-  const { prevLevel } = useElevator();
-
+  const pathSlide = useAppSelector(selectSlidePatch);
+  if (pathSlide.length === 0) {
+    tg.BackButton.hide();
+  }
   console.log(useAppSelector(store.getState));
 
   return (
