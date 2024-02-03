@@ -17,8 +17,6 @@ import {
 export function useElevator() {
   const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
-  const prev = useAppSelector(selectSlidePrevTypeData);
-  const current = useAppSelector(selectSlideTypeData);
   const pathSlide = useAppSelector(selectSlidePatch);
 
   const level = useAppSelector(selectSlideLevelData);
@@ -40,13 +38,12 @@ export function useElevator() {
 
   function prevLevel() {
     if (pathSlide.length >= 1) {
-      dispatch(dataLevelSlide(level - 1));
       toggleSlide();
       dispatch(removePatchSlide());
     } else {
       dispatch(showSlide(false));
     }
-    dispatch(dataTypeSlide(pathSlide[pathSlide.length-1]));
+    dispatch(dataTypeSlide(pathSlide[pathSlide.length - 1]));
   }
 
   return { nextLevel, prevLevel };
