@@ -27,7 +27,7 @@ export function useElevator() {
       tg.BackButton.show();
       tg.BackButton.onClick(() => prevLevel());
     }
-  }, [pathSlide.length]);
+  }, [pathSlide]);
 
   function toggleSlide() {
     dispatch(showSlide(false));
