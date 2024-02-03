@@ -2,14 +2,20 @@ import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store";
 import {
   dataLevelSlide,
+  dataPrevTypeSlide,
+  dataTypeSlide,
   groupSlide,
   selectSlideLevelData,
+  selectSlidePrevTypeData,
+  selectSlideTypeData,
   showSlide,
 } from "../store/api/slide.slice";
 
 export function useElevator() {
   const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
+  const prev = useAppSelector(selectSlidePrevTypeData)
+  const current = useAppSelector(selectSlideTypeData)
 
   const level = useAppSelector(selectSlideLevelData);
 
@@ -24,6 +30,7 @@ export function useElevator() {
     if (level < 2) {
       dispatch(dataLevelSlide(level + 1));
       toggleSlide();
+      dispatch(dataPrevTypeSlide(current))
     }
   }
 
@@ -34,6 +41,7 @@ export function useElevator() {
     } else {
       dispatch(showSlide(false));
     }
+    dispatch(dataTypeSlide(prev));
   }
 
   return { nextLevel, prevLevel };

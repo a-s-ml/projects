@@ -6,6 +6,7 @@ import { IMenu } from "../../models/IMenu";
 import {
   selectSlide,
   selectSlideLevelData,
+  selectSlidePrevTypeData,
   selectSlideUser,
   userSlide,
 } from "../store/api/slide.slice";
@@ -70,6 +71,7 @@ export function MainPage() {
   const level = useAppSelector(selectSlideLevelData);
   console.log("currentLevel", level);
   const { prevLevel } = useElevator();
+  const prev = useAppSelector(selectSlidePrevTypeData)
 
   if (level === 0) {
     tg.BackButton.hide();
