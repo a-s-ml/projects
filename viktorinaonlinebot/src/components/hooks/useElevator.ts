@@ -28,12 +28,12 @@ export function useElevator() {
     }, 250);
   }
 
-  function nextLevel() {
+  function nextLevel(name: string) {
     if (level < 2) {
       dispatch(dataLevelSlide(level + 1));
       toggleSlide();
       dispatch(dataPrevTypeSlide(current));
-      dispatch(addPatchSlide(current));
+      dispatch(addPatchSlide(name));
     }
   }
 

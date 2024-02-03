@@ -24,7 +24,7 @@ export default function MenuList({ item, progress }: MenuItemsProps) {
       className="px-1 py-1 sm:px-0 cursor-pointer"
       key={item.id}
       onClick={() => {
-        nextLevel();
+        nextLevel(item.name);
         dispatch(dataTypeSlide(item.name));
       }}
     >
