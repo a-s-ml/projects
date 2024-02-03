@@ -24,8 +24,11 @@ export function useElevator() {
   }
 
   function nextLevel(name: string) {
+    tg.BackButton.show();
+    tg.BackButton.offClick(() => prevLevel());
     toggleSlide();
     dispatch(addPatchSlide(name));
+    tg.BackButton.onClick(() => prevLevel());
   }
 
   function prevLevel() {
