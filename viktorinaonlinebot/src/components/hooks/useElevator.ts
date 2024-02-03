@@ -37,12 +37,10 @@ export function useElevator() {
   }
 
   function nextLevel(name: string) {
-    if (currentLevelIndex < 2) {
-      toggleSlide();
-      dispatch(addPatchSlide(name));
-      dispatch(dataTypeSlide(name));
-      setCurrentLevelIndex(pathSlide.length);
-    }
+    toggleSlide();
+    dispatch(addPatchSlide(name));
+    dispatch(dataTypeSlide(name));
+    setCurrentLevelIndex(pathSlide.length);
   }
 
   function prevLevel() {
