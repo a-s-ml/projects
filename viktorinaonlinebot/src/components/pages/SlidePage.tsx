@@ -5,6 +5,7 @@ import GroupsList from "./group/GroupsList";
 import {
   selectSlide,
   selectSlideData,
+  selectSlidePage,
   showSlide,
 } from "../store/api/slide.slice";
 import { useAppDispatch, useAppSelector } from "../store";
@@ -23,7 +24,7 @@ interface SlideItemsProps {
 
 export default function SlidePage({ chat }: SlideItemsProps) {
   const slide = useAppSelector(selectSlide);
-  const slideData = useAppSelector(selectSlideData);
+  const page = useAppSelector(selectSlidePage);
   const dispatch = useAppDispatch();
 
   return (
@@ -45,7 +46,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
               leaveTo="translate-x-full opacity-5"
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
-                {slideData.type === "groups" && (
+                {page === "groups" && (
                   <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                     <Header>
                       <AddNewGroup />
@@ -54,7 +55,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                     <Footer />
                   </div>
                 )}
-                {slideData.type === "questions" && (
+                {page === "questions" && (
                   <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                     <Header>
                       <AddNewQuestion />
@@ -63,9 +64,9 @@ export default function SlidePage({ chat }: SlideItemsProps) {
                     <Footer />
                   </div>
                 )}
-                {slideData.type === "answers" && <ErrorPage />}
-                {slideData.type === "addQuestion" && <NewQuesion />}
-                {slideData.type === "group" && (
+                {page === "answers" && <ErrorPage />}
+                {page === "addQuestion" && <NewQuesion />}
+                {page === "group" && (
                   <>
                     <Header>
                       <DefaultSettingsGroup />

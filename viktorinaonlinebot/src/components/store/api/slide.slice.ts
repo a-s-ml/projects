@@ -12,6 +12,7 @@ export interface slideState {
   user: number;
   group: bigint;
   patch: string[];
+  page: string;
   data: slideDataState;
 }
 
@@ -20,6 +21,7 @@ const initialState: slideState = {
   user: 0,
   group: 0n,
   patch: ["main"],
+  page: "main",
   data: {
     prevType: "",
     type: "main",
@@ -45,10 +47,14 @@ export const slideSlice = createSlice({
     },
     addPatchSlide: (state, action: PayloadAction<string>) => {
       state.patch.push(action.payload);
+      state.page = state.patch[state.patch.length - 1];
+      console.log("state.page", state.page);
     },
     removePatchSlide: (state, action: PayloadAction<string>) => {
       console.log(action.payload);
       state.patch = state.patch.filter((i) => i !== action.payload);
+      state.page = state.patch[state.patch.length - 1];
+      console.log("state.page", state.page);
     },
     dataSlide: (state, action: PayloadAction<slideDataState>) => {
       state.data = action.payload;
@@ -82,6 +88,7 @@ export const selectSlideUser = (state: RootState) => state.slide.user;
 export const selectSlideGroup = (state: RootState) => state.slide.group;
 export const selectSlideData = (state: RootState) => state.slide.data;
 export const selectSlidePatch = (state: RootState) => state.slide.patch;
+export const selectSlidePage = (state: RootState) => state.slide.page;
 export const selectSlideTypeData = (state: RootState) => state.slide.data.type;
 export const selectSlidePrevTypeData = (state: RootState) =>
   state.slide.data.prevType;
