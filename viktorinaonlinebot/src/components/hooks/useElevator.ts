@@ -1,16 +1,8 @@
-import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store";
 import {
   addPatchSlide,
-  dataLevelSlide,
-  dataPrevTypeSlide,
-  dataTypeSlide,
-  groupSlide,
   removePatchSlide,
-  selectSlideLevelData,
   selectSlidePatch,
-  selectSlidePrevTypeData,
-  selectSlideTypeData,
   showSlide,
 } from "../store/api/slide.slice";
 

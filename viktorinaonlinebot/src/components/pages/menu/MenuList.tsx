@@ -7,7 +7,6 @@ import {
 import { IMenu } from "../../../models/IMenu";
 import { IProgressData } from "../../../models/IUser";
 import { useAppDispatch } from "../../store";
-import { dataTypeSlide } from "../../store/api/slide.slice";
 import { useElevator } from "../../hooks/useElevator";
 
 interface MenuItemsProps {
@@ -16,7 +15,6 @@ interface MenuItemsProps {
 }
 
 export default function MenuList({ item, progress }: MenuItemsProps) {
-  const dispatch = useAppDispatch();
   const { nextLevel } = useElevator();
 
   return (

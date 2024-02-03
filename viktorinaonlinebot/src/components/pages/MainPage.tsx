@@ -4,10 +4,7 @@ import ErrorPage from "./ErrorPage";
 import MenuList from "./menu/MenuList";
 import { IMenu } from "../../models/IMenu";
 import {
-  selectSlide,
-  selectSlideLevelData,
   selectSlidePatch,
-  selectSlidePrevTypeData,
   selectSlideUser,
   userSlide,
 } from "../store/api/slide.slice";

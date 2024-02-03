@@ -4,7 +4,6 @@ import ErrorPage from "./ErrorPage";
 import GroupsList from "./group/GroupsList";
 import {
   selectSlide,
-  selectSlideData,
   selectSlidePage,
   showSlide,
 } from "../store/api/slide.slice";

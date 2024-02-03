@@ -5,7 +5,7 @@ import TypeQuestion from "./TypeQuestion";
 import PeriodQuestion from "./PeriodQuestion";
 import ToggleButton from "./ToggleButton";
 import CategoryQuestion from "./CategoryQuestion";
-import { dataTypeSlide, groupSlide } from "../../store/api/slide.slice";
+import { groupSlide } from "../../store/api/slide.slice";
 import {
   useGetGroupDbQuery,
   useGetInfoGroupsQuery,
