@@ -45,27 +45,25 @@ export default function SlidePage({ chat }: SlideItemsProps) {
               leaveTo="translate-x-full opacity-5"
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
-                <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                  {slideData.type === "groups" && (
-                    <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                      <Header>
-                        <AddNewGroup />
-                      </Header>
-                      <GroupsList chat={chat} />
-                      <Footer />
-                    </div>
-                  )}
-                  {slideData.type === "questions" && (
-                    <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-                      <Header>
-                        <AddNewQuestion />
-                      </Header>
-                      <QuestionList chat={chat} />
-                      <Footer />
-                    </div>
-                  )}
-                  {slideData.type === "answers" && <ErrorPage />}
-                </div>
+                {slideData.type === "groups" && (
+                  <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                    <Header>
+                      <AddNewGroup />
+                    </Header>
+                    <GroupsList chat={chat} />
+                    <Footer />
+                  </div>
+                )}
+                {slideData.type === "questions" && (
+                  <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                    <Header>
+                      <AddNewQuestion />
+                    </Header>
+                    <QuestionList chat={chat} />
+                    <Footer />
+                  </div>
+                )}
+                {slideData.type === "answers" && <ErrorPage />}
                 {slideData.type === "addQuestion" && <NewQuesion />}
                 {slideData.type === "group" && (
                   <>
