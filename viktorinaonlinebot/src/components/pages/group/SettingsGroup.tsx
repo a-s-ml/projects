@@ -15,6 +15,7 @@ import { useGetTimeByIdQuery } from "../../store/api/period/period.api";
 import TimeQuestionGroup from "./sittingsGroup/TimeQuestionGroup";
 import DifficultyQuestionGroup from "./sittingsGroup/DifficultyQuestionGroup";
 import { selectSlideGroup } from "../../store/api/slide.slice";
+import { useElevator } from "../../hooks/useElevator";
 
 interface NoActive {
   text: string;
@@ -31,6 +32,7 @@ let noActive: NoActive[] = [
 
 export default function SettingsGroup({}) {
   const group = useAppSelector(selectSlideGroup);
+  const { prevLevel, nextLevel } = useElevator();
 
   const { data: dataGroupInfo } = useGetInfoGroupsQuery(group);
   const { isSuccess: successtAvailable, data: countAvailableQuestion } =
@@ -68,7 +70,12 @@ export default function SettingsGroup({}) {
                 {countPublishedQuestion}{" "}
               </span>
               из
-              <span className="font-semibold text-[var(--tg-theme-accent-text-color)]">
+              <span
+                className="font-semibold text-[var(--tg-theme-accent-text-color)]"
+                onClick={() => {
+                  prevLevel();
+                }}
+              >
                 {" "}
                 {countAvailableQuestion + countPublishedQuestion}{" "}
               </span>
