@@ -16,7 +16,6 @@ export default function AddNewQuestion() {
         className="text-sm font-medium text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
         onClick={() => {
           nextLevel("addQuestion");
-          dispatch(dataTypeSlide("addQuestion"));
         }}
       >
         <b>Добавить вопрос</b>
