@@ -48,7 +48,7 @@ export const slideSlice = createSlice({
     },
     removePatchSlide: (state) => {
       const length = state.patch.length;
-      state.patch.slice(length - 1, 1);
+      state.patch.splice(length - 1, 1);
     },
     dataSlide: (state, action: PayloadAction<slideDataState>) => {
       state.data = action.payload;
