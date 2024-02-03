@@ -40,6 +40,7 @@ export function useElevator() {
     toggleSlide();
     dispatch(addPatchSlide(name));
     dispatch(dataTypeSlide(name));
+    console.log("pathSlide.length", pathSlide.length);
     setCurrentLevelIndex(pathSlide.length);
   }
 
