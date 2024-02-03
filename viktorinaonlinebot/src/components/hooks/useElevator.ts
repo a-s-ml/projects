@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store";
 import {
+  addPatchSlide,
   dataLevelSlide,
   dataPrevTypeSlide,
   dataTypeSlide,
   groupSlide,
+  removePatchSlide,
   selectSlideLevelData,
   selectSlidePrevTypeData,
   selectSlideTypeData,
@@ -14,8 +16,8 @@ import {
 export function useElevator() {
   const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
-  const prev = useAppSelector(selectSlidePrevTypeData)
-  const current = useAppSelector(selectSlideTypeData)
+  const prev = useAppSelector(selectSlidePrevTypeData);
+  const current = useAppSelector(selectSlideTypeData);
 
   const level = useAppSelector(selectSlideLevelData);
 
@@ -30,7 +32,8 @@ export function useElevator() {
     if (level < 2) {
       dispatch(dataLevelSlide(level + 1));
       toggleSlide();
-      dispatch(dataPrevTypeSlide(current))
+      dispatch(dataPrevTypeSlide(current));
+      dispatch(addPatchSlide(current));
     }
   }
 
@@ -38,6 +41,7 @@ export function useElevator() {
     if (level >= 1) {
       dispatch(dataLevelSlide(level - 1));
       toggleSlide();
+      dispatch(removePatchSlide());
     } else {
       dispatch(showSlide(false));
     }
