@@ -24,9 +24,9 @@ export function useElevator() {
   const level = useAppSelector(selectSlideLevelData);
 
 
-  // if (level === 0) {
-  //   tg.BackButton.hide();
-  // }
+  if (pathSlide.length === 0) {
+    tg.BackButton.hide();
+  }
   // if (level > 0) {
   //   tg.BackButton.show();
   //   tg.onEvent("backButtonClicked", () => prevLevel());
