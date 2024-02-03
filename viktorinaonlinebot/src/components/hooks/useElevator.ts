@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store";
 import {
   addPatchSlide,
@@ -12,7 +11,7 @@ export function useElevator() {
   const dispatch = useAppDispatch();
   const pathSlide = useAppSelector(selectSlidePatch);
   console.log(pathSlide.length);
-  const [level, setLevel] = useState(pathSlide.length);
+
   // if (level > 0) {
   //   tg.BackButton.show();
   //   tg.onEvent("backButtonClicked", () => prevLevel());
@@ -26,7 +25,6 @@ export function useElevator() {
   }
 
   function nextLevel(name: string) {
-    setLevel(level - 1);
     tg.BackButton.show();
     tg.BackButton.offClick(() => prevLevel());
     toggleSlide();
@@ -35,11 +33,10 @@ export function useElevator() {
   }
 
   function prevLevel() {
-    if (level > 1) {
+    if (pathSlide.length > 1) {
       toggleSlide();
-      setLevel(level - 1);
     }
-    if (level < 2) {
+    if (pathSlide.length < 1) {
       dispatch(showSlide(false));
     }
     dispatch(removePatchSlide(pathSlide[pathSlide.length - 1]));
