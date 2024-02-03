@@ -70,19 +70,12 @@ export function MainPage() {
     tg.BackButton.hide();
   }
   // console.log(useAppSelector(store.getState));
-  const { prevLevel } = useElevator();
 
   useEffect(() => {
     console.log(pathSlide);
     console.log("pathSlide.length", pathSlide.length);
     if (pathSlide.length === 1) {
       tg.BackButton.hide();
-    }
-    if (pathSlide.length === 2) {
-      tg.onEvent("backButtonClicked", () => prevLevel());
-    }
-    if (pathSlide.length === 3) {
-      tg.onEvent("backButtonClicked", () => prevLevel());
     }
   }, [pathSlide]);
 

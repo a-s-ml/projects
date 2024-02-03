@@ -22,9 +22,14 @@ interface SlideItemsProps {
 }
 
 export default function SlidePage({ chat }: SlideItemsProps) {
+  const tg = window.Telegram.WebApp;
   const slide = useAppSelector(selectSlide);
   const page = useAppSelector(selectSlidePage);
   const dispatch = useAppDispatch();
+
+  if (slide) {
+    tg.onEvent("backButtonClicked", () => dispatch(showSlide(false)));
+  }
 
   return (
     <>
