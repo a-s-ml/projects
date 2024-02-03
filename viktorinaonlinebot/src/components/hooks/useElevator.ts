@@ -23,6 +23,16 @@ export function useElevator() {
 
   const level = useAppSelector(selectSlideLevelData);
 
+
+  // if (level === 0) {
+  //   tg.BackButton.hide();
+  // }
+  // if (level > 0) {
+  //   tg.BackButton.show();
+  //   tg.onEvent("backButtonClicked", () => prevLevel());
+  // }
+
+
   function toggleSlide() {
     dispatch(showSlide(false));
     setTimeout(() => {
@@ -31,14 +41,16 @@ export function useElevator() {
   }
 
   function nextLevel(name: string) {
-    if (pathSlide.length < 2) {
+    if (level < 2) {
+      dispatch(dataLevelSlide(level + 1));
       toggleSlide();
+      dispatch(dataPrevTypeSlide(current));
       dispatch(addPatchSlide(name));
     }
   }
 
   function prevLevel() {
-    if (pathSlide.length >= 1) {
+    if (level >= 1) {
       dispatch(dataLevelSlide(level - 1));
       toggleSlide();
       dispatch(removePatchSlide());
