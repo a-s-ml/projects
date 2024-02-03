@@ -79,12 +79,10 @@ export function MainPage() {
       tg.BackButton.hide();
     }
     if (pathSlide.length === 2) {
-      tg.BackButton.show();
-      tg.onEvent("backButtonClicked", () => prevLevel);
+      tg.onEvent("backButtonClicked", () => prevLevel());
     }
     if (pathSlide.length === 3) {
-      tg.BackButton.show();
-      tg.onEvent("backButtonClicked", () => prevLevel);
+      tg.onEvent("backButtonClicked", () => prevLevel());
     }
   }, [pathSlide]);
 
