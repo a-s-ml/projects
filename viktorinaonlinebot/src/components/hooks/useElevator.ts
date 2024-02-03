@@ -34,7 +34,8 @@ export function useElevator() {
   function prevLevel() {
     if (pathSlide.length > 1) {
       toggleSlide();
-    } else {
+    }
+    if (pathSlide.length < 2) {
       dispatch(showSlide(false));
     }
     dispatch(removePatchSlide(pathSlide[pathSlide.length - 1]));
