@@ -40,7 +40,7 @@ export function useElevator() {
   function prevLevel() {
     if (pathSlide.length >= 1) {
       toggleSlide();
-      dispatch(removePatchSlide(pathSlide.length - 1));
+      dispatch(removePatchSlide());
     } else {
       dispatch(showSlide(false));
     }
