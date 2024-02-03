@@ -75,13 +75,16 @@ export function MainPage() {
   useEffect(() => {
     console.log(pathSlide);
     console.log("pathSlide.length", pathSlide.length);
-    if (pathSlide.length < 2) {
+    if (pathSlide.length === 1) {
       tg.BackButton.hide();
     }
-    if (pathSlide.length >= 2) {
-      tg.BackButton.offClick(() => prevLevel());
+    if (pathSlide.length === 2) {
       tg.BackButton.show();
-      tg.BackButton.onClick(() => prevLevel());
+      tg.onEvent("backButtonClicked", () => prevLevel);
+    }
+    if (pathSlide.length === 3) {
+      tg.BackButton.show();
+      tg.onEvent("backButtonClicked", () => prevLevel);
     }
   }, [pathSlide]);
 
