@@ -18,7 +18,6 @@ export function useElevator() {
   const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
   const pathSlide = useAppSelector(selectSlidePatch);
-  const [currentLevelIndex, setCurrentLevelIndex] = useState(pathSlide.length);
 
   // if (level > 0) {
   //   tg.BackButton.show();
@@ -36,20 +35,17 @@ export function useElevator() {
     toggleSlide();
     dispatch(addPatchSlide(name));
     dispatch(dataTypeSlide(name));
-    console.log("pathSlide.length", pathSlide.length);
-    setCurrentLevelIndex(currentLevelIndex+1);
   }
 
   function prevLevel() {
-    if (currentLevelIndex >= 1) {
+    if (pathSlide.length >= 1) {
       toggleSlide();
       dispatch(removePatchSlide());
-      setCurrentLevelIndex(currentLevelIndex-1);
     } else {
       dispatch(showSlide(false));
     }
     dispatch(dataTypeSlide(pathSlide[pathSlide.length - 1]));
   }
 
-  return { currentLevelIndex, nextLevel, prevLevel };
+  return { nextLevel, prevLevel };
 }
