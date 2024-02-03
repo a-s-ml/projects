@@ -46,6 +46,7 @@ export function useElevator() {
       toggleSlide();
       dispatch(dataPrevTypeSlide(current));
       dispatch(addPatchSlide(name));
+      dispatch(dataTypeSlide(name));
     }
   }
 
