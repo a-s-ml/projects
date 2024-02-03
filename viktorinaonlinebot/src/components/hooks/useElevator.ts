@@ -37,18 +37,18 @@ export function useElevator() {
     dispatch(addPatchSlide(name));
     dispatch(dataTypeSlide(name));
     console.log("pathSlide.length", pathSlide.length);
-    setCurrentLevelIndex(pathSlide.length);
+    setCurrentLevelIndex(currentLevelIndex+1);
   }
 
   function prevLevel() {
     if (currentLevelIndex >= 1) {
       toggleSlide();
       dispatch(removePatchSlide());
+      setCurrentLevelIndex(currentLevelIndex-1);
     } else {
       dispatch(showSlide(false));
     }
     dispatch(dataTypeSlide(pathSlide[pathSlide.length - 1]));
-    setCurrentLevelIndex(pathSlide.length);
   }
 
   return { currentLevelIndex, nextLevel, prevLevel };
