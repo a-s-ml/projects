@@ -34,13 +34,13 @@ export function useElevator() {
   function nextLevel(name: string) {
     toggleSlide();
     dispatch(addPatchSlide(name));
-    dispatch(dataTypeSlide(name));
+    dispatch(dataTypeSlide(name)); 
   }
 
   function prevLevel() {
     if (pathSlide.length >= 1) {
       toggleSlide();
-      dispatch(removePatchSlide());
+      dispatch(removePatchSlide(pathSlide[pathSlide.length - 1]));
     } else {
       dispatch(showSlide(false));
     }
