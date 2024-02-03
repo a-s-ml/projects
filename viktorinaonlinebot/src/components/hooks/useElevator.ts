@@ -22,6 +22,7 @@ export function useElevator() {
   const pathSlide = useAppSelector(selectSlidePatch);
 
   const level = useAppSelector(selectSlideLevelData);
+  const [currentLevelIndex, setCurrentLevelIndex] = useState(pathSlide.length)
 
 
 
@@ -40,9 +41,7 @@ export function useElevator() {
 
   function nextLevel(name: string) {
     if (level < 2) {
-      dispatch(dataLevelSlide(level + 1));
       toggleSlide();
-      dispatch(dataPrevTypeSlide(current));
       dispatch(addPatchSlide(name));
       dispatch(dataTypeSlide(name));
     }
@@ -50,7 +49,6 @@ export function useElevator() {
 
   function prevLevel() {
     if (level >= 1) {
-      dispatch(dataLevelSlide(level - 1));
       toggleSlide();
       dispatch(removePatchSlide());
     } else {
@@ -59,5 +57,5 @@ export function useElevator() {
     dispatch(dataTypeSlide(prev));
   }
 
-  return { nextLevel, prevLevel };
+  return { currentLevelIndex, nextLevel, prevLevel };
 }
