@@ -48,6 +48,8 @@ export const slideSlice = createSlice({
     },
     removePatchSlide: (state) => {
       const current = state.patch.pop();
+      state.patch = state.patch;
+      console.log("current", current);
     },
     dataSlide: (state, action: PayloadAction<slideDataState>) => {
       state.data = action.payload;
