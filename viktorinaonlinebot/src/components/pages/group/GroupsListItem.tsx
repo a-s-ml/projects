@@ -23,7 +23,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);
   const { data: GroupDb } = useGetGroupDbQuery(group);
-  const { nextLevel } = useElevator();
+  const { prevLevel, nextLevel } = useElevator();
   const dispatch = useAppDispatch();
 
   return (
@@ -33,7 +33,12 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
         <li className="py-4 px-0">
           <div className="group relative flex items-start space-x-3">
             <div className="flex-shrink-0">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
+              <span
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg"
+                onClick={() => {
+                  prevLevel();
+                }}
+              >
                 {dataGroupInfo.photo?.small_file_id && (
                   <GroupAvatar id={dataGroupInfo.photo?.small_file_id} />
                 )}
