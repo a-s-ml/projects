@@ -73,6 +73,7 @@ export function MainPage() {
     tg.BackButton.hide();
   }
   console.log(useAppSelector(store.getState));
+  console.log('pathSlide.length', pathSlide.length);
 
   return (
     <>
