@@ -24,6 +24,7 @@ export function useElevator() {
       tg.BackButton.hide();
     }
     if (pathSlide.length >= 2) {
+      tg.BackButton.offClick(() => prevLevel());
       tg.BackButton.show();
       tg.BackButton.onClick(() => prevLevel());
     }
