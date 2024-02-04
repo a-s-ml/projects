@@ -31,6 +31,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
   console.log("page", page);
   useEffect(() => {
     if (slide) {
+      tg.BackButton.show();
       tg.BackButton.onClick(prevLevel);
     }
   }, [page]);
