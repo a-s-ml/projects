@@ -4,12 +4,13 @@ import ErrorPage from "./ErrorPage";
 import MenuList from "./menu/MenuList";
 import { IMenu } from "../../models/IMenu";
 import {
+  selectSlidePage,
   selectSlidePatch,
   selectSlideUser,
   showSlide,
   userSlide,
 } from "../store/api/slide.slice";
-import { useAppDispatch, useAppSelector } from "../store";
+import { store, useAppDispatch, useAppSelector } from "../store";
 import { useEffect } from "react";
 import { useValidateQuery } from "../store/api/vik.api";
 import { useGetTypeQuery } from "../store/api/type/type.api";
@@ -67,9 +68,10 @@ export function MainPage() {
   successTime && dispatch(getAllPeriod(allTime));
   successCategory && dispatch(getAllCategories(allCategory));
   const pathSlide = useAppSelector(selectSlidePatch);
-  // console.log(useAppSelector(store.getState));
+  console.log(useAppSelector(store.getState));
+  const page = useAppSelector(selectSlidePage);
 
-  if (pathSlide.length === 1) {
+  if (page === "main") {
     tg.BackButton.hide();
   } else {
     tg.BackButton.show();

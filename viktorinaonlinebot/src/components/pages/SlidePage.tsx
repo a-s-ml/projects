@@ -16,7 +16,6 @@ import AddNewQuestion from "./question/AddNewQuestion";
 import DefaultSettingsGroup from "./group/sittingsGroup/DefaultSettingsGroup";
 import SettingsGroup from "./group/SettingsGroup";
 import NewQuesion from "./question/NewQuesion";
-import { useElevator } from "../hooks/useElevator";
 
 interface SlideItemsProps {
   chat: number;
@@ -27,7 +26,6 @@ export default function SlidePage({ chat }: SlideItemsProps) {
   const slide = useAppSelector(selectSlide);
   const page = useAppSelector(selectSlidePage);
   const dispatch = useAppDispatch();
-  const { prevLevel } = useElevator();
 
   return (
     <>
