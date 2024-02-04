@@ -1,12 +1,10 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import ErrorPage from "./ErrorPage";
 import GroupsList from "./group/GroupsList";
 import {
-  removePatchSlide,
   selectSlide,
   selectSlidePage,
-  selectSlidePatch,
   showSlide,
 } from "../store/api/slide.slice";
 import { useAppDispatch, useAppSelector } from "../store";
@@ -30,14 +28,12 @@ export default function SlidePage({ chat }: SlideItemsProps) {
   const page = useAppSelector(selectSlidePage);
   const dispatch = useAppDispatch();
   const { toggleSlide, prevLevel } = useElevator();
-  const pathSlide = useAppSelector(selectSlidePatch);
 
-  if (slide) {
-    tg.onEvent("backButtonClicked", () => {
-      toggleSlide();
-      dispatch(removePatchSlide(pathSlide[pathSlide.length - 1]));
-    });
-  }
+  useEffect(() => {
+    if (slide) {
+      tg.onEvent("backButtonClicked", () => prevLevel());
+    }
+  }, [slide]);
 
   return (
     <>
