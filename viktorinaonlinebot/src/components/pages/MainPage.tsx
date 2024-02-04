@@ -8,7 +8,7 @@ import {
   selectSlideUser,
   userSlide,
 } from "../store/api/slide.slice";
-import { useAppDispatch, useAppSelector } from "../store";
+import { store, useAppDispatch, useAppSelector } from "../store";
 import { useEffect } from "react";
 import { useValidateQuery } from "../store/api/vik.api";
 import { useGetTypeQuery } from "../store/api/type/type.api";
@@ -66,8 +66,8 @@ export function MainPage() {
   successTime && dispatch(getAllPeriod(allTime));
   successCategory && dispatch(getAllCategories(allCategory));
   const pathSlide = useAppSelector(selectSlidePatch);
-  // console.log(useAppSelector(store.getState));
-  const { prevLevel } = useElevator();
+  console.log(useAppSelector(store.getState));
+  const { prevLevel } = useElevator(); 
 
   useEffect(() => {
     tg.BackButton.hide();
