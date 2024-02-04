@@ -29,12 +29,6 @@ export default function SlidePage({ chat }: SlideItemsProps) {
   const dispatch = useAppDispatch();
   const { toggleSlide, prevLevel } = useElevator();
   console.log("page", page);
-  useEffect(() => {
-    if (slide) {
-      tg.BackButton.show();
-      tg.BackButton.onClick(prevLevel);
-    }
-  }, [page]);
 
   return (
     <>

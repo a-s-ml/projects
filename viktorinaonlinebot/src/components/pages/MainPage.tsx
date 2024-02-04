@@ -69,10 +69,8 @@ export function MainPage() {
   console.log(useAppSelector(store.getState));
   const { prevLevel } = useElevator();
 
-  if (pathSlide.length === 1) {
-    tg.BackButton.hide();
-  }
-
+  tg.BackButton.show();
+  tg.BackButton.onClick(prevLevel);
   return (
     <>
       <div className="container p-6 mx-auto">
