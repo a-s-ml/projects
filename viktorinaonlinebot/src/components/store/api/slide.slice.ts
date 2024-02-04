@@ -40,6 +40,7 @@ export const slideSlice = createSlice({
       state.page = state.patch[state.patch.length - 1];
     },
     backPatchSlide: (state, action: PayloadAction<number>) => {
+      console.log("action.payload = ", action.payload);
       state.page = state.patch[state.patch.length - action.payload];
     },
   },

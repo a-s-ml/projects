@@ -28,12 +28,12 @@ export default function SlidePage({ chat }: SlideItemsProps) {
   const page = useAppSelector(selectSlidePage);
   const dispatch = useAppDispatch();
   const { toggleSlide, prevLevel } = useElevator();
-
+  console.log("page", page);
   useEffect(() => {
     if (slide) {
       tg.onEvent("backButtonClicked", () => prevLevel());
     }
-  }, [slide]);
+  }, [page]);
 
   return (
     <>
