@@ -61,8 +61,7 @@ export interface IMainButton {
 }
 
 export interface IBackButton {
-  isVisible: string;
-  isActive: boolean;
+  isVisible: boolean;
   onClick: (callback: () => void) => void;
   offClick: (callback: () => void) => void;
   show: () => void;
