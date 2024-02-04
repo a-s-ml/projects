@@ -41,7 +41,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
               enter="transform transition ease-in-out duration-500"
               enterFrom="translate-x-full opacity-5"
               enterTo="translate-x-0 opacity-100"
-              leave="transform transition ease-in-out duration-200"
+              leave="transform transition ease-in-out duration-100"
               leaveFrom="translate-x-0 opacity-100"
               leaveTo="translate-x-full opacity-5"
             >
