@@ -10,6 +10,7 @@ export function useElevator() {
   const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
   const pathSlide = useAppSelector(selectSlidePatch);
+  console.log('pathSlide in use', pathSlide)
 
   function toggleSlide() {
     dispatch(showSlide(false));
@@ -24,9 +25,7 @@ export function useElevator() {
   }
 
   function prevLevel() {
-    tg.offEvent("backButtonClicked", () => prevLevel);
-    tg.BackButton.hide();
-    dispatch(removePatchSlide(pathSlide[pathSlide.length - 1]));
+    // dispatch(removePatchSlide(pathSlide[pathSlide.length - 1]));
     toggleSlide();
   }
 
