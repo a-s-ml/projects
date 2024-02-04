@@ -35,6 +35,7 @@ export const slideSlice = createSlice({
       state.page = state.patch[state.patch.length - 1];
     },
     removePatchSlide: (state, action: PayloadAction<string>) => {
+      console.log("+");
       state.patch = state.patch.filter((i) => i !== action.payload);
       state.page = state.patch[state.patch.length - 1];
     },
