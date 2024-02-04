@@ -73,7 +73,7 @@ export function MainPage() {
   const slide = useAppSelector(selectSlide);
   console.log(slide)
 
-  if (slide) {
+  if (!slide) { 
     tg.BackButton.hide();
   } else {
     tg.BackButton.show();
