@@ -76,6 +76,7 @@ export function MainPage() {
       tg.BackButton.hide();
     }
     if (pathSlide.length > 1) {
+      tg.BackButton.show();
       tg.BackButton.onClick(() => prevLevel);
     }
   }, [pathSlide]);
