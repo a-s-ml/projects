@@ -67,12 +67,16 @@ export function MainPage() {
   successCategory && dispatch(getAllCategories(allCategory));
   const pathSlide = useAppSelector(selectSlidePatch);
   // console.log(useAppSelector(store.getState));
+  const { prevLevel } = useElevator();
 
   useEffect(() => {
     console.log(pathSlide);
     console.log("pathSlide.length", pathSlide.length);
     if (pathSlide.length === 1) {
       tg.BackButton.hide();
+    }
+    if (pathSlide.length > 1) {
+      tg.BackButton.onClick(() => prevLevel);
     }
   }, [pathSlide]);
 
