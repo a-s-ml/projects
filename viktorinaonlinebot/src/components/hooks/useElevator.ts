@@ -31,7 +31,7 @@ export function useElevator() {
       "pathSlide[pathSlide.length - 1]",
       pathSlide[pathSlide.length - 1]
     );
-    dispatch(removePatchSlide(pathSlide[pathSlide.length - 1]));
+    return dispatch(removePatchSlide(pathSlide[pathSlide.length - 1]));
   }
 
   return { nextLevel, prevLevel };
