@@ -30,5 +30,5 @@ export function useElevator() {
     toggleSlide();
   }
 
-  return { nextLevel, prevLevel };
+  return { toggleSlide, nextLevel, prevLevel };
 }
