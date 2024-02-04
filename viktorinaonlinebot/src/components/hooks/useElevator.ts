@@ -1,14 +1,12 @@
 import { useAppDispatch, useAppSelector } from "../store";
 import {
   addPatchSlide,
-  backPatchSlide,
   removePatchSlide,
   selectSlidePatch,
   showSlide,
 } from "../store/api/slide.slice";
 
 export function useElevator() {
-  const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
   const pathSlide = useAppSelector(selectSlidePatch);
 
@@ -25,10 +23,10 @@ export function useElevator() {
   }
 
   function prevLevel() {
-    // dispatch(removePatchSlide(pathSlide[pathSlide.length - 1]));
-    toggleSlide();
-    dispatch(backPatchSlide(2));
+    if (pathSlide.length > 2) toggleSlide();
+    if (pathSlide.length < 3) dispatch(showSlide(false));
+    dispatch(removePatchSlide(pathSlide[pathSlide.length - 1]));
   }
 
-  return { toggleSlide, nextLevel, prevLevel };
+  return { nextLevel, prevLevel };
 }

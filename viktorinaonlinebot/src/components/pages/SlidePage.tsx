@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import ErrorPage from "./ErrorPage";
 import GroupsList from "./group/GroupsList";
@@ -27,8 +27,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
   const slide = useAppSelector(selectSlide);
   const page = useAppSelector(selectSlidePage);
   const dispatch = useAppDispatch();
-  const { toggleSlide, prevLevel } = useElevator();
-  console.log("page", page);
+  const { prevLevel } = useElevator();
 
   return (
     <>

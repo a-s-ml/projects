@@ -6,9 +6,10 @@ import { IMenu } from "../../models/IMenu";
 import {
   selectSlidePatch,
   selectSlideUser,
+  showSlide,
   userSlide,
 } from "../store/api/slide.slice";
-import { store, useAppDispatch, useAppSelector } from "../store";
+import { useAppDispatch, useAppSelector } from "../store";
 import { useEffect } from "react";
 import { useValidateQuery } from "../store/api/vik.api";
 import { useGetTypeQuery } from "../store/api/type/type.api";
@@ -66,11 +67,15 @@ export function MainPage() {
   successTime && dispatch(getAllPeriod(allTime));
   successCategory && dispatch(getAllCategories(allCategory));
   const pathSlide = useAppSelector(selectSlidePatch);
-  console.log(useAppSelector(store.getState));
-  const { prevLevel } = useElevator();
+  // console.log(useAppSelector(store.getState));
 
-  tg.BackButton.show();
-  tg.BackButton.onClick(prevLevel);
+  if (pathSlide.length === 1) {
+    tg.BackButton.hide();
+  } else {
+    tg.BackButton.show();
+    tg.onEvent("backButtonClicked", () => dispatch(showSlide(false))); 
+  }
+
   return (
     <>
       <div className="container p-6 mx-auto">
