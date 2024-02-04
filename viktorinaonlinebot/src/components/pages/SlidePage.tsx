@@ -27,9 +27,9 @@ export default function SlidePage({ chat }: SlideItemsProps) {
   const page = useAppSelector(selectSlidePage);
   const dispatch = useAppDispatch();
 
-  // if (slide) {
-  //   tg.onEvent("backButtonClicked", () => dispatch(showSlide(false))); 
-  // }
+  if (slide) {
+    tg.onEvent("backButtonClicked", () => dispatch(showSlide(false))); 
+  }
 
   return (
     <>
