@@ -71,6 +71,7 @@ export function MainPage() {
   const pathSlide = useAppSelector(selectSlidePatch);
   console.log(useAppSelector(store.getState));
   const slide = useAppSelector(selectSlide);
+  console.log(slide)
 
   if (slide) {
     tg.BackButton.hide();
