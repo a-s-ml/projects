@@ -16,18 +16,12 @@ const initialState: slideState = {
   patch: ["main"],
   page: "main",
 };
-const tg = window.Telegram.WebApp;
 
 export const slideSlice = createSlice({
   name: "slide",
   initialState,
   reducers: {
     showSlide: (state, action: PayloadAction<boolean>) => {
-      if (action.payload) {
-        tg.BackButton.show();
-      } else {
-        tg.BackButton.hide();
-      }
       state.show = action.payload;
     },
     userSlide: (state, action: PayloadAction<number>) => {
