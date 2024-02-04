@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "../store";
 import {
   addPatchSlide,
+  backPatchSlide,
   removePatchSlide,
   selectSlidePatch,
   showSlide,
@@ -26,6 +27,7 @@ export function useElevator() {
   function prevLevel() {
     // dispatch(removePatchSlide(pathSlide[pathSlide.length - 1]));
     toggleSlide();
+    dispatch(backPatchSlide(2));
   }
 
   return { toggleSlide, nextLevel, prevLevel };

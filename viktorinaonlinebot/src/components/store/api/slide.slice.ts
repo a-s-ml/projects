@@ -35,9 +35,12 @@ export const slideSlice = createSlice({
       state.page = state.patch[state.patch.length - 1];
     },
     removePatchSlide: (state, action: PayloadAction<string>) => {
-      console.log('action.payload = ',action.payload);
+      console.log("action.payload = ", action.payload);
       state.patch = state.patch.filter((i) => i !== action.payload);
       state.page = state.patch[state.patch.length - 1];
+    },
+    backPatchSlide: (state, action: PayloadAction<number>) => {
+      state.page = state.patch[state.patch.length - action.payload];
     },
   },
 });
@@ -48,6 +51,7 @@ export const {
   groupSlide,
   addPatchSlide,
   removePatchSlide,
+  backPatchSlide,
 } = slideSlice.actions;
 
 export const selectSlide = (state: RootState) => state.slide.show;
