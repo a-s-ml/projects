@@ -4,6 +4,7 @@ import ErrorPage from "./ErrorPage";
 import MenuList from "./menu/MenuList";
 import { IMenu } from "../../models/IMenu";
 import {
+  selectSlide,
   selectSlidePage,
   selectSlidePatch,
   selectSlideUser,
@@ -69,13 +70,13 @@ export function MainPage() {
   successCategory && dispatch(getAllCategories(allCategory));
   const pathSlide = useAppSelector(selectSlidePatch);
   console.log(useAppSelector(store.getState));
-  const page = useAppSelector(selectSlidePage);
+  const slide = useAppSelector(selectSlide);
 
-  if (page === "main") {
+  if (slide) {
     tg.BackButton.hide();
   } else {
     tg.BackButton.show();
-    tg.onEvent("backButtonClicked", () => dispatch(showSlide(false))); 
+    tg.onEvent("backButtonClicked", () => dispatch(showSlide(false)));
   }
 
   return (
