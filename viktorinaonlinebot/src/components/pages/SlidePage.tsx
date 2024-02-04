@@ -30,7 +30,7 @@ export default function SlidePage({ chat }: SlideItemsProps) {
   const { prevLevel } = useElevator();
 
   if (slide) {
-    tg.onEvent("backButtonClicked", () => dispatch(showSlide(false))); 
+    tg.onEvent("backButtonClicked", () => dispatch(showSlide(false)));  
   }
 
   return (
