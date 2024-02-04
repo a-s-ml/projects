@@ -25,6 +25,7 @@ export function useElevator() {
 
   function prevLevel() {
     tg.offEvent("backButtonClicked", () => prevLevel);
+    tg.BackButton.hide();
     if (pathSlide.length > 2) toggleSlide();
     if (pathSlide.length < 3) dispatch(showSlide(false));
     dispatch(removePatchSlide(pathSlide[pathSlide.length - 1]));
