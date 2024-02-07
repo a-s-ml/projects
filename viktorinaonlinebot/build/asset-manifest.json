@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "./viktorinaonlinebot/static/css/main.9b6d2ca5.css",
-    "main.js": "./viktorinaonlinebot/static/js/main.445a6153.js",
-    "index.html": "./viktorinaonlinebot/index.html",
-    "main.9b6d2ca5.css.map": "./viktorinaonlinebot/static/css/main.9b6d2ca5.css.map",
-    "main.445a6153.js.map": "./viktorinaonlinebot/static/js/main.445a6153.js.map"
+    "main.css": "/viktorinaonlinebot/static/css/main.9b6d2ca5.css",
+    "main.js": "/viktorinaonlinebot/static/js/main.445a6153.js",
+    "index.html": "/viktorinaonlinebot/index.html",
+    "main.9b6d2ca5.css.map": "/viktorinaonlinebot/static/css/main.9b6d2ca5.css.map",
+    "main.445a6153.js.map": "/viktorinaonlinebot/static/js/main.445a6153.js.map"
   },
   "entrypoints": [
     "static/css/main.9b6d2ca5.css",
