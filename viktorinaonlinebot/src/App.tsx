@@ -4,7 +4,7 @@ import { MainPage } from "./components/pages/MainPage";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<MainPage />} />
+      <Route path="/viktorinaonlinebot" element={<MainPage />} />
     </Routes>
   );
 }
