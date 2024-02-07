@@ -1,5 +1,5 @@
 {
-  "homepage": "https://80q.ru/viktorinaonlinebot",
+  "homepage": "./viktorinaonlinebot",
   "name": "viktorinaonlinebot",
   "version": "0.1.0",
   "private": true,
