@@ -12,7 +12,7 @@
         "compiler": "babel",
         "outputPath": "dist/main",
         "index": "main/src/index.html",
-        "baseHref": "/",
+        "baseHref": "/mf/main/",
         "main": "main/src/main.ts",
         "tsConfig": "main/tsconfig.app.json",
         "assets": ["main/src/favicon.ico", "main/src/assets"],

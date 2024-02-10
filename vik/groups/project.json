@@ -12,7 +12,7 @@
         "compiler": "babel",
         "outputPath": "dist/groups",
         "index": "groups/src/index.html",
-        "baseHref": "/",
+        "baseHref": "/mf/groups/",
         "main": "groups/src/main.ts",
         "tsConfig": "groups/tsconfig.app.json",
         "assets": ["groups/src/favicon.ico", "groups/src/assets"],
