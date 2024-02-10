@@ -1,0 +1,1 @@
+(self.webpackChunkquestions=self.webpackChunkquestions||[]).push([[340],{340:(e,t,o)=>{o.r(t);var r=o(552),s=o(960),n=o(456),c=o(948);s.C(document.getElementById("root")).render((0,c.jsx)(r.StrictMode,{children:(0,c.jsx)(n.c,{})}))},960:(e,t,o)=>{var r=o(356);t.C=r.createRoot,r.hydrateRoot}}]);

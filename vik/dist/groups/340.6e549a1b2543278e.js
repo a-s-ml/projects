@@ -1,0 +1,1 @@
+(self.webpackChunkgroups=self.webpackChunkgroups||[]).push([[340],{340:(e,r,o)=>{o.r(r);var t=o(552),c=o(960),s=o(456),a=o(948);c.C(document.getElementById("root")).render((0,a.jsx)(t.StrictMode,{children:(0,a.jsx)(s.c,{})}))},960:(e,r,o)=>{var t=o(356);r.C=t.createRoot,t.hydrateRoot}}]);

@@ -1,0 +1,94 @@
+{
+  "name": "groups",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "groups/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/groups",
+        "index": "groups/src/index.html",
+        "baseHref": "/",
+        "main": "groups/src/main.ts",
+        "tsConfig": "groups/tsconfig.app.json",
+        "assets": ["groups/src/favicon.ico", "groups/src/assets"],
+        "styles": ["groups/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "groups/webpack.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "groups/src/environments/environment.ts",
+              "with": "groups/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "groups/webpack.config.prod.ts"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "groups:build",
+        "hmr": true,
+        "port": 4201
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "groups:build:development"
+        },
+        "production": {
+          "buildTarget": "groups:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "groups:build",
+        "watch": false,
+        "port": 4201
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "groups:build:development"
+        },
+        "production": {
+          "buildTarget": "groups:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "groups/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

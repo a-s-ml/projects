@@ -1,0 +1,29 @@
+{
+  "name": "viktorins-e2e",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "viktorins-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "viktorins-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "viktorins:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "viktorins:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "viktorins:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  },
+  "implicitDependencies": ["viktorins"],
+  "tags": []
+}

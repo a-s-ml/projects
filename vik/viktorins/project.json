@@ -1,0 +1,94 @@
+{
+  "name": "viktorins",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "viktorins/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/viktorins",
+        "index": "viktorins/src/index.html",
+        "baseHref": "/",
+        "main": "viktorins/src/main.ts",
+        "tsConfig": "viktorins/tsconfig.app.json",
+        "assets": ["viktorins/src/favicon.ico", "viktorins/src/assets"],
+        "styles": ["viktorins/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "viktorins/webpack.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "viktorins/src/environments/environment.ts",
+              "with": "viktorins/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "viktorins/webpack.config.prod.ts"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "viktorins:build",
+        "hmr": true,
+        "port": 4204
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "viktorins:build:development"
+        },
+        "production": {
+          "buildTarget": "viktorins:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "viktorins:build",
+        "watch": false,
+        "port": 4204
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "viktorins:build:development"
+        },
+        "production": {
+          "buildTarget": "viktorins:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "viktorins/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
