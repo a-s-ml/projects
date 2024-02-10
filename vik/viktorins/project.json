@@ -12,7 +12,7 @@
         "compiler": "babel",
         "outputPath": "dist/viktorins",
         "index": "viktorins/src/index.html",
-        "baseHref": "/",
+        "baseHref": "/mf/viktorins/",
         "main": "viktorins/src/main.ts",
         "tsConfig": "viktorins/tsconfig.app.json",
         "assets": ["viktorins/src/favicon.ico", "viktorins/src/assets"],

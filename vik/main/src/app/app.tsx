@@ -4,16 +4,30 @@ import NxWelcome from './nx-welcome';
 
 import { Link, Route, Routes } from 'react-router-dom';
 
+const Groups = React.lazy(() => import('groups/Module'));
+
+const Answers = React.lazy(() => import('answers/Module'));
+
+const Questions = React.lazy(() => import('questions/Module'));
+
 export function App() {
   return (
     <React.Suspense fallback={null}>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/groups">Groups</Link>
+        </li>
+        <li>
+          <Link to="/answers">Answers</Link>
+        </li>
+        <li>
+          <Link to="/questions">Questions</Link>
         </li>
       </ul>
       <Routes>
-        <Route path="/" element={<NxWelcome title="main" />} />
+        <Route path="/groups" element={<Groups />} />
+        <Route path="/answers" element={<Answers />} />
+        <Route path="/questions" element={<Questions />} />
       </Routes>
     </React.Suspense>
   );
