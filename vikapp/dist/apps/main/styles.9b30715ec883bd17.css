@@ -329,16 +329,33 @@ video {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
+}.container {
+  width: 100%;
+}@media (min-width: 640px) {.container {
+    max-width: 640px;
+  }
+}@media (min-width: 768px) {.container {
+    max-width: 768px;
+  }
+}@media (min-width: 1024px) {.container {
+    max-width: 1024px;
+  }
+}@media (min-width: 1280px) {.container {
+    max-width: 1280px;
+  }
+}@media (min-width: 1536px) {.container {
+    max-width: 1536px;
+  }
 }.h-1\/6 {
   height: 16.666667%;
-}.h-4\/6 {
-  height: 66.666667%;
 }.min-h-screen {
   min-height: 100vh;
 }.divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
   border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+}.divide-\[var\(--tg-theme-hint-color\)\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--tg-theme-hint-color);
 }.overflow-hidden {
   overflow: hidden;
 }.overflow-y-auto {
@@ -347,8 +364,6 @@ video {
   border-radius: 0.5rem;
 }.bg-\[var\(--tg-theme-bg-color\)\] {
   background-color: var(--tg-theme-bg-color);
-}.bg-\[var\(--tg-theme-hint-color\)\] {
-  background-color: var(--tg-theme-hint-color);
 }.px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
