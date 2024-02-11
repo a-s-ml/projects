@@ -1,8 +1,11 @@
 import { ModuleFederationConfig } from '@nx/webpack'
 
 const config: ModuleFederationConfig = {
-	name: 'main',
-	remotes: ['groups', 'answers', 'questions', 'viktorins', 'ffr']
+	name: 'ffr',
+
+	exposes: {
+		'./Module': './src/remote-entry.ts'
+	}
 }
 
 export default config

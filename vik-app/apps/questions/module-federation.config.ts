@@ -1,7 +1,8 @@
 import { ModuleFederationConfig } from '@nx/webpack';
 
 const config: ModuleFederationConfig = {
-  name: 'answers',
+  name: 'questions',
+
   exposes: {
     './Module': './src/remote-entry.ts',
   },
