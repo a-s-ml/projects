@@ -1,5 +1,5 @@
 nx g @nx/react:component --directory=libs/components/src/lib/ --export=true --routing=false --skipTests=true
-nx g lib  --name=components --directory=libs --strict --unitTestRunner=none --publishable=true --globalCss=true
+nx g lib  --name=components --directory=libs --strict --unitTestRunner=none --publishable=true --globalCss=true --importPath=libs/components/src
 nx g @nx/react:setup-tailwind --project=quiz
 nx g @nx/react:remote quiz --directory=apps --e2eTestRunner=none --unitTestRunner=none --host=main 
 nx g @nx/react:host main --directory=apps --e2eTestRunner=none --unitTestRunner=none
