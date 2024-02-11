@@ -1,0 +1,1 @@
+(self.webpackChunkmain=self.webpackChunkmain||[]).push([[600],{600:(n,e,u)=>{u.r(e),u.d(e,{default:()=>r});var a=u(0);const r=function(){return(0,a.jsx)("b",{children:"Groups"})}}}]);
