@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("react/jsx-runtime"),n={};function o(t){return e.jsx("div",{className:n.container,children:e.jsx("h1",{children:"Welcome to Component!"})})}exports.Component=o;
