@@ -15,11 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@myorg/my-lib": ["tools/src/index.ts"],
-      "@vikapp/components": ["libs/components/src/index.ts"],
-      "@vikapp/compr/src": ["libs/compr/src/index.ts"],
-      "groups/Module": ["apps/groups/src/remote-entry.ts"],
-      "libs/components/src": ["libs/comp/src/index.ts"]
+      "groups/Module": ["apps/groups/src/remote-entry.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
