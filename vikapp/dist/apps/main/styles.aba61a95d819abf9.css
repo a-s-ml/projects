@@ -329,20 +329,24 @@ video {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
+}.h-1\/6 {
+  height: 16.666667%;
+}.min-h-screen {
+  min-height: 100vh;
 }.divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
   border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
-}.divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-divide-opacity));
 }.overflow-hidden {
   overflow: hidden;
+}.overflow-y-auto {
+  overflow-y: auto;
 }.rounded-lg {
   border-radius: 0.5rem;
-}.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}.bg-\[var\(--tg-theme-bg-color\)\] {
+  background-color: var(--tg-theme-bg-color);
+}.bg-\[var\(--tg-theme-hint-color\)\] {
+  background-color: var(--tg-theme-hint-color);
 }.px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -352,17 +356,7 @@ video {
 }.py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-}.shadow {
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }.filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}@media (min-width: 640px) {.sm\:p-6 {
-    padding: 1.5rem;
-  }.sm\:px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
 }
 

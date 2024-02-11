@@ -3,5 +3,5 @@ interface HeaderBlockProps {
 }
 
 export default function HeaderBlock({ children }: HeaderBlockProps) {
-  return <div className="px-4 py-5 sm:px-6">{children}</div>;
+  return <div className="h-1/6 px-4 py-5">{children}</div>;
 }
