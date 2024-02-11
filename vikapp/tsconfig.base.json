@@ -15,18 +15,18 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@api/vik": ["libs/api/src/vik.api.ts"],
-      "@api/type": ["libs/api/src/type.api.ts"],
-      "@api/question": ["libs/api/src/question.api.ts"],
-      "@api/period": ["libs/api/src/period.api.ts"],
-      "@api/group": ["libs/api/src/group.api.ts"],
       "@api/category": ["libs/api/src/category.api.ts"],
+      "@api/group": ["libs/api/src/group.api.ts"],
       "@api/group/active": ["libs/api/src/activeGroup.api.ts"],
+      "@api/period": ["libs/api/src/period.api.ts"],
+      "@api/question": ["libs/api/src/question.api.ts"],
+      "@api/type": ["libs/api/src/type.api.ts"],
+      "@api/vik": ["libs/api/src/vik.api.ts"],
       "@components": ["components/src/index.ts"],
       "@models": ["models/"],
-      "groups/Module": ["apps/groups/src/remote-entry.ts"],
-      "@store/main": ["apps/main/src/app/store/index.ts"],
       "@slises/main": ["apps/main/src/app/store/slises"],
+      "@store/main": ["apps/main/src/app/store/index.ts"],
+      "groups/Module": ["apps/groups/src/remote-entry.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
