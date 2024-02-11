@@ -1,0 +1,29 @@
+{
+  "name": "components",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "components/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/components",
+        "tsConfig": "components/tsconfig.lib.json",
+        "project": "components/package.json",
+        "entryFile": "components/src/index.ts",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "components/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}
