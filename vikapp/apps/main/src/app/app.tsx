@@ -14,7 +14,7 @@ import { useGetTimeQuery } from '@api/period';
 import { getAllCategories } from './store/slices/category.slice';
 import { getAllType } from './store/slices/type.slice';
 import { getAllPeriod } from './store/slices/period.slice';
-import Page from 'components/src/lib/page';
+import Page from 'components/src/lib/Page';
 import HeaderBlock from 'components/src/lib/header';
 import MainBlock from 'components/src/lib/main';
 import FooterBlock from 'components/src/lib/footer';
