@@ -28,6 +28,7 @@ const prodConfig: ModuleFederationConfig = {
     ['groups', 'https://80q.ru/mf/groups/remoteEntry.js'],
     ['answers', 'https://80q.ru/mf/answers/remoteEntry.js'],
     ['questions', 'https://80q.ru/mf/questions/remoteEntry.js'],
+    ['viktorins', 'https://80q.ru/mf/viktorins/remoteEntry.js'],
   ],
 };
 

@@ -1,1 +1,0 @@
-(self.webpackChunkviktorins=self.webpackChunkviktorins||[]).push([[340],{340:(e,r,t)=>{t.r(r);var o=t(552),n=t(960),c=t(456),s=t(948);n.C(document.getElementById("root")).render((0,s.jsx)(o.StrictMode,{children:(0,s.jsx)(c.c,{})}))},960:(e,r,t)=>{var o=t(356);r.C=o.createRoot,o.hydrateRoot}}]);
