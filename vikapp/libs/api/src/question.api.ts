@@ -1,5 +1,5 @@
 import { IQuestion } from "@models";
-import { vikApi } from "../vik.api";
+import { vikApi } from "./vik.api";
 
 export interface IAddQuestion {
   chat: bigint;

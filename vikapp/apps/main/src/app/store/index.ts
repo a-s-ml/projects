@@ -1,11 +1,11 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import slideReducer from "./api/slide.slice";
-import typeReducer from "./api/type/type.slice";
-import periodReducer from "./api/period/period.slice";
-import questionReducer from "./api/question/question.slice";
-import categoryReducer from "./api/category/category.slice";
-import { vikApi } from "./api/vik.api";
+import slideReducer from "./slices/slide.slice";
+import typeReducer from "./slices/type.slice";
+import periodReducer from "./slices/period.slice";
+import questionReducer from "./slices/question.slice";
+import categoryReducer from "./slices/category.slice";
+import { vikApi } from "@api/vik";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
 export const store = configureStore({

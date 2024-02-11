@@ -4,7 +4,7 @@ import {
   IReqCategoryGroup,
   IResCategoryGroup,
 } from "@models";
-import { vikApi } from "../vik.api";
+import { vikApi } from "./vik.api";
 
 export const extendedApiSlice = vikApi.injectEndpoints({
   endpoints: (build) => ({

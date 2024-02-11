@@ -1,8 +1,8 @@
 import * as React from 'react';
 const Groups = React.lazy(() => import('groups/Module'));
 import { store, useAppDispatch, useAppSelector } from './store';
-import { selectSlideUser, userSlide } from './store/api/slide.slice';
-import { useValidateQuery } from './store/api/vik.api';
+import { selectSlideUser, userSlide } from './store/slices/slide.slice';
+import { useValidateQuery } from '@api/vik';
 
 export function App() {
   const tg = 'sfdhdxgzhfs';

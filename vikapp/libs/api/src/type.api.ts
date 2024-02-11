@@ -1,6 +1,6 @@
 import { IReqTypeGroup } from "@models";
 import { IType } from "@models";
-import { vikApi } from "../vik.api";
+import { vikApi } from "./vik.api";
 
 export const extendedApiSlice = vikApi.injectEndpoints({
   endpoints: (build) => ({

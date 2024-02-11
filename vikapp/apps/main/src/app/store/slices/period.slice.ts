@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../..";
+import { RootState } from "@store/main";
 import { ITime } from "@models";
 
 export interface periodState {
