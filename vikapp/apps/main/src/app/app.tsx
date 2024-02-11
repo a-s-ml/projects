@@ -15,9 +15,9 @@ import { getAllCategories } from './store/slices/category.slice';
 import { getAllType } from './store/slices/type.slice';
 import { getAllPeriod } from './store/slices/period.slice';
 import Page from 'components/src/lib/Page';
-import HeaderBlock from 'components/src/lib/header';
-import MainBlock from 'components/src/lib/main';
-import FooterBlock from 'components/src/lib/footer';
+import HeaderBlock from 'components/src/lib/HeaderBlock';
+import MainBlock from 'components/src/lib/MainBlock';
+import FooterBlock from 'components/src/lib/FooterBlock';
 
 export function App() {
   const tg = window.Telegram.WebApp;
