@@ -331,6 +331,8 @@ video {
   --tw-backdrop-sepia:  ;
 }.h-1\/6 {
   height: 16.666667%;
+}.h-4\/6 {
+  height: 66.666667%;
 }.min-h-screen {
   min-height: 100vh;
 }.divide-y > :not([hidden]) ~ :not([hidden]) {
