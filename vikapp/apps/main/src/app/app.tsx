@@ -1,6 +1,5 @@
 import * as React from 'react';
 const Groups = React.lazy(() => import('groups/Module'));
-import { Provider } from 'react-redux';
 import { store, useAppDispatch, useAppSelector } from './store';
 import { selectSlideUser, userSlide } from './store/api/slide.slice';
 import { useValidateQuery } from './store/api/vik.api';
@@ -22,11 +21,9 @@ export function App() {
   console.log(useAppSelector(store.getState));
 
   return (
-    <Provider store={store}>
       <React.Suspense fallback={null}>
         <Groups />
       </React.Suspense>
-    </Provider>
   );
 }
 
