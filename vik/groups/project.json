@@ -18,7 +18,8 @@
         "assets": ["groups/src/favicon.ico", "groups/src/assets"],
         "styles": ["groups/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "groups/webpack.config.ts"
+        "webpackConfig": "groups/webpack.config.ts",
+        "postcssConfig": "groups/postcss.config.js"
       },
       "configurations": {
         "development": {

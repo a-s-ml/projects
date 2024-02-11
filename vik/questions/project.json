@@ -18,7 +18,8 @@
         "assets": ["questions/src/favicon.ico", "questions/src/assets"],
         "styles": ["questions/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "questions/webpack.config.ts"
+        "webpackConfig": "questions/webpack.config.ts",
+        "postcssConfig": "questions/postcss.config.js"
       },
       "configurations": {
         "development": {
