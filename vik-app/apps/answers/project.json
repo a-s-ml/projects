@@ -12,7 +12,7 @@
         "compiler": "babel",
         "outputPath": "dist/apps/answers",
         "index": "apps/answers/src/index.html",
-        "baseHref": "/",
+        "baseHref": "/mf/answers",
         "main": "apps/answers/src/main.ts",
         "tsConfig": "apps/answers/tsconfig.app.json",
         "assets": ["apps/answers/src/favicon.ico", "apps/answers/src/assets"],

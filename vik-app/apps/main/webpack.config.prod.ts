@@ -7,24 +7,12 @@ import baseConfig from './module-federation.config';
 
 const prodConfig: ModuleFederationConfig = {
   ...baseConfig,
-  /*
-   * Remote overrides for production.
-   * Each entry is a pair of a unique name and the URL where it is deployed.
-   *
-   * e.g.
-   * remotes: [
-   *   ['app1', 'http://app1.example.com'],
-   *   ['app2', 'http://app2.example.com'],
-   * ]
-   *
-   * You can also use a full path to the remoteEntry.js file if desired.
-   *
-   * remotes: [
-   *   ['app1', 'http://example.com/path/to/app1/remoteEntry.js'],
-   *   ['app2', 'http://example.com/path/to/app2/remoteEntry.js'],
-   * ]
-   */
-  remotes: [],
+  remotes: [
+    ['groups', 'https://80q.ru/mf/groups/remoteEntry.js'],
+    ['answers', 'https://80q.ru/mf/answers/remoteEntry.js'],
+    ['questions', 'https://80q.ru/mf/questions/remoteEntry.js'],
+    ['quiz', 'https://80q.ru/mf/quiz/remoteEntry.js'],
+  ],
 };
 
 // Nx plugins for webpack to build config object from Nx options and context.

@@ -1,1 +1,0 @@
-(self.webpackChunkmain=self.webpackChunkmain||[]).push([[708],{708:(n,e,u)=>{u.r(e),u.d(e,{default:()=>c});var a=u(0);const c=function(){return(0,a.jsx)("b",{children:"Quiz"})}}}]);
