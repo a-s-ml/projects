@@ -1,22 +1,29 @@
-import { createApi, fetchBaseQuery, retry } from "@reduxjs/toolkit/query/react";
-import { IValidate } from "@models";
+import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
+import { IValidate } from '@models';
 
 const staggeredBaseQuery = retry(
-  fetchBaseQuery({ baseUrl: process.env.REACT_APP_APIURL }),
+  fetchBaseQuery({ baseUrl: 'https://api80q.ru/viktorinaonlinebot/' }),
   { maxRetries: 5 }
 );
 
 export const vikApi = createApi({
-  reducerPath: "vikApi",
+  reducerPath: 'vikApi',
   refetchOnFocus: true,
   baseQuery: staggeredBaseQuery,
-  tagTypes: ["TypeGroup", "TimeGroup", "CategoryGroup", "Validate", "CountAvailableQuestionGroup", "CountPublishedQuestionGroup"],
+  tagTypes: [
+    'TypeGroup',
+    'TimeGroup',
+    'CategoryGroup',
+    'Validate',
+    'CountAvailableQuestionGroup',
+    'CountPublishedQuestionGroup',
+  ],
   endpoints: (build) => ({
     validate: build.query<IValidate, string>({
       query: (initData: string) => ({
         url: `chat/validateUser/${initData}`,
       }),
-      providesTags: ["Validate"],
+      providesTags: ['Validate'],
     }),
   }),
 });
