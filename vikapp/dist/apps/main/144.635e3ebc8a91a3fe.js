@@ -1,0 +1,1 @@
+(self.webpackChunkmain=self.webpackChunkmain||[]).push([[144],{144:(n,e,o)=>{o.r(e),o.d(e,{Components:()=>c});var s=o(0);function c(){return(0,s.jsx)("div",{children:(0,s.jsx)("h1",{children:"Welcome to Components!"})})}}}]);
