@@ -1,3 +1,5 @@
+@myorg/my-lib
+
 @vikapp/source
 MIT
 

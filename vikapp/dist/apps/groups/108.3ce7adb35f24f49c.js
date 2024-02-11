@@ -1,0 +1,1 @@
+(self.webpackChunkgroups=self.webpackChunkgroups||[]).push([[108],{490:(e,o,s)=>{s.r(o),s.d(o,{Tools:()=>l});var r=s(0);function l(e){return(0,r.jsx)("div",{children:(0,r.jsx)("h1",{children:"Welcome to Tools!"})})}}}]);
