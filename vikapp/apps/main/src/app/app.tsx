@@ -6,7 +6,7 @@ import { selectSlideUser, userSlide } from './store/api/slide.slice';
 import { useValidateQuery } from './store/api/vik.api';
 
 export function App() {
-  const tg = window.Telegram.WebApp;
+  const tg = 'sfdhdxgzhfs';
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectSlideUser);
 
@@ -15,7 +15,8 @@ export function App() {
     isError: errorUser,
     data: dataUser,
     isSuccess: successUser,
-  } = useValidateQuery(tg.initData, { skip: user !== 0 });
+  } = useValidateQuery(tg, { skip: user !== 0 });
+  console.log(tg);
 
   successUser && dispatch(userSlide(dataUser.UserData.user.id));
   console.log(useAppSelector(store.getState));
