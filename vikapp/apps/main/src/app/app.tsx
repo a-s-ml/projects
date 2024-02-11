@@ -1,8 +1,14 @@
 import * as React from 'react';
 const Groups = React.lazy(() => import('groups/Module'));
 import { store, useAppDispatch, useAppSelector } from './store';
-import { selectSlideUser, userSlide } from './store/slices/slide.slice';
+import { selectSlide, selectSlidePatch, selectSlideUser, userSlide } from './store/slices/slide.slice';
 import { useValidateQuery } from '@api/vik';
+import { useGetTypeQuery } from '@api/type';
+import { useGetCategoryQuery } from '@api/category';
+import { useGetTimeQuery } from '@api/period';
+import { getAllCategories } from './store/slices/category.slice';
+import { getAllType } from './store/slices/type.slice';
+import { getAllPeriod } from './store/slices/period.slice';
 
 export function App() {
   const tg = window.Telegram.WebApp;
@@ -16,9 +22,21 @@ export function App() {
     isSuccess: successUser,
   } = useValidateQuery(tg.initData, { skip: user !== 0 });
   console.log(tg);
+  
+  const { data: allTypes, isSuccess: successType } = useGetTypeQuery("");
+  const { data: allTime, isSuccess: successTime } = useGetTimeQuery("");
+  const { data: allCategory, isSuccess: successCategory } =
+    useGetCategoryQuery("");
 
-  successUser && dispatch(userSlide(dataUser.UserData.user.id));
-  console.log(useAppSelector(store.getState));
+    successUser && dispatch(userSlide(dataUser.UserData.user.id));
+
+    successType && dispatch(getAllType(allTypes));
+    successTime && dispatch(getAllPeriod(allTime));
+    successCategory && dispatch(getAllCategories(allCategory));
+    const pathSlide = useAppSelector(selectSlidePatch);
+    console.log(useAppSelector(store.getState));
+    const slide = useAppSelector(selectSlide);
+    console.log(slide)
 
   return (
       <React.Suspense fallback={null}>

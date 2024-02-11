@@ -25,7 +25,8 @@
       "@components": ["components/src/index.ts"],
       "@models": ["models/"],
       "groups/Module": ["apps/groups/src/remote-entry.ts"],
-      "@store/main": ["apps/main/src/app/store/index.ts"]
+      "@store/main": ["apps/main/src/app/store/index.ts"],
+      "@slises/main": ["apps/main/src/app/store/slises"],
     }
   },
   "exclude": ["node_modules", "tmp"]
