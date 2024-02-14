@@ -2,7 +2,7 @@ import * as React from 'react';
 const Groups = React.lazy(() => import('groups/Module'));
 import { useAppDispatch, useAppSelector } from '@store/main';
 import { useValidateQuery } from '@api/vik';
-import { SlidePage } from '@components';
+import { Preloader, SlidePage } from '@components';
 import {
   selectSlide,
   selectSlideUser,
@@ -16,7 +16,7 @@ export function App() {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectSlideUser);
 
-  const { data, isSuccess } = useValidateQuery(tg.initData, {
+  const { data, isSuccess, isLoading } = useValidateQuery(tg.initData, {
     skip: user !== 0,
   });
 
@@ -33,7 +33,8 @@ export function App() {
 
   return (
     <React.Suspense fallback={null}>
-      <HomePage />
+      {isLoading && <Preloader />}
+      {data && <HomePage />}
       <SlidePage slide={slide}>
         <Groups />
       </SlidePage>

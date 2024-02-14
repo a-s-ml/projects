@@ -1,14 +1,15 @@
 import { useAppDispatch } from '@store/main';
-import { Page, MainBlock, HeaderBlock, FooterBlock } from '@components';
+import { Page, MainBlock } from '@components';
 import { showSlide } from '../store/slices/slide.slice';
-import Logo from "../assets/img/Logo.png";
+import Logo from '../assets/img/Logo.png';
 
 export function HomePage() {
   const dispatch = useAppDispatch();
   return (
     <>
       <Page>
-        <HeaderBlock>
+        <p onClick={() => dispatch(showSlide(true))}>Header</p>
+        <MainBlock>
           <div className="text-center">
             <img
               className="mx-auto h-12 w-12"
@@ -23,15 +24,7 @@ export function HomePage() {
               базу вопросов и вопросы, заданные участниками викторины
             </p>
           </div>
-          <p onClick={() => dispatch(showSlide(true))}>Header</p>
-        </HeaderBlock>
-        <MainBlock>
-          <p>1</p>
-          <p>2</p>
         </MainBlock>
-        <FooterBlock>
-          <p>Footer</p>
-        </FooterBlock>
       </Page>
     </>
   );
