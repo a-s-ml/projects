@@ -26,6 +26,11 @@ export function App() {
   const slide = useAppSelector(selectMainSlide);
   const type = useAppSelector(selectMainType);
 
+  React.useEffect(() => {
+    tg.expand();
+    tg.ready();
+  }, []);
+
   if (slide) {
     tg.BackButton.show();
     tg.onEvent('backButtonClicked', () => {
