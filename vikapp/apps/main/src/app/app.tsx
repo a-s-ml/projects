@@ -5,6 +5,7 @@ import {
   selectSlide,
   selectSlidePatch,
   selectSlideUser,
+  showSlide,
   userSlide,
 } from './store/slices/slide.slice';
 import { useValidateQuery } from '@api/vik';
@@ -18,6 +19,7 @@ import Page from 'components/src/lib/Page';
 import HeaderBlock from 'components/src/lib/HeaderBlock';
 import MainBlock from 'components/src/lib/MainBlock';
 import FooterBlock from 'components/src/lib/FooterBlock';
+import SlidePage from 'components/src/lib/SlidePage';
 
 export function App() {
   const tg = window.Telegram.WebApp;
@@ -47,11 +49,16 @@ export function App() {
   const slide = useAppSelector(selectSlide);
   console.log(slide);
 
+  function hui() {
+    console.log('click')
+    dispatch(showSlide(true));
+  }
+
   return (
     <React.Suspense fallback={null}>
       <Page>
         <HeaderBlock>
-          <p>Header</p>
+          <p onClick={hui}>Header</p>
         </HeaderBlock>
         <MainBlock>
           <Groups />
@@ -60,6 +67,9 @@ export function App() {
           <p>Footer</p>
         </FooterBlock>
       </Page>
+      <SlidePage slide={false} close={hui}>
+        <b>Slide</b>
+      </SlidePage>
     </React.Suspense>
   );
 }

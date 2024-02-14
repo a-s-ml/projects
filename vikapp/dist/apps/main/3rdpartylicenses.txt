@@ -28,6 +28,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 @components
 
+@headlessui/react
+MIT
+
 @reduxjs/toolkit
 MIT
 MIT License
