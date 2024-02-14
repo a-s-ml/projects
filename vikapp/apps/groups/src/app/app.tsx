@@ -3,9 +3,13 @@ import { AddGroup, Feedback, GlobalFooter, GlobalHeader } from '@components';
 export function App() {
   return (
     <>
-      <GlobalHeader children={<AddGroup />} />
+      <GlobalHeader>
+        <AddGroup />
+      </GlobalHeader>
       <b>Groups</b>
-      <GlobalFooter children={<Feedback />} />
+      <GlobalFooter>
+        <Feedback />
+      </GlobalFooter>
     </>
   );
 }
