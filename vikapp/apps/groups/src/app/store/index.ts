@@ -12,8 +12,8 @@ export const storeGroups = configureStore({
     getDefaultMiddleware().concat(vikApi.middleware),
 });
 
-export type AppDispatch = typeof storeGroups.dispatch;
-export type RootState = ReturnType<typeof storeGroups.getState>;
+export type GroupDispatch = typeof storeGroups.dispatch;
+export type RootStateGroup = ReturnType<typeof storeGroups.getState>;
 
-export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useGroupDispatch = () => useDispatch<GroupDispatch>();
+export const useGroupSelector: TypedUseSelectorHook<RootStateGroup> = useSelector;
