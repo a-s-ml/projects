@@ -15,7 +15,7 @@ const initialState: mainAppState = {
 };
 
 export const mainAppSlice = createSlice({
-  name: 'slide',
+  name: 'mainApp',
   initialState,
   reducers: {
     showMainSlide: (state, action: PayloadAction<boolean>) => {
