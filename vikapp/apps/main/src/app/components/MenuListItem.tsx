@@ -5,8 +5,12 @@ import {
   QueueListIcon,
 } from '@heroicons/react/20/solid';
 import { IMenu } from '@models';
-import { useAppSelector } from '@store/main';
-import { selectMainData } from '../store/slices/mainApp.slice';
+import { useAppDispatch, useAppSelector } from '@store/main';
+import {
+  selectMainData,
+  showMainSlide,
+  typeMain,
+} from '../store/slices/mainApp.slice';
 
 interface MenuListItemProps {
   item: IMenu;
@@ -14,13 +18,15 @@ interface MenuListItemProps {
 
 export default function MenuListItem({ item }: MenuListItemProps) {
   const data = useAppSelector(selectMainData);
+  const dispatch = useAppDispatch();
 
   return (
     <li
       className="px-1 py-1 sm:px-0 cursor-pointer"
       key={item.id}
       onClick={() => {
-        console.log('asd');
+        dispatch(typeMain(item.name));
+        dispatch(showMainSlide(true));
       }}
     >
       <div className="group relative flex items-start space-x-3 py-4">
