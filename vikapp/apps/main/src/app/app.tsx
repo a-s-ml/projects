@@ -8,6 +8,7 @@ import {
   selectMainSlide,
   selectMainType,
   showMainSlide,
+  typeMain,
 } from './store/slices/mainApp.slice';
 import HomePage from './components/HomePage';
 
@@ -26,6 +27,7 @@ export function App() {
     tg.BackButton.show();
     tg.onEvent('backButtonClicked', () => {
       dispatch(showMainSlide(false)), tg.BackButton.hide();
+      dispatch(typeMain(''));
     });
   }
 
@@ -33,7 +35,9 @@ export function App() {
     <React.Suspense fallback={null}>
       {isLoading && <Preloader />}
       {isSuccess && <HomePage />}
-      <SlidePage slide={slide}>{type === 'groups' && <Groups />}</SlidePage>
+      {type !== '' && (
+        <SlidePage slide={slide}>{type === 'groups' && <Groups />}</SlidePage>
+      )}
     </React.Suspense>
   );
 }
