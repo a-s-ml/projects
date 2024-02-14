@@ -4,16 +4,21 @@ import MenuListItem from './MenuListItem';
 let menuitems: IMenu[] = [
   {
     id: 1,
+    name: 'quiz',
+    text: 'Мои викторины',
+  },
+  {
+    id: 2,
     name: 'groups',
     text: 'Мои группы',
   },
   {
-    id: 2,
+    id: 3,
     name: 'questions',
     text: 'Мои вопросы',
   },
   {
-    id: 3,
+    id: 4,
     name: 'answers',
     text: 'Мои ответы',
   },

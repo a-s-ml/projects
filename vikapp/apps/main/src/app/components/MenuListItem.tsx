@@ -1,4 +1,5 @@
 import {
+  AcademicCapIcon,
   ChevronRightIcon,
   UsersIcon,
   QuestionMarkCircleIcon,
@@ -32,6 +33,12 @@ export default function MenuListItem({ item }: MenuListItemProps) {
       <div className="group relative flex items-start space-x-3 py-4">
         <div className="flex-shrink-0">
           <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg">
+            {item.name === 'quiz' && (
+              <AcademicCapIcon
+                className="h-6 w-6 text-[var(--tg-theme-accent-text-color)]"
+                aria-hidden="true"
+              />
+            )}
             {item.name === 'groups' && (
               <UsersIcon
                 className="h-6 w-6 text-[var(--tg-theme-accent-text-color)]"
@@ -59,6 +66,13 @@ export default function MenuListItem({ item }: MenuListItemProps) {
               {item.text}
             </b>
           </div>
+          {item.name === 'quiz' && (
+            <>
+              <p className="text-xs text-[var(--tg-theme-hint-color)]">
+                Всего:
+              </p>
+            </>
+          )}
           {item.name === 'groups' && (
             <>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
