@@ -31,6 +31,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 @headlessui/react
 MIT
 
+@heroicons/react
+MIT
+
 @reduxjs/toolkit
 MIT
 MIT License
