@@ -29,6 +29,11 @@ export function App() {
 
   const slide = useAppSelector(selectSlide);
 
+  if (slide) {
+    tg.BackButton.show();
+    tg.onEvent('backButtonClicked', () => dispatch(showSlide(false)));
+  }
+
   return (
     <React.Suspense fallback={null}>
       <Page>
