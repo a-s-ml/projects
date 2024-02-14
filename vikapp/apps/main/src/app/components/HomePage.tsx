@@ -1,5 +1,5 @@
 import { MainBlock, Page } from '@components';
-import Logo from '../assets/img/Logo.png';
+import Logo from '../../assets/Logo.png';
 import MenuList from './MenuList';
 
 export function HomePage() {

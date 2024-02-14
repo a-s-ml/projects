@@ -6,6 +6,7 @@ import { Preloader, SlidePage } from '@components';
 import {
   dataMain,
   selectMainSlide,
+  selectMainType,
   showMainSlide,
 } from './store/slices/mainApp.slice';
 import HomePage from './components/HomePage';
@@ -19,6 +20,7 @@ export function App() {
   isSuccess && dispatch(dataMain(data));
 
   const slide = useAppSelector(selectMainSlide);
+  const type = useAppSelector(selectMainType);
 
   if (slide) {
     tg.BackButton.show();
@@ -31,9 +33,7 @@ export function App() {
     <React.Suspense fallback={null}>
       {isLoading && <Preloader />}
       {isSuccess && <HomePage />}
-      <SlidePage slide={slide}>
-        <Groups />
-      </SlidePage>
+      <SlidePage slide={slide}>{type === 'groups' && <Groups />}</SlidePage>
     </React.Suspense>
   );
 }
