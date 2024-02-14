@@ -31,7 +31,9 @@ export function App() {
 
   if (slide) {
     tg.BackButton.show();
-    tg.onEvent('backButtonClicked', () => dispatch(showSlide(false)));
+    tg.onEvent('backButtonClicked', () => {
+      dispatch(showSlide(false)), tg.BackButton.hide();
+    });
   }
 
   return (
