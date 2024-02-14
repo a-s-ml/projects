@@ -6,7 +6,7 @@ interface GroupsListProps {
   chat: number;
 }
 export default function GroupsList({ chat }: GroupsListProps) {
-  console.log(chat)
+  console.log(chat);
   const { isLoading, data, isSuccess } = useGetGroupsQuery(chat);
   console.log(data);
 
@@ -17,11 +17,6 @@ export default function GroupsList({ chat }: GroupsListProps) {
         role="list"
         className="mt-4 divide-y divide-[var(--tg-theme-hint-color)] pt-9"
       >
-        {data?.length === 0 && (
-          <p className="font-light py-2 text-center text-[var(--tg-theme-text-color)]">
-            Вы не добавили бота ещё ни в одну группу/канал
-          </p>
-        )}
         {isSuccess &&
           data.map((group) => (
             <GroupsListItem key={group.id} group={group.chat} />
