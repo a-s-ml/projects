@@ -2,7 +2,7 @@ import styles from './Preloader.module.css';
 
 export const Preloader = () => {
   return (
-    <div className="flex items-center justify-center w-full h-20">
+    <div className="flex items-center content-center justify-center w-full">
       <span className={styles.loader} />
     </div>
   );

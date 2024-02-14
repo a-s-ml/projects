@@ -2,7 +2,7 @@ import * as React from 'react';
 const Groups = React.lazy(() => import('groups/Module'));
 import { useAppDispatch, useAppSelector } from '@store/main';
 import { useValidateQuery } from '@api/vik';
-import { Preloader, SlidePage } from '@components';
+import { Page, Preloader, SlidePage } from '@components';
 import {
   selectSlide,
   selectSlideUser,
@@ -33,8 +33,10 @@ export function App() {
 
   return (
     <React.Suspense fallback={null}>
-      {isLoading && <Preloader />}
-      {data && <HomePage />}
+      <Page>
+        {isLoading && <Preloader />}
+        {data && <HomePage />}
+      </Page>
       <SlidePage slide={slide}>
         <Groups />
       </SlidePage>
