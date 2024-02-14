@@ -23,7 +23,10 @@ export default function SlidePage({ children, slide, close }: SlidePageProps) {
               leaveTo="translate-x-full opacity-5"
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
-                {children}
+                <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                  {children}
+                  <button onClick={close}>Click</button>
+                </div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
