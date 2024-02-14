@@ -18,7 +18,8 @@
         "assets": ["apps/quiz/src/favicon.ico", "apps/quiz/src/assets"],
         "styles": ["apps/quiz/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "apps/quiz/webpack.config.ts"
+        "webpackConfig": "apps/quiz/webpack.config.ts",
+        "postcssConfig": "apps/quiz/postcss.config.js"
       },
       "configurations": {
         "development": {

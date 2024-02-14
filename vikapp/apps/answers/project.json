@@ -18,7 +18,8 @@
         "assets": ["apps/answers/src/favicon.ico", "apps/answers/src/assets"],
         "styles": ["apps/answers/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "apps/answers/webpack.config.ts"
+        "webpackConfig": "apps/answers/webpack.config.ts",
+        "postcssConfig": "apps/answers/postcss.config.js"
       },
       "configurations": {
         "development": {

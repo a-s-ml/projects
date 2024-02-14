@@ -21,7 +21,8 @@
         ],
         "styles": ["apps/questions/src/styles.css"],
         "scripts": [],
-        "webpackConfig": "apps/questions/webpack.config.ts"
+        "webpackConfig": "apps/questions/webpack.config.ts",
+        "postcssConfig": "apps/questions/postcss.config.js"
       },
       "configurations": {
         "development": {
