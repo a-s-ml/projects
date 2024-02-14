@@ -35,9 +35,7 @@ export function App() {
     <React.Suspense fallback={null}>
       {isLoading && <Preloader />}
       {isSuccess && <HomePage />}
-      {type !== '' && (
-        <SlidePage slide={slide}>{type === 'groups' && <Groups />}</SlidePage>
-      )}
+      <SlidePage slide={slide}>{type === 'groups' && <Groups />}</SlidePage>
     </React.Suspense>
   );
 }
