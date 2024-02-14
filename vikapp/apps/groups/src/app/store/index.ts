@@ -5,11 +5,8 @@ import { vikApi } from '@api/vik';
 
 export const storeGroups = configureStore({
   reducer: {
-    [vikApi.reducerPath]: vikApi.reducer,
     groupApp: groupAppSlice,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(vikApi.middleware),
+  }
 });
 
 export type GroupDispatch = typeof storeGroups.dispatch;
