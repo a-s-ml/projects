@@ -1,14 +1,8 @@
-import { useAppDispatch } from '@store/main';
 import { MainBlock, Page } from '@components';
 import Logo from '../assets/img/Logo.png';
 import MenuList from './MenuList';
-import { IProgressData } from 'models';
 
-interface HomePageProps {
-  data: IProgressData;
-}
-
-export function HomePage({ data }: HomePageProps) {
+export function HomePage() {
   return (
     <>
       <Page>
@@ -27,7 +21,7 @@ export function HomePage({ data }: HomePageProps) {
               базу вопросов и вопросы, заданные участниками викторины
             </p>
           </div>
-          <MenuList data={data} />
+          <MenuList />
         </MainBlock>
       </Page>
     </>

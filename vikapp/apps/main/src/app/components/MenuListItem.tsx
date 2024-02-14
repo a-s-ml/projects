@@ -4,14 +4,17 @@ import {
   QuestionMarkCircleIcon,
   QueueListIcon,
 } from '@heroicons/react/20/solid';
-import { IMenu, IProgressData } from '@models';
+import { IMenu } from '@models';
+import { useAppSelector } from '@store/main';
+import { selectMainData } from '../store/slices/mainApp.slice';
 
 interface MenuListItemProps {
   item: IMenu;
-  progress: IProgressData;
 }
 
-export default function MenuListItem({ item, progress }: MenuListItemProps) {
+export default function MenuListItem({ item }: MenuListItemProps) {
+  const data = useAppSelector(selectMainData);
+
   return (
     <li
       className="px-1 py-1 sm:px-0 cursor-pointer"
@@ -53,7 +56,7 @@ export default function MenuListItem({ item, progress }: MenuListItemProps) {
           {item.name === 'groups' && (
             <>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                Всего: {progress.groupsProgress.groupsAll}
+                Всего: {data?.ProgressData.groupsProgress.groupsAll}
               </p>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
                 Активных:
@@ -63,20 +66,21 @@ export default function MenuListItem({ item, progress }: MenuListItemProps) {
           {item.name === 'questions' && (
             <>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                Всего: {progress.questionsProgress.questionsAll}
+                Всего: {data?.ProgressData.questionsProgress.questionsAll}
               </p>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                Модерированных: {progress.questionsProgress.questionsModerate}
+                Модерированных:{' '}
+                {data?.ProgressData.questionsProgress.questionsModerate}
               </p>
             </>
           )}
           {item.name === 'answers' && (
             <>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                Всего: {progress.answersProgress.answersAll}
+                Всего: {data?.ProgressData.answersProgress.answersAll}
               </p>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                Правильных: {progress.answersProgress.answersRight}
+                Правильных: {data?.ProgressData.answersProgress.answersRight}
               </p>
             </>
           )}

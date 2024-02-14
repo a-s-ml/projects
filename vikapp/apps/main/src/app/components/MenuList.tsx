@@ -1,6 +1,4 @@
-import { IMenu, IProgressData, IUser } from '@models';
-import { useAppSelector } from '@store/main';
-import { selectSlideUser } from '../store/slices/slide.slice';
+import { IMenu } from '@models';
 import MenuListItem from './MenuListItem';
 
 let menuitems: IMenu[] = [
@@ -21,11 +19,7 @@ let menuitems: IMenu[] = [
   },
 ];
 
-interface MenuListProps {
-  data: IProgressData;
-}
-
-export default function MenuList({ data }: MenuListProps) {
+export default function MenuList() {
   return (
     <>
       <ul
@@ -33,7 +27,7 @@ export default function MenuList({ data }: MenuListProps) {
         className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
       >
         {menuitems.map((item) => (
-          <MenuListItem key={item.id} item={item} progress={data} />
+          <MenuListItem key={item.id} item={item} />
         ))}
       </ul>
     </>
