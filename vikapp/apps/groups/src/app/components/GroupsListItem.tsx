@@ -2,7 +2,6 @@ import { useGetGroupDbQuery, useGetInfoGroupsQuery } from '@api/group';
 import { useGetActiveGroupsQuery } from '@api/group/active';
 import { Cog8ToothIcon } from '@heroicons/react/24/outline';
 import GroupAvatar from './GroupAvatar';
-import { useAppDispatch } from '@store/groups';
 
 interface GroupsListItemProps {
   group: bigint;
@@ -14,7 +13,6 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);
   const { data: GroupDb } = useGetGroupDbQuery(group);
-  const dispatch = useAppDispatch();
 
   return (
     <>
