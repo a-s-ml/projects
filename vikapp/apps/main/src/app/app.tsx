@@ -2,19 +2,14 @@ import * as React from 'react';
 const Groups = React.lazy(() => import('groups/Module'));
 import { useAppDispatch, useAppSelector } from '@store/main';
 import { useValidateQuery } from '@api/vik';
-import {
-  SlidePage,
-  Page,
-  MainBlock,
-  HeaderBlock,
-  FooterBlock,
-} from '@components';
+import { SlidePage } from '@components';
 import {
   selectSlide,
   selectSlideUser,
   showSlide,
   userSlide,
 } from './store/slices/slide.slice';
+import HomePage from './components/HomePage';
 
 export function App() {
   const tg = window.Telegram.WebApp;
@@ -38,20 +33,8 @@ export function App() {
 
   return (
     <React.Suspense fallback={null}>
-      <Page>
-        <HeaderBlock>
-          <p onClick={() => dispatch(showSlide(true))}>Header</p>
-        </HeaderBlock>
-        <MainBlock>
-          <p>1</p>
-          <p>2</p>
-        </MainBlock>
-        <FooterBlock>
-          <p>Footer</p>
-        </FooterBlock>
-      </Page>
+      <HomePage />
       <SlidePage slide={slide}>
-        <b>Slide</b>
         <Groups />
       </SlidePage>
     </React.Suspense>
