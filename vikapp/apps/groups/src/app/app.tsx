@@ -1,8 +1,8 @@
 import GroupsPage from './components/GroupsPage';
-import { store, useAppSelector } from '@store/groups';
+import { storeGroups, useGroupSelector } from '@store/groups';
 
 export function App() {
-  console.log(useAppSelector(store.getState));
+  console.log(useGroupSelector(storeGroups.getState));
   return (
     <>
       <GroupsPage />
