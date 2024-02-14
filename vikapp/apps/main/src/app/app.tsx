@@ -1,5 +1,8 @@
 import * as React from 'react';
 const Groups = React.lazy(() => import('groups/Module'));
+const Answers = React.lazy(() => import('answers/Module'));
+const Questions = React.lazy(() => import('questions/Module'));
+const Quiz = React.lazy(() => import('quiz/Module'));
 import { useAppDispatch, useAppSelector } from '@store/main';
 import { useValidateQuery } from '@api/vik';
 import { Preloader, SlidePage } from '@components';
@@ -35,7 +38,10 @@ export function App() {
     <React.Suspense fallback={null}>
       {isLoading && <Preloader />}
       {isSuccess && <HomePage />}
-      <SlidePage slide={slide}>{type === 'groups' && <Groups />}</SlidePage>
+      <SlidePage slide={slide}>
+        {type === 'groups' && <Groups />}, {type === 'answers' && <Answers />},
+        {type === 'questions' && <Questions />}, {type === 'quiz' && <Quiz />}
+      </SlidePage>
     </React.Suspense>
   );
 }
