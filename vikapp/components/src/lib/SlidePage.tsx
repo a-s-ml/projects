@@ -4,10 +4,9 @@ import { Dialog, Transition } from '@headlessui/react';
 interface SlidePageProps {
   children: React.ReactNode;
   slide: boolean;
-  close: () => void;
 }
 
-export default function SlidePage({ children, slide, close }: SlidePageProps) {
+export const SlidePage = ({ children, slide }: SlidePageProps) => {
   return (
     <>
       <Transition.Root show={slide} as={Fragment}>

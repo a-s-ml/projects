@@ -24,8 +24,9 @@
       "@api/vik": ["libs/api/src/vik.api.ts"],
       "@components": ["components/src/index.ts"],
       "@models": ["models/"],
-      "@slises/main": ["apps/main/src/app/store/slises"],
+      "@slises/main/slide": ["apps/main/src/app/store/slises/slide.slice.ts"], //хз
       "@store/main": ["apps/main/src/app/store/index.ts"],
+      "@utils": ["libs/utils/src/index.ts"],
       "groups/Module": ["apps/groups/src/remote-entry.ts"]
     }
   },
