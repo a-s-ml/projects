@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootStateGroup } from '@store/groups';
+import { RootState } from '@store/groups';
 
 export interface groupAppState {
   slide: boolean;
   type: string;
-  group: number;
+  group: bigint;
 }
 
 const initialState: groupAppState = {
   slide: false,
   type: '',
-  group: 10,
+  group: 10n,
 };
 
 export const groupAppSlice = createSlice({
@@ -23,7 +23,7 @@ export const groupAppSlice = createSlice({
     typeGroup: (state, action: PayloadAction<string>) => {
       state.type = action.payload;
     },
-    dataGroup: (state, action: PayloadAction<number>) => {
+    dataGroup: (state, action: PayloadAction<bigint>) => {
       state.group = action.payload;
     },
   },
@@ -31,8 +31,8 @@ export const groupAppSlice = createSlice({
 
 export const { showGroupSlide, typeGroup, dataGroup } = groupAppSlice.actions;
 
-export const selectGroupSlide = (state: RootStateGroup) => state.groupApp.slide;
-export const selectGroupData = (state: RootStateGroup) => state.groupApp.group;
-export const selectGroupType = (state: RootStateGroup) => state.groupApp.type;
+export const selectGroupSlide = (state: RootState) => state.groupApp.slide;
+export const selectGroupData = (state: RootState) => state.groupApp.group;
+export const selectGroupType = (state: RootState) => state.groupApp.type;
 
 export default groupAppSlice.reducer;

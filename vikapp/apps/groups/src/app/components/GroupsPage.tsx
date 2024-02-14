@@ -18,6 +18,7 @@ export function GroupsPage() {
               Groups
             </h2>
           </div>
+          <GroupsList chat={521884639} />
         </MainBlock>
       </Page>
     </>
