@@ -71,6 +71,9 @@ export default function MenuListItem({ item }: MenuListItemProps) {
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
                 Всего:
               </p>
+              <p className="text-xs text-[var(--tg-theme-hint-color)]">
+                Активных:
+              </p>
             </>
           )}
           {item.name === 'groups' && (

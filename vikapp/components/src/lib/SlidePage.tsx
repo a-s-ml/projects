@@ -17,14 +17,13 @@ export const SlidePage = ({ children, slide }: SlidePageProps) => {
               enter="transform transition ease-in-out duration-500"
               enterFrom="translate-x-full opacity-5"
               enterTo="translate-x-0 opacity-100"
-              leave="transform transition ease-in-out duration-100"
+              leave="transform transition ease-in-out duration-500"
               leaveFrom="translate-x-0 opacity-100"
               leaveTo="translate-x-full opacity-5"
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
                 <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
                   {children}
-                  <button onClick={close}>Click</button>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
@@ -33,4 +32,4 @@ export const SlidePage = ({ children, slide }: SlidePageProps) => {
       </Transition.Root>
     </>
   );
-}
+};

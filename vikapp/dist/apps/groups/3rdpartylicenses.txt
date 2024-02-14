@@ -1,3 +1,11 @@
+@components
+
+@headlessui/react
+MIT
+
+@heroicons/react
+MIT
+
 @vikapp/source
 MIT
 
