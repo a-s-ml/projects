@@ -44,23 +44,13 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
                 </p>
               )}
             </div>
-            {successActive && (
-              <div className="flex-shrink-0 self-center text-right">
-                {/* <ToggleButton group={dataGroupInfo.id} state={groupActive} /> */}
-              </div>
-            )}
           </div>
           <div
             className="group relative flex items-start space-x-3 cursor-pointer"
             onClick={() => {
-              // dispatch(groupSlide(group));
+              console.log('asd');
             }}
           >
-            <div className="min-w-0 flex-1">
-              {/* <TypeQuestion questionType={GroupDb.question_type} />
-              <PeriodQuestion time={GroupDb.time} />
-              <CategoryQuestion group={dataGroupInfo.id} /> */}
-            </div>
             <div className="flex-shrink-0 self-center">
               <Cog8ToothIcon
                 className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
