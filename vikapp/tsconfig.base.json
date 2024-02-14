@@ -24,10 +24,13 @@
       "@api/vik": ["libs/api/src/vik.api.ts"],
       "@components": ["components/src/index.ts"],
       "@models": ["models/"],
-      "@slises/main/slide": ["apps/main/src/app/store/slises/slide.slice.ts"], //хз
+      "@slises/main/slide": ["apps/main/src/app/store/slises/slide.slice.ts"],
       "@store/main": ["apps/main/src/app/store/index.ts"],
       "@utils": ["libs/utils/src/index.ts"],
-      "groups/Module": ["apps/groups/src/remote-entry.ts"]
+      "answers/Module": ["apps/answers/src/remote-entry.ts"],
+      "groups/Module": ["apps/groups/src/remote-entry.ts"],
+      "questions/Module": ["apps/questions/src/remote-entry.ts"],
+      "quiz/Module": ["apps/quiz/src/remote-entry.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
