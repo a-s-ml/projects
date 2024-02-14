@@ -26,6 +26,7 @@
       "@models": ["models/"],
       "@slises/main/slide": ["apps/main/src/app/store/slises/slide.slice.ts"],
       "@store/main": ["apps/main/src/app/store/index.ts"],
+      "@store/groups": ["apps/groups/src/app/store/index.ts"],
       "@utils": ["libs/utils/src/index.ts"],
       "answers/Module": ["apps/answers/src/remote-entry.ts"],
       "groups/Module": ["apps/groups/src/remote-entry.ts"],

@@ -1,15 +1,9 @@
-import { AddGroup, Feedback, GlobalFooter, GlobalHeader } from '@components';
+import GroupsPage from './components/GroupsPage';
 
 export function App() {
   return (
     <>
-      <GlobalHeader>
-        <AddGroup />
-      </GlobalHeader>
-      <b>Groups</b>
-      <GlobalFooter>
-        <Feedback />
-      </GlobalFooter>
+      <GroupsPage />
     </>
   );
 }

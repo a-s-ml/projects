@@ -25,6 +25,13 @@
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
+    "../../libs/api/src/vik.api.ts",
+    "../../libs/api/src/type.api.ts",
+    "../../libs/api/src/activeGroup.api.ts",
+    "../../libs/api/src/group.api.ts",
+    "../../libs/api/src/category.api.ts",
+    "../../libs/api/src/period.api.ts",
+    "../../libs/api/src/question.api.ts",
     "../../models/src/window.d.ts"
   ]
 }
