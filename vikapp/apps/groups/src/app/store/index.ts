@@ -8,8 +8,8 @@ export const storeGroups = configureStore({
   },
 });
 
-export type AppDispatch = typeof storeGroups.dispatch;
+export type GroupDispatch = typeof storeGroups.dispatch;
 export type RootStateGroup = ReturnType<typeof storeGroups.getState>;
 
-export const useGroupDispatch = () => useDispatch<AppDispatch>();
+export const useGroupDispatch = () => useDispatch<GroupDispatch>();
 export const useGroupSelector: TypedUseSelectorHook<RootStateGroup> = useSelector;
