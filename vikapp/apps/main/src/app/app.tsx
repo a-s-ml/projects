@@ -67,7 +67,7 @@ export function App() {
           <p>Footer</p>
         </FooterBlock>
       </Page>
-      <SlidePage slide={false} close={hui}>
+      <SlidePage slide={slide} close={hui}>
         <b>Slide</b>
       </SlidePage>
     </React.Suspense>
