@@ -2,7 +2,12 @@ import { MainBlock, Page } from '@components';
 import Logo from '../../assets/Logo.png';
 import MenuList from './MenuList';
 
-export function HomePage() {
+interface HomePageProps {
+  slide: boolean;
+  setSlide: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export function HomePage({ slide, setSlide }: HomePageProps) {
   return (
     <>
       <Page>
@@ -21,7 +26,7 @@ export function HomePage() {
               базу вопросов и вопросы, заданные участниками викторины
             </p>
           </div>
-          <MenuList />
+          <MenuList slide={slide} setSlide={setSlide} />
         </MainBlock>
       </Page>
     </>

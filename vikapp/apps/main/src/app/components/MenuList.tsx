@@ -23,8 +23,11 @@ let menuitems: IMenu[] = [
     text: 'Мои ответы',
   },
 ];
-
-export default function MenuList() {
+interface MenuListProps {
+  slide: boolean;
+  setSlide: React.Dispatch<React.SetStateAction<boolean>>;
+}
+export default function MenuList({setSlide, slide}: MenuListProps) {
   return (
     <>
       <ul
@@ -32,7 +35,7 @@ export default function MenuList() {
         className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
       >
         {menuitems.map((item) => (
-          <MenuListItem key={item.id} item={item} />
+          <MenuListItem key={item.id} item={item} slide={slide} setSlide={setSlide}/>
         ))}
       </ul>
     </>
