@@ -45,6 +45,7 @@ export function App() {
     <React.Suspense fallback={null}>
       {/* {isLoading && <Preloader />} */}
       {/* {isSuccess && <HomePage />} */}
+      <HomePage />
       <SlidePage slide={slide}>
         {/* {type === 'groups' && <Groups />}, {type === 'answers' && <Answers />},
         {type === 'questions' && <Questions />}, {type === 'quiz' && <Quiz />} */}
