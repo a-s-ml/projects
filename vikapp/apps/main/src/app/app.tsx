@@ -44,8 +44,7 @@ export function App() {
       {isLoading && <Preloader />}
       {isSuccess && <HomePage />}
       <SlidePage slide={slide}>
-        {type === 'groups' && <Groups />}, {type === 'answers' && <Answers />},
-        {type === 'questions' && <Questions />}, {type === 'quiz' && <Quiz />}
+        {type === 'groups' && <Groups />}
       </SlidePage>
     </React.Suspense>
   );
