@@ -8,7 +8,7 @@ interface GroupsListProps {
 export default function GroupsList({ chat }: GroupsListProps) {
   console.log(chat);
   const { isLoading, data, isSuccess } = useGetGroupsQuery(chat);
-  console.log(data);
+  isSuccess && console.log(data);
 
   return (
     <>

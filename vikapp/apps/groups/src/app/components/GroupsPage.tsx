@@ -15,7 +15,6 @@ import {
 
 export function GroupsPage() {
   const tg = window.Telegram.WebApp;
-  const dispatch = useGroupDispatch();
 
   const slide = useGroupSelector(selectGroupSlide);
   const type = useGroupSelector(selectGroupType);

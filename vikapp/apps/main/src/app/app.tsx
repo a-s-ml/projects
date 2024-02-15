@@ -25,6 +25,7 @@ export function App() {
 
   const slide = useAppSelector(selectMainSlide);
   const type = useAppSelector(selectMainType);
+  isSuccess && console.log(data)
 
   React.useEffect(() => {
     tg.expand();
