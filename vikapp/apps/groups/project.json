@@ -16,7 +16,7 @@
         "main": "apps/groups/src/main.ts",
         "tsConfig": "apps/groups/tsconfig.app.json",
         "assets": ["apps/groups/src/favicon.ico", "apps/groups/src/assets"],
-        "styles": [],
+        "styles": ["apps/groups/src/styles.css"],
         "scripts": [],
         "webpackConfig": "apps/groups/webpack.config.ts",
         "postcssConfig": "apps/groups/postcss.config.js"
