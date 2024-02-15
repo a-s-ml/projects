@@ -1,8 +1,4 @@
 import * as React from 'react';
-const Groups = React.lazy(() => import('groups/Module'));
-// const Answers = React.lazy(() => import('answers/Module'));
-// const Questions = React.lazy(() => import('questions/Module'));
-const Quiz = React.lazy(() => import('quiz/Module'));
 import { storeMain, useAppDispatch, useAppSelector } from '@store/main';
 import { useValidateQuery } from '@api/vik';
 import { Preloader, SlidePage } from '@components';
@@ -14,6 +10,20 @@ import {
   typeMain,
 } from './store/slices/mainApp.slice';
 import HomePage from './components/HomePage';
+import { importRemote, } from '@module-federation/utilities/.';
+
+const Groups = React.lazy(() => import('groups/Module'));
+// const Answers = React.lazy(() => import('answers/Module'));
+// const Questions = React.lazy(() => import('questions/Module'));
+const Quiz = React.lazy(() =>
+  importRemote({
+    url: async () => Promise.resolve('https://80q.ru/mf/quiz/remoteEntry.js'),
+    scope: 'quiz',
+    module: 'quiz/Module',
+    remoteEntryFileName: 'remoteEntry.js',
+    esm: true,
+  })
+);
 
 export function App() {
   const tg = window.Telegram.WebApp;

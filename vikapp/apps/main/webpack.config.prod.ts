@@ -9,8 +9,8 @@ const prodConfig: ModuleFederationConfig = {
   ...baseConfig,
   remotes: [
     ['groups', 'https://80q.ru/mf/groups/remoteEntry.js'],
-    // ['questions', 'https://80q.ru/mf/questions/remoteEntry.js'],
-    // ['answers', 'https://80q.ru/mf/answers/remoteEntry.js'],
+    ['questions', 'https://80q.ru/mf/questions/remoteEntry.js'],
+    ['answers', 'https://80q.ru/mf/answers/remoteEntry.js'],
     ['quiz', 'https://80q.ru/mf/quiz/remoteEntry.js'],
   ],
 };
