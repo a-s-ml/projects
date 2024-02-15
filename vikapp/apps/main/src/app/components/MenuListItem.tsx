@@ -15,26 +15,19 @@ import {
 
 interface MenuListItemProps {
   item: IMenu;
-  slide: boolean;
-  setSlide: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function MenuListItem({
-  item,
-  slide,
-  setSlide,
-}: MenuListItemProps) {
-  // const data = useAppSelector(selectMainData);
-  // const dispatch = useAppDispatch();
+export default function MenuListItem({ item }: MenuListItemProps) {
+  const data = useAppSelector(selectMainData);
+  const dispatch = useAppDispatch();
 
   return (
     <li
       className="px-1 py-1 sm:px-0 cursor-pointer"
       key={item.id}
       onClick={() => {
-        // dispatch(typeMain(item.name));
-        // dispatch(showMainSlide(true));
-        setSlide(true);
+        dispatch(typeMain(item.name));
+        dispatch(showMainSlide(true));
       }}
     >
       <div className="group relative flex items-start space-x-3 py-4">
@@ -86,7 +79,7 @@ export default function MenuListItem({
           {item.name === 'groups' && (
             <>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                {/* Всего: {data?.ProgressData.groupsProgress.groupsAll} */}
+                Всего: {data?.ProgressData.groupsProgress.groupsAll}
               </p>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
                 Активных:
@@ -96,21 +89,21 @@ export default function MenuListItem({
           {item.name === 'questions' && (
             <>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                {/* Всего: {data?.ProgressData.questionsProgress.questionsAll} */}
+                Всего: {data?.ProgressData.questionsProgress.questionsAll}
               </p>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
                 Модерированных:{' '}
-                {/* {data?.ProgressData.questionsProgress.questionsModerate} */}
+                {data?.ProgressData.questionsProgress.questionsModerate}
               </p>
             </>
           )}
           {item.name === 'answers' && (
             <>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                {/* Всего: {data?.ProgressData.answersProgress.answersAll} */}
+                Всего: {data?.ProgressData.answersProgress.answersAll}
               </p>
               <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                {/* Правильных: {data?.ProgressData.answersProgress.answersRight} */}
+                Правильных: {data?.ProgressData.answersProgress.answersRight}
               </p>
             </>
           )}
