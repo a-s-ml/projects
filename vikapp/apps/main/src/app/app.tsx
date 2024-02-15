@@ -3,7 +3,7 @@ const Groups = React.lazy(() => import('groups/Module'));
 const Answers = React.lazy(() => import('answers/Module'));
 const Questions = React.lazy(() => import('questions/Module'));
 const Quiz = React.lazy(() => import('quiz/Module'));
-import { useAppDispatch, useAppSelector } from '@store/main';
+import { storeMain, useAppDispatch, useAppSelector } from '@store/main';
 import { useValidateQuery } from '@api/vik';
 import { Preloader, SlidePage } from '@components';
 import {
@@ -26,6 +26,7 @@ export function App() {
   const slide = useAppSelector(selectMainSlide);
   const type = useAppSelector(selectMainType);
   isSuccess && console.log(data)
+  console.log(useAppSelector(storeMain.getState));
 
   React.useEffect(() => {
     tg.expand();
