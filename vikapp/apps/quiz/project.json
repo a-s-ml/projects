@@ -12,7 +12,7 @@
         "compiler": "babel",
         "outputPath": "dist/apps/quiz",
         "index": "apps/quiz/src/index.html",
-        "baseHref": "/",
+        "baseHref": "/mf/quiz/",
         "main": "apps/quiz/src/main.ts",
         "tsConfig": "apps/quiz/tsconfig.app.json",
         "assets": ["apps/quiz/src/favicon.ico", "apps/quiz/src/assets"],
