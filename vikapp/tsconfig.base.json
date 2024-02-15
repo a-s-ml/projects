@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@api/global": ["libs/api/src/global.api.ts"],
       "@api/category": ["libs/api/src/category.api.ts"],
+      "@api/global": ["libs/api/src/global.api.ts"],
       "@api/group": ["libs/api/src/group.api.ts"],
       "@api/group/active": ["libs/api/src/activeGroup.api.ts"],
       "@api/period": ["libs/api/src/period.api.ts"],

@@ -2,7 +2,7 @@ import * as React from 'react';
 const Groups = React.lazy(() => import('groups/Module'));
 // const Answers = React.lazy(() => import('answers/Module'));
 // const Questions = React.lazy(() => import('questions/Module'));
-// const Quiz = React.lazy(() => import('quiz/Module'));
+const Quiz = React.lazy(() => import('quiz/Module'));
 import { storeMain, useAppDispatch, useAppSelector } from '@store/main';
 import { useValidateQuery } from '@api/vik';
 import { Preloader, SlidePage } from '@components';
@@ -52,6 +52,7 @@ export function App() {
       <SlidePage slide={slide}>
         {/* {type === 'groups' && <Groups />} */}
         <Groups />
+        <Quiz />
       </SlidePage>
     </React.Suspense>
   );
