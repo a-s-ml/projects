@@ -1,8 +1,8 @@
 import * as React from 'react';
 const Groups = React.lazy(() => import('groups/Module'));
-const Answers = React.lazy(() => import('answers/Module'));
-const Questions = React.lazy(() => import('questions/Module'));
-const Quiz = React.lazy(() => import('quiz/Module'));
+// const Answers = React.lazy(() => import('answers/Module'));
+// const Questions = React.lazy(() => import('questions/Module'));
+// const Quiz = React.lazy(() => import('quiz/Module'));
 import { storeMain, useAppDispatch, useAppSelector } from '@store/main';
 import { useValidateQuery } from '@api/vik';
 import { Preloader, SlidePage } from '@components';
@@ -17,16 +17,17 @@ import HomePage from './components/HomePage';
 
 export function App() {
   const tg = window.Telegram.WebApp;
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
+  const [slide, setSlide] = React.useState(false);
 
-  const { data, isSuccess, isLoading } = useValidateQuery(tg.initData);
+  // const { data, isSuccess, isLoading } = useValidateQuery(tg.initData);
 
-  isSuccess && dispatch(dataMain(data));
+  // isSuccess && dispatch(dataMain(data));
 
-  const slide = useAppSelector(selectMainSlide);
-  const type = useAppSelector(selectMainType);
-  isSuccess && console.log(data)
-  console.log(useAppSelector(storeMain.getState));
+  // const slide = useAppSelector(selectMainSlide);
+  // const type = useAppSelector(selectMainType);
+  // isSuccess && console.log(data)
+  // console.log(useAppSelector(storeMain.getState));
 
   React.useEffect(() => {
     tg.expand();
@@ -36,17 +37,21 @@ export function App() {
   if (slide) {
     tg.BackButton.show();
     tg.onEvent('backButtonClicked', () => {
-      dispatch(showMainSlide(false)), tg.BackButton.hide();
-      dispatch(typeMain(''));
+      setSlide(false);
+      // dispatch(showMainSlide(false)), tg.BackButton.hide();
+      // dispatch(typeMain(''));
     });
   }
 
   return (
     <React.Suspense fallback={null}>
-      {isLoading && <Preloader />}
-      {isSuccess && <HomePage />}
+      {/* {isLoading && <Preloader />}
+      {isSuccess && <HomePage />} */}
+      <HomePage />
+      <button onClick={() => setSlide(true)}>Click</button>
       <SlidePage slide={slide}>
-        {type === 'groups' && <Groups />}
+        {/* {type === 'groups' && <Groups />} */}
+        <Groups />
       </SlidePage>
     </React.Suspense>
   );
