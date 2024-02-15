@@ -1,8 +1,8 @@
 import { IReqTypeGroup } from "@models";
 import { IType } from "@models";
-import { vikApi } from "./vik.api";
+import { globalApi } from "@api/global";
 
-export const extendedApiSlice = vikApi.injectEndpoints({
+export const extendedApiSlice = globalApi.injectEndpoints({
   endpoints: (build) => ({
 
     getType: build.query<IType[], string>({

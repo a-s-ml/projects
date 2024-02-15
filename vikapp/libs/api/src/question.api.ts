@@ -1,5 +1,5 @@
 import { IQuestion } from "@models";
-import { vikApi } from "./vik.api";
+import { globalApi } from "@api/global";
 
 export interface IAddQuestion {
   chat: bigint;
@@ -12,7 +12,7 @@ export interface IAddQuestion {
   answerright: number;
 }
 
-export const extendedApiSlice = vikApi.injectEndpoints({
+export const extendedApiSlice = globalApi.injectEndpoints({
   endpoints: (build) => ({
     getQuestionById: build.query<IQuestion, number>({
       query: (id) => ({

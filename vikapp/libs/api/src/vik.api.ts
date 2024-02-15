@@ -1,23 +1,7 @@
-import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
+import { globalApi } from '@api/global';
 import { IValidate } from '@models';
 
-const staggeredBaseQuery = retry(
-  fetchBaseQuery({ baseUrl: 'https://api80q.ru/viktorinaonlinebot/' }),
-  { maxRetries: 5 }
-);
-
-export const vikApi = createApi({
-  reducerPath: 'vikApi',
-  refetchOnFocus: true,
-  baseQuery: staggeredBaseQuery,
-  tagTypes: [
-    'TypeGroup',
-    'TimeGroup',
-    'CategoryGroup',
-    'Validate',
-    'CountAvailableQuestionGroup',
-    'CountPublishedQuestionGroup',
-  ],
+export const extendedApiSlice = globalApi.injectEndpoints({
   endpoints: (build) => ({
     validate: build.query<IValidate, string>({
       query: (initData: string) => ({
@@ -28,4 +12,4 @@ export const vikApi = createApi({
   }),
 });
 
-export const { useValidateQuery } = vikApi;
+export const { useValidateQuery } = extendedApiSlice;

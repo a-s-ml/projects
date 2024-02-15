@@ -1,15 +1,15 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import mainAppSlice from './slices/mainApp.slice';
-import { vikApi } from '@api/vik';
+import { globalApi } from '@api/global';
 
 export const storeMain = configureStore({
   reducer: {
-    [vikApi.reducerPath]: vikApi.reducer,
+    [globalApi.reducerPath]: globalApi.reducer,
     mainApp: mainAppSlice,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(vikApi.middleware),
+    getDefaultMiddleware().concat(globalApi.middleware),
 });
 
 export type AppDispatch = typeof storeMain.dispatch;

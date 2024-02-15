@@ -17,14 +17,15 @@ import HomePage from './components/HomePage';
 
 export function App() {
   const tg = window.Telegram.WebApp;
-  const dispatch = useAppDispatch();
+  const [slide, setSlide] = React.useState(false)
+  // const dispatch = useAppDispatch();
 
-  const { data, isSuccess, isLoading } = useValidateQuery(tg.initData);
+  // const { data, isSuccess, isLoading } = useValidateQuery(tg.initData);
 
-  isSuccess && dispatch(dataMain(data));
+  // isSuccess && dispatch(dataMain(data));
 
-  const slide = useAppSelector(selectMainSlide);
-  const type = useAppSelector(selectMainType);
+  // const slide = useAppSelector(selectMainSlide);
+  // const type = useAppSelector(selectMainType);
 
   React.useEffect(() => {
     tg.expand();
@@ -34,18 +35,20 @@ export function App() {
   if (slide) {
     tg.BackButton.show();
     tg.onEvent('backButtonClicked', () => {
-      dispatch(showMainSlide(false)), tg.BackButton.hide();
-      dispatch(typeMain(''));
+      setSlide(false)
+      // dispatch(showMainSlide(false)), tg.BackButton.hide();
+      // dispatch(typeMain(''));
     });
   }
 
   return (
     <React.Suspense fallback={null}>
-      {isLoading && <Preloader />}
-      {isSuccess && <HomePage />}
+      {/* {isLoading && <Preloader />} */}
+      {/* {isSuccess && <HomePage />} */}
       <SlidePage slide={slide}>
-        {type === 'groups' && <Groups />}, {type === 'answers' && <Answers />},
-        {type === 'questions' && <Questions />}, {type === 'quiz' && <Quiz />}
+        {/* {type === 'groups' && <Groups />}, {type === 'answers' && <Answers />},
+        {type === 'questions' && <Questions />}, {type === 'quiz' && <Quiz />} */}
+        <Groups />
       </SlidePage>
     </React.Suspense>
   );

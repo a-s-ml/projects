@@ -1,11 +1,11 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import groupAppSlice from './slices/groupApp.slice';
-import { vikApi } from '@api/vik';
+import { globalApi } from '@api/global';
 
 export const storeGroups = configureStore({
   reducer: {
-    [vikApi.reducerPath]: vikApi.reducer,
+    [globalApi.reducerPath]: globalApi.reducer,
     groupApp: groupAppSlice,
   },
 });
