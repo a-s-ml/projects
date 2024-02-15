@@ -1,8 +1,10 @@
-import { quizActions, selectAllQuiz, selectQuizEntities } from "./store/quiz.slice";
+import { useSelector } from 'react-redux';
+import { selectAllQuiz } from './store/quiz.slice';
 
 export function App() {
-  
-  console.log(selectAllQuiz);
+  const entities = useSelector(selectAllQuiz);
+  console.log('entities', entities);
+  console.log('selectAllQuiz', selectAllQuiz);
   return (
     <div>
       <b>Quiz</b>

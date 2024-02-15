@@ -51,7 +51,7 @@ export function App() {
       <button onClick={() => setSlide(true)}>Click</button>
       <SlidePage slide={slide}>
         {/* {type === 'groups' && <Groups />} */}
-        <Groups />
+        {/* <Groups /> */}
         <Quiz />
       </SlidePage>
     </React.Suspense>
