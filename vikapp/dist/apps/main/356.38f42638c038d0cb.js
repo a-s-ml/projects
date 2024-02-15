@@ -1,0 +1,1 @@
+(self.webpackChunkmain=self.webpackChunkmain||[]).push([[356],{3356:(n,e,s)=>{s.r(e),s.d(e,{default:()=>u});var i=s(7e3);const u=function(){return(0,i.jsx)("div",{children:(0,i.jsx)("b",{children:"Questions"})})}}}]);
