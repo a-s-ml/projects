@@ -15,15 +15,15 @@ import { importRemote } from '@module-federation/utilities/.';
 const Groups = React.lazy(() => import('groups/Module'));
 const Answers = React.lazy(() => import('answers/Module'));
 const Questions = React.lazy(() => import('questions/Module'));
-// const Quiz = React.lazy(() => import('quiz/Module'));
-const Quiz = React.lazy(() =>
-  importRemote({
-    url: async () => Promise.resolve('https://80q.ru/mf/quiz/remoteEntry.js'),
-    scope: 'quiz',
-    module: 'quiz/Module',
-    esm: true,
-  })
-);
+const Quiz = React.lazy(() => import('quiz/Module'));
+// const Quiz = React.lazy(() =>
+//   importRemote({
+//     url: async () => Promise.resolve('https://80q.ru/mf/quiz/remoteEntry.js'),
+//     scope: 'quiz',
+//     module: 'quiz/Module',
+//     esm: true,
+//   })
+// );
 
 export function App() {
   const tg = window.Telegram.WebApp;
