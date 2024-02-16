@@ -1,0 +1,87 @@
+{
+  "name": "add-question",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/add-question/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/add-question",
+        "index": "apps/add-question/src/index.html",
+        "baseHref": "/mf/add-question/",
+        "main": "apps/add-question/src/main.ts",
+        "tsConfig": "apps/add-question/tsconfig.app.json",
+        "assets": [
+          "apps/add-question/src/favicon.ico",
+          "apps/add-question/src/assets"
+        ],
+        "styles": ["apps/add-question/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "apps/add-question/webpack.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/add-question/src/environments/environment.ts",
+              "with": "apps/add-question/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "apps/add-question/webpack.config.prod.ts"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "add-question:build",
+        "hmr": true,
+        "port": 4205
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "add-question:build:development"
+        },
+        "production": {
+          "buildTarget": "add-question:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "add-question:build",
+        "watch": false,
+        "port": 4205
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "add-question:build:development"
+        },
+        "production": {
+          "buildTarget": "add-question:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}

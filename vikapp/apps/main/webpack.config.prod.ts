@@ -12,6 +12,7 @@ const prodConfig: ModuleFederationConfig = {
     ['questions', 'https://80q.ru/mf/questions/remoteEntry.js'],
     ['answers', 'https://80q.ru/mf/answers/remoteEntry.js'],
     ['quiz', 'https://80q.ru/mf/quiz/remoteEntry.js'],
+    ['add-question', 'https://80q.ru/mf/add-question/remoteEntry.js'],
   ],
 };
 

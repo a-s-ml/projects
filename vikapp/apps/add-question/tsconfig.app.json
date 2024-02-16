@@ -1,0 +1,37 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": [
+      "node",
+
+      "@nx/react/typings/cssmodule.d.ts",
+      "@nx/react/typings/image.d.ts"
+    ]
+  },
+  "exclude": [
+    "jest.config.ts",
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts",
+    "src/**/*.spec.tsx",
+    "src/**/*.test.tsx",
+    "src/**/*.spec.js",
+    "src/**/*.test.js",
+    "src/**/*.spec.jsx",
+    "src/**/*.test.jsx"
+  ],
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "../../libs/api/src/vik.api.ts",
+    "../../libs/api/src/type.api.ts",
+    "../../libs/api/src/activeGroup.api.ts",
+    "../../libs/api/src/group.api.ts",
+    "../../libs/api/src/category.api.ts",
+    "../../libs/api/src/period.api.ts",
+    "../../libs/api/src/question.api.ts",
+    "../../models/src/window.d.ts"
+  ]
+}
