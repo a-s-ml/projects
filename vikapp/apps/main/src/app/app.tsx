@@ -62,7 +62,7 @@ export function App() {
       <SlidePage slide={slide}>
         {/* {type === 'groups' && <Groups />} */}
         {/* <Groups /> */}
-        <Quiz />
+        <Groups />
       </SlidePage>
     </React.Suspense>
   );
