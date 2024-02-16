@@ -2,16 +2,12 @@ import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 
 import App from './app/app';
-import { Provider } from 'react-redux';
-import { storeGroups } from '@store/groups';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <Provider store={storeGroups}>
-    <StrictMode>
-      <App />
-    </StrictMode>
-  </Provider>
+  <StrictMode>
+    <App />
+  </StrictMode>
 );

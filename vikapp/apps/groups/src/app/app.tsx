@@ -1,12 +1,15 @@
+import { Provider } from 'react-redux';
 import GroupsPage from './components/GroupsPage';
 import { storeGroups, useGroupSelector } from '@store/groups';
 
 export function App() {
   console.log(useGroupSelector(storeGroups.getState));
-  
+
   return (
     <>
-      <GroupsPage />
+      <Provider store={storeGroups}>
+        <GroupsPage />
+      </Provider>
     </>
   );
 }
