@@ -10,20 +10,13 @@ import {
   typeMain,
 } from './store/slices/mainApp.slice';
 import HomePage from './components/HomePage';
-import { importRemote } from '@module-federation/utilities/.';
+import { Provider } from 'react-redux';
+import { storeGroups } from '@store/groups';
 
 const Groups = React.lazy(() => import('groups/Module'));
 const Answers = React.lazy(() => import('answers/Module'));
 const Questions = React.lazy(() => import('questions/Module'));
 const Quiz = React.lazy(() => import('quiz/Module'));
-// const Quiz = React.lazy(() =>
-//   importRemote({
-//     url: async () => Promise.resolve('https://80q.ru/mf/quiz/remoteEntry.js'),
-//     scope: 'quiz',
-//     module: 'quiz/Module',
-//     esm: true,
-//   })
-// );
 
 export function App() {
   const tg = window.Telegram.WebApp;
@@ -62,7 +55,10 @@ export function App() {
       <SlidePage slide={slide}>
         {/* {type === 'groups' && <Groups />} */}
         {/* <Groups /> */}
-        <Groups />
+
+        <Provider store={storeGroups}>
+          <Groups />
+        </Provider>
       </SlidePage>
     </React.Suspense>
   );
