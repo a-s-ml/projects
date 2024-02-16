@@ -7,7 +7,7 @@ import {
   Page,
 } from '@components';
 import GroupsList from './GroupsList';
-import { useGroupDispatch, useGroupSelector } from '@store/groups';
+import { storeGroups, useGroupDispatch, useGroupSelector } from '@store/groups';
 import {
   selectGroupSlide,
   selectGroupType,
@@ -15,6 +15,7 @@ import {
 
 export function GroupsPage() {
   const tg = window.Telegram.WebApp;
+  console.log(useGroupSelector(storeGroups.getState));
 
   const slide = useGroupSelector(selectGroupSlide);
   const type = useGroupSelector(selectGroupType);
