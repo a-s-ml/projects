@@ -3,7 +3,7 @@ import GroupsPage from './components/GroupsPage';
 import { storeGroups } from '@store/groups';
 import { StrictMode } from 'react';
 
-export function App() {
+export const App = () => {
   return (
       <StrictMode>
         <Provider store={storeGroups}>
