@@ -1,16 +1,13 @@
 import { Provider } from 'react-redux';
 import GroupsPage from './components/GroupsPage';
-import { storeGroups } from '@store/groups';
-import { StrictMode } from 'react';
+import { storeGroups } from './store';
 
 export const App = () => {
   return (
-      <StrictMode>
-        <Provider store={storeGroups}>
-          <GroupsPage />
-        </Provider>
-      </StrictMode>
+    <Provider store={storeGroups}>
+      <GroupsPage />
+    </Provider>
   );
-}
+};
 
 export default App;
