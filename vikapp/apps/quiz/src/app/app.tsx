@@ -7,7 +7,6 @@ export function App() {
   console.log('entities', entities);
   return (
     <div>
-      <b>Quiz</b>
       <Tabs />
     </div>
   );
