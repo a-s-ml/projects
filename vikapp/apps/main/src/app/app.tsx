@@ -12,16 +12,19 @@ import {
 import HomePage from './components/HomePage';
 import { Provider } from 'react-redux';
 import { storeGroups } from '@store/groups';
+import { storeAddQuestion } from '@store/add-question';
 
 const Groups = React.lazy(() => import('groups/Module'));
 const Answers = React.lazy(() => import('answers/Module'));
 const Questions = React.lazy(() => import('questions/Module'));
 const Quiz = React.lazy(() => import('quiz/Module'));
+const AddQuestion = React.lazy(() => import('add-question/Module'));
 
 export function App() {
   const tg = window.Telegram.WebApp;
   // const dispatch = useAppDispatch();
   const [slide, setSlide] = React.useState(false);
+  const [slide2, setSlide2] = React.useState(false);
 
   // const { data, isSuccess, isLoading } = useValidateQuery(tg.initData);
 
@@ -51,13 +54,19 @@ export function App() {
       {/* {isLoading && <Preloader />}
       {isSuccess && <HomePage />} */}
       <HomePage />
-      <button onClick={() => setSlide(true)}>Click</button>
-      <SlidePage slide={slide}>
-        {/* {type === 'groups' && <Groups />} */}
-        {/* <Groups /> */}
-
+      <div className="text-center p-2">
+        <button className={"p-2 m-2"} onClick={() => setSlide(true)}>Groups</button>
+        <button className={"p-2 m-2"} onClick={() => setSlide2(true)}>AddQuestion</button>
+      </div>
+      <SlidePage slide={slide2}>
         <Provider store={storeGroups}>
           <Groups />
+        </Provider>
+      </SlidePage>
+      <SlidePage slide={slide}>
+        {/* {type === 'groups' && <Groups />} */}
+        <Provider store={storeAddQuestion}>
+          <AddQuestion />
         </Provider>
       </SlidePage>
     </React.Suspense>
