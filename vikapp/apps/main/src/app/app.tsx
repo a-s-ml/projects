@@ -49,14 +49,23 @@ export function App() {
     });
   }
 
+  if (slide2) {
+    tg.BackButton.show();
+    tg.onEvent('backButtonClicked', () => {
+      setSlide2(false);
+      // dispatch(showMainSlide(false)), tg.BackButton.hide();
+      // dispatch(typeMain(''));
+    });
+  }
+
   return (
     <React.Suspense fallback={null}>
       {/* {isLoading && <Preloader />}
       {isSuccess && <HomePage />} */}
       <HomePage />
       <div className="text-center p-2">
-        <button className={"p-2 m-2"} onClick={() => setSlide(true)}>Groups</button>
-        <button className={"p-2 m-2"} onClick={() => setSlide2(true)}>AddQuestion</button>
+        <button className={"p-2 m-2"} onClick={() => setSlide(true)}>AddQuestion</button>
+        <button className={"p-2 m-2"} onClick={() => setSlide2(true)}>Groups</button>
       </div>
       <SlidePage slide={slide2}>
         <Provider store={storeGroups}>
