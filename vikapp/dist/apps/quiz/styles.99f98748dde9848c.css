@@ -350,7 +350,153 @@ video {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
-}/* You can add global styles to this file, and also import other style files */
+}.sticky {
+  position: sticky;
+}.-mx-4 {
+  margin-left: -1rem;
+  margin-right: -1rem;
+}.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}.-mb-px {
+  margin-bottom: -1px;
+}.mt-2 {
+  margin-top: 0.5rem;
+}.mt-4 {
+  margin-top: 1rem;
+}.mt-6 {
+  margin-top: 1.5rem;
+}.flex {
+  display: flex;
+}.max-w-2xl {
+  max-width: 42rem;
+}.max-w-3xl {
+  max-width: 48rem;
+}.max-w-7xl {
+  max-width: 80rem;
+}.flex-auto {
+  flex: 1 1 auto;
+}.flex-col-reverse {
+  flex-direction: column-reverse;
+}.space-x-10 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(2.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
+}.space-y-16 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(4rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(4rem * var(--tw-space-y-reverse));
+}.overflow-hidden {
+  overflow: hidden;
+}.overflow-x-auto {
+  overflow-x: auto;
+}.whitespace-nowrap {
+  white-space: nowrap;
+}.rounded-lg {
+  border-radius: 0.5rem;
+}.border-b {
+  border-bottom-width: 1px;
+}.border-b-2 {
+  border-bottom-width: 2px;
+}.border-gray-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+}.border-indigo-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(99 102 241 / var(--tw-border-opacity));
+}.border-transparent {
+  border-color: transparent;
+}.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}.object-center {
+  -o-object-position: center;
+     object-position: center;
+}.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}.py-32 {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}.pt-10 {
+  padding-top: 2.5rem;
+}.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}.font-bold {
+  font-weight: 700;
+}.font-medium {
+  font-weight: 500;
+}.tracking-tight {
+  letter-spacing: -0.025em;
+}.text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}.text-gray-900 {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}.text-indigo-600 {
+  --tw-text-opacity: 1;
+  color: rgb(79 70 229 / var(--tw-text-opacity));
+}.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}/* You can add global styles to this file, and also import other style files */.hover\:border-gray-300:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}.hover\:text-gray-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}@media (min-width: 640px) {.sm\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }.sm\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }.sm\:px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }.sm\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}@media (min-width: 1024px) {.lg\:col-span-5 {
+    grid-column: span 5 / span 5;
+  }.lg\:col-span-7 {
+    grid-column: span 7 / span 7;
+  }.lg\:mt-0 {
+    margin-top: 0px;
+  }.lg\:grid {
+    display: grid;
+  }.lg\:max-w-none {
+    max-width: none;
+  }.lg\:grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }.lg\:gap-x-8 {
+    -moz-column-gap: 2rem;
+         column-gap: 2rem;
+  }.lg\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }.lg\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }.lg\:pt-16 {
+    padding-top: 4rem;
+  }
+}
 
-
-/*# sourceMappingURL=styles.css.map*/
