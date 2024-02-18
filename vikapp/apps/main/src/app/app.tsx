@@ -3,7 +3,7 @@ import { useValidateQuery } from '@api/vik';
 import HomePage from './components/HomePage';
 import { Provider } from 'react-redux';
 import { storeGroups } from '@store/groups';
-import { storeMain, useAppDispatch, useAppSelector } from './store';
+import { useAppDispatch, useAppSelector } from './store';
 import {
   dataMain,
   selectMainSlide,
@@ -11,6 +11,7 @@ import {
   showMainSlide,
 } from './store/slices/mainApp.slice';
 import { Preloader, SlidePage } from '@components';
+import { storeQuestion } from 'apps/questions/src/app/store';
 const Groups = React.lazy(() => import('groups/Module'));
 const Answers = React.lazy(() => import('answers/Module'));
 const Questions = React.lazy(() => import('questions/Module'));
@@ -56,7 +57,7 @@ export function App() {
               </Provider>
             )}
             {type == 'questions' && (
-              <Provider store={storeGroups}>
+              <Provider store={storeQuestion}>
                 <Questions />
               </Provider>
             )}
