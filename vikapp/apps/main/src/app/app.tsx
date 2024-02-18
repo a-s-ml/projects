@@ -9,7 +9,7 @@ import {
   selectMainSlide,
   showMainSlide,
 } from './store/slices/mainApp.slice';
-import { SlidePage } from '@components';
+import { Preloader, SlidePage } from '@components';
 const Groups = React.lazy(() => import('groups/Module'));
 const Answers = React.lazy(() => import('answers/Module'));
 const Questions = React.lazy(() => import('questions/Module'));
@@ -37,21 +37,23 @@ export function App() {
 
   isSuccess && dispatch(dataMain(data));
 
-  isSuccess && console.log(data);
-  console.log(useAppSelector(storeMain.getState));
-
-  function toggleSlide() {
+  const toggleSlide = () => {
     dispatch(showMainSlide(true));
-  }
+  };
 
   return (
     <React.Suspense fallback={null}>
-      <HomePage toggleSlide={toggleSlide} />
-      <SlidePage slide={slide}>
-        <Provider store={storeGroups}>
-          <Groups />
-        </Provider>
-      </SlidePage>
+      {isLoading && <Preloader />}
+      {isSuccess && (
+        <>
+          <HomePage toggleSlide={toggleSlide} />
+          <SlidePage slide={slide}>
+            <Provider store={storeGroups}>
+              <Groups />
+            </Provider>
+          </SlidePage>
+        </>
+      )}
     </React.Suspense>
   );
 }

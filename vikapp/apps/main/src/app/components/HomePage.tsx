@@ -44,8 +44,8 @@ export function HomePage({ toggleSlide }: HomePageProps) {
   return (
     <>
       <Page>
-        <PromoPage />
         <MainBlock>
+          <PromoPage />
           <ul
             role="list"
             className="mt-4 divide-y divide-[var(--tg-theme-hint-color)]"
