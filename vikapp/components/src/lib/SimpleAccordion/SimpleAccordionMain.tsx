@@ -34,7 +34,7 @@ export const SimpleAccordionMain = ({
               </Disclosure.Button>
             </li>
             <Disclosure.Panel className="py-4">
-              <div className="space-y-1.5">{content}</div>
+              {content}
             </Disclosure.Panel>
           </>
         )}

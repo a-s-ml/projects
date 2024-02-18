@@ -1,10 +1,10 @@
 import { ChatBubbleOvalLeftEllipsisIcon } from '@heroicons/react/24/outline';
 
 export const Feedback = () => {
-  // const tg = window.Telegram.WebApp;
+  const tg = window.Telegram.WebApp;
 
   function confirm(b: boolean) {
-    // if (b) return tg.openTelegramLink('https://t.me/more_details');
+    if (b) return tg.openTelegramLink('https://t.me/more_details');
     return;
   }
   return (
@@ -12,12 +12,11 @@ export const Feedback = () => {
       <div className="bg-gradient-to-t from-[var(--tg-theme-bg-color)] to-transparent pt-16"></div>
       <div
         className="group flex items-start px-8 py-8 bg-[var(--tg-theme-bg-color)] space-x-3 cursor-pointer"
-        onClick={
-          () => console.log('')
-          // tg.showConfirm(
-          //   `Задатьв вопрос или сделать предложение/рекомендацию вы можете разработчику приложения.\n\nНажмите "Ок", чтобы написать разработчику `,
-          //   confirm
-          // )
+        onClick={() =>
+          tg.showConfirm(
+            `Задать вопрос или сделать предложение/рекомендацию вы можете разработчику приложения.\n\nНажмите "Ок", чтобы написать разработчику`,
+            confirm
+          )
         }
       >
         <ChatBubbleOvalLeftEllipsisIcon
