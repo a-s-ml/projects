@@ -14,7 +14,7 @@ export function App() {
   const tg = window.Telegram.WebApp;
   const dispatch = useQuestionDispatch();
 
-  const slide = useQuestionSelector(selectQuestionSlide);
+  const slideQ = useQuestionSelector(selectQuestionSlide);
   const type = useQuestionSelector(selectQuestionType);
 
   React.useEffect(() => {
@@ -22,14 +22,14 @@ export function App() {
     tg.ready();
   }, []);
 
-  if (slide) {
+  if (slideQ) {
     tg.BackButton.show();
     tg.onEvent('backButtonClicked', () => {
       dispatch(showQuestionSlide(false));
     });
   }
 
-  if (!slide) {
+  if (!slideQ) {
     tg.BackButton.hide();
   }
 
@@ -41,9 +41,12 @@ export function App() {
       {isSuccess && (
         <>
           <QuestionsPage />
-          <SlidePage slide={slide}>
-            {type == 'groups' && <QuestionList />}
-            {type == 'questions' && <QuestionList />}
+          <SlidePage slide={slideQ}>
+            <>
+              <p>sgssdg1</p>
+              <QuestionList />
+              <p>sgssdg1</p>
+            </>
           </SlidePage>
         </>
       )}
