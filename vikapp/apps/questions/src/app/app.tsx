@@ -1,6 +1,7 @@
 import React from 'react';
 import QuestionsPage from './components/QuestionsPage';
-import { useQuestionDispatch, useQuestionSelector } from './store';
+import { QuestionList } from './components/QuestionList';
+import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
 import {
   selectQuestionSlide,
   selectQuestionType,
@@ -8,7 +9,6 @@ import {
 } from './store/slices/questionApp.slice';
 import { useValidateQuery } from '@api/vik';
 import { Preloader, SlidePage } from '@components';
-import { QuestionList } from './components/QuestionList';
 
 export function App() {
   const tg = window.Telegram.WebApp;
@@ -34,6 +34,7 @@ export function App() {
   }
 
   const { data, isSuccess, isLoading } = useValidateQuery(tg.initData);
+  console.log(data);
 
   return (
     <>

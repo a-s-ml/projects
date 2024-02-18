@@ -26,7 +26,6 @@
       "@components": ["components/src/index.ts"],
       "@const": ["libs/const/index.ts"],
       "@models": ["models/"],
-      "@slises/main/slide": ["apps/main/src/app/store/slises/slide.slice.ts"],
       "@store/add-question": ["apps/add-question/src/app/store/index.ts"],
       "@store/groups": ["apps/groups/src/app/store/index.ts"],
       "@store/main": ["apps/main/src/app/store/index.ts"],
