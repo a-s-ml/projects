@@ -530,6 +530,12 @@ video {
 }.px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
+}.px-\[5px\] {
+  padding-left: 5px;
+  padding-right: 5px;
+}.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }.py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
