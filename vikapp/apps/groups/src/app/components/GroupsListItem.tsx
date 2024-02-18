@@ -23,7 +23,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
           <SimpleAccordionMain
             description={
               <>
-                <SimpleAccordionIcon size={10}>
+                <SimpleAccordionIcon size={14}>
                   {dataGroupInfo.photo?.small_file_id && (
                     <GroupAvatar id={dataGroupInfo.photo?.small_file_id} />
                   )}
