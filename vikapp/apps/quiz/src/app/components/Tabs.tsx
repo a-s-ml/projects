@@ -22,10 +22,10 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Tabs() {
+export const Tabs = () => {
   return (
-    
-    <div className="bg-white">s
+    <div className="bg-white">
+      s
       <section
         aria-labelledby="features-heading"
         className="mx-auto max-w-7xl py-8 sm:px-2 lg:px-8"
@@ -75,4 +75,4 @@ export default function Tabs() {
       </section>
     </div>
   );
-}
+};

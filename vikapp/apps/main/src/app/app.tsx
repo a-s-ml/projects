@@ -7,6 +7,7 @@ import { storeMain, useAppDispatch, useAppSelector } from './store';
 import {
   dataMain,
   selectMainSlide,
+  selectMainType,
   showMainSlide,
 } from './store/slices/mainApp.slice';
 import { Preloader, SlidePage } from '@components';
@@ -21,6 +22,7 @@ export function App() {
   const dispatch = useAppDispatch();
 
   const slide = useAppSelector(selectMainSlide);
+  const type = useAppSelector(selectMainType);
 
   React.useEffect(() => {
     tg.expand();
@@ -33,24 +35,31 @@ export function App() {
       dispatch(showMainSlide(false));
     });
   }
+
+  if (!slide) {
+    tg.BackButton.hide();
+  }
   const { data, isSuccess, isLoading } = useValidateQuery(tg.initData);
 
   isSuccess && dispatch(dataMain(data));
-
-  const toggleSlide = () => {
-    dispatch(showMainSlide(true));
-  };
 
   return (
     <React.Suspense fallback={null}>
       {isLoading && <Preloader />}
       {isSuccess && (
         <>
-          <HomePage toggleSlide={toggleSlide} />
+          <HomePage />
           <SlidePage slide={slide}>
-            <Provider store={storeGroups}>
-              <Groups />
-            </Provider>
+            {type == 'groups' && (
+              <Provider store={storeGroups}>
+                <Groups />
+              </Provider>
+            )}
+            {type == 'questions' && (
+              <Provider store={storeGroups}>
+                <Questions />
+              </Provider>
+            )}
           </SlidePage>
         </>
       )}
