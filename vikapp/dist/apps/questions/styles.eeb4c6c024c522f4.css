@@ -463,8 +463,6 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }.to-transparent {
   --tw-gradient-to: transparent var(--tw-gradient-to-position);
-}.p-8 {
-  padding: 2rem;
 }.px-4 {
   padding-left: 1rem;
   padding-right: 1rem;

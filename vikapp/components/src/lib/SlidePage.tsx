@@ -22,7 +22,7 @@ export const SlidePage = ({ children, slide }: SlidePageProps) => {
               leaveTo="translate-x-full opacity-5"
             >
               <Dialog.Panel className="pointer-events-auto relative w-screen">
-                <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
+                <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)]">
                   {children}
                 </div>
               </Dialog.Panel>
