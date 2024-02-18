@@ -411,6 +411,9 @@ video {
 }.mx-auto {
   margin-left: auto;
   margin-right: auto;
+}.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
 }.-mb-px {
   margin-bottom: -1px;
 }.-ml-0 {
@@ -889,5 +892,3 @@ video {
   }
 }
 
-
-/*# sourceMappingURL=styles.css.map*/
