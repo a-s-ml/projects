@@ -65,7 +65,7 @@ export function HomePage({ toggleSlide }: HomePageProps) {
           >
             {menuitems.map((item) => (
               <li
-                className="px-1 py-1 sm:px-0 cursor-pointer"
+                className="cursor-pointer"
                 key={item.id}
                 onClick={() => {
                   toggleSlide;
