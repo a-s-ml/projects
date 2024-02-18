@@ -85,7 +85,7 @@ export function HomePage({ toggleSlide }: HomePageProps) {
                     <p className="text-sm font-medium text-[var(--tg-theme-text-color)]">
                       {item.text}
                     </p>
-                    <p className="text-[var(--tg-theme-hint-color)]">
+                    <p className="text-xs text-[var(--tg-theme-hint-color)]">
                       {item.description}
                     </p>
                   </div>
