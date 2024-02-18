@@ -13,25 +13,25 @@ let menuitems: IMenu[] = [
   {
     id: 1,
     text: 'Мои викторины',
-    description: 'Активных',
+    description: 'Создайте свою викторину и настройте ёё по своему желанию',
     component: AcademicCapIcon,
   },
   {
     id: 2,
     text: 'Мои группы',
-    description: 'Активных',
+    description: 'Добавьте бота в группу или канал и проводите викторины',
     component: UsersIcon,
   },
   {
     id: 3,
     text: 'Мои вопросы',
-    description: 'Модерированных',
+    description: 'Создайте свой вопрос и задайте его в своей группе',
     component: QuestionMarkCircleIcon,
   },
   {
     id: 4,
     text: 'Мои ответы',
-    description: 'Правильных',
+    description: 'Получите расширенную статистику по своим ответам',
     component: QueueListIcon,
   },
 ];
@@ -86,10 +86,7 @@ export function HomePage({ toggleSlide }: HomePageProps) {
                         <span className="absolute inset-0" aria-hidden="true" />
                         {item.text}
                       </b>
-                      <p className="text-xs text-[var(--tg-theme-hint-color)]">
-                        Всего:
-                      </p>
-                      <p className="text-xs text-[var(--tg-theme-hint-color)]">
+                      <p className="text-x text-[var(--tg-theme-hint-color)]">
                         {item.description}
                       </p>
                     </div>
