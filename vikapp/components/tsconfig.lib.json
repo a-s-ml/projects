@@ -26,5 +26,5 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "../models/src/window.d.ts"
-  ]
+, "../apps/groups/src/app/components/AddGroup.tsx", "../apps/questions/src/app/components/AddQuestion.tsx"  ]
 }

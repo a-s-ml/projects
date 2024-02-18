@@ -6,7 +6,7 @@ export * from './lib/SlidePage';
 export * from './lib/Feedback';
 export * from './lib/GlobalFooter';
 export * from './lib/GlobalHeader';
-export * from './lib/AddGroup';
+export * from '../../apps/groups/src/app/components/AddGroup';
 export * from './lib/Preloader/Preloader';
 export * from './lib/SimpleList/SimpleListItem';
 export * from './lib/SimpleList/SimpleListItemButtonDown';
