@@ -12,20 +12,17 @@ interface QuestionListItemProps {
 }
 
 export const QuestionListItem = ({ chat }: QuestionListItemProps) => {
-  const { isLoading, isError, data, isSuccess } =
-    useGetQuestionByChatQuery(chat);
+
 
   return (
     <>
-      {isLoading && <Preloader />}
-      {isSuccess &&
-        data.map((item) => (
+
           <li className="cursor-pointer">
             <SimpleAccordionMain
               description={
                 <>
                   <SimpleAccordionText
-                    children={<p>{item.text}</p>}
+                    children={<p>sg</p>}
                   ></SimpleAccordionText>
                 </>
               }
@@ -38,7 +35,6 @@ export const QuestionListItem = ({ chat }: QuestionListItemProps) => {
               }
             />
           </li>
-        ))}
     </>
   );
 };
