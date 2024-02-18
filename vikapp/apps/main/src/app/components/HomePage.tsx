@@ -81,15 +81,13 @@ export function HomePage({ toggleSlide }: HomePageProps) {
                     </span>
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
-                      <b>
-                        <span className="absolute inset-0" aria-hidden="true" />
-                        {item.text}
-                      </b>
-                      <p className="text-x text-[var(--tg-theme-hint-color)]">
-                        {item.description}
-                      </p>
-                    </div>
+                    <span className="absolute inset-0" aria-hidden="true" />
+                    <p className="text-sm font-medium text-[var(--tg-theme-text-color)]">
+                      {item.text}
+                    </p>
+                    <p className="text-[var(--tg-theme-hint-color)]">
+                      {item.description}
+                    </p>
                   </div>
                   <div className="flex-shrink-0 self-center">
                     <ChevronRightIcon
