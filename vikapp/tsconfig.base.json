@@ -25,7 +25,7 @@
       "@api/vik": ["libs/api/src/vik.api.ts"],
       "@components": ["components/src/index.ts"],
       "@const": ["libs/const/index.ts"],
-      "@models": ["models/"],
+      "@models": ["models/index.ts"],
       "@store/add-question": ["apps/add-question/src/app/store/index.ts"],
       "@store/groups": ["apps/groups/src/app/store/index.ts"],
       "@store/main": ["apps/main/src/app/store/index.ts"],
