@@ -1,11 +1,17 @@
 interface SimpleAccordionIconProps {
+  size: number;
   children: React.ReactNode;
 }
 
-export const SimpleAccordionIcon = ({ children }: SimpleAccordionIconProps) => {
+export const SimpleAccordionIcon = ({
+  size,
+  children,
+}: SimpleAccordionIconProps) => {
   return (
     <div className="flex-shrink-0">
-      <span className="inline-flex h-5 w-5 items-center justify-center rounded-lg">
+      <span
+        className={`inline-flex h-${size} w-${size} items-center justify-center rounded-lg`}
+      >
         {children}
       </span>
     </div>
