@@ -44,7 +44,7 @@ export function App() {
   return (
     <React.Suspense fallback={null}>
       <HomePage toggleSlide={toggleSlide} />
-      <SlidePage slide={slide2}>
+      <SlidePage slide={slide}>
         <Provider store={storeGroups}>
           <Groups />
         </Provider>
