@@ -1,3 +1,5 @@
+import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
+import { selectQuestionData } from '../store/slices/questionApp.slice';
 import {
   Preloader,
   SimpleAccordionMain,
@@ -5,9 +7,13 @@ import {
 } from '@components';
 import { useGetQuestionByChatQuery } from '@api/question';
 
-export const QuestionListItem = () => {
+interface QuestionListItemProps {
+  chat: number;
+}
+
+export const QuestionListItem = ({ chat }: QuestionListItemProps) => {
   const { isLoading, isError, data, isSuccess } =
-    useGetQuestionByChatQuery(521884639);
+    useGetQuestionByChatQuery(chat);
 
   return (
     <>
