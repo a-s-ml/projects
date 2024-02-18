@@ -10,11 +10,11 @@ export const DeleteButton = ({ func, text }: DeleteButtonProps) => {
 
   return (
     <div
-      className="group flex items-start px-8 py-8 space-x-3 cursor-pointer"
+      className="group flex items-start px-[5px] py-2 space-x-3 cursor-pointer text-red-600"
       onClick={() => tg.showConfirm(text, func)}
     >
-      <TrashIcon className="h-5 w-5 text-red-600" aria-hidden="true" />
-      <div className="text-sm font-medium text-red-600">
+      <TrashIcon className="h-5 w-5" aria-hidden="true" />
+      <div className="text-sm font-medium">
         <b>Удалить</b>
       </div>
     </div>
