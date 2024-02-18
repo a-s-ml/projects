@@ -1,4 +1,4 @@
-import { MenuListItem } from './MenuList/MenuListItem';
+import { MenuListItem } from './MenuListItem';
 
 export const MenuList = () => {
   return (

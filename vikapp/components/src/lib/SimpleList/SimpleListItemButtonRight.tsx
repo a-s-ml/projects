@@ -1,6 +1,6 @@
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 
-export const MenuListItemButton = () => {
+export const SimpleListItemButtonRight = () => {
   return (
     <div className="flex-shrink-0 self-center">
       <ChevronRightIcon

@@ -3,7 +3,7 @@ interface MenuListItemTextProps {
   description: string;
 }
 
-export const MenuListItemText = ({
+export const SimpleListItemText = ({
   text,
   description,
 }: MenuListItemTextProps) => {

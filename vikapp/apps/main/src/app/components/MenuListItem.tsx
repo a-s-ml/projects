@@ -1,9 +1,12 @@
 import { useAppDispatch } from '@store/main';
-import { showMainSlide, typeMain } from '../../store/slices/mainApp.slice';
-import { MenuListItemButton } from './MenuListItemButton';
-import { MenuListItemText } from './MenuListItemText';
-import { MenuListItemIcon } from './MenuListItemIcon';
+import { showMainSlide, typeMain } from '../store/slices/mainApp.slice';
 import { menuItemsConst } from '@const';
+import {
+  SimpleListItem,
+  SimpleListItemButtonRight,
+  SimpleListItemIcon,
+  SimpleListItemText,
+} from '@components';
 
 export const MenuListItem = () => {
   const dispatch = useAppDispatch();
@@ -17,16 +20,19 @@ export const MenuListItem = () => {
             dispatch(typeMain(item.type));
           }}
         >
-          <div className="group relative flex items-start space-x-3 py-4">
-            <MenuListItemIcon>
+          <SimpleListItem>
+            <SimpleListItemIcon>
               <item.component
                 className="h-6 w-6 text-[var(--tg-theme-accent-text-color)]"
                 aria-hidden="true"
               />
-            </MenuListItemIcon>
-            <MenuListItemText text={item.text} description={item.description} />
-            <MenuListItemButton />
-          </div>
+            </SimpleListItemIcon>
+            <SimpleListItemText
+              text={item.text}
+              description={item.description}
+            />
+            <SimpleListItemButtonRight />
+          </SimpleListItem>
         </li>
       ))}
     </>
