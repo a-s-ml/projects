@@ -67,9 +67,7 @@ export function HomePage({ toggleSlide }: HomePageProps) {
               <li
                 className="cursor-pointer"
                 key={item.id}
-                onClick={() => {
-                  toggleSlide;
-                }}
+                onClick={toggleSlide}
               >
                 <div className="group relative flex items-start space-x-3 py-4">
                   <div className="flex-shrink-0">

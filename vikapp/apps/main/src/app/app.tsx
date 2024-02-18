@@ -1,19 +1,15 @@
 import * as React from 'react';
-import { storeMain, useAppDispatch, useAppSelector } from '@store/main';
 import { useValidateQuery } from '@api/vik';
-import { Preloader, SlidePage } from '@components';
+import HomePage from './components/HomePage';
+import { Provider } from 'react-redux';
+import { storeGroups } from '@store/groups';
+import { storeMain, useAppDispatch, useAppSelector } from './store';
 import {
   dataMain,
   selectMainSlide,
   selectMainType,
-  showMainSlide,
-  typeMain,
 } from './store/slices/mainApp.slice';
-import HomePage from './components/HomePage';
-import { Provider } from 'react-redux';
-import { storeGroups } from '@store/groups';
-import { storeAddQuestion } from '@store/add-question';
-
+import { SlidePage } from '@components';
 const Groups = React.lazy(() => import('groups/Module'));
 const Answers = React.lazy(() => import('answers/Module'));
 const Questions = React.lazy(() => import('questions/Module'));
@@ -22,8 +18,8 @@ const AddQuestion = React.lazy(() => import('add-question/Module'));
 
 export function App() {
   const tg = window.Telegram.WebApp;
-  const [slide, setSlide] = React.useState(false);
-  const [slide2, setSlide2] = React.useState(false);
+  const current = useAppSelector(selectMainSlide);
+  const [slide, setSlide] = React.useState(current);
 
   React.useEffect(() => {
     tg.expand();
@@ -36,6 +32,15 @@ export function App() {
       setSlide(false);
     });
   }
+  const dispatch = useAppDispatch();
+
+  const { data, isSuccess, isLoading } = useValidateQuery(tg.initData);
+
+  isSuccess && dispatch(dataMain(data));
+
+  const type = useAppSelector(selectMainType);
+  isSuccess && console.log(data);
+  console.log(useAppSelector(storeMain.getState));
 
   function toggleSlide() {
     setSlide(!slide);
