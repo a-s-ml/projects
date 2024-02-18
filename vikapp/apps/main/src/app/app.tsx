@@ -7,7 +7,7 @@ import { storeMain, useAppDispatch, useAppSelector } from './store';
 import {
   dataMain,
   selectMainSlide,
-  selectMainType,
+  showMainSlide,
 } from './store/slices/mainApp.slice';
 import { SlidePage } from '@components';
 const Groups = React.lazy(() => import('groups/Module'));
@@ -18,8 +18,9 @@ const AddQuestion = React.lazy(() => import('add-question/Module'));
 
 export function App() {
   const tg = window.Telegram.WebApp;
-  const current = useAppSelector(selectMainSlide);
-  const [slide, setSlide] = React.useState(current);
+  const dispatch = useAppDispatch();
+
+  const slide = useAppSelector(selectMainSlide);
 
   React.useEffect(() => {
     tg.expand();
@@ -29,21 +30,18 @@ export function App() {
   if (slide) {
     tg.BackButton.show();
     tg.onEvent('backButtonClicked', () => {
-      setSlide(false);
+      dispatch(showMainSlide(false));
     });
   }
-  const dispatch = useAppDispatch();
-
   const { data, isSuccess, isLoading } = useValidateQuery(tg.initData);
 
   isSuccess && dispatch(dataMain(data));
 
-  const type = useAppSelector(selectMainType);
   isSuccess && console.log(data);
   console.log(useAppSelector(storeMain.getState));
 
   function toggleSlide() {
-    setSlide(!slide);
+    dispatch(showMainSlide(true));
   }
 
   return (
