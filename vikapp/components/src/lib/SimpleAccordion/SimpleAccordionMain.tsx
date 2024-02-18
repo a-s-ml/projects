@@ -33,7 +33,7 @@ export const SimpleAccordionMain = ({
                 </div>
               </Disclosure.Button>
             </li>
-            <Disclosure.Panel className="py-4">
+            <Disclosure.Panel className="pb-4">
               {content}
             </Disclosure.Panel>
           </>

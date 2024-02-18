@@ -474,6 +474,9 @@ video {
   border-radius: 0.5rem;
 }.bg-\[var\(--tg-theme-bg-color\)\] {
   background-color: var(--tg-theme-bg-color);
+}.bg-red-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }.bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }.bg-gradient-to-t {
