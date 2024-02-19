@@ -7,12 +7,16 @@ import {
   Page,
 } from '@components';
 import GroupsList from './GroupsList';
+import { useGroupDispatch } from '@store/groups';
+import { showGroupSlide } from '../store/slices/groupApp.slice';
 
 export function GroupsPage() {
+  const dispatch = useGroupDispatch();
   return (
     <>
       <GlobalHeader>
         <AddGroup />
+        <button onClick={()=> dispatch(showGroupSlide(true))}>Click</button>
       </GlobalHeader>
       <Page>
         <MainBlock>
