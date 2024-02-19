@@ -1,5 +1,5 @@
 import {
-  ButtonAdd,
+  ButtonIcon,
   GlobalHeader,
   MainBlock,
   Page,
@@ -31,7 +31,13 @@ export const QuestionsPage = () => {
   return (
     <>
       <GlobalHeader>
-        <ButtonAdd text={'Добавить вопрос'} size={5} func={addQuestion} />
+        <ButtonIcon
+          firstIcon={true}
+          text={'Добавить вопрос'}
+          color={'[var(--tg-theme-accent-text-color)]'}
+          icon={'add'}
+          func={addQuestion}
+        />
       </GlobalHeader>
       <Page>
         <MainBlock>

@@ -1,5 +1,5 @@
 import {
-  ButtonAdd,
+  ButtonIcon,
   GlobalHeader,
   MainBlock,
   Page,
@@ -31,7 +31,13 @@ export function GroupsPage() {
   return (
     <>
       <GlobalHeader>
-        <ButtonAdd text={'Добавить группу'} size={5} func={addGroup} />
+        <ButtonIcon
+          firstIcon={true}
+          text={'Добавить группу'}
+          color={'[var(--tg-theme-accent-text-color)]'}
+          icon={'add'}
+          func={addGroup}
+        />
       </GlobalHeader>
       <Page>
         <MainBlock>

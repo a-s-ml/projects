@@ -1,9 +1,8 @@
 import { useGetGroupDbQuery, useGetInfoGroupsQuery } from '@api/group';
 import GroupAvatar from './GroupAvatar';
 import {
-  ButtonDelete,
   ButtonIcon,
-  ButtonStatistic,
+  ButtonIconConfirm,
   SimpleAccordionIcon,
   SimpleAccordionMain,
   SimpleAccordionText,
@@ -61,23 +60,21 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
             }
             content={
               <>
-                <ButtonDelete func={deleteGroup} text={deleteGroupText} />
-                <ButtonStatistic func={deleteGroup} text={'fsgsdfg'} />
-                <ButtonIcon
-                  firstIcon={false}
-                  text={'sfgsfg1'}
-                  color={'red-500'}
-                  icon={'edit'}
-                  func={deleteGroup}
-                />
                 <ButtonIcon
                   firstIcon={true}
-                  text={'sfgsfg2'}
+                  text={'Статистика'}
                   color={'[var(--tg-theme-accent-text-color)]'}
-                  icon={'add'}
-                  func={deleteGroup}
+                  icon={'stat'}
+                  func={() => console.log('add')}
                 />
-                <p>Статистика</p>
+                <ButtonIconConfirm
+                  firstIcon={true}
+                  text={'Удалить'}
+                  color={'red-500'}
+                  icon={'delete'}
+                  func={deleteGroup}
+                  textConfirm={deleteGroupText}
+                />
               </>
             }
           />

@@ -1,26 +1,29 @@
 import { buttonIconConst } from '@const';
 
-interface ButtonIconProps {
+interface ButtonIconConfirmProps {
   firstIcon: boolean;
   text: string;
+  textConfirm: string;
   color: string;
   icon: string;
-  func: () => void;
+  func: (b: boolean) => void;
 }
 
-export const ButtonIcon = ({
+export const ButtonIconConfirm = ({
   color,
   firstIcon,
   text,
+  textConfirm,
   icon,
   func,
-}: ButtonIconProps) => {
+}: ButtonIconConfirmProps) => {
   const currentIcon = buttonIconConst.filter((item) => item.name === icon);
   const cur = currentIcon[0];
+  const tg = window.Telegram.WebApp;
   return (
     <div
-    className="group flex items-start px-[5px] py-2 space-x-3 cursor-pointer text-[var(--tg-theme-text-color)]"
-      onClick={() => func}
+      className="group flex items-start px-[5px] py-2 space-x-3 cursor-pointer text-[var(--tg-theme-text-color)]"
+      onClick={() => tg.showConfirm(textConfirm, func)}
     >
       {firstIcon ? (
         <>
