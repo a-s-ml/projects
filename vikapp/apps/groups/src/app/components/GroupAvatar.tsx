@@ -5,15 +5,14 @@ interface GroupAvatarProps {
 }
 
 export default function GroupAvatar({ id }: GroupAvatarProps) {
-  const { isLoading: loadPhoto, data: dataPhoto } = useGetFilePhotoQuery(id);
+  const { data } = useGetFilePhotoQuery(id);
 
   return (
     <>
-      {loadPhoto && <p>...</p>}
-      {dataPhoto && (
+      {data && (
         <img
           className="inline-block w-full rounded-full"
-          src={`data:image/png;base64,${dataPhoto}`}
+          src={`data:image/png;base64,${data}`}
           alt={id}
         />
       )}

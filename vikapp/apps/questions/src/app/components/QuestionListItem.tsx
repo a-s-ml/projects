@@ -6,6 +6,7 @@ import {
   SimpleAccordionText,
 } from '@components';
 import { useGetQuestionByChatQuery } from '@api/question';
+import { deleteQuestion, inDevelopment } from '@utils';
 
 interface QuestionListItemProps {
   chat: number;
@@ -13,16 +14,9 @@ interface QuestionListItemProps {
 
 export const QuestionListItem = ({ chat }: QuestionListItemProps) => {
   const tg = window.Telegram.WebApp;
-  const { isLoading, isError, data, isSuccess } =
+  const { isLoading, data, isSuccess } =
     useGetQuestionByChatQuery(chat);
 
-  function deleteQuestion(b: boolean) {
-    if (b) return tg.openTelegramLink('https://t.me/more_details');
-    return;
-  }
-  const deleteQuestionText: string = `Вы действительно хотите удалить бота из группы ${
-    isSuccess ? data[0].id : 'не success'
-  }`;
   return (
     <>
       {isLoading && <Preloader />}
@@ -48,21 +42,21 @@ export const QuestionListItem = ({ chat }: QuestionListItemProps) => {
                     text={'Модерировать'}
                     color={'[var(--tg-theme-accent-text-color)]'}
                     icon={'moderate'}
-                    func={() => console.log('moderate')}
+                    func={inDevelopment}
                   />
                   <ButtonIcon
                     firstIcon={true}
                     text={'Статистика'}
                     color={'[var(--tg-theme-accent-text-color)]'}
                     icon={'stat'}
-                    func={() => console.log('stat')}
+                    func={inDevelopment}
                   />
                   <ButtonIcon
                     firstIcon={true}
                     text={'Отправить'}
                     color={'[var(--tg-theme-accent-text-color)]'}
                     icon={'send'}
-                    func={() => console.log('send')}
+                    func={inDevelopment}
                   />
                   <ButtonIconConfirm
                     firstIcon={true}
@@ -70,7 +64,9 @@ export const QuestionListItem = ({ chat }: QuestionListItemProps) => {
                     color={'red-500'}
                     icon={'delete'}
                     func={deleteQuestion}
-                    textConfirm={deleteQuestionText}
+                    textConfirm={`Вы действительно хотите удалить вопрос №${
+                      isSuccess ? data[0].id : 'не success'
+                    }`}
                   />
                 </>
               }

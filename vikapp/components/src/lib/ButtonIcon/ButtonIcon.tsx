@@ -20,7 +20,7 @@ export const ButtonIcon = ({
   return (
     <div
     className="group flex items-start py-1 space-x-3 cursor-pointer text-[var(--tg-theme-text-color)]"
-      onClick={() => func}
+      onClick={func}
     >
       {firstIcon ? (
         <>

@@ -1,4 +1,5 @@
 import { useGetGroupDbQuery, useGetInfoGroupsQuery } from '@api/group';
+import { deleteGroup, inDevelopment } from '@utils';
 import GroupAvatar from './GroupAvatar';
 import {
   ButtonIcon,
@@ -17,14 +18,6 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);
   const { data: GroupDb } = useGetGroupDbQuery(group);
-
-  function deleteGroup(b: boolean) {
-    if (b) return tg.openTelegramLink('https://t.me/more_details');
-    return;
-  }
-  const deleteGroupText: string = `Вы действительно хотите удалить бота из группы ${
-    dataGroupInfo?.username ? dataGroupInfo.username : dataGroupInfo?.title
-  }`;
 
   return (
     <>
@@ -65,7 +58,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
                   text={'Статистика'}
                   color={'[var(--tg-theme-accent-text-color)]'}
                   icon={'stat'}
-                  func={() => console.log('add')}
+                  func={inDevelopment}
                 />
                 <ButtonIconConfirm
                   firstIcon={true}
@@ -73,7 +66,11 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
                   color={'red-500'}
                   icon={'delete'}
                   func={deleteGroup}
-                  textConfirm={deleteGroupText}
+                  textConfirm={`Вы действительно хотите удалить бота из группы ${
+                    dataGroupInfo?.username
+                      ? dataGroupInfo.username
+                      : dataGroupInfo?.title
+                  }`}
                 />
               </>
             }

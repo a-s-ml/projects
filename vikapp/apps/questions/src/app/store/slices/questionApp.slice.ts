@@ -117,4 +117,4 @@ export const selectQuestionAnswerright = (state: QuestionRootState) =>
 export const selectQuestion = (state: QuestionRootState) =>
   state.questionApp.addQuestion;
 
-export default questionAppSlice.reducer;
+export default questionAppSlice.reducer; 

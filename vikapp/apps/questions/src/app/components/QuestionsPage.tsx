@@ -9,13 +9,17 @@ import { QuestionList } from './QuestionList';
 import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
 import {
   selectQuestionSlide,
+  selectQuestionType,
   showQuestionSlide,
+  typeQuestion,
 } from '../store/slices/questionApp.slice';
+import NewQuesion from './NewQuesion';
 
 export const QuestionsPage = () => {
   const tg = window.Telegram.WebApp;
   const dispatch = useQuestionDispatch();
   const slide = useQuestionSelector(selectQuestionSlide);
+  const type = useQuestionSelector(selectQuestionType);
 
   if (slide) {
     tg.BackButton.show();
@@ -25,7 +29,8 @@ export const QuestionsPage = () => {
   }
 
   const addQuestion = () => {
-    tg.openTelegramLink('https://t.me/ViktorinaOnlineBot?startgroup=add');
+    dispatch(typeQuestion('addQuestion'));
+    dispatch(showQuestionSlide(true));
   };
 
   return (
@@ -43,16 +48,10 @@ export const QuestionsPage = () => {
         <MainBlock>
           <div className="text-center pt-9"></div>
           <QuestionList />
-          <button
-            className={'pt-4'}
-            onClick={() => dispatch(showQuestionSlide(true))}
-          >
-            Click
-          </button>
         </MainBlock>
       </Page>
       <SlidePage slide={slide}>
-        <p>Question</p>
+        {type == 'addQuestion' && <NewQuesion />}
       </SlidePage>
     </>
   );

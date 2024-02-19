@@ -11,16 +11,12 @@ import {
   selectGroupSlide,
   showGroupSlide,
 } from '../store/slices/groupApp.slice';
+import { addGroup } from '@utils';
 
 export function GroupsPage() {
   const tg = window.Telegram.WebApp;
   const dispatch = useGroupDispatch();
-  console.log(useGroupSelector(storeGroups.getState));
   const slide = useGroupSelector(selectGroupSlide);
-
-  const addGroup = () => {
-    tg.openTelegramLink('https://t.me/ViktorinaOnlineBot?startgroup=add');
-  };
 
   if (slide) {
     tg.BackButton.show();
@@ -43,12 +39,6 @@ export function GroupsPage() {
         <MainBlock>
           <div className="text-center pt-9"></div>
           <GroupsList chat={521884639} />
-          <button
-            className={'pt-4'}
-            onClick={() => dispatch(showGroupSlide(true))}
-          >
-            Click
-          </button>
         </MainBlock>
       </Page>
       <SlidePage slide={slide}>
