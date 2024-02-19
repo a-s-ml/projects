@@ -31,11 +31,15 @@ export const QuestionListItem = ({ chat }: QuestionListItemProps) => {
           <li className="cursor-pointer">
             <SimpleAccordionMain
               description={
-                <>
-                  <SimpleAccordionText
-                    children={<p>{item.text}</p>}
-                  ></SimpleAccordionText>
-                </>
+                <SimpleAccordionText>
+                  <span className="text-xs text-[var(--tg-theme-hint-color)]">
+                    Дата: {item.dateadd}
+                  </span>
+                  <p>{item.text}</p>
+                  <span className="text-xs text-[var(--tg-theme-hint-color)]">
+                    Категория: {item.category}
+                  </span>
+                </SimpleAccordionText>
               }
               content={
                 <>

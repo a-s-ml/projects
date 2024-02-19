@@ -521,6 +521,8 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }.to-transparent {
   --tw-gradient-to: transparent var(--tw-gradient-to-position);
+}.p-4 {
+  padding: 1rem;
 }.px-0 {
   padding-left: 0px;
   padding-right: 0px;
@@ -533,9 +535,6 @@ video {
 }.px-\[5px\] {
   padding-left: 5px;
   padding-right: 5px;
-}.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
 }.py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;

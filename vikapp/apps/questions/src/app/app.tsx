@@ -1,15 +1,6 @@
 import { Provider } from 'react-redux';
 import QuestionsPage from './components/QuestionsPage';
-import {
-  storeQuestion,
-  useQuestionDispatch,
-  useQuestionSelector,
-} from '@store/questions';
-import {
-  selectQuestionSlide,
-  showQuestionSlide,
-} from './store/slices/questionApp.slice';
-import { SlidePage } from '@components';
+import { storeQuestion } from '@store/questions';
 
 export const App = () => {
   return (
