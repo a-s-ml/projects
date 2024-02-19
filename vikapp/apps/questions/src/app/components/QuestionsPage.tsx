@@ -4,6 +4,7 @@ import {
   GlobalHeader,
   MainBlock,
   Page,
+  SlidePage,
 } from '@components';
 import { QuestionList } from './QuestionList';
 import { AddQuestion } from './AddQuestion';
@@ -12,9 +13,22 @@ import {
   useQuestionDispatch,
   useQuestionSelector,
 } from '@store/questions';
-import { showQuestionSlide } from '../store/slices/questionApp.slice';
+import {
+  selectQuestionSlide,
+  showQuestionSlide,
+} from '../store/slices/questionApp.slice';
 
 export const QuestionsPage = () => {
+  const tg = window.Telegram.WebApp;
+  const slide = useQuestionSelector(selectQuestionSlide);
+
+  if (slide) {
+    tg.BackButton.show();
+    tg.onEvent('backButtonClicked', () => {
+      dispatch(showQuestionSlide(false));
+    });
+  }
+
   const dispatch = useQuestionDispatch();
   console.log(useQuestionSelector(storeQuestion.getState));
   return (
@@ -34,6 +48,9 @@ export const QuestionsPage = () => {
           </button>
         </MainBlock>
       </Page>
+      <SlidePage slide={slide}>
+        <p>Question</p>
+      </SlidePage>
     </>
   );
 };
