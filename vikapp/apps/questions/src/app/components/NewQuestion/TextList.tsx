@@ -1,22 +1,30 @@
-import { useQuestionDispatch, useQuestionSelector } from "@store/questions";
-import { useEffect, useState } from "react";
-import { getQuestionText, selectQuestionText } from "../../store/slices/questionApp.slice";
-import { TextListValidate } from "./TextListValidate";
-import ApplyDraft from "./ApplyDraft";
+import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
+import { useEffect, useState } from 'react';
+import {
+  getQuestionDefault,
+  getQuestionText,
+  selectQuestionText,
+} from '../../store/slices/questionApp.slice';
+import { TextListValidate } from './TextListValidate';
+import { SimpleTextArea } from '@components';
 
 interface TextListProps {
   onSubmit: () => void;
 }
 
 export function TextList({ onSubmit }: TextListProps) {
+  const tg = window.Telegram.WebApp;
   const questionText = useQuestionSelector(selectQuestionText);
   const dispatch = useQuestionDispatch();
-  const [text, setText] = useState("");
-  const [showNotification, setShowNotification] = useState(false);
+  const [text, setText] = useState('');
 
   useEffect(() => {
-    if (questionText != "") {
-      setShowNotification(true);
+    const confirm = (b: boolean) => {
+      if (b) return handleText(questionText);
+      return dispatch(getQuestionDefault(''));
+    };
+    if (questionText != '') {
+      tg.showConfirm(`Применить несохранённый черновик?`, confirm);
     }
   }, []);
 
@@ -25,37 +33,17 @@ export function TextList({ onSubmit }: TextListProps) {
     dispatch(getQuestionText(txt));
   };
 
-  const applyDraft = () => {
-    handleText(questionText);
-    setShowNotification(false)
-  };
-
   return (
     <>
       <div className="py-2">
-        <label
-          htmlFor="questionText"
-          className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
-        >
-          Текст вопроса:
-        </label>
-        <div className="mt-2">
-          <textarea
-            rows={5}
-            name="questionText"
-            id="questionText" 
-            className="block w-full bg-[var(--tg-theme-bg-color)] rounded-md border-0 px-2 py-2 text-[var(--tg-theme-text-color)] shadow-sm ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-[var(--tg-theme-hint-color)]"
-            value={text}
-            onChange={(e) => handleText(e.target.value)}
-          />
-        </div>
+        <SimpleTextArea
+          label={'Текст вопроса:'}
+          rows={5}
+          value={text}
+          func={(e) => handleText(e.target.value)}
+        />
         <TextListValidate text={text} onSubmit={onSubmit} />
       </div>
-      <ApplyDraft
-        showNotification={showNotification}
-        setShowNotification={setShowNotification}
-        applyDraft={applyDraft}
-      />
     </>
   );
 }

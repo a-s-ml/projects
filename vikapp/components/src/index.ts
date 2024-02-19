@@ -17,3 +17,5 @@ export * from './lib/SimpleAccordion/SimpleAccordionMain';
 export * from './lib/SimpleAccordion/SimpleAccordionText';
 export * from './lib/ButtonIcon/ButtonIcon';
 export * from './lib/ButtonIcon/ButtonIconConfirm';
+export * from './lib/SimpleForm/SimpleTextArea';
+export * from './lib/SimpleForm/SimpleSelect';

@@ -14,6 +14,7 @@ import { CategoryList } from './NewQuestion/CategoryList';
 import { AnswersList } from './NewQuestion/AnswersList';
 import { useNewQuestionForm } from '../hooks/useNewQuestionForm';
 import { useAddQuestionMutation } from '@api/question';
+import { HeaderBlock, MainBlock, Page } from '@components';
 
 export const NewQuesion = () => {
   const tg = window.Telegram.WebApp;
@@ -52,16 +53,12 @@ export const NewQuesion = () => {
 
   const [addQuestion, {}] = useAddQuestionMutation();
   return (
-    <>
-      <header className="absolute inset-x-0 top-0 z-50">
+    <Page>
+      <HeaderBlock>
         <StepsForm step={currentStepIndex + 1} stepsCount={steps.length} />
-        <div className="bg-gradient-to-b from-[var(--tg-theme-bg-color)] to-transparent pt-12 w-screen"></div>
-      </header>
-
-      <div className="h-full overflow-y-auto bg-[var(--tg-theme-bg-color)] p-8">
-        <div className="py-24">{step}</div>
-      </div>
-    </>
+      </HeaderBlock>
+      <MainBlock>{step}</MainBlock>
+    </Page>
   );
 };
 
