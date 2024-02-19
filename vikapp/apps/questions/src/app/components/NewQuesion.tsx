@@ -1,7 +1,12 @@
-import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
+import {
+  storeQuestion,
+  useQuestionDispatch,
+  useQuestionSelector,
+} from '@store/questions';
 import {
   getQuestionDefault,
   selectQuestion,
+  showQuestionSlide,
 } from '../store/slices/questionApp.slice';
 import { TextList } from './NewQuestion/TextList';
 import StepsForm from './NewQuestion/StepsForm';
@@ -14,6 +19,7 @@ export const NewQuesion = () => {
   const dispatch = useQuestionDispatch();
   const user = 521884639;
   const question = useQuestionSelector(selectQuestion);
+  console.log(useQuestionSelector(storeQuestion.getState));
 
   async function onSubmit() {
     if (!isLastStep) return next();
@@ -30,6 +36,7 @@ export const NewQuesion = () => {
           answerright: question.answerright,
         });
       }
+      dispatch(showQuestionSlide(false));
       dispatch(getQuestionDefault(''));
     }
   }
