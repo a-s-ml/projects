@@ -1,5 +1,5 @@
+import { Provider } from 'react-redux';
 import QuestionsPage from './components/QuestionsPage';
-import { QuestionList } from './components/QuestionList';
 import {
   storeQuestion,
   useQuestionDispatch,
@@ -9,11 +9,9 @@ import {
   selectQuestionSlide,
   showQuestionSlide,
 } from './store/slices/questionApp.slice';
-import { useValidateQuery } from '@api/vik';
-import { Preloader, SlidePage } from '@components';
-import { Provider } from 'react-redux';
+import { SlidePage } from '@components';
 
-export function App() {
+export const App = () => {
   const tg = window.Telegram.WebApp;
   const dispatch = useQuestionDispatch();
   const slide = useQuestionSelector(selectQuestionSlide);
@@ -26,15 +24,13 @@ export function App() {
   }
 
   return (
-    <>
-      <Provider store={storeQuestion}>
-        <QuestionsPage />
-        <SlidePage slide={slide}>
-          <p>Question</p>
-        </SlidePage>
-      </Provider>
-    </>
+    <Provider store={storeQuestion}>
+      <QuestionsPage />
+      <SlidePage slide={slide}>
+        <p>Question</p>
+      </SlidePage>
+    </Provider>
   );
-}
+};
 
 export default App;

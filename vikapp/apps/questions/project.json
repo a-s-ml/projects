@@ -12,7 +12,7 @@
         "compiler": "babel",
         "outputPath": "dist/apps/questions",
         "index": "apps/questions/src/index.html",
-        "baseHref": "/",
+        "baseHref": "/mf/questions/",
         "main": "apps/questions/src/main.ts",
         "tsConfig": "apps/questions/tsconfig.app.json",
         "assets": [
