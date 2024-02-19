@@ -1,4 +1,5 @@
 import {
+  AddButton,
   AddGroup,
   Feedback,
   GlobalFooter,
@@ -9,13 +10,20 @@ import {
 } from '@components';
 import GroupsList from './GroupsList';
 import { storeGroups, useGroupDispatch, useGroupSelector } from '@store/groups';
-import { selectGroupSlide, showGroupSlide } from '../store/slices/groupApp.slice';
+import {
+  selectGroupSlide,
+  showGroupSlide,
+} from '../store/slices/groupApp.slice';
 
 export function GroupsPage() {
   const tg = window.Telegram.WebApp;
   const dispatch = useGroupDispatch();
   console.log(useGroupSelector(storeGroups.getState));
   const slide = useGroupSelector(selectGroupSlide);
+
+  const addGroup = () => {
+    tg.openTelegramLink('https://t.me/ViktorinaOnlineBot?startgroup=add');
+  };
 
   if (slide) {
     tg.BackButton.show();
@@ -26,7 +34,7 @@ export function GroupsPage() {
   return (
     <>
       <GlobalHeader>
-        <AddGroup />
+        <AddButton text={'Добавить группу'} size={5} func={addGroup} />
       </GlobalHeader>
       <Page>
         <MainBlock>
@@ -41,8 +49,8 @@ export function GroupsPage() {
         </MainBlock>
       </Page>
       <SlidePage slide={slide}>
-          <p>Groups</p>
-        </SlidePage>
+        <p>Groups</p>
+      </SlidePage>
     </>
   );
 }

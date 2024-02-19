@@ -1,21 +1,23 @@
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 
-export const AddGroup = () => {
-  const tg = window.Telegram.WebApp;
+interface AddButtonProps {
+  text: string;
+  size: number;
+  func: () => void;
+}
 
+export const AddButton = ({ text, func, size }: AddButtonProps) => {
   return (
     <div
       className="group flex items-start px-8 pt-8 pb-4 bg-[var(--tg-theme-bg-color)] space-x-3 cursor-pointer"
-      onClick={() =>
-        tg.openTelegramLink('https://t.me/ViktorinaOnlineBot?startgroup=add')
-      }
+      onClick={func}
     >
       <PlusCircleIcon
-        className="h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]"
+        className={`h-${size} w-${size} text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]`}
         aria-hidden="true"
       />
       <div className="text-sm font-medium text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)]">
-        <b>Добавить вопрос</b>
+        <b>{text}</b>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import {
+  AddButton,
   Feedback,
   GlobalFooter,
   GlobalHeader,
@@ -20,6 +21,7 @@ import {
 
 export const QuestionsPage = () => {
   const tg = window.Telegram.WebApp;
+  const dispatch = useQuestionDispatch();
   const slide = useQuestionSelector(selectQuestionSlide);
 
   if (slide) {
@@ -29,12 +31,14 @@ export const QuestionsPage = () => {
     });
   }
 
-  const dispatch = useQuestionDispatch();
-  console.log(useQuestionSelector(storeQuestion.getState));
+  const addQuestion = () => {
+    tg.openTelegramLink('https://t.me/ViktorinaOnlineBot?startgroup=add');
+  };
+
   return (
     <>
       <GlobalHeader>
-        <AddQuestion />
+        <AddButton text={'Добавить вопрос'} size={5} func={addQuestion} />
       </GlobalHeader>
       <Page>
         <MainBlock>
