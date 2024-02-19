@@ -9,7 +9,6 @@ import { AddGroup } from './AddGroup';
 import GroupsList from './GroupsList';
 
 export function GroupsPage() {
-  const tg = window.Telegram.WebApp;
   return (
     <>
       <GlobalHeader>
