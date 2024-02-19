@@ -12,7 +12,7 @@ export default function GroupsList({ chat }: GroupsListProps) {
       {isLoading && <Preloader />}
       <ul
         role="list"
-        className="mt-4 divide-y divide-[var(--tg-theme-hint-color)] pt-9"
+        className="divide-y divide-[var(--tg-theme-hint-color)] pt-9"
       >
         {isSuccess &&
           data.map((group) => (
