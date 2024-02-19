@@ -1,8 +1,5 @@
 import {
   AddButton,
-  AddGroup,
-  Feedback,
-  GlobalFooter,
   GlobalHeader,
   MainBlock,
   Page,

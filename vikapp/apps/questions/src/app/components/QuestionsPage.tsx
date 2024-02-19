@@ -1,19 +1,12 @@
 import {
   AddButton,
-  Feedback,
-  GlobalFooter,
   GlobalHeader,
   MainBlock,
   Page,
   SlidePage,
 } from '@components';
 import { QuestionList } from './QuestionList';
-import { AddQuestion } from './AddQuestion';
-import {
-  storeQuestion,
-  useQuestionDispatch,
-  useQuestionSelector,
-} from '@store/questions';
+import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
 import {
   selectQuestionSlide,
   showQuestionSlide,

@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Tab } from '@headlessui/react';
-import { AddGroup, Feedback } from '@components';
+import { Feedback } from '@components';
 
 interface tabsInterface {
   name: string;
@@ -10,7 +10,7 @@ interface tabsInterface {
 const tabs: tabsInterface[] = [
   {
     name: 'Свои вопросы',
-    component: AddGroup,
+    component: Feedback,
   },
   {
     name: 'Вопросы бота',
