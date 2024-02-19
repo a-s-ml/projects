@@ -3,5 +3,5 @@ interface MainBlockProps {
 }
 
 export const MainBlock = ({ children }: MainBlockProps) => {
-  return <div className="px-4 py-5 overflow-y-auto min-h-max">{children}</div>;
+  return <div className="px-4 py-5 overflow-y-auto min-h-full">{children}</div>;
 };

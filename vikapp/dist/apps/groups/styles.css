@@ -421,9 +421,8 @@ video {
   height: 100%;
 }.max-h-60 {
   max-height: 15rem;
-}.min-h-max {
-  min-height: -moz-max-content;
-  min-height: max-content;
+}.min-h-full {
+  min-height: 100%;
 }.min-h-screen {
   min-height: 100vh;
 }.w-10 {
