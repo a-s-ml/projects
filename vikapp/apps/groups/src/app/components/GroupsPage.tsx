@@ -7,11 +7,12 @@ import {
   Page,
 } from '@components';
 import GroupsList from './GroupsList';
-import { useGroupDispatch } from '@store/groups';
+import { storeGroups, useGroupDispatch, useGroupSelector } from '@store/groups';
 import { showGroupSlide } from '../store/slices/groupApp.slice';
 
 export function GroupsPage() {
   const dispatch = useGroupDispatch();
+  console.log(useGroupSelector(storeGroups.getState));
   return (
     <>
       <GlobalHeader>
@@ -20,18 +21,15 @@ export function GroupsPage() {
       <Page>
         <MainBlock>
           <div className="text-center pt-9"></div>
+          <GroupsList chat={521884639} />
           <button
             className={'pt-4'}
             onClick={() => dispatch(showGroupSlide(true))}
           >
             Click
           </button>
-          <GroupsList chat={521884639} />
         </MainBlock>
       </Page>
-      <GlobalFooter>
-        <Feedback />
-      </GlobalFooter>
     </>
   );
 }

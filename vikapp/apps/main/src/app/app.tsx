@@ -3,7 +3,7 @@ import { useValidateQuery } from '@api/vik';
 import HomePage from './components/HomePage';
 import { Provider } from 'react-redux';
 import { storeGroups } from '@store/groups';
-import { useAppDispatch, useAppSelector } from './store';
+import { storeMain, useAppDispatch, useAppSelector } from './store';
 import {
   dataMain,
   selectMainSlide,
@@ -43,6 +43,7 @@ export function App() {
   const { data, isSuccess, isLoading } = useValidateQuery(tg.initData);
 
   isSuccess && dispatch(dataMain(data));
+  console.log(useAppSelector(storeMain.getState));
 
   return (
     <React.Suspense fallback={null}>

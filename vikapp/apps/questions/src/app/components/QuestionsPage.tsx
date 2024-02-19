@@ -7,11 +7,16 @@ import {
 } from '@components';
 import { QuestionList } from './QuestionList';
 import { AddQuestion } from './AddQuestion';
-import { useQuestionDispatch } from '@store/questions';
+import {
+  storeQuestion,
+  useQuestionDispatch,
+  useQuestionSelector,
+} from '@store/questions';
 import { showQuestionSlide } from '../store/slices/questionApp.slice';
 
 export const QuestionsPage = () => {
   const dispatch = useQuestionDispatch();
+  console.log(useQuestionSelector(storeQuestion.getState));
   return (
     <>
       <GlobalHeader>
@@ -20,18 +25,15 @@ export const QuestionsPage = () => {
       <Page>
         <MainBlock>
           <div className="text-center pt-9"></div>
+          <QuestionList />
           <button
             className={'pt-4'}
             onClick={() => dispatch(showQuestionSlide(true))}
           >
             Click
           </button>
-          <QuestionList />
         </MainBlock>
       </Page>
-      <GlobalFooter>
-        <Feedback />
-      </GlobalFooter>
     </>
   );
 };
