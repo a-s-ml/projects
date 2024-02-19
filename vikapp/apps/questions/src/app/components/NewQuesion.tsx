@@ -16,6 +16,7 @@ import { useNewQuestionForm } from '../hooks/useNewQuestionForm';
 import { useAddQuestionMutation } from '@api/question';
 
 export const NewQuesion = () => {
+  const tg = window.Telegram.WebApp;
   const dispatch = useQuestionDispatch();
   const user = 521884639;
   const question = useQuestionSelector(selectQuestion);
@@ -36,6 +37,7 @@ export const NewQuesion = () => {
           answerright: question.answerright,
         });
       }
+      tg.MainButton.hide;
       dispatch(showQuestionSlide(false));
       dispatch(getQuestionDefault(''));
     }

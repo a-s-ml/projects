@@ -14,9 +14,9 @@ interface CategoryListProps {
 }
 
 const tg = window.Telegram.WebApp;
-let mona: boolean = false;
 
 export function CategoryList({ onSubmit }: CategoryListProps) {
+  let mona: boolean = false;
   const questionCategory = useQuestionSelector(selectQuestionCategory);
   const { data: allCategory, isSuccess: successCategory } =
     useGetCategoryQuery('');
