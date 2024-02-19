@@ -3,7 +3,6 @@ import { buttonIconConst } from '@const';
 interface ButtonIconProps {
   firstIcon: boolean;
   text: string;
-  size: number;
   color: string;
   icon: string;
   func: (b: boolean) => void;
@@ -13,7 +12,6 @@ export const ButtonIcon = ({
   color,
   firstIcon,
   text,
-  size,
   icon,
   func,
 }: ButtonIconProps) => {
@@ -27,7 +25,7 @@ export const ButtonIcon = ({
       {firstIcon ? (
         <>
           <cur.component
-            className={`h-${size} w-${size} text-${color}`}
+            className={`h-5 w-5 text-${color}`}
             aria-hidden="true"
           />
           <div className={`text-sm font-medium text-${color}`}>
@@ -40,7 +38,7 @@ export const ButtonIcon = ({
             <b>{text}</b>
           </div>
           <cur.component
-            className={`h-${size} w-${size} text-${color}`}
+            className={`h-5 w-5 text-${color}`}
             aria-hidden="true"
           />
         </>

@@ -66,7 +66,6 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
                 <ButtonIcon
                   firstIcon={false}
                   text={'sfgsfg1'}
-                  size={10}
                   color={'red-500'}
                   icon={'edit'}
                   func={deleteGroup}
@@ -74,8 +73,7 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
                 <ButtonIcon
                   firstIcon={true}
                   text={'sfgsfg2'}
-                  size={15}
-                  color={'[var(--tg-theme-text-color)]'}
+                  color={'[var(--tg-theme-accent-text-color)]'}
                   icon={'add'}
                   func={deleteGroup}
                 />
