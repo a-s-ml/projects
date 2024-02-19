@@ -393,12 +393,8 @@ video {
   z-index: 10;
 }.z-50 {
   z-index: 50;
-}.mb-8 {
-  margin-bottom: 2rem;
 }.mt-4 {
   margin-top: 1rem;
-}.inline-block {
-  display: inline-block;
 }.flex {
   display: flex;
 }.inline-flex {
@@ -468,8 +464,6 @@ video {
   overflow: hidden;
 }.overflow-y-auto {
   overflow-y: auto;
-}.rounded-full {
-  border-radius: 9999px;
 }.rounded-lg {
   border-radius: 0.5rem;
 }.bg-\[var\(--tg-theme-bg-color\)\] {
@@ -496,6 +490,9 @@ video {
 }.px-\[5px\] {
   padding-left: 5px;
   padding-right: 5px;
+}.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }.py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -508,8 +505,6 @@ video {
 }.py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
-}.pb-12 {
-  padding-bottom: 3rem;
 }.pb-4 {
   padding-bottom: 1rem;
 }.pt-12 {
@@ -518,8 +513,6 @@ video {
   padding-top: 4rem;
 }.pt-4 {
   padding-top: 1rem;
-}.pt-8 {
-  padding-top: 2rem;
 }.pt-9 {
   padding-top: 2.25rem;
 }.text-left {
@@ -558,7 +551,7 @@ video {
   transition-duration: 500ms;
 }.ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}.group:hover .group-hover\:text-\[var\(--tg-theme-text-color\)\] {
+}/* You can add global styles to this file, and also import other style files */.group:hover .group-hover\:text-\[var\(--tg-theme-text-color\)\] {
   color: var(--tg-theme-text-color);
 }
 

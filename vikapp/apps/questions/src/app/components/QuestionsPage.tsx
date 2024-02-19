@@ -31,15 +31,13 @@ export const QuestionsPage = () => {
   return (
     <>
       <GlobalHeader>
-        <div className="px-8 pt-8 pb-4">
-          <ButtonIcon
-            firstIcon={true}
-            text={'Добавить вопрос'}
-            color={'[var(--tg-theme-accent-text-color)]'}
-            icon={'add'}
-            func={addQuestion}
-          />
-        </div>
+        <ButtonIcon
+          firstIcon={true}
+          text={'Добавить вопрос'}
+          color={'[var(--tg-theme-accent-text-color)]'}
+          icon={'add'}
+          func={addQuestion}
+        />
       </GlobalHeader>
       <Page>
         <MainBlock>

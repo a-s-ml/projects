@@ -19,7 +19,7 @@ export const ButtonIcon = ({
   const cur = currentIcon[0];
   return (
     <div
-    className="group flex items-start px-[5px] py-2 space-x-3 cursor-pointer text-[var(--tg-theme-text-color)]"
+    className="group flex items-start px-4 py-1 space-x-3 cursor-pointer text-[var(--tg-theme-text-color)]"
       onClick={() => func}
     >
       {firstIcon ? (

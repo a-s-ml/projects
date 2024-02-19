@@ -31,15 +31,13 @@ export function GroupsPage() {
   return (
     <>
       <GlobalHeader>
-        <div className="px-8 pt-8 pb-4">
-          <ButtonIcon
-            firstIcon={true}
-            text={'Добавить группу'}
-            color={'[var(--tg-theme-accent-text-color)]'}
-            icon={'add'}
-            func={addGroup}
-          />
-        </div>
+        <ButtonIcon
+          firstIcon={true}
+          text={'Добавить группу'}
+          color={'[var(--tg-theme-accent-text-color)]'}
+          icon={'add'}
+          func={addGroup}
+        />
       </GlobalHeader>
       <Page>
         <MainBlock>
