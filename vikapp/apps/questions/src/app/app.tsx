@@ -28,7 +28,7 @@ export function App() {
   return (
     <>
       <Provider store={storeQuestion}>
-        <QuestionList />
+        <QuestionsPage />
         <SlidePage slide={slide}>
           <p>Question</p>
         </SlidePage>
