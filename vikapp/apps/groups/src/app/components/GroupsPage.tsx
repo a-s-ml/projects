@@ -1,5 +1,5 @@
 import {
-  AddButton,
+  ButtonAdd,
   GlobalHeader,
   MainBlock,
   Page,
@@ -31,7 +31,7 @@ export function GroupsPage() {
   return (
     <>
       <GlobalHeader>
-        <AddButton text={'Добавить группу'} size={5} func={addGroup} />
+        <ButtonAdd text={'Добавить группу'} size={5} func={addGroup} />
       </GlobalHeader>
       <Page>
         <MainBlock>

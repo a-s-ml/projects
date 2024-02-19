@@ -1,11 +1,11 @@
 import { TrashIcon } from '@heroicons/react/24/outline';
 
-interface DeleteButtonProps {
+interface ButtonDeleteProps {
   func: (b: boolean) => void;
   text: string;
 }
 
-export const DeleteButton = ({ func, text }: DeleteButtonProps) => {
+export const ButtonDelete = ({ func, text }: ButtonDeleteProps) => {
   const tg = window.Telegram.WebApp;
 
   return (

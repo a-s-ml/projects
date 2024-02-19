@@ -1,5 +1,5 @@
 import {
-  AddButton,
+  ButtonAdd,
   GlobalHeader,
   MainBlock,
   Page,
@@ -31,7 +31,7 @@ export const QuestionsPage = () => {
   return (
     <>
       <GlobalHeader>
-        <AddButton text={'Добавить вопрос'} size={5} func={addQuestion} />
+        <ButtonAdd text={'Добавить вопрос'} size={5} func={addQuestion} />
       </GlobalHeader>
       <Page>
         <MainBlock>
