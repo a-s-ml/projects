@@ -33,7 +33,7 @@ export const QuestionListItem = ({ chat }: QuestionListItemProps) => {
               description={
                 <SimpleAccordionText>
                   <span className="text-xs text-[var(--tg-theme-hint-color)]">
-                    Дата: {item.dateadd}
+                    Дата: {String(item.dateadd)}
                   </span>
                   <p>{item.text}</p>
                   <span className="text-xs text-[var(--tg-theme-hint-color)]">
