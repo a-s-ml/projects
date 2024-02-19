@@ -20,10 +20,12 @@ export const App = () => {
   }
   return (
     <>
-      <GroupsPage />
-      <SlidePage slide={slide}>
-        <p>Groups</p>
-      </SlidePage>
+      <Provider store={storeGroups}>
+        <GroupsPage />
+        <SlidePage slide={slide}>
+          <p>Groups</p>
+        </SlidePage>
+      </Provider>
     </>
   );
 };
