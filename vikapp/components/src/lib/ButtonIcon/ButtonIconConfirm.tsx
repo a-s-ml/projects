@@ -22,7 +22,7 @@ export const ButtonIconConfirm = ({
   const tg = window.Telegram.WebApp;
   return (
     <div
-      className="group flex items-start px-[5px] py-2 space-x-3 cursor-pointer text-[var(--tg-theme-text-color)]"
+      className="group flex items-start py-1 space-x-3 cursor-pointer text-[var(--tg-theme-text-color)]"
       onClick={() => tg.showConfirm(textConfirm, func)}
     >
       {firstIcon ? (
