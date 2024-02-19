@@ -1,11 +1,11 @@
 import {
+  AddGroup,
   Feedback,
   GlobalFooter,
   GlobalHeader,
   MainBlock,
   Page,
 } from '@components';
-import { AddGroup } from './AddGroup';
 import GroupsList from './GroupsList';
 
 export function GroupsPage() {

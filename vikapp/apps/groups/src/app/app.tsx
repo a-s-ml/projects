@@ -19,12 +19,12 @@ export const App = () => {
     });
   }
   return (
-    <Provider store={storeGroups}>
+    <>
       <GroupsPage />
       <SlidePage slide={slide}>
         <p>Groups</p>
       </SlidePage>
-    </Provider>
+    </>
   );
 };
 

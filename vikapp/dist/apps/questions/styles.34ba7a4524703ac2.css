@@ -393,12 +393,8 @@ video {
   z-index: 10;
 }.z-50 {
   z-index: 50;
-}.mb-8 {
-  margin-bottom: 2rem;
 }.mt-4 {
   margin-top: 1rem;
-}.inline-block {
-  display: inline-block;
 }.flex {
   display: flex;
 }.inline-flex {
@@ -468,8 +464,6 @@ video {
   overflow: hidden;
 }.overflow-y-auto {
   overflow-y: auto;
-}.rounded-full {
-  border-radius: 9999px;
 }.rounded-lg {
   border-radius: 0.5rem;
 }.bg-\[var\(--tg-theme-bg-color\)\] {
@@ -511,8 +505,6 @@ video {
 }.py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
-}.pb-12 {
-  padding-bottom: 3rem;
 }.pb-4 {
   padding-bottom: 1rem;
 }.pt-12 {
