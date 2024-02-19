@@ -24,6 +24,7 @@ export const NewQuesion = () => {
   console.log(useQuestionSelector(storeQuestion.getState));
 
   async function onSubmit() {
+    tg.MainButton.hide();
     if (!isLastStep) return next();
     if (isLastStep) {
       if (question.text != '') {
@@ -38,7 +39,6 @@ export const NewQuesion = () => {
           answerright: question.answerright,
         });
       }
-      tg.MainButton.hide;
       dispatch(showQuestionSlide(false));
       dispatch(getQuestionDefault(''));
     }

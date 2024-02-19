@@ -23,9 +23,11 @@ export function TextList({ onSubmit }: TextListProps) {
       if (b) return handleText(questionText);
       return dispatch(getQuestionDefault(''));
     };
-    if (questionText != '') {
-      tg.showConfirm(`Применить несохранённый черновик?`, confirm);
-    }
+    setTimeout(() => {
+      if (questionText != '') {
+        tg.showConfirm(`Применить несохранённый черновик?`, confirm);
+      }
+    }, 1500);
   }, []);
 
   const handleText = (txt: string) => {
