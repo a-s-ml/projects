@@ -16,11 +16,16 @@ export function GroupsPage() {
     <>
       <GlobalHeader>
         <AddGroup />
-        <button onClick={()=> dispatch(showGroupSlide(true))}>Click</button>
       </GlobalHeader>
       <Page>
         <MainBlock>
           <div className="text-center pt-9"></div>
+          <button
+            className={'pt-4'}
+            onClick={() => dispatch(showGroupSlide(true))}
+          >
+            Click
+          </button>
           <GroupsList chat={521884639} />
         </MainBlock>
       </Page>
