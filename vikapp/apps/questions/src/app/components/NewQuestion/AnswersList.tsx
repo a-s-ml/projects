@@ -30,16 +30,16 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
   const handleAnswer = (e: React.ChangeEvent<HTMLInputElement>) => {
     const tname = e.target.name;
     const tvalue = e.target.value;
-    console.log('tname', tname);
-    console.log('tvalue', tvalue);
 
     const newAnswers = answer.map((item) => {
       if (item.name === tname) {
+        console.log('1');
         return {
           ...item,
           value: item.value + tvalue,
         };
       } else {
+        console.log('2');
         return item;
       }
     });
