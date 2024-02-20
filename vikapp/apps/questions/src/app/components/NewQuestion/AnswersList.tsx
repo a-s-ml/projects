@@ -36,7 +36,7 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
         console.log('1');
         return {
           ...item,
-          value: item.value + tvalue,
+          value: tvalue,
         };
       } else {
         console.log('2');
