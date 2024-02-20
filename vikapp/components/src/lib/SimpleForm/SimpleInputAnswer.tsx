@@ -32,7 +32,7 @@ export const SimpleInputAnswer = ({
             name={`Answer${id}`}
             id={`Answer${id}`}
             className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
-            placeholder="Вариант ответа 1"
+            placeholder={label}
             value={value}
             onChange={funcChange}
           />
