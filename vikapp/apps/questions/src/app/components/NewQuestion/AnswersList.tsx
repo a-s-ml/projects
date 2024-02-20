@@ -17,15 +17,14 @@ interface AnswersListProps {
 }
 
 export function AnswersList({ onSubmit }: AnswersListProps) {
-  const answers = [
+  const question = useQuestionSelector(selectQuestion);
+  const [selectedAnswerRight, setAnswerRight] = useState(question.answerright);
+  const [answer, setAnswer] = useState([
     { id: 1, text: 'Вариант ответа 1', name: 'Answer1', value: '' },
     { id: 2, text: 'Вариант ответа 2', name: 'Answer2', value: '' },
     { id: 3, text: 'Вариант ответа 3', name: 'Answer3', value: '' },
     { id: 4, text: 'Вариант ответа 4', name: 'Answer4', value: '' },
-  ];
-  const question = useQuestionSelector(selectQuestion);
-  const [selectedAnswerRight, setAnswerRight] = useState(question.answerright);
-  const [answer, setAnswer] = useState(answers);
+  ]);
   const dispatch = useQuestionDispatch();
 
   const handleAnswer = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,7 +55,7 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
   return (
     <>
       <div className="py-2">
-        {answers.map((item) => (
+        {answer.map((item) => (
           <SimpleInputAnswer
             id={item.id}
             selected={selectedAnswerRight}
