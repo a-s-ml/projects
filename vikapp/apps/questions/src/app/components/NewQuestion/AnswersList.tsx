@@ -34,18 +34,18 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
     console.log('tname', tname);
     console.log('tvalue', tvalue);
 
-    // const newAnswers = answer.map((item) => {
-    //   if (item.name === tname) {
-    //     return {
-    //       ...item,
-    //       value: tvalue,
-    //     };
-    //   } else {
-    //     return item;
-    //   }
-    // });
-    // console.log(newAnswers);
-    // setAnswer(newAnswers);
+    const newAnswers = answer.map((item) => {
+      if (item.name === tname) {
+        return {
+          ...item,
+          value: item.value + tvalue,
+        };
+      } else {
+        return item;
+      }
+    });
+    console.log(newAnswers);
+    setAnswer(newAnswers);
   };
 
   const hendelClick = (id: number) => {
