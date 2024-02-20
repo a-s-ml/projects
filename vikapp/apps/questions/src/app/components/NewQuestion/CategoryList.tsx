@@ -24,7 +24,7 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
       : { id: 0, name: ' ' }
   );
 
-  const handleChange = (cat: ICategory) => {
+  const handleChange = (cat: ICategory) => { 
     setCategory(cat);
     dispatch(getQuestionCategory(cat.id));
   };
