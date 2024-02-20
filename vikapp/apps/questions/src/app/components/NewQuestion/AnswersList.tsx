@@ -28,18 +28,22 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
   const [answer, setAnswer] = useState(answers);
   const dispatch = useQuestionDispatch();
   const handleAnswer = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    const tname = e.target.name;
+    const tvalue = e.target.value;
+    console.log('tname', tname);
+    console.log('tvalue', tvalue);
+
     const newAnswers = answer.map((item) => {
-      if (item.name != name) {
-        return item;
-      } else {
+      if (item.name === tname) {
         return {
           ...item,
-          value: value,
+          value: tvalue,
         };
+      } else {
+        return item;
       }
     });
+    console.log(newAnswers);
     setAnswer(newAnswers);
   };
 
