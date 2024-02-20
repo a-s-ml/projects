@@ -27,13 +27,18 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
   const handleChange = (cat: ICategory) => {
     setCategory(cat);
     dispatch(getQuestionCategory(cat.id));
+  };
+
+  if(selectedCategory?.id != 0) {
     tg.MainButton.setText('Следующий шаг');
-    tg.MainButton.show();
+    tg.MainButton.show();    
     tg.onEvent('mainButtonClicked', () => {
       tg.MainButton.hide();
       onSubmit;
     });
-  };
+  } else {
+    tg.MainButton.hide();
+  }
 
   return (
     <div className="py-2">

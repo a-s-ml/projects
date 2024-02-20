@@ -3,7 +3,6 @@ import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
 interface SimpleInputAnswerProps {
   id: number;
   selected: number;
-  label: string;
   value: string;
   funcChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   funcButton: (id: number) => void;
@@ -11,7 +10,6 @@ interface SimpleInputAnswerProps {
 
 export const SimpleInputAnswer = ({
   id,
-  label,
   value,
   funcChange,
   funcButton,
@@ -23,7 +21,7 @@ export const SimpleInputAnswer = ({
         htmlFor={`Answer${id}`}
         className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
       >
-        {label}
+        Варианта ответа ${id}
       </label>
       <div className="mt-2 flex rounded-md shadow-sm">
         <div className="relative flex flex-grow items-stretch focus-within:z-10">
@@ -32,7 +30,7 @@ export const SimpleInputAnswer = ({
             name={`Answer${id}`}
             id={`Answer${id}`}
             className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
-            placeholder={label}
+            placeholder={`Варианта ответа ${id}`}
             value={value}
             onChange={funcChange}
           />
