@@ -27,14 +27,20 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
   const [selectedAnswerRight, setAnswerRight] = useState(question.answerright);
   const [answer, setAnswer] = useState(answers);
   const dispatch = useQuestionDispatch();
-  console.log(answer);
   const handleAnswer = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const value = e.target.value;
-    setAnswer((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    const newAnswers = answer.map((item) => {
+      if (item.name != name) {
+        return item;
+      } else {
+        return {
+          ...item,
+          value: value,
+        };
+      }
+    });
+    setAnswer(newAnswers);
   };
 
   const hendelClick = (id: number) => {
