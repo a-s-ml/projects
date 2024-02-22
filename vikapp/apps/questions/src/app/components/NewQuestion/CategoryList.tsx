@@ -6,7 +6,7 @@ import {
 import { useState } from 'react';
 import { ICategory } from '@models';
 import { useGetCategoryQuery } from '@api/category';
-import { SimpleCategorySelect, ValidateLengthForm } from '@components';
+import { SimpleCategorySelect, ValidateForm } from '@components';
 
 interface CategoryListProps {
   onSubmit: () => void;
@@ -47,7 +47,7 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
         />
       )}
       <div className="py-4">
-        <ValidateLengthForm
+        <ValidateForm
           text={
             'Выберите подходящую категорию'
           }

@@ -4,7 +4,7 @@ import {
   getQuestionAnswerright,
   selectQuestion,
 } from '../../store/slices/questionApp.slice';
-import { SimpleInputAnswer, ValidateLengthForm } from '@components';
+import { SimpleInputAnswer, ValidateForm } from '@components';
 
 interface AnswersListProps {
   onSubmit: () => void;
@@ -39,27 +39,23 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
     setAnswer(newAnswers);
   };
 
-  let vb = false;
-  let vl = false;
-  const validationL = (approval: boolean) => {
-    approval ? (vl = true) : (vl = false);
+  const validLength = (approval: boolean) => {
+    return approval;
   };
 
-  const validationB = (approval: boolean) => {
-    approval ? (vb = true) : (vb = false);
+  const validationButton = (approval: boolean) => {
+    return approval;
   };
-  console.log('vl=', vl);
-  console.log('vb=', vb);
-  console.log('vl === vb =', vl === vb);
-  console.log('(vb === vl) === true =', (vb === vl) === true);
+  console.log('validLength=', validLength);
+  console.log('validationButton=', validationButton);
 
-  vl && vb
-    ? (tg.MainButton.setText('Следующий шаг'),
-      tg.MainButton.show(),
-      tg.onEvent('mainButtonClicked', () => {
-        tg.MainButton.hide(), onSubmit;
-      }))
-    : tg.MainButton.hide();
+  // validLength() && validationButton
+  //   ? (tg.MainButton.setText('Следующий шаг'),
+  //     tg.MainButton.show(),
+  //     tg.onEvent('mainButtonClicked', () => {
+  //       tg.MainButton.hide(), onSubmit;
+  //     }))
+  //   : tg.MainButton.hide();
 
   const hendelClick = (id: number) => {
     setAnswerRight(id);
@@ -79,19 +75,19 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
           />
         ))}
         <div className="py-4">
-          <ValidateLengthForm
+          <ValidateForm
             text={
               'Длина текста ответов должна быть не менее 1 не более 35 символов'
             }
             data={{ value: answer, lengthMin: 1, lengthMax: 35 }}
-            validation={validationL}
+            validation={validLength}
           />
-          <ValidateLengthForm
+          <ValidateForm
             text={
               'Обязательно нужно выбрать верный вариант ответа (вопросы для всех групп проходят модерацию)'
             }
             data={{ value: selectedAnswerRight, lengthMin: 0, lengthMax: 0 }}
-            validation={validationB}
+            validation={validationButton}
           />
         </div>
       </div>

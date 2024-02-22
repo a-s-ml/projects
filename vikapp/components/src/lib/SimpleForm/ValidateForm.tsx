@@ -7,7 +7,7 @@ interface IAnswers {
   value: string;
 }
 
-interface ValidateLengthFormProps {
+interface ValidateFormProps {
   text: string;
   data: {
     value: string | number | IAnswers[];
@@ -17,11 +17,11 @@ interface ValidateLengthFormProps {
   validation: (b: boolean) => void;
 }
 
-export const ValidateLengthForm = ({
+export const ValidateForm = ({
   text,
   validation,
   data,
-}: ValidateLengthFormProps) => {
+}: ValidateFormProps) => {
   let approval = validationLengthForm(data);
   validation(approval);
   console.log(approval)

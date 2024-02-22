@@ -5,7 +5,7 @@ import {
   getQuestionText,
   selectQuestionText,
 } from '../../store/slices/questionApp.slice';
-import { SimpleTextArea, ValidateLengthForm } from '@components';
+import { SimpleTextArea, ValidateForm } from '@components';
 
 interface TextListProps {
   onSubmit: () => void;
@@ -52,7 +52,7 @@ export function TextList({ onSubmit }: TextListProps) {
           func={(e) => handleText(e.target.value)}
         />
         <div className="py-4">
-          <ValidateLengthForm
+          <ValidateForm
             text={
               'Длина текста вопроса должна быть не менее 10 не более 250 символов'
             }

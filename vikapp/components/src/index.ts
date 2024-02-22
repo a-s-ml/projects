@@ -20,5 +20,4 @@ export * from './lib/ButtonIcon/ButtonIconConfirm';
 export * from './lib/SimpleForm/SimpleTextArea';
 export * from './lib/SimpleForm/SimpleSelect';
 export * from './lib/SimpleForm/SimpleInputAnswer';
-export * from './lib/SimpleForm/ValidateLengthForm';
-export * from './lib/SimpleForm/ValidateButtonForm';
+export * from './lib/SimpleForm/ValidateForm';
