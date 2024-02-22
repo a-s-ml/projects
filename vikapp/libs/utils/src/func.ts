@@ -46,30 +46,20 @@ export const validationLengthForm = (data: IValidationLengthForm): boolean => {
   if (typeof data.value === 'number') {
     console.log('number');
     if (data.value === 0) {
-      console.log('number = ', data.value);
-      console.log('false');
       return false;
     } else {
-      console.log('number = ', data.value);
-      console.log('true');
       return true;
     }
   }
   if (typeof data.value === 'object') {
     let x: number = 0;
     let res: boolean = false;
-    console.log('data.value ', data.value);
-    console.log('data.value.length ', data.value.length);
-    console.log('object');
-    console.log('res ', res);
-    console.log('x ', x);
     data.value.map((item) => {
       if (
         item.value.length > data.lengthMin &&
         item.value.length < data.lengthMax
       ) {
         x++;
-        console.log('x2 ', x);
       }
     });
     x === data.value.length ? (res = true) : (res = false);

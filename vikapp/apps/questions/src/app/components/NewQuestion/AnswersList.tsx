@@ -11,6 +11,8 @@ interface AnswersListProps {
 }
 
 export function AnswersList({ onSubmit }: AnswersListProps) {
+  let vl: boolean = false;
+  let vb: boolean = false;
   const tg = window.Telegram.WebApp;
   const question = useQuestionSelector(selectQuestion);
   const [selectedAnswerRight, setAnswerRight] = useState(question.answerright);
@@ -38,14 +40,18 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
     });
     setAnswer(newAnswers);
   };
-
-  const validation = (approval: boolean) => {
-    approval
-      ? (tg.MainButton.setText('Следующий шаг'),
-        tg.MainButton.show(),
-        tg.onEvent('mainButtonClicked', (tg.MainButton.hide(),onSubmit)))
-      : tg.MainButton.hide();
+  const validationL = (approval: boolean) => {
+    vl = approval;
   };
+
+  const validationB = (approval: boolean) => {
+    vb = approval;
+  };
+  (vl === vb) === true
+    ? (tg.MainButton.setText('Следующий шаг'),
+      tg.MainButton.show(),
+      tg.onEvent('mainButtonClicked', (tg.MainButton.hide(), onSubmit)))
+    : tg.MainButton.hide();
 
   const hendelClick = (id: number) => {
     setAnswerRight(id);
@@ -70,14 +76,14 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
               'Длина текста ответов должна быть не менее 1 не более 35 символов'
             }
             data={{ value: answer, lengthMin: 1, lengthMax: 35 }}
-            validation={validation}
+            validation={validationL}
           />
           <ValidateLengthForm
             text={
               'Обязательно нужно выбрать верный вариант ответа (вопросы для всех групп проходят модерацию)'
             }
             data={{ value: selectedAnswerRight, lengthMin: 0, lengthMax: 0 }}
-            validation={validation}
+            validation={validationB}
           />
         </div>
       </div>
