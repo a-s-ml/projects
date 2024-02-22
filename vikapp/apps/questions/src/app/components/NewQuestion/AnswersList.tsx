@@ -39,13 +39,13 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
     setAnswer(newAnswers);
   };
 
-  const validLength = (approval: boolean) => {
+  function validLength(approval: boolean) {
     return approval;
-  };
+  }
 
-  const validationButton = (approval: boolean) => {
+  function validationButton(approval: boolean) {
     return approval;
-  };
+  }
   console.log('validLength=', validLength);
   console.log('validationButton=', validationButton);
 
