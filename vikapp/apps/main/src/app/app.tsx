@@ -17,7 +17,6 @@ const Groups = React.lazy(() => import('groups/Module'));
 const Answers = React.lazy(() => import('answers/Module'));
 const Questions = React.lazy(() => import('questions/Module'));
 const Quiz = React.lazy(() => import('quiz/Module'));
-const AddQuestion = React.lazy(() => import('add-question/Module'));
 
 export function App() {
   const tg = window.Telegram.WebApp;

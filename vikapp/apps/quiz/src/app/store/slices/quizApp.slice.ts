@@ -2,13 +2,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IValidate } from '@models';
 import { QuizRootState } from '..';
 
-export interface questionAppState {
+export interface quizAppState {
   quizSlide: boolean;
   quizType: string;
   quizData: IValidate | undefined;
 }
 
-const initialState: questionAppState = {
+const initialState: quizAppState = {
   quizSlide: false,
   quizType: '',
   quizData: undefined,
