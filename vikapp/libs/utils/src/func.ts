@@ -44,7 +44,6 @@ export const validationLengthForm = (data: IValidationLengthForm): boolean => {
     }
   }
   if (typeof data.value === 'number') {
-    console.log('number');
     if (data.value === 0) {
       return false;
     } else {
@@ -56,7 +55,7 @@ export const validationLengthForm = (data: IValidationLengthForm): boolean => {
     let res: boolean = false;
     data.value.map((item) => {
       if (
-        item.value.length > data.lengthMin &&
+        item.value.length >= data.lengthMin &&
         item.value.length < data.lengthMax
       ) {
         x++;
