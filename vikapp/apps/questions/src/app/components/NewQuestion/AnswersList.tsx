@@ -45,6 +45,11 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
   const validationB = (approval: boolean) => {
     return approval;
   };
+  console.log(validationB);
+  console.log(validationL);
+  console.log(validationB === validationL);
+  console.log((validationB === validationL) === true);
+
   (validationB === validationL) === true
     ? (tg.MainButton.setText('Следующий шаг'),
       tg.MainButton.show(),
