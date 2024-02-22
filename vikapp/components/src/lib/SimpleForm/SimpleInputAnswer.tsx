@@ -21,7 +21,7 @@ export const SimpleInputAnswer = ({
         htmlFor={`Answer${id}`}
         className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
       >
-        Варианта ответа ${id}
+        Варианта ответа {id}
       </label>
       <div className="mt-2 flex rounded-md shadow-sm">
         <div className="relative flex flex-grow items-stretch focus-within:z-10">

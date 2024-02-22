@@ -54,9 +54,9 @@ export function TextList({ onSubmit }: TextListProps) {
         <div className="py-4">
           <ValidateLengthForm
             text={
-              'Длина текста ответов должна быть не менее 10 не более 25 символов'
+              'Длина текста ответов должна быть не менее 10 не более 250 символов'
             }
-            data={{ value: text, lengthMin: 10, lengthMax: 25 }}
+            data={{ value: text, lengthMin: 10, lengthMax: 250 }}
             validation={validation}
           />
         </div>

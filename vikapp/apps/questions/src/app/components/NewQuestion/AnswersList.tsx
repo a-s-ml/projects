@@ -43,7 +43,7 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
     approval
       ? (tg.MainButton.setText('Следующий шаг'),
         tg.MainButton.show(),
-        tg.onEvent('mainButtonClicked', onSubmit))
+        tg.onEvent('mainButtonClicked', (tg.MainButton.hide(),onSubmit)))
       : tg.MainButton.hide();
   };
 
@@ -67,9 +67,9 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
         <div className="py-4">
           <ValidateLengthForm
             text={
-              'Длина текста ответов должна быть не менее 10 не более 25 символов'
+              'Длина текста ответов должна быть не менее 1 не более 35 символов'
             }
-            data={{ value: answer, lengthMin: 10, lengthMax: 25 }}
+            data={{ value: answer, lengthMin: 1, lengthMax: 35 }}
             validation={validation}
           />
           <ValidateLengthForm

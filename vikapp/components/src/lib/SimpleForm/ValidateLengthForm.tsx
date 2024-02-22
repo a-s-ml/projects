@@ -22,7 +22,6 @@ export const ValidateLengthForm = ({
   validation,
   data,
 }: ValidateLengthFormProps) => {
-  const tg = window.Telegram.WebApp;
 
   let approval = validationLengthForm(data);
   validation(approval);
