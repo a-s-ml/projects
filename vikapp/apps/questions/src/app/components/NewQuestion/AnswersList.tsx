@@ -72,6 +72,13 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
             data={{ value: answer, lengthMin: 10, lengthMax: 25 }}
             validation={validation}
           />
+          <ValidateLengthForm
+            text={
+              'Обязательно нужно выбрать верный вариант ответа (вопросы для всех групп проходят модерацию)'
+            }
+            data={{ value: selectedAnswerRight, lengthMin: 0, lengthMax: 0 }}
+            validation={validation}
+          />
         </div>
       </div>
     </>

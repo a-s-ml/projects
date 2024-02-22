@@ -10,7 +10,7 @@ interface IAnswers {
 interface ValidateLengthFormProps {
   text: string;
   data: {
-    value: string | IAnswers[];
+    value: string | number | IAnswers[];
     lengthMin: number;
     lengthMax: number;
   };
