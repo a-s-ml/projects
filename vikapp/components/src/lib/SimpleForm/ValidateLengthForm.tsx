@@ -24,6 +24,7 @@ export const ValidateLengthForm = ({
 }: ValidateLengthFormProps) => {
   let approval = validationLengthForm(data);
   validation(approval);
+  console.log(approval)
 
   return (
     <div className="mt-1 flex items-center gap-x-1.5">
