@@ -22,8 +22,8 @@ export const ValidateLengthForm = ({
   validation,
   data,
 }: ValidateLengthFormProps) => {
-
   let approval = validationLengthForm(data);
+  console.log('approval', approval);
   validation(approval);
 
   return (
