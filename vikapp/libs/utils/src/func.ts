@@ -33,20 +33,13 @@ export const deleteQuestion = (b: boolean) => {
 };
 
 export const validationLengthForm = (data: IValidationLengthForm): boolean => {
-  console.log('data: ', data);
   if (typeof data.value === 'string') {
-    console.log('string');
     if (
       data.value.length < data.lengthMin ||
       data.value.length > data.lengthMax
     ) {
-      console.log('string length = ', data.value.length);
-      console.log('false');
       return false;
     } else {
-      console.log('string length = ', data.value.length);
-      console.log('number = ', data.value);
-      console.log('true');
       return true;
     }
   }
@@ -65,18 +58,18 @@ export const validationLengthForm = (data: IValidationLengthForm): boolean => {
   if (typeof data.value === 'object') {
     let x: number = 0;
     let res: boolean = false;
-    console.log('data.value', data.value);
-    console.log('data.value.length', data.value.length);
+    console.log('data.value ', data.value);
+    console.log('data.value.length ', data.value.length);
     console.log('object');
-    console.log('res', res);
-    console.log('x', x);
+    console.log('res ', res);
+    console.log('x ', x);
     data.value.map((item) => {
       if (
-        item.value.length > data.lengthMin ||
+        item.value.length > data.lengthMin &&
         item.value.length < data.lengthMax
       ) {
         x++;
-        console.log('object length = ', item.value.length);
+        console.log('x2 ', x);
       }
     });
     x === data.value.length ? (res = true) : (res = false);
