@@ -63,21 +63,22 @@ export const validationLengthForm = (data: IValidationLengthForm): boolean => {
     }
   }
   if (typeof data.value === 'object') {
+    let x: number = 0;
+    let res: boolean = false;
     console.log('object');
+    console.log('res', res);
+    console.log('x', x);
     data.value.map((item) => {
       if (
-        item.value.length < data.lengthMin ||
-        item.value.length > data.lengthMax
+        item.value.length > data.lengthMin ||
+        item.value.length < data.lengthMax
       ) {
+        x++;
         console.log('object length = ', item.value.length);
-        console.log('false');
-        return false;
-      } else {
-        console.log('object length = ', item.value.length);
-        console.log('true');
-        return true;
       }
     });
+    x === data.value.length ? (res = true) : (res = false);
+    return res;
   }
   return false;
 };
