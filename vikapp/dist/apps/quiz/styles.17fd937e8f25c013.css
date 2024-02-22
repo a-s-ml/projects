@@ -729,7 +729,7 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }.ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}/* You can add global styles to this file, and also import other style files */.placeholder\:text-\[var\(--tg-theme-hint-color\)\]::-moz-placeholder {
+}.placeholder\:text-\[var\(--tg-theme-hint-color\)\]::-moz-placeholder {
   color: var(--tg-theme-hint-color);
 }.placeholder\:text-\[var\(--tg-theme-hint-color\)\]::placeholder {
   color: var(--tg-theme-hint-color);
