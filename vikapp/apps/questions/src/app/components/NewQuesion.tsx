@@ -22,27 +22,6 @@ export const NewQuesion = () => {
   const user = 521884639;
   const question = useQuestionSelector(selectQuestion);
 
-  async function onSubmit() {
-    tg.MainButton.hide();
-    if (!isLastStep) return next();
-    if (isLastStep) {
-      if (question.text != '') {
-        await addQuestion({
-          chat: user as unknown as bigint,
-          text: question.text,
-          category: question.category,
-          answer1: question.answer1,
-          answer2: question.answer2,
-          answer3: question.answer3,
-          answer4: question.answer4,
-          answerright: question.answerright,
-        });
-      }
-      dispatch(showQuestionSlide(false));
-      dispatch(getQuestionDefault(''));
-    }
-  }
-
   const { steps, currentStepIndex, step, isLastStep, next } =
     useNewQuestionForm([
       <TextList onSubmit={onSubmit} />,
@@ -51,6 +30,26 @@ export const NewQuesion = () => {
     ]);
 
   const [addQuestion, {}] = useAddQuestionMutation();
+
+  async function onSubmit() {
+    tg.MainButton.hide();
+    if (!isLastStep) return next();
+    if (isLastStep) {
+      await addQuestion({
+        chat: user as unknown as bigint,
+        text: question.text,
+        category: question.category,
+        answer1: question.answer1,
+        answer2: question.answer2,
+        answer3: question.answer3,
+        answer4: question.answer4,
+        answerright: question.answerright,
+      });
+      dispatch(showQuestionSlide(false));
+      dispatch(getQuestionDefault(''));
+    }
+  }
+
   return (
     <Page>
       <HeaderBlock>
