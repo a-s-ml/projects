@@ -38,17 +38,23 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
     });
     setAnswer(newAnswers);
   };
+
+  let vb = false;
+  let vl = false;
   const validationL = (approval: boolean) => {
-    return approval;
+    return (vl = approval);
   };
 
   const validationB = (approval: boolean) => {
-    return approval;
+    return (vb = approval);
   };
-  console.log(validationB);
-  console.log(validationL);
-  console.log(validationB === validationL);
-  console.log((validationB === validationL) === true);
+  console.log('vl=', vl);
+  console.log('vb=', vb);
+  console.log('vl === vb =', vl === vb);
+  console.log(
+    '(vb === vl) === true =',
+    (vb === vl) === true
+  );
 
   (validationB === validationL) === true
     ? (tg.MainButton.setText('Следующий шаг'),
