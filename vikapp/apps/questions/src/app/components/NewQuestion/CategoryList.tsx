@@ -6,7 +6,7 @@ import {
 import { useState } from 'react';
 import { ICategory } from '@models';
 import { useGetCategoryQuery } from '@api/category';
-import { SimpleCategorySelect } from '@components';
+import { SimpleCategorySelect, ValidateLengthForm } from '@components';
 
 interface CategoryListProps {
   onSubmit: () => void;
@@ -19,26 +19,23 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
   const { data, isSuccess } = useGetCategoryQuery('');
   const dispatch = useQuestionDispatch();
   const [selectedCategory, setCategory] = useState(
-    questionCategory != 0
-      ? data?.find((id) => id.id === questionCategory)
-      : { id: 0, name: ' ' }
+    questionCategory != 0 && typeof data === 'object'
+      ? data.find((id) => id.id === questionCategory)
+      : { id: 0, name: '' }
   );
 
-  const handleChange = (cat: ICategory) => { 
+  const handleChange = (cat: ICategory) => {
     setCategory(cat);
     dispatch(getQuestionCategory(cat.id));
   };
 
-  if(selectedCategory?.id != 0) {
-    tg.MainButton.setText('Следующий шаг');
-    tg.MainButton.show();    
-    tg.onEvent('mainButtonClicked', () => {
-      tg.MainButton.hide();
-      onSubmit;
-    });
-  } else {
-    tg.MainButton.hide();
-  }
+  const validation = (approval: boolean) => {
+    approval
+      ? (tg.MainButton.setText('Следующий шаг'),
+        tg.MainButton.show(),
+        tg.onEvent('mainButtonClicked', onSubmit))
+      : tg.MainButton.hide();
+  };
 
   return (
     <div className="py-2">
@@ -49,6 +46,19 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
           data={data}
         />
       )}
+      <div className="py-4">
+        <ValidateLengthForm
+          text={
+            'Длина текста ответов должна быть не менее 10 не более 25 символов'
+          }
+          data={{
+            value: typeof selectedCategory === 'object' ? selectedCategory.id : 0,
+            lengthMin: 0,
+            lengthMax: 0,
+          }}
+          validation={validation}
+        />
+      </div>
     </div>
   );
 }

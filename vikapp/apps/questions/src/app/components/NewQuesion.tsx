@@ -21,9 +21,9 @@ export const NewQuesion = () => {
   const dispatch = useQuestionDispatch();
   const user = 521884639;
   const question = useQuestionSelector(selectQuestion);
-  console.log(useQuestionSelector(storeQuestion.getState));
 
   async function onSubmit() {
+    tg.MainButton.hide();
     if (!isLastStep) return next();
     if (isLastStep) {
       if (question.text != '') {
