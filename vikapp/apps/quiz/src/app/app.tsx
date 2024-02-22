@@ -1,14 +1,12 @@
-import { useSelector } from 'react-redux';
-import { selectAllQuiz } from './store/quiz.slice';
-import { Tabs } from './components/Tabs';
+import { Provider } from 'react-redux';
+import { storeQuiz } from '@store/quiz';
+import { QuizPage } from './components/QuizPage';
 
 export function App() {
-  const entities = useSelector(selectAllQuiz);
-  console.log('entities', entities);
   return (
-    <div>
-      <Tabs />
-    </div>
+    <Provider store={storeQuiz}>
+      <QuizPage />
+    </Provider>
   );
 }
 

@@ -1,3 +1,0 @@
-/*! For license information please see 700.js.LICENSE.txt */
-(self.webpackChunkquiz=self.webpackChunkquiz||[]).push([[700,100],{964:(e,r,o)=>{var t=o(136),n=Symbol.for("react.element"),f=Symbol.for("react.fragment"),_=Object.prototype.hasOwnProperty,a=t.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,l={key:!0,ref:!0,__self:!0,__source:!0};function p(e,r,o){var t,f={},p=null,s=null;for(t in void 0!==o&&(p=""+o),void 0!==r.key&&(p=""+r.key),void 0!==r.ref&&(s=r.ref),r)_.call(r,t)&&!l.hasOwnProperty(t)&&(f[t]=r[t]);if(e&&e.defaultProps)for(t in r=e.defaultProps)void 0===f[t]&&(f[t]=r[t]);return{$$typeof:n,type:e,key:p,ref:s,props:f,_owner:a.current}}r.Fragment=f,r.jsx=p,r.jsxs=p},344:(e,r,o)=>{e.exports=o(964)}}]);
-//# sourceMappingURL=700.js.map
