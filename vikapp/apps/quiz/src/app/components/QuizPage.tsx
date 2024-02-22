@@ -5,25 +5,13 @@ import {
   MainBlock,
   SlidePage,
 } from '@components';
-import { useQuizDispatch, useQuizSelector } from '@store/quiz';
-import {
-  selectQuizSlide,
-  showQuizSlide,
-  typeQuiz,
-} from '../store/slices/quizApp.slice';
+import { useQuizDispatch } from '@store/quiz';
+import { showQuizSlide, typeQuiz } from '../store/slices/quizApp.slice';
 import { NewQuiz } from './NewQuiz';
 
 export const QuizPage = () => {
   const tg = window.Telegram.WebApp;
   const dispatch = useQuizDispatch();
-  const slide = useQuizSelector(selectQuizSlide);
-
-  if (slide) {
-    tg.BackButton.show();
-    tg.onEvent('backButtonClicked', () => {
-      dispatch(showQuizSlide(false));
-    });
-  }
 
   const addQuiz = () => {
     dispatch(typeQuiz('addQuiz'));
@@ -43,10 +31,9 @@ export const QuizPage = () => {
       </GlobalHeader>
       <Page>
         <MainBlock>
-          <div className="text-center pt-9"></div>
+          <NewQuiz />
         </MainBlock>
       </Page>
-      <SlidePage slide={slide}><NewQuiz /></SlidePage>
     </>
   );
 };
