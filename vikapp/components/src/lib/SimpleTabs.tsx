@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 
 interface ITab {
   name: string;
+  type: string;
   component: () => JSX.Element;
 }
 

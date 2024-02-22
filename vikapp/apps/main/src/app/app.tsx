@@ -12,6 +12,7 @@ import {
 } from './store/slices/mainApp.slice';
 import { Preloader, SlidePage } from '@components';
 import { storeQuestion } from 'apps/questions/src/app/store';
+import { storeQuiz } from '@store/quiz';
 const Groups = React.lazy(() => import('groups/Module'));
 const Answers = React.lazy(() => import('answers/Module'));
 const Questions = React.lazy(() => import('questions/Module'));
@@ -60,6 +61,11 @@ export function App() {
             {type == 'questions' && (
               <Provider store={storeQuestion}>
                 <Questions />
+              </Provider>
+            )}
+            {type == 'quiz' && (
+              <Provider store={storeQuiz}>
+                <Quiz />
               </Provider>
             )}
           </SlidePage>
