@@ -33,6 +33,7 @@ export const deleteQuestion = (b: boolean) => {
 };
 
 export const validationLengthForm = (data: IValidationLengthForm): boolean => {
+  console.log('data: ', data);
   if (typeof data.value === 'string') {
     console.log('string');
     if (
