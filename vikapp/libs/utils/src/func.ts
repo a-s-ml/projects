@@ -65,6 +65,8 @@ export const validationLengthForm = (data: IValidationLengthForm): boolean => {
   if (typeof data.value === 'object') {
     let x: number = 0;
     let res: boolean = false;
+    console.log('data.value', data.value);
+    console.log('data.value.length', data.value.length);
     console.log('object');
     console.log('res', res);
     console.log('x', x);
