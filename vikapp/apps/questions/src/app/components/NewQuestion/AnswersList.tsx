@@ -4,14 +4,14 @@ import {
   getQuestionAnswerright,
   selectQuestion,
 } from '../../store/slices/questionApp.slice';
-import { SimpleInputAnswer } from '@components';
-import { AnswersListValidate } from './AnswersListValidate';
+import { SimpleInputAnswer, ValidateLengthForm } from '@components';
 
 interface AnswersListProps {
   onSubmit: () => void;
 }
 
 export function AnswersList({ onSubmit }: AnswersListProps) {
+  const tg = window.Telegram.WebApp;
   const question = useQuestionSelector(selectQuestion);
   const [selectedAnswerRight, setAnswerRight] = useState(question.answerright);
   const [answer, setAnswer] = useState([
@@ -28,18 +28,23 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
 
     const newAnswers = answer.map((item) => {
       if (item.name === tname) {
-        console.log('1');
         return {
           ...item,
           value: tvalue,
         };
       } else {
-        console.log('2');
         return item;
       }
     });
-    console.log(newAnswers);
     setAnswer(newAnswers);
+  };
+
+  const validation = (approval: boolean) => {
+    approval
+      ? (tg.MainButton.setText('Следующий шаг'),
+        tg.MainButton.show(),
+        tg.onEvent('mainButtonClicked', onSubmit))
+      : tg.MainButton.hide();
   };
 
   const hendelClick = (id: number) => {
@@ -59,11 +64,15 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
             funcButton={hendelClick}
           />
         ))}
-        <AnswersListValidate
-          answers={answer}
-          onSubmit={onSubmit}
-          answerRight={selectedAnswerRight}
-        />
+        <div className="py-4">
+          <ValidateLengthForm
+            text={
+              'Длина текста ответов должна быть не менее 10 не более 25 символов'
+            }
+            data={{ value: answer, lengthMin: 10, lengthMax: 25 }}
+            validation={validation}
+          />
+        </div>
       </div>
     </>
   );

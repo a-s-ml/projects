@@ -14,8 +14,7 @@ interface QuestionListItemProps {
 
 export const QuestionListItem = ({ chat }: QuestionListItemProps) => {
   const tg = window.Telegram.WebApp;
-  const { isLoading, data, isSuccess } =
-    useGetQuestionByChatQuery(chat);
+  const { isLoading, data, isSuccess } = useGetQuestionByChatQuery(chat);
 
   return (
     <>
@@ -29,7 +28,7 @@ export const QuestionListItem = ({ chat }: QuestionListItemProps) => {
                   <span className="text-xs text-[var(--tg-theme-hint-color)]">
                     Дата: {String(item.dateadd)}
                   </span>
-                  <p>{item.text}</p>
+                  <p className="line-clamp-3">{item.text}</p>
                   <span className="text-xs text-[var(--tg-theme-hint-color)]">
                     Категория: {item.category}
                   </span>

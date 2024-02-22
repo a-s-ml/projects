@@ -1,3 +1,0 @@
-/*! For license information please see 80.js.LICENSE.txt */
-(self.webpackChunkgroups=self.webpackChunkgroups||[]).push([[80,100],{964:(e,r,o)=>{var t=o(136),n=Symbol.for("react.element"),f=Symbol.for("react.fragment"),p=Object.prototype.hasOwnProperty,s=t.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,_={key:!0,ref:!0,__self:!0,__source:!0};function a(e,r,o){var t,f={},a=null,l=null;for(t in void 0!==o&&(a=""+o),void 0!==r.key&&(a=""+r.key),void 0!==r.ref&&(l=r.ref),r)p.call(r,t)&&!_.hasOwnProperty(t)&&(f[t]=r[t]);if(e&&e.defaultProps)for(t in r=e.defaultProps)void 0===f[t]&&(f[t]=r[t]);return{$$typeof:n,type:e,key:a,ref:l,props:f,_owner:s.current}}r.Fragment=f,r.jsx=a,r.jsxs=a},344:(e,r,o)=>{e.exports=o(964)}}]);
-//# sourceMappingURL=80.js.map

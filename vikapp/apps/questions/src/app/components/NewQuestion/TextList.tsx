@@ -5,8 +5,7 @@ import {
   getQuestionText,
   selectQuestionText,
 } from '../../store/slices/questionApp.slice';
-import { TextListValidate } from './TextListValidate';
-import { SimpleTextArea } from '@components';
+import { SimpleTextArea, ValidateLengthForm } from '@components';
 
 interface TextListProps {
   onSubmit: () => void;
@@ -30,6 +29,14 @@ export function TextList({ onSubmit }: TextListProps) {
     }, 1500);
   }, []);
 
+  const validation = (approval: boolean) => {
+    approval
+      ? (tg.MainButton.setText('Следующий шаг'),
+        tg.MainButton.show(),
+        tg.onEvent('mainButtonClicked', onSubmit))
+      : tg.MainButton.hide();
+  };
+
   const handleText = (txt: string) => {
     setText(txt);
     dispatch(getQuestionText(txt));
@@ -44,7 +51,15 @@ export function TextList({ onSubmit }: TextListProps) {
           value={text}
           func={(e) => handleText(e.target.value)}
         />
-        <TextListValidate text={text} onSubmit={onSubmit} />
+        <div className="py-4">
+          <ValidateLengthForm
+            text={
+              'Длина текста ответов должна быть не менее 10 не более 25 символов'
+            }
+            data={{ value: text, lengthMin: 10, lengthMax: 25 }}
+            validation={validation}
+          />
+        </div>
       </div>
     </>
   );
