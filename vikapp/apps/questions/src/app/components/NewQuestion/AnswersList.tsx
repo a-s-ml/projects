@@ -11,8 +11,6 @@ interface AnswersListProps {
 }
 
 export function AnswersList({ onSubmit }: AnswersListProps) {
-  let vl: boolean = false;
-  let vb: boolean = false;
   const tg = window.Telegram.WebApp;
   const question = useQuestionSelector(selectQuestion);
   const [selectedAnswerRight, setAnswerRight] = useState(question.answerright);
@@ -41,16 +39,18 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
     setAnswer(newAnswers);
   };
   const validationL = (approval: boolean) => {
-    vl = approval;
+    return approval;
   };
 
   const validationB = (approval: boolean) => {
-    vb = approval;
+    return approval;
   };
-  (vl === vb) === true
+  (validationB === validationL) === true
     ? (tg.MainButton.setText('Следующий шаг'),
       tg.MainButton.show(),
-      tg.onEvent('mainButtonClicked', (tg.MainButton.hide(), onSubmit)))
+      tg.onEvent('mainButtonClicked', () => {
+        tg.MainButton.hide(), onSubmit;
+      }))
     : tg.MainButton.hide();
 
   const hendelClick = (id: number) => {
