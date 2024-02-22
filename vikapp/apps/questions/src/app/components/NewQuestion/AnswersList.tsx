@@ -42,21 +42,18 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
   let vb = false;
   let vl = false;
   const validationL = (approval: boolean) => {
-    return (vl = approval);
+    approval ? (vl = true) : (vl = false);
   };
 
   const validationB = (approval: boolean) => {
-    return (vb = approval);
+    approval ? (vb = true) : (vb = false);
   };
   console.log('vl=', vl);
   console.log('vb=', vb);
   console.log('vl === vb =', vl === vb);
-  console.log(
-    '(vb === vl) === true =',
-    (vb === vl) === true
-  );
+  console.log('(vb === vl) === true =', (vb === vl) === true);
 
-  (validationB === validationL) === true
+  vl && vb
     ? (tg.MainButton.setText('Следующий шаг'),
       tg.MainButton.show(),
       tg.onEvent('mainButtonClicked', () => {
