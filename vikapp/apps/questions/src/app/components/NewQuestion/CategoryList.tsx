@@ -49,10 +49,10 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
       <div className="py-4">
         <ValidateLengthForm
           text={
-            'Длина текста ответов должна быть не менее 10 не более 25 символов'
+            'Выберите подходящую категорию'
           }
           data={{
-            value: typeof selectedCategory === 'object' ? selectedCategory.id : 0,
+            value: selectedCategory ? selectedCategory.id : 0,
             lengthMin: 0,
             lengthMax: 0,
           }}

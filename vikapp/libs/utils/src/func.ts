@@ -34,39 +34,46 @@ export const deleteQuestion = (b: boolean) => {
 
 export const validationLengthForm = (data: IValidationLengthForm): boolean => {
   if (typeof data.value === 'string') {
-    console.log('string')
+    console.log('string');
     if (
       data.value.length < data.lengthMin ||
       data.value.length > data.lengthMax
     ) {
-      console.log('false')
+      console.log('string length = ', data.value.length);
+      console.log('false');
       return false;
     } else {
-      console.log('true')
+      console.log('string length = ', data.value.length);
+      console.log('number = ', data.value);
+      console.log('true');
       return true;
     }
   }
   if (typeof data.value === 'number') {
-    console.log('number')
-    if ((data.value = 0)) {
-      console.log('false')
+    console.log('number');
+    if (data.value === 0) {
+      console.log('number = ', data.value);
+      console.log('false');
       return false;
     } else {
-      console.log('true')
+      console.log('number = ', data.value);
+      console.log('true');
       return true;
     }
   }
   if (typeof data.value === 'object') {
-    console.log('object')
+    console.log('object');
     data.value.map((item) => {
       if (
         item.value.length < data.lengthMin ||
         item.value.length > data.lengthMax
       ) {
-        console.log('false')
+        console.log('object length = ', item.value.length);
+        console.log('false');
         return false;
       } else {
-        console.log('true')
+        console.log('object length = ', item.value.length);
+        console.log('true');
         return true;
       }
     });
