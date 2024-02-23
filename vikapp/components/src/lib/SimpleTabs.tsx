@@ -19,21 +19,21 @@ export const SimpleTabs = ({ title, tabs }: SimpleTabsProps) => {
   return (
     <section
       aria-labelledby="features-heading"
-      className="mx-auto max-w-7xl py-8 sm:px-2 lg:px-8"
+      className="mx-auto max-w-screen py-2"
     >
-      <div className="mx-auto max-w-2xl px-4 lg:max-w-none lg:px-0">
+      <div className="mx-auto max-w-screen px-0">
         <div className="max-w-3xl">
           <h2
             id="features-heading"
-            className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            className="font-bold tracking-tight text-[var(--tg-theme-hint-color)]"
           >
             {title}
           </h2>
         </div>
 
         <Tab.Group as="div" className="mt-4">
-          <div className="-mx-4 flex overflow-x-auto sm:mx-0">
-            <div className="flex-auto border-b border-gray-200 px-4 sm:px-0">
+          <div className="mx-0 flex overflow-x-auto">
+            <div className="flex-auto border-b border-[var(--tg-theme-hint-color)] px-0">
               <Tab.List className="-mb-px flex space-x-10">
                 {tabs.map((tab) => (
                   <Tab
@@ -41,9 +41,9 @@ export const SimpleTabs = ({ title, tabs }: SimpleTabsProps) => {
                     className={({ selected }) =>
                       classNames(
                         selected
-                          ? 'border-indigo-500 text-indigo-600'
-                          : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                        'whitespace-nowrap border-b-2 py-6 text-sm font-medium'
+                          ? 'text-[var(--tg-theme-text-color)]'
+                          : 'text-[var(--tg-theme-hint-color)]',
+                        'whitespace-nowrap py-2 text-sm font-medium'
                       )
                     }
                   >
@@ -56,7 +56,7 @@ export const SimpleTabs = ({ title, tabs }: SimpleTabsProps) => {
 
           <Tab.Panels as={Fragment}>
             {tabs.map((tab) => (
-              <Tab.Panel key={tab.name} className="space-y-16 pt-10 lg:pt-16">
+              <Tab.Panel key={tab.name} className="space-y-16 pt-10">
                 <tab.component />
               </Tab.Panel>
             ))}
