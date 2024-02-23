@@ -5,13 +5,14 @@ import {
   MainBlock,
   SlidePage,
 } from '@components';
-import { useQuizDispatch } from '@store/quiz';
+import { storeQuiz, useQuizDispatch, useQuizSelector } from '@store/quiz';
 import { showQuizSlide, typeQuiz } from '../store/slices/quizApp.slice';
 import { NewQuiz } from './NewQuiz';
 
 export const QuizPage = () => {
   const tg = window.Telegram.WebApp;
   const dispatch = useQuizDispatch();
+  console.log(useQuizSelector(storeQuiz.getState));
 
   const addQuiz = () => {
     dispatch(typeQuiz('addQuiz'));
