@@ -11,6 +11,10 @@ interface IValidationLengthForm {
   lengthMax: number;
 }
 
+export const classNames = (...classes: string[]) => {
+  return classes.filter(Boolean).join(' ');
+};
+
 export const addGroup = () => {
   tg.openTelegramLink('https://t.me/ViktorinaOnlineBot?startgroup=add');
 };

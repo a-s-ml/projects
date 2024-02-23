@@ -22,3 +22,7 @@ export * from './lib/SimpleForm/SimpleSelect';
 export * from './lib/SimpleForm/SimpleInputAnswer';
 export * from './lib/SimpleForm/ValidateForm';
 export * from './lib/SimpleTabs';
+export * from './lib/SimpleRadioGroup/SimpleRadioGroup';
+export * from './lib/SimpleRadioGroup/SimpleRadioGroupOption';
+export * from './lib/SimpleSwitchButton';
+export * from './lib/SimpleCheckbox';

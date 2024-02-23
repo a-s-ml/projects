@@ -1,0 +1,54 @@
+import {
+  useGetCategoryQuery,
+  useGetCategoryGroupsQuery,
+  useAddCategoryGroupsMutation,
+  useDeleteCategoryGroupsMutation,
+} from '@api/category';
+import { SimpleCheckbox } from '@components';
+import { inDevelopment } from '@utils';
+import { useState } from 'react';
+
+export const CategoryQuiz = () => {
+  const { data: allCategory } = useGetCategoryQuery('');
+  const chat = 521884639n;
+  const { data: GroupCategory } = useGetCategoryGroupsQuery(chat);
+  const [setCategory, {}] = useAddCategoryGroupsMutation();
+  const [deleteCategory, {}] = useDeleteCategoryGroupsMutation();
+
+  async function categoryChanged(check: boolean, category: number) {
+    if (!check) {
+      await setCategory({ chat, category });
+    }
+    if (check) {
+      deleteCategory({ chat, category });
+    }
+  }
+
+  return (
+    <>
+      {GroupCategory &&
+        allCategory &&
+        allCategory.map((item) => (
+          <SimpleCheckbox
+            key={item.id}
+            data={item}
+            disabled={item.id === 1001 || item.id === 85 ? true : false}
+            checked={
+              GroupCategory.find((itm) => itm.category === item.id)
+                ? false
+                : true
+            }
+            func={categoryChanged}
+          />
+        ))}
+      <SimpleCheckbox
+        data={{ id: 999, name: 'Добавить' }}
+        checked={false}
+        disabled={true}
+        func={inDevelopment}
+      />
+    </>
+  );
+};
+
+export default CategoryQuiz;
