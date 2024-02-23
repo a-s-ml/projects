@@ -26,7 +26,7 @@ export const CategoryQuiz = () => {
   }
 
   return (
-    <>
+    <div className={`grid grid-cols-2 gap-2`}>
       {GroupCategory &&
         allCategory &&
         allCategory.map((item) => (
@@ -48,7 +48,7 @@ export const CategoryQuiz = () => {
         disabled={true}
         func={inDevelopment}
       />
-    </>
+    </div>
   );
 };
 

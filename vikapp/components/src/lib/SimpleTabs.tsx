@@ -56,7 +56,7 @@ export const SimpleTabs = ({ title, tabs }: SimpleTabsProps) => {
 
           <Tab.Panels as={Fragment}>
             {tabs.map((tab) => (
-              <Tab.Panel key={tab.name} className="space-y-16 pt-10">
+              <Tab.Panel key={tab.name} className="space-y-16 pt-2">
                 <tab.component />
               </Tab.Panel>
             ))}

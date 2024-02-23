@@ -514,6 +514,8 @@ video {
 }.columns-2 {
   -moz-columns: 2;
        columns: 2;
+}.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }.flex-col {
   flex-direction: column;
 }.items-start {
@@ -676,10 +678,10 @@ video {
   padding-right: 1rem;
 }.pr-9 {
   padding-right: 2.25rem;
-}.pt-10 {
-  padding-top: 2.5rem;
 }.pt-16 {
   padding-top: 4rem;
+}.pt-2 {
+  padding-top: 0.5rem;
 }.pt-9 {
   padding-top: 2.25rem;
 }.text-left {
