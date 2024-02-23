@@ -8,7 +8,11 @@ import { SimpleRadioGroup, SimpleRadioGroupOption } from '@components';
 import { useState } from 'react';
 
 export const TypeQuiz = () => {
-  const { data: allTypes } = useGetTypeQuery('');
+  const {
+    data: allTypes,
+    isLoading: loadingAllTypes,
+    isSuccess: successAllTypes,
+  } = useGetTypeQuery('');
   const chat = 521884639;
   const { data: GroupDb } = useGetGroupDbQuery(chat as unknown as bigint);
   const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
