@@ -28,12 +28,13 @@ export const TimeQuiz = () => {
         enabled={nightNode}
         setEnabled={setNightNode}
       />
-      {nightTimeConst.map((time) => (
-        <button
-          type="button"
-          value={time.id}
-          onClick={() => setTimes(time.id)}
-          className={`flex items-center justify-center rounded-md py-2 px-2 text-xs font-semibold 
+      <div className={`grid grid-cols-3 gap-2`}>
+        {nightTimeConst.map((time) => (
+          <button
+            type="button"
+            value={time.id}
+            onClick={() => setTimes(time.id)}
+            className={`flex items-center justify-center rounded-md py-2 px-2 text-xs font-semibold 
                                 ${
                                   Boolean(
                                     nightNode === false &&
@@ -107,11 +108,12 @@ export const TimeQuiz = () => {
                                     : ''
                                 }
                                 `}
-          disabled={Boolean(nightNode === false && time.night === true)}
-        >
-          {time.name}
-        </button>
-      ))}
+            disabled={Boolean(nightNode === false && time.night === true)}
+          >
+            {time.name}
+          </button>
+        ))}
+      </div>
     </>
   );
 };
