@@ -5,8 +5,8 @@ import { useState } from 'react';
 import { SimpleSwitchButton } from '@components';
 
 export const TimeQuiz = () => {
-  const chat = 521884639n;
-  const { data: GroupDb } = useGetGroupDbQuery(chat);
+  const chat = 521884639;
+  const { data: GroupDb } = useGetGroupDbQuery(chat as unknown as bigint);
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
   const [times, setTimes] = useState(0);
   const [nightNode, setNightNode] = useState(true);

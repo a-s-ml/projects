@@ -9,8 +9,8 @@ import { useState } from 'react';
 
 export const PeriodQuiz = () => {
   const { data: allPeriod } = useGetTimeQuery('');
-  const chat = 521884639n;
-  const { data: GroupDb } = useGetGroupDbQuery(chat);
+  const chat = 521884639;
+  const { data: GroupDb } = useGetGroupDbQuery(chat as unknown as bigint);
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
 
   const [timeState, setTime] = useState(GroupTime?.id);
@@ -19,7 +19,7 @@ export const PeriodQuiz = () => {
 
   function timeChanged(time: number) {
     setTime(time);
-    updateTimeGroup({ chat, time });
+    // updateTimeGroup({ chat, time });
   }
 
   return (
