@@ -548,6 +548,8 @@ video {
   border-bottom-width: 1px;
 }.border-\[var\(--tg-theme-hint-color\)\] {
   border-color: var(--tg-theme-hint-color);
+}.border-b-transparent {
+  border-bottom-color: transparent;
 }.bg-\[var\(--tg-theme-accent-text-color\)\] {
   background-color: var(--tg-theme-accent-text-color);
 }.bg-\[var\(--tg-theme-bg-color\)\] {

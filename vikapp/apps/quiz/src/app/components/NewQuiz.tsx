@@ -10,14 +10,14 @@ interface tabsInterface {
 
 export const typeQuizConst: tabsInterface[] = [
   {
-    name: 'Свои вопросы',
-    type: 'user',
-    component: UserQuiz,
-  },
-  {
     name: 'Вопросы бота',
     type: 'bot',
     component: BotQuiz,
+  },
+  {
+    name: 'Свои вопросы',
+    type: 'user',
+    component: UserQuiz,
   },
 ];
 

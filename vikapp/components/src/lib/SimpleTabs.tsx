@@ -41,7 +41,7 @@ export const SimpleTabs = ({ title, tabs }: SimpleTabsProps) => {
                     className={({ selected }) =>
                       classNames(
                         selected
-                          ? 'text-[var(--tg-theme-text-color)]'
+                          ? 'border-b-transparent text-[var(--tg-theme-text-color)]'
                           : 'text-[var(--tg-theme-accent-text-color)]',
                         'whitespace-nowrap py-2 text-sm font-medium'
                       )
