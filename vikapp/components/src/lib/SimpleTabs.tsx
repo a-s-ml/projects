@@ -22,10 +22,10 @@ export const SimpleTabs = ({ title, tabs }: SimpleTabsProps) => {
       className="mx-auto max-w-screen py-2"
     >
       <div className="mx-auto max-w-screen px-0">
-        <div className="max-w-3xl">
+        <div className="max-w-screen">
           <h2
             id="features-heading"
-            className="font-bold tracking-tight text-[var(--tg-theme-hint-color)]"
+            className="font-bold tracking-tight text-[var(--tg-theme-accent-text-color)]"
           >
             {title}
           </h2>
@@ -42,7 +42,7 @@ export const SimpleTabs = ({ title, tabs }: SimpleTabsProps) => {
                       classNames(
                         selected
                           ? 'text-[var(--tg-theme-text-color)]'
-                          : 'text-[var(--tg-theme-hint-color)]',
+                          : 'text-[var(--tg-theme-accent-text-color)]',
                         'whitespace-nowrap py-2 text-sm font-medium'
                       )
                     }
