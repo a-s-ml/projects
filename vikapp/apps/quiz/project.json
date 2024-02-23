@@ -2,7 +2,7 @@
   "name": "quiz",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/quiz/src",
-  "projectType": "application",
+  "projectType": "application",   
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",

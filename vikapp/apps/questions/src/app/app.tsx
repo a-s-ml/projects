@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux';
-import QuestionsPage from './components/QuestionsPage';
 import { storeQuestion } from '@store/questions';
+import QuestionsPage from './components/QuestionsPage';
 
 export const App = () => {
   return (

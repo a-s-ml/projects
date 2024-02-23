@@ -5,7 +5,7 @@ import {
   MainBlock,
   SlidePage,
 } from '@components';
-import { storeQuiz, useQuizDispatch, useQuizSelector } from '@store/quiz';
+import { storeQuiz, useQuizDispatch, useQuizSelector } from '../store/index';
 import { showQuizSlide, typeQuiz } from '../store/slices/quizApp.slice';
 import { NewQuiz } from './NewQuiz';
 

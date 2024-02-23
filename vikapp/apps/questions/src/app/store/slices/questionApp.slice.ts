@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'; 
 import { IValidate } from '@models';
-import { QuestionRootState } from '..';
+import { QuestionRootState } from '..'; 
 
 export interface IAddQuestion {
   text: string;

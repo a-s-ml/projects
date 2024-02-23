@@ -1,7 +1,7 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { globalApi } from '@api/global';
-import questionAppSlice from './slices/questionApp.slice';
+import questionAppSlice from './slices/questionApp.slice'; 
 
 export const storeQuestion = configureStore({
   reducer: {
