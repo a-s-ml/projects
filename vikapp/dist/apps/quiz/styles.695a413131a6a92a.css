@@ -649,6 +649,8 @@ video {
   letter-spacing: -0.025em;
 }.text-\[var\(--tg-theme-accent-text-color\)\] {
   color: var(--tg-theme-accent-text-color);
+}.text-\[var\(--tg-theme-bg-color\)\] {
+  color: var(--tg-theme-bg-color);
 }.text-\[var\(--tg-theme-hint-color\)\] {
   color: var(--tg-theme-hint-color);
 }.text-\[var\(--tg-theme-text-color\)\] {
