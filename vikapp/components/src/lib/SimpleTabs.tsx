@@ -43,7 +43,7 @@ export const SimpleTabs = ({ title, tabs }: SimpleTabsProps) => {
                         selected
                           ? 'border-b-transparent text-[var(--tg-theme-text-color)]'
                           : 'text-[var(--tg-theme-accent-text-color)]',
-                        'whitespace-nowrap py-2 text-sm font-medium'
+                        'whitespace-nowrap py-4 text-sm font-medium'
                       )
                     }
                   >
