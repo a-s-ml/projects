@@ -40,7 +40,7 @@ export const PeriodQuiz = () => {
               allPeriod.map((item) => (
                 <SimpleRadioGroupOption
                   id={item.id}
-                  description={item.name}
+                  description={item.name} 
                   active={1}
                   func={timeChanged}
                 />
