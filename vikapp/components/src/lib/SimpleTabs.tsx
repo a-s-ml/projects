@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 interface ITab {
   name: string;
   type: string;
-  component: string;
+  component: () => JSX.Element;
 }
 
 interface SimpleTabsProps {
@@ -57,8 +57,7 @@ export const SimpleTabs = ({ title, tabs }: SimpleTabsProps) => {
           <Tab.Panels as={Fragment}>
             {tabs.map((tab) => (
               <Tab.Panel key={tab.name} className="space-y-16 pt-10 lg:pt-16">
-                {/* <tab.component /> */}
-                {tab.component}
+                <tab.component />
               </Tab.Panel>
             ))}
           </Tab.Panels>
