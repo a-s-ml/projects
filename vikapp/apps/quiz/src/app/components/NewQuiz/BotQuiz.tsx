@@ -17,7 +17,10 @@ export const BotQuiz = () => {
             description={
               <>
                 <SimpleAccordionIcon size={5}>
-                  <item.icon />
+                  <item.icon
+                    className="h-5 w-5 text-[var(--tg-theme-accent-text-color)]"
+                    aria-hidden="true"
+                  />
                 </SimpleAccordionIcon>
                 <SimpleAccordionText>
                   <div className="text-sm font-medium text-[var(--tg-theme-text-color)]">
