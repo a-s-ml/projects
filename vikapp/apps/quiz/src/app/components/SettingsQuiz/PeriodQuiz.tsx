@@ -33,9 +33,9 @@ export const PeriodQuiz = () => {
   return (
     <>
       {loadingAllPeriod && <Preloader />}
-      <div className={`grid grid-cols-3 gap-2`}>
+      <div className={`grid grid-cols-6 gap-2`}>
         {typeof timeState == 'number' && (
-          <SimpleRadioGroup cols={4} state={timeState} setState={setTime}>
+          <SimpleRadioGroup state={timeState} setState={setTime}>
             {successAllPeriod &&
               allPeriod.map((item) => (
                 <SimpleRadioGroupOption

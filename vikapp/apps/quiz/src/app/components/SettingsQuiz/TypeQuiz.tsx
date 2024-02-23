@@ -34,7 +34,7 @@ export const TypeQuiz = () => {
       {loadingAllTypes && <Preloader />}
       <div className={`grid grid-cols-3 gap-2`}>
         {typeof typeState == 'number' && (
-          <SimpleRadioGroup cols={3} state={typeState} setState={setType}>
+          <SimpleRadioGroup state={typeState} setState={setType}>
             {successAllTypes &&
               allTypes.map((item) => (
                 <SimpleRadioGroupOption

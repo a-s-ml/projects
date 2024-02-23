@@ -432,8 +432,6 @@ video {
   display: flex;
 }.inline-flex {
   display: inline-flex;
-}.grid {
-  display: grid;
 }.h-1\/6 {
   height: 16.666667%;
 }.h-10 {
@@ -532,8 +530,6 @@ video {
   justify-content: center;
 }.justify-between {
   justify-content: space-between;
-}.gap-2 {
-  gap: 0.5rem;
 }.gap-x-1 {
   -moz-column-gap: 0.25rem;
        column-gap: 0.25rem;

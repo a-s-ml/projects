@@ -28,7 +28,7 @@ export const TimeQuiz = () => {
         enabled={nightNode}
         setEnabled={setNightNode}
       />
-      <div className={`grid grid-cols-3 gap-2`}>
+      <div className={`grid grid-cols-6 gap-2`}>
         {nightTimeConst.map((time) => (
           <button
             type="button"
