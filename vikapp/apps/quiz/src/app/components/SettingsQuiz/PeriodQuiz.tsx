@@ -33,21 +33,21 @@ export const PeriodQuiz = () => {
   return (
     <>
       {loadingAllPeriod && <Preloader />}
-      <div className={`grid grid-cols-6 gap-2`}>
-        {typeof timeState == 'number' && (
-          <SimpleRadioGroup state={timeState} setState={setTime}>
+      {typeof timeState == 'number' && (
+        <SimpleRadioGroup state={timeState} setState={setTime}>
+          <div className={`grid grid-cols-6 gap-2`}>
             {successAllPeriod &&
               allPeriod.map((item) => (
                 <SimpleRadioGroupOption
                   id={item.id}
-                  description={item.name} 
+                  description={item.name}
                   active={1}
                   func={timeChanged}
                 />
               ))}
-          </SimpleRadioGroup>
-        )}
-      </div>
+          </div>
+        </SimpleRadioGroup>
+      )}
     </>
   );
 };
