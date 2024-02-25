@@ -1,5 +1,6 @@
 import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { validationLengthForm } from '@utils';
+import { Dispatch, SetStateAction } from 'react';
 
 interface IAnswers {
   id: number;
@@ -14,17 +15,12 @@ interface ValidateFormProps {
     lengthMin: number;
     lengthMax: number;
   };
-  validation: (b: boolean) => void;
+  validation: Dispatch<SetStateAction<boolean>>;
 }
 
-export const ValidateForm = ({
-  text,
-  validation,
-  data,
-}: ValidateFormProps) => {
+export const ValidateForm = ({ text, validation, data }: ValidateFormProps) => {
   let approval = validationLengthForm(data);
   validation(approval);
-  console.log(approval)
 
   return (
     <div className="mt-1 flex items-center gap-x-1.5">

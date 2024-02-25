@@ -29,13 +29,13 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
     dispatch(getQuestionCategory(cat.id));
   };
 
-  const validation = (approval: boolean) => {
-    approval
-      ? (tg.MainButton.setText('Следующий шаг'),
-        tg.MainButton.show(),
-        tg.onEvent('mainButtonClicked', onSubmit))
-      : tg.MainButton.hide();
-  };
+  const [validCategory, setValidCategory] = useState(false);
+
+  validCategory
+    ? (tg.MainButton.setText('Следующий шаг'),
+      tg.MainButton.show(),
+      tg.onEvent('mainButtonClicked', onSubmit))
+    : tg.MainButton.hide();
 
   return (
     <div className="py-2">
@@ -48,15 +48,13 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
       )}
       <div className="py-4">
         <ValidateForm
-          text={
-            'Выберите подходящую категорию'
-          }
+          text={'Выберите подходящую категорию'}
           data={{
             value: selectedCategory ? selectedCategory.id : 0,
             lengthMin: 0,
             lengthMax: 0,
           }}
-          validation={validation}
+          validation={setValidCategory}
         />
       </div>
     </div>

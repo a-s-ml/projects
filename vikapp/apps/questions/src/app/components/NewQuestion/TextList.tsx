@@ -16,6 +16,7 @@ export function TextList({ onSubmit }: TextListProps) {
   const questionText = useQuestionSelector(selectQuestionText);
   const dispatch = useQuestionDispatch();
   const [text, setText] = useState('');
+  const [textLength, setTextLength] = useState(false);
 
   useEffect(() => {
     const confirm = (b: boolean) => {
@@ -29,13 +30,11 @@ export function TextList({ onSubmit }: TextListProps) {
     }, 1500);
   }, []);
 
-  const validation = (approval: boolean) => {
-    approval
-      ? (tg.MainButton.setText('Следующий шаг'),
-        tg.MainButton.show(),
-        tg.onEvent('mainButtonClicked', onSubmit))
-      : tg.MainButton.hide();
-  };
+  textLength
+    ? (tg.MainButton.setText('Следующий шаг'),
+      tg.MainButton.show(),
+      tg.onEvent('mainButtonClicked', onSubmit))
+    : tg.MainButton.hide();
 
   const handleText = (txt: string) => {
     setText(txt);
@@ -57,7 +56,7 @@ export function TextList({ onSubmit }: TextListProps) {
               'Длина текста вопроса должна быть не менее 10 не более 250 символов'
             }
             data={{ value: text, lengthMin: 10, lengthMax: 250 }}
-            validation={validation}
+            validation={setTextLength}
           />
         </div>
       </div>

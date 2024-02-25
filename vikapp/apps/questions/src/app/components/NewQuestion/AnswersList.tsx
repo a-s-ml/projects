@@ -39,23 +39,16 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
     setAnswer(newAnswers);
   };
 
-  function validLength(approval: boolean) {
-    return approval;
-  }
+  const [validLength, setValidLength] = useState(false);
+  const [validButton, setValidButton] = useState(false);
 
-  function validationButton(approval: boolean) {
-    return approval;
-  }
-  console.log('validLength=', validLength);
-  console.log('validationButton=', validationButton);
-
-  // validLength() && validationButton
-  //   ? (tg.MainButton.setText('Следующий шаг'),
-  //     tg.MainButton.show(),
-  //     tg.onEvent('mainButtonClicked', () => {
-  //       tg.MainButton.hide(), onSubmit;
-  //     }))
-  //   : tg.MainButton.hide();
+  validLength && validButton
+    ? (tg.MainButton.setText('Следующий шаг'),
+      tg.MainButton.show(),
+      tg.onEvent('mainButtonClicked', () => {
+        tg.MainButton.hide(), onSubmit;
+      }))
+    : tg.MainButton.hide();
 
   const hendelClick = (id: number) => {
     setAnswerRight(id);
@@ -80,14 +73,14 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
               'Длина текста ответов должна быть не менее 1 не более 35 символов'
             }
             data={{ value: answer, lengthMin: 1, lengthMax: 35 }}
-            validation={validLength}
+            validation={setValidLength}
           />
           <ValidateForm
             text={
               'Обязательно нужно выбрать верный вариант ответа (вопросы для всех групп проходят модерацию)'
             }
             data={{ value: selectedAnswerRight, lengthMin: 0, lengthMax: 0 }}
-            validation={validationButton}
+            validation={setValidButton}
           />
         </div>
       </div>
