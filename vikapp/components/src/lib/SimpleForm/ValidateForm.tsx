@@ -23,7 +23,7 @@ export const ValidateForm = ({ text, validation, data }: ValidateFormProps) => {
   validation(approval);
 
   return (
-    <div className="mt-1 flex items-center gap-x-1.5">
+    <div className="mt-1 flex items-center gap-x-1.5"> 
       {approval ? (
         <CheckIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
       ) : (
