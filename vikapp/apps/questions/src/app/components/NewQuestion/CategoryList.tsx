@@ -9,12 +9,12 @@ import { useGetCategoryQuery } from '@api/category';
 import { SimpleCategorySelect, ValidateForm } from '@components';
 
 interface CategoryListProps {
-  onSubmit: () => void;
+  validate: (b: boolean) => void;
 }
 
 const tg = window.Telegram.WebApp;
 
-export function CategoryList({ onSubmit }: CategoryListProps) {
+export function CategoryList({ validate }: CategoryListProps) {
   const questionCategory = useQuestionSelector(selectQuestionCategory);
   const { data, isSuccess } = useGetCategoryQuery('');
   const dispatch = useQuestionDispatch();
@@ -31,11 +31,7 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
 
   const [validCategory, setValidCategory] = useState(false);
 
-  validCategory
-    ? (tg.MainButton.setText('Следующий шаг'),
-      tg.MainButton.show(),
-      tg.MainButton.onClick(onSubmit))
-    : tg.MainButton.hide();
+  validCategory ? validate(true) : validate(false);
 
   return (
     <div className="py-2">

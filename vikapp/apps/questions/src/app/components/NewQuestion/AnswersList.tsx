@@ -7,10 +7,10 @@ import {
 import { SimpleInputAnswer, ValidateForm } from '@components';
 
 interface AnswersListProps {
-  onSubmit: () => void;
+  validate: (b: boolean) => void;
 }
 
-export function AnswersList({ onSubmit }: AnswersListProps) {
+export function AnswersList({ validate }: AnswersListProps) {
   const tg = window.Telegram.WebApp;
   const question = useQuestionSelector(selectQuestion);
   const [selectedAnswerRight, setAnswerRight] = useState(question.answerright);
@@ -44,11 +44,7 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
 
   console.log(validLength, validButton);
 
-  validLength && validButton
-    ? (tg.MainButton.setText('Следующий шаг'),
-      tg.MainButton.show(),
-      tg.MainButton.onClick(onSubmit))
-    : tg.MainButton.hide();
+  validLength && validButton ? validate(true) : validate(false);
 
   const hendelClick = (id: number) => {
     setAnswerRight(id);

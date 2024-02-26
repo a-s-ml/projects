@@ -8,10 +8,10 @@ import {
 import { SimpleTextArea, ValidateForm } from '@components';
 
 interface TextListProps {
-  onSubmit: () => void;
+  validate: (b: boolean) => void;
 }
 
-export function TextList({ onSubmit }: TextListProps) {
+export function TextList({ validate }: TextListProps) {
   const tg = window.Telegram.WebApp;
   const questionText = useQuestionSelector(selectQuestionText);
   const dispatch = useQuestionDispatch();
@@ -30,11 +30,7 @@ export function TextList({ onSubmit }: TextListProps) {
     }, 1500);
   }, []);
 
-  textLength
-    ? (tg.MainButton.setText('Следующий шаг'),
-      tg.MainButton.show(),
-      tg.MainButton.onClick(onSubmit))
-    : tg.MainButton.hide();
+  textLength ? validate(true) : validate(false);
 
   const handleText = (txt: string) => {
     setText(txt);

@@ -23,10 +23,18 @@ export const NewQuesion = () => {
   const user = 521884639;
   const question = useQuestionSelector(selectQuestion);
 
+  const validate = (b: boolean) => {
+    b
+      ? (tg.MainButton.setText('Далее'),
+        tg.MainButton.show(),
+        tg.MainButton.onClick(onSubmit))
+      : tg.MainButton.hide();
+  };
+
   const { steps, currentStepIndex, step, isLastStep, next } = useStepsForm([
-    <TextList onSubmit={onSubmit} />,
-    <CategoryList onSubmit={onSubmit} />,
-    <AnswersList onSubmit={onSubmit} />,
+    <TextList validate={validate} />,
+    <CategoryList validate={validate} />,
+    <AnswersList validate={validate} />,
   ]);
 
   function onSubmit() {
