@@ -19,7 +19,7 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
   const { data, isSuccess } = useGetCategoryQuery('');
   const dispatch = useQuestionDispatch();
   const [selectedCategory, setCategory] = useState(
-    questionCategory != 0 && typeof data === 'object'
+    data && questionCategory != 0
       ? data.find((id) => id.id === questionCategory)
       : { id: 0, name: '' }
   );
@@ -47,7 +47,7 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
         />
       )}
       <div className="py-4">
-        {/* <ValidateForm
+        <ValidateForm
           text={'Выберите подходящую категорию'}
           data={{
             value: selectedCategory ? selectedCategory.id : 0,
@@ -55,7 +55,7 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
             lengthMax: 0,
           }}
           validation={setValidCategory}
-        /> */}
+        />
       </div>
     </div>
   );
