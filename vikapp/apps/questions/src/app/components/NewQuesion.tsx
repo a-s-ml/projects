@@ -32,7 +32,6 @@ export const NewQuesion = () => {
   const [addQuestion, {}] = useAddQuestionMutation();
 
   async function onSubmit() {
-    tg.MainButton.hide();
     if (!isLastStep) return next();
     if (isLastStep) {
       await addQuestion({
@@ -45,10 +44,13 @@ export const NewQuesion = () => {
         answer4: question.answer4,
         answerright: question.answerright,
       });
-      dispatch(showQuestionSlide(false));
       dispatch(getQuestionDefault(''));
     }
   }
+
+  console.log('steps', steps);
+  console.log('currentStepIndex', currentStepIndex);
+  console.log('isLastStep', isLastStep);
 
   return (
     <Page>
