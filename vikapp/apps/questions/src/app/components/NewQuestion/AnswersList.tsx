@@ -42,6 +42,8 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
   const [validLength, setValidLength] = useState(false);
   const [validButton, setValidButton] = useState(false);
 
+  console.log(validLength, validButton);
+
   validLength && validButton
     ? (tg.MainButton.setText('Следующий шаг'),
       tg.MainButton.show(),
