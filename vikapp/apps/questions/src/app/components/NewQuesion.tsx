@@ -48,6 +48,9 @@ export const NewQuesion = () => {
   const [addQuestion, {}] = useAddQuestionMutation();
 
   step ? console.log('step') : console.log('!step');
+  currentStepIndex
+    ? console.log('currentStepIndex', currentStepIndex)
+    : console.log('!currentStepIndex', currentStepIndex);
 
   return (
     <Page>
