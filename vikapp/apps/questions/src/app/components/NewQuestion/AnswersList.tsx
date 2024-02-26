@@ -3,7 +3,6 @@ import { useState } from 'react';
 import {
   getQuestionAnswerright,
   selectQuestion,
-  showQuestionSlide,
 } from '../../store/slices/questionApp.slice';
 import { SimpleInputAnswer, ValidateForm } from '@components';
 
@@ -47,7 +46,7 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
     ? (tg.MainButton.setText('Следующий шаг'),
       tg.MainButton.show(),
       tg.onEvent('mainButtonClicked', () => {
-        tg.MainButton.hide(), dispatch(showQuestionSlide(false)), onSubmit;
+        tg.MainButton.hide(), onSubmit;
       }))
     : tg.MainButton.hide();
 

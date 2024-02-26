@@ -31,35 +31,24 @@ export const NewQuesion = () => {
 
   const [addQuestion, {}] = useAddQuestionMutation();
 
-  function onSubmit() {
-    console.log('onSubmit');
+  async function onSubmit() {
+    tg.MainButton.hide();
+    if (!isLastStep) return next();
     if (isLastStep) {
-      console.log('isLastStep');
-      return addQuestionGet();
-    }
-    if (!isLastStep) {
-      console.log('!isLastStep');
-      return next();
-    }
-  }
-
-  function addQuestionGet() {
-    addQuestion({
-      chat: user as unknown as bigint,
-      text: question.text,
-      category: question.category,
-      answer1: question.answer1,
-      answer2: question.answer2,
-      answer3: question.answer3,
-      answer4: question.answer4,
-      answerright: question.answerright,
-    }),
+      await addQuestion({
+        chat: user as unknown as bigint,
+        text: question.text,
+        category: question.category,
+        answer1: question.answer1,
+        answer2: question.answer2,
+        answer3: question.answer3,
+        answer4: question.answer4,
+        answerright: question.answerright,
+      });
+      dispatch(showQuestionSlide(false));
       dispatch(getQuestionDefault(''));
+    }
   }
-
-  console.log('steps', steps);
-  console.log('currentStepIndex', currentStepIndex);
-  console.log('isLastStep', isLastStep);
 
   return (
     <Page>
