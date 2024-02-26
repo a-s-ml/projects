@@ -32,8 +32,15 @@ export const NewQuesion = () => {
   const [addQuestion, {}] = useAddQuestionMutation();
 
   function onSubmit() {
-    if (isLastStep) return addQuestionGet();
-    if (!isLastStep) return next();
+    console.log('onSubmit');
+    if (isLastStep) {
+      console.log('isLastStep');
+      return addQuestionGet();
+    }
+    if (!isLastStep) {
+      console.log('!isLastStep');
+      return next();
+    }
   }
 
   function addQuestionGet() {
