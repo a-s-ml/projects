@@ -39,12 +39,18 @@ export const NewQuesion = () => {
 
   function onSubmit() {
     console.log('onSubmit');
-    tg.MainButton.hide();
-    if (!isLastStep) return next();
+    if (!isLastStep) {
+      console.log('next');
+      tg.MainButton.hide();
+      next();
+      return;
+    }
     if (isLastStep) {
       console.log('dispatch');
+      tg.MainButton.hide();
       dispatch(showQuestionSlide(false));
       dispatch(getQuestionDefault(''));
+      return;
     }
   }
 
