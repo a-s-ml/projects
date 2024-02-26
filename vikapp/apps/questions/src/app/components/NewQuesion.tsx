@@ -40,12 +40,10 @@ export const NewQuesion = () => {
     }
   }
 
-  useEffect(() => {
-    console.log('currentStepIndex', currentStepIndex);
-    console.log('isLastStep', isLastStep);
-    console.log('step', step);
-    console.log(useQuestionSelector(storeQuestion.getState));
-  }, [currentStepIndex]);
+  console.log('currentStepIndex', currentStepIndex);
+  console.log('isLastStep', isLastStep);
+  console.log('step', step);
+  console.log(useQuestionSelector(storeQuestion.getState));
 
   const [addQuestion, {}] = useAddQuestionMutation();
 
