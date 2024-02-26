@@ -33,7 +33,7 @@ export const NewQuesion = () => {
 
   function onSubmit() {
     if (isLastStep) return addQuestionGet();
-    return next();
+    if (!isLastStep) return next();
   }
 
   function addQuestionGet() {
