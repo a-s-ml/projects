@@ -43,7 +43,7 @@ export const NewQuesion = () => {
   console.log('currentStepIndex', currentStepIndex);
   console.log('isLastStep', isLastStep);
   console.log('step', step);
-  console.log(useQuestionSelector(storeQuestion.getState));
+  console.log('question', question);
 
   const [addQuestion, {}] = useAddQuestionMutation();
 
