@@ -34,7 +34,7 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
   validCategory
     ? (tg.MainButton.setText('Следующий шаг'),
       tg.MainButton.show(),
-      tg.onEvent('mainButtonClicked', () => onSubmit))
+      tg.MainButton.onClick(onSubmit))
     : tg.MainButton.hide();
 
   return (

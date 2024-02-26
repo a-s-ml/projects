@@ -45,7 +45,7 @@ export function AnswersList({ onSubmit }: AnswersListProps) {
   validLength && validButton
     ? (tg.MainButton.setText('Следующий шаг'),
       tg.MainButton.show(),
-      tg.onEvent('mainButtonClicked', () => onSubmit))
+      tg.MainButton.onClick(onSubmit))
     : tg.MainButton.hide();
 
   const hendelClick = (id: number) => {
