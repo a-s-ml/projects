@@ -40,6 +40,9 @@ export const NewQuesion = () => {
     }
   }
 
+  console.log('currentStepIndex', currentStepIndex);
+  console.log('isLastStep', isLastStep);
+
   return (
     <Page>
       <HeaderBlock>
