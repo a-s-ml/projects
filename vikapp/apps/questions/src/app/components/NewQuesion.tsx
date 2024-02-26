@@ -12,9 +12,9 @@ import { TextList } from './NewQuestion/TextList';
 import StepsForm from './NewQuestion/StepsForm';
 import { CategoryList } from './NewQuestion/CategoryList';
 import { AnswersList } from './NewQuestion/AnswersList';
-import { useNewQuestionForm } from '../hooks/useNewQuestionForm';
 import { useAddQuestionMutation } from '@api/question';
 import { HeaderBlock, MainBlock, Page } from '@components';
+import { useStepsForm } from '@utils';
 
 export const NewQuesion = () => {
   const tg = window.Telegram.WebApp;
@@ -22,12 +22,11 @@ export const NewQuesion = () => {
   const user = 521884639;
   const question = useQuestionSelector(selectQuestion);
 
-  const { steps, currentStepIndex, step, isLastStep, next } =
-    useNewQuestionForm([
-      <TextList onSubmit={onSubmit} />,
-      <CategoryList onSubmit={onSubmit} />,
-      <AnswersList onSubmit={onSubmit} />,
-    ]);
+  const { steps, currentStepIndex, step, isLastStep, next } = useStepsForm([
+    <TextList onSubmit={onSubmit} />,
+    <CategoryList onSubmit={onSubmit} />,
+    <AnswersList onSubmit={onSubmit} />,
+  ]);
 
   const [addQuestion, {}] = useAddQuestionMutation();
 
@@ -35,16 +34,7 @@ export const NewQuesion = () => {
     tg.MainButton.hide();
     if (!isLastStep) return next();
     if (isLastStep) {
-      await addQuestion({
-        chat: user as unknown as bigint,
-        text: question.text,
-        category: question.category,
-        answer1: question.answer1,
-        answer2: question.answer2,
-        answer3: question.answer3,
-        answer4: question.answer4,
-        answerright: question.answerright,
-      });
+      console.log('dispatch');
       dispatch(showQuestionSlide(false));
       dispatch(getQuestionDefault(''));
     }
