@@ -22,15 +22,8 @@ export const NewQuesion = () => {
   const user = 521884639;
   const question = useQuestionSelector(selectQuestion);
 
-  const { steps, currentStepIndex, step, isLastStep, next } = useStepsForm([
-    <TextList onSubmit={onSubmit} />,
-    <CategoryList onSubmit={onSubmit} />,
-    <AnswersList onSubmit={onSubmit} />,
-  ]);
-
-  const [addQuestion, {}] = useAddQuestionMutation();
-
   function onSubmit() {
+    console.log('onSubmit');
     tg.MainButton.hide();
     if (!isLastStep) return next();
     if (isLastStep) {
@@ -40,6 +33,14 @@ export const NewQuesion = () => {
     }
   }
 
+  const { steps, currentStepIndex, step, isLastStep, next } = useStepsForm([
+    <TextList onSubmit={onSubmit} />,
+    <CategoryList onSubmit={onSubmit} />,
+    <AnswersList onSubmit={onSubmit} />,
+  ]);
+
+  const [addQuestion, {}] = useAddQuestionMutation();
+
   console.log('currentStepIndex', currentStepIndex);
   console.log('isLastStep', isLastStep);
 
@@ -48,7 +49,10 @@ export const NewQuesion = () => {
       <HeaderBlock>
         <StepsForm step={currentStepIndex + 1} stepsCount={steps.length} />
       </HeaderBlock>
-      <MainBlock>{step}</MainBlock>
+      <MainBlock>
+        <div className="text-center pt-9"></div>
+        {step}
+      </MainBlock>
     </Page>
   );
 };
