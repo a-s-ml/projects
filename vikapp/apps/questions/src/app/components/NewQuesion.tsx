@@ -31,21 +31,23 @@ export const NewQuesion = () => {
 
   const [addQuestion, {}] = useAddQuestionMutation();
 
-  async function onSubmit() {
-    if (!isLastStep) return next();
-    if (isLastStep) {
-      await addQuestion({
-        chat: user as unknown as bigint,
-        text: question.text,
-        category: question.category,
-        answer1: question.answer1,
-        answer2: question.answer2,
-        answer3: question.answer3,
-        answer4: question.answer4,
-        answerright: question.answerright,
-      });
+  function onSubmit() {
+    if (isLastStep) return addQuestionGet();
+    return next();
+  }
+
+  function addQuestionGet() {
+    addQuestion({
+      chat: user as unknown as bigint,
+      text: question.text,
+      category: question.category,
+      answer1: question.answer1,
+      answer2: question.answer2,
+      answer3: question.answer3,
+      answer4: question.answer4,
+      answerright: question.answerright,
+    }),
       dispatch(getQuestionDefault(''));
-    }
   }
 
   console.log('steps', steps);
