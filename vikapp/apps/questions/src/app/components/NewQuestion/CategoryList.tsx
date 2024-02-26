@@ -47,7 +47,7 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
         />
       )}
       <div className="py-4">
-        <ValidateForm
+        {/* <ValidateForm
           text={'Выберите подходящую категорию'}
           data={{
             value: selectedCategory ? selectedCategory.id : 0,
@@ -55,7 +55,7 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
             lengthMax: 0,
           }}
           validation={setValidCategory}
-        />
+        /> */}
       </div>
     </div>
   );
