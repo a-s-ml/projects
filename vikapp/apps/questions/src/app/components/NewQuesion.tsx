@@ -50,8 +50,7 @@ export const NewQuesion = () => {
         <StepsForm step={currentStepIndex + 1} stepsCount={steps.length} />
       </HeaderBlock>
       <MainBlock>
-        <div className="text-center pt-9"></div>
-        {step}
+        <div className="text-center pt-9">{step}</div>
       </MainBlock>
     </Page>
   );
