@@ -47,6 +47,8 @@ export const NewQuesion = () => {
 
   const [addQuestion, {}] = useAddQuestionMutation();
 
+  step ? console.log('step') : console.log('!step');
+
   return (
     <Page>
       <HeaderBlock>
