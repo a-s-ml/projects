@@ -33,9 +33,7 @@ export function TextList({ onSubmit }: TextListProps) {
   textLength
     ? (tg.MainButton.setText('Следующий шаг'),
       tg.MainButton.show(),
-      tg.onEvent('mainButtonClicked', () => {
-        tg.MainButton.hide(), onSubmit;
-      }))
+      tg.onEvent('mainButtonClicked', (tg.MainButton.hide(), onSubmit)))
     : tg.MainButton.hide();
 
   const handleText = (txt: string) => {
