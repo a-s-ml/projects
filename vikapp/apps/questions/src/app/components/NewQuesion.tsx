@@ -30,7 +30,7 @@ export const NewQuesion = () => {
 
   const [addQuestion, {}] = useAddQuestionMutation();
 
-  async function onSubmit() {
+  function onSubmit() {
     tg.MainButton.hide();
     if (!isLastStep) return next();
     if (isLastStep) {
