@@ -15,12 +15,19 @@ import { AnswersList } from './NewQuestion/AnswersList';
 import { useAddQuestionMutation } from '@api/question';
 import { HeaderBlock, MainBlock, Page } from '@components';
 import { useStepsForm } from '@utils';
+import { useEffect } from 'react';
 
 export const NewQuesion = () => {
   const tg = window.Telegram.WebApp;
   const dispatch = useQuestionDispatch();
   const user = 521884639;
   const question = useQuestionSelector(selectQuestion);
+
+  const { steps, currentStepIndex, step, isLastStep, next } = useStepsForm([
+    <TextList onSubmit={onSubmit} />,
+    <CategoryList onSubmit={onSubmit} />,
+    <AnswersList onSubmit={onSubmit} />,
+  ]);
 
   function onSubmit() {
     console.log('onSubmit');
@@ -33,16 +40,14 @@ export const NewQuesion = () => {
     }
   }
 
-  const { steps, currentStepIndex, step, isLastStep, next } = useStepsForm([
-    <TextList onSubmit={onSubmit} />,
-    <CategoryList onSubmit={onSubmit} />,
-    <AnswersList onSubmit={onSubmit} />,
-  ]);
+  useEffect(() => {
+    console.log('currentStepIndex', currentStepIndex);
+    console.log('isLastStep', isLastStep);
+    console.log('step', step);
+    console.log(useQuestionSelector(storeQuestion.getState));
+  }, [currentStepIndex]);
 
   const [addQuestion, {}] = useAddQuestionMutation();
-
-  console.log('currentStepIndex', currentStepIndex);
-  console.log('isLastStep', isLastStep);
 
   return (
     <Page>
