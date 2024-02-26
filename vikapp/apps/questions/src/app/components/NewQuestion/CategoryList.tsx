@@ -39,7 +39,7 @@ export function CategoryList({ onSubmit }: CategoryListProps) {
 
   return (
     <div className="py-2">
-      {isSuccess && (
+      {data && (
         <SimpleCategorySelect
           value={selectedCategory ? selectedCategory : { id: 0, name: ' ' }}
           func={handleChange}
