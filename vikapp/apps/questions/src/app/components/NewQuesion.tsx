@@ -1,8 +1,4 @@
-import {
-  storeQuestion,
-  useQuestionDispatch,
-  useQuestionSelector,
-} from '@store/questions';
+import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
 import {
   getQuestionDefault,
   selectQuestion,
@@ -32,7 +28,7 @@ export const NewQuesion = ({ success }: NewQuesionProps) => {
     if (isLastStep) {
       dispatch(showQuestionSlide(false));
       dispatch(getQuestionDefault(''));
-      success(true);
+      // success(true);
     }
   }
 
