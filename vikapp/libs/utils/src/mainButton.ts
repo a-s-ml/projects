@@ -13,7 +13,7 @@ export const useMainButton = (onSubmit: FunctionProps) => {
         tg.onEvent('mainButtonClicked', onSubmit))
       : tg.MainButton.hide();
     return () => {
-      // tg.MainButton.hide();
+      tg.MainButton.hide();
       tg.offEvent('mainButtonClicked', onSubmit);
     };
   }, [mainButtonState]);
