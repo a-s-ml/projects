@@ -10,11 +10,11 @@ export const useMainButton = (onSubmit: FunctionProps) => {
     mainButtonState
       ? (tg.MainButton.setText('Далее'),
         tg.MainButton.show(),
-        tg.onEvent('mainButtonClicked', (tg.MainButton.hide(), onSubmit)))
+        tg.onEvent('mainButtonClicked', onSubmit))
       : tg.MainButton.hide();
     return () => {
       tg.MainButton.hide();
-      tg.offEvent('mainButtonClicked', (tg.MainButton.hide(), onSubmit));
+      tg.offEvent('mainButtonClicked', onSubmit);
     };
   }, [mainButtonState]);
 
