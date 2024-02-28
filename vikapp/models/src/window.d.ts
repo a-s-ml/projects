@@ -2,16 +2,22 @@ declare global {
   interface Window {
     Telegram: {
       WebApp: ITelegramWebApp;
-    }
+    };
   }
 }
 
-type BaseWebAppEventHandlerFunction<E extends string = string, C extends Function = () => void> = (eventType: E, eventHandler: C) => void;
+type BaseWebAppEventHandlerFunction<
+  E extends string = string,
+  C extends Function = () => void
+> = (eventType: E, eventHandler: C) => void;
 
 type WebAppEventHandlerFunction =
   | BaseWebAppEventHandlerFunction
   | BaseWebAppEventHandlerFunction<'themeChanged'>
-  | BaseWebAppEventHandlerFunction<'viewportChanged', (isStateStable: boolean) => void>
+  | BaseWebAppEventHandlerFunction<
+      'viewportChanged',
+      (isStateStable: boolean) => void
+    >
   | BaseWebAppEventHandlerFunction<'backButtonClicked'>
   | BaseWebAppEventHandlerFunction<'mainButtonClicked'>;
 
@@ -99,6 +105,7 @@ export interface ITelegramWebApp {
   close: () => void;
   openTelegramLink: (url: string) => void;
   switchInlineQuery: (query: string, type: Array<string>) => void;
-  showConfirm:  (text: string, callback) => void;
-  showAlert:  (text: string, callback) => void;
+  showConfirm: (text: string, callback) => void;
+  showAlert: (text: string, callback) => void;
+  showPopup: (text: string, callback?) => void;
 }

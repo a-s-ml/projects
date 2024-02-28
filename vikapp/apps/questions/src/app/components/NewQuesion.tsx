@@ -16,20 +16,23 @@ import { useAddQuestionMutation } from '@api/question';
 import { HeaderBlock, MainBlock, Page } from '@components';
 import { useMainButton, useStepsForm } from '@utils';
 
-export const NewQuesion = () => {
+interface NewQuesionProps {
+  success: (b: boolean) => void;
+}
+
+export const NewQuesion = ({ success }: NewQuesionProps) => {
   const dispatch = useQuestionDispatch();
   const user = 521884639;
   const question = useQuestionSelector(selectQuestion);
 
   function onSubmit() {
     if (!isLastStep) {
-      console.log('next');
       next();
     }
     if (isLastStep) {
-      console.log('dispatch');
       dispatch(showQuestionSlide(false));
       dispatch(getQuestionDefault(''));
+      success(true);
     }
   }
 

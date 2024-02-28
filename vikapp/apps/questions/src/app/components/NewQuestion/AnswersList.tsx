@@ -11,7 +11,6 @@ interface AnswersListProps {
 }
 
 export function AnswersList({ validate }: AnswersListProps) {
-  const tg = window.Telegram.WebApp;
   const question = useQuestionSelector(selectQuestion);
   const [selectedAnswerRight, setAnswerRight] = useState(question.answerright);
   const [answer, setAnswer] = useState([
@@ -41,8 +40,6 @@ export function AnswersList({ validate }: AnswersListProps) {
 
   const [validLength, setValidLength] = useState(false);
   const [validButton, setValidButton] = useState(false);
-
-  console.log(validLength, validButton);
 
   validLength && validButton ? validate(true) : validate(false);
 

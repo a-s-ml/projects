@@ -14,12 +14,14 @@ import {
   typeQuestion,
 } from '../store/slices/questionApp.slice';
 import NewQuesion from './NewQuesion';
+import { useEffect, useState } from 'react';
 
 export const QuestionsPage = () => {
   const tg = window.Telegram.WebApp;
   const dispatch = useQuestionDispatch();
   const slide = useQuestionSelector(selectQuestionSlide);
   const type = useQuestionSelector(selectQuestionType);
+  const [successAdd, setSuccessAdd] = useState(false);
 
   if (slide) {
     tg.BackButton.show();
@@ -31,6 +33,16 @@ export const QuestionsPage = () => {
   const addQuestion = () => {
     dispatch(typeQuestion('addQuestion'));
     dispatch(showQuestionSlide(true));
+  };
+
+  useEffect(() => {
+    if (successAdd) {
+      tg.showPopup(`Вопрос успешно добавлен!`);
+    }
+  }, [successAdd]);
+
+  const successAddQuestion = (b: boolean) => {
+    setSuccessAdd(b);
   };
 
   return (
@@ -51,7 +63,7 @@ export const QuestionsPage = () => {
         </MainBlock>
       </Page>
       <SlidePage slide={slide}>
-        {type == 'addQuestion' && <NewQuesion />}
+        {type == 'addQuestion' && <NewQuesion success={successAddQuestion} />}
       </SlidePage>
     </>
   );

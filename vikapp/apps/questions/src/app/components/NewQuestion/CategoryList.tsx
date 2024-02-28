@@ -12,11 +12,9 @@ interface CategoryListProps {
   validate: (b: boolean) => void;
 }
 
-const tg = window.Telegram.WebApp;
-
 export function CategoryList({ validate }: CategoryListProps) {
   const questionCategory = useQuestionSelector(selectQuestionCategory);
-  const { data, isSuccess } = useGetCategoryQuery('');
+  const { data } = useGetCategoryQuery('');
   const dispatch = useQuestionDispatch();
   const [selectedCategory, setCategory] = useState(
     data && questionCategory != 0
