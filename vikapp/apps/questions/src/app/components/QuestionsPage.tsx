@@ -35,16 +35,16 @@ export const QuestionsPage = () => {
 
   return (
     <>
-      <GlobalHeader>
-        <ButtonIcon
-          firstIcon={true}
-          text={'Добавить вопрос'}
-          color={'[var(--tg-theme-accent-text-color)]'}
-          icon={'add'}
-          func={addQuestion}
-        />
-      </GlobalHeader>
       <Page>
+        <GlobalHeader>
+          <ButtonIcon
+            firstIcon={true}
+            text={'Добавить вопрос'}
+            color={'[var(--tg-theme-accent-text-color)]'}
+            icon={'add'}
+            func={addQuestion}
+          />
+        </GlobalHeader>
         <MainBlock>
           <div className="text-center pt-9"></div>
           <QuestionList />
