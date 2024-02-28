@@ -37,7 +37,7 @@ export const QuestionsPage = () => {
 
   useEffect(() => {
     if (successAdd) {
-      tg.showPopup(`Вопрос успешно добавлен!`);
+      tg.showConfirm('Вопрос успешно добавлен!', console.log('showPopup'));
     }
   }, [successAdd]);
 
