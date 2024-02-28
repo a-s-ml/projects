@@ -15,7 +15,6 @@ import { AnswersList } from './NewQuestion/AnswersList';
 import { useAddQuestionMutation } from '@api/question';
 import { HeaderBlock, MainBlock, Page } from '@components';
 import { useMainButton, useStepsForm } from '@utils';
-import { useEffect, useState } from 'react';
 
 export const NewQuesion = () => {
   const dispatch = useQuestionDispatch();
@@ -46,17 +45,7 @@ export const NewQuesion = () => {
     <AnswersList validate={validate} />,
   ]);
 
-  console.log('currentStepIndex', currentStepIndex);
-  console.log('isLastStep', isLastStep);
-  console.log('step', step);
-  console.log('question', question);
-
   const [addQuestion, {}] = useAddQuestionMutation();
-
-  step ? console.log('step') : console.log('!step');
-  currentStepIndex
-    ? console.log('currentStepIndex', currentStepIndex)
-    : console.log('!currentStepIndex', currentStepIndex);
 
   return (
     <Page>
