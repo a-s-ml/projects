@@ -15,20 +15,29 @@ import { AnswersList } from './NewQuestion/AnswersList';
 import { useAddQuestionMutation } from '@api/question';
 import { HeaderBlock, MainBlock, Page } from '@components';
 import { useStepsForm } from '@utils';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export const NewQuesion = () => {
   const tg = window.Telegram.WebApp;
   const dispatch = useQuestionDispatch();
   const user = 521884639;
   const question = useQuestionSelector(selectQuestion);
+  const [mainButtonState, setMainButtonState] = useState(false);
 
-  const validate = (b: boolean) => {
-    b
+  useEffect(() => {
+    mainButtonState
       ? (tg.MainButton.setText('Далее'),
         tg.MainButton.show(),
-        tg.MainButton.onClick(onSubmit))
-      : (tg.MainButton.hide(), tg.MainButton.offClick(onSubmit));
+        tg.onEvent('mainButtonClicked', onSubmit))
+      : tg.MainButton.hide();
+    return () => {
+      tg.MainButton.hide();
+      tg.offEvent('mainButtonClicked', onSubmit);
+    };
+  }, [mainButtonState]);
+
+  const validate = (b: boolean) => {
+    setMainButtonState(b);
   };
 
   const { steps, currentStepIndex, step, isLastStep, next } = useStepsForm([
