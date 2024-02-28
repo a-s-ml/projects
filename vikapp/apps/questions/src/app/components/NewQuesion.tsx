@@ -14,27 +14,27 @@ import { CategoryList } from './NewQuestion/CategoryList';
 import { AnswersList } from './NewQuestion/AnswersList';
 import { useAddQuestionMutation } from '@api/question';
 import { HeaderBlock, MainBlock, Page } from '@components';
-import { useStepsForm } from '@utils';
+import { useMainButton, useStepsForm } from '@utils';
 import { useEffect, useState } from 'react';
 
 export const NewQuesion = () => {
-  const tg = window.Telegram.WebApp;
   const dispatch = useQuestionDispatch();
   const user = 521884639;
   const question = useQuestionSelector(selectQuestion);
-  const [mainButtonState, setMainButtonState] = useState(false);
 
-  useEffect(() => {
-    mainButtonState
-      ? (tg.MainButton.setText('Далее'),
-        tg.MainButton.show(),
-        tg.onEvent('mainButtonClicked', onSubmit))
-      : tg.MainButton.hide();
-    return () => {
-      tg.MainButton.hide();
-      tg.offEvent('mainButtonClicked', onSubmit);
-    };
-  }, [mainButtonState]);
+  function onSubmit() {
+    if (!isLastStep) {
+      console.log('next');
+      next();
+    }
+    if (isLastStep) {
+      console.log('dispatch');
+      dispatch(showQuestionSlide(false));
+      dispatch(getQuestionDefault(''));
+    }
+  }
+
+  const { setMainButtonState } = useMainButton(onSubmit);
 
   const validate = (b: boolean) => {
     setMainButtonState(b);
@@ -45,23 +45,6 @@ export const NewQuesion = () => {
     <CategoryList validate={validate} />,
     <AnswersList validate={validate} />,
   ]);
-
-  function onSubmit() {
-    console.log('onSubmit');
-    if (!isLastStep) {
-      console.log('next');
-      tg.MainButton.hide();
-      next();
-      return;
-    }
-    if (isLastStep) {
-      console.log('dispatch');
-      tg.MainButton.hide();
-      dispatch(showQuestionSlide(false));
-      dispatch(getQuestionDefault(''));
-      return;
-    }
-  }
 
   console.log('currentStepIndex', currentStepIndex);
   console.log('isLastStep', isLastStep);
