@@ -28,7 +28,7 @@ export const NewQuesion = () => {
       ? (tg.MainButton.setText('Далее'),
         tg.MainButton.show(),
         tg.MainButton.onClick(onSubmit))
-      : tg.MainButton.hide();
+      : (tg.MainButton.hide(), tg.MainButton.offClick(onSubmit));
   };
 
   const { steps, currentStepIndex, step, isLastStep, next } = useStepsForm([
