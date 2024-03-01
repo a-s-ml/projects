@@ -32,7 +32,7 @@ export const TypeQuiz = () => {
   return (
     <>
       {loadingAllTypes && <Preloader />}
-      {typeof typeState == 'number' && (
+      {allTypes && typeof typeState == 'number' && (
         <SimpleRadioGroup state={typeState} setState={setType}>
           <div className={`grid grid-cols-3 gap-2`}>
             {successAllTypes &&
