@@ -22,8 +22,8 @@ export const SimpleRadioGroupOption = ({
       className={({ active, checked }) =>
         classNames(
           active
-            ? 'cursor-pointer ring-2 ring-[var(--tg-theme-accent-text-color)] ring-offset-2'
-            : 'cursor-not-allowed opacity-25',
+            ? 'cursor-not-allowed opacity-25'
+            : 'cursor-pointer ring-2 ring-[var(--tg-theme-accent-text-color)] ring-offset-2',
           checked
             ? 'bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold'
             : 'ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold',
