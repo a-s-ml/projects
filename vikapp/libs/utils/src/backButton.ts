@@ -1,9 +1,9 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useBackButton = () => {
   const tg = window.Telegram.WebApp;
   const [backButtonState, setBackButtonState] = useState(false);
-  const [typeSlide, setSlide] = useState<JSX.Element>();
+  const [typeSlide, setTypeSlide] = useState('');
 
   useEffect(() => {
     backButtonState
@@ -12,10 +12,10 @@ export const useBackButton = () => {
       : tg.BackButton.hide();
     return () => {
       tg.BackButton.hide();
-      setSlide(undefined);
+      setTypeSlide('');
       tg.offEvent('backButtonClicked', () => setBackButtonState(false));
     };
   }, [backButtonState]);
 
-  return { setSlide, setBackButtonState, typeSlide, backButtonState };
+  return { setTypeSlide, setBackButtonState, typeSlide, backButtonState };
 };

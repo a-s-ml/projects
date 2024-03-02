@@ -9,11 +9,11 @@ import { NewQuiz } from './NewQuiz';
 import { useBackButton } from '@utils';
 
 export const QuizPage = () => {
-  const { setSlide, typeSlide, setBackButtonState, backButtonState } =
+  const { setTypeSlide, typeSlide, setBackButtonState, backButtonState } =
     useBackButton();
 
   const addQuiz = () => {
-    setSlide(<NewQuiz />);
+    setTypeSlide('addQuiz');
     setBackButtonState(true);
   };
 
@@ -34,7 +34,9 @@ export const QuizPage = () => {
           <p>QuizPage</p>
         </MainBlock>
       </Page>
-      <SlidePage slide={backButtonState}>{typeSlide}</SlidePage>
+      <SlidePage slide={backButtonState}>
+        {typeSlide == 'addQuiz' && <NewQuiz />}
+      </SlidePage>
     </>
   );
 };
