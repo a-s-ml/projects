@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 export const useBackButton = () => {
   const tg = window.Telegram.WebApp;
   const [backButtonState, setBackButtonState] = useState(false);
+  const [typeSlide, setTypeSlide] = useState('');
 
   useEffect(() => {
     backButtonState
@@ -15,5 +16,5 @@ export const useBackButton = () => {
     };
   }, [backButtonState]);
 
-  return { backButtonState, setBackButtonState };
+  return { setTypeSlide, setBackButtonState, typeSlide, backButtonState };
 };

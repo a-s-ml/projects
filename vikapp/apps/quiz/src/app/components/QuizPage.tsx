@@ -22,13 +22,14 @@ export const QuizPage = () => {
   const slide = useQuizSelector(selectQuizSlide);
   const type = useQuizSelector(selectQuizType);
 
-  const { backButtonState, setBackButtonState } = useBackButton();
+  const { setTypeSlide, typeSlide, setBackButtonState, backButtonState } =
+    useBackButton();
 
   const addQuiz = () => {
-    dispatch(typeQuiz('addQuiz'));
+    setTypeSlide('addQuiz');
     setBackButtonState(true);
   };
-  
+
   return (
     <>
       <GlobalHeader>
@@ -47,7 +48,7 @@ export const QuizPage = () => {
         </MainBlock>
       </Page>
       <SlidePage slide={backButtonState}>
-        {type == 'addQuiz' && <NewQuiz />}
+        {typeSlide == 'addQuiz' && <NewQuiz />}
       </SlidePage>
     </>
   );
