@@ -22,7 +22,7 @@ export const SimpleAccordionMain = ({
                   <ChevronUpIcon
                     className={`h-5 w-5 text-[var(--tg-theme-accent-text-color)] group-hover:text-[var(--tg-theme-text-color)] ${
                       open
-                        ? 'transform rotate-180 transition ease-in-out duration-500'
+                        ? 'transform rotate-180 transition ease-in-out'
                         : ''
                     }`}
                     aria-hidden="true"
@@ -31,10 +31,10 @@ export const SimpleAccordionMain = ({
               </Disclosure.Button>
             </li>
             <Transition
-              enter="transition ease-in-out duration-500"
+              enter="transition ease-in-out"
               enterFrom="transform scale-95 opacity-5"
               enterTo="transform scale-100 opacity-100"
-              leave="transition ease-in-out duration-500"
+              leave="transition ease-in-out"
               leaveFrom="transform scale-100 opacity-100"
               leaveTo="transform scale-95 opacity-5"
             >
