@@ -13,24 +13,17 @@ import {
   typeQuiz,
 } from '../store/slices/quizApp.slice';
 import { NewQuiz } from './NewQuiz';
+import { useBackButton } from '@utils';
 
 export const QuizPage = () => {
-  const tg = window.Telegram.WebApp;
   const dispatch = useQuizDispatch();
-
-  const slide = useQuizSelector(selectQuizSlide);
   const type = useQuizSelector(selectQuizType);
 
-  if (slide) {
-    tg.BackButton.show();
-    tg.onEvent('backButtonClicked', () => {
-      dispatch(showQuizSlide(false));
-    });
-  }
+  const { backButtonState, setBackButtonState } = useBackButton();
 
   const addQuiz = () => {
     dispatch(typeQuiz('addQuiz'));
-    dispatch(showQuizSlide(true));
+    setBackButtonState(true);
   };
 
   return (
@@ -50,7 +43,9 @@ export const QuizPage = () => {
           <p>QuizPage</p>
         </MainBlock>
       </Page>
-      <SlidePage slide={slide}>{type == 'addQuiz' && <NewQuiz />}</SlidePage>
+      <SlidePage slide={backButtonState}>
+        {type == 'addQuiz' && <NewQuiz />}
+      </SlidePage>
     </>
   );
 };

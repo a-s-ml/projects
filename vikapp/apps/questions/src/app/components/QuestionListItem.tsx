@@ -13,7 +13,6 @@ interface QuestionListItemProps {
 }
 
 export const QuestionListItem = ({ chat }: QuestionListItemProps) => {
-  const tg = window.Telegram.WebApp;
   const { isLoading, data, isSuccess } = useGetQuestionByChatQuery(chat);
 
   return (
