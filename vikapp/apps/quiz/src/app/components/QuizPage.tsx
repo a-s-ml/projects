@@ -16,15 +16,20 @@ import { NewQuiz } from './NewQuiz';
 import { useBackButton } from '@utils';
 
 export const QuizPage = () => {
+  const tg = window.Telegram.WebApp;
   const dispatch = useQuizDispatch();
+
+  const slide = useQuizSelector(selectQuizSlide);
   const type = useQuizSelector(selectQuizType);
-  const { backButtonState, setBackButtonState } = useBackButton();
-  console.log('backButtonState', backButtonState);
 
   const addQuiz = () => {
     dispatch(typeQuiz('addQuiz'));
-    setBackButtonState(true);
+    dispatch(showQuizSlide(true));
   };
+
+  const { backButtonState, setBackButtonState } = useBackButton(addQuiz);
+
+  slide ? setBackButtonState(true) : setBackButtonState(false);
 
   return (
     <>
