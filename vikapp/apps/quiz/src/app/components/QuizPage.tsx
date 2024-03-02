@@ -18,8 +18,8 @@ import { useBackButton } from '@utils';
 export const QuizPage = () => {
   const dispatch = useQuizDispatch();
   const type = useQuizSelector(selectQuizType);
-
   const { backButtonState, setBackButtonState } = useBackButton();
+  console.log('backButtonState', backButtonState);
 
   const addQuiz = () => {
     dispatch(typeQuiz('addQuiz'));
