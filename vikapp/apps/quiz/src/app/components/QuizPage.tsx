@@ -29,7 +29,7 @@ export const QuizPage = () => {
 
   const { backButtonState, setBackButtonState } = useBackButton(addQuiz);
 
-  slide ? setBackButtonState(true) : setBackButtonState(false);
+  setBackButtonState(slide)
 
   return (
     <>
