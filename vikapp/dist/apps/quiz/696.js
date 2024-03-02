@@ -1,0 +1,1 @@
+(self.webpackChunkquiz=self.webpackChunkquiz||[]).push([[696],{6696:(u,e,a)=>{a.r(e),a.d(e,{default:()=>k.c});var k=a(1700)}}]);
