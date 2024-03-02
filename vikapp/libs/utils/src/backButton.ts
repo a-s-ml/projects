@@ -7,13 +7,13 @@ export const useBackButton = () => {
   useEffect(() => {
     backButtonState
       ? (tg.BackButton.show(),
-        tg.onEvent('backButtonClicked', setBackButtonState(false)))
+        tg.onEvent('backButtonClicked', () => setBackButtonState(false)))
       : tg.BackButton.hide();
     return () => {
       tg.BackButton.hide();
-      tg.offEvent('backButtonClicked', setBackButtonState(false));
+      tg.offEvent('backButtonClicked', () => setBackButtonState(false));
     };
   }, [backButtonState]);
 
-  return { backButtonState,setBackButtonState };
+  return { backButtonState, setBackButtonState };
 };
