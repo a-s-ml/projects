@@ -10,7 +10,7 @@ export const useBackButton = () => {
         tg.onEvent('backButtonClicked', setBackButtonState(false)))
       : tg.BackButton.hide();
     return () => {
-      tg.BackButton.hide();
+    //   tg.BackButton.hide();
       tg.offEvent('backButtonClicked', setBackButtonState(false));
     };
   }, [backButtonState]);
