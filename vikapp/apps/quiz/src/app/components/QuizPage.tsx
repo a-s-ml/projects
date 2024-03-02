@@ -34,7 +34,7 @@ export const QuizPage = () => {
           <p>QuizPage</p>
         </MainBlock>
       </Page>
-      {typeSlide && <SlidePage slide={backButtonState}>{typeSlide}</SlidePage>}
+      <SlidePage slide={backButtonState}>{typeSlide}</SlidePage>
     </>
   );
 };
