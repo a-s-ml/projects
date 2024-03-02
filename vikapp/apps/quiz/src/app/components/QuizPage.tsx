@@ -27,9 +27,7 @@ export const QuizPage = () => {
     dispatch(showQuizSlide(true));
   };
 
-  const { backButtonState, setBackButtonState } = useBackButton(addQuiz);
-
-  slide ? setBackButtonState(slide) : setBackButtonState(false);
+  const { state } = useBackButton(slide, addQuiz);
 
   return (
     <>
@@ -48,9 +46,7 @@ export const QuizPage = () => {
           <p>QuizPage</p>
         </MainBlock>
       </Page>
-      <SlidePage slide={backButtonState}>
-        {type == 'addQuiz' && <NewQuiz />}
-      </SlidePage>
+      <SlidePage slide={state}>{type == 'addQuiz' && <NewQuiz />}</SlidePage>
     </>
   );
 };

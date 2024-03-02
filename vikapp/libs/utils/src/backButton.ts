@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react';
 
+type StateProps = boolean;
 type FunctionProps = () => void;
 
-export const useBackButton = (onSubmit: FunctionProps) => {
+export const useBackButton = (state: StateProps, onSubmit: FunctionProps) => {
   const tg = window.Telegram.WebApp;
-  const [backButtonState, setBackButtonState] = useState(false);
 
   useEffect(() => {
-    backButtonState
+    state
       ? (tg.BackButton.show(), tg.onEvent('backButtonClicked', onSubmit))
       : tg.BackButton.hide();
     return () => {
       tg.BackButton.hide();
       tg.offEvent('backButtonClicked', onSubmit);
     };
-  }, [backButtonState]);
+  }, [state]);
 
-  return { backButtonState, setBackButtonState };
+  return { state };
 };
