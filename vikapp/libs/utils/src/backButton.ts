@@ -3,7 +3,7 @@ import { ReactElement, useEffect, useState } from 'react';
 export const useBackButton = () => {
   const tg = window.Telegram.WebApp;
   const [backButtonState, setBackButtonState] = useState(false);
-  const [typeSlide, setSlide] = useState<ReactElement | undefined>(undefined);
+  const [typeSlide, setSlide] = useState<JSX.Element>();
 
   useEffect(() => {
     backButtonState
