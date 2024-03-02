@@ -19,9 +19,9 @@ export const PeriodQuiz = () => {
   } = useGetTimeQuery('');
   const chat = 521884639;
   const { data: GroupDb } = useGetGroupDbQuery(chat as unknown as bigint);
-  const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
+  const { data: GroupPeriod } = useGetTimeByIdQuery(GroupDb?.time || 0);
 
-  const [timeState, setTime] = useState(GroupTime?.id);
+  const [timeState, setTime] = useState(GroupPeriod?.id);
 
   const [updateTimeGroup, {}] = useUpdateTimeGroupsMutation();
 
@@ -36,7 +36,8 @@ export const PeriodQuiz = () => {
       {typeof timeState == 'number' && (
         <SimpleRadioGroup state={timeState} setState={setTime}>
           <div className={`grid grid-cols-4 gap-2`}>
-            {successAllPeriod &&
+            {GroupPeriod &&
+              allPeriod &&
               allPeriod.map((item) => (
                 <SimpleRadioGroupOption
                   key={item.id}

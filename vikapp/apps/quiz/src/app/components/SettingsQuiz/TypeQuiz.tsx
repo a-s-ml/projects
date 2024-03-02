@@ -6,7 +6,6 @@ import {
 } from '@api/type';
 import {
   Preloader,
-  SimpleCheckbox,
   SimpleRadioGroup,
   SimpleRadioGroupOption,
 } from '@components';
@@ -36,7 +35,8 @@ export const TypeQuiz = () => {
         <SimpleRadioGroup state={typeState} setState={setType}>
           <div className={`grid grid-cols-3 gap-2`}>
             {loadingAllTypes && <Preloader />}
-            {/* {successAllTypes &&
+            {GroupType &&
+              allTypes &&
               allTypes.map((item) => (
                 <SimpleRadioGroupOption
                   key={item.id}
@@ -44,19 +44,6 @@ export const TypeQuiz = () => {
                   description={item.description}
                   active={Boolean(item.active)}
                   func={typeChanged}
-                />
-              ))} */}
-            {GroupType &&
-              allTypes &&
-              allTypes.map((item) => (
-                <SimpleCheckbox
-                  key={item.id}
-                  data={item}
-                  disabled={item.id === 1001 || item.id === 85 ? true : false}
-                  checked={
-                    allTypes.find((itm) => itm.id === item.id) ? false : true
-                  }
-                  func={() => console.log()}
                 />
               ))}
           </div>
