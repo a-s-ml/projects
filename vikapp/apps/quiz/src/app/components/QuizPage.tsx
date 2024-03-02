@@ -29,6 +29,8 @@ export const QuizPage = () => {
     setTypeSlide('addQuiz');
     setBackButtonState(true);
   };
+  console.log('typeSlide', typeSlide);
+  console.log('backButtonState', backButtonState);
 
   return (
     <>
