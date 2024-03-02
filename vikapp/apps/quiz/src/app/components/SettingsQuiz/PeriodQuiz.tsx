@@ -39,6 +39,7 @@ export const PeriodQuiz = () => {
             {successAllPeriod &&
               allPeriod.map((item) => (
                 <SimpleRadioGroupOption
+                  key={item.id}
                   id={item.id}
                   description={item.name}
                   active={true}
