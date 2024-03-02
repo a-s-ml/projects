@@ -27,7 +27,11 @@ export const QuizPage = () => {
     dispatch(showQuizSlide(true));
   };
 
-  const { state } = useBackButton(slide, addQuiz);
+  const closeSlide = () => {
+    dispatch(showQuizSlide(false));
+  };
+
+  const { state } = useBackButton(slide, closeSlide);
 
   return (
     <>
