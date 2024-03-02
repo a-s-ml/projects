@@ -14,6 +14,7 @@ export const BotQuiz = () => {
       >
         {typeNewQuizConst.map((item) => (
           <SimpleAccordionMain
+            key={item.id}
             description={
               <>
                 <SimpleAccordionIcon size={5}>

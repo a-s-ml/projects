@@ -38,6 +38,7 @@ export const TypeQuiz = () => {
             {successAllTypes &&
               allTypes.map((item) => (
                 <SimpleRadioGroupOption
+                  key={item.id}
                   id={item.id}
                   description={item.description}
                   active={Boolean(item.active)}
