@@ -41,7 +41,7 @@ export const PeriodQuiz = () => {
                 <SimpleRadioGroupOption
                   id={item.id}
                   description={item.name}
-                  active={1}
+                  active={true}
                   func={timeChanged}
                 />
               ))}

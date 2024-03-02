@@ -40,7 +40,7 @@ export const TypeQuiz = () => {
                 <SimpleRadioGroupOption
                   id={item.id}
                   description={item.description}
-                  active={item.active}
+                  active={Boolean(item.active)}
                   func={typeChanged}
                 />
               ))}
