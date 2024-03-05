@@ -6,6 +6,8 @@ export const useBackButton = () => {
   const [typeSlide, setTypeSlide] = useState('');
 
   useEffect(() => {
+    console.log('typeSlide', typeSlide);
+    console.log('backButtonState', backButtonState);
     backButtonState
       ? (tg.BackButton.show(),
         tg.onEvent('backButtonClicked', () => setBackButtonState(false)))
