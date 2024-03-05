@@ -35,7 +35,7 @@ export const QuizPage = () => {
         </MainBlock>
       </Page>
       <SlidePage slide={backButtonState}>
-        {typeSlide == 'addQuiz' && <NewQuiz />}
+        {typeSlide === 'addQuiz' && <NewQuiz />}
       </SlidePage>
     </>
   );
