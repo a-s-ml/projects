@@ -28,6 +28,8 @@ export function App() {
 
   isSuccess && dispatch(dataMain(data));
 
+  console.log('typeSlide', typeSlide);
+  console.log('backButtonState', backButtonState);
   return (
     <React.Suspense fallback={<Preloader />}>
       {isLoading && <Preloader />}
