@@ -31,7 +31,7 @@ export const QuizPage = () => {
       <Page>
         <MainBlock>
           <div className="text-center pt-9"></div>
-          <p>QuizPage</p>
+          <p>QuizPage 2</p>
         </MainBlock>
       </Page>
       <SlidePage slide={backButtonState}>
