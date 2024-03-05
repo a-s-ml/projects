@@ -7,7 +7,8 @@ export const useBackButton = (state: boolean, onSubmit: FunctionProps) => {
 
   useEffect(() => {
     state
-      ? (tg.BackButton.show(), tg.onEvent('backButtonClicked', onSubmit))
+      ? (tg.BackButton.show(),
+        tg.onEvent('backButtonClicked', (tg.MainButton.hide(), onSubmit)))
       : tg.BackButton.hide();
   }, [state]);
 };
