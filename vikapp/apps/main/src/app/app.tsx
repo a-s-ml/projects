@@ -31,30 +31,30 @@ export function App() {
   console.log('typeSlide', typeSlide);
   console.log('backButtonState', backButtonState);
   return (
-    <React.Suspense fallback={<Preloader />}>
+    <React.Suspense fallback={'safd'}>
       {isLoading && <Preloader />}
-      {isSuccess && (
-        <>
-          <HomePage />
-          <SlidePage slide={backButtonState}>
-            {typeSlide === 'groups' && (
-              <Provider store={storeGroups}>
-                <Groups />
-              </Provider>
-            )}
-            {typeSlide === 'questions' && (
-              <Provider store={storeQuestion}>
-                <Questions />
-              </Provider>
-            )}
-            {typeSlide === 'quiz' && (
-              <Provider store={storeQuiz}>
-                <Quiz />
-              </Provider>
-            )}
-          </SlidePage>
-        </>
-      )}
+
+      <>
+        <HomePage />
+        <SlidePage slide={backButtonState}>
+          {typeSlide}
+          {typeSlide === 'groups' && (
+            <Provider store={storeGroups}>
+              <Groups />
+            </Provider>
+          )}
+          {typeSlide === 'questions' && (
+            <Provider store={storeQuestion}>
+              <Questions />
+            </Provider>
+          )}
+          {typeSlide === 'quiz' && (
+            <Provider store={storeQuiz}>
+              <Quiz />
+            </Provider>
+          )}
+        </SlidePage>
+      </>
     </React.Suspense>
   );
 }
