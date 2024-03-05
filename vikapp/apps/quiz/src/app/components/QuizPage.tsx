@@ -4,6 +4,7 @@ import {
   Page,
   MainBlock,
   SlidePage,
+  PadTB,
 } from '@components';
 import { NewQuiz } from './NewQuiz';
 import { useBackButton } from '@utils';
@@ -16,7 +17,8 @@ export const QuizPage = () => {
     setTypeSlide('addQuiz');
     setBackButtonState(true);
   };
-
+  console.log('typeSlide = ', typeSlide);
+  console.log('backButtonState = ', backButtonState);
   return (
     <>
       <GlobalHeader>
@@ -30,7 +32,7 @@ export const QuizPage = () => {
       </GlobalHeader>
       <Page>
         <MainBlock>
-          <div className="text-center pt-9"></div>
+          <PadTB />
           <p>QuizPage 2</p>
         </MainBlock>
       </Page>

@@ -26,3 +26,4 @@ export * from './lib/SimpleRadioGroup/SimpleRadioGroup';
 export * from './lib/SimpleRadioGroup/SimpleRadioGroupOption';
 export * from './lib/SimpleSwitchButton';
 export * from './lib/SimpleCheckbox';
+export * from './lib/SimplePage/padTB';
