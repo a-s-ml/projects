@@ -15,6 +15,7 @@ import {
 } from '../store/slices/questionApp.slice';
 import NewQuesion from './NewQuesion';
 import { useEffect, useState } from 'react';
+import { useBackButton } from '@utils';
 
 export const QuestionsPage = () => {
   const tg = window.Telegram.WebApp;
@@ -23,12 +24,7 @@ export const QuestionsPage = () => {
   const type = useQuestionSelector(selectQuestionType);
   const [successAdd, setSuccessAdd] = useState(false);
 
-  if (slide) {
-    tg.BackButton.show();
-    tg.onEvent('backButtonClicked', () => {
-      dispatch(showQuestionSlide(false));
-    });
-  }
+  useBackButton(slide, () => dispatch(showQuestionSlide(false)));
 
   const addQuestion = () => {
     dispatch(typeQuestion('addQuestion'));

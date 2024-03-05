@@ -13,6 +13,7 @@ import {
 import { Preloader, SlidePage } from '@components';
 import { storeQuestion } from 'apps/questions/src/app/store';
 import { storeQuiz } from '@store/quiz';
+import { useBackButton } from '@utils';
 const Groups = React.lazy(() => import('groups/Module'));
 const Questions = React.lazy(() => import('questions/Module'));
 const Quiz = React.lazy(() => import('quiz/Module'));
@@ -29,16 +30,8 @@ export function App() {
     tg.ready();
   }, []);
 
-  if (slide) {
-    tg.BackButton.show();
-    tg.onEvent('backButtonClicked', () => {
-      dispatch(showMainSlide(false));
-    });
-  }
-
-  if (!slide) {
-    tg.BackButton.hide();
-  }
+  useBackButton(slide, () => dispatch(showMainSlide(false)));
+  
   const { data, isSuccess, isLoading } = useValidateQuery(tg.initData);
 
   isSuccess && dispatch(dataMain(data));
