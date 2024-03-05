@@ -3,12 +3,9 @@ import { useValidateQuery } from '@api/vik';
 import HomePage from './components/HomePage';
 import { Provider } from 'react-redux';
 import { storeGroups } from '@store/groups';
-import { storeMain, useAppDispatch, useAppSelector } from './store';
+import { useAppDispatch } from './store';
 import {
-  dataMain,
-  selectMainSlide,
-  selectMainType,
-  showMainSlide,
+  dataMain
 } from './store/slices/mainApp.slice';
 import { Preloader, SlidePage } from '@components';
 import { storeQuestion } from 'apps/questions/src/app/store';

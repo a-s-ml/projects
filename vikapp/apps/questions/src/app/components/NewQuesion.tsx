@@ -2,7 +2,6 @@ import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
 import {
   getQuestionDefault,
   selectQuestion,
-  showQuestionSlide,
 } from '../store/slices/questionApp.slice';
 import { TextList } from './NewQuestion/TextList';
 import StepsForm from './NewQuestion/StepsForm';
@@ -10,7 +9,7 @@ import { CategoryList } from './NewQuestion/CategoryList';
 import { AnswersList } from './NewQuestion/AnswersList';
 import { useAddQuestionMutation } from '@api/question';
 import { HeaderBlock, MainBlock, Page } from '@components';
-import { useMainButton, useStepsForm } from '@utils';
+import { useBackButton, useMainButton, useStepsForm } from '@utils';
 
 interface NewQuesionProps {
   success: (b: boolean) => void;
@@ -21,12 +20,14 @@ export const NewQuesion = ({ success }: NewQuesionProps) => {
   const user = 521884639;
   const question = useQuestionSelector(selectQuestion);
 
+  const { setBackButtonState } = useBackButton();
+
   function onSubmit() {
     if (!isLastStep) {
       next();
     }
     if (isLastStep) {
-      dispatch(showQuestionSlide(false));
+      setBackButtonState(false);
       dispatch(getQuestionDefault(''));
       // success(true);
     }

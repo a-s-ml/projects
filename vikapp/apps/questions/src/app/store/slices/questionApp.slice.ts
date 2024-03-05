@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'; 
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IValidate } from '@models';
-import { QuestionRootState } from '..'; 
+import { QuestionRootState } from '..';
 
 export interface IAddQuestion {
   text: string;
@@ -13,15 +13,11 @@ export interface IAddQuestion {
 }
 
 export interface questionAppState {
-  questionSlide: boolean;
-  questionType: string;
   questionData: IValidate | undefined;
   addQuestion: IAddQuestion;
 }
 
 const initialState: questionAppState = {
-  questionSlide: false,
-  questionType: '',
   questionData: undefined,
   addQuestion: {
     text: '',
@@ -38,12 +34,6 @@ export const questionAppSlice = createSlice({
   name: 'questionApp',
   initialState,
   reducers: {
-    showQuestionSlide: (state, action: PayloadAction<boolean>) => {
-      state.questionSlide = action.payload;
-    },
-    typeQuestion: (state, action: PayloadAction<string>) => {
-      state.questionType = action.payload;
-    },
     dataQuestion: (state, action: PayloadAction<IValidate>) => {
       state.questionData = action.payload;
     },
@@ -81,8 +71,6 @@ export const questionAppSlice = createSlice({
 });
 
 export const {
-  showQuestionSlide,
-  typeQuestion,
   dataQuestion,
   getQuestionText,
   getQuestionCategory,
@@ -94,12 +82,8 @@ export const {
   getQuestionDefault,
 } = questionAppSlice.actions;
 
-export const selectQuestionSlide = (state: QuestionRootState) =>
-  state.questionApp.questionSlide;
 export const selectQuestionData = (state: QuestionRootState) =>
   state.questionApp.questionData;
-export const selectQuestionType = (state: QuestionRootState) =>
-  state.questionApp.questionType;
 export const selectQuestionText = (state: QuestionRootState) =>
   state.questionApp.addQuestion.text;
 export const selectQuestionCategory = (state: QuestionRootState) =>
@@ -117,4 +101,4 @@ export const selectQuestionAnswerright = (state: QuestionRootState) =>
 export const selectQuestion = (state: QuestionRootState) =>
   state.questionApp.addQuestion;
 
-export default questionAppSlice.reducer; 
+export default questionAppSlice.reducer;
