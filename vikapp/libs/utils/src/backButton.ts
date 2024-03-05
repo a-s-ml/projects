@@ -9,7 +9,7 @@ export const useBackButton = () => {
     backButtonState
       ? (tg.BackButton.show(),
         tg.onEvent('backButtonClicked', () => setBackButtonState(false)))
-      : tg.BackButton.hide();
+      : (tg.BackButton.hide(), setTypeSlide(''));
     return () => {
       tg.BackButton.hide();
       tg.offEvent('backButtonClicked', () => setBackButtonState(false));
