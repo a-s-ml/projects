@@ -4,9 +4,7 @@ import HomePage from './components/HomePage';
 import { Provider } from 'react-redux';
 import { storeGroups } from '@store/groups';
 import { useAppDispatch } from './store';
-import {
-  dataMain
-} from './store/slices/mainApp.slice';
+import { dataMain } from './store/slices/mainApp.slice';
 import { Preloader, SlidePage } from '@components';
 import { storeQuestion } from 'apps/questions/src/app/store';
 import { storeQuiz } from '@store/quiz';
@@ -37,17 +35,17 @@ export function App() {
         <>
           <HomePage />
           <SlidePage slide={backButtonState}>
-            {typeSlide == 'groups' && (
+            {typeSlide === 'groups' && (
               <Provider store={storeGroups}>
                 <Groups />
               </Provider>
             )}
-            {typeSlide == 'questions' && (
+            {typeSlide === 'questions' && (
               <Provider store={storeQuestion}>
                 <Questions />
               </Provider>
             )}
-            {typeSlide == 'quiz' && (
+            {typeSlide === 'quiz' && (
               <Provider store={storeQuiz}>
                 <Quiz />
               </Provider>
