@@ -6,19 +6,33 @@ import {
   SlidePage,
 } from '@components';
 import { QuestionList } from './QuestionList';
+import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
+import {
+  selectQuestionSlide,
+  selectQuestionType,
+  showQuestionSlide,
+  typeQuestion,
+} from '../store/slices/questionApp.slice';
 import NewQuesion from './NewQuesion';
 import { useEffect, useState } from 'react';
-import { useBackButton } from '@utils';
 
 export const QuestionsPage = () => {
   const tg = window.Telegram.WebApp;
+  const dispatch = useQuestionDispatch();
+  const slide = useQuestionSelector(selectQuestionSlide);
+  const type = useQuestionSelector(selectQuestionType);
   const [successAdd, setSuccessAdd] = useState(false);
 
-  const { setTypeSlide, setBackButtonState, typeSlide, backButtonState } =
-    useBackButton();
+  if (slide) {
+    tg.BackButton.show();
+    tg.onEvent('backButtonClicked', () => {
+      dispatch(showQuestionSlide(false));
+    });
+  }
+
   const addQuestion = () => {
-    setTypeSlide('addQuestion');
-    setBackButtonState(true);
+    dispatch(typeQuestion('addQuestion'));
+    dispatch(showQuestionSlide(true));
   };
 
   useEffect(() => {
@@ -48,10 +62,8 @@ export const QuestionsPage = () => {
           <QuestionList />
         </MainBlock>
       </Page>
-      <SlidePage slide={backButtonState}>
-        {typeSlide === 'addQuestion' && (
-          <NewQuesion success={successAddQuestion} />
-        )}
+      <SlidePage slide={slide}>
+        {type == 'addQuestion' && <NewQuesion success={successAddQuestion} />}
       </SlidePage>
     </>
   );

@@ -6,10 +6,24 @@ import {
   SlidePage,
 } from '@components';
 import GroupsList from './GroupsList';
-import { addGroup, useBackButton } from '@utils';
+import { storeGroups, useGroupDispatch, useGroupSelector } from '@store/groups';
+import {
+  selectGroupSlide,
+  showGroupSlide,
+} from '../store/slices/groupApp.slice';
+import { addGroup } from '@utils';
 
 export function GroupsPage() {
-  const { backButtonState } = useBackButton();
+  const tg = window.Telegram.WebApp;
+  const dispatch = useGroupDispatch();
+  const slide = useGroupSelector(selectGroupSlide);
+
+  if (slide) {
+    tg.BackButton.show();
+    tg.onEvent('backButtonClicked', () => {
+      dispatch(showGroupSlide(false));
+    });
+  }
   return (
     <>
       <GlobalHeader>
@@ -27,7 +41,7 @@ export function GroupsPage() {
           <GroupsList chat={521884639} />
         </MainBlock>
       </Page>
-      <SlidePage slide={backButtonState}>
+      <SlidePage slide={slide}>
         <p>Groups</p>
       </SlidePage>
     </>

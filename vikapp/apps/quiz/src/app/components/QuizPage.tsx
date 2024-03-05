@@ -4,7 +4,6 @@ import {
   Page,
   MainBlock,
   SlidePage,
-  PadTB,
 } from '@components';
 import { NewQuiz } from './NewQuiz';
 import { useBackButton } from '@utils';
@@ -31,12 +30,12 @@ export const QuizPage = () => {
       </GlobalHeader>
       <Page>
         <MainBlock>
-          <PadTB />
-          <p>QuizPage 2</p>
+          <div className="text-center pt-9"></div>
+          <p>QuizPage</p>
         </MainBlock>
       </Page>
       <SlidePage slide={backButtonState}>
-        {typeSlide === 'addQuiz' && <NewQuiz />}
+        {typeSlide == 'addQuiz' && <NewQuiz />}
       </SlidePage>
     </>
   );

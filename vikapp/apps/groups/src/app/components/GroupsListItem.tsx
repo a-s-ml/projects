@@ -14,6 +14,7 @@ interface GroupsListItemProps {
 }
 
 export default function GroupsListItem({ group }: GroupsListItemProps) {
+  const tg = window.Telegram.WebApp;
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);
   const { data: GroupDb } = useGetGroupDbQuery(group);
