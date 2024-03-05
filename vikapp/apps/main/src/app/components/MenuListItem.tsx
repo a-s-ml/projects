@@ -16,7 +16,7 @@ export const MenuListItem = () => {
           className="cursor-pointer"
           onClick={() => {
             setBackButtonState(true);
-            setTypeSlide('item.type');
+            setTypeSlide(item.type);
           }}
         >
           <SimpleListItem>
