@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'; 
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IValidate } from '@models';
-import { QuestionRootState } from '..'; 
+import { QuestionRootState } from '@store/questions';
 
 export interface IAddQuestion {
   text: string;
@@ -117,4 +117,4 @@ export const selectQuestionAnswerright = (state: QuestionRootState) =>
 export const selectQuestion = (state: QuestionRootState) =>
   state.questionApp.addQuestion;
 
-export default questionAppSlice.reducer; 
+export default questionAppSlice.reducer;

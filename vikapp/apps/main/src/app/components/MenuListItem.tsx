@@ -1,5 +1,5 @@
 import { useAppDispatch } from '@store/main';
-import { showMainSlide, typeMain } from '../store/slices/mainApp.slice';
+import { showMainSlide, typeMain } from '@slice/main';
 import { menuItemsConst } from '@const';
 import {
   SimpleListItem,

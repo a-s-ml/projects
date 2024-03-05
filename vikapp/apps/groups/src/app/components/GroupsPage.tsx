@@ -7,10 +7,7 @@ import {
 } from '@components';
 import GroupsList from './GroupsList';
 import { useGroupDispatch, useGroupSelector } from '@store/groups';
-import {
-  selectGroupSlide,
-  showGroupSlide,
-} from '../store/slices/groupApp.slice';
+import { selectGroupSlide, showGroupSlide } from '@slice/groups';
 import { addGroup, useBackButton } from '@utils';
 
 export function GroupsPage() {

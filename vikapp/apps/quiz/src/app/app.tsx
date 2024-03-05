@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux';
-import { storeQuiz } from './store/index';
+import { storeQuiz } from '@store/quiz';
 import QuizPage from './components/QuizPage';
 
 export const App = () => {

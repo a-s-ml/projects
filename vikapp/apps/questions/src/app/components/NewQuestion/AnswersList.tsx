@@ -1,9 +1,6 @@
 import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
 import { useState } from 'react';
-import {
-  getQuestionAnswerright,
-  selectQuestion,
-} from '../../store/slices/questionApp.slice';
+import { getQuestionAnswerright, selectQuestion } from '@slice/questions';
 import { SimpleInputAnswer, ValidateForm } from '@components';
 
 interface AnswersListProps {

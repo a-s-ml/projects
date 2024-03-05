@@ -12,7 +12,7 @@ import {
   selectQuestionType,
   showQuestionSlide,
   typeQuestion,
-} from '../store/slices/questionApp.slice';
+} from '@slice/questions';
 import NewQuesion from './NewQuesion';
 import { useEffect, useState } from 'react';
 import { useBackButton } from '@utils';

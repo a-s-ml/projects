@@ -4,7 +4,7 @@ import {
   getQuestionDefault,
   getQuestionText,
   selectQuestionText,
-} from '../../store/slices/questionApp.slice';
+} from '@slice/questions';
 import { SimpleTextArea, ValidateForm } from '@components';
 
 interface TextListProps {

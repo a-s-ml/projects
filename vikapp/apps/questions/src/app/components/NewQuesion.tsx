@@ -3,7 +3,7 @@ import {
   getQuestionDefault,
   selectQuestion,
   showQuestionSlide,
-} from '../store/slices/questionApp.slice';
+} from '@slice/questions';
 import { TextList } from './NewQuestion/TextList';
 import StepsForm from './NewQuestion/StepsForm';
 import { CategoryList } from './NewQuestion/CategoryList';

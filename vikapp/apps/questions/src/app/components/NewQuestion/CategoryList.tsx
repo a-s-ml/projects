@@ -1,8 +1,5 @@
 import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
-import {
-  getQuestionCategory,
-  selectQuestionCategory,
-} from '../../store/slices/questionApp.slice';
+import { getQuestionCategory, selectQuestionCategory } from '@slice/questions';
 import { useState } from 'react';
 import { ICategory } from '@models';
 import { useGetCategoryQuery } from '@api/category';

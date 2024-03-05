@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux';
 import GroupsPage from './components/GroupsPage';
-import { storeGroups } from './store';
+import { storeGroups } from '@store/groups';
 
 export const App = () => {
   return (

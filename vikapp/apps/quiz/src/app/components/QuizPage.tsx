@@ -5,14 +5,14 @@ import {
   MainBlock,
   SlidePage,
 } from '@components';
-import { NewQuiz } from './NewQuiz';
-import { useQuizDispatch, useQuizSelector } from '@store/quiz';
 import {
   selectQuizSlide,
   selectQuizType,
   showQuizSlide,
   typeQuiz,
-} from '../store/slices/quizApp.slice';
+} from '@slice/quiz';
+import { useQuizDispatch, useQuizSelector } from '@store/quiz';
+import { NewQuiz } from './NewQuiz';
 import { useBackButton } from '@utils';
 
 export const QuizPage = () => {

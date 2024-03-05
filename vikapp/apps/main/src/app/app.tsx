@@ -1,19 +1,20 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
 import { useValidateQuery } from '@api/vik';
 import HomePage from './components/HomePage';
-import { Provider } from 'react-redux';
 import { storeGroups } from '@store/groups';
-import { storeMain, useAppDispatch, useAppSelector } from './store';
+import { storeQuestion } from '@store/questions';
+import { storeQuiz } from '@store/quiz';
+import { storeMain, useAppDispatch, useAppSelector } from '@store/main';
 import {
   dataMain,
   selectMainSlide,
   selectMainType,
   showMainSlide,
-} from './store/slices/mainApp.slice';
+} from '@slice/main';
 import { Preloader, SlidePage } from '@components';
-import { storeQuestion } from 'apps/questions/src/app/store';
-import { storeQuiz } from '@store/quiz';
 import { useBackButton } from '@utils';
+
 const Groups = React.lazy(() => import('groups/Module'));
 const Questions = React.lazy(() => import('questions/Module'));
 const Quiz = React.lazy(() => import('quiz/Module'));
@@ -31,7 +32,7 @@ export function App() {
   }, []);
 
   useBackButton(slide, () => dispatch(showMainSlide(false)));
-  
+
   const { data, isSuccess, isLoading } = useValidateQuery(tg.initData);
 
   isSuccess && dispatch(dataMain(data));
