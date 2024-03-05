@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 type FunctionProps = () => void;
 
@@ -9,9 +9,5 @@ export const useBackButton = (state: boolean, onSubmit: FunctionProps) => {
     state
       ? (tg.BackButton.show(), tg.onEvent('backButtonClicked', onSubmit))
       : tg.BackButton.hide();
-    return () => {
-      tg.BackButton.hide();
-      tg.offEvent('backButtonClicked', onSubmit);
-    };
   }, [state]);
 };
