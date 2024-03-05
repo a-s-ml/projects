@@ -1,5 +1,3 @@
-import { useAppDispatch } from '@store/main';
-import { showMainSlide, typeMain } from '../store/slices/mainApp.slice';
 import { menuItemsConst } from '@const';
 import {
   SimpleListItem,
@@ -7,17 +5,18 @@ import {
   SimpleListItemIcon,
   SimpleListItemText,
 } from '@components';
+import { useBackButton } from '@utils';
 
 export const MenuListItem = () => {
-  const dispatch = useAppDispatch();
+  const { setTypeSlide, setBackButtonState } = useBackButton();
   return (
     <>
       {menuItemsConst.map((item) => (
         <li
           className="cursor-pointer"
           onClick={() => {
-            dispatch(showMainSlide(true));
-            dispatch(typeMain(item.type));
+            setBackButtonState(true);
+            setTypeSlide('item.type');
           }}
         >
           <SimpleListItem>

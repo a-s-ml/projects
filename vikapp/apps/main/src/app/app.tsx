@@ -13,6 +13,7 @@ import {
 import { Preloader, SlidePage } from '@components';
 import { storeQuestion } from 'apps/questions/src/app/store';
 import { storeQuiz } from '@store/quiz';
+import { useBackButton } from '@utils';
 const Groups = React.lazy(() => import('groups/Module'));
 const Questions = React.lazy(() => import('questions/Module'));
 const Quiz = React.lazy(() => import('quiz/Module'));
@@ -21,47 +22,35 @@ export function App() {
   const tg = window.Telegram.WebApp;
   const dispatch = useAppDispatch();
 
-  const slide = useAppSelector(selectMainSlide);
-  const type = useAppSelector(selectMainType);
-
   React.useEffect(() => {
     tg.expand();
     tg.ready();
   }, []);
 
-  if (slide) {
-    tg.BackButton.show();
-    tg.onEvent('backButtonClicked', () => {
-      dispatch(showMainSlide(false));
-    });
-  }
+  const { typeSlide, backButtonState } = useBackButton();
 
-  if (!slide) {
-    tg.BackButton.hide();
-  }
   const { data, isSuccess, isLoading } = useValidateQuery(tg.initData);
 
   isSuccess && dispatch(dataMain(data));
-  console.log(useAppSelector(storeMain.getState));
 
   return (
-    <React.Suspense fallback={null}>
+    <React.Suspense fallback={<Preloader />}>
       {isLoading && <Preloader />}
       {isSuccess && (
         <>
           <HomePage />
-          <SlidePage slide={slide}>
-            {type == 'groups' && (
+          <SlidePage slide={backButtonState}>
+            {typeSlide == 'groups' && (
               <Provider store={storeGroups}>
                 <Groups />
               </Provider>
             )}
-            {type == 'questions' && (
+            {typeSlide == 'questions' && (
               <Provider store={storeQuestion}>
                 <Questions />
               </Provider>
             )}
-            {type == 'quiz' && (
+            {typeSlide == 'quiz' && (
               <Provider store={storeQuiz}>
                 <Quiz />
               </Provider>
