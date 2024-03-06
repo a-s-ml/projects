@@ -1,4 +1,8 @@
-import { storeQuestion, useQuestionDispatch, useQuestionSelector } from '@store/questions';
+import {
+  storeQuestion,
+  useQuestionDispatch,
+  useQuestionSelector,
+} from '@store/questions';
 import {
   getQuestionDefault,
   selectQuestion,
@@ -8,9 +12,13 @@ import { TextList } from './NewQuestion/TextList';
 import StepsForm from './NewQuestion/StepsForm';
 import { CategoryList } from './NewQuestion/CategoryList';
 import { AnswersList } from './NewQuestion/AnswersList';
-import { useAddQuestionMutation } from '@api/question';
+import { IAddQuestionBack, useAddQuestionMutation } from '@api/question';
 import { HeaderBlock, MainBlock, Page } from '@components';
-import { useMainButton, useStepsForm } from '@utils';
+import {
+  convertQuestionFrontToBack,
+  useMainButton,
+  useStepsForm,
+} from '@utils';
 
 interface NewQuesionProps {
   success: (b: boolean) => void;
@@ -26,9 +34,12 @@ export const NewQuesion = ({ success }: NewQuesionProps) => {
       next();
     }
     if (isLastStep) {
-      dispatch(showQuestionSlide(false));
       dispatch(getQuestionDefault());
+      addQuestion(
+        convertQuestionFrontToBack(user as unknown as bigint, question)
+      );
       success(true);
+      dispatch(showQuestionSlide(false));
     }
   }
 

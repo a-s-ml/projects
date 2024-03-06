@@ -1,7 +1,7 @@
 import { IQuestion } from "@models";
 import { globalApi } from "@api/global";
 
-export interface IAddQuestion {
+export interface IAddQuestionBack {
   chat: bigint;
   text: string;
   category: number;
@@ -9,7 +9,7 @@ export interface IAddQuestion {
   answer2: string;
   answer3: string;
   answer4: string;
-  answerright: number;
+  answerright: number; 
 }
 
 export const extendedApiSlice = globalApi.injectEndpoints({
@@ -34,7 +34,7 @@ export const extendedApiSlice = globalApi.injectEndpoints({
       }),
     }),
 
-    addQuestion: build.mutation<IQuestion, IAddQuestion>({
+    addQuestion: build.mutation<IQuestion, IAddQuestionBack>({
       query: (question) => ({ 
         url: `/question`,
         method: "POST",

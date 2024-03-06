@@ -11,6 +11,26 @@ interface IValidationLengthForm {
   lengthMax: number;
 }
 
+interface IAddQuestionFront {
+  text: string;
+  category: number;
+  answers: IAnswers[];
+  answerright: number;
+}
+
+interface IAddQuestionBack {
+  chat: bigint;
+  text: string;
+  category: number;
+  answer1: string;
+  answer2: string;
+  answer3: string;
+  answer4: string;
+  answerright: number; 
+}
+
+let getAddQuestion: IAddQuestionBack;
+
 export const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(' ');
 };
@@ -34,6 +54,18 @@ export const deleteGroup = (b: boolean) => {
 export const deleteQuestion = (b: boolean) => {
   if (b) return tg.openTelegramLink('https://t.me/more_details');
   return;
+};
+
+export const convertQuestionFrontToBack = (user: bigint, q: IAddQuestionFront) => {
+  getAddQuestion.chat = user;
+  getAddQuestion.text = q.text;
+  getAddQuestion.category = q.category;
+  getAddQuestion.answer1 = q.answers[0].value;
+  getAddQuestion.answer2 = q.answers[1].value;
+  getAddQuestion.answer3 = q.answers[2].value;
+  getAddQuestion.answer4 = q.answers[3].value;
+  getAddQuestion.answerright = q.answerright;
+  return getAddQuestion;
 };
 
 export const validationLengthForm = (data: IValidationLengthForm): boolean => {

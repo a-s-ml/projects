@@ -8,7 +8,7 @@ export interface IAnswers {
   value: string;
 }
 
-export interface IAddQuestion {
+export interface IAddQuestionFront {
   text: string;
   category: number;
   answers: IAnswers[];
@@ -19,7 +19,7 @@ export interface questionAppState {
   questionSlide: boolean;
   questionType: string;
   questionData: IValidate | undefined;
-  addQuestion: IAddQuestion;
+  addQuestion: IAddQuestionFront;
 }
 
 export const initialAnswers = [
