@@ -18,7 +18,7 @@ export const SimpleInputAnswer = ({
   return (
     <div>
       <label
-        htmlFor={`Answer${id}`}
+        htmlFor={`answer${id}`}
         className="block text-sm font-medium leading-6 text-[var(--tg-theme-text-color)]"
       >
         Варианта ответа {id}
@@ -27,8 +27,8 @@ export const SimpleInputAnswer = ({
         <div className="relative flex flex-grow items-stretch focus-within:z-10">
           <input
             type="text"
-            name={`Answer${id}`}
-            id={`Answer${id}`}
+            name={`answer${id}`}
+            id={`answer${id}`}
             className="block w-full bg-[var(--tg-theme-bg-color)] rounded-none rounded-l-md border-0 py-1.5 pl-2 text-[var(--tg-theme-text-color)] ring-1 ring-inset ring-[var(--tg-theme-text-color)] placeholder:text-gray-400"
             placeholder={`Варианта ответа ${id}`}
             value={value}

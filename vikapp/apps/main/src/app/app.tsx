@@ -36,7 +36,6 @@ export function App() {
   const { data, isSuccess, isLoading } = useValidateQuery(tg.initData);
 
   isSuccess && dispatch(dataMain(data));
-  console.log(useAppSelector(storeMain.getState));
 
   return (
     <React.Suspense fallback={null}>

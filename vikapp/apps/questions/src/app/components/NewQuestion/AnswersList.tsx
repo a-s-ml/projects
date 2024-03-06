@@ -1,6 +1,6 @@
 import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
 import { useState } from 'react';
-import { getQuestionAnswerright, selectQuestion } from '@slice/questions';
+import { getQuestionAnswerright, getQuestionAnswers, selectQuestion } from '@slice/questions';
 import { SimpleInputAnswer, ValidateForm } from '@components';
 
 interface AnswersListProps {
@@ -11,10 +11,10 @@ export function AnswersList({ validate }: AnswersListProps) {
   const question = useQuestionSelector(selectQuestion);
   const [selectedAnswerRight, setAnswerRight] = useState(question.answerright);
   const [answer, setAnswer] = useState([
-    { id: 1, name: 'Answer1', value: '' },
-    { id: 2, name: 'Answer2', value: '' },
-    { id: 3, name: 'Answer3', value: '' },
-    { id: 4, name: 'Answer4', value: '' },
+    { id: 1, name: 'answer1', value: '' },
+    { id: 2, name: 'answer2', value: '' },
+    { id: 3, name: 'answer3', value: '' },
+    { id: 4, name: 'answer4', value: '' },
   ]);
   const dispatch = useQuestionDispatch();
 
@@ -32,7 +32,9 @@ export function AnswersList({ validate }: AnswersListProps) {
         return item;
       }
     });
+    
     setAnswer(newAnswers);
+    dispatch(getQuestionAnswers(newAnswers))
   };
 
   const [validLength, setValidLength] = useState(false);

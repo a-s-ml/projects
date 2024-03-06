@@ -1,4 +1,4 @@
-import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
+import { storeQuestion, useQuestionDispatch, useQuestionSelector } from '@store/questions';
 import {
   getQuestionDefault,
   selectQuestion,
@@ -27,8 +27,8 @@ export const NewQuesion = ({ success }: NewQuesionProps) => {
     }
     if (isLastStep) {
       dispatch(showQuestionSlide(false));
-      dispatch(getQuestionDefault(''));
-      // success(true);
+      dispatch(getQuestionDefault());
+      success(true);
     }
   }
 
@@ -45,6 +45,8 @@ export const NewQuesion = ({ success }: NewQuesionProps) => {
   ]);
 
   const [addQuestion, {}] = useAddQuestionMutation();
+
+  console.log(useQuestionSelector(storeQuestion.getState));
 
   return (
     <Page>

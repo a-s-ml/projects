@@ -2,13 +2,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IValidate } from '@models';
 import { QuestionRootState } from '@store/questions';
 
+export interface IAnswers {
+  id: number;
+  name: string;
+  value: string;
+}
+
 export interface IAddQuestion {
   text: string;
   category: number;
-  answer1: string;
-  answer2: string;
-  answer3: string;
-  answer4: string;
+  answers: IAnswers[];
   answerright: number;
 }
 
@@ -19,6 +22,13 @@ export interface questionAppState {
   addQuestion: IAddQuestion;
 }
 
+export const initialAnswers = [
+  { id: 1, name: 'answer1', value: '' },
+  { id: 2, name: 'answer2', value: '' },
+  { id: 3, name: 'answer3', value: '' },
+  { id: 4, name: 'answer4', value: '' },
+];
+
 const initialState: questionAppState = {
   questionSlide: false,
   questionType: '',
@@ -26,10 +36,7 @@ const initialState: questionAppState = {
   addQuestion: {
     text: '',
     category: 0,
-    answer1: '',
-    answer2: '',
-    answer3: '',
-    answer4: '',
+    answers: initialAnswers,
     answerright: 0,
   },
 };
@@ -53,28 +60,16 @@ export const questionAppSlice = createSlice({
     getQuestionCategory: (state, action: PayloadAction<number>) => {
       state.addQuestion.category = action.payload;
     },
-    getQuestionAnswerOne: (state, action: PayloadAction<string>) => {
-      state.addQuestion.answer1 = action.payload;
-    },
-    getQuestionAnswerTwo: (state, action: PayloadAction<string>) => {
-      state.addQuestion.answer2 = action.payload;
-    },
-    getQuestionAnswerThree: (state, action: PayloadAction<string>) => {
-      state.addQuestion.answer3 = action.payload;
-    },
-    getQuestionAnswerFour: (state, action: PayloadAction<string>) => {
-      state.addQuestion.answer4 = action.payload;
+    getQuestionAnswers: (state, action: PayloadAction<IAnswers[]>) => {
+      state.addQuestion.answers = action.payload;
     },
     getQuestionAnswerright: (state, action: PayloadAction<number>) => {
       state.addQuestion.answerright = action.payload;
     },
-    getQuestionDefault: (state, action: PayloadAction<string>) => {
+    getQuestionDefault: (state) => {
       state.addQuestion.text = '';
       state.addQuestion.category = 0;
-      state.addQuestion.answer1 = '';
-      state.addQuestion.answer2 = '';
-      state.addQuestion.answer3 = '';
-      state.addQuestion.answer4 = '';
+      state.addQuestion.answers = initialAnswers;
       state.addQuestion.answerright = 0;
     },
   },
@@ -86,12 +81,9 @@ export const {
   dataQuestion,
   getQuestionText,
   getQuestionCategory,
-  getQuestionAnswerOne,
-  getQuestionAnswerTwo,
-  getQuestionAnswerThree,
-  getQuestionAnswerFour,
   getQuestionAnswerright,
   getQuestionDefault,
+  getQuestionAnswers,
 } = questionAppSlice.actions;
 
 export const selectQuestionSlide = (state: QuestionRootState) =>
@@ -104,14 +96,6 @@ export const selectQuestionText = (state: QuestionRootState) =>
   state.questionApp.addQuestion.text;
 export const selectQuestionCategory = (state: QuestionRootState) =>
   state.questionApp.addQuestion.category;
-export const selectQuestionAnswerOne = (state: QuestionRootState) =>
-  state.questionApp.addQuestion.answer1;
-export const selectQuestionAnswerTwo = (state: QuestionRootState) =>
-  state.questionApp.addQuestion.answer2;
-export const selectQuestionAnswerThree = (state: QuestionRootState) =>
-  state.questionApp.addQuestion.answer3;
-export const selectQuestionAnswerFour = (state: QuestionRootState) =>
-  state.questionApp.addQuestion.answer4;
 export const selectQuestionAnswerright = (state: QuestionRootState) =>
   state.questionApp.addQuestion.answerright;
 export const selectQuestion = (state: QuestionRootState) =>

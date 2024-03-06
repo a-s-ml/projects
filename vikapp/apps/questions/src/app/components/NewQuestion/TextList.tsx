@@ -21,7 +21,7 @@ export function TextList({ validate }: TextListProps) {
   useEffect(() => {
     const confirm = (b: boolean) => {
       if (b) return handleText(questionText);
-      return dispatch(getQuestionDefault(''));
+      return dispatch(getQuestionDefault());
     };
     setTimeout(() => {
       if (questionText != '') {
