@@ -23,23 +23,21 @@ export const TypeQuiz = () => {
   }
 
   return (
-    <>
-      <RadioGroup value={typeState} onChange={setType} className="mt-2">
-        <div className={`grid grid-cols-3 gap-2`}>
-          {GroupType &&
-            allTypes &&
-            allTypes.map((item) => (
-              <SimpleRadioGroupOption
-                key={item.id}
-                id={item.id}
-                description={item.description}
-                active={Boolean(item.active)}
-                func={typeChanged}
-              />
-            ))}
-        </div>
-      </RadioGroup>
-    </>
+    <RadioGroup value={typeState} onChange={setType} className="mt-2">
+      <div className={`grid grid-cols-3 gap-2`}>
+        {GroupType &&
+          allTypes &&
+          allTypes.map((item) => (
+            <SimpleRadioGroupOption
+              key={item.id}
+              id={item.id}
+              description={item.description}
+              active={Boolean(item.active)}
+              func={typeChanged}
+            />
+          ))}
+      </div>
+    </RadioGroup>
   );
 };
 
