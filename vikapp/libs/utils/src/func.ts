@@ -26,7 +26,7 @@ interface IAddQuestionBack {
   answer2: string;
   answer3: string;
   answer4: string;
-  answerright: number; 
+  answerright: number;
 }
 
 let getAddQuestion: IAddQuestionBack;
@@ -56,7 +56,10 @@ export const deleteQuestion = (b: boolean) => {
   return;
 };
 
-export const convertQuestionFrontToBack = (user: bigint, q: IAddQuestionFront) => {
+export const convertQuestionFrontToBack = (
+  user: bigint,
+  q: IAddQuestionFront
+) => {
   getAddQuestion.chat = user;
   getAddQuestion.text = q.text;
   getAddQuestion.category = q.category;
@@ -65,6 +68,7 @@ export const convertQuestionFrontToBack = (user: bigint, q: IAddQuestionFront) =
   getAddQuestion.answer3 = q.answers[2].value;
   getAddQuestion.answer4 = q.answers[3].value;
   getAddQuestion.answerright = q.answerright;
+  console.log(getAddQuestion);
   return getAddQuestion;
 };
 
