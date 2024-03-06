@@ -12,7 +12,7 @@ import { TextList } from './NewQuestion/TextList';
 import StepsForm from './NewQuestion/StepsForm';
 import { CategoryList } from './NewQuestion/CategoryList';
 import { AnswersList } from './NewQuestion/AnswersList';
-import { IAddQuestionBack, useAddQuestionMutation } from '@api/question';
+import { useAddQuestionMutation } from '@api/question';
 import { HeaderBlock, MainBlock, Page } from '@components';
 import {
   convertQuestionFrontToBack,
@@ -34,10 +34,13 @@ export const NewQuesion = ({ success }: NewQuesionProps) => {
       next();
     }
     if (isLastStep) {
-      dispatch(getQuestionDefault());
-      addQuestion(
-        convertQuestionFrontToBack(user as unknown as bigint, question)
+      const questionAdd = convertQuestionFrontToBack(
+        user as unknown as bigint,
+        question
       );
+      console.log(questionAdd);
+      dispatch(getQuestionDefault());
+      addQuestion(questionAdd);
       success(true);
       dispatch(showQuestionSlide(false));
     }
