@@ -4,7 +4,8 @@ import {
   useGetTypeQuery,
   useUpdateTypeGroupsMutation,
 } from '@api/type';
-import { SimpleRadioGroup, SimpleRadioGroupOption } from '@components';
+import { SimpleRadioGroupOption } from '@components';
+import { RadioGroup } from '@headlessui/react';
 import { useState } from 'react';
 
 export const TypeQuiz = () => {
@@ -23,23 +24,21 @@ export const TypeQuiz = () => {
 
   return (
     <>
-      {allTypes && typeof typeState == 'number' && (
-        <SimpleRadioGroup state={typeState} setState={setType}>
-          <div className={`grid grid-cols-3 gap-2`}>
-            {GroupType &&
-              allTypes &&
-              allTypes.map((item) => (
-                <SimpleRadioGroupOption
-                  key={item.id}
-                  id={item.id}
-                  description={item.description}
-                  active={Boolean(item.active)}
-                  func={typeChanged}
-                />
-              ))}
-          </div>
-        </SimpleRadioGroup>
-      )}
+      <RadioGroup value={typeState} onChange={setType} className="mt-2">
+        <div className={`grid grid-cols-3 gap-2`}>
+          {GroupType &&
+            allTypes &&
+            allTypes.map((item) => (
+              <SimpleRadioGroupOption
+                key={item.id}
+                id={item.id}
+                description={item.description}
+                active={Boolean(item.active)}
+                func={typeChanged}
+              />
+            ))}
+        </div>
+      </RadioGroup>
     </>
   );
 };

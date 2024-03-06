@@ -2,7 +2,7 @@ import { RadioGroup } from '@headlessui/react';
 import { Dispatch, SetStateAction } from 'react';
 
 interface SimpleRadioGroupProps {
-  state: number;
+  state: number | undefined;
   setState: Dispatch<SetStateAction<number | undefined>>;
   children: React.ReactNode;
 }
