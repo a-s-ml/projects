@@ -25,7 +25,7 @@ interface NewQuesionProps {
 
 export const NewQuesion = ({ success }: NewQuesionProps) => {
   const dispatch = useQuestionDispatch();
-  const user = 521884639n;
+  const user = 521884639;
   const question = useQuestionSelector(selectQuestion);
 
   async function onSubmit() {
@@ -35,7 +35,7 @@ export const NewQuesion = ({ success }: NewQuesionProps) => {
     if (isLastStep) {
       await addQuestion({
         text: question.text,
-        chat: user,
+        chat: user as unknown as bigint,
         category: question.category,
         answer1: question.answers[0].value,
         answer2: question.answers[1].value,
