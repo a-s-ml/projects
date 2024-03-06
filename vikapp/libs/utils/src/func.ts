@@ -56,22 +56,6 @@ export const deleteQuestion = (b: boolean) => {
   return;
 };
 
-export const convertQuestionFrontToBack = (
-  user: bigint,
-  q: IAddQuestionFront
-) => {
-  getAddQuestion.chat = user;
-  getAddQuestion.text = q.text;
-  getAddQuestion.category = q.category;
-  getAddQuestion.answer1 = q.answers[0].value;
-  getAddQuestion.answer2 = q.answers[1].value;
-  getAddQuestion.answer3 = q.answers[2].value;
-  getAddQuestion.answer4 = q.answers[3].value;
-  getAddQuestion.answerright = q.answerright;
-  console.log(getAddQuestion);
-  return getAddQuestion;
-};
-
 export const validationLengthForm = (data: IValidationLengthForm): boolean => {
   if (typeof data.value === 'string') {
     if (

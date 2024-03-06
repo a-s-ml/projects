@@ -15,7 +15,7 @@ import {
 } from '@slice/questions';
 import NewQuesion from './NewQuesion';
 import { useEffect, useState } from 'react';
-import { useBackButton } from '@utils';
+import { useBackButton, useMainButton } from '@utils';
 
 export const QuestionsPage = () => {
   const tg = window.Telegram.WebApp;
@@ -33,6 +33,7 @@ export const QuestionsPage = () => {
 
   useEffect(() => {
     if (successAdd) {
+      tg.MainButton.hide();
       tg.showConfirm('Вопрос успешно добавлен!', console.log('showPopup'));
     }
   }, [successAdd]);

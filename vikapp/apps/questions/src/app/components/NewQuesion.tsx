@@ -15,7 +15,6 @@ import { AnswersList } from './NewQuestion/AnswersList';
 import { useAddQuestionMutation } from '@api/question';
 import { HeaderBlock, MainBlock, Page } from '@components';
 import {
-  convertQuestionFrontToBack,
   useMainButton,
   useStepsForm,
 } from '@utils';
@@ -26,7 +25,7 @@ interface NewQuesionProps {
 
 export const NewQuesion = ({ success }: NewQuesionProps) => {
   const dispatch = useQuestionDispatch();
-  const user = 521884639;
+  const user = 521884639n;
   const question = useQuestionSelector(selectQuestion);
 
   async function onSubmit() {
@@ -36,8 +35,8 @@ export const NewQuesion = ({ success }: NewQuesionProps) => {
     if (isLastStep) {
       await addQuestion({
         text: question.text,
-        chat: user as unknown as bigint,
-        category: 1,
+        chat: user,
+        category: question.category,
         answer1: question.answers[0].value,
         answer2: question.answers[1].value,
         answer3: question.answers[2].value,
