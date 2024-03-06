@@ -4,7 +4,7 @@ import {
   useAddCategoryGroupsMutation,
   useDeleteCategoryGroupsMutation,
 } from '@api/category';
-import { SimpleCheckbox } from '@components';
+import { SimpleCheckbox } from '@components'; 
 import { inDevelopment } from '@utils';
 
 export const CategoryQuiz = () => {

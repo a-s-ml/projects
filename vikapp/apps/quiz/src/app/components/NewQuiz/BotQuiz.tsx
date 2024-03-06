@@ -1,11 +1,9 @@
 import {
-  Preloader,
   SimpleAccordionIcon,
   SimpleAccordionMain,
   SimpleAccordionText,
 } from '@components';
 import { typeNewQuizConst } from '../../const/settingsQuiz.const';
-import { Suspense } from 'react';
 
 export const BotQuiz = () => {
   return (
@@ -32,11 +30,7 @@ export const BotQuiz = () => {
                 </SimpleAccordionText>
               </>
             }
-            content={
-              <Suspense fallback={<Preloader />}>
-                <item.component />
-              </Suspense>
-            }
+            content={<item.component />}
           />
         ))}
       </ul>

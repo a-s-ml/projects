@@ -7,33 +7,20 @@ import {
   ScaleIcon,
 } from '@heroicons/react/24/outline';
 import { ForwardRefExoticComponent, SVGProps } from 'react';
-import React from 'react';
+import TypeQuiz from '../components/SettingsQuiz/TypeQuiz';
+import CategoryQuiz from '../components/SettingsQuiz/CategoryQuiz';
+import PeriodQuiz from '../components/SettingsQuiz/PeriodQuiz';
+import TimeQuiz from '../components/SettingsQuiz/TimeQuiz';
+import DifficultyQuiz from '../components/SettingsQuiz/DifficultyQuiz';
+import NotactiveSittings from '../components/SettingsQuiz/NotactiveSittings';
 
 interface typeNewQuizInterface {
   id: number;
   name: string;
   type: string;
   icon: ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, 'ref'>>;
-  component: React.LazyExoticComponent<() => JSX.Element>;
+  component: () => JSX.Element;
 }
-const TypeQuiz = React.lazy(
-  () => import('../components/SettingsQuiz/TypeQuiz')
-);
-const CategoryQuiz = React.lazy(
-  () => import('../components/SettingsQuiz/CategoryQuiz')
-);
-const PeriodQuiz = React.lazy(
-  () => import('../components/SettingsQuiz/PeriodQuiz')
-);
-const TimeQuiz = React.lazy(
-  () => import('../components/SettingsQuiz/TimeQuiz')
-);
-const DifficultyQuiz = React.lazy(
-  () => import('../components/SettingsQuiz/DifficultyQuiz')
-);
-const NotactiveSittings = React.lazy(
-  () => import('../components/SettingsQuiz/NotactiveSittings')
-);
 
 export const typeNewQuizConst: typeNewQuizInterface[] = [
   {

@@ -31,9 +31,9 @@ export const TypeQuiz = () => {
 
   return (
     <>
-      {allTypes && typeof typeState == 'number' && (
-        <SimpleRadioGroup state={typeState} setState={setType}>
-          <div className={`grid grid-cols-3 gap-2`}>
+      <div className={`grid grid-cols-3 gap-2`}>
+        {allTypes && typeof typeState == 'number' && (
+          <SimpleRadioGroup state={typeState} setState={setType}>
             {loadingAllTypes && <Preloader />}
             {GroupType &&
               allTypes &&
@@ -46,9 +46,9 @@ export const TypeQuiz = () => {
                   func={typeChanged}
                 />
               ))}
-          </div>
-        </SimpleRadioGroup>
-      )}
+          </SimpleRadioGroup>
+        )}
+      </div>
     </>
   );
 };
