@@ -5,7 +5,7 @@ import HomePage from './components/HomePage';
 import { storeGroups } from '@store/groups';
 import { storeQuestion } from '@store/questions';
 import { storeQuiz } from '@store/quiz';
-import { storeMain, useAppDispatch, useAppSelector } from '@store/main';
+import { useAppDispatch, useAppSelector } from '@store/main';
 import {
   dataMain,
   selectMainSlide,
