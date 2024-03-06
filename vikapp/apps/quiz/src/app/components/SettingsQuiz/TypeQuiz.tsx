@@ -4,19 +4,11 @@ import {
   useGetTypeQuery,
   useUpdateTypeGroupsMutation,
 } from '@api/type';
-import {
-  Preloader,
-  SimpleRadioGroup,
-  SimpleRadioGroupOption,
-} from '@components';
+import { SimpleRadioGroup, SimpleRadioGroupOption } from '@components';
 import { useState } from 'react';
 
 export const TypeQuiz = () => {
-  const {
-    data: allTypes,
-    isLoading: loadingAllTypes,
-    isSuccess: successAllTypes,
-  } = useGetTypeQuery('');
+  const { data: allTypes } = useGetTypeQuery('');
   const chat = 521884639;
   const { data: GroupDb } = useGetGroupDbQuery(chat as unknown as bigint);
   const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
@@ -31,10 +23,9 @@ export const TypeQuiz = () => {
 
   return (
     <>
-      <div className={`grid grid-cols-3 gap-2`}>
-        {allTypes && typeof typeState == 'number' && (
-          <SimpleRadioGroup state={typeState} setState={setType}>
-            {loadingAllTypes && <Preloader />}
+      {allTypes && typeof typeState == 'number' && (
+        <SimpleRadioGroup state={typeState} setState={setType}>
+          <div className={`grid grid-cols-3 gap-2`}>
             {GroupType &&
               allTypes &&
               allTypes.map((item) => (
@@ -46,9 +37,9 @@ export const TypeQuiz = () => {
                   func={typeChanged}
                 />
               ))}
-          </SimpleRadioGroup>
-        )}
-      </div>
+          </div>
+        </SimpleRadioGroup>
+      )}
     </>
   );
 };
