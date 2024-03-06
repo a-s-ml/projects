@@ -29,19 +29,23 @@ export const NewQuesion = ({ success }: NewQuesionProps) => {
   const user = 521884639;
   const question = useQuestionSelector(selectQuestion);
 
-  function onSubmit() {
+  async function onSubmit() {
     if (!isLastStep) {
       next();
     }
     if (isLastStep) {
-      const questionAdd = convertQuestionFrontToBack(
-        user as unknown as bigint,
-        question
-      );
-      console.log(questionAdd);
-      dispatch(getQuestionDefault());
-      addQuestion(questionAdd);
+      await addQuestion({
+        text: question.text,
+        chat: user as unknown as bigint,
+        category: 1,
+        answer1: question.answers[0].value,
+        answer2: question.answers[1].value,
+        answer3: question.answers[2].value,
+        answer4: question.answers[3].value,
+        answerright: question.answerright,
+      });
       success(true);
+      dispatch(getQuestionDefault());
       dispatch(showQuestionSlide(false));
     }
   }
