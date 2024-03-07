@@ -1,10 +1,9 @@
-import { useGetCategoryQuery } from '@api/category';
+import { useCountCategoryQuery, useGetCategoryQuery } from '@api/category';
 import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
 import { useState } from 'react';
 import { ICategory } from '@models';
 import { SimpleCategorySelect, ValidateForm } from '@components';
 import { getQuestionCategory, selectQuestionCategory } from '@slice/questions';
-import { useGetTypeQuery } from '@api/type';
 
 interface CategoryListProps {
   validate: (b: boolean) => void;
@@ -13,16 +12,14 @@ interface CategoryListProps {
 export const CategoryList = ({ validate }: CategoryListProps) => {
   const dispatch = useQuestionDispatch();
   const questionCategory = useQuestionSelector(selectQuestionCategory);
-  const { data: allType } = useGetTypeQuery('');
-  console.log(allType);
   const { data: allCategory } = useGetCategoryQuery('');
-  console.log('allCategory', allCategory);
+  const { data: countCategory } = useCountCategoryQuery('');
+  console.log('countCategory', countCategory);
   const [selectedCategory, setCategory] = useState(
-    allCategory && questionCategory !== 0
-      ? allCategory.find((id) => id.id === questionCategory)
+    questionCategory !== 0
+      ? allCategory?.find((id) => id.id === questionCategory)
       : { id: 0, name: '' }
   );
-  console.log('selectedCategory', selectedCategory);
 
   const handleChange = (cat: ICategory) => {
     setCategory(cat);
