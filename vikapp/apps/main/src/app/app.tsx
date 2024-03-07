@@ -38,7 +38,7 @@ export function App() {
   isSuccess && dispatch(dataMain(data));
 
   return (
-    <React.Suspense fallback={null}>
+    <React.Suspense fallback={<Preloader />}>
       {isLoading && <Preloader />}
       {isSuccess && (
         <>

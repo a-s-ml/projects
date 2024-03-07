@@ -8,7 +8,7 @@ import { SimpleCheckbox } from '@components';
 import { inDevelopment } from '@utils';
 
 export const CategoryQuiz = () => {
-  const { data: allCategory } = useGetCategoryQuery('');
+  const { data: allCategory } = useGetCategoryQuery(''); 
   const chat = 521884639;
   const { data: GroupCategory } = useGetCategoryGroupsQuery(
     chat as unknown as bigint

@@ -1,12 +1,12 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { globalApi } from '@api/global';
-import QuizAppSlice from '@slice/quiz';
+import quizAppSlice from '@slice/quiz'; 
 
 export const storeQuiz = configureStore({
   reducer: {
     [globalApi.reducerPath]: globalApi.reducer,
-    quizApp: QuizAppSlice,
+    quizApp: quizAppSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(globalApi.middleware),
