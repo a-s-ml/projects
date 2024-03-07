@@ -1,6 +1,7 @@
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/24/outline';
 import { ICategory } from '@models';
+import { classNames } from '@utils';
 import { Fragment } from 'react';
 
 interface SimpleCategorySelectProps {
@@ -14,10 +15,6 @@ export const SimpleCategorySelect = ({
   func,
   value,
 }: SimpleCategorySelectProps) => {
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(' ');
-  }
-
   return (
     <Listbox value={value} onChange={func}>
       {({ open }) => (
