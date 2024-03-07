@@ -5,15 +5,15 @@ import { globalApi } from '@api/global';
 
 export const extendedApiSlice = globalApi.injectEndpoints({
   endpoints: (build) => ({
-    countCategory: build.query<number, string>({
-      query: (count) => ({
-        url: `category/${count}`,
-      }),
-    }),
-
     getCategory: build.query<ICategory[], string>({
       query: () => ({
         url: `category`,
+      }),
+    }),
+
+    countCategory: build.query<number, string>({
+      query: (count) => ({
+        url: `category/${count}`,
       }),
     }),
 
@@ -51,10 +51,10 @@ export const extendedApiSlice = globalApi.injectEndpoints({
 });
 
 export const {
-  useCountCategoryQuery,
   useGetCategoryQuery,
+  useCountCategoryQuery,
+  useGetCategoryByIdQuery,
   useGetCategoryGroupsQuery,
   useAddCategoryGroupsMutation,
   useDeleteCategoryGroupsMutation,
-  useGetCategoryByIdQuery,
 } = extendedApiSlice;
