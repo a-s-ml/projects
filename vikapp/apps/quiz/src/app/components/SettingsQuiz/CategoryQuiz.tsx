@@ -13,8 +13,8 @@ export const CategoryQuiz = () => {
   const { data: GroupCategory } = useGetCategoryGroupsQuery(
     chat as unknown as bigint
   );
-  const [setCategory, {}] = useAddCategoryGroupsMutation();
-  const [deleteCategory, {}] = useDeleteCategoryGroupsMutation();
+  // const [setCategory, {}] = useAddCategoryGroupsMutation();
+  // const [deleteCategory, {}] = useDeleteCategoryGroupsMutation();
 
   async function categoryChanged(check: boolean, category: number) {
     if (!check) {

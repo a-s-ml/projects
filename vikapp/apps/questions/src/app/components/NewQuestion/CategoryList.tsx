@@ -12,12 +12,12 @@ interface CategoryListProps {
 export function CategoryList({ validate }: CategoryListProps) {
   const questionCategory = useQuestionSelector(selectQuestionCategory);
   console.log('questionCategory', questionCategory);
-  const { data } = useGetCategoryQuery('');
-  console.log('data', data);
+  const { data: allCategory } = useGetCategoryQuery(''); 
+  console.log('data', allCategory);
   const dispatch = useQuestionDispatch();
   const [selectedCategory, setCategory] = useState(
-    data && questionCategory != 0
-      ? data.find((id) => id.id === questionCategory)
+    allCategory && questionCategory != 0
+      ? allCategory.find((id) => id.id === questionCategory)
       : { id: 0, name: '' }
   );
   console.log('selectedCategory', selectedCategory);
@@ -33,11 +33,11 @@ export function CategoryList({ validate }: CategoryListProps) {
 
   return (
     <div className="py-2">
-      {data && (
+      {allCategory && (
         <SimpleCategorySelect
           value={selectedCategory ? selectedCategory : { id: 0, name: ' ' }}
           func={handleChange}
-          data={data}
+          data={allCategory}
         />
       )}
       <div className="py-4">
