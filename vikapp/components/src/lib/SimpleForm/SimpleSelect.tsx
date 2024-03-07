@@ -24,7 +24,7 @@ export const SimpleCategorySelect = ({
         <Listbox.Button className="relative w-full cursor-default rounded-md bg-[var(--tg-theme-bg-color)] py-1.5 pl-3 pr-10 text-left text-[var(--tg-theme-text-color)] shadow-sm ring-1 ring-inset ring-[var(--tg-theme-text-color)]">
           <span className="inline-flex w-full truncate">
             <span className="truncate text-[var(--tg-theme-text-color)]">
-              {value?.name}
+              {value.name}
             </span>
           </span>
           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -35,7 +35,7 @@ export const SimpleCategorySelect = ({
           </span>
         </Listbox.Button>
         <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-[var(--tg-theme-bg-color)] py-1 text-base shadow-lg ring-1 ring-[var(--tg-theme-text-color)] ring-opacity-5">
-          {data?.map((cat) => (
+          {data.map((cat) => (
             <Listbox.Option
               key={cat.id}
               className={({ active }) =>
