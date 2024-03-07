@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ICategory } from '@models';
 import { SimpleCategorySelect, ValidateForm } from '@components';
 import { getQuestionCategory, selectQuestionCategory } from '@slice/questions';
+import { useGetTypeQuery } from '@api/type';
 
 interface CategoryListProps {
   validate: (b: boolean) => void;
@@ -12,6 +13,8 @@ interface CategoryListProps {
 export const CategoryList = ({ validate }: CategoryListProps) => {
   const dispatch = useQuestionDispatch();
   const questionCategory = useQuestionSelector(selectQuestionCategory);
+  const { data: allType } = useGetTypeQuery('');
+  console.log(allType);
   const { data: allCategory } = useGetCategoryQuery('');
   console.log('allCategory', allCategory);
   const [selectedCategory, setCategory] = useState(

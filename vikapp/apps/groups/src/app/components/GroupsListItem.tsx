@@ -9,6 +9,7 @@ import {
 } from '@components';
 import { useGetGroupDbQuery, useGetInfoGroupsQuery } from '@api/group';
 import { useGetCategoryQuery } from '@api/category';
+import { useGetTypeQuery } from '@api/type';
 
 interface GroupsListItemProps {
   group: bigint;
@@ -20,7 +21,9 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
     useGetInfoGroupsQuery(group);
   const { data: GroupDb } = useGetGroupDbQuery(group);
   const { data: allCategory } = useGetCategoryQuery('');
+  const { data: allType } = useGetTypeQuery('');
   console.log(allCategory);
+  console.log(allType);
 
   return (
     <>
