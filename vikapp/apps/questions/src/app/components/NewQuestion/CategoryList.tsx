@@ -15,6 +15,7 @@ interface CategoryListProps {
 export const CategoryList = ({ validate }: CategoryListProps) => {
   const questionCategory = useQuestionSelector(selectQuestionCategory);
   const { data, isSuccess } = useGetCategoryQuery('');
+  console.log('isSuccess', isSuccess);
   const dispatch = useQuestionDispatch();
   const [selectedCategory, setCategory] = useState(
     isSuccess && questionCategory != 0
