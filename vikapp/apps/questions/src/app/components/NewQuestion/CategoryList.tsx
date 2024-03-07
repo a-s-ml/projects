@@ -3,7 +3,11 @@ import { getQuestionCategory, selectQuestionCategory } from '@slice/questions';
 import { useState } from 'react';
 import { ICategory } from '@models';
 import { useGetCategoryQuery } from '@api/category';
-import { SimpleCategorySelect, ValidateForm } from '@components'; 
+import {
+  SimpleCategorySelect,
+  SimpleCheckbox,
+  ValidateForm,
+} from '@components';
 
 interface CategoryListProps {
   validate: (b: boolean) => void;
@@ -26,18 +30,30 @@ export function CategoryList({ validate }: CategoryListProps) {
     setCategory(cat);
     dispatch(getQuestionCategory(cat.id));
   };
-
+  async function categoryChanged(check: boolean, category: number) {
+    if (!check) {
+      // await setCategory({ chat, category });
+    }
+    if (check) {
+      // deleteCategory({ chat, category });
+    }
+  }
   const [validCategory, setValidCategory] = useState(false);
 
   validCategory ? validate(true) : validate(false);
 
   return (
     <div className="py-2">
-      <SimpleCategorySelect
-        value={selectedCategory ? selectedCategory : { id: 0, name: ' ' }}
-        func={handleChange}
-        data={allCategory ? allCategory : [{ id: 0, name: ' ' }]}
-      />
+      {allCategory &&
+        allCategory.map((item) => (
+          <SimpleCheckbox
+            key={item.id}
+            data={item}
+            disabled={item.id === 1001 || item.id === 85 ? true : false}
+            checked={false}
+            func={categoryChanged}
+          />
+        ))}
       <div className="py-4">
         <ValidateForm
           text={'Выберите подходящую категорию'}
