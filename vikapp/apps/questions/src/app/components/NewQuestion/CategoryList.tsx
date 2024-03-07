@@ -14,10 +14,10 @@ interface CategoryListProps {
 
 export const CategoryList = ({ validate }: CategoryListProps) => {
   const questionCategory = useQuestionSelector(selectQuestionCategory);
-  const { data } = useGetCategoryQuery('');
+  const { data, isSuccess } = useGetCategoryQuery('');
   const dispatch = useQuestionDispatch();
   const [selectedCategory, setCategory] = useState(
-    data && questionCategory != 0
+    isSuccess && questionCategory != 0
       ? data.find((id) => id.id === questionCategory)
       : { id: 0, name: '' }
   );
@@ -33,7 +33,7 @@ export const CategoryList = ({ validate }: CategoryListProps) => {
 
   return (
     <div className="py-2">
-      {data && (
+      {isSuccess && (
         <SimpleCategorySelect
           value={selectedCategory ? selectedCategory : { id: 0, name: ' ' }}
           func={handleChange}
