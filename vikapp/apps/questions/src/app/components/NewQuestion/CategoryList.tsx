@@ -1,9 +1,9 @@
+import { useGetCategoryQuery } from '@api/category';
 import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
-import { getQuestionCategory, selectQuestionCategory } from '@slice/questions';
 import { useState } from 'react';
 import { ICategory } from '@models';
-import { useGetCategoryQuery } from '@api/category';
 import { SimpleCategorySelect, ValidateForm } from '@components';
+import { getQuestionCategory, selectQuestionCategory } from '@slice/questions';
 
 interface CategoryListProps {
   validate: (b: boolean) => void;
@@ -11,11 +11,9 @@ interface CategoryListProps {
 
 export const CategoryList = ({ validate }: CategoryListProps) => {
   const dispatch = useQuestionDispatch();
-  // const questionCategory = useQuestionSelector(selectQuestionCategory);
-  const questionCategory: number = 68;
-  console.log('questionCategory', questionCategory);
+  const questionCategory = useQuestionSelector(selectQuestionCategory);
   const { data: allCategory } = useGetCategoryQuery('');
-  console.log('data', allCategory);
+  console.log('allCategory', allCategory);
   const [selectedCategory, setCategory] = useState(
     allCategory && questionCategory !== 0
       ? allCategory.find((id) => id.id === questionCategory)

@@ -1,10 +1,7 @@
-import { ICategory } from "@models";
-import { ICategoryGroup } from "@models";
-import {
-  IReqCategoryGroup,
-  IResCategoryGroup,
-} from "@models";
-import { globalApi } from "@api/global";
+import { ICategory } from '@models';
+import { ICategoryGroup } from '@models';
+import { IReqCategoryGroup, IResCategoryGroup } from '@models';
+import { globalApi } from '@api/global';
 
 export const extendedApiSlice = globalApi.injectEndpoints({
   endpoints: (build) => ({
@@ -30,35 +27,34 @@ export const extendedApiSlice = globalApi.injectEndpoints({
       query: (chat) => ({
         url: `chat-category/${chat}`,
       }),
-      providesTags: ["CategoryGroup"],
+      providesTags: ['CategoryGroup'],
     }),
 
     addCategoryGroups: build.mutation<IResCategoryGroup, IReqCategoryGroup>({
       query: ({ chat, category }) => ({
         url: `/chat-category`,
-        method: "POST",
+        method: 'POST',
         body: { chat, category },
       }),
-      invalidatesTags: ["CategoryGroup", "CountAvailableQuestionGroup"],
+      invalidatesTags: ['CategoryGroup', 'CountAvailableQuestionGroup'],
     }),
 
     deleteCategoryGroups: build.mutation<IResCategoryGroup, IReqCategoryGroup>({
       query: ({ chat, category }) => ({
         url: `/chat-category`,
-        method: "DELETE",
+        method: 'DELETE',
         body: { chat, category },
       }),
-      invalidatesTags: ["CategoryGroup", "CountAvailableQuestionGroup"],
+      invalidatesTags: ['CategoryGroup', 'CountAvailableQuestionGroup'],
     }),
   }),
 });
 
-export const { 
+export const {
   useCountCategoryQuery,
   useGetCategoryQuery,
   useGetCategoryGroupsQuery,
-  useAddCategoryGroupsMutation, 
+  useAddCategoryGroupsMutation,
   useDeleteCategoryGroupsMutation,
-  useGetCategoryByIdQuery
-} =
-  extendedApiSlice;
+  useGetCategoryByIdQuery,
+} = extendedApiSlice;

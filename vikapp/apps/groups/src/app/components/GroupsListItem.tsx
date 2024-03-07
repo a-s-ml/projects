@@ -1,4 +1,3 @@
-import { useGetGroupDbQuery, useGetInfoGroupsQuery } from '@api/group';
 import { deleteGroup, inDevelopment } from '@utils';
 import GroupAvatar from './GroupAvatar';
 import {
@@ -8,6 +7,8 @@ import {
   SimpleAccordionMain,
   SimpleAccordionText,
 } from '@components';
+import { useGetGroupDbQuery, useGetInfoGroupsQuery } from '@api/group';
+import { useGetCategoryQuery } from '@api/category';
 
 interface GroupsListItemProps {
   group: bigint;
@@ -18,6 +19,8 @@ export default function GroupsListItem({ group }: GroupsListItemProps) {
   const { isError: errorGroupInfo, data: dataGroupInfo } =
     useGetInfoGroupsQuery(group);
   const { data: GroupDb } = useGetGroupDbQuery(group);
+  const { data: allCategory } = useGetCategoryQuery('');
+  console.log(allCategory);
 
   return (
     <>
