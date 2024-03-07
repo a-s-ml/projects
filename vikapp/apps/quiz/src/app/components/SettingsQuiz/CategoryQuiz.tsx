@@ -2,7 +2,7 @@ import {
   useGetCategoryQuery,
   useGetCategoryGroupsQuery,
   useAddCategoryGroupsMutation,
-  useDeleteCategoryGroupsMutation,
+  useDeleteCategoryGroupsMutation, 
 } from '@api/category';
 import { SimpleCheckbox } from '@components'; 
 import { inDevelopment } from '@utils';

@@ -3,7 +3,7 @@ import { getQuestionCategory, selectQuestionCategory } from '@slice/questions';
 import { useState } from 'react';
 import { ICategory } from '@models';
 import { useGetCategoryQuery } from '@api/category';
-import { SimpleCategorySelect, ValidateForm } from '@components';
+import { SimpleCategorySelect, ValidateForm } from '@components'; 
 
 interface CategoryListProps {
   validate: (b: boolean) => void;
