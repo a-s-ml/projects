@@ -1,2 +1,0 @@
-(self.webpackChunkadd_question=self.webpackChunkadd_question||[]).push([[492],{872:(e,t,o)=>{o.r(t);var a=o(132),d=o(536),r=o(344);a.C(document.getElementById("root")).render((0,r.jsx)(d.c,{}))},132:(e,t,o)=>{var a=o(408);t.C=a.createRoot,a.hydrateRoot}}]);
-//# sourceMappingURL=492.js.map
