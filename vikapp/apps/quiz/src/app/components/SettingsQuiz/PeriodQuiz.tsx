@@ -24,21 +24,23 @@ export const PeriodQuiz = () => {
   }
 
   return (
-    <RadioGroup value={timeState} onChange={setTime} className="mt-2">
-      <div className={`grid grid-cols-4 gap-2`}>
-        {GroupPeriod &&
-          allPeriod &&
-          allPeriod.map((item) => (
-            <SimpleRadioGroupOption
-              key={item.id}
-              id={item.id}
-              description={item.name}
-              active={true}
-              func={timeChanged}
-            />
-          ))}
-      </div>
-    </RadioGroup>
+    <>
+      {GroupPeriod && allPeriod && (
+        <RadioGroup value={timeState} onChange={setTime} className="mt-2">
+          <div className={`grid grid-cols-4 gap-2`}>
+            {allPeriod.map((item) => (
+              <SimpleRadioGroupOption
+                key={item.id}
+                id={item.id}
+                description={item.name}
+                active={true}
+                func={timeChanged}
+              />
+            ))}
+          </div>
+        </RadioGroup>
+      )}
+    </>
   );
 };
 
