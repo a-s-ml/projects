@@ -32,7 +32,7 @@ export const TypeQuiz = () => {
               key={item.id}
               id={item.id}
               description={item.description}
-              act={item.active}
+              active={Boolean(item.active)}
               func={typeChanged}
             />
           ))}
