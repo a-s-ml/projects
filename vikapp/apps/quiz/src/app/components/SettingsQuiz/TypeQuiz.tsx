@@ -24,7 +24,7 @@ export const TypeQuiz = () => {
 
   return (
     <>
-      {GroupType && allTypes && (
+      {typeof typeState == 'number' && allTypes && (
         <RadioGroup value={typeState} onChange={setType} className="mt-2">
           <div className={`grid grid-cols-3 gap-2`}>
             {allTypes.map((item) => (
