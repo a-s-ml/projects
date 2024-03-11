@@ -1,25 +1,23 @@
+import { useCountCategoryQuery, useGetCategoryQuery } from '@api/category';
 import { useQuestionDispatch, useQuestionSelector } from '@store/questions';
-import {
-  getQuestionCategory,
-  selectQuestionCategory,
-} from '../../store/slices/questionApp.slice';
 import { useState } from 'react';
 import { ICategory } from '@models';
-import { useGetCategoryQuery } from '@api/category';
 import { SimpleCategorySelect, ValidateForm } from '@components';
+import { getQuestionCategory, selectQuestionCategory } from '@slice/questions';
 
 interface CategoryListProps {
   validate: (b: boolean) => void;
 }
 
 export const CategoryList = ({ validate }: CategoryListProps) => {
-  const questionCategory = useQuestionSelector(selectQuestionCategory);
-  const { data, isSuccess } = useGetCategoryQuery('');
-  console.log('isSuccess', isSuccess);
   const dispatch = useQuestionDispatch();
+  const questionCategory = useQuestionSelector(selectQuestionCategory);
+  const { data: allCategory } = useGetCategoryQuery('');
+  const { data: countCategory } = useCountCategoryQuery('');
+  console.log('countCategory', countCategory);
   const [selectedCategory, setCategory] = useState(
-    isSuccess && questionCategory != 0
-      ? data.find((id) => id.id === questionCategory)
+    questionCategory !== 0
+      ? allCategory?.find((id) => id.id === questionCategory)
       : { id: 0, name: '' }
   );
 
@@ -34,13 +32,11 @@ export const CategoryList = ({ validate }: CategoryListProps) => {
 
   return (
     <div className="py-2">
-      {isSuccess && (
-        <SimpleCategorySelect
-          value={selectedCategory ? selectedCategory : { id: 0, name: ' ' }}
-          func={handleChange}
-          data={data}
-        />
-      )}
+      <SimpleCategorySelect
+        value={selectedCategory ? selectedCategory : { id: 0, name: ' ' }}
+        func={handleChange}
+        data={allCategory ? allCategory : [{ id: 0, name: ' ' }]}
+      />
       <div className="py-4">
         <ValidateForm
           text={'Выберите подходящую категорию'}
