@@ -4,7 +4,7 @@ import { classNames } from '@utils';
 interface SimpleRadioGroupOptionProps {
   id: number;
   description: string;
-  active: boolean;
+  active: number;
   func: (id: number) => void;
 }
 
@@ -22,9 +22,12 @@ export const SimpleRadioGroupOption = ({
       onClick={() => func(id)}
       className={({ active, checked }) =>
         classNames(
+          Boolean(active)
+            ? "cursor-pointer"
+            : "cursor-not-allowed opacity-25",
           active
-            ? 'active cursor-pointer ring-2 ring-[var(--tg-theme-accent-text-color)] ring-offset-2'
-            : 'cursor-not-allowed opacity-25',
+            ? 'ring-2 ring-[var(--tg-theme-accent-text-color)] ring-offset-2'
+            : '',
           checked
             ? 'checked bg-[var(--tg-theme-accent-text-color)] text-white font-extrabold'
             : 'ring-1 ring-inset ring-[var(--tg-theme-hint-color)] bg-white text-black font-semibold',
