@@ -14,13 +14,18 @@ export const SimpleRadioGroupOption = ({
   active,
   description,
 }: SimpleRadioGroupOptionProps) => {
+  
+  function classNamess(...classes: string[]) {
+    return classes.filter(Boolean).join(' ');
+  }
+
   return (
     <RadioGroup.Option
       key={id}
       value={id}
       onClick={() => func(id)}
       className={({ active, checked }) =>
-        classNames(
+        classNamess(
           active
             ? 'active cursor-pointer ring-2 ring-[var(--tg-theme-accent-text-color)] ring-offset-2'
             : 'cursor-not-allowed opacity-25',
