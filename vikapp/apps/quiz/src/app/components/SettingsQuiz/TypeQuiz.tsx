@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 export const TypeQuiz = () => {
   const { data: allTypes } = useGetTypeQuery('');
-  const chat = 521884639n;
+  const chat = 521884639;
   const { data: GroupDb } = useGetGroupDbQuery(chat as unknown as bigint);
   const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
   const [typeState, setType] = useState(0);
@@ -21,7 +21,7 @@ export const TypeQuiz = () => {
 
   function typeChanged(question_type: number) {
     setType(question_type);
-    updateTypeGroup({ chat, question_type });
+    // updateTypeGroup({ chat, question_type });
   }
 
   return (
