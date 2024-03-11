@@ -33,7 +33,7 @@ export const PeriodQuiz = () => {
               key={item.id}
               id={item.id}
               description={item.name}
-              active={1}
+              act={1}
               func={timeChanged}
             />
           ))}

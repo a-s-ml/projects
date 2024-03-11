@@ -4,17 +4,17 @@ import { classNames } from '@utils';
 interface SimpleRadioGroupOptionProps {
   id: number;
   description: string;
-  active: number;
+  act: number;
   func: (id: number) => void;
 }
 
 export const SimpleRadioGroupOption = ({
   id,
   func,
-  active,
+  act,
   description,
 }: SimpleRadioGroupOptionProps) => {
-  console.log('id=', id, '-', active);
+  console.log('id=', id, '-', act);
   return (
     <RadioGroup.Option
       key={id}
@@ -22,7 +22,7 @@ export const SimpleRadioGroupOption = ({
       onClick={() => func(id)}
       className={({ active, checked }) =>
         classNames(
-          Boolean(active)
+          Boolean(act)
             ? "cursor-pointer"
             : "cursor-not-allowed opacity-25",
           active
@@ -34,7 +34,7 @@ export const SimpleRadioGroupOption = ({
           'flex items-center justify-center rounded-md py-2 px-2 text-xs'
         )
       }
-      disabled={!active}
+      disabled={!act}
     >
       <RadioGroup.Label as="span">{description}</RadioGroup.Label>
     </RadioGroup.Option>
