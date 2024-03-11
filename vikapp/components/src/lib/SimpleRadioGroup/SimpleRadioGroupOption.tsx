@@ -14,7 +14,6 @@ export const SimpleRadioGroupOption = ({
   active,
   description,
 }: SimpleRadioGroupOptionProps) => {
-  console.log('id=', id, '-', active);
   return (
     <RadioGroup.Option
       key={id}

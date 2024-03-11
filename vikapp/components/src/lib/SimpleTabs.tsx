@@ -1,4 +1,5 @@
 import { Tab } from '@headlessui/react';
+import { classNames } from '@utils';
 import { Fragment } from 'react';
 
 interface ITab {
@@ -13,9 +14,6 @@ interface SimpleTabsProps {
 }
 
 export const SimpleTabs = ({ title, tabs }: SimpleTabsProps) => {
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(' ');
-  }
   return (
     <section
       aria-labelledby="features-heading"
