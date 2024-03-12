@@ -20,6 +20,11 @@ export const TimeQuiz = () => {
     hours.push(a);
   }
   let sortHours: Array<number> = hours.sort((n1, n2) => n1 - n2);
+  console.log(GroupDb);
+  console.log(GroupTime);
+
+  console.log(times);
+  console.log(nightNode);
 
   return (
     <>
