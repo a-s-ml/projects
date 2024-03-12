@@ -51,6 +51,7 @@ export const TimeQuiz = () => {
 
   console.log(times);
   console.log(nightNode);
+  console.log('sfsf')
 
   return (
     <>
