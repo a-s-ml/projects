@@ -13,22 +13,18 @@ export const TypeQuiz = () => {
   const chat = 521884639;
   const { data: GroupDb } = useGetGroupDbQuery(chat as unknown as bigint);
   const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
-  const [typeState, setType] = useState(0);
-
-  GroupType && setType(GroupType.id);
 
   const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
 
   function typeChanged(question_type: number) {
-    setType(question_type);
+    console.log('question_type - ', question_type);
     // updateTypeGroup({ chat, question_type });
   }
-  console.log('typeState - ', typeState);
 
   return (
     <>
       {GroupType && allTypes && (
-        <RadioGroup value={typeState} onChange={setType} className="mt-2">
+        <RadioGroup value={GroupType?.id} onChange={typeChanged} className="mt-2">
           <div className={`grid grid-cols-3 gap-2`}>
             {allTypes.map((item) => (
               <SimpleRadioGroupOption
