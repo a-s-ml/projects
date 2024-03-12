@@ -2,27 +2,26 @@ import {
   useGetCategoryQuery,
   useGetCategoryGroupsQuery,
   useAddCategoryGroupsMutation,
-  useDeleteCategoryGroupsMutation,
+  useDeleteCategoryGroupsMutation, 
 } from '@api/category';
-import { SimpleCheckbox } from '@components';
+import { SimpleCheckbox } from '@components'; 
 import { inDevelopment } from '@utils';
 
 export const CategoryQuiz = () => {
-  const chatId = 521884639;
-  const chat = BigInt(chatId);
-  const { data: allCategory } = useGetCategoryQuery('');
+  const chat = 521884639;
+  const { data: allCategory } = useGetCategoryQuery(''); 
   const { data: GroupCategory } = useGetCategoryGroupsQuery(
     chat as unknown as bigint
   );
-  const [setCategory, {}] = useAddCategoryGroupsMutation();
-  const [deleteCategory, {}] = useDeleteCategoryGroupsMutation();
+  // const [setCategory, {}] = useAddCategoryGroupsMutation();
+  // const [deleteCategory, {}] = useDeleteCategoryGroupsMutation();
 
   async function categoryChanged(check: boolean, category: number) {
     if (!check) {
-      await setCategory({ chat, category });
+      // await setCategory({ chat, category });
     }
     if (check) {
-      deleteCategory({ chat, category });
+      // deleteCategory({ chat, category });
     }
   }
 

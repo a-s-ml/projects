@@ -8,16 +8,16 @@ import { SimpleRadioGroupOption } from '@components';
 import { RadioGroup } from '@headlessui/react';
 
 export const PeriodQuiz = () => {
-  const chatId = 521884639;
-  const chat = BigInt(chatId);
+  const chat = 521884639;
   const { data: allPeriod } = useGetTimeQuery('');
-  const { data: GroupDb } = useGetGroupDbQuery(chat);
+  const { data: GroupDb } = useGetGroupDbQuery(chat as unknown as bigint);
   const { data: GroupPeriod } = useGetTimeByIdQuery(GroupDb?.time || 0);
 
   const [updateTimeGroup, {}] = useUpdateTimeGroupsMutation();
 
   function timeChanged(time: number) {
-    updateTimeGroup({ chat, time });
+    console.log('time - ', time);
+    // updateTimeGroup({ chat, time });
   }
 
   return (

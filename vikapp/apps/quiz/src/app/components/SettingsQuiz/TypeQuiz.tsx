@@ -9,16 +9,15 @@ import { RadioGroup } from '@headlessui/react';
 
 export const TypeQuiz = () => {
   const { data: allTypes } = useGetTypeQuery('');
-  const chatId = 521884639;
-  const chat = BigInt(chatId);
-  const { data: GroupDb } = useGetGroupDbQuery(chat);
+  const chat = 521884639;
+  const { data: GroupDb } = useGetGroupDbQuery(chat as unknown as bigint);
   const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
 
   const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
 
   function typeChanged(question_type: number) {
     console.log('question_type - ', question_type);
-    updateTypeGroup({ chat, question_type });
+    // updateTypeGroup({ chat, question_type });
   }
 
   return (
