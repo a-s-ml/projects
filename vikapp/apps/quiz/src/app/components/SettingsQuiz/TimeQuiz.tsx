@@ -20,9 +20,11 @@ export const TimeQuiz = () => {
     hours.push(a);
   }
   let sortHours: Array<number> = hours.sort((n1, n2) => n1 - n2);
-  nightTimeConst.map((time) =>
-    console.log('time.id=', time.id, ' - ', sortHours.includes(time.id))
-  );
+  nightTimeConst.map((time) => {
+    console.log('time.id=', time.id, ' - ', sortHours.includes(time.id)),
+      console.log('nightNode=', nightNode),
+      console.log('time.night=', time.night);
+  });
 
   return (
     <>

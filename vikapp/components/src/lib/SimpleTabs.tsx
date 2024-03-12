@@ -1,4 +1,4 @@
-import { Tab } from '@headlessui/react';
+import { FocusTrap, Tab } from '@headlessui/react';
 import { classNames } from '@utils';
 import { Fragment } from 'react';
 
@@ -19,6 +19,7 @@ export const SimpleTabs = ({ title, tabs }: SimpleTabsProps) => {
       aria-labelledby="features-heading"
       className="mx-auto max-w-screen py-2"
     >
+      <FocusTrap />
       <div className="mx-auto max-w-screen px-0">
         <div className="max-w-screen">
           <h2
