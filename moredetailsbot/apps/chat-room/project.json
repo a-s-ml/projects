@@ -1,0 +1,91 @@
+{
+  "name": "chat-room",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/chat-room/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/chat-room",
+        "index": "apps/chat-room/src/index.html",
+        "baseHref": "/",
+        "main": "apps/chat-room/src/main.ts",
+        "tsConfig": "apps/chat-room/tsconfig.app.json",
+        "assets": [
+          "apps/chat-room/src/favicon.ico",
+          "apps/chat-room/src/assets"
+        ],
+        "styles": ["apps/chat-room/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "apps/chat-room/webpack.config.ts",
+        "postcssConfig": "apps/chat-room/postcss.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/chat-room/src/environments/environment.ts",
+              "with": "apps/chat-room/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "apps/chat-room/webpack.config.prod.ts"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "chat-room:build",
+        "hmr": true,
+        "port": 4201
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "chat-room:build:development"
+        },
+        "production": {
+          "buildTarget": "chat-room:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "chat-room:build",
+        "watch": false,
+        "port": 4201
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "chat-room:build:development"
+        },
+        "production": {
+          "buildTarget": "chat-room:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}
