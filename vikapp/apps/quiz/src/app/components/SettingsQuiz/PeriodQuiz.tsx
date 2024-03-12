@@ -6,27 +6,28 @@ import {
 } from '@api/period';
 import { SimpleRadioGroupOption } from '@components';
 import { RadioGroup } from '@headlessui/react';
-import { useState } from 'react';
 
 export const PeriodQuiz = () => {
+  const chatId = 521884639;
+  const chat = BigInt(chatId);
   const { data: allPeriod } = useGetTimeQuery('');
-  const chat = 521884639;
-  const { data: GroupDb } = useGetGroupDbQuery(chat as unknown as bigint);
+  const { data: GroupDb } = useGetGroupDbQuery(chat);
   const { data: GroupPeriod } = useGetTimeByIdQuery(GroupDb?.time || 0);
-
-  const [timeState, setTime] = useState(GroupPeriod?.id);
 
   const [updateTimeGroup, {}] = useUpdateTimeGroupsMutation();
 
   function timeChanged(time: number) {
-    setTime(time);
-    // updateTimeGroup({ chat, time });
+    updateTimeGroup({ chat, time });
   }
-  console.log('timeState - ', timeState);
+
   return (
     <>
       {GroupPeriod && allPeriod && (
-        <RadioGroup value={timeState} onChange={setTime} className="mt-2">
+        <RadioGroup
+          value={GroupPeriod?.id}
+          onChange={timeChanged}
+          className="mt-2"
+        >
           <div className={`grid grid-cols-4 gap-2`}>
             {allPeriod.map((item) => (
               <SimpleRadioGroupOption

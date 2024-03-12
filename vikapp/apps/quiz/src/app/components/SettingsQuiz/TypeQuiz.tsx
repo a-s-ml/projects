@@ -6,25 +6,29 @@ import {
 } from '@api/type';
 import { SimpleRadioGroupOption } from '@components';
 import { RadioGroup } from '@headlessui/react';
-import { useState } from 'react';
 
 export const TypeQuiz = () => {
   const { data: allTypes } = useGetTypeQuery('');
-  const chat = 521884639;
-  const { data: GroupDb } = useGetGroupDbQuery(chat as unknown as bigint);
+  const chatId = 521884639;
+  const chat = BigInt(chatId);
+  const { data: GroupDb } = useGetGroupDbQuery(chat);
   const { data: GroupType } = useGetTypeByIdQuery(GroupDb?.question_type || 0);
 
   const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
 
   function typeChanged(question_type: number) {
     console.log('question_type - ', question_type);
-    // updateTypeGroup({ chat, question_type });
+    updateTypeGroup({ chat, question_type });
   }
 
   return (
     <>
       {GroupType && allTypes && (
-        <RadioGroup value={GroupType?.id} onChange={typeChanged} className="mt-2">
+        <RadioGroup
+          value={GroupType?.id}
+          onChange={typeChanged}
+          className="mt-2"
+        >
           <div className={`grid grid-cols-3 gap-2`}>
             {allTypes.map((item) => (
               <SimpleRadioGroupOption
