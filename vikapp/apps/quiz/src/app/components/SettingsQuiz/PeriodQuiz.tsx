@@ -22,7 +22,7 @@ export const PeriodQuiz = () => {
     setTime(time);
     // updateTimeGroup({ chat, time });
   }
-
+  console.log('timeState - ', timeState);
   return (
     <>
       {GroupPeriod && allPeriod && (

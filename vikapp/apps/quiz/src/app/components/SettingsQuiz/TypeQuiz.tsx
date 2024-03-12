@@ -16,13 +16,14 @@ export const TypeQuiz = () => {
   const [typeState, setType] = useState(0);
 
   GroupType && setType(GroupType.id);
-  
+
   const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
 
   function typeChanged(question_type: number) {
     setType(question_type);
     // updateTypeGroup({ chat, question_type });
   }
+  console.log('typeState - ', typeState);
 
   return (
     <>
