@@ -16,7 +16,7 @@ export const TypeQuiz = () => {
   const [typeState, setType] = useState(0);
 
   GroupType && setType(GroupType.id);
-
+  
   const [updateTypeGroup, {}] = useUpdateTypeGroupsMutation();
 
   function typeChanged(question_type: number) {
@@ -26,7 +26,7 @@ export const TypeQuiz = () => {
 
   return (
     <>
-      {typeof typeState == 'number' && allTypes && (
+      {GroupType && allTypes && (
         <RadioGroup value={typeState} onChange={setType} className="mt-2">
           <div className={`grid grid-cols-3 gap-2`}>
             {allTypes.map((item) => (

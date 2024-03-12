@@ -25,7 +25,7 @@ export const PeriodQuiz = () => {
 
   return (
     <>
-      {typeof timeState == 'number' && allPeriod && (
+      {GroupPeriod && allPeriod && (
         <RadioGroup value={timeState} onChange={setTime} className="mt-2">
           <div className={`grid grid-cols-4 gap-2`}>
             {allPeriod.map((item) => (
