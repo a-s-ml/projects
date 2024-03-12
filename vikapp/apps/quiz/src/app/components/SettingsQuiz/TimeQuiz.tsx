@@ -6,6 +6,32 @@ import { SimpleSwitchButton } from '@components';
 
 export const TimeQuiz = () => {
   const chat = 521884639;
+  const allTimes = [
+    { id: 0, name: "00:00", night: true },
+    { id: 1, name: "01:00", night: true },
+    { id: 2, name: "02:00", night: true },
+    { id: 3, name: "03:00", night: true },
+    { id: 4, name: "04:00", night: true },
+    { id: 5, name: "05:00", night: true },
+    { id: 6, name: "06:00", night: true },
+    { id: 7, name: "07:00", night: true },
+    { id: 8, name: "08:00", night: true },
+    { id: 9, name: "09:00", night: false },
+    { id: 10, name: "10:00", night: false },
+    { id: 11, name: "11:00", night: false },
+    { id: 12, name: "12:00", night: false },
+    { id: 13, name: "13:00", night: false },
+    { id: 14, name: "14:00", night: false },
+    { id: 15, name: "15:00", night: false },
+    { id: 16, name: "16:00", night: false },
+    { id: 17, name: "17:00", night: false },
+    { id: 18, name: "18:00", night: false },
+    { id: 19, name: "19:00", night: false },
+    { id: 20, name: "20:00", night: false },
+    { id: 21, name: "21:00", night: false },
+    { id: 22, name: "22:00", night: false },
+    { id: 23, name: "23:00", night: true },
+  ];
   const { data: GroupDb } = useGetGroupDbQuery(chat as unknown as bigint);
   const { data: GroupTime } = useGetTimeByIdQuery(GroupDb?.time || 0);
   const [times, setTimes] = useState(0);
@@ -34,7 +60,7 @@ export const TimeQuiz = () => {
         setEnabled={setNightNode}
       />
       <div className={`grid grid-cols-6 gap-2`}>
-        {nightTimeConst.map((time) => (
+        {allTimes.map((time) => (
           <button
             type="button"
             value={time.id}
