@@ -46,7 +46,7 @@ export const TimeQuiz = () => {
                                       time.night == true &&
                                       !sortHours.includes(time.id)
                                   )
-                                    ? 'bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed'
+                                    ? 'bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed '
                                     : ''
                                 }
                                 ${
@@ -55,7 +55,7 @@ export const TimeQuiz = () => {
                                       time.night == false &&
                                       !sortHours.includes(time.id)
                                   )
-                                    ? 'bg-white text-black cursor-pointer'
+                                    ? 'bg-white text-black cursor-pointer '
                                     : ''
                                 }
                                 ${
@@ -64,7 +64,7 @@ export const TimeQuiz = () => {
                                       time.night == true &&
                                       sortHours.includes(time.id)
                                   )
-                                    ? 'bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed'
+                                    ? 'bg-[var(--tg-theme-hint-color)] text-black cursor-not-allowed '
                                     : ''
                                 }
                                 ${
@@ -73,7 +73,7 @@ export const TimeQuiz = () => {
                                       time.night == false &&
                                       sortHours.includes(time.id)
                                   )
-                                    ? 'bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer'
+                                    ? 'bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer '
                                     : ''
                                 }
                                 ${
@@ -82,7 +82,7 @@ export const TimeQuiz = () => {
                                       time.night == true &&
                                       sortHours.includes(time.id)
                                   )
-                                    ? 'bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer'
+                                    ? 'bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer '
                                     : ''
                                 }
                                 ${
@@ -91,7 +91,7 @@ export const TimeQuiz = () => {
                                       time.night == false &&
                                       sortHours.includes(time.id)
                                   )
-                                    ? 'bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer'
+                                    ? 'bg-[var(--tg-theme-accent-text-color)] text-white cursor-pointer '
                                     : ''
                                 }
                                 ${
@@ -100,7 +100,7 @@ export const TimeQuiz = () => {
                                       time.night == false &&
                                       !sortHours.includes(time.id)
                                   )
-                                    ? 'bg-white text-black cursor-pointer'
+                                    ? 'bg-white text-black cursor-pointer '
                                     : ''
                                 }
                                 ${
@@ -109,7 +109,7 @@ export const TimeQuiz = () => {
                                       time.night == true &&
                                       !sortHours.includes(time.id)
                                   )
-                                    ? 'bg-white text-black cursor-pointer'
+                                    ? 'bg-white text-black cursor-pointer '
                                     : ''
                                 }
                                 `}
