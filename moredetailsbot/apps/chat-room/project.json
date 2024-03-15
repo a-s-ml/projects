@@ -12,7 +12,7 @@
         "compiler": "babel",
         "outputPath": "dist/apps/chat-room",
         "index": "apps/chat-room/src/index.html",
-        "baseHref": "/",
+        "baseHref": "/moredetailsbot/chat-room/",
         "main": "apps/chat-room/src/main.ts",
         "tsConfig": "apps/chat-room/tsconfig.app.json",
         "assets": [
