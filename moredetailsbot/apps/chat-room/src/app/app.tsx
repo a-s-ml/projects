@@ -1,33 +1,13 @@
-import { useJoinMutation } from '@api';
-import { useEffect } from 'react';
-import { io } from 'socket.io-client';
+import { Provider } from 'react-redux';
+import Chat from './components/Chat';
+import { storeChatRoom } from './store';
 
-function App() {
-  const [joinChat, {}] = useJoinMutation();
-  const accessToken = joinChat({ chat: 10, user: 3 });
-  const socket = io('http://api80q.ru:4000/chat', {
-    auth: {
-      token: accessToken,
-    },
-    transports: ['websocket', 'polling'],
-  });
-
-  useEffect(() => {
-    socket.on('chat_updated', ({ data }) => {
-      console.log(data);
-    });
-  }, []);
-
-  useEffect(() => {
-    socket.on('exception', ({ data }) => {
-      console.log(data);
-    });
-  }, []);
-
+export const App = () => {
   return (
-    <p>
-      <b></b>
-    </p>
+    <Provider store={storeChatRoom}>
+      <Chat />
+    </Provider>
   );
-}
+};
+
 export default App;
