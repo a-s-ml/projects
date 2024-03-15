@@ -1,0 +1,2 @@
+(self.webpackChunkuser_profile=self.webpackChunkuser_profile||[]).push([[185],{185:(e,r,o)=>{o.r(r);var t=o(179),s=o(886),a=o(978),c=o(500);s.H(document.getElementById("root")).render((0,c.jsx)(t.StrictMode,{children:(0,c.jsx)(a.A,{})}))},886:(e,r,o)=>{var t=o(67);r.H=t.createRoot,t.hydrateRoot}}]);
+//# sourceMappingURL=185.js.map

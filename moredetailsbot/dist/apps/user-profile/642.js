@@ -1,0 +1,1 @@
+(self.webpackChunkuser_profile=self.webpackChunkuser_profile||[]).push([[642],{642:(e,r,u)=>{u.r(r),u.d(r,{default:()=>f.A});var f=u(978)}}]);
