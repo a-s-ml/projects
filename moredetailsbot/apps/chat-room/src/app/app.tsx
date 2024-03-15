@@ -1,14 +1,33 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.css';
+import { useJoinMutation } from '@api';
+import { useEffect } from 'react';
+import { io } from 'socket.io-client';
 
-import NxWelcome from './nx-welcome';
+function App() {
+  const [joinChat, {}] = useJoinMutation();
+  const accessToken = joinChat({ chat: 10, user: 3 });
+  const socket = io('http://api80q.ru:4000/chat', {
+    auth: {
+      token: accessToken,
+    },
+    transports: ['websocket', 'polling'],
+  });
 
-export function App() {
+  useEffect(() => {
+    socket.on('chat_updated', ({ data }) => {
+      console.log(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    socket.on('exception', ({ data }) => {
+      console.log(data);
+    });
+  }, []);
+
   return (
-    <div>
-      <NxWelcome title="chat-room" />
-    </div>
+    <p>
+      <b></b>
+    </p>
   );
 }
-
 export default App;

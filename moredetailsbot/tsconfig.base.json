@@ -16,8 +16,12 @@
     "baseUrl": ".",
     "paths": {
       "chat-room/Module": ["apps/chat-room/src/remote-entry.ts"],
-      "libs/components/src": ["libs/components/src/index.ts"],
-      "user-profile/Module": ["apps/user-profile/src/remote-entry.ts"]
+      "user-profile/Module": ["apps/user-profile/src/remote-entry.ts"],
+      "@types": ["libs/types/index.ts"],
+      "@api": ["libs/api/index.ts"],
+      "@components": ["libs/components/src/index.ts"],
+      "@store/chat-room": ["apps/chat-room/src/app/store"],
+      "@slice/chat-room": ["apps/chat-room/src/app/store/slices/chat-room.slice.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

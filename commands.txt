@@ -6,4 +6,4 @@ nx g @nx/react:host main --directory=apps --e2eTestRunner=none --unitTestRunner=
 nx add @nx/react
 cd vik-app
 npm i -g nx
-npx create-nx-workspace vikapp --preset=apps
+npx create-nx-workspace moredetailsbot --preset=apps
