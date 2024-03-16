@@ -20,7 +20,7 @@ export function Contact({
           <div>
             <img
               className="h-12 w-12 rounded-full"
-              src={`mdws/chat/assets/${img}`}
+              src={`https://80q.ru/mdws/chat/assets/${img}`}
             />
           </div>
           <div className="ml-4 flex-1 py-4">
