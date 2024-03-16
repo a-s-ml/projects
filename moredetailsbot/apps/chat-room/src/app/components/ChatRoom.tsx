@@ -16,15 +16,13 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
       },
       transports: ['websocket', 'polling'],
     });
-    socket.on('chat_updated', ({ data }) => {
-      console.log(data);
-    });
-    socket.on('exception', ({ data }) => {
-      console.log(data);
-    });
-    socket.on('message', ({ data }) => {
-      setState(data);
-    });
+    const listener = (...args: any[]) => {
+      console.log(args);
+    };
+
+    socket.on('chat_updated', listener);
+    socket.on('exception', listener);
+    socket.on('message', listener);
   }, [accessToken]);
 
   return (
