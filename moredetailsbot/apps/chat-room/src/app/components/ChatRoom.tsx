@@ -7,24 +7,20 @@ export interface ChatRoomProps {
 }
 
 export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
-  const socket = io('https://api80q.ru/chat', {
-    auth: {
-      token: accessToken,
-    },
-    transports: ['websocket', 'polling'],
-  });
-
   useEffect(() => {
+    const socket = io('https://api80q.ru/chat', {
+      auth: {
+        token: accessToken,
+      },
+      transports: ['websocket', 'polling'],
+    });
     socket.on('chat_updated', ({ data }) => {
       console.log(data);
     });
-  }, []);
-
-  useEffect(() => {
     socket.on('exception', ({ data }) => {
       console.log(data);
     });
-  }, []);
+  }, [accessToken]);
 
   return (
     <p>
