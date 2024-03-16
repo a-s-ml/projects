@@ -5,7 +5,7 @@ import { io } from 'socket.io-client';
 export const Chat = () => {
   const [joinChat, {}] = useJoinMutation();
   const accessToken = joinChat({ chat: 10, user: 3 });
-  const socket = io('https://api80q.ru:4000/chat', {
+  const socket = io('https://api80q.ru/chat', {
     auth: {
       token: accessToken,
     },
