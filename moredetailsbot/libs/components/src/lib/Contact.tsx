@@ -14,8 +14,8 @@ export function Contact({
   handelClick,
 }: ContactProps) {
   return (
-    <li className="cursor-pointer">
-      <div className="flex-1 overflow-auto" onClick={() => handelClick}>
+    <li className="cursor-pointer" onClick={() => handelClick}>
+      <div className="flex-1 overflow-auto">
         <div className="px-3 flex items-center bg-grey-light cursor-pointer">
           <div>
             <img

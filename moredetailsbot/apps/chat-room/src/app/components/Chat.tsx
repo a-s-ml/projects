@@ -31,7 +31,8 @@ export const Chat = () => {
     dispatch(showChatRoomSlide(true));
     joinChat({ chat: 10, user: 3 });
   };
-
+  console.log(slide);
+  console.log(type);
   return (
     <>
       <ul
