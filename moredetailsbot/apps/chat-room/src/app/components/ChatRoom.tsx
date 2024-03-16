@@ -16,15 +16,7 @@ type Event = {
 
 export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
   console.log('accessToken', accessToken);
-  const initial: Event[] = [
-    {
-      id: 0,
-      user: 0,
-      chat: 0,
-      text: '',
-    },
-  ];
-  const [state, setState] = useState<Event[]>(initial);
+  const [state, setState] = useState<Event[]>([]);
   useEffect(() => {
     const socket = io('https://api80q.ru/chat', {
       auth: {
@@ -32,11 +24,8 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
       },
       transports: ['websocket', 'polling'],
     });
-    const listener = (...args: any[]) => {
-      setState((prevState) => ({
-        ...prevState,
-        args,
-      }));
+    const listener = (args: Event) => {
+      setState((prevState) => [...prevState, args]);
       console.log('args ', args);
       console.log('state ', state);
     };
