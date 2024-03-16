@@ -37,26 +37,30 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
         ...prevState,
         args,
       }));
+      console.log('args ', args);
     };
 
     socket.on('chat_updated', listener);
     socket.on('exception', listener);
     socket.on('message', listener);
   }, [accessToken]);
+  console.log('state ', state);
 
   return (
     <p>
       <ChatPanel>
-        {state.map((message) => (
-          <>
-            <MessageChat
-              key={message.id}
-              name={String(message.user)}
-              text={message.text}
-              time={String(message.chat)}
-            />
-          </>
-        ))}
+        {state &&
+          state.map((message) => (
+            <>
+              <MessageChat
+                key={message.id}
+                name={String(message.user)}
+                text={message.text}
+                time={String(message.chat)}
+              />
+            </>
+          ))}
+          <b>1</b>
       </ChatPanel>
     </p>
   );
