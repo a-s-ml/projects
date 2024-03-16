@@ -4,13 +4,20 @@ import ChatRoom from './ChatRoom';
 export const Chat = () => {
   const [joinChat, { data }] = useJoinMutation();
   const handelClick = () => {
+    console.log('click');
     joinChat({ chat: 10, user: 3 });
+    console.log(data);
   };
   return (
-    <p>
-      <button onClick={() => handelClick}>Click</button>
+    <div className="text-center p-10">
+      <button
+        className={'p-2 text-red-300 bg-slate-100'}
+        onClick={() => handelClick}
+      >
+        Click
+      </button>
       {data && <ChatRoom accessToken={data.accessToken} />}
-    </p>
+    </div>
   );
 };
 export default Chat;
