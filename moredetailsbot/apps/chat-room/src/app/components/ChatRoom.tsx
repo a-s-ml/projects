@@ -1,7 +1,7 @@
 import ChatPanel from 'libs/components/src/lib/ChatPanel';
 import MessageChat from 'libs/components/src/lib/MessageChat';
 import { useEffect, useState } from 'react';
-import { Socket, io } from 'socket.io-client';
+import { io } from 'socket.io-client';
 
 export interface ChatRoomProps {
   accessToken: string | undefined;
@@ -16,7 +16,15 @@ type Event = {
 
 export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
   console.log('accessToken', accessToken);
-  const [state, setState] = useState<Event[]>([]);
+  const initial: Event[] = [
+    {
+      id: 0,
+      user: 0,
+      chat: 0,
+      text: '',
+    },
+  ];
+  const [state, setState] = useState<Event[]>(initial);
   useEffect(() => {
     const socket = io('https://api80q.ru/chat', {
       auth: {
