@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Socket, io } from 'socket.io-client';
 
 export interface ChatRoomProps {
-  accessToken: string;
+  accessToken: string | undefined;
 }
 
 export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
