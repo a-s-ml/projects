@@ -2,12 +2,14 @@ import { useJoinMutation } from '@api';
 import ChatRoom from './ChatRoom';
 
 export const Chat = () => {
-  const [joinChat, { data }] = useJoinMutation();
+  const [joinChat, {}] = useJoinMutation();
+
   const handelClick = () => {
-    console.log('click');
+    console.log('click1');
     joinChat({ chat: 10, user: 3 });
-    console.log(data);
+    console.log('click2');
   };
+  
   return (
     <div className="text-center p-10">
       <button
@@ -16,7 +18,7 @@ export const Chat = () => {
       >
         Click
       </button>
-      {data && <ChatRoom accessToken={data.accessToken} />}
+      <ChatRoom accessToken={'asdasdasd'} />
     </div>
   );
 };
