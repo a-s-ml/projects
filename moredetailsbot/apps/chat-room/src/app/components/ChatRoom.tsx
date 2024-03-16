@@ -38,6 +38,7 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
         args,
       }));
       console.log('args ', args);
+      console.log('state ', state);
     };
 
     socket.on('chat_updated', listener);
@@ -60,10 +61,13 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
               />
             </>
           ))}
-          <b>1</b>
+        <b>1</b>
       </ChatPanel>
     </p>
   );
 };
 
 export default ChatRoom;
+
+//export const getTokenPayload = (accessToken: string): TokenPayload =>
+//  JSON.parse(window.atob(accessToken.split('.')[1]));
