@@ -443,6 +443,10 @@ video {
 }.text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}.text-\[var\(--tg-theme-accent-text-color\)\] {
+  color: var(--tg-theme-accent-text-color);
+}.text-\[var\(--tg-theme-hint-color\)\] {
+  color: var(--tg-theme-hint-color);
 }.opacity-100 {
   opacity: 1;
 }.opacity-5 {

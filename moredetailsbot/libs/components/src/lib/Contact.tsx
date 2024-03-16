@@ -16,19 +16,19 @@ export function Contact({
   return (
     <li className="cursor-pointer" onClick={handelClick}>
       <div className="flex-1 overflow-auto">
-        <div className="px-3 flex items-center bg-grey-light cursor-pointer">
+        <div className="px-3 flex items-center">
           <div>
             <img
               className="h-12 w-12 rounded-full"
-              src="https://darrenjameseeley.files.wordpress.com/2014/09/expendables3.jpeg"
+              src={img}
             />
           </div>
           <div className="ml-4 flex-1 py-4">
             <div className="flex items-bottom justify-between">
-              <p className="text-grey-darkest">{name}</p>
-              <p className="text-xs text-grey-darkest">{time}</p>
+              <p className="text-[var(--tg-theme-accent-text-color)]">{name}</p>
+              <p className="text-xs text-[var(--tg-theme-hint-color)]">{time}</p>
             </div>
-            <p className="text-grey-dark mt-1 text-sm">{lastMessage}</p>
+            <p className="text-[var(--tg-theme-hint-color)] mt-1 text-sm">{lastMessage}</p>
           </div>
         </div>
       </div>

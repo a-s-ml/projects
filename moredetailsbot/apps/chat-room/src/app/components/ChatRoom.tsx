@@ -37,7 +37,6 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
   console.log('state ', state);
 
   return (
-    <p>
       <ChatPanel>
         {state &&
           state.map((message) => (
@@ -52,7 +51,6 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
           ))}
         <b>1</b>
       </ChatPanel>
-    </p>
   );
 };
 

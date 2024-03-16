@@ -11,7 +11,7 @@ import {
 } from '@slice/chat-room';
 
 const testChat = {
-  img: '',
+  img: 'photo2024-02-11_17-14-16.jpg',
   name: 'Антонио-Молодец',
   time: '17.03.24',
   lastMessage: '....',
