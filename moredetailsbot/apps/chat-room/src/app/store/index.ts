@@ -15,5 +15,5 @@ export const storeChatRoom = configureStore({
 export type AppDispatch = typeof storeChatRoom.dispatch;
 export type RootState = ReturnType<typeof storeChatRoom.getState>;
 
-export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useChatRoomDispatch = () => useDispatch<AppDispatch>();
+export const useChatRoomSelector: TypedUseSelectorHook<RootState> = useSelector;

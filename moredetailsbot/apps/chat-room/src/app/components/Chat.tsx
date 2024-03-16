@@ -1,24 +1,52 @@
 import { useJoinMutation } from '@api';
+import { useBackButton } from '@hooks';
 import ChatRoom from './ChatRoom';
+import { Contact, SlidePage } from '@components';
+import { useChatRoomDispatch, useChatRoomSelector } from '@store/chat-room';
+import {
+  selectdataChatRoomSlide,
+  selectdataChatRoomType,
+  showChatRoomSlide,
+  typeChatRoom,
+} from '@slice/chat-room';
+
+const testChat = {
+  img: '',
+  name: 'Антонио-Молодец',
+  time: '17.03.24',
+  lastMessage: '....',
+};
 
 export const Chat = () => {
-  const [joinChat, { data }] = useJoinMutation();
+  const tg = window.Telegram.WebApp;
+  const dispatch = useChatRoomDispatch();
+  const slide = useChatRoomSelector(selectdataChatRoomSlide);
+  const type = useChatRoomSelector(selectdataChatRoomType);
 
-  function handelClick() {
+  const [joinChat, { data }] = useJoinMutation();
+  useBackButton(slide, () => dispatch(showChatRoomSlide(false)));
+
+  const openChatRoom = () => {
+    dispatch(typeChatRoom('openChatRoom'));
+    dispatch(showChatRoomSlide(true));
     joinChat({ chat: 10, user: 3 });
-    console.log(data);
-  }
+  };
 
   return (
-    <div className="text-center p-10">
-      <button
-        className={'p-2 text-red-300 bg-slate-100'}
-        onClick={() => handelClick()}
-      >
-        Click
-      </button>
-      <ChatRoom accessToken={data?.accessToken} />
-    </div>
+    <>
+      <div className="text-center">
+        <Contact
+          handelClick={openChatRoom}
+          img={testChat.img}
+          name={testChat.name}
+          time={testChat.time}
+          lastMessage={testChat.lastMessage}
+        />
+      </div>
+      <SlidePage slide={slide}>
+        {type == 'openChatRoom' && <ChatRoom accessToken={data?.accessToken} />}
+      </SlidePage>
+    </>
   );
 };
 export default Chat;
