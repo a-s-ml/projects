@@ -5,9 +5,7 @@ export const Chat = () => {
   const [joinChat, { data }] = useJoinMutation();
 
   function handelClick() {
-    console.log('click1');
     joinChat({ chat: 10, user: 3 });
-    console.log('click2');
     console.log(data);
   }
 

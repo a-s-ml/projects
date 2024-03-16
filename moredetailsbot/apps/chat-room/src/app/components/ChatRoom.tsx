@@ -1,5 +1,5 @@
 import ChatPanel from 'libs/components/src/lib/ChatPanel';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Socket, io } from 'socket.io-client';
 
 export interface ChatRoomProps {
@@ -7,6 +7,8 @@ export interface ChatRoomProps {
 }
 
 export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
+  console.log('accessToken', accessToken);
+  const [state, setState] = useState([]);
   useEffect(() => {
     const socket = io('https://api80q.ru/chat', {
       auth: {
@@ -20,6 +22,9 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
     socket.on('exception', ({ data }) => {
       console.log(data);
     });
+    socket.on('message', ({ data }) => {
+      setState(data);
+    });
   }, [accessToken]);
 
   return (
@@ -29,6 +34,9 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
         <p>2</p>
         <p>3</p>
         <p>4</p>
+        {state.map((message) => (
+          <p>{message}</p>
+        ))}
       </ChatPanel>
     </p>
   );
