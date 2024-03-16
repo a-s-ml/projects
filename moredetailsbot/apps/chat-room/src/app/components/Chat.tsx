@@ -18,12 +18,12 @@ const testChat = {
 };
 
 export const Chat = () => {
-  const tg = window.Telegram.WebApp;
   const dispatch = useChatRoomDispatch();
   const slide = useChatRoomSelector(selectdataChatRoomSlide);
   const type = useChatRoomSelector(selectdataChatRoomType);
 
   const [joinChat, { data }] = useJoinMutation();
+
   useBackButton(slide, () => dispatch(showChatRoomSlide(false)));
 
   const openChatRoom = () => {
@@ -34,7 +34,10 @@ export const Chat = () => {
 
   return (
     <>
-      <div className="text-center">
+      <ul
+        role="list"
+        className="text-left divide-y divide-[var(--tg-theme-hint-color)]"
+      >
         <Contact
           handelClick={openChatRoom}
           img={testChat.img}
@@ -42,7 +45,7 @@ export const Chat = () => {
           time={testChat.time}
           lastMessage={testChat.lastMessage}
         />
-      </div>
+      </ul>
       <SlidePage slide={slide}>
         {type == 'openChatRoom' && <ChatRoom accessToken={data?.accessToken} />}
       </SlidePage>
