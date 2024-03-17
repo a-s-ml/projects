@@ -1,17 +1,19 @@
 export interface MessageMyChatProps {
-  name: string;
   text: string;
-  time: string;
 }
 
-export function MessageMyChat({ name, text, time }: MessageMyChatProps) {
+export function MessageMyChat({ text }: MessageMyChatProps) {
+  const now = new Date();
   return (
     <div>
       <div className="flex justify-end mb-2">
-        <div className="rounded py-2 px-3 bg-slate-500">
-          <p className="text-sm text-orange">{name}</p>
-          <p className="text-sm mt-1">{text}</p>
-          <p className="text-right text-xs text-grey-dark mt-1">{time}</p>
+        <div className="rounded py-2 px-3 bg-[var(--tg-theme-button-color)]">
+          <p className="text-sm mt-1 text-[var(--tg-theme-text-color)]">
+            {text}
+          </p>
+          <p className="text-right text-xs text-[var(--tg-theme-bg-color)] mt-1">
+            {now.toString()}
+          </p>
         </div>
       </div>
     </div>

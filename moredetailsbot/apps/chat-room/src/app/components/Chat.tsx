@@ -4,7 +4,6 @@ import ChatRoom from './ChatRoom';
 import { Contact, SlidePage } from '@components';
 import { useChatRoomDispatch, useChatRoomSelector } from '@store/chat-room';
 import {
-  selectdataChatRoomData,
   selectdataChatRoomSlide,
   selectdataChatRoomType,
   showChatRoomSlide,
@@ -27,9 +26,6 @@ export const Chat = ({ user }: ChatProps) => {
   const dispatch = useChatRoomDispatch();
   const slide = useChatRoomSelector(selectdataChatRoomSlide);
   const type = useChatRoomSelector(selectdataChatRoomType);
-  const dataUser = useChatRoomSelector(selectdataChatRoomData);
-  console.log(user);
-  console.log(dataUser);
 
   const [joinChat, { data }] = useJoinMutation();
 

@@ -8,6 +8,7 @@ export type User = {
 };
 
 export type UserData = {
+  appUser: number;
   auth_date: number;
   query_id: string;
   user: User;

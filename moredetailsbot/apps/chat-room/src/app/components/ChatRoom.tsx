@@ -1,4 +1,6 @@
-import { MessageSystem } from '@components';
+import { MessageMyChat, MessageSystem } from '@components';
+import { selectdataChatRoomData } from '@slice/chat-room';
+import { useChatRoomSelector } from '@store/chat-room';
 import ChatPanel from 'libs/components/src/lib/ChatPanel';
 import MessageChat from 'libs/components/src/lib/MessageChat';
 import { useEffect, useState } from 'react';
@@ -16,7 +18,9 @@ type Event = {
 };
 
 export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
-  console.log('accessToken', accessToken);
+  const dataUser = useChatRoomSelector(selectdataChatRoomData);
+  console.log(dataUser);
+
   const [state, setState] = useState<Event[]>([]);
   useEffect(() => {
     const socket = io('https://api80q.ru/chat', {
@@ -41,12 +45,15 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
       {state &&
         state.map((message) =>
           message.text ? (
-            <MessageChat
-              key={message.id}
-              name={String(message.user)}
-              text={message.text}
-              time={String(message.chat)}
-            />
+            dataUser && message.chat !== dataUser.UserData.user.id ? (
+              <MessageChat
+                key={message.id}
+                name={String(message.user)}
+                text={message.text}
+              />
+            ) : (
+              <MessageMyChat key={message.id} text={message.text} />
+            )
           ) : (
             <MessageSystem
               name={String(message.user)}

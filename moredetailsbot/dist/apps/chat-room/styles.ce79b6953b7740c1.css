@@ -417,11 +417,10 @@ video {
   border-width: 1px;
 }.bg-\[var\(--tg-theme-bg-color\)\] {
   background-color: var(--tg-theme-bg-color);
+}.bg-\[var\(--tg-theme-button-color\)\] {
+  background-color: var(--tg-theme-button-color);
 }.bg-\[var\(--tg-theme-hint-color\)\] {
   background-color: var(--tg-theme-hint-color);
-}.bg-slate-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
 }.px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
