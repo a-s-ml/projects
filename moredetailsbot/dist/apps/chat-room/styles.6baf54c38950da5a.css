@@ -436,9 +436,6 @@ video {
   background-color: var(--tg-theme-button-color);
 }.bg-\[var\(--tg-theme-hint-color\)\] {
   background-color: var(--tg-theme-hint-color);
-}.px-1 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
 }.px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;

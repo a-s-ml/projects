@@ -5,17 +5,11 @@ import ChatPanel from 'libs/components/src/lib/ChatPanel';
 import MessageChat from 'libs/components/src/lib/MessageChat';
 import { useEffect, useState } from 'react';
 import { useSocket } from '../context/SocketProvider';
+import { Event } from '@types';
 
 export interface ChatRoomProps {
   accessToken: string;
 }
-
-type Event = {
-  id: number;
-  user: number;
-  chat: number;
-  text: string;
-};
 
 export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
   const dataUser = useChatRoomSelector(selectdataChatRoomData);
@@ -23,7 +17,7 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
 
   const socket = useSocket(accessToken);
 
-  const [state, setState] = useState<Event[]>([]);
+  const [states, setState] = useState<Event[]>([]);
 
   const [message, setMessage] = useState('');
 
@@ -38,7 +32,7 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
   useEffect(() => {
     const listener = (args: Event) => {
       setState((prevState) => [...prevState, args]);
-      console.log('state', state);
+      console.log('state', states);
       console.log('args', args);
     };
     socket.on('chat_updated', listener);
@@ -48,24 +42,24 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
 
   return (
     <ChatPanel>
-      {state &&
+      {states &&
         dataUser &&
-        state.map((message) =>
-          message.text ? (
-            dataUser && message.user !== dataUser.UserData.appUser ? (
+        states.map((state) =>
+          state.type === 'message' && state.text ? (
+            dataUser && state.user.id !== dataUser.UserData.appUser ? (
               <MessageChat
-                key={message.id}
-                name={String(dataUser.UserData.user.username)}
-                text={message.text}
+                key={state.type}
+                name={String(state.user.name)}
+                text={state.text.text}
               />
             ) : (
-              <MessageMyChat key={message.id} text={message.text} />
+              <MessageMyChat key={state.type} text={state.text.text} />
             )
           ) : (
             <MessageSystem
-              name={String(dataUser.UserData.user.username)}
-              action={'присоединился'}
-              chat={String(message.chat)}
+              name={String(state.user.name)}
+              action={state.type}
+              chat={String(state.chat.name)}
             />
           )
         )}
