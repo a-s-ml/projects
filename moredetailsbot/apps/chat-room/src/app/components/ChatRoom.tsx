@@ -52,7 +52,7 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
         dataUser &&
         state.map((message) =>
           message.text ? (
-            dataUser && message.chat !== dataUser.UserData.appUser ? (
+            dataUser && message.user !== dataUser.UserData.appUser ? (
               <MessageChat
                 key={message.id}
                 name={String(dataUser.UserData.user.username)}
