@@ -11,12 +11,20 @@ import {
   typeChatRoom,
 } from '@slice/chat-room';
 import { UserData } from '@types';
+import VideoRoom from './VideoRoom';
 
-const testChat = {
+const textChat = {
   img: 'photo2024-02-11_17-14-16.jpg',
-  name: 'Антонио-Молодец',
+  name: 'Антон',
   time: '17.03.24',
-  lastMessage: '....',
+  lastMessage: 'text',
+};
+
+const videoChat = {
+  img: 'photo2024-02-11_17-14-16.jpg',
+  name: 'Антон',
+  time: '18.03.24',
+  lastMessage: 'video',
 };
 
 type ChatProps = {
@@ -39,6 +47,13 @@ export const Chat = ({ user }: ChatProps) => {
     joinChat({ chat: 10, user: user.appUser });
   };
 
+  const openVideoRoom = () => {
+    dispatch(typeChatRoom('openVideoRoom'));
+    dispatch(setChatRoomChatId(10));
+    dispatch(showChatRoomSlide(true));
+    joinChat({ chat: 20, user: user.appUser });
+  };
+
   return (
     <>
       <ul
@@ -47,15 +62,25 @@ export const Chat = ({ user }: ChatProps) => {
       >
         <Contact
           handelClick={openChatRoom}
-          img={testChat.img}
-          name={testChat.name}
-          time={testChat.time}
-          lastMessage={testChat.lastMessage}
+          img={textChat.img}
+          name={textChat.name}
+          time={textChat.time}
+          lastMessage={textChat.lastMessage}
+        />
+        <Contact
+          handelClick={openChatRoom}
+          img={videoChat.img}
+          name={videoChat.name}
+          time={videoChat.time}
+          lastMessage={videoChat.lastMessage}
         />
       </ul>
       <SlidePage slide={slide}>
         {type == 'openChatRoom' && data && (
           <ChatRoom accessToken={data.accessToken} />
+        )}
+        {type == 'openVideoRoom' && data && (
+          <VideoRoom accessToken={data.accessToken} />
         )}
       </SlidePage>
     </>
