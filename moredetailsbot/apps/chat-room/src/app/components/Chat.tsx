@@ -9,7 +9,7 @@ import {
   showChatRoomSlide,
   typeChatRoom,
 } from '@slice/chat-room';
-import { User } from '@types';
+import { UserData } from '@types';
 
 const testChat = {
   img: 'photo2024-02-11_17-14-16.jpg',
@@ -19,7 +19,7 @@ const testChat = {
 };
 
 type ChatProps = {
-  user: User;
+  user: UserData;
 };
 
 export const Chat = ({ user }: ChatProps) => {
@@ -34,7 +34,7 @@ export const Chat = ({ user }: ChatProps) => {
   const openChatRoom = () => {
     dispatch(typeChatRoom('openChatRoom'));
     dispatch(showChatRoomSlide(true));
-    joinChat({ chat: 10, user: user.id });
+    joinChat({ chat: 10, user: user.appUser });
   };
 
   return (

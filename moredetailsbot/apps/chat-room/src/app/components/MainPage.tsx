@@ -11,6 +11,6 @@ export const MainPage = () => {
 
   isSuccess && dispatch(dataChatRoom(data));
 
-  return <>{data && <Chat user={data.UserData.user} />}</>;
+  return <>{data && <Chat user={data.UserData} />}</>;
 };
 export default MainPage;

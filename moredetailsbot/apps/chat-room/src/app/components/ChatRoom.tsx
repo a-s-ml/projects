@@ -1,4 +1,4 @@
-import { MessageMyChat, MessageSystem } from '@components';
+import { MessageMyChat, MessageSystem, SendPanel } from '@components';
 import { selectdataChatRoomData } from '@slice/chat-room';
 import { useChatRoomSelector } from '@store/chat-room';
 import ChatPanel from 'libs/components/src/lib/ChatPanel';
@@ -22,6 +22,11 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
   console.log(dataUser);
 
   const [state, setState] = useState<Event[]>([]);
+  const [message, setMessage] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setMessage(e.target.value);
+
   useEffect(() => {
     const socket = io('https://api80q.ru/chat', {
       auth: {
@@ -37,18 +42,29 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
     socket.on('chat_updated', listener);
     socket.on('exception', listener);
     socket.on('message', listener);
+    
   }, [accessToken]);
-  console.log('state ', state);
+  
+  // const handleSubmit = (e: { preventDefault: () => void }) => {
+  //   e.preventDefault();
+
+  //   if (!message) return;
+
+  //   socket.emit('sendMessage', { message, params });
+
+  //   setMessage('');
+  // };
 
   return (
     <ChatPanel>
       {state &&
+        dataUser &&
         state.map((message) =>
           message.text ? (
-            dataUser && message.chat !== dataUser.UserData.user.id ? (
+            dataUser && message.chat !== dataUser.UserData.appUser ? (
               <MessageChat
                 key={message.id}
-                name={String(message.user)}
+                name={String(dataUser.UserData.user.username)}
                 text={message.text}
               />
             ) : (
@@ -62,6 +78,10 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
             />
           )
         )}
+      <SendPanel
+        message={message}
+        handleChange={handleChange}
+      />
     </ChatPanel>
   );
 };
