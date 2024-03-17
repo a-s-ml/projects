@@ -51,7 +51,7 @@ export const Chat = ({ user }: ChatProps) => {
     dispatch(typeChatRoom('openVideoRoom'));
     dispatch(setChatRoomChatId(10));
     dispatch(showChatRoomSlide(true));
-    joinChat({ chat: 20, user: user.appUser });
+    joinChat({ chat: 11, user: user.appUser });
   };
 
   return (
@@ -68,7 +68,7 @@ export const Chat = ({ user }: ChatProps) => {
           lastMessage={textChat.lastMessage}
         />
         <Contact
-          handelClick={openChatRoom}
+          handelClick={openVideoRoom}
           img={videoChat.img}
           name={videoChat.name}
           time={videoChat.time}
