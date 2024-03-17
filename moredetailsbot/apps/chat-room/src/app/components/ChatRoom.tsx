@@ -37,14 +37,15 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
 
     const listener = (args: Event) => {
       setState((prevState) => [...prevState, args]);
+      console.log(state);
+      console.log(args);
     };
 
     socket.on('chat_updated', listener);
     socket.on('exception', listener);
     socket.on('message', listener);
-    
   }, [accessToken]);
-  
+
   // const handleSubmit = (e: { preventDefault: () => void }) => {
   //   e.preventDefault();
 
@@ -78,10 +79,7 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
             />
           )
         )}
-      <SendPanel
-        message={message}
-        handleChange={handleChange}
-      />
+      <SendPanel message={message} handleChange={handleChange} />
     </ChatPanel>
   );
 };
