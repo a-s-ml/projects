@@ -117,10 +117,20 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
     handleNegoNeedFinal,
   ]);
 
+  const join = (email: string, room: number) => {
+    socket.emit('room:join', { email, room });
+  };
+
   return (
     <ChatPanel>
       <div>
         <h1>Room Page</h1>
+        <button
+          className="p-5 bg-slate-300 text-blue-800"
+          onClick={() => join('sdfs', 11)}
+        >
+          Click JOIN
+        </button>
         <h4>{remoteSocketId ? 'Connected' : 'No one in room'}</h4>
         {myStream && <button onClick={sendStreams}>Send Stream</button>}
         {remoteSocketId && <button onClick={handleCallUser}>CALL</button>}
