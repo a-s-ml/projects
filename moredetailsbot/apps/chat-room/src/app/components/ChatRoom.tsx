@@ -24,10 +24,9 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
       },
       transports: ['websocket', 'polling'],
     });
+
     const listener = (args: Event) => {
       setState((prevState) => [...prevState, args]);
-      console.log('args ', args);
-      console.log('state ', state);
     };
 
     socket.on('chat_updated', listener);
@@ -37,20 +36,20 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
   console.log('state ', state);
 
   return (
-      <ChatPanel>
-        {state &&
-          state.map((message) => (
-            <>
-              <MessageChat
-                key={message.id}
-                name={String(message.user)}
-                text={message.text}
-                time={String(message.chat)}
-              />
-            </>
-          ))}
-        <b>1</b>
-      </ChatPanel>
+    <ChatPanel>
+      {state &&
+        state.map((message) => (
+          <>
+            <MessageChat
+              key={message.id}
+              name={String(message.user)}
+              text={message.text}
+              time={String(message.chat)}
+            />
+          </>
+        ))}
+      <b>1</b>
+    </ChatPanel>
   );
 };
 
