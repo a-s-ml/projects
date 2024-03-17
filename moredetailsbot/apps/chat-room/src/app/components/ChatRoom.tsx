@@ -72,7 +72,7 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
             )
           ) : (
             <MessageSystem
-              name={String(message.user)}
+              name={String(dataUser.UserData.user.username)}
               action={'присоединился'}
               chat={String(message.chat)}
             />
