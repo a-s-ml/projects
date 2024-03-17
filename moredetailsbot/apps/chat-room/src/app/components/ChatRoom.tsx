@@ -55,7 +55,6 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
             />
           )
         )}
-      <b>1</b>
     </ChatPanel>
   );
 };
