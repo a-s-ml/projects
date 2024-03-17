@@ -35,7 +35,7 @@ export type Event = {
 
 export type EventUser = {
   id: number;
-  tgid: bigint;
+  tgid: number;
   name: string;
   type: number;
 };
