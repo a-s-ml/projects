@@ -13,7 +13,7 @@ export function SendPanel({
   // handleSubmit,
 }: SendPanelProps) {
   return (
-    <div className="bg-grey-lighter px-4 py-4 flex items-center">
+    <div className="absolute bottom-0 px-4 py-4 flex items-center">
       <Smiles />
       <div className="flex-1 mx-4">
         <input
