@@ -8,7 +8,7 @@ import { selectChatRoomChatId, selectdataChatRoomData } from '@slice/chat-room';
 import { useChatRoomDispatch, useChatRoomSelector } from '@store/chat-room';
 import ChatPanel from 'libs/components/src/lib/ChatPanel';
 import MessageChat from 'libs/components/src/lib/MessageChat';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSocket } from '../context/SocketProvider';
 import { Event } from '@types';
 import { useGetMessageQuery } from '@api';
@@ -18,6 +18,7 @@ export interface ChatRoomProps {
 }
 
 export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
+  const bottomRef = useRef<null | HTMLDivElement>(null);
   const dispatch = useChatRoomDispatch();
   const chatid = useChatRoomSelector(selectChatRoomChatId);
   const dataUser = useChatRoomSelector(selectdataChatRoomData);
@@ -45,6 +46,12 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
   };
 
   useEffect(() => {
+    if (bottomRef.current) {
+      bottomRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }, [states]);
+
+  useEffect(() => {
     const listener = (args: Event) => {
       setState((prevState) => [...prevState, args]);
       console.log('args', args);
@@ -55,48 +62,51 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
   }, [socket]);
 
   return (
-    <ChatPanel>
-      {isLoading && <Preloader />}
-      {dataUser &&
-        successChatmessages &&
-        chatmessages.map((chatmessage) =>
-          chatmessage.user !== dataUser.UserData.appUser ? (
-            <MessageChat
-              key={chatmessage.id}
-              name={String(chatmessage.user)}
-              text={chatmessage.text}
-            />
-          ) : (
-            <MessageMyChat key={chatmessage.id} text={chatmessage.text} />
-          )
-        )}
-      {states &&
-        dataUser &&
-        states.map((state) =>
-          state.type === 'message' && state.text ? (
-            state.user.id !== dataUser.UserData.appUser ? (
+    <>
+      <ChatPanel>
+        {isLoading && <Preloader />}
+        {dataUser &&
+          successChatmessages &&
+          chatmessages.map((chatmessage) =>
+            chatmessage.user !== dataUser.UserData.appUser ? (
               <MessageChat
-                key={state.type}
-                name={String(state.user.name)}
-                text={state.text.text}
+                key={chatmessage.id}
+                name={String(chatmessage.user)}
+                text={chatmessage.text}
               />
             ) : (
-              <MessageMyChat key={state.type} text={state.text.text} />
+              <MessageMyChat key={chatmessage.id} text={chatmessage.text} />
             )
-          ) : (
-            <MessageSystem
-              name={String(state.user.name)}
-              action={state.type}
-              chat={String(state.chat.name)}
-            />
-          )
-        )}
+          )}
+        {states &&
+          dataUser &&
+          states.map((state) =>
+            state.type === 'message' && state.text ? (
+              state.user.id !== dataUser.UserData.appUser ? (
+                <MessageChat
+                  key={state.type}
+                  name={String(state.user.name)}
+                  text={state.text.text}
+                />
+              ) : (
+                <MessageMyChat key={state.type} text={state.text.text} />
+              )
+            ) : (
+              <MessageSystem
+                name={String(state.user.name)}
+                action={state.type}
+                chat={String(state.chat.name)}
+              />
+            )
+          )}
+        <div ref={bottomRef} />
+      </ChatPanel>
       <SendPanel
         message={message}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
-    </ChatPanel>
+    </>
   );
 };
 
