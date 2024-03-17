@@ -24,10 +24,16 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
   const socket = useSocket(accessToken);
 
   const [state, setState] = useState<Event[]>([]);
+
   const [message, setMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setMessage(e.target.value);
+
+  const handleSubmit = (message: string) => {
+    socket.emit('message', message);
+    setMessage('');
+  };
 
   useEffect(() => {
     const listener = (args: Event) => {
@@ -63,12 +69,13 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
             />
           )
         )}
-      <SendPanel message={message} handleChange={handleChange} />
+      <SendPanel
+        message={message}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </ChatPanel>
   );
 };
 
 export default ChatRoom;
-
-//export const getTokenPayload = (accessToken: string): TokenPayload =>
-//  JSON.parse(window.atob(accessToken.split('.')[1]));
