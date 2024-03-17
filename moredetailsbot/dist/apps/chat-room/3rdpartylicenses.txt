@@ -1,6 +1,9 @@
 @headlessui/react
 MIT
 
+@heroicons/react
+MIT
+
 @moredetailsbot/source
 MIT
 
