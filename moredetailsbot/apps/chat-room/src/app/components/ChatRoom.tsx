@@ -1,3 +1,4 @@
+import { MessageSystem } from '@components';
 import ChatPanel from 'libs/components/src/lib/ChatPanel';
 import MessageChat from 'libs/components/src/lib/MessageChat';
 import { useEffect, useState } from 'react';
@@ -38,16 +39,22 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
   return (
     <ChatPanel>
       {state &&
-        state.map((message) => (
-          <>
+        state.map((message) =>
+          message.text ? (
             <MessageChat
               key={message.id}
               name={String(message.user)}
               text={message.text}
               time={String(message.chat)}
             />
-          </>
-        ))}
+          ) : (
+            <MessageSystem
+              name={String(message.user)}
+              action={'присоединился'}
+              chat={String(message.chat)}
+            />
+          )
+        )}
       <b>1</b>
     </ChatPanel>
   );

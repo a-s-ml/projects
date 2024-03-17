@@ -10,3 +10,4 @@ export * from './lib/Search';
 export * from './lib/Contact';
 export * from './lib/ContactMy';
 export * from './lib/SlidePage';
+export * from './lib/MessageSystem';
