@@ -16,7 +16,7 @@ SendPanelProps) {
     <div className="absolute bottom-5 px-4 py-4 flex items-center space-x-3 justify-center ">
       <Smiles />
       <input
-        className="w-1/3 border rounded px-2 py-2"
+        className="w-1/2 border rounded px-2 py-2"
         type="text"
         value={message}
         onChange={handleChange}
