@@ -16,7 +16,7 @@ export function SendPanel({
   message,
 }: SendPanelProps) {
   return (
-    <div className="w-full absolute bt-2 b-[--tg-theme-hint-color] bottom-0 pt-4 pb-10 flex items-center mb-3 bg-[var(--tg-theme-bg-color)]">
+    <div className="w-full fixed bt-2 b-[--tg-theme-hint-color] bottom-0 pt-4 pb-6 flex items-center bg-[var(--tg-theme-bg-color)]">
       <input
         className="w-2/3 border rounded px-2 py-2 bg-[--tg-theme-hint-color] text-"
         type="text"
