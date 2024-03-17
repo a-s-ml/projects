@@ -4,11 +4,13 @@ import ChatRoom from './ChatRoom';
 import { Contact, SlidePage } from '@components';
 import { useChatRoomDispatch, useChatRoomSelector } from '@store/chat-room';
 import {
+  selectdataChatRoomData,
   selectdataChatRoomSlide,
   selectdataChatRoomType,
   showChatRoomSlide,
   typeChatRoom,
 } from '@slice/chat-room';
+import { User } from '@types';
 
 const testChat = {
   img: 'photo2024-02-11_17-14-16.jpg',
@@ -17,10 +19,17 @@ const testChat = {
   lastMessage: '....',
 };
 
-export const Chat = () => {
+type ChatProps = {
+  user: User;
+};
+
+export const Chat = ({ user }: ChatProps) => {
   const dispatch = useChatRoomDispatch();
   const slide = useChatRoomSelector(selectdataChatRoomSlide);
   const type = useChatRoomSelector(selectdataChatRoomType);
+  const dataUser = useChatRoomSelector(selectdataChatRoomData);
+  console.log(user);
+  console.log(dataUser);
 
   const [joinChat, { data }] = useJoinMutation();
 
@@ -29,9 +38,9 @@ export const Chat = () => {
   const openChatRoom = () => {
     dispatch(typeChatRoom('openChatRoom'));
     dispatch(showChatRoomSlide(true));
-    joinChat({ chat: 10, user: 3 });
+    joinChat({ chat: 10, user: user.id });
   };
-  
+
   return (
     <>
       <ul
