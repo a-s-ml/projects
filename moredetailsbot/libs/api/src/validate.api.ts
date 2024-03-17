@@ -22,7 +22,7 @@ export const extendedApiSlice = globalApi.injectEndpoints({
   endpoints: (build) => ({
     validate: build.query<Validate, string>({
       query: (initData: string) => ({
-        url: `chat/validateUser/${initData}`,
+        url: `/validateUser/${initData}`,
       }),
       providesTags: ['Validate'],
     }),
