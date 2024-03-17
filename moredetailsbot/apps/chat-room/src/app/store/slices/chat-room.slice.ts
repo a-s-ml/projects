@@ -7,6 +7,7 @@ const initialState: chatRoomAppState = {
   chatRoomSlide: false,
   chatRoomType: '',
   chatRoomChat: {
+    id: 0,
     isLoading: false,
     wsErrors: [],
     isAdmin: false,
@@ -22,6 +23,9 @@ export const chatRoomAppSlice = createSlice({
   reducers: {
     setChatAccessToken: (state, action: PayloadAction<string>) => {
       state.chatRoomChat.accessToken = action.payload;
+    },
+    setChatRoomChatId: (state, action: PayloadAction<number>) => {
+      state.chatRoomChat.id = action.payload;
     },
     initializePoll: (state, action: PayloadAction<Poll>) => {
       state.chatRoomChat.poll = action.payload;
@@ -48,6 +52,7 @@ export const {
   initializePoll,
   loadingChat,
   setChatAccessToken,
+  setChatRoomChatId,
 } = chatRoomAppSlice.actions;
 
 export const selectdataChatRoomSlide = (state: RootState) =>
@@ -62,5 +67,7 @@ export const selectLoadingChat = (state: RootState) =>
   state.chatRoomApp.chatRoomChat.isLoading;
 export const selectChatAccessToken = (state: RootState) =>
   state.chatRoomApp.chatRoomChat.accessToken;
+export const selectChatRoomChatId = (state: RootState) =>
+  state.chatRoomApp.chatRoomChat.id;
 
 export default chatRoomAppSlice.reducer;

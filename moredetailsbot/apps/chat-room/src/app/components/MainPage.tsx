@@ -7,7 +7,7 @@ export const MainPage = () => {
   const tg = window.Telegram.WebApp;
   const dispatch = useChatRoomDispatch();
 
-  const { data, isSuccess, isLoading } = useValidateQuery(tg.initData);
+  const { data, isSuccess } = useValidateQuery(tg.initData);
 
   isSuccess && dispatch(dataChatRoom(data));
 

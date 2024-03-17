@@ -6,6 +6,7 @@ import { useChatRoomDispatch, useChatRoomSelector } from '@store/chat-room';
 import {
   selectdataChatRoomSlide,
   selectdataChatRoomType,
+  setChatRoomChatId,
   showChatRoomSlide,
   typeChatRoom,
 } from '@slice/chat-room';
@@ -33,6 +34,7 @@ export const Chat = ({ user }: ChatProps) => {
 
   const openChatRoom = () => {
     dispatch(typeChatRoom('openChatRoom'));
+    dispatch(setChatRoomChatId(10));
     dispatch(showChatRoomSlide(true));
     joinChat({ chat: 10, user: user.appUser });
   };

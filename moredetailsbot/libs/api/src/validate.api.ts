@@ -1,5 +1,5 @@
 import { globalApi } from '@api';
-import { Validate } from '@types';
+import { EventMessage, Validate } from '@types';
 
 export type ChatConnect = {
   chat: number;
@@ -21,7 +21,7 @@ export type ResponseChat = {
 export const extendedApiSlice = globalApi.injectEndpoints({
   endpoints: (build) => ({
     validate: build.query<Validate, string>({
-      query: (initData: string) => ({
+      query: (initData) => ({
         url: `/validateUser/${initData}`,
       }),
       providesTags: ['Validate'],
@@ -33,7 +33,13 @@ export const extendedApiSlice = globalApi.injectEndpoints({
         body: { chat, user },
       }),
     }),
+    getMessage: build.query<EventMessage[], number>({
+      query: (chat) => ({
+        url: `/messages/${chat}`,
+      }),
+    }),
   }),
 });
 
-export const { useValidateQuery, useJoinMutation } = extendedApiSlice;
+export const { useValidateQuery, useJoinMutation, useGetMessageQuery } =
+  extendedApiSlice;

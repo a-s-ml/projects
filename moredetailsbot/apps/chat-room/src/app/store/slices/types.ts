@@ -19,6 +19,7 @@ export interface chatRoomAppState {
 }
 
 export type ChatState = {
+  id: number;
   isLoading: boolean;
   poll?: Poll;
   accessToken?: string;
