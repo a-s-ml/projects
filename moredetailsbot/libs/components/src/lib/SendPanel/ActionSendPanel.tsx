@@ -6,7 +6,9 @@ type ActionSendPanelProps = {
 
 export function ActionSendPanel({}: ActionSendPanelProps) {
   return (
-    <ArrowRightCircleIcon className="px-5 h-6 w-6 text-[var(--tg-theme-text-color)]" />
+    <div className="px-5 ">
+      <ArrowRightCircleIcon className="h-6 w-6 text-[var(--tg-theme-text-color)]" />
+    </div>
   );
 }
 
