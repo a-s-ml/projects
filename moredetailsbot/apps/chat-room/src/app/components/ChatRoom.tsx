@@ -62,51 +62,49 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
   }, [socket]);
 
   return (
-    <>
-      <ChatPanel>
-        {isLoading && <Preloader />}
-        {dataUser &&
-          successChatmessages &&
-          chatmessages.map((chatmessage) =>
-            chatmessage.user !== dataUser.UserData.appUser ? (
+    <ChatPanel>
+      {isLoading && <Preloader />}
+      {dataUser &&
+        successChatmessages &&
+        chatmessages.map((chatmessage) =>
+          chatmessage.user !== dataUser.UserData.appUser ? (
+            <MessageChat
+              key={chatmessage.id}
+              name={String(chatmessage.user)}
+              text={chatmessage.text}
+            />
+          ) : (
+            <MessageMyChat key={chatmessage.id} text={chatmessage.text} />
+          )
+        )}
+      {states &&
+        dataUser &&
+        states.map((state) =>
+          state.type === 'message' && state.text ? (
+            state.user.id !== dataUser.UserData.appUser ? (
               <MessageChat
-                key={chatmessage.id}
-                name={String(chatmessage.user)}
-                text={chatmessage.text}
-              />
-            ) : (
-              <MessageMyChat key={chatmessage.id} text={chatmessage.text} />
-            )
-          )}
-        {states &&
-          dataUser &&
-          states.map((state) =>
-            state.type === 'message' && state.text ? (
-              state.user.id !== dataUser.UserData.appUser ? (
-                <MessageChat
-                  key={state.type}
-                  name={String(state.user.name)}
-                  text={state.text.text}
-                />
-              ) : (
-                <MessageMyChat key={state.type} text={state.text.text} />
-              )
-            ) : (
-              <MessageSystem
+                key={state.type}
                 name={String(state.user.name)}
-                action={state.type}
-                chat={String(state.chat.name)}
+                text={state.text.text}
               />
+            ) : (
+              <MessageMyChat key={state.type} text={state.text.text} />
             )
-          )}
-        <div ref={bottomRef} />
-      </ChatPanel>
+          ) : (
+            <MessageSystem
+              name={String(state.user.name)}
+              action={state.type}
+              chat={String(state.chat.name)}
+            />
+          )
+        )}
+      <div ref={bottomRef} />
       <SendPanel
         message={message}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
-    </>
+    </ChatPanel>
   );
 };
 
