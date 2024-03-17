@@ -37,8 +37,11 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
     setMessage(e.target.value);
 
   const handleSubmit = (message: string) => {
-    socket.emit('message', message);
-    setMessage('');
+    message.trim();
+    if (message != '') {
+      socket.emit('message', message);
+      setMessage('');
+    }
   };
 
   useEffect(() => {

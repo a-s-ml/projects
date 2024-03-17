@@ -24,10 +24,10 @@ export function SendPanel({
         onChange={handleChange}
       />
       <div className="px-2">
-        <FaceSmileIcon className="h-6 w-6 text-[var(--tg-theme-text-color)]" />
+        <FaceSmileIcon className="h-6 w-6 text-[var(--tg-theme-text-color)] cursor-pointer" />
       </div>
       <div className="px-4 py-2" onClick={() => handleSubmit(message)}>
-        <ArrowRightCircleIcon className="h-6 w-6 text-[var(--tg-theme-text-color)]" />
+        <ArrowRightCircleIcon className="h-6 w-6 text-[var(--tg-theme-text-color)] cursor-pointer" />
       </div>
     </div>
   );
