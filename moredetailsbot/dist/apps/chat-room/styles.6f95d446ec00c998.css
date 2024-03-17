@@ -356,6 +356,8 @@ video {
   margin-left: 1.5rem;
 }.mt-1 {
   margin-top: 0.25rem;
+}.mt-4 {
+  margin-top: 1rem;
 }.flex {
   display: flex;
 }.h-10 {

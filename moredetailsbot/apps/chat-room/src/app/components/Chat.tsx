@@ -52,7 +52,9 @@ export const Chat = ({ user }: ChatProps) => {
         />
       </ul>
       <SlidePage slide={slide}>
-        {type == 'openChatRoom' && <ChatRoom accessToken={data?.accessToken} />}
+        {type == 'openChatRoom' && data && (
+          <ChatRoom accessToken={data.accessToken} />
+        )}
       </SlidePage>
     </>
   );
