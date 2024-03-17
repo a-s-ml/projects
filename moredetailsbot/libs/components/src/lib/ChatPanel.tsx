@@ -4,7 +4,7 @@ export interface ChatPanelProps {
 
 export function ChatPanel({ children }: ChatPanelProps) {
   return (
-    <div className="flex flex-col overflow-auto w-screen h-screen pb-16">
+    <div className="flex flex-col px-2 overflow-auto w-screen h-screen pb-16">
       {children}
     </div>
   );

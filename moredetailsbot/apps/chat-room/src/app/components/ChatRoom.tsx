@@ -98,7 +98,7 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
             />
           )
         )}
-      <div ref={bottomRef} />
+      <div className="pb-4" ref={bottomRef} />
       <SendPanel
         message={message}
         handleChange={handleChange}
