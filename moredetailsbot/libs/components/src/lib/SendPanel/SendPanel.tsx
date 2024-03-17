@@ -13,7 +13,7 @@ export function SendPanel({
 }: // handleSubmit,
 SendPanelProps) {
   return (
-    <div className="absolute bottom-5 px-4 py-4 flex items-center space-x-3 justify-center ">
+    <div className="absolute bottom-0 pt-4 pb-5 flex items-center space-x-3 justify-center bg-[var(--tg-theme-hint-color)]">
       <Smiles />
       <input
         className="w-1/2 border rounded px-2 py-2"
