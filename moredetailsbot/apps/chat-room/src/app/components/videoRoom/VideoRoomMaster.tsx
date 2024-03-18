@@ -53,25 +53,6 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
     [socket]
   );
 
-  const sendStreams = useCallback(() => {
-    console.log('sendStreams');
-    if (myStream) {
-      for (const track of myStream.getTracks()) {
-        peer.peer.addTrack(track, myStream);
-      }
-    }
-  }, [myStream]);
-
-  const handleCallAccepted = useCallback(
-    ({ from, ans }: any) => {
-      console.log('handleCallAccepted');
-      peer.setLocalDescription(ans);
-      console.log('Call Accepted!');
-      sendStreams();
-    },
-    [sendStreams]
-  );
-
   const handleNegoNeeded = useCallback(async () => {
     console.log('handleNegoNeeded');
     const offer = await peer.getOffer();
@@ -118,14 +99,12 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
     socket.on('chat_updated', listener);
     socket.on('user:joined', handleUserJoined);
     socket.on('incomming:call', handleIncommingCall);
-    socket.on('call:accepted', handleCallAccepted);
     socket.on('peer:nego:needed', handleNegoNeedIncomming);
     socket.on('peer:nego:final', handleNegoNeedFinal);
 
     return () => {
       socket.off('user:joined', handleUserJoined);
       socket.off('incomming:call', handleIncommingCall);
-      socket.off('call:accepted', handleCallAccepted);
       socket.off('peer:nego:needed', handleNegoNeedIncomming);
       socket.off('peer:nego:final', handleNegoNeedFinal);
     };
@@ -133,7 +112,6 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
     socket,
     handleUserJoined,
     handleIncommingCall,
-    handleCallAccepted,
     handleNegoNeedIncomming,
     handleNegoNeedFinal,
   ]);
@@ -147,7 +125,6 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
       <div>
         <h1>Стриммер</h1>
         <h4>{remoteSocketId ? 'Connected' : 'No one in room'}</h4>
-        {myStream && <button onClick={sendStreams}>Send Stream</button>}
         {remoteSocketId && <button onClick={handleCallUser}>CALL</button>}
         {myStream && (
           <>
