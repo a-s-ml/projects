@@ -20,6 +20,10 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
   const [myStream, setMyStream] = useState<MediaStream>();
   const [remoteStream, setRemoteStream] = useState<MediaStream>();
 
+  console.log('remoteSocketId', remoteSocketId);
+  console.log('myStream', myStream);
+  console.log('remoteStream', remoteStream);
+
   const handleUserJoined = useCallback(({ email, id }: any) => {
     console.log(`Email ${email} joined room`);
     setRemoteSocketId(id);
@@ -166,8 +170,8 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
             <ReactPlayer
               playing
               muted
-              height="270px"
-              width="360px"
+              height="100px"
+              width="200px"
               url={myStream}
             />
           </>
@@ -178,8 +182,8 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
             <ReactPlayer
               playing
               muted
-              height="270px"
-              width="360px"
+              height="100px"
+              width="200px"
               url={remoteStream}
             />
           </>

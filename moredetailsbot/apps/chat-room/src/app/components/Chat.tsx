@@ -55,6 +55,13 @@ export const Chat = ({ user }: ChatProps) => {
     joinChat({ chat: 11, user: user.appUser });
   };
 
+  const openVideoRoomT = () => {
+    dispatch(typeChatRoom('openVideoRoom'));
+    dispatch(setChatRoomChatId(10));
+    dispatch(showChatRoomSlide(true));
+    joinChat({ chat: 11, user: user.appUser });
+  };
+
   return (
     <>
       <ul
@@ -75,12 +82,22 @@ export const Chat = ({ user }: ChatProps) => {
           time={videoChat.time}
           lastMessage={videoChat.lastMessage}
         />
+        <Contact
+          handelClick={openVideoRoomT}
+          img={videoChat.img}
+          name={videoChat.name}
+          time={videoChat.time}
+          lastMessage={videoChat.lastMessage}
+        />
       </ul>
       <SlidePage slide={slide}>
         {type == 'openChatRoom' && data && (
           <ChatRoom accessToken={data.accessToken} />
         )}
         {type == 'openVideoRoom' && data && (
+          <VideoRoom accessToken={data.accessToken} />
+        )}
+        {type == 'openVideoRoomT' && data && (
           <VideoRoomT accessToken={data.accessToken} />
         )}
       </SlidePage>

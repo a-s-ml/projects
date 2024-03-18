@@ -20,6 +20,10 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
   const [myStream, setMyStream] = useState<MediaStream>();
   const [remoteStream, setRemoteStream] = useState<MediaStream>();
 
+  console.log('remoteSocketId', remoteSocketId);
+  console.log('myStream', myStream);
+  console.log('remoteStream', remoteStream);
+
   const handleCallUser = useCallback(async () => {
     console.log('handleCallUser');
     const stream: MediaStream = await navigator.mediaDevices.getUserMedia({
