@@ -27,6 +27,7 @@ export type EventChat = {
 };
 
 export type Event = {
+  size: number;
   type: string;
   user: EventUser;
   chat: EventChat;

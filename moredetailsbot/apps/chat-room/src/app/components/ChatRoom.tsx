@@ -5,7 +5,7 @@ import {
   SendPanel,
 } from '@components';
 import { selectChatRoomChatId, selectdataChatRoomData } from '@slice/chat-room';
-import { useChatRoomDispatch, useChatRoomSelector } from '@store/chat-room';
+import { useChatRoomSelector } from '@store/chat-room';
 import ChatPanel from 'libs/components/src/lib/ChatPanel';
 import MessageChat from 'libs/components/src/lib/MessageChat';
 import { useEffect, useRef, useState } from 'react';
@@ -95,6 +95,7 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
               name={String(state.user.name)}
               action={state.type}
               chat={String(state.chat.name)}
+              size={state.size}
             />
           )
         )}
