@@ -13,7 +13,7 @@ export function MessageChat({ my, name, text }: MessageChatProps) {
       <div
         className={classNames(
           my
-            ? 'bg-[var(--tg-theme-button-color)]'
+            ? 'justify-end bg-[var(--tg-theme-button-color)]'
             : 'bg-[var(--tg-theme-hint-color)]',
           'rounded py-2 px-3 max-w-[75%]'
         )}
