@@ -16,8 +16,8 @@ export const Message = ({ id, text }: MessageProps) => {
     <>
       {dataUser && isSuccess && (
         <MessageChat
-          my={dataUser.UserData.user.id === id ? true : false}
-          name={dataUser.UserData.user.id === id ? '' : data.name}
+          my={dataUser.UserData.appUser === id ? true : false}
+          name={dataUser.UserData.appUser === id ? '' : data.name}
           text={text}
         />
       )}
