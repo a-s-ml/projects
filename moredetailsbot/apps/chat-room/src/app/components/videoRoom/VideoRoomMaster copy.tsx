@@ -6,11 +6,11 @@ import peer from '../../context/peer';
 import { useChatRoomSelector } from '@store/chat-room';
 import { selectChatRoomChatId, selectdataChatRoomData } from '@slice/chat-room';
 
-export interface VideoRoomGuestProps {
+export interface VideoRoomMasterProps {
   accessToken: string;
 }
 
-export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
+export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
   const chatid = useChatRoomSelector(selectChatRoomChatId);
   const dataUser = useChatRoomSelector(selectdataChatRoomData);
   const socket = useSocket(accessToken);
@@ -31,8 +31,13 @@ export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
 
   const handleCallUser = useCallback(async () => {
     console.log('handleCallUser');
+    const stream: MediaStream = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: true,
+    });
     const offer = await peer.getOffer();
     socket.emit('user:call', { to: remoteSocketId, offer });
+    setMyStream(stream);
   }, [remoteSocketId, socket]);
 
   const handleIncommingCall = useCallback(
@@ -49,6 +54,25 @@ export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
       socket.emit('call:accepted', { to: from, ans });
     },
     [socket]
+  );
+
+  const sendStreams = useCallback(() => {
+    console.log('sendStreams');
+    if (myStream) {
+      for (const track of myStream.getTracks()) {
+        peer.peer.addTrack(track, myStream);
+      }
+    }
+  }, [myStream]);
+
+  const handleCallAccepted = useCallback(
+    ({ from, ans }: any) => {
+      console.log('handleCallAccepted');
+      peer.setLocalDescription(ans);
+      console.log('Call Accepted!');
+      sendStreams();
+    },
+    [sendStreams]
   );
 
   const handleNegoNeeded = useCallback(async () => {
@@ -101,12 +125,14 @@ export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
     socket.on('chat_updated', listener);
     socket.on('user:joined', handleUserJoined);
     socket.on('incomming:call', handleIncommingCall);
+    socket.on('call:accepted', handleCallAccepted);
     socket.on('peer:nego:needed', handleNegoNeedIncomming);
     socket.on('peer:nego:final', handleNegoNeedFinal);
 
     return () => {
       socket.off('user:joined', handleUserJoined);
       socket.off('incomming:call', handleIncommingCall);
+      socket.off('call:accepted', handleCallAccepted);
       socket.off('peer:nego:needed', handleNegoNeedIncomming);
       socket.off('peer:nego:final', handleNegoNeedFinal);
     };
@@ -114,6 +140,7 @@ export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
     socket,
     handleUserJoined,
     handleIncommingCall,
+    handleCallAccepted,
     handleNegoNeedIncomming,
     handleNegoNeedFinal,
   ]);
@@ -135,7 +162,20 @@ export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
           </button>
         )}
         <h4>{remoteSocketId ? 'Connected' : 'No one in room'}</h4>
+        {myStream && <button onClick={sendStreams}>Send Stream</button>}
         {remoteSocketId && <button onClick={handleCallUser}>CALL</button>}
+        {myStream && (
+          <>
+            <h1>My Stream</h1>
+            <ReactPlayer
+              playing
+              muted
+              height="100px"
+              width="200px"
+              url={myStream}
+            />
+          </>
+        )}
         {remoteStream && (
           <>
             <h1>Remote Stream</h1>
@@ -153,4 +193,4 @@ export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
   );
 };
 
-export default VideoRoomGuest;
+export default VideoRoomMaster;

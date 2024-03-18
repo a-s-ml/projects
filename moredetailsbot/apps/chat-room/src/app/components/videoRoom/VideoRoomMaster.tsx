@@ -18,11 +18,9 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
 
   const [remoteSocketId, setRemoteSocketId] = useState(null);
   const [myStream, setMyStream] = useState<MediaStream>();
-  const [remoteStream, setRemoteStream] = useState<MediaStream>();
 
   console.log('remoteSocketId', remoteSocketId);
   console.log('myStream', myStream);
-  console.log('remoteStream', remoteStream);
 
   const handleUserJoined = useCallback(({ email, id }: any) => {
     console.log(`Email ${email} joined room`);
@@ -110,14 +108,6 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
   );
 
   useEffect(() => {
-    peer.peer.addEventListener('track', async (ev: any) => {
-      const remoteStream = ev.streams;
-      console.log('GOT TRACKS!!');
-      setRemoteStream(remoteStream[0]);
-    });
-  }, []);
-
-  useEffect(() => {
     const listener = (args: Event) => {
       setState((prevState) => [...prevState, args]);
       console.log('args', args);
@@ -173,18 +163,6 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
               height="100px"
               width="200px"
               url={myStream}
-            />
-          </>
-        )}
-        {remoteStream && (
-          <>
-            <h1>Remote Stream</h1>
-            <ReactPlayer
-              playing
-              muted
-              height="100px"
-              width="200px"
-              url={remoteStream}
             />
           </>
         )}
