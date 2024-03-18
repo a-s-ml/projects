@@ -157,7 +157,7 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
           )}
 
           {remoteSocketId && (
-            <SimpleButton text={'Начать трансляцию'} click={handleCallUser} />
+            <SimpleButton text={myStream ? 'Завершить трансляцию' : 'Начать трансляцию'} click={handleCallUser} />
           )}
         </div>
         {myStream && (

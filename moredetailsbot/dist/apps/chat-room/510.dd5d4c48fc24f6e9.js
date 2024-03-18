@@ -1,0 +1,1 @@
+(self.webpackChunkchat_room=self.webpackChunkchat_room||[]).push([[510],{510:(e,o,r)=>{r.r(o);var t=r(9179),a=r(5873),c=r(9107),h=r(1085);a.H(document.getElementById("root")).render((0,h.jsx)(t.StrictMode,{children:(0,h.jsx)(c.A,{})}))},5873:(e,o,r)=>{var t=r(67);o.H=t.createRoot,t.hydrateRoot}}]);

@@ -12,7 +12,6 @@ import {
 } from '@slice/chat-room';
 import { UserData } from '@types';
 import { VideoRoomMaster } from './videoRoom/VideoRoomMaster';
-import VideoRoomT from './videoRoom/VideoRoomT';
 import VideoRoomGuest from './videoRoom/VideoRoomGuest';
 
 const textChat = {
@@ -24,24 +23,18 @@ const textChat = {
 
 const videoChatMaster = {
   img: '2024-03-19_00-48-51.png',
-  name: 'Видео стриммер',
+  name: 'Стриммер',
   time: '19.03.24',
-  lastMessage: '...',
+  lastMessage: 'video',
 };
 
 const videoChatGuest = {
   img: '2024-03-18_23-35-23.png',
-  name: 'Видео гость',
+  name: 'Зритель',
   time: '19.03.24',
-  lastMessage: '...',
+  lastMessage: 'video',
 };
 
-const videoChatT = {
-  img: 'photo2024-02-11_17-14-16.jpg',
-  name: 'Антон',
-  time: '19.03.24',
-  lastMessage: 'videoT',
-};
 
 type ChatProps = {
   user: UserData;
@@ -111,13 +104,6 @@ export const Chat = ({ user }: ChatProps) => {
           time={videoChatGuest.time}
           lastMessage={videoChatGuest.lastMessage}
         />
-        <Contact
-          handelClick={openVideoRoomT}
-          img={videoChatT.img}
-          name={videoChatT.name}
-          time={videoChatT.time}
-          lastMessage={videoChatT.lastMessage}
-        />
       </ul>
       <SlidePage slide={slide}>
         {type === 'openChatRoom' && data && (
@@ -128,9 +114,6 @@ export const Chat = ({ user }: ChatProps) => {
         )}
         {type === 'openVideoRoomGuest' && data && (
           <VideoRoomGuest accessToken={data.accessToken} />
-        )}
-        {type === 'openVideoRoomT' && data && (
-          <VideoRoomT accessToken={data.accessToken} />
         )}
       </SlidePage>
     </>
