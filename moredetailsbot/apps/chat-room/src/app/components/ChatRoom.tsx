@@ -1,9 +1,4 @@
-import {
-  MessageMyChat,
-  MessageSystem,
-  Preloader,
-  SendPanel,
-} from '@components';
+import { MessageSystem, Preloader, SendPanel } from '@components';
 import { selectChatRoomChatId, selectdataChatRoomData } from '@slice/chat-room';
 import { useChatRoomSelector } from '@store/chat-room';
 import ChatPanel from 'libs/components/src/lib/ChatPanel';
@@ -66,30 +61,24 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
       {isLoading && <Preloader />}
       {dataUser &&
         successChatmessages &&
-        chatmessages.map((chatmessage) =>
-          chatmessage.user !== dataUser.UserData.appUser ? (
-            <MessageChat
-              key={chatmessage.id}
-              name={String(chatmessage.user)}
-              text={chatmessage.text}
-            />
-          ) : (
-            <MessageMyChat key={chatmessage.id} text={chatmessage.text} />
-          )
-        )}
+        chatmessages.map((chatmessage) => (
+          <MessageChat
+            key={chatmessage.id}
+            name={String(chatmessage.user)}
+            text={chatmessage.text}
+            my={chatmessage.user === dataUser.UserData.appUser ? true : false}
+          />
+        ))}
       {states &&
         dataUser &&
         states.map((state) =>
           state.type === 'message' && state.text ? (
-            state.user.id !== dataUser.UserData.appUser ? (
-              <MessageChat
-                key={state.type}
-                name={String(state.user.name)}
-                text={state.text.text}
-              />
-            ) : (
-              <MessageMyChat key={state.type} text={state.text.text} />
-            )
+            <MessageChat
+              key={state.type}
+              name={String(state.user.name)}
+              text={state.text.text}
+              my={state.user.id === dataUser.UserData.appUser ? true : false}
+            />
           ) : (
             <MessageSystem
               name={String(state.user.name)}

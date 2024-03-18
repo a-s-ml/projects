@@ -3,7 +3,6 @@ export * from './lib/SendPanel';
 export * from './lib/ChatPanel';
 export * from './lib/ActionHeaderChatPanel';
 export * from './lib/HeaderChatPanel';
-export * from './lib/MessageMyChat';
 export * from './lib/Search';
 export * from './lib/Contact';
 export * from './lib/ContactMy';

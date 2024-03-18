@@ -14,7 +14,7 @@ export function MessageSystem({
   return (
     <div className="flex justify-center mb-4">
       <div className="rounded py-2 px-4">
-        <p className="text-xs text-[var(--tg-theme-accent-text-color)]">
+        <p className="text-xs text-center text-[var(--tg-theme-accent-text-color)]">
           Пользователь {name} {action} к чату {chat}. {size} онлайн
         </p>
       </div>

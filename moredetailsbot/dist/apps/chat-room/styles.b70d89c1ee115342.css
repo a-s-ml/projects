@@ -410,8 +410,6 @@ video {
   flex-direction: column;
 }.items-center {
   align-items: center;
-}.justify-end {
-  justify-content: flex-end;
 }.justify-center {
   justify-content: center;
 }.justify-between {
@@ -470,6 +468,8 @@ video {
   padding-top: 1rem;
 }.text-left {
   text-align: left;
+}.text-center {
+  text-align: center;
 }.text-right {
   text-align: right;
 }.text-sm {
