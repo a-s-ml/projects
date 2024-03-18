@@ -24,16 +24,16 @@ const textChat = {
 
 const videoChatMaster = {
   img: '2024-03-18_23-35-47.png',
-  name: 'Антон',
-  time: '18.03.24',
-  lastMessage: 'Видео стриммер',
+  name: 'Видео стриммер',
+  time: '19.03.24',
+  lastMessage: '...',
 };
 
 const videoChatGuest = {
   img: '2024-03-18_23-35-23.png',
-  name: 'Антон',
-  time: '18.03.24',
-  lastMessage: 'Видео гость',
+  name: 'Видео гость',
+  time: '19.03.24',
+  lastMessage: '...',
 };
 
 const videoChatT = {
@@ -81,7 +81,7 @@ export const Chat = ({ user }: ChatProps) => {
     dispatch(typeChatRoom('openVideoRoomT'));
     dispatch(setChatRoomChatId(10));
     dispatch(showChatRoomSlide(true));
-    joinChat({ chat: 11, user: user.appUser });
+    joinChat({ chat: 12, user: user.appUser });
   };
 
   return (
