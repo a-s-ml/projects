@@ -1,8 +1,8 @@
 import ChatPanel from 'libs/components/src/lib/ChatPanel';
 import { useCallback, useEffect, useState } from 'react';
-import { useSocket } from '../context/SocketProvider';
+import { useSocket } from '../../context/SocketProvider';
 import ReactPlayer from 'react-player';
-import peer from '../context/peer';
+import peer from '../../context/peer';
 import { useChatRoomSelector } from '@store/chat-room';
 import { selectChatRoomChatId, selectdataChatRoomData } from '@slice/chat-room';
 
@@ -10,10 +10,11 @@ export interface ChatRoomProps {
   accessToken: string;
 }
 
-export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
+export const VideoRoomT = ({ accessToken }: ChatRoomProps) => {
   const chatid = useChatRoomSelector(selectChatRoomChatId);
   const dataUser = useChatRoomSelector(selectdataChatRoomData);
   const socket = useSocket(accessToken);
+  const [states, setState] = useState<Event[]>([]);
 
   const [remoteSocketId, setRemoteSocketId] = useState(null);
   const [myStream, setMyStream] = useState<MediaStream>();
@@ -99,26 +100,16 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
   }, []);
 
   useEffect(() => {
-    socket.on('user:joined', handleUserJoined);
-    socket.on('incomming:call', handleIncommingCall);
-    socket.on('call:accepted', handleCallAccepted);
-    socket.on('peer:nego:needed', handleNegoNeedIncomming);
-    socket.on('peer:nego:final', handleNegoNeedFinal);
+    const listener = (args: Event) => {
+      setState((prevState) => [...prevState, args]);
+    };
+    socket.on('chat_updated', listener);
 
     return () => {
-      socket.off('user:joined', handleUserJoined);
-      socket.off('incomming:call', handleIncommingCall);
-      socket.off('call:accepted', handleCallAccepted);
-      socket.off('peer:nego:needed', handleNegoNeedIncomming);
-      socket.off('peer:nego:final', handleNegoNeedFinal);
+      socket.off('chat_updated', listener);
     };
   }, [
-    socket,
-    handleUserJoined,
-    handleIncommingCall,
-    handleCallAccepted,
-    handleNegoNeedIncomming,
-    handleNegoNeedFinal,
+    socket
   ]);
 
   const join = (email: string, room: number) => {
@@ -128,45 +119,13 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
   return (
     <ChatPanel>
       <div>
-        <h1>Room Page</h1>
-        {dataUser && (
-          <button
-            className="m-4 p-2 bg-slate-300 text-blue-800"
-            onClick={() => join(String(dataUser.UserData.user.id), chatid)}
-          >
-            Click JOIN
-          </button>
-        )}
         <h4>{remoteSocketId ? 'Connected' : 'No one in room'}</h4>
         {myStream && <button onClick={sendStreams}>Send Stream</button>}
         {remoteSocketId && <button onClick={handleCallUser}>CALL</button>}
-        {myStream && (
-          <>
-            <h1>My Stream</h1>
-            <ReactPlayer
-              playing
-              muted
-              height="100px"
-              width="200px"
-              url={myStream}
-            />
-          </>
-        )}
-        {remoteStream && (
-          <>
-            <h1>Remote Stream</h1>
-            <ReactPlayer
-              playing
-              muted
-              height="100px"
-              width="200px"
-              url={remoteStream}
-            />
-          </>
-        )}
+
       </div>
     </ChatPanel>
   );
 };
 
-export default VideoRoom;
+export default VideoRoomT;

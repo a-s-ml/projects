@@ -60,6 +60,7 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
     socket.on('message', listener);
   }, [socket]);
 
+  console.log('socket', socket);
   return (
     <ChatPanel>
       {isLoading && <Preloader />}

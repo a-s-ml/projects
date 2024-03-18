@@ -11,7 +11,7 @@ import {
   typeChatRoom,
 } from '@slice/chat-room';
 import { UserData } from '@types';
-import VideoRoom from './VideoRoom';
+import VideoRoom from './videoRoom/VideoRoom';
 
 const textChat = {
   img: 'photo2024-02-11_17-14-16.jpg',
