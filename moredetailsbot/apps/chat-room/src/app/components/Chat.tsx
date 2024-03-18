@@ -28,6 +28,13 @@ const videoChat = {
   lastMessage: 'video',
 };
 
+const videoChatT = {
+  img: 'photo2024-02-11_17-14-16.jpg',
+  name: 'Антон',
+  time: '19.03.24',
+  lastMessage: 'videoT',
+};
+
 type ChatProps = {
   user: UserData;
 };
@@ -56,7 +63,7 @@ export const Chat = ({ user }: ChatProps) => {
   };
 
   const openVideoRoomT = () => {
-    dispatch(typeChatRoom('openVideoRoom'));
+    dispatch(typeChatRoom('openVideoRoomT'));
     dispatch(setChatRoomChatId(10));
     dispatch(showChatRoomSlide(true));
     joinChat({ chat: 11, user: user.appUser });
@@ -84,10 +91,10 @@ export const Chat = ({ user }: ChatProps) => {
         />
         <Contact
           handelClick={openVideoRoomT}
-          img={videoChat.img}
-          name={videoChat.name}
-          time={videoChat.time}
-          lastMessage={videoChat.lastMessage}
+          img={videoChatT.img}
+          name={videoChatT.name}
+          time={videoChatT.time}
+          lastMessage={videoChatT.lastMessage}
         />
       </ul>
       <SlidePage slide={slide}>
