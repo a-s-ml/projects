@@ -12,6 +12,7 @@ import {
 } from '@slice/chat-room';
 import { UserData } from '@types';
 import VideoRoom from './videoRoom/VideoRoom';
+import VideoRoomT from './videoRoom/VideoRoomT';
 
 const textChat = {
   img: 'photo2024-02-11_17-14-16.jpg',
@@ -80,7 +81,7 @@ export const Chat = ({ user }: ChatProps) => {
           <ChatRoom accessToken={data.accessToken} />
         )}
         {type == 'openVideoRoom' && data && (
-          <VideoRoom accessToken={data.accessToken} />
+          <VideoRoomT accessToken={data.accessToken} />
         )}
       </SlidePage>
     </>
