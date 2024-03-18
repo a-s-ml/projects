@@ -2,11 +2,11 @@ import { MessageSystem, Preloader, SendPanel } from '@components';
 import { selectChatRoomChatId, selectdataChatRoomData } from '@slice/chat-room';
 import { useChatRoomSelector } from '@store/chat-room';
 import ChatPanel from 'libs/components/src/lib/ChatPanel';
-import MessageChat from 'libs/components/src/lib/MessageChat';
 import { useEffect, useRef, useState } from 'react';
 import { useSocket } from '../context/SocketProvider';
 import { Event } from '@types';
 import { useGetMessageQuery } from '@api';
+import Message from './Message';
 
 export interface ChatRoomProps {
   accessToken: string;
@@ -62,22 +62,20 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
       {dataUser &&
         successChatmessages &&
         chatmessages.map((chatmessage) => (
-          <MessageChat
+          <Message
             key={chatmessage.id}
-            name={String(chatmessage.user)}
+            id={chatmessage.id}
             text={chatmessage.text}
-            my={chatmessage.user === dataUser.UserData.appUser ? true : false}
           />
         ))}
       {states &&
         dataUser &&
         states.map((state) =>
           state.type === 'message' && state.text ? (
-            <MessageChat
+            <Message
               key={state.type}
-              name={String(state.user.name)}
+              id={state.user.id}
               text={state.text.text}
-              my={state.user.id === dataUser.UserData.appUser ? true : false}
             />
           ) : (
             <MessageSystem
