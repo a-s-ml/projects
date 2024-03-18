@@ -155,10 +155,11 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
           ) : (
             <p className="text-[var(--tg-theme-hint-color)]">Нет зрителей</p>
           )}
+
+          {remoteSocketId && (
+            <SimpleButton text={'Начать трансляцию'} click={handleCallUser} />
+          )}
         </div>
-        {remoteSocketId && (
-          <SimpleButton text={'Начать трансляцию'} click={handleCallUser} />
-        )}
         {myStream && (
           <>
             <ReactPlayer

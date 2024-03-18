@@ -112,8 +112,16 @@ export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
   return (
     <ChatPanel>
       <div>
-        <h1>Комната гостя</h1>
-        <h4>{remoteSocketId ? 'Connected' : 'No one in room'}</h4>
+      <div className="text-center p-5">
+          <h1 className="text-[var(--tg-theme-accent-text-color)] p-2">
+            Комната гостя
+          </h1>
+          {remoteSocketId ? (
+            <p className="text-[var(--tg-theme-hint-color)]">Идёт трансляция</p>
+          ) : (
+            <p className="text-[var(--tg-theme-hint-color)]">Трансляция ещё не началась</p>
+          )}
+        </div>
         {remoteStream && (
           <>
             <ReactPlayer
