@@ -53,11 +53,23 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
     [socket]
   );
 
+  const sendStreams = useCallback(() => {
+    console.log('sendStreams');
+    if (myStream) {
+      for (const track of myStream.getTracks()) {
+        peer.peer.addTrack(track, myStream);
+      }
+    }
+  }, [myStream]);
+
   const handleCallAccepted = useCallback(
     ({ from, ans }: any) => {
+      console.log('handleCallAccepted');
       peer.setLocalDescription(ans);
+      console.log('Call Accepted!');
+      sendStreams();
     },
-    []
+    [sendStreams]
   );
 
   const handleNegoNeeded = useCallback(async () => {
@@ -135,6 +147,7 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
       <div>
         <h1>Стриммер</h1>
         <h4>{remoteSocketId ? 'Connected' : 'No one in room'}</h4>
+        {myStream && <button onClick={sendStreams}>Send Stream</button>}<p>///</p>
         {remoteSocketId && <button onClick={handleCallUser}>CALL</button>}
         {myStream && (
           <>
