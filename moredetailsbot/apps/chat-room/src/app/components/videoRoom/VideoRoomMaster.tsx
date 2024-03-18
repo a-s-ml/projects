@@ -160,8 +160,8 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
             <ReactPlayer
               playing
               muted
-              height="100px"
-              width="200px"
+              height="auto"
+              width="100%"
               url={myStream}
             />
           </>

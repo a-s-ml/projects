@@ -17,11 +17,9 @@ export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
   const [states, setState] = useState<Event[]>([]);
 
   const [remoteSocketId, setRemoteSocketId] = useState(null);
-  const [myStream, setMyStream] = useState<MediaStream>();
   const [remoteStream, setRemoteStream] = useState<MediaStream>();
 
   console.log('remoteSocketId', remoteSocketId);
-  console.log('myStream', myStream);
   console.log('remoteStream', remoteStream);
 
   const handleUserJoined = useCallback(({ email, id }: any) => {
@@ -39,11 +37,6 @@ export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
     async ({ from, offer }: any) => {
       console.log('handleIncommingCall');
       setRemoteSocketId(from);
-      const stream = await navigator.mediaDevices.getUserMedia({
-        audio: true,
-        video: true,
-      });
-      setMyStream(stream);
       console.log(`Incoming Call`, from, offer);
       const ans: RTCSessionDescriptionInit = await peer.getAnswer(offer);
       socket.emit('call:accepted', { to: from, ans });
@@ -142,8 +135,8 @@ export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
             <ReactPlayer
               playing
               muted
-              height="100px"
-              width="200px"
+              height="auto"
+              width="100%"
               url={remoteStream}
             />
           </>
