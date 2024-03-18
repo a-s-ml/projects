@@ -1,14 +1,18 @@
 import ChatPanel from 'libs/components/src/lib/ChatPanel';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSocket } from '../context/SocketProvider';
 import ReactPlayer from 'react-player';
 import peer from '../context/peer';
+import { useChatRoomSelector } from '@store/chat-room';
+import { selectChatRoomChatId, selectdataChatRoomData } from '@slice/chat-room';
 
 export interface ChatRoomProps {
   accessToken: string;
 }
 
 export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
+  const chatid = useChatRoomSelector(selectChatRoomChatId);
+  const dataUser = useChatRoomSelector(selectdataChatRoomData);
   const socket = useSocket(accessToken);
 
   const [remoteSocketId, setRemoteSocketId] = useState(null);
@@ -125,12 +129,14 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
     <ChatPanel>
       <div>
         <h1>Room Page</h1>
-        <button
-          className="p-5 bg-slate-300 text-blue-800"
-          onClick={() => join('sdfs', 11)}
-        >
-          Click JOIN
-        </button>
+        {dataUser && (
+          <button
+            className="m-4 p-2 bg-slate-300 text-blue-800"
+            onClick={() => join(String(dataUser.UserData.user.id), chatid)}
+          >
+            Click JOIN
+          </button>
+        )}
         <h4>{remoteSocketId ? 'Connected' : 'No one in room'}</h4>
         {myStream && <button onClick={sendStreams}>Send Stream</button>}
         {remoteSocketId && <button onClick={handleCallUser}>CALL</button>}

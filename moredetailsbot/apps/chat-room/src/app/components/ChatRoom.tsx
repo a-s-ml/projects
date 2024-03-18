@@ -19,7 +19,6 @@ export interface ChatRoomProps {
 
 export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
   const bottomRef = useRef<null | HTMLDivElement>(null);
-  const dispatch = useChatRoomDispatch();
   const chatid = useChatRoomSelector(selectChatRoomChatId);
   const dataUser = useChatRoomSelector(selectdataChatRoomData);
   const {
