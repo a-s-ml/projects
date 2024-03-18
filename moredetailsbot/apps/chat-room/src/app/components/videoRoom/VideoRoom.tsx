@@ -18,7 +18,7 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
 
   const [remoteSocketId, setRemoteSocketId] = useState(null);
   const [myStream, setMyStream] = useState<MediaStream>();
-  const [remoteStream, setRemoteStream] = useState();
+  const [remoteStream, setRemoteStream] = useState<MediaStream>();
 
   const handleUserJoined = useCallback(({ email, id }: any) => {
     console.log(`Email ${email} joined room`);
@@ -27,7 +27,7 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
 
   const handleCallUser = useCallback(async () => {
     console.log('handleCallUser');
-    const stream = await navigator.mediaDevices.getUserMedia({
+    const stream: MediaStream = await navigator.mediaDevices.getUserMedia({
       audio: true,
       video: true,
     });
@@ -46,7 +46,7 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
       });
       setMyStream(stream);
       console.log(`Incoming Call`, from, offer);
-      const ans = await peer.getAnswer(offer);
+      const ans: RTCSessionDescriptionInit = await peer.getAnswer(offer);
       socket.emit('call:accepted', { to: from, ans });
     },
     [socket]
@@ -87,16 +87,23 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
   const handleNegoNeedIncomming = useCallback(
     async ({ from, offer }: any) => {
       console.log('handleNegoNeedIncomming');
-      const ans = await peer.getAnswer(offer);
+      const ans: RTCSessionDescriptionInit = await peer.getAnswer(offer);
       socket.emit('peer:nego:done', { to: from, ans });
     },
     [socket]
   );
 
-  const handleNegoNeedFinal = useCallback(async ({ ans }: any) => {
-    console.log('handleNegoNeedFinal');
-    await peer.setLocalDescription(ans);
-  }, []);
+  type handleNegoNeedFinalType = {
+    ans: RTCSessionDescriptionInit;
+  };
+
+  const handleNegoNeedFinal = useCallback(
+    async ({ ans }: handleNegoNeedFinalType) => {
+      console.log('handleNegoNeedFinal');
+      await peer.setLocalDescription(ans);
+    },
+    []
+  );
 
   useEffect(() => {
     peer.peer.addEventListener('track', async (ev: any) => {
