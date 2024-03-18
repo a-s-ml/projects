@@ -26,6 +26,7 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
   }, []);
 
   const handleCallUser = useCallback(async () => {
+    console.log('handleCallUser');
     const stream = await navigator.mediaDevices.getUserMedia({
       audio: true,
       video: true,
@@ -37,6 +38,7 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
 
   const handleIncommingCall = useCallback(
     async ({ from, offer }: any) => {
+      console.log('handleIncommingCall');
       setRemoteSocketId(from);
       const stream = await navigator.mediaDevices.getUserMedia({
         audio: true,
@@ -51,6 +53,7 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
   );
 
   const sendStreams = useCallback(() => {
+    console.log('sendStreams');
     if (myStream) {
       for (const track of myStream.getTracks()) {
         peer.peer.addTrack(track, myStream);
@@ -60,6 +63,7 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
 
   const handleCallAccepted = useCallback(
     ({ from, ans }: any) => {
+      console.log('handleCallAccepted');
       peer.setLocalDescription(ans);
       console.log('Call Accepted!');
       sendStreams();
@@ -68,6 +72,7 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
   );
 
   const handleNegoNeeded = useCallback(async () => {
+    console.log('handleNegoNeeded');
     const offer = await peer.getOffer();
     socket.emit('peer:nego:needed', { offer, to: remoteSocketId });
   }, [remoteSocketId, socket]);
@@ -81,6 +86,7 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
 
   const handleNegoNeedIncomming = useCallback(
     async ({ from, offer }: any) => {
+      console.log('handleNegoNeedIncomming');
       const ans = await peer.getAnswer(offer);
       socket.emit('peer:nego:done', { to: from, ans });
     },
@@ -88,6 +94,7 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
   );
 
   const handleNegoNeedFinal = useCallback(async ({ ans }: any) => {
+    console.log('handleNegoNeedFinal');
     await peer.setLocalDescription(ans);
   }, []);
 
