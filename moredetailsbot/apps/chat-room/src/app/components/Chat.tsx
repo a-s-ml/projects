@@ -23,7 +23,7 @@ const textChat = {
 };
 
 const videoChatMaster = {
-  img: '2024-03-18_23-35-47.png',
+  img: '2024-03-19_00-48-51.png',
   name: 'Видео стриммер',
   time: '19.03.24',
   lastMessage: '...',

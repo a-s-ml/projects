@@ -22,16 +22,9 @@ export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
   console.log('remoteSocketId', remoteSocketId);
   console.log('remoteStream', remoteStream);
 
-  const handleUserJoined = useCallback(({ email, id }: any) => {
-    console.log(`Email ${email} joined room`);
+  const handleUserJoined = useCallback(({ id }: any) => {
     setRemoteSocketId(id);
   }, []);
-
-  const handleCallUser = useCallback(async () => {
-    console.log('handleCallUser');
-    const offer = await peer.getOffer();
-    socket.emit('user:call', { to: remoteSocketId, offer });
-  }, [remoteSocketId, socket]);
 
   const handleIncommingCall = useCallback(
     async ({ from, offer }: any) => {
@@ -79,6 +72,7 @@ export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
   );
 
   useEffect(() => {
+    socket.emit('room:join', chatid);
     peer.peer.addEventListener('track', async (ev: any) => {
       const remoteStream = ev.streams;
       console.log('GOT TRACKS!!');
@@ -111,24 +105,15 @@ export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
     handleNegoNeedFinal,
   ]);
 
-  const join = (email: string, room: number) => {
-    socket.emit('room:join', { email, room });
+  const join = (room: number) => {
+    socket.emit('room:join', room);
   };
 
   return (
     <ChatPanel>
       <div>
-        <h1>Room Page</h1>
-        {dataUser && (
-          <button
-            className="m-4 p-2 bg-slate-300 text-blue-800"
-            onClick={() => join(String(dataUser.UserData.user.id), chatid)}
-          >
-            Click JOIN
-          </button>
-        )}
+        <h1>Гость</h1>
         <h4>{remoteSocketId ? 'Connected' : 'No one in room'}</h4>
-        {remoteSocketId && <button onClick={handleCallUser}>CALL</button>}
         {remoteStream && (
           <>
             <h1>Remote Stream</h1>

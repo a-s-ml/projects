@@ -22,8 +22,7 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
   console.log('remoteSocketId', remoteSocketId);
   console.log('myStream', myStream);
 
-  const handleUserJoined = useCallback(({ email, id }: any) => {
-    console.log(`Email ${email} joined room`);
+  const handleUserJoined = useCallback(({ id }: any) => {
     setRemoteSocketId(id);
   }, []);
 
@@ -108,6 +107,10 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
   );
 
   useEffect(() => {
+    socket.emit('room:join', chatid);
+  }, []);
+
+  useEffect(() => {
     const listener = (args: Event) => {
       setState((prevState) => [...prevState, args]);
       console.log('args', args);
@@ -142,15 +145,7 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
   return (
     <ChatPanel>
       <div>
-        <h1>Room Page</h1>
-        {dataUser && (
-          <button
-            className="m-4 p-2 bg-slate-300 text-blue-800"
-            onClick={() => join(String(dataUser.UserData.user.id), chatid)}
-          >
-            Click JOIN
-          </button>
-        )}
+        <h1>Стриммер</h1>
         <h4>{remoteSocketId ? 'Connected' : 'No one in room'}</h4>
         {myStream && <button onClick={sendStreams}>Send Stream</button>}
         {remoteSocketId && <button onClick={handleCallUser}>CALL</button>}
