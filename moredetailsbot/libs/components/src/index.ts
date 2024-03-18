@@ -9,3 +9,4 @@ export * from './lib/ContactMy';
 export * from './lib/SlidePage';
 export * from './lib/MessageSystem';
 export * from './lib/Preloader/Preloader';
+export * from './lib/SimpleButton';

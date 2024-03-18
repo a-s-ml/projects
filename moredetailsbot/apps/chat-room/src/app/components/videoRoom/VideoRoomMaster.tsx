@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player';
 import peer from '../../context/peer';
 import { useChatRoomSelector } from '@store/chat-room';
 import { selectChatRoomChatId, selectdataChatRoomData } from '@slice/chat-room';
+import { SimpleButton } from '@components';
 
 export interface VideoRoomMasterProps {
   accessToken: string;
@@ -145,13 +146,21 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
   return (
     <ChatPanel>
       <div>
-        <h1>Стриммер</h1>
-        <h4>{remoteSocketId ? 'Connected' : 'No one in room'}</h4>
-        {myStream && <button onClick={sendStreams}>Send Stream</button>}<p>///</p>
-        {remoteSocketId && <button onClick={handleCallUser}>CALL</button>}
+        <div className="text-center p-5">
+          <h1 className="text-[var(--tg-theme-accent-text-color)] p-2">
+            Комната стриммера
+          </h1>
+          {remoteSocketId ? (
+            <p className="text-[var(--tg-theme-hint-color)]">Есть зрители</p>
+          ) : (
+            <p className="text-[var(--tg-theme-hint-color)]">Нет зрителей</p>
+          )}
+        </div>
+        {remoteSocketId && (
+          <SimpleButton text={'Начать трансляцию'} click={handleCallUser} />
+        )}
         {myStream && (
           <>
-            <h1>My Stream</h1>
             <ReactPlayer
               playing
               muted

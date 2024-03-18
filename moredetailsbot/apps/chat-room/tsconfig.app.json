@@ -26,5 +26,5 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "../libs/src/window.d.ts"
-  ]
+, "../../libs/components/src/lib/SimpleButton.tsx"  ]
 }

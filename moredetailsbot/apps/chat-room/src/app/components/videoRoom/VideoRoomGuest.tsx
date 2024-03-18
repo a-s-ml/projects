@@ -112,11 +112,10 @@ export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
   return (
     <ChatPanel>
       <div>
-        <h1>Гость</h1>
+        <h1>Комната гостя</h1>
         <h4>{remoteSocketId ? 'Connected' : 'No one in room'}</h4>
         {remoteStream && (
           <>
-            <h1>Remote Stream</h1>
             <ReactPlayer
               playing
               muted
