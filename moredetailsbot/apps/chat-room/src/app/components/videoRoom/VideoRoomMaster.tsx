@@ -53,6 +53,13 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
     [socket]
   );
 
+  const handleCallAccepted = useCallback(
+    ({ from, ans }: any) => {
+      peer.setLocalDescription(ans);
+    },
+    []
+  );
+
   const handleNegoNeeded = useCallback(async () => {
     console.log('handleNegoNeeded');
     const offer = await peer.getOffer();
@@ -99,12 +106,14 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
     socket.on('chat_updated', listener);
     socket.on('user:joined', handleUserJoined);
     socket.on('incomming:call', handleIncommingCall);
+    socket.on('call:accepted', handleCallAccepted);
     socket.on('peer:nego:needed', handleNegoNeedIncomming);
     socket.on('peer:nego:final', handleNegoNeedFinal);
 
     return () => {
       socket.off('user:joined', handleUserJoined);
       socket.off('incomming:call', handleIncommingCall);
+      socket.off('call:accepted', handleCallAccepted);
       socket.off('peer:nego:needed', handleNegoNeedIncomming);
       socket.off('peer:nego:final', handleNegoNeedFinal);
     };
@@ -112,6 +121,7 @@ export const VideoRoomMaster = ({ accessToken }: VideoRoomMasterProps) => {
     socket,
     handleUserJoined,
     handleIncommingCall,
+    handleCallAccepted,
     handleNegoNeedIncomming,
     handleNegoNeedFinal,
   ]);
