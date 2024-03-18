@@ -64,7 +64,7 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
         chatmessages.map((chatmessage) => (
           <Message
             key={chatmessage.id}
-            id={chatmessage.id}
+            id={chatmessage.user}
             text={chatmessage.text}
           />
         ))}
