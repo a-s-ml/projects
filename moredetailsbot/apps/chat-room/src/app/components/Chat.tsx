@@ -98,13 +98,13 @@ export const Chat = ({ user }: ChatProps) => {
         />
       </ul>
       <SlidePage slide={slide}>
-        {type == 'openChatRoom' && data && (
+        {type === 'openChatRoom' && data && (
           <ChatRoom accessToken={data.accessToken} />
         )}
-        {type == 'openVideoRoom' && data && (
+        {type === 'openVideoRoom' && data && (
           <VideoRoom accessToken={data.accessToken} />
         )}
-        {type == 'openVideoRoomT' && data && (
+        {type === 'openVideoRoomT' && data && (
           <VideoRoomT accessToken={data.accessToken} />
         )}
       </SlidePage>
