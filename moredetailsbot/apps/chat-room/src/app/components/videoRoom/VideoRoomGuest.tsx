@@ -6,11 +6,11 @@ import peer from '../../context/peer';
 import { useChatRoomSelector } from '@store/chat-room';
 import { selectChatRoomChatId, selectdataChatRoomData } from '@slice/chat-room';
 
-export interface ChatRoomProps {
+export interface VideoRoomGuestProps {
   accessToken: string;
 }
 
-export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
+export const VideoRoomGuest = ({ accessToken }: VideoRoomGuestProps) => {
   const chatid = useChatRoomSelector(selectChatRoomChatId);
   const dataUser = useChatRoomSelector(selectdataChatRoomData);
   const socket = useSocket(accessToken);
@@ -193,4 +193,4 @@ export const VideoRoom = ({ accessToken }: ChatRoomProps) => {
   );
 };
 
-export default VideoRoom;
+export default VideoRoomGuest;

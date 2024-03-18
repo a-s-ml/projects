@@ -11,8 +11,9 @@ import {
   typeChatRoom,
 } from '@slice/chat-room';
 import { UserData } from '@types';
-import VideoRoom from './videoRoom/VideoRoom';
+import { VideoRoomMaster } from './videoRoom/VideoRoomMaster';
 import VideoRoomT from './videoRoom/VideoRoomT';
+import VideoRoomGuest from './videoRoom/VideoRoomGuest';
 
 const textChat = {
   img: 'photo2024-02-11_17-14-16.jpg',
@@ -21,11 +22,18 @@ const textChat = {
   lastMessage: 'text',
 };
 
-const videoChat = {
-  img: 'photo2024-02-11_17-14-16.jpg',
+const videoChatMaster = {
+  img: '2024-03-18_23-35-47.png',
   name: 'Антон',
   time: '18.03.24',
-  lastMessage: 'video',
+  lastMessage: 'Видео стриммер',
+};
+
+const videoChatGuest = {
+  img: '2024-03-18_23-35-23.png',
+  name: 'Антон',
+  time: '18.03.24',
+  lastMessage: 'Видео гость',
 };
 
 const videoChatT = {
@@ -55,8 +63,15 @@ export const Chat = ({ user }: ChatProps) => {
     joinChat({ chat: 10, user: user.appUser });
   };
 
-  const openVideoRoom = () => {
-    dispatch(typeChatRoom('openVideoRoom'));
+  const openVideoRoomMaster = () => {
+    dispatch(typeChatRoom('openVideoRoomMaster'));
+    dispatch(setChatRoomChatId(10));
+    dispatch(showChatRoomSlide(true));
+    joinChat({ chat: 11, user: user.appUser });
+  };
+
+  const openVideoRoomGuest = () => {
+    dispatch(typeChatRoom('openVideoRoomGuest'));
     dispatch(setChatRoomChatId(10));
     dispatch(showChatRoomSlide(true));
     joinChat({ chat: 11, user: user.appUser });
@@ -83,11 +98,18 @@ export const Chat = ({ user }: ChatProps) => {
           lastMessage={textChat.lastMessage}
         />
         <Contact
-          handelClick={openVideoRoom}
-          img={videoChat.img}
-          name={videoChat.name}
-          time={videoChat.time}
-          lastMessage={videoChat.lastMessage}
+          handelClick={openVideoRoomMaster}
+          img={videoChatMaster.img}
+          name={videoChatMaster.name}
+          time={videoChatMaster.time}
+          lastMessage={videoChatMaster.lastMessage}
+        />
+        <Contact
+          handelClick={openVideoRoomGuest}
+          img={videoChatGuest.img}
+          name={videoChatGuest.name}
+          time={videoChatGuest.time}
+          lastMessage={videoChatGuest.lastMessage}
         />
         <Contact
           handelClick={openVideoRoomT}
@@ -101,8 +123,11 @@ export const Chat = ({ user }: ChatProps) => {
         {type === 'openChatRoom' && data && (
           <ChatRoom accessToken={data.accessToken} />
         )}
-        {type === 'openVideoRoom' && data && (
-          <VideoRoom accessToken={data.accessToken} />
+        {type === 'openVideoRoomMaster' && data && (
+          <VideoRoomMaster accessToken={data.accessToken} />
+        )}
+        {type === 'openVideoRoomGuest' && data && (
+          <VideoRoomGuest accessToken={data.accessToken} />
         )}
         {type === 'openVideoRoomT' && data && (
           <VideoRoomT accessToken={data.accessToken} />

@@ -27,6 +27,7 @@ export type EventChat = {
 };
 
 export type Event = {
+  remoteSocketId: string;
   size: number;
   type: string;
   user: EventUser;
