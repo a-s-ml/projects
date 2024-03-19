@@ -15,6 +15,7 @@ export function SendPanel({
 }: SendPanelProps) {
   const MIN_TEXTAREA_HEIGHT = 16;
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const allRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (textareaRef.current) {
@@ -25,8 +26,18 @@ export function SendPanel({
       )}px`;
     }
   }, [message]);
+
+  const onfocuspadding = () => {
+    if (textareaRef.current) {
+      textareaRef.current.style.paddingBottom = '20px';
+    }
+  };
+
   return (
-    <div className="w-full absolute bt-2 b-[--tg-theme-hint-color] bottom-0 pt-4 pb-6 flex items-center bg-[var(--tg-theme-bg-color)]">
+    <div
+      ref={allRef}
+      className="w-full absolute bt-2 b-[--tg-theme-hint-color] bottom-0 pt-4 pb-6 flex items-center bg-[var(--tg-theme-bg-color)]"
+    >
       <textarea
         className="w-2/3 border rounded px-2 py-2 bg-[--tg-theme-hint-color] text-"
         ref={textareaRef}
@@ -36,6 +47,7 @@ export function SendPanel({
         }}
         value={message}
         onChange={handleChange}
+        onFocus={onfocuspadding}
       />
       <div className="px-2">
         <FaceSmileIcon className="h-6 w-6 text-[var(--tg-theme-text-color)] cursor-pointer" />
