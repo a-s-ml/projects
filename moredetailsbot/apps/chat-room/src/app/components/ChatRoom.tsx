@@ -31,7 +31,7 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setMessage(e.target.value);
 
-  const handleSubmit = (message: string) => {
+  const handleSubmit = () => {
     message.trim();
     if (message != '') {
       socket.emit('message', message);

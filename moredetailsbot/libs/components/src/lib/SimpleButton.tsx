@@ -1,4 +1,5 @@
 import { buttonIconConst } from '@const';
+import { classNames } from '@functions';
 
 type SimpleButtonProps = {
   content?: string;
@@ -13,7 +14,10 @@ export const SimpleButton = ({ content, icon, click }: SimpleButtonProps) => {
     <button
       onClick={click}
       type="button"
-      className="inline-flex items-center gap-x-2 rounded-md bg-[var(--tg-theme-accent-text-color)] px-3.5 py-2.5 text-sm font-semibold text-[var(--tg-theme-accent-text-color)] shadow-sm hover:bg-[var(--tg-theme-accent-text-color)]"
+      className={classNames(
+        content && icon ? 'gap-x-2 ' : '',
+        'inline-flex items-center rounded-md bg-[var(--tg-theme-accent-text-color)] px-3.5 py-2.5 text-sm font-semibold text-[var(--tg-theme-accent-text-color)] shadow-sm hover:bg-[var(--tg-theme-accent-text-color)]'
+      )}
     >
       {icon && (
         <cur.component
