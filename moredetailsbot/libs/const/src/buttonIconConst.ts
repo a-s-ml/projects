@@ -1,4 +1,4 @@
-import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
+import { ArrowRightCircleIcon } from '@heroicons/react/24/outline';
 import { ForwardRefExoticComponent, SVGProps } from 'react';
 
 interface IButtonIconConst {
@@ -9,6 +9,6 @@ interface IButtonIconConst {
 export const buttonIconConst: IButtonIconConst[] = [
   {
     name: 'send',
-    component: ArrowTopRightOnSquareIcon,
+    component: ArrowRightCircleIcon,
   },
 ];
