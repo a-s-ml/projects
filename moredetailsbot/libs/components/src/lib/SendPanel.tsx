@@ -28,7 +28,6 @@ export function SendPanel({
         <FaceSmileIcon className="h-6 w-6 text-[var(--tg-theme-text-color)] cursor-pointer" />
       </div>
       <SimpleButton
-        content={''}
         icon={'send'}
         click={() => handleSubmit(message)}
       ></SimpleButton>
