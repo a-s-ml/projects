@@ -29,7 +29,7 @@ export function SendPanel({
 
   const onfocuspadding = () => {
     if (textareaRef.current) {
-      textareaRef.current.style.marginBottom = '20px';
+      textareaRef.current.style.marginBottom = '120px';
     }
   };
 
