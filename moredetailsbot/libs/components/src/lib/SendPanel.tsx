@@ -13,7 +13,7 @@ export function SendPanel({
   handleChange,
   message,
 }: SendPanelProps) {
-  const MIN_TEXTAREA_HEIGHT = 16;
+  const MIN_TEXTAREA_HEIGHT = 32;
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const allRef = useRef<HTMLDivElement>(null);
 
@@ -29,7 +29,7 @@ export function SendPanel({
 
   const onfocuspadding = () => {
     if (textareaRef.current) {
-      textareaRef.current.style.paddingBottom = '20px';
+      textareaRef.current.style.marginBottom = '20px';
     }
   };
 
