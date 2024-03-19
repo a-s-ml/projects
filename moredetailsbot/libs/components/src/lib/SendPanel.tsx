@@ -1,11 +1,14 @@
-import { FaceSmileIcon } from '@heroicons/react/24/outline';
-import { useLayoutEffect, useRef } from 'react';
+import {
+  ArrowRightCircleIcon,
+  FaceSmileIcon,
+} from '@heroicons/react/24/outline';
+import { ChangeEventHandler, useLayoutEffect, useRef } from 'react';
 import SimpleButton from './SimpleButton';
 
 type SendPanelProps = {
   message: string;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: (message: string) => void;
+  handleChange: ChangeEventHandler<HTMLTextAreaElement>;
+  handleSubmit: () => void;
 };
 
 export function SendPanel({
@@ -35,14 +38,14 @@ export function SendPanel({
           resize: 'none',
         }}
         value={message}
-        onChange={() => handleChange}
+        onChange={handleChange}
       />
       <div className="px-2">
         <FaceSmileIcon className="h-6 w-6 text-[var(--tg-theme-text-color)] cursor-pointer" />
       </div>
       <SimpleButton
         icon={'send'}
-        click={() => handleSubmit(message)}
+        click={handleSubmit}
       ></SimpleButton>
     </div>
   );

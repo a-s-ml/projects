@@ -28,7 +28,7 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
 
   const [message, setMessage] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
     setMessage(e.target.value);
 
   const handleSubmit = () => {
@@ -86,7 +86,7 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
             />
           )
         )}
-      <div className="pb-4" ref={bottomRef} />
+      <div ref={bottomRef} />
       <SendPanel
         message={message}
         handleChange={handleChange}
