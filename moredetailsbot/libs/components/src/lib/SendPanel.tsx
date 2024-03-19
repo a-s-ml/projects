@@ -3,6 +3,7 @@ import {
   FaceSmileIcon,
 } from '@heroicons/react/24/outline';
 import { ChangeEventHandler } from 'react';
+import SimpleButton from './SimpleButton';
 
 type SendPanelProps = {
   message: string;
@@ -26,9 +27,11 @@ export function SendPanel({
       <div className="px-2">
         <FaceSmileIcon className="h-6 w-6 text-[var(--tg-theme-text-color)] cursor-pointer" />
       </div>
-      <div className="px-4 py-2" onClick={() => handleSubmit(message)}>
-        <ArrowRightCircleIcon className="h-6 w-6 text-[var(--tg-theme-text-color)] cursor-pointer" />
-      </div>
+      <SimpleButton
+        content={'send'}
+        icon={'send'}
+        click={() => handleSubmit(message)}
+      ></SimpleButton>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { classNames } from '@hooks';
+import { classNames } from '@functions';
 
 export interface MessageChatProps {
   my: boolean;

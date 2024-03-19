@@ -1,5 +1,4 @@
 import { useJoinMutation } from '@api';
-import { useBackButton } from '@hooks';
 import ChatRoom from './ChatRoom';
 import { Contact, SlidePage } from '@components';
 import { useChatRoomDispatch, useChatRoomSelector } from '@store/chat-room';
@@ -13,6 +12,7 @@ import {
 import { UserData } from '@types';
 import { VideoRoomMaster } from './videoRoom/VideoRoomMaster';
 import VideoRoomGuest from './videoRoom/VideoRoomGuest';
+import { useBackButton } from '@functions';
 
 const textChat = {
   img: 'photo2024-02-11_17-14-16.jpg',

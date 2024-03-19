@@ -84,6 +84,8 @@ SOFTWARE.
 
 api
 
+const
+
 deepmerge
 MIT
 The MIT License (MIT)
@@ -113,7 +115,7 @@ engine.io-client
 
 engine.io-parser
 
-hooks
+functions
 
 immer
 MIT

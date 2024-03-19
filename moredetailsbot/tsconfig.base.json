@@ -19,7 +19,8 @@
       "user-profile/Module": ["apps/user-profile/src/remote-entry.ts"],
       "@types": ["libs/types/index.ts"],
       "@api": ["libs/api/index.ts"],
-      "@hooks": ["libs/hooks/index.ts"],
+      "@functions": ["libs/functions/index.ts"],
+      "@const": ["libs/const/index.ts"],
       "@components": ["libs/components/src/index.ts"],
       "@store/chat-room": ["apps/chat-room/src/app/store"],
       "@slice/chat-room": ["apps/chat-room/src/app/store/slices/chat-room.slice.ts"]
