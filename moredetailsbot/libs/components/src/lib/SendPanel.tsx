@@ -1,5 +1,6 @@
 import { ChangeEventHandler, useLayoutEffect, useRef } from 'react';
 import SimpleButton from './SimpleButton';
+import { useAautoSizeInput } from '@functions';
 
 type SendPanelProps = {
   message: string;
@@ -13,35 +14,15 @@ export function SendPanel({
   message,
 }: SendPanelProps) {
   const MIN_TEXTAREA_HEIGHT = 20;
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  useLayoutEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = 'inherit';
-      console.log(
-        'scrollHeight ',
-        textareaRef.current.scrollHeight
-      );
-      console.log(
-        'MIN_TEXTAREA_HEIGHT ',
-        MIN_TEXTAREA_HEIGHT
-      );
-      console.log(
-        'math ',
-        Math.max(textareaRef.current.scrollHeight, MIN_TEXTAREA_HEIGHT)
-      );
-      textareaRef.current.style.height = `${Math.max(
-        textareaRef.current.scrollHeight,
-        MIN_TEXTAREA_HEIGHT
-      )}px`;
-    }
-  }, [message]);
+  useAautoSizeInput('title-input', textAreaRef.current, message);
 
   return (
     <div className="flex py-6 justify-center items-start bg-[var(--tg-theme-bg-color)] gap-x-2">
       <textarea
         className="w-2/3 border-box rounded px-2 py-2 bg-[--tg-theme-hint-color] text-[var(--tg-theme-bg-color)]"
-        ref={textareaRef}
+        ref={textAreaRef}
         style={{
           minHeight: MIN_TEXTAREA_HEIGHT,
           resize: 'none',
