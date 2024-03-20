@@ -13,20 +13,15 @@ export function SendPanel({
   handleChange,
   message,
 }: SendPanelProps) {
-  const MIN_TEXTAREA_HEIGHT = 20;
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  useAautoSizeInput('title-input', textAreaRef.current, message);
+  useAautoSizeInput('Написать сообщение...', textAreaRef.current, message);
 
   return (
     <div className="flex py-6 justify-center items-start bg-[var(--tg-theme-bg-color)] gap-x-2">
       <textarea
-        className="w-2/3 border-box rounded px-2 py-2 bg-[--tg-theme-hint-color] text-[var(--tg-theme-bg-color)]"
+        className="w-2/3 border-box rounded px-2 py-2 bg-[--tg-theme-hint-color] text-[var(--tg-theme-bg-color)] appearance-none resize-none"
         ref={textAreaRef}
-        style={{
-          minHeight: MIN_TEXTAREA_HEIGHT,
-          resize: 'none',
-        }}
         value={message}
         onChange={handleChange}
       />
