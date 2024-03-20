@@ -1,4 +1,3 @@
-import { FaceSmileIcon } from '@heroicons/react/24/outline';
 import { ChangeEventHandler, useLayoutEffect, useRef } from 'react';
 import SimpleButton from './SimpleButton';
 
@@ -32,7 +31,7 @@ export function SendPanel({
   }, [message]);
 
   return (
-    <div className="flex py-6 justify-center items-start bg-[var(--tg-theme-bg-color)]">
+    <div className="flex py-6 justify-center items-start bg-[var(--tg-theme-bg-color)] gap-x-2">
       <textarea
         className="w-2/3 border-box rounded px-2 py-2 bg-[--tg-theme-hint-color] text-[var(--tg-theme-bg-color)]"
         ref={textareaRef}
