@@ -431,6 +431,8 @@ video {
   overflow: auto;
 }.overflow-y-auto {
   overflow-y: auto;
+}.break-words {
+  overflow-wrap: break-word;
 }.rounded {
   border-radius: 0.25rem;
 }.rounded-full {

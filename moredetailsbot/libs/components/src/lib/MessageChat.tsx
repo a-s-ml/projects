@@ -19,12 +19,12 @@ export function MessageChat({ my, name, text }: MessageChatProps) {
         )}
       >
         {!my && (
-          <p className="text-sm text-left text-[var(--tg-theme-bg-color)]">
+          <p className="text-sm text-left break-words text-[var(--tg-theme-bg-color)]">
             {name}
           </p>
         )}
-        <p className="text-sm mt-4">{text}</p>
-        <p className="text-sm mt-4">{now.toString()}</p>
+        <p className="text-sm mt-4 break-words">{text}</p>
+        <p className="text-sm mt-4 break-words">{now.toString()}</p>
       </div>
     </div>
   );
