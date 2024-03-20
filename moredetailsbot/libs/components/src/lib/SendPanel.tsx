@@ -13,29 +13,29 @@ export function SendPanel({
   handleChange,
   message,
 }: SendPanelProps) {
-  const MIN_TEXTAREA_HEIGHT = 32;
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  // const MIN_TEXTAREA_HEIGHT = 32;
+  // const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  useLayoutEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.focus();
-      textareaRef.current.style.height = 'inherit';
-      textareaRef.current.style.height = `${Math.max(
-        textareaRef.current.scrollHeight,
-        MIN_TEXTAREA_HEIGHT
-      )}px`;
-    }
-  }, [message]);
+  // useLayoutEffect(() => {
+  //   if (textareaRef.current) {
+  //     textareaRef.current.focus();
+  //     textareaRef.current.style.height = 'inherit';
+  //     textareaRef.current.style.height = `${Math.max(
+  //       textareaRef.current.scrollHeight,
+  //       MIN_TEXTAREA_HEIGHT
+  //     )}px`;
+  //   }
+  // }, [message]);
 
   return (
-    <div className="flex py-6 items-center bg-[var(--tg-theme-bg-color)]">
+    <div className="flex py-6 justify-center items-start bg-[var(--tg-theme-bg-color)]">
       <textarea
         className="w-2/3 border rounded px-2 py-2 bg-[--tg-theme-hint-color] text-"
-        ref={textareaRef}
-        style={{
-          minHeight: MIN_TEXTAREA_HEIGHT,
-          resize: 'none',
-        }}
+        // ref={textareaRef}
+        // style={{
+        //   minHeight: MIN_TEXTAREA_HEIGHT,
+        //   resize: 'none',
+        // }}
         value={message}
         onChange={handleChange}
       />
