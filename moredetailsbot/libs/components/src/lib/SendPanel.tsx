@@ -12,13 +12,20 @@ export function SendPanel({
   handleChange,
   message,
 }: SendPanelProps) {
-  const MIN_TEXTAREA_HEIGHT = 32;
+  const MIN_TEXTAREA_HEIGHT = 20;
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useLayoutEffect(() => {
     if (textareaRef.current) {
-      textareaRef.current.focus();
       textareaRef.current.style.height = 'inherit';
+      console.log(
+        'scrollHeight ',
+        textareaRef.current.scrollHeight
+      );
+      console.log(
+        'MIN_TEXTAREA_HEIGHT ',
+        MIN_TEXTAREA_HEIGHT
+      );
       console.log(
         'math ',
         Math.max(textareaRef.current.scrollHeight, MIN_TEXTAREA_HEIGHT)
