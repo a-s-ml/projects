@@ -1,4 +1,4 @@
-import { ArrowRightCircleIcon } from '@heroicons/react/24/outline';
+import { ArrowRightCircleIcon, FaceSmileIcon } from '@heroicons/react/24/outline';
 import { ForwardRefExoticComponent, SVGProps } from 'react';
 
 interface IButtonIconConst {
@@ -10,5 +10,9 @@ export const buttonIconConst: IButtonIconConst[] = [
   {
     name: 'send',
     component: ArrowRightCircleIcon,
+  },
+  {
+    name: 'smile',
+    component: FaceSmileIcon,
   },
 ];

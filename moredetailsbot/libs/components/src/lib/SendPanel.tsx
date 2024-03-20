@@ -20,6 +20,10 @@ export function SendPanel({
     if (textareaRef.current) {
       textareaRef.current.focus();
       textareaRef.current.style.height = 'inherit';
+      console.log(
+        'math ',
+        Math.max(textareaRef.current.scrollHeight, MIN_TEXTAREA_HEIGHT)
+      );
       textareaRef.current.style.height = `${Math.max(
         textareaRef.current.scrollHeight,
         MIN_TEXTAREA_HEIGHT
@@ -39,9 +43,10 @@ export function SendPanel({
         value={message}
         onChange={handleChange}
       />
-      <div className="px-2">
-        <FaceSmileIcon className="h-6 w-6 text-[var(--tg-theme-text-color)] cursor-pointer" />
-      </div>
+      <SimpleButton
+        icon={'smile'}
+        click={() => console.log('smile')}
+      ></SimpleButton>
       <SimpleButton icon={'send'} click={handleSubmit}></SimpleButton>
     </div>
   );
