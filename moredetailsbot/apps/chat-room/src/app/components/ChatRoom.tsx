@@ -88,12 +88,12 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
             )
           )}
         <div ref={bottomRef} />
-        <SendPanel
-          message={message}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-        />
       </ChatPanel>
+      <SendPanel
+        message={message}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 };
