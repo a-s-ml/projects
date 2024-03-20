@@ -16,7 +16,7 @@ export const SimpleButton = ({ content, icon, click }: SimpleButtonProps) => {
       type="button"
       className={classNames(
         content && icon ? 'gap-x-2 ' : '',
-        'inline-flex items-center rounded-md bg-[var(--tg-theme-accent-text-color)] px-2 py-2 text-sm font-semibold text-[var(--tg-theme-accent-text-color)] shadow-sm hover:bg-[var(--tg-theme-accent-text-color)]'
+        'border-t-1 border-[var(--tg-theme-hint-color)] inline-flex items-center rounded-md bg-[var(--tg-theme-accent-text-color)] p-2 text-sm font-semibold text-[var(--tg-theme-accent-text-color)]'
       )}
     >
       {icon && (

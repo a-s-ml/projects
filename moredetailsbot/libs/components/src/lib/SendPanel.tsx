@@ -25,11 +25,8 @@ export function SendPanel({
         value={message}
         onChange={handleChange}
       />
-      <SimpleButton
-        icon={'smile'}
-        click={() => console.log('smile')}
-      ></SimpleButton>
-      <SimpleButton icon={'send'} click={handleSubmit}></SimpleButton>
+      <SimpleButton icon={'smile'} click={() => console.log('smile')} />
+      <SimpleButton icon={'send'} click={handleSubmit} />
     </div>
   );
 }
