@@ -30,13 +30,12 @@ export function SendPanel({
   return (
     <div className="flex py-6 justify-center items-start bg-[var(--tg-theme-bg-color)]">
       <textarea
-        className="w-2/3 border-box rounded px-2 py-2 bg-[--tg-theme-hint-color] text-[var(--tg-theme-bg-color)] h-10 min-h-[40px]"
-        // ref={textareaRef}
-        // style={{
-        //   minHeight: MIN_TEXTAREA_HEIGHT,
-        //   resize: 'none',
-        // }}
-        style={{ width: `${message.length}ch` }}
+        className="w-2/3 border-box rounded px-2 py-2 bg-[--tg-theme-hint-color] text-[var(--tg-theme-bg-color)]"
+        ref={textareaRef}
+        style={{
+          minHeight: MIN_TEXTAREA_HEIGHT,
+          resize: 'none',
+        }}
         value={message}
         onChange={handleChange}
       />
