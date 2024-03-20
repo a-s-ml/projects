@@ -41,7 +41,7 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
 
   useEffect(() => {
     if (bottomRef.current) {
-      bottomRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      bottomRef.current.scrollIntoView();
     }
   }, [states]);
 
@@ -87,8 +87,8 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
               />
             )
           )}
-      </ChatPanel>
         <div ref={bottomRef} />
+      </ChatPanel>
       <SendPanel
         message={message}
         handleChange={handleChange}
