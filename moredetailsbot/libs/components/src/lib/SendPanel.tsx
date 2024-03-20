@@ -28,7 +28,7 @@ export function SendPanel({
   }, [message]);
 
   return (
-    <div className="w-full absolute bt-2 b-[--tg-theme-hint-color] bottom-0 pt-4 pb-6 flex items-center bg-[var(--tg-theme-bg-color)]">
+    <div className="flex py-6 items-center bg-[var(--tg-theme-bg-color)]">
       <textarea
         className="w-2/3 border rounded px-2 py-2 bg-[--tg-theme-hint-color] text-"
         ref={textareaRef}

@@ -57,42 +57,44 @@ export const ChatRoom = ({ accessToken }: ChatRoomProps) => {
 
   console.log('socket', socket);
   return (
-    <ChatPanel>
-      {isLoading && <Preloader />}
-      {dataUser &&
-        successChatmessages &&
-        chatmessages.map((chatmessage) => (
-          <Message
-            key={chatmessage.id}
-            id={chatmessage.user}
-            text={chatmessage.text}
-          />
-        ))}
-      {states &&
-        dataUser &&
-        states.map((state) =>
-          state.type === 'message' && state.text ? (
+    <div className="flex flex-col h-screen">
+      <ChatPanel>
+        {isLoading && <Preloader />}
+        {dataUser &&
+          successChatmessages &&
+          chatmessages.map((chatmessage) => (
             <Message
-              key={state.type}
-              id={state.user.id}
-              text={state.text.text}
+              key={chatmessage.id}
+              id={chatmessage.user}
+              text={chatmessage.text}
             />
-          ) : (
-            <MessageSystem
-              name={String(state.user.name)}
-              action={state.type}
-              chat={String(state.chat.name)}
-              size={state.size}
-            />
-          )
-        )}
-      <div ref={bottomRef} />
-      <SendPanel
-        message={message}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-      />
-    </ChatPanel>
+          ))}
+        {states &&
+          dataUser &&
+          states.map((state) =>
+            state.type === 'message' && state.text ? (
+              <Message
+                key={state.type}
+                id={state.user.id}
+                text={state.text.text}
+              />
+            ) : (
+              <MessageSystem
+                name={String(state.user.name)}
+                action={state.type}
+                chat={String(state.chat.name)}
+                size={state.size}
+              />
+            )
+          )}
+        <div ref={bottomRef} />
+        <SendPanel
+          message={message}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+      </ChatPanel>
+    </div>
   );
 };
 

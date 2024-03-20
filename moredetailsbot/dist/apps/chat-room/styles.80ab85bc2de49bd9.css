@@ -333,14 +333,10 @@ video {
   pointer-events: auto;
 }.fixed {
   position: fixed;
-}.absolute {
-  position: absolute;
 }.relative {
   position: relative;
 }.inset-y-0 {
   top: 0px;
-  bottom: 0px;
-}.bottom-0 {
   bottom: 0px;
 }.right-0 {
   right: 0px;
@@ -483,12 +479,9 @@ video {
 }.py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}.pb-6 {
+}.py-6 {
+  padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-}.pb-\[80px\] {
-  padding-bottom: 80px;
-}.pt-4 {
-  padding-top: 1rem;
 }.text-left {
   text-align: left;
 }.text-center {
